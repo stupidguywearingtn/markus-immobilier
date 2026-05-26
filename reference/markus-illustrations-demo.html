@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markus — Illustrations animées & dégradés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --anthracite:#383E42;--blanc:#FFFFFF;--sauge:#9EA596;--sauge-hover:#8A9281;
+    --gris:#F4F5F3;--bordure:rgba(56,62,66,.12);--ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',sans-serif;color:var(--anthracite);background:var(--blanc);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--sauge)}
+
+  /* ===== DÉMO DÉGRADÉ TITRES ===== */
+  .grad-demo{padding:90px 0 70px;text-align:center;background:var(--gris)}
+  .grad-demo h1{font-size:clamp(40px,7vw,82px);font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:14px 0}
+  .grad{background:linear-gradient(100deg,var(--anthracite) 10%,var(--sauge) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .dark-band{background:var(--anthracite);padding:70px 0;text-align:center}
+  .dark-band h1{font-size:clamp(36px,6vw,68px);font-weight:800;letter-spacing:-.02em;color:#fff}
+  .grad-light{background:linear-gradient(100deg,#fff 20%,var(--sauge) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .small{font-size:13px;color:#7a817f;margin-top:10px;letter-spacing:.02em}
+  .dark-band .small{color:rgba(255,255,255,.6)}
+
+  /* ===== PLANCHE ILLUSTRATIONS ===== */
+  .ill-sec{padding:90px 0}
+  .ill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:44px}
+  @media(max-width:760px){.ill-grid{grid-template-columns:1fr}}
+  .ill-card{border:1px solid var(--bordure);border-radius:18px;padding:30px;background:#fff;
+    display:flex;flex-direction:column;align-items:center;text-align:center;transition:.3s var(--ease)}
+  .ill-card:hover{box-shadow:0 20px 50px rgba(56,62,66,.10);transform:translateY(-4px)}
+  .ill{width:170px;height:170px;margin-bottom:18px}
+  .ill svg{width:100%;height:100%;overflow:visible}
+  .ill path,.ill circle{stroke-dasharray:1;stroke-dashoffset:1;fill:none;
+    stroke:var(--anthracite);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .ill .accent{stroke:var(--sauge)}
+  .ill .fillme{fill:var(--sauge);fill-opacity:0;stroke:none}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fillin{to{fill-opacity:1}}
+  @keyframes dooropen{to{transform:scaleX(.12)}}
+  .ill.play path,.ill.play circle{animation:draw .9s var(--ease) forwards var(--dl,0s)}
+  .ill.play .fillme{animation:fillin .5s ease forwards var(--dl,0s)}
+  .ill.play .door{animation:dooropen .8s var(--ease) forwards var(--dl,0s);transform-origin:left center}
+  .ill-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
+  .ill-card .use{font-size:12.5px;color:#7a817f;letter-spacing:.02em;min-height:38px}
+  .ill-card .use b{color:var(--sauge);font-weight:600}
+  .replay{margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid var(--bordure);
+    border-radius:30px;color:#7a817f;font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;cursor:pointer;padding:8px 16px;transition:.2s}
+  .replay:hover{border-color:var(--sauge);color:var(--sauge)}
+  .replay svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2}
+
+  .intro{text-align:center;max-width:640px;margin:0 auto}
+  .intro h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin:14px 0;letter-spacing:-.01em}
+  .intro p{color:#5a6166}
+  .note{text-align:center;font-size:12px;color:#9aa09d;padding:30px;letter-spacing:.03em}
+  @media(prefers-reduced-motion:reduce){
+    .ill path,.ill circle{stroke-dashoffset:0!important}
+    .ill .fillme{fill-opacity:1!important}
+    *{animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== DÉGRADÉ TITRES ===== -->
+<section class="grad-demo">
+  <span class="eyebrow">Dégradé sur les titres</span>
+  <h1>L'exception, <span class="grad">chez vous.</span></h1>
+  <p class="small">Dégradé anthracite → sauge en fond clair · subtil, propre</p>
+</section>
+<section class="dark-band">
+  <span class="eyebrow">Variante fond foncé</span>
+  <h1>Estimez votre bien <span class="grad-light">en 2 minutes.</span></h1>
+  <p class="small">Dégradé blanc → sauge sur l'anthracite · pour les sections sombres (hero, estimation)</p>
+</section>
+
+<!-- ===== ILLUSTRATIONS ===== -->
+<section class="ill-sec">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">Illustrations animées</span>
+      <h2 class="grad">Des traits qui se dessinent au scroll</h2>
+      <p>Illustrations en ligne, dessinées à l'apparition (même technique que le trait qui suit le scroll). Légères, sur-mesure, dans la charte. Chacune comble le vide d'une section statique. Survole une carte ou clique « Rejouer ».</p>
+    </div>
+
+    <div class="ill-grid">
+
+      <!-- IMMEUBLE -->
+      <div class="ill-card">
+        <div class="ill" data-ill>
+          <svg viewBox="0 0 120 140">
+            <path pathLength="1" d="M28 132 V34 H92 V132" style="--dl:0s"/>
+            <path pathLength="1" d="M16 132 H104" class="accent" style="--dl:.55s"/>
+            <path pathLength="1" d="M28 102 H92" style="--dl:.7s"/>
+            <path pathLength="1" d="M28 72 H92" style="--dl:.85s"/>
+            <path pathLength="1" d="M40 46 h12 v16 h-12 z" style="--dl:1s"/>
+            <path pathLength="1" d="M68 46 h12 v16 h-12 z" style="--dl:1.1s"/>
+            <path pathLength="1" d="M40 80 h12 v14 h-12 z" style="--dl:1.2s"/>
+            <path pathLength="1" d="M68 80 h12 v14 h-12 z" style="--dl:1.3s"/>
+            <path pathLength="1" d="M52 132 V110 h16 V132" class="accent" style="--dl:1.45s"/>
+          </svg>
+        </div>
+        <h3>L'immeuble qui se construit</h3>
+        <p class="use">Hero · <b>Qui sommes-nous</b> · header au scroll</p>
+        <button class="replay" data-replay><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-7 3.3M3 4v3.4H6.4"/></svg>Rejouer</button>
+      </div>
+
+      <!-- CLÉS -->
+      <div class="ill-card">
+        <div class="ill" data-ill>
+          <svg viewBox="0 0 120 140">
+            <circle pathLength="1" cx="44" cy="48" r="20" style="--dl:0s"/>
+            <circle pathLength="1" cx="44" cy="48" r="9" class="accent" style="--dl:.5s"/>
+            <path pathLength="1" d="M58 62 L96 100" style="--dl:.7s"/>
+            <path pathLength="1" d="M96 100 l10 -10" style="--dl:1s"/>
+            <path pathLength="1" d="M86 90 l8 -8" style="--dl:1.15s"/>
+            <path pathLength="1" d="M78 82 l7 -7" class="accent" style="--dl:1.3s"/>
+          </svg>
+        </div>
+        <h3>Les clés</h3>
+        <p class="use">Remise des clés · <b>Estimation</b> · biens vendus</p>
+        <button class="replay" data-replay><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-7 3.3M3 4v3.4H6.4"/></svg>Rejouer</button>
+      </div>
+
+      <!-- MAISON + PORTE -->
+      <div class="ill-card">
+        <div class="ill" data-ill>
+          <svg viewBox="0 0 120 140">
+            <path pathLength="1" d="M22 64 L60 30 L98 64" style="--dl:0s"/>
+            <path pathLength="1" d="M32 60 V112 H88 V60" style="--dl:.45s"/>
+            <path pathLength="1" d="M50 112 V78 H70 V112" style="--dl:.9s"/>
+            <path pathLength="1" d="M50 78 h20 v34 h-20 z" class="door accent" style="--dl:1.2s;stroke-dashoffset:0;stroke-dasharray:none"/>
+            <circle pathLength="1" cx="65" cy="96" r="1.6" class="accent" style="--dl:1.4s"/>
+          </svg>
+        </div>
+        <h3>La maison · la porte qui s'ouvre</h3>
+        <p class="use">Hero · <b>Acheter / Louer</b> · accueil</p>
+        <button class="replay" data-replay><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-7 3.3M3 4v3.4H6.4"/></svg>Rejouer</button>
+      </div>
+
+      <!-- CONTRAT SIGNÉ -->
+      <div class="ill-card">
+        <div class="ill" data-ill>
+          <svg viewBox="0 0 120 140">
+            <path pathLength="1" d="M34 18 H76 L92 34 V122 H34 Z" style="--dl:0s"/>
+            <path pathLength="1" d="M76 18 V34 H92" style="--dl:.5s"/>
+            <path pathLength="1" d="M44 52 H82" style="--dl:.65s"/>
+            <path pathLength="1" d="M44 64 H82" style="--dl:.78s"/>
+            <path pathLength="1" d="M44 76 H68" style="--dl:.9s"/>
+            <path pathLength="1" d="M44 100 c 6 -12 12 10 18 -2 s 12 8 20 -4" class="accent" style="--dl:1.05s"/>
+            <circle pathLength="1" cx="82" cy="108" r="13" class="accent" style="--dl:1.5s"/>
+            <path pathLength="1" d="M76 108 l4 4 8 -8" class="accent" style="--dl:1.8s"/>
+          </svg>
+        </div>
+        <h3>Le contrat signé</h3>
+        <p class="use">Biens vendus · <b>Faire gérer</b> · témoignages</p>
+        <button class="replay" data-replay><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9 9 0 00-7 3.3M3 4v3.4H6.4"/></svg>Rejouer</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="note">Planche d'idées — illustrations vectorielles légères (SVG), 100 % dans la charte, animées au scroll. À piocher selon les sections. D'autres possibles : poignée de main, plan d'appartement qui se trace, feuille/plante qui pousse (gestion locative), pin de carte qui tombe.</div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('play'); io.unobserve(e.target); } });
+  },{threshold:0.4});
+  document.querySelectorAll('[data-ill]').forEach(function(el){ if(reduce){el.classList.add('play');} else {io.observe(el);} });
+  document.querySelectorAll('[data-replay]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var ill=btn.closest('.ill-card').querySelector('[data-ill]');
+      ill.classList.remove('play'); void ill.offsetWidth; ill.classList.add('play');
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { LogoMark } from "@/components/ui/logo";
+
+const TEL = "04 78 37 13 67";
+const TEL_HREF = "tel:0478371367";
+
+export function SiteHeader() {
+  const [solid, setSolid] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={[
+        "fixed top-0 left-0 right-0 z-[100] text-blanc",
+        "[transition:all_0.35s_var(--ease)]",
+        solid
+          ? "bg-anthracite py-[14px] shadow-[0_8px_30px_rgba(0,0,0,0.18)]"
+          : "bg-transparent py-[22px]",
+      ].join(" ")}
+    >
+      <div className="max-w-content mx-auto px-8 max-md:px-5 flex items-center justify-between gap-4">
+        <Link
+          href="/"
+          aria-label="Markus Immobilier — accueil"
+          className="flex items-center gap-3 no-underline text-inherit"
+        >
+          <LogoMark size={solid ? 28 : 34} gradient />
+          <span className="flex flex-col leading-none">
+            <b className="font-bold text-base tracking-[0.14em]">MARKUS</b>
+            <span className="text-[8.5px] tracking-[0.42em] font-medium opacity-80 mt-[3px]">
+              IMMOBILIER
+            </span>
+          </span>
+        </Link>
+
+        {/* Nav desktop */}
+        <nav className="hidden md:flex items-center gap-[26px]">
+          <button
+            type="button"
+            className="border border-white/40 rounded-full px-3 py-[5px] text-[11px] tracking-[0.1em] uppercase opacity-90 hover:opacity-100 transition"
+            aria-label="Changer la langue"
+          >
+            FR / EN
+          </button>
+          <Link
+            href="/contact"
+            className="text-[13px] font-medium tracking-[0.04em] opacity-90 hover:opacity-100 hover:text-sauge transition"
+          >
+            Contactez-nous
+          </Link>
+          <Link
+            href="/espace-client"
+            aria-label="Espace client"
+            className="w-[34px] h-[34px] border border-white/40 rounded-full grid place-items-center opacity-90 hover:opacity-100 hover:border-sauge transition"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+            </svg>
+          </Link>
+          <Link
+            href="/recrutement"
+            className="text-[13px] font-medium tracking-[0.04em] opacity-90 hover:opacity-100 hover:text-sauge transition"
+          >
+            On recrute
+          </Link>
+          <a
+            href={TEL_HREF}
+            className="text-[13px] font-bold tracking-[0.04em] hover:text-sauge transition"
+          >
+            {TEL}
+          </a>
+        </nav>
+
+        {/* Mobile : tel + burger */}
+        <div className="flex md:hidden items-center gap-3">
+          <a
+            href={TEL_HREF}
+            className="text-[12px] font-bold tracking-[0.04em]"
+            aria-label="Appeler Markus Immobilier"
+          >
+            {TEL}
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+            aria-expanded={open}
+            className="w-[34px] h-[34px] grid place-items-center border border-white/40 rounded-md"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              {open ? <path d="M6 6l12 12M6 18L18 6" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu dropdown */}
+      {open && (
+        <div className="md:hidden bg-anthracite border-t border-white/10 px-5 py-5 flex flex-col gap-3">
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="text-sm py-2 border-b border-white/10"
+          >
+            Contactez-nous
+          </Link>
+          <Link
+            href="/recrutement"
+            onClick={() => setOpen(false)}
+            className="text-sm py-2 border-b border-white/10"
+          >
+            On recrute
+          </Link>
+          <Link
+            href="/espace-client"
+            onClick={() => setOpen(false)}
+            className="text-sm py-2 border-b border-white/10"
+          >
+            Espace client
+          </Link>
+          <button
+            type="button"
+            className="text-sm py-2 text-left"
+            aria-label="Changer la langue"
+          >
+            FR / EN
+          </button>
+        </div>
+      )}
+    </header>
+  );
+}

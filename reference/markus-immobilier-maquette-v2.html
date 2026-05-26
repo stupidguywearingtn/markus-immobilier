@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARKUS IMMOBILIER — Maquette (fidèle à la trame client)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --anthracite:#383E42;
+    --blanc:#FFFFFF;
+    --sauge:#9EA596;
+    --sauge-hover:#8A9281;
+    --gris:#F4F5F3;
+    --bordure:rgba(56,62,66,.12);
+    --anthracite-92:rgba(56,62,66,.92);
+    --maxw:1240px;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Montserrat',sans-serif;
+    color:var(--anthracite);
+    background:var(--blanc);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  section{padding:120px 0}
+  @media(max-width:768px){section{padding:72px 0}.wrap{padding:0 22px}}
+
+  /* surtitre signature */
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--sauge);margin-bottom:18px;display:inline-block;
+  }
+  h1,h2,h3{font-weight:700;line-height:1.12;letter-spacing:-.01em}
+  h2{font-size:clamp(30px,4vw,46px);margin-bottom:18px}
+  .lead{font-size:18px;color:#5a6166;max-width:620px}
+  .dark{background:var(--anthracite);color:var(--blanc)}
+  .dark .lead{color:rgba(255,255,255,.7)}
+  .dark h2{color:#fff}
+  .paper{background:var(--gris)}
+
+  /* boutons */
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:inherit;font-weight:600;
+    font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:none;
+    padding:16px 30px;border-radius:6px;text-decoration:none;transition:.25s var(--ease);white-space:nowrap}
+  .btn-primary{background:var(--anthracite);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:#2b3034;box-shadow:0 14px 30px rgba(56,62,66,.28)}
+  .btn-sauge{background:var(--sauge);color:#fff}
+  .btn-sauge:hover{transform:translateY(-2px);background:var(--sauge-hover);box-shadow:0 14px 30px rgba(158,165,150,.4)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+  .btn-ghost:hover{background:#fff;color:var(--anthracite);border-color:#fff}
+  .btn-outline{background:transparent;color:var(--anthracite);border:1.5px solid var(--sauge)}
+  .btn-outline:hover{background:var(--sauge);color:#fff}
+
+  /* logo mark */
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+  .logo svg{width:34px;height:34px;flex:none}
+  .logo .name{display:flex;flex-direction:column;line-height:1}
+  .logo .name b{font-weight:700;font-size:16px;letter-spacing:.14em}
+  .logo .name span{font-size:8.5px;letter-spacing:.42em;font-weight:500;opacity:.8;margin-top:3px}
+
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.35s var(--ease);
+    padding:22px 0;color:#fff}
+  header.solid{background:var(--anthracite);padding:14px 0;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+  header .bar{display:flex;align-items:center;justify-content:space-between}
+  nav.top{display:flex;align-items:center;gap:26px}
+  nav.top a{color:#fff;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.04em;opacity:.92;transition:.2s}
+  nav.top a:hover{opacity:1;color:var(--sauge)}
+  .lang{border:1px solid rgba(255,255,255,.4);border-radius:30px;padding:5px 12px;font-size:11px!important;letter-spacing:.1em!important}
+  .tel-pill{font-weight:700!important;opacity:1!important}
+  .ico{width:34px;height:34px;border:1px solid rgba(255,255,255,.4);border-radius:50%;display:grid;place-items:center}
+  .ico svg{width:16px;height:16px}
+  .burger{display:none}
+  @media(max-width:980px){nav.top .hide-mob{display:none}.burger{display:grid}}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(120% 90% at 20% 10%, #4a5258 0%, transparent 55%),
+      radial-gradient(120% 90% at 85% 90%, #2c3135 0%, transparent 55%),
+      linear-gradient(135deg,#3d444a,#2b3034);
+    animation:kenburns 22s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1.05) translate(0,0)}to{transform:scale(1.18) translate(-2%,-2%)}}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(56,62,66,.55),rgba(56,62,66,.78));
+    background-image:
+      linear-gradient(180deg,rgba(56,62,66,.5),rgba(56,62,66,.8)),
+      repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.012) 3px)}
+  .video-pill{position:absolute;top:50%;left:32px;transform:translateY(-50%);z-index:2;
+    writing-mode:vertical-rl;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+    color:rgba(255,255,255,.5);border-left:1px solid rgba(255,255,255,.25);padding-left:10px}
+  @media(max-width:768px){.video-pill{display:none}}
+  .hero-inner{position:relative;z-index:3;padding:0 24px;max-width:900px}
+  .hero .mark{margin:0 auto 26px;width:78px;height:78px}
+  .hero h1{font-size:clamp(40px,7vw,82px);font-weight:800;letter-spacing:-.02em;line-height:1.02}
+  .hero h1 em{font-style:normal;color:var(--sauge)}
+  .hero .sub{margin:20px auto 0;font-size:18px;font-weight:300;color:rgba(255,255,255,.82);max-width:560px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .estimer-block{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .estimer-block small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .biens-vendus{position:absolute;bottom:34px;left:0;right:0;z-index:3;text-align:center;
+    font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+  .biens-vendus::before,.biens-vendus::after{content:"—";margin:0 14px;color:var(--sauge)}
+
+  /* placeholders média */
+  .ph{position:relative;border-radius:12px;overflow:hidden;
+    background:linear-gradient(135deg,#dfe2dd,#c9cec6 60%,#b9bfb4);
+    display:grid;place-items:center;color:#5d6560}
+  .ph.dark-ph{background:linear-gradient(135deg,#454c52,#363b40)}
+  .ph .cap{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:18px}
+  .ph .cap svg{width:30px;height:30px;opacity:.55}
+  .ph .cap span{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.7}
+
+  /* NOS BIENS */
+  .biens-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:46px;flex-wrap:wrap}
+  .biens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:980px){.biens-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:680px){.biens-grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--bordure);border-radius:14px;overflow:hidden;
+    transition:.3s var(--ease)}
+  .card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(56,62,66,.16)}
+  .card .photo{position:relative;aspect-ratio:4/3}
+  .card .photo .ph{position:absolute;inset:0;border-radius:0}
+  .card .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease)}
+  .card .slide.active{opacity:1}
+  .badge{position:absolute;top:14px;left:14px;z-index:4;background:var(--anthracite);color:#fff;
+    font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:30px}
+  .counter-pill{position:absolute;bottom:14px;right:14px;z-index:4;background:rgba(56,62,66,.78);color:#fff;
+    font-size:11px;font-weight:600;padding:4px 10px;border-radius:30px;backdrop-filter:blur(4px)}
+  .dots{position:absolute;bottom:14px;left:14px;z-index:4;display:flex;gap:6px}
+  .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;transition:.2s}
+  .dots i.on{background:#fff;width:18px;border-radius:6px}
+  .card .body{padding:22px}
+  .card .price{font-size:22px;font-weight:700;color:var(--anthracite)}
+  .card .loc{font-size:13px;color:#7a817f;margin:4px 0 14px;display:flex;align-items:center;gap:6px}
+  .card h3{font-size:18px;margin-bottom:14px}
+  .specs{display:flex;gap:18px;padding-top:14px;border-top:1px solid var(--bordure);font-size:13px;color:#5a6166}
+  .specs b{color:var(--anthracite);font-weight:700}
+  .card .voir{margin-top:16px;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--sauge);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+  .card .voir:hover{gap:11px}
+
+  /* QUI SOMMES-NOUS */
+  .about{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center}
+  @media(max-width:900px){.about{grid-template-columns:1fr;gap:38px}}
+  .about .ph{aspect-ratio:4/5;height:100%;min-height:380px}
+  .about p{color:#5a6166;margin-bottom:16px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:34px 0}
+  @media(max-width:560px){.stats{grid-template-columns:1fr 1fr}}
+  .stat .num{font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--anthracite);line-height:1}
+  .stat .num em{font-style:normal;color:var(--sauge)}
+  .stat .lab{font-size:12px;color:#7a817f;margin-top:6px;letter-spacing:.04em}
+
+  /* ESTIMATION */
+  .estim{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+  @media(max-width:900px){.estim{grid-template-columns:1fr;gap:40px}}
+  .tag-n1{display:inline-flex;align-items:center;gap:8px;background:rgba(158,165,150,.18);
+    color:var(--sauge);border:1px solid rgba(158,165,150,.4);padding:7px 16px;border-radius:30px;
+    font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
+  .benefits{list-style:none;margin:28px 0 34px;display:flex;flex-direction:column;gap:16px}
+  .benefits li{display:flex;align-items:center;gap:14px;font-size:16px;color:rgba(255,255,255,.9)}
+  .benefits .chk{width:30px;height:30px;flex:none;border-radius:50%;background:rgba(158,165,150,.2);
+    display:grid;place-items:center}
+  .benefits .chk svg{width:15px;height:15px;stroke:var(--sauge)}
+  .benefits b{color:#fff;font-weight:600}
+  /* mockup rapport PDF */
+  .report{background:#fff;border-radius:14px;padding:26px;color:var(--anthracite);
+    box-shadow:0 30px 70px rgba(0,0,0,.4);transform:rotate(-1.5deg);position:relative}
+  .report::before{content:"";position:absolute;inset:0;border-radius:14px;border:1px solid rgba(56,62,66,.06)}
+  .report .rhead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bordure);padding-bottom:14px;margin-bottom:16px}
+  .report .rhead .t{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sauge);font-weight:600}
+  .report .big{font-size:13px;color:#7a817f}
+  .report .row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dashed var(--bordure)}
+  .report .row span{font-size:13px;color:#5a6166}
+  .report .row b{font-size:17px;font-weight:700}
+  .report .bar{height:8px;border-radius:6px;background:var(--gris);margin-top:18px;overflow:hidden}
+  .report .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sauge),var(--sauge-hover));border-radius:6px;transition:width 1.6s var(--ease)}
+  .report.in .bar i{width:74%}
+  .report .dl{margin-top:18px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sauge);font-weight:600}
+
+  /* SUIVEZ-NOUS */
+  .socials{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:40px 0 56px}
+  .soc{width:62px;height:62px;border-radius:16px;background:#fff;border:1px solid var(--bordure);
+    display:grid;place-items:center;transition:.28s var(--ease);text-decoration:none;color:var(--anthracite)}
+  .soc:hover{transform:translateY(-6px);background:var(--anthracite);color:#fff;border-color:var(--anthracite)}
+  .soc svg{width:24px;height:24px}
+  .discord{max-width:760px;margin:0 auto;background:var(--anthracite);color:#fff;border-radius:20px;
+    padding:46px;text-align:center;position:relative;overflow:hidden}
+  .discord::before{content:"";position:absolute;top:-40%;right:-10%;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(158,165,150,.28),transparent 70%)}
+  .discord h3{font-size:26px;margin-bottom:8px;position:relative}
+  .discord .dsub{color:rgba(255,255,255,.65);margin-bottom:24px;position:relative}
+  .dlist{list-style:none;display:flex;flex-direction:column;gap:12px;max-width:480px;margin:0 auto 28px;text-align:left;position:relative}
+  .dlist li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(255,255,255,.88)}
+  .dlist .d{color:var(--sauge);font-weight:700;flex:none}
+
+  /* NOTRE AGENCE */
+  .agence{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:stretch}
+  @media(max-width:900px){.agence{grid-template-columns:1fr;gap:36px}}
+  .hours{display:flex;flex-direction:column;justify-content:center}
+  .hour-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--bordure);font-size:15px}
+  .hour-row b{font-weight:600}
+  .hour-row span{color:#7a817f}
+  .addr{margin-top:26px;font-size:14px;color:#5a6166;display:flex;align-items:flex-start;gap:10px}
+  .agence .ph{min-height:360px;aspect-ratio:auto}
+
+  /* FOOTER */
+  footer{background:var(--anthracite);color:#fff;padding:72px 0 30px}
+  .fgrid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:40px;align-items:start;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.12)}
+  @media(max-width:780px){.fgrid{grid-template-columns:1fr 1fr;gap:30px}.fbrand{grid-column:1/-1;order:-1;text-align:center;margin-bottom:10px}}
+  .fcol h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sauge);margin-bottom:18px;font-weight:600}
+  .fcol a{display:block;color:rgba(255,255,255,.78);text-decoration:none;font-size:14px;padding:6px 0;transition:.2s}
+  .fcol a:hover{color:#fff;padding-left:5px}
+  .fbrand{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .fbrand svg{width:48px;height:48px;color:#fff}
+  .fbrand .name b{letter-spacing:.18em;font-weight:700}
+  .fbrand .name span{letter-spacing:.4em;font-size:9px;display:block;text-align:center;opacity:.7;margin-top:4px}
+  .fbot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px}
+  .fbot .contact{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.8)}
+  .fbot .contact a{color:rgba(255,255,255,.8);text-decoration:none}
+  .fbot .fsoc{display:flex;gap:12px}
+  .fbot .fsoc a{width:34px;height:34px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:grid;place-items:center;color:#fff;transition:.2s}
+  .fbot .fsoc a:hover{background:var(--sauge);border-color:var(--sauge)}
+  .fbot .fsoc svg{width:15px;height:15px}
+  .legal{text-align:center;font-size:12px;color:rgba(255,255,255,.45);margin-top:26px}
+  .legal a{color:rgba(255,255,255,.55);text-decoration:none;margin:0 6px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(2){transition-delay:.1s}
+  .stagger.in>*:nth-child(3){transition-delay:.2s}
+  .stagger.in>*:nth-child(4){transition-delay:.3s}
+
+  .note{max-width:var(--maxw);margin:0 auto;padding:14px 32px;font-size:12px;color:#9aa09d;
+    text-align:center;letter-spacing:.04em}
+
+  /* ===== ESTIMATION — séquence chargement + envoi mail ===== */
+  #estimation .wrap{position:relative}
+  .inbox{position:absolute;top:-14px;right:0;display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:40px;
+    padding:9px 16px;color:#fff;font-size:13px;font-weight:500;backdrop-filter:blur(6px);z-index:6}
+  .inbox svg{width:18px;height:18px;stroke:var(--sauge)}
+  .inbox .cnt{min-width:20px;height:20px;border-radius:50%;background:var(--sauge);color:#fff;
+    font-size:11px;font-weight:700;display:grid;place-items:center;transition:transform .3s var(--ease)}
+  .inbox.ping .cnt{transform:scale(1.5)}
+  @media(max-width:900px){.inbox{position:static;margin-bottom:22px;width:fit-content}}
+
+  .report{cursor:default}
+  .report .gen{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .report .gen .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sauge);font-weight:600}
+  .report .gen .pct{font-size:13px;font-weight:700;color:var(--anthracite);font-variant-numeric:tabular-nums}
+  .report .rows{transition:opacity .5s var(--ease),filter .5s var(--ease)}
+  .report:not(.done) .rows{opacity:.28;filter:blur(2px)}
+  .report .bar i{width:0}
+  #genBar{width:0;transition:width .12s linear}
+  .report .dl{opacity:0;transform:translateY(6px);transition:.45s var(--ease) .1s}
+  .report.done .dl{opacity:1;transform:none}
+  .report .dl svg{stroke:var(--sauge)}
+  /* enveloppe qui s'envole */
+  .envelope{position:absolute;left:34px;bottom:60px;width:46px;height:34px;border-radius:5px;
+    background:#fff;border:1px solid rgba(56,62,66,.15);box-shadow:0 10px 26px rgba(0,0,0,.28);
+    display:grid;place-items:center;opacity:0;z-index:7;pointer-events:none}
+  .envelope::after{content:"";width:30px;height:11px;border:2px solid var(--sauge);border-bottom:none;
+    border-radius:3px 3px 0 0;transform:translateY(-3px)}
+  .envelope.fly{animation:flyMail 1.5s var(--ease) forwards}
+  @keyframes flyMail{
+    0%{opacity:0;transform:translate(0,0) scale(.6)}
+    12%{opacity:1;transform:translate(0,-6px) scale(1)}
+    55%{opacity:1;transform:translate(160px,-150px) scale(.92) rotate(6deg)}
+    90%{opacity:1;transform:translate(330px,-300px) scale(.4) rotate(10deg)}
+    100%{opacity:0;transform:translate(360px,-330px) scale(.2)}
+  }
+  @media(max-width:900px){.envelope{display:none}}
+  /* toast notif */
+  .toast{position:absolute;right:0;bottom:-8px;display:flex;align-items:center;gap:12px;
+    background:#fff;color:var(--anthracite);border-radius:12px;padding:14px 18px;
+    box-shadow:0 18px 50px rgba(0,0,0,.35);transform:translateY(20px);opacity:0;
+    transition:.5s var(--ease);z-index:8;max-width:300px}
+  .toast.show{transform:none;opacity:1}
+  .toast .ic{width:34px;height:34px;border-radius:50%;background:rgba(158,165,150,.18);display:grid;place-items:center;flex:none}
+  .toast .ic svg{width:18px;height:18px;stroke:var(--sauge)}
+  .toast .tt{font-size:13px;font-weight:700;line-height:1.3}
+  .toast .ts{font-size:12px;color:#7a817f}
+  .replay{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:none;border:none;
+    color:rgba(255,255,255,.55);font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;cursor:pointer;transition:.2s}
+  .replay:hover{color:var(--sauge)}
+  .replay svg{width:14px;height:14px}
+
+  /* ===== PARALLAXE — NOS BIENS VENDUS (inspiré Skiper UI #30) ===== */
+  .sold{position:relative;height:230vh;background:var(--anthracite)}
+  .sold-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;gap:14px;padding:14px;background:var(--anthracite)}
+  .sold-head{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;text-align:center;pointer-events:none;color:#fff;
+    background:radial-gradient(60% 50% at 50% 45%,rgba(56,62,66,.55),transparent)}
+  .sold-head .eyebrow{color:var(--sauge)}
+  .sold-head h2{color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  .sold-head p{color:rgba(255,255,255,.7);max-width:440px}
+  .sold-col{flex:1;display:flex;flex-direction:column;gap:14px;will-change:transform}
+  .sold-col .it{position:relative;width:100%;aspect-ratio:3/4;border-radius:10px;overflow:hidden;flex:none}
+  .sold-col .it .ph{position:absolute;inset:0;border-radius:0;background:linear-gradient(135deg,#4a525a,#363b40)}
+  .sold-col .it .ph .cap span{color:rgba(255,255,255,.55)}
+  .sold-col .it .ph .cap svg{stroke:rgba(255,255,255,.5)}
+  .sold-col .it .vend{position:absolute;top:10px;left:10px;z-index:3;background:var(--sauge);color:#fff;
+    font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:20px}
+  @media(max-width:760px){
+    .sold{height:180vh}
+    .sold-col:nth-child(n+3){display:none}
+  }
+
+  /* ===== TRAIT SVG QUI SUIT LE SCROLL (inspiré Skiper UI #19) ===== */
+  #apropos{position:relative;overflow:hidden}
+  .scroll-line{position:absolute;top:6%;right:-8%;height:88%;width:46%;z-index:0;pointer-events:none;opacity:.55}
+  .scroll-line path{fill:none;stroke:var(--sauge);stroke-width:7;stroke-linecap:round}
+  #apropos .wrap{position:relative;z-index:1}
+  #apropos .about .reveal:last-child{background:linear-gradient(90deg,transparent,var(--gris) 12%);border-radius:12px}
+  @media(max-width:900px){.scroll-line{opacity:.28;width:80%;right:-20%}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .reveal,.stagger>*{opacity:1!important;transform:none!important}
+    .hero-bg{animation:none!important}
+    .report .rows{opacity:1!important;filter:none!important}
+    .report .dl{opacity:1!important;transform:none!important}
+    .envelope{display:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <div class="wrap bar">
+    <a href="#top" class="logo" aria-label="Markus Immobilier — accueil">
+      <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <path d="M16 106 V30 L60 76 L104 30 V106" stroke="currentColor" stroke-width="13" stroke-linejoin="miter"/>
+        <path d="M44 106 V70 M76 106 V70" stroke="currentColor" stroke-width="9"/>
+      </svg>
+      <span class="name"><b>MARKUS</b><span>IMMOBILIER</span></span>
+    </a>
+    <nav class="top">
+      <a href="#" class="lang">FR / EN</a>
+      <a href="#agence" class="hide-mob">Contactez-nous</a>
+      <a href="#" class="hide-mob">On recrute</a>
+      <a href="#" class="ico hide-mob" aria-label="Espace client">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      </a>
+      <a href="tel:0478371367" class="tel-pill">04 78 37 13 67</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="video-pill">▶ Vidéo de fond — intérieur premium / drone Lyon</div>
+  <div class="hero-inner">
+    <svg class="mark" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <path d="M16 106 V30 L60 76 L104 30 V106" stroke="#fff" stroke-width="13" stroke-linejoin="miter"/>
+      <path d="M44 106 V70 M76 106 V70" stroke="#fff" stroke-width="9"/>
+    </svg>
+    <h1>L'exception,<br><em>chez vous.</em></h1>
+    <p class="sub">Agence indépendante à Villeurbanne, au service de vos projets immobiliers.</p>
+    <div class="hero-cta">
+      <a href="#biens" class="btn btn-ghost">Acheter</a>
+      <a href="#biens" class="btn btn-ghost">Louer</a>
+      <a href="#agence" class="btn btn-ghost">Faire gérer</a>
+    </div>
+    <div class="estimer-block">
+      <a href="#estimation" class="btn btn-sauge">Estimer mon bien
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <small>Résultat en moins de 2 minutes</small>
+    </div>
+  </div>
+  <div class="biens-vendus">250+ biens vendus · Lyon &amp; Villeurbanne</div>
+</section>
+
+<!-- ============ 2. NOS BIENS DISPONIBLES ============ -->
+<section id="biens">
+  <div class="wrap">
+    <div class="biens-head reveal">
+      <div>
+        <span class="eyebrow">Aperçu</span>
+        <h2>Nos biens disponibles</h2>
+        <p class="lead">Une sélection de biens à la vente et à la location, soigneusement choisis.</p>
+      </div>
+      <a href="#" class="btn btn-outline">Voir tous nos biens
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="biens-grid stagger">
+      <!-- carte 1 -->
+      <article class="card">
+        <div class="photo" data-carousel>
+          <div class="slide active"><div class="ph" style="border-radius:0">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 1 — Salon</span></div></div></div>
+          <div class="slide"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#cdd2cb,#b6bcb1)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 2 — Cuisine</span></div></div></div>
+          <div class="slide"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#d6dad3,#c0c6bb)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 3 — Chambre</span></div></div></div>
+          <span class="badge">À vendre</span>
+          <span class="counter-pill" data-count>1/3</span>
+          <div class="dots"><i class="on"></i><i></i><i></i></div>
+        </div>
+        <div class="body">
+          <div class="price">425 000 €</div>
+          <div class="loc"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Villeurbanne, Gratte-Ciel</div>
+          <h3>Appartement haussmannien lumineux</h3>
+          <div class="specs"><div><b>3</b> pièces</div><div><b>72</b> m²</div></div>
+          <a href="#" class="voir">Voir le bien
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <!-- carte 2 -->
+      <article class="card">
+        <div class="photo" data-carousel>
+          <div class="slide active"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#d2d7d0,#bbc1b6)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 1 — Façade</span></div></div></div>
+          <div class="slide"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#c9cec7,#b2b8ad)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 2 — Jardin</span></div></div></div>
+          <div class="slide"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#daded7,#c4cabf)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 3 — Séjour</span></div></div></div>
+          <span class="badge">À vendre</span>
+          <span class="counter-pill" data-count>1/3</span>
+          <div class="dots"><i class="on"></i><i></i><i></i></div>
+        </div>
+        <div class="body">
+          <div class="price">695 000 €</div>
+          <div class="loc"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Villeurbanne, Charpennes</div>
+          <h3>Maison contemporaine avec jardin</h3>
+          <div class="specs"><div><b>5</b> pièces</div><div><b>145</b> m²</div></div>
+          <a href="#" class="voir">Voir le bien
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <!-- carte 3 -->
+      <article class="card">
+        <div class="photo" data-carousel>
+          <div class="slide active"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#d4d9d2,#bdc3b8)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 1 — Pièce de vie</span></div></div></div>
+          <div class="slide"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#cbd0c9,#b4bab0)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 2 — Cuisine</span></div></div></div>
+          <div class="slide"><div class="ph" style="border-radius:0;background:linear-gradient(135deg,#d8dcd5,#c2c8bd)">
+            <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo 3 — Terrasse</span></div></div></div>
+          <span class="badge" style="background:var(--sauge)">À louer</span>
+          <span class="counter-pill" data-count>1/3</span>
+          <div class="dots"><i class="on"></i><i></i><i></i></div>
+        </div>
+        <div class="body">
+          <div class="price">1 250 € <span style="font-size:13px;color:#7a817f;font-weight:500">/ mois</span></div>
+          <div class="loc"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Lyon 3e, Part-Dieu</div>
+          <h3>T2 lumineux refait à neuf</h3>
+          <div class="specs"><div><b>2</b> pièces</div><div><b>44</b> m²</div></div>
+          <a href="#" class="voir">Voir le bien
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. QUI SOMMES-NOUS ============ -->
+<section id="apropos" class="paper">
+  <svg class="scroll-line" id="scrollLine" viewBox="0 0 500 900" preserveAspectRatio="none" aria-hidden="true">
+    <path id="scrollPath" d="M40 20 C 320 80, 120 230, 380 320 C 560 400, 60 520, 360 620 C 540 700, 120 830, 430 890"/>
+  </svg>
+  <div class="wrap">
+    <div class="about">
+      <div class="ph reveal">
+        <div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo de l'agence</span></div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">À propos</span>
+        <h2>Qui sommes-nous</h2>
+        <p>Markus Immobilier est une agence indépendante implantée à Villeurbanne, spécialisée dans la vente, la location et la gestion de biens. Ici, on ne fait pas « juste une vente » : on écoute, on conseille, on protège votre projet.</p>
+        <p style="color:#9aa09d;font-style:italic;font-size:14px">[Texte de présentation à remplacer par celui que le client doit envoyer]</p>
+        <div class="stats stagger">
+          <div class="stat"><div class="num" data-target="13">0</div><div class="lab">Ans d'expérience</div></div>
+          <div class="stat"><div class="num" data-target="250">0</div><div class="lab">Biens accompagnés</div></div>
+          <div class="stat"><div class="num" data-target="9" data-suffix="M€">0</div><div class="lab">de projets</div></div>
+          <div class="stat"><div class="num" data-target="600">0</div><div class="lab">Clients accompagnés</div></div>
+        </div>
+        <a href="#" class="btn btn-primary">Notre équipe
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ [+] NOS BIENS VENDUS — parallaxe (inspiré de Skiper UI #30) ============ -->
+<section class="sold" id="vendus" aria-label="Nos biens vendus">
+  <div class="sold-head">
+    <span class="eyebrow">Notre track record</span>
+    <h2>Nos biens vendus</h2>
+    <p>Des dizaines de projets menés à bien à Lyon &amp; Villeurbanne. Faites défiler pour découvrir.</p>
+  </div>
+  <div class="sold-sticky" id="soldSticky">
+    <div class="sold-col" data-speed="-12,-42">
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Appartement — Lyon 6e</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Maison — Caluire</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Duplex — Villeurbanne</span></div></div></div>
+    </div>
+    <div class="sold-col" data-speed="-4,-66">
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Villa — Écully</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>T3 — Part-Dieu</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Loft — Gratte-Ciel</span></div></div></div>
+    </div>
+    <div class="sold-col" data-speed="-18,-40">
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Maison — Tassin</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Appartement — Lyon 3e</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Studio — Croix-Luizet</span></div></div></div>
+    </div>
+    <div class="sold-col" data-speed="-8,-58">
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Maison — Charpennes</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>T4 — Lyon 7e</span></div></div></div>
+      <div class="it"><span class="vend">Vendu</span><div class="ph"><div class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Penthouse — Bron</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. OBTENIR UNE ESTIMATION ============ -->
+<section id="estimation" class="dark">
+  <div class="wrap">
+    <div class="inbox" id="inbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      <span style="opacity:.85">villeurbanne@markusimmobilier.fr</span>
+      <span class="cnt" id="inboxCnt">0</span>
+    </div>
+    <div class="estim">
+      <div class="reveal">
+        <span class="tag-n1">★ Outil n°1</span>
+        <h2>Estimez votre bien en moins de 2 minutes</h2>
+        <p class="lead">Notre outil d'estimation complet vous envoie un rapport PDF détaillé directement sur votre mail.</p>
+        <ul class="benefits">
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>Estimation de vente</b></span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>Estimation de location</b></span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>Taux de rendement</b></span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span>Rapport PDF en <b>moins de 2 min</b></span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></span><span><b>Gratuit</b> &amp; sans engagement</span></li>
+        </ul>
+        <button class="btn btn-sauge" id="estimBtn" type="button">Estimer mon bien
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="reveal">
+        <div class="report" id="report">
+          <div class="gen"><span class="lbl" id="genLbl">Génération du rapport…</span><span class="pct" id="genPct">0%</span></div>
+          <div class="bar"><i id="genBar"></i></div>
+          <div class="rows" style="margin-top:18px">
+            <div class="row"><span>Valeur de vente estimée</span><b>418 000 – 432 000 €</b></div>
+            <div class="row"><span>Loyer mensuel estimé</span><b>1 180 € / mois</b></div>
+            <div class="row"><span>Taux de rendement brut</span><b style="color:var(--sauge)">3,4 %</b></div>
+          </div>
+          <div class="dl"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg> Rapport PDF prêt — envoyé sur votre mail</div>
+          <div class="envelope" id="envelope"></div>
+        </div>
+        <button class="replay" id="replay" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9 9 9 0 00-7 3.3M3 4v3.4H6.4"/></svg> Rejouer l'animation</button>
+      </div>
+    </div>
+    <div class="toast" id="toast">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M5 12l5 5L20 6"/></svg></span>
+      <div><div class="tt">Rapport envoyé ✓</div><div class="ts">Vérifiez votre boîte mail</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. SUIVEZ-NOUS ============ -->
+<section id="reseaux">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal">Communauté</span>
+    <h2 class="reveal">Nos réseaux — Suivez-nous</h2>
+    <div class="socials stagger">
+      <a class="soc" href="https://www.instagram.com/markusimmobilier/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a class="soc" href="https://www.tiktok.com/@markusimmobilier" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.2 1.7 3.9 3.9 4.2v3c-1.5 0-2.8-.4-3.9-1.1v5.6c0 3.4-2.6 5.8-5.8 5.8S4.4 18 4.4 14.7 7 9 10.2 9c.4 0 .8 0 1.1.1v3.1c-.3-.1-.7-.2-1.1-.2-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.8-1.2 2.8-2.9V3H16z"/></svg></a>
+      <a class="soc" href="https://x.com/markusimmo_" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 3h3l-7 8 8 10h-6l-5-6-5 6H3l7-9L2 3h6l4 5 6-5z"/></svg></a>
+      <a class="soc" href="https://www.youtube.com/@markusimmobilier" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 00-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 002 8.2 31 31 0 002 12a31 31 0 00.1 3.8 3 3 0 002.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 002.1-2.1A31 31 0 0022 12a31 31 0 00-.1-3.8zM10 15V9l5 3-5 3z"/></svg></a>
+      <a class="soc" href="https://www.facebook.com/profile.php?id=61566295948630" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .3-1.5 1.5-1.5H17V2.5h-2.7C11.4 2.5 10 4 10 6.6V9H8v3h2v9.5h4V12h2.6l.4-3H14z"/></svg></a>
+      <a class="soc" href="https://www.linkedin.com/company/markusimmobilier/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8H3.5v12.5h3V8zM5 3.5A1.8 1.8 0 105 7a1.8 1.8 0 000-3.5zM20.5 20.5h-3v-6.2c0-1.6-.6-2.5-1.9-2.5-1 0-1.6.7-1.9 1.4-.1.2-.1.6-.1 1v6.3h-3V8h3v1.4c.5-.7 1.3-1.7 3.1-1.7 2.3 0 3.7 1.5 3.7 4.6v8.2z"/></svg></a>
+    </div>
+    <div class="discord reveal">
+      <h3>Notre Discord communautaire</h3>
+      <p class="dsub">Envie d'échanger sur votre projet ?</p>
+      <ul class="dlist">
+        <li><span class="d">↳</span> Inscription &amp; bourse d'échange en moins de 2 min</li>
+        <li><span class="d">↳</span> Posez vos questions et recevez des réponses de la communauté</li>
+        <li><span class="d">↳</span> Échangez directement avec l'équipe Markus et d'autres porteurs de projet</li>
+      </ul>
+      <a href="https://discord.gg/fSyn28G5U" class="btn btn-sauge">Rejoindre le Discord
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 5a16 16 0 00-4-1l-.3.5a12 12 0 013.5 1.8 14 14 0 00-12.4 0A12 12 0 019.3 4.5L9 4a16 16 0 00-4 1C2.5 8.7 1.8 12.3 2.1 15.8A16 16 0 007 18l.6-1c-.7-.3-1.4-.6-2-1l.5-.3a11 11 0 009.8 0l.5.3c-.6.4-1.3.7-2 1l.6 1a16 16 0 005-2.2c.4-4-.8-7.6-3-10.6zM9.3 14c-.8 0-1.4-.7-1.4-1.6s.6-1.6 1.4-1.6 1.4.7 1.4 1.6S10 14 9.3 14zm5.4 0c-.8 0-1.4-.7-1.4-1.6s.6-1.6 1.4-1.6 1.4.7 1.4 1.6S15.4 14 14.7 14z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. NOTRE AGENCE ============ -->
+<section id="agence" class="paper">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:50px" class="reveal">
+      <span class="eyebrow">Infos pratiques</span>
+      <h2>Notre agence</h2>
+    </div>
+    <div class="agence">
+      <div class="hours reveal">
+        <div class="hour-row"><b>Lundi – Samedi</b><span>9h00 – 12h00</span></div>
+        <div class="hour-row"><b>Lundi – Vendredi</b><span>14h00 – 19h00 · sur RDV</span></div>
+        <div class="addr">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--sauge)" stroke-width="1.8" style="flex:none"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          <span>87 rue Édouard Vaillant, 69100 Villeurbanne<br><span style="color:#9aa09d">Métro &amp; tramway à proximité — transports en commun directs</span></span>
+        </div>
+        <div style="margin-top:26px"><a href="tel:0478371367" class="btn btn-outline">04 78 37 13 67</a></div>
+      </div>
+      <div class="ph reveal">
+        <div class="cap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 20l-5.4 1.8 1.8-5.4 12-12 3.6 3.6-12 12z"/><path d="M9 4l3 3M3 21l3-3"/><circle cx="12" cy="9" r="2"/></svg>
+          <span>Photo agence + Carte Google Maps<br>+ transports en commun</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER (bandeau fin de page) ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <h4>Services</h4>
+        <a href="#biens">Acheter</a>
+        <a href="#biens">Louer</a>
+        <a href="#agence">Faire gérer</a>
+        <a href="#estimation">Estimation</a>
+      </div>
+      <div class="fbrand">
+        <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+          <path d="M16 106 V30 L60 76 L104 30 V106" stroke="currentColor" stroke-width="13" stroke-linejoin="miter"/>
+          <path d="M44 106 V70 M76 106 V70" stroke="currentColor" stroke-width="9"/>
+        </svg>
+        <div class="name"><b>MARKUS IMMOBILIER</b><span>L'immobilier en toute confiance</span></div>
+      </div>
+      <div class="fcol">
+        <h4>L'agence</h4>
+        <a href="#agence">Notre agence</a>
+        <a href="#apropos">Notre équipe</a>
+        <a href="#">Nos honoraires</a>
+        <a href="#">Recrutement</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <div class="contact">
+        <a href="tel:0478371367">04 78 37 13 67</a>
+        <a href="mailto:villeurbanne@markusimmobilier.fr">villeurbanne@markusimmobilier.fr</a>
+        <span>87 rue Édouard Vaillant, 69100 Villeurbanne</span>
+      </div>
+      <div class="fsoc">
+        <a href="https://www.instagram.com/markusimmobilier/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@markusimmobilier" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.2 1.7 3.9 3.9 4.2v3c-1.5 0-2.8-.4-3.9-1.1v5.6c0 3.4-2.6 5.8-5.8 5.8S4.4 18 4.4 14.7 7 9 10.2 9c.4 0 .8 0 1.1.1v3.1c-.3-.1-.7-.2-1.1-.2-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.8-1.2 2.8-2.9V3H16z"/></svg></a>
+        <a href="https://www.linkedin.com/company/markusimmobilier/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8H3.5v12.5h3V8zM5 3.5A1.8 1.8 0 105 7a1.8 1.8 0 000-3.5zM20.5 20.5h-3v-6.2c0-1.6-.6-2.5-1.9-2.5-1 0-1.6.7-1.9 1.4-.1.2-.1.6-.1 1v6.3h-3V8h3v1.4c.5-.7 1.3-1.7 3.1-1.7 2.3 0 3.7 1.5 3.7 4.6v8.2z"/></svg></a>
+        <a href="https://discord.gg/fSyn28G5U" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 00-4-1l-.3.5a12 12 0 013.5 1.8 14 14 0 00-12.4 0A12 12 0 019.3 4.5L9 4a16 16 0 00-4 1C2.5 8.7 1.8 12.3 2.1 15.8A16 16 0 007 18l.6-1c-.7-.3-1.4-.6-2-1l.5-.3a11 11 0 009.8 0l.5.3c-.6.4-1.3.7-2 1l.6 1a16 16 0 005-2.2c.4-4-.8-7.6-3-10.6zM9.3 14c-.8 0-1.4-.7-1.4-1.6s.6-1.6 1.4-1.6 1.4.7 1.4 1.6S10 14 9.3 14zm5.4 0c-.8 0-1.4-.7-1.4-1.6s.6-1.6 1.4-1.6 1.4.7 1.4 1.6S15.4 14 14.7 14z"/></svg></a>
+      </div>
+    </div>
+    <div class="legal">© 2026 Markus Immobilier — Tous droits réservés.
+      <a href="#">Mentions légales</a>·<a href="#">Politique de confidentialité</a>·<a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<div class="note">Maquette structurelle — ordre conforme à la trame client (Hero → Nos biens → Qui sommes-nous → Estimation → Suivez-nous → Notre agence). Les blocs « Photo / Vidéo » sont des emplacements à remplacer par les vrais médias.</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // header solid on scroll
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('solid', window.scrollY > 60); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.id === 'report') e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.18});
+  document.querySelectorAll('.reveal,.stagger,#report').forEach(function(el){
+    if(reduce){ el.classList.add('in'); } else { io.observe(el); }
+  });
+
+  // counters
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target, target = +el.dataset.target, suf = el.dataset.suffix||'', t0=null, dur=1500;
+      if(reduce){ el.textContent = target + (suf||'+'); cio.unobserve(el); return; }
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1);
+        var val = Math.floor((1-Math.pow(1-p,3))*target);
+        el.textContent = val + (suf || '+');
+        if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step); cio.unobserve(el);
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.num[data-target]').forEach(function(el){ cio.observe(el); });
+
+  // carrousels biens
+  document.querySelectorAll('[data-carousel]').forEach(function(car){
+    var slides = car.querySelectorAll('.slide');
+    var dots = car.querySelectorAll('.dots i');
+    var counter = car.querySelector('[data-count]');
+    var i = 0;
+    function go(n){
+      slides[i].classList.remove('active'); dots[i].classList.remove('on');
+      i = (n+slides.length)%slides.length;
+      slides[i].classList.add('active'); dots[i].classList.add('on');
+      if(counter) counter.textContent = (i+1)+'/'+slides.length;
+    }
+    dots.forEach(function(d,idx){ d.addEventListener('click', function(){ go(idx); }); });
+    if(!reduce) setInterval(function(){ go(i+1); }, 3800 + Math.random()*1200);
+  });
+
+  // ===== ESTIMATION : chargement -> rapport -> mail qui s'envole -> notif =====
+  (function(){
+    var report=document.getElementById('report'); if(!report) return;
+    var bar=document.getElementById('genBar'), pct=document.getElementById('genPct'),
+        lbl=document.getElementById('genLbl'), env=document.getElementById('envelope'),
+        toast=document.getElementById('toast'), inbox=document.getElementById('inbox'),
+        cnt=document.getElementById('inboxCnt'), replay=document.getElementById('replay'),
+        btn=document.getElementById('estimBtn');
+    var running=false, count=0, toastT, t0, raf;
+    function reset(){
+      report.classList.remove('done'); bar.style.width='0%'; pct.textContent='0%';
+      lbl.textContent='Génération du rapport…'; env.classList.remove('fly');
+      toast.classList.remove('show'); clearTimeout(toastT); cancelAnimationFrame(raf);
+    }
+    function bump(){
+      count++; cnt.textContent=count; inbox.classList.add('ping');
+      setTimeout(function(){ inbox.classList.remove('ping'); }, 340);
+      toast.classList.add('show');
+      toastT=setTimeout(function(){ toast.classList.remove('show'); }, 3600);
+    }
+    function done(){
+      lbl.textContent='Rapport prêt ✓'; report.classList.add('done');
+      void env.offsetWidth; env.classList.add('fly');   // mail s'envole
+      setTimeout(bump, 1150);                            // ... arrive dans la boîte
+      running=false;
+    }
+    function run(){
+      running=true; reset();
+      if(reduce){ bar.style.width='100%'; pct.textContent='100%'; lbl.textContent='Rapport prêt ✓';
+        report.classList.add('done'); bump(); running=false; return; }
+      var dur=2200; t0=null;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1);
+        var v=Math.round(p*100); bar.style.width=v+'%'; pct.textContent=v+'%';
+        if(p<1) raf=requestAnimationFrame(step); else done(); }
+      raf=requestAnimationFrame(step);
+    }
+    if(replay) replay.addEventListener('click', function(){ running=false; run(); });
+    if(btn) btn.addEventListener('click', function(){ running=false; run(); });
+    var eio=new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting && !running){ run(); eio.unobserve(e.target); } }); }, {threshold:0.45});
+    eio.observe(report);
+  })();
+
+  // ===== PARALLAXE biens vendus + TRAIT SVG qui suit le scroll =====
+  (function(){
+    var sticky=document.getElementById('soldSticky'),
+        soldSec=document.getElementById('vendus'),
+        path=document.getElementById('scrollPath'),
+        apropos=document.getElementById('apropos');
+    var cols= sticky ? [].slice.call(sticky.querySelectorAll('.sold-col')) : [];
+    var len=0;
+    if(path){ len=path.getTotalLength(); path.style.strokeDasharray=len; path.style.strokeDashoffset=len; }
+    var ticking=false;
+    function prog(el){ var r=el.getBoundingClientRect(), vh=window.innerHeight;
+      return Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height))); }
+    function update(){
+      ticking=false;
+      if(!reduce && soldSec && cols.length){
+        var p=prog(soldSec);
+        cols.forEach(function(c){ var s=(c.dataset.speed||'-10,-40').split(',');
+          var a=parseFloat(s[0]), b=parseFloat(s[1]);
+          c.style.transform='translateY('+(a+(b-a)*p)+'vh)'; });
+      }
+      if(path && apropos && !reduce){ var pl=prog(apropos);
+        path.style.strokeDashoffset = len*(1 - Math.min(1, pl*1.15)); }
+    }
+    function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+    if(reduce && path) path.style.strokeDashoffset=0;
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', function(){ if(path){ len=path.getTotalLength(); path.style.strokeDasharray=len; } onScroll(); });
+    update();
+  })();
+})();
+</script>
+</body>
+</html>

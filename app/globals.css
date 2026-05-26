@@ -1,0 +1,387 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ============================================
+   MARKUS IMMOBILIER — Design tokens
+   Source : design-system.md (sections 2, 3, 4)
+   ============================================ */
+
+@theme {
+  /* Couleurs */
+  --color-anthracite: #383e42;
+  --color-blanc: #ffffff;
+  --color-sauge: #9ea596;
+  --color-sauge-hover: #8a9281;
+  --color-gris: #f4f5f3;
+
+  /* Typo — Montserrat exposé par next/font (voir layout.tsx) */
+  --font-sans: var(--font-montserrat);
+
+  /* Easing signature */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Container content */
+  --container-content: 1240px;
+
+  /* Animations globales (utilisables via classes animate-*) */
+  --animate-kenburns: kenburns 22s ease-in-out infinite alternate;
+  --animate-fly-mail: fly-mail 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-draw: draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.05) translate(0, 0);
+  }
+  to {
+    transform: scale(1.18) translate(-2%, -2%);
+  }
+}
+
+@keyframes fly-mail {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(0, -6px) scale(1);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(160px, -150px) scale(0.92) rotate(6deg);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(330px, -300px) scale(0.4) rotate(10deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(360px, -330px) scale(0.2);
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Tokens qui ne s'exposent pas naturellement en utility Tailwind (rgba, overlays) */
+:root {
+  --bordure: rgba(56, 62, 66, 0.12);
+  --anthracite-60: rgba(56, 62, 66, 0.6);
+  --anthracite-90: rgba(56, 62, 66, 0.9);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  color: var(--color-anthracite);
+  background: var(--color-blanc);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* PageHero : layout géré via classes Tailwind + inline style sur le H1
+   (cf. components/layout/page-hero.tsx) — pas de classe custom ici. */
+
+/* Focus visible global — accessibilité (PHASE B) */
+:focus-visible {
+  outline: 2px solid var(--color-sauge);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* On laisse les composants gérer leur propre focus (inputs avec ring sauge) */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible {
+  outline: none;
+}
+/* Skip-link a11y géré via utilities Tailwind dans layout.tsx (sr-only / focus:not-sr-only) */
+
+/* ============================================
+   DÉGRADÉS DE TITRES (design-system §2)
+   Usage : sur 1–3 mots clés, jamais tout le titre
+   ============================================ */
+.grad {
+  background: linear-gradient(100deg, var(--color-anthracite) 10%, var(--color-sauge) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grad-light {
+  background: linear-gradient(100deg, #fff 20%, var(--color-sauge) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   REVEAL AU SCROLL (design-system §6.A)
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================
+   BOUTONS PREMIUM (design-system §5)
+   ============================================ */
+.btn-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 16px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 0;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
+    background-color 0.3s var(--ease), color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+/* Sweep shine au hover (sur les variants foncés/colorés) */
+.btn-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 70%
+  );
+  transform: translateX(-110%);
+  transition: transform 0.75s var(--ease);
+  pointer-events: none;
+  z-index: 1;
+}
+.btn-base:hover.btn-sweep::before {
+  transform: translateX(110%);
+}
+.btn-base > * {
+  position: relative;
+  z-index: 2;
+}
+.btn-base .btn-arrow {
+  transition: transform 0.3s var(--ease);
+}
+.btn-base:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* CTA — La star (Estimer mon bien) */
+.btn-cta {
+  background: linear-gradient(140deg, var(--color-sauge) 0%, var(--color-sauge-hover) 100%);
+  color: var(--color-blanc);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 8px 22px -8px rgba(158, 165, 150, 0.5),
+    0 18px 42px -14px rgba(158, 165, 150, 0.4);
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    0 14px 32px -8px rgba(158, 165, 150, 0.6),
+    0 28px 60px -14px rgba(158, 165, 150, 0.5);
+}
+
+/* Primary — Anthracite premium */
+.btn-primary {
+  background: linear-gradient(180deg, #424950 0%, var(--color-anthracite) 100%);
+  color: var(--color-blanc);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 8px 20px -8px rgba(56, 62, 66, 0.35),
+    0 16px 36px -14px rgba(56, 62, 66, 0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #4a5158 0%, #2c3236 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 14px 30px -8px rgba(56, 62, 66, 0.45),
+    0 24px 52px -14px rgba(56, 62, 66, 0.4);
+}
+
+/* Sauge — Solid version */
+.btn-sauge {
+  background: var(--color-sauge);
+  color: var(--color-blanc);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 6px 18px -8px rgba(158, 165, 150, 0.45);
+}
+.btn-sauge:hover {
+  transform: translateY(-2px);
+  background: var(--color-sauge-hover);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 12px 28px -8px rgba(158, 165, 150, 0.55);
+}
+
+/* Ghost — Glass on dark backgrounds */
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-blanc);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 6px 16px -6px rgba(0, 0, 0, 0.3);
+}
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  background: var(--color-blanc);
+  color: var(--color-anthracite);
+  border-color: var(--color-blanc);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 14px 28px -8px rgba(0, 0, 0, 0.35);
+}
+
+/* Outline — Sauge border on light backgrounds */
+.btn-outline {
+  background: transparent;
+  color: var(--color-anthracite);
+  border: 1.5px solid var(--color-sauge);
+}
+.btn-outline:hover {
+  transform: translateY(-2px);
+  background: var(--color-sauge);
+  color: var(--color-blanc);
+  border-color: var(--color-sauge);
+  box-shadow: 0 10px 24px -8px rgba(158, 165, 150, 0.5);
+}
+
+/* ============================================
+   ILLUSTRATIONS SVG — trait qui se dessine
+   (design-system §7)
+   ============================================ */
+.illust path,
+.illust circle,
+.illust ellipse,
+.illust line {
+  fill: none;
+  stroke: var(--color-anthracite);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.illust .illust-accent {
+  stroke: var(--color-sauge);
+}
+/* Variante pour fonds sombres : stroke blanc cassé + accent sauge */
+.illust.illust-on-dark path,
+.illust.illust-on-dark circle,
+.illust.illust-on-dark ellipse,
+.illust.illust-on-dark line {
+  stroke: rgba(255, 255, 255, 0.72);
+}
+.illust.illust-on-dark .illust-accent {
+  stroke: var(--color-sauge);
+}
+.illust .illust-fill {
+  fill: var(--color-sauge);
+  fill-opacity: 0;
+  stroke: none;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+}
+.illust.is-drawn path,
+.illust.is-drawn circle,
+.illust.is-drawn ellipse,
+.illust.is-drawn line {
+  animation: draw 0.9s var(--ease) forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+.illust.is-drawn .illust-fill {
+  animation: fillin 0.5s ease forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+@keyframes fillin {
+  to {
+    fill-opacity: 1;
+  }
+}
+
+/* Texture bruit subtile (utilisable sur sections sombres) */
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+/* ============================================
+   ACCESSIBILITÉ — prefers-reduced-motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .illust path,
+  .illust circle,
+  .illust ellipse,
+  .illust line {
+    stroke-dashoffset: 0 !important;
+  }
+  .illust .illust-fill {
+    fill-opacity: 1 !important;
+  }
+}

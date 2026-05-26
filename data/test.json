@@ -1,0 +1,637 @@
+[
+  {
+    "list_id": 3184199566,
+    "first_publication_date": "2026-04-22 12:09:59",
+    "subject": "Maison 7 piÃ¨ces 180 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3184199566",
+    "price": [3000],
+    "images": {
+      "thumb_url": "https://img.leboncoin.fr/api/v1/lbcpb1/images/f4/cd/bc/f4cdbcd284382f38a1c28c6fd7782c360f06e220.jpg?rule=ad-thumb",
+      "nb_images": 16,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/f4/cd/bc/f4cdbcd284382f38a1c28c6fd7782c360f06e220.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/c4/e1/2d/c4e12df8a2ac0c2fbff2614028cbcdcd3e0b67a6.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/66/08/20/6608200a5fcdd9e1d764e7e36b74516dc4691daf.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/7e/33/fc/7e33fccbffee2405b9390e770b6c9e089b127a89.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/20/96/7d/20967d012ae1060472efc5aa041300e363cace6a.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/18/3d/df/183ddf537ea4a7d5521d4f1f6c0566c5130bfec0.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/f4/cd/bc/f4cdbcd284382f38a1c28c6fd7782c360f06e220.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "180", "value_label": "180 mÂ²"},
+      {"key": "rooms", "value": "7", "value_label": "7"},
+      {"key": "bedrooms", "value": "5", "value_label": "5 ch."},
+      {"key": "ges", "value": "v", "value_label": "Vierge"},
+      {"key": "global_condition", "value": "2", "value_label": "Bon Ã©tat"},
+      {"key": "mandate_type", "value": "simple", "value_label": "simple"},
+      {"key": "store_name", "value": "ESPACES ATYPIQUES LYON"}
+    ],
+    "location": {"city_label": "Lyon 69003 3e Arrondissement", "city": "Lyon", "zipcode": "69003", "district": "3e Arrondissement", "lat": 45.74601, "lng": 4.889448},
+    "owner": {"type": "pro", "name": "ESPACES ATYPIQUES", "siren": "794434332"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3116886983,
+    "first_publication_date": "2026-04-14 09:34:23",
+    "subject": "Maison 6 piÃ¨ces 146 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3116886983",
+    "price": [2300],
+    "images": {
+      "nb_images": 20,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/6d/b6/5f/6db65f7817532c9260134603c2d5a8af1ab9234f.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/ee/fe/ca/eefeca2d97e07bd64c3926ea065ed3bdfec1bda8.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/80/49/c2/8049c2e23f0ca771cd4cae628ba0a7b9908f8821.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/4d/b7/43/4db7430d6d06cdaaacc43749194dba6e0068284e.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/13/c7/68/13c768bf163347ba05e77da4a7ef47e349918e3c.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/96/b1/ea/96b1ea58f19bac2673ccd702993d8497f66dc599.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/6d/b6/5f/6db65f7817532c9260134603c2d5a8af1ab9234f.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "146", "value_label": "146 mÂ²"},
+      {"key": "rooms", "value": "6", "value_label": "6"},
+      {"key": "bedrooms", "value": "5", "value_label": "5 ch."},
+      {"key": "energy_rate", "value": "e", "value_label": "E"},
+      {"key": "mandate_type", "value": "exclusive", "value_label": "exclusive"},
+      {"key": "store_name", "value": "ORPI Le CarrÃ© de l Est"}
+    ],
+    "location": {"city_label": "Lyon 69009 Gorge de Loup", "city": "Lyon", "zipcode": "69009", "district": "Gorge de Loup", "lat": 45.76613, "lng": 4.807209},
+    "owner": {"type": "pro", "name": "ORPI Le CarrÃ© de l Est", "siren": "821139276"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3187202923,
+    "first_publication_date": "2026-04-27 12:25:47",
+    "subject": "House",
+    "url": "https://www.leboncoin.fr/ad/locations/3187202923",
+    "price": [2383],
+    "images": {
+      "nb_images": 19,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/ce/c6/ee/cec6ee1ed4ebe1e578e2d24cd4be27481547d2d1.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/9e/53/21/9e5321e33243f92fc037616555bb722bdbebb794.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/22/57/68/2257681cafc29c9a31d8aa1918a352f1c7f221c8.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/dd/b9/bf/ddb9bffaa3b1a82e1f52c7bc112406b3c569953b.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/21/c7/98/21c79807cf44841316bd6465a94c5cd22e7a9c16.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/ce/c6/ee/cec6ee1ed4ebe1e578e2d24cd4be27481547d2d1.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "147", "value_label": "147 mÂ²"},
+      {"key": "rooms", "value": "6", "value_label": "6"},
+      {"key": "energy_rate", "value": "d", "value_label": "D"},
+      {"key": "building_year", "value": "1925"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "Foncia Lyon - Craponne"}
+    ],
+    "location": {"city_label": "Lyon 69005 Champvert", "city": "Lyon", "zipcode": "69005", "district": "Champvert", "lat": 45.763004, "lng": 4.7988486},
+    "owner": {"type": "pro", "name": "Foncia Lyon - Craponne", "siren": "973502719"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3202167165,
+    "first_publication_date": "2026-05-21 11:33:58",
+    "subject": "Appartement meublÃ© lyon 7 prÃ¨s de EM lyon",
+    "url": "https://www.leboncoin.fr/ad/locations/3202167165",
+    "price": [850],
+    "images": {
+      "nb_images": 3,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/be/1d/37/be1d378f85d54e1cc701b5312aedb378aae0fabe.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/29/8c/1f/298c1fca7dc257b4009d82efd4192d27a53dd548.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/50/69/2f/50692fc4ea7caa44f03dc72d839d0dfc8d6f8159.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/be/1d/37/be1d378f85d54e1cc701b5312aedb378aae0fabe.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "60", "value_label": "60 mÂ²"},
+      {"key": "rooms", "value": "3", "value_label": "3"},
+      {"key": "bedrooms", "value": "2", "value_label": "2 ch."}
+    ],
+    "location": {"city_label": "Lyon 69007 Debourg", "city": "Lyon", "zipcode": "69007", "district": "Debourg", "lat": 45.73392, "lng": 4.83996},
+    "owner": {"type": "private", "name": "Chouquet"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3160020243,
+    "first_publication_date": "2026-05-06 14:05:26",
+    "subject": "Maison 8 piÃ¨ces 274 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3160020243",
+    "price": [3700],
+    "images": {
+      "nb_images": 17,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/8d/ce/db/8dcedb1bee75eea3f344b189eaedc630bf5c9542.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/7c/9c/0e/7c9c0e7545d91870a78cef0d202fc7de37002e82.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/9f/d5/7f/9fd57fe1b9c3abe7d4bd0b8f96b1b428d9e3f4bf.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/a0/fa/28/a0fa28ed5bcc9e53dd16e4dbb97f94e4834442dd.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/74/ab/f0/74abf0956b1be9401a62f487e875a07535b3f67b.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/8d/ce/db/8dcedb1bee75eea3f344b189eaedc630bf5c9542.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "274", "value_label": "274 mÂ²"},
+      {"key": "rooms", "value": "8", "value_label": "8"},
+      {"key": "bedrooms", "value": "6", "value_label": "6 ch."},
+      {"key": "energy_rate", "value": "c", "value_label": "C"},
+      {"key": "building_year", "value": "2014"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "AVENIR INVESTISSEMENT"}
+    ],
+    "location": {"city_label": "Lyon 69009 9e Arrondissement", "city": "Lyon", "zipcode": "69009", "district": "9e Arrondissement", "lat": 45.787327, "lng": 4.811803},
+    "owner": {"type": "pro", "name": "AVENIR INVESTISSEMENT", "siren": "791150212"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3201721485,
+    "first_publication_date": "2026-05-20 14:39:08",
+    "subject": "Maison 7 piÃ¨ces 250 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3201721485",
+    "price": [3000],
+    "images": {
+      "nb_images": 12,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/5e/13/0b/5e130b4e9b92476c11a28db3b4acb17a9ab6c121.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/ea/17/1c/ea171cd1f7b05be8a949a78ec309d845991aaf3c.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/49/92/63/499263fa1b8a81792a907fb609912540be093b0b.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/77/4d/cf/774dcfce1c11d6513e822e60f6ea5b157e956b69.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/0d/dc/2b/0ddc2b852a38561d173aabab21e1c6f0fd427307.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/5e/13/0b/5e130b4e9b92476c11a28db3b4acb17a9ab6c121.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "250", "value_label": "250 mÂ²"},
+      {"key": "rooms", "value": "7", "value_label": "7"},
+      {"key": "bedrooms", "value": "4", "value_label": "4 ch."},
+      {"key": "energy_rate", "value": "d", "value_label": "D"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "CABINET LACHASSAGNE NEW"}
+    ],
+    "location": {"city_label": "Lyon 69004", "city": "Lyon", "zipcode": "69004", "lat": 45.77646, "lng": 4.8284774},
+    "owner": {"type": "pro", "name": "CABINET LACHASSAGNE NEW", "siren": "315903351"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3192405801,
+    "first_publication_date": "2026-05-05 20:27:12",
+    "subject": "Loue loft meublÃ© avec Terrasse / Quais de SaÃ´ne - 1 chambre, 52mÂ², Lyon 5Ã¨me",
+    "url": "https://www.leboncoin.fr/ad/locations/3192405801",
+    "price": [990],
+    "images": {
+      "nb_images": 3,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/46/74/cd/4674cdb1169263b18f972fb3798dddbe784c575f.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/e3/e1/30/e3e13058cf954637b2e8502e2173880854b7e9e7.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/94/d7/7c/94d77ca6fb3b044791db170daf313ca89d10b1ce.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/46/74/cd/4674cdb1169263b18f972fb3798dddbe784c575f.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "52", "value_label": "52 mÂ²"},
+      {"key": "rooms", "value": "1", "value_label": "1"},
+      {"key": "bedrooms", "value": "1", "value_label": "1 ch."},
+      {"key": "energy_rate", "value": "e", "value_label": "E"},
+      {"key": "building_year", "value": "1995"}
+    ],
+    "location": {"city_label": "Lyon 69005 5e Arrondissement", "city": "Lyon", "zipcode": "69005", "district": "5e Arrondissement", "lat": 45.76724, "lng": 4.82317},
+    "owner": {"type": "private", "name": "Vic00000"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3197010830,
+    "first_publication_date": "2026-05-13 12:12:17",
+    "subject": "Maison 7 piÃ¨ces 190 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3197010830",
+    "price": [5500],
+    "images": {
+      "nb_images": 20,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/45/aa/21/45aa217142de2119b56491322187b6a1d542a7e7.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/e2/0c/5e/e20c5e365d8278ec7d83517889c4c4cb9e65e5f4.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/29/14/9c/29149ccb3155a8baa3fa202a8833d1bccda53db4.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/80/8a/93/808a93598a2faa9c66ab19fbb9fa92cec60c3898.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/ba/71/34/ba7134c4c4e4f154c2d28b706c77f4753a412642.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/45/aa/21/45aa217142de2119b56491322187b6a1d542a7e7.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "190", "value_label": "190 mÂ²"},
+      {"key": "rooms", "value": "7", "value_label": "7"},
+      {"key": "bedrooms", "value": "5", "value_label": "5 ch."},
+      {"key": "energy_rate", "value": "c", "value_label": "C"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "CLEMENTINE IMMOBILIER"}
+    ],
+    "location": {"city_label": "Lyon 69005 Saint-Just - Trion", "city": "Lyon", "zipcode": "69005", "district": "Saint-Just - Trion", "lat": 45.75724, "lng": 4.8122964},
+    "owner": {"type": "pro", "name": "CLEMENTINE IMMOBILIER", "siren": "915059216"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3096833296,
+    "first_publication_date": "2026-05-05 13:42:26",
+    "subject": "Maison 7 piÃ¨ces 166 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3096833296",
+    "price": [3000],
+    "images": {
+      "nb_images": 27,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d1/34/ea/d134ea3e1709d8eda5158ec04f970bb37d10c6a2.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/4f/0c/a7/4f0ca7a003718b57145b6c62934206fecbb71852.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/04/45/52/0445520b7caed77d3ad8daff9f873c13ba85a45c.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/e3/16/a1/e316a111343c807d9b12cd8b7cced02e037d6a2d.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d5/f2/f8/d5f2f8ffb42d0da3d02e2e0283248a5f13c090f7.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d1/34/ea/d134ea3e1709d8eda5158ec04f970bb37d10c6a2.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "166", "value_label": "166 mÂ²"},
+      {"key": "rooms", "value": "7", "value_label": "7"},
+      {"key": "bedrooms", "value": "5", "value_label": "5 ch."},
+      {"key": "energy_rate", "value": "e", "value_label": "E"},
+      {"key": "building_year", "value": "1900"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "SAS MOBILITE LOGEMENT"}
+    ],
+    "location": {"city_label": "Lyon 69003 Montchat", "city": "Lyon", "zipcode": "69003", "district": "Montchat", "lat": 45.752502, "lng": 4.882694},
+    "owner": {"type": "pro", "name": "SAS MOBILITE LOGEMENT", "siren": "481624948"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3188536171,
+    "first_publication_date": "2026-04-29 17:51:11",
+    "subject": "Maison rÃ©cente ou rÃ©novation rÃ©cente",
+    "url": "https://www.leboncoin.fr/ad/locations/3188536171",
+    "price": [1300],
+    "images": {"nb_images": 0, "urls": [], "urls_thumb": []},
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "90", "value_label": "90 mÂ²"},
+      {"key": "rooms", "value": "3", "value_label": "3"},
+      {"key": "bedrooms", "value": "2", "value_label": "2 ch."}
+    ],
+    "location": {"city_label": "Lyon 69006 6e Arrondissement", "city": "Lyon", "zipcode": "69006", "district": "6e Arrondissement", "lat": 45.77881, "lng": 4.85859},
+    "owner": {"type": "private", "name": "Jc"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3199229241,
+    "first_publication_date": "2026-05-16 16:20:23",
+    "subject": "Maison t3",
+    "url": "https://www.leboncoin.fr/ad/locations/3199229241",
+    "price": [1250],
+    "images": {
+      "nb_images": 3,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d3/15/94/d315946e8488d92642457b9cb8ec5db3a1a6f524.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/6c/56/17/6c561765f83390b77d1601ee74f64ac18d731cc1.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/0f/92/ad/0f92adf0537fe880126376681a8f0e7743a8cc6d.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d3/15/94/d315946e8488d92642457b9cb8ec5db3a1a6f524.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "70", "value_label": "70 mÂ²"},
+      {"key": "rooms", "value": "3", "value_label": "3"},
+      {"key": "bedrooms", "value": "2", "value_label": "2 ch."},
+      {"key": "building_year", "value": "2020"}
+    ],
+    "location": {"city_label": "Lyon 69008 8e Arrondissement", "city": "Lyon", "zipcode": "69008", "district": "8e Arrondissement", "lat": 45.73371, "lng": 4.8535},
+    "owner": {"type": "private", "name": "videau"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3193704096,
+    "first_publication_date": "2026-05-08 09:47:27",
+    "subject": "Maison 1 piÃ¨ce 14 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3193704096",
+    "price": [848],
+    "images": {
+      "nb_images": 5,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/6c/4b/84/6c4b8484388a4214d1c2e8d1472303a5464d2cab.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/05/de/e5/05dee5ae8ca418c659ac14240f2e274e4782a9b0.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/6c/4b/84/6c4b8484388a4214d1c2e8d1472303a5464d2cab.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "14", "value_label": "14 mÂ²"},
+      {"key": "rooms", "value": "1", "value_label": "1"},
+      {"key": "energy_rate", "value": "d", "value_label": "D"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "STUDAPART"}
+    ],
+    "location": {"city_label": "Lyon 69008", "city": "Lyon", "zipcode": "69008", "lat": 45.734978, "lng": 4.8734865},
+    "owner": {"type": "pro", "name": "STUDAPART", "siren": "790562813"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3202645496,
+    "first_publication_date": "2026-05-22 06:35:35",
+    "subject": "Recherche Maison MeublÃ©e Ã  Louer â Lyon et Environs",
+    "url": "https://www.leboncoin.fr/ad/locations/3202645496",
+    "price": [600],
+    "images": {
+      "nb_images": 1,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/30/14/b8/3014b85ed5caa3cc9a45d9a2e6637a6d8b31736a.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/30/14/b8/3014b85ed5caa3cc9a45d9a2e6637a6d8b31736a.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "50", "value_label": "50 mÂ²"},
+      {"key": "rooms", "value": "2", "value_label": "2"},
+      {"key": "bedrooms", "value": "2", "value_label": "2 ch."}
+    ],
+    "location": {"city_label": "Lyon 69009 Valmy", "city": "Lyon", "zipcode": "69009", "district": "Valmy", "lat": 45.77523, "lng": 4.80534},
+    "owner": {"type": "private", "name": "Mohsin Ali (Mr. Buddy)"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3111387454,
+    "first_publication_date": "2026-04-03 06:30:52",
+    "subject": "Maison 7 piÃ¨ces 275 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3111387454",
+    "price": [3950],
+    "images": {
+      "nb_images": 19,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/f4/9c/5e/f49c5eca5fe1b15aba1c53f58ee89c0684490d88.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/66/cd/21/66cd210b036595d8c745eb4239c5e86d49910ef8.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/6c/18/23/6c18235df44ad580a9498998701eef2520da5442.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/27/fe/fa/27fefa333dbc71787c566ea07e69d0f62093bcdc.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/e1/be/75/e1be756785e8747593d8237ec9e297b094bf056c.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/f4/9c/5e/f49c5eca5fe1b15aba1c53f58ee89c0684490d88.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "275", "value_label": "275 mÂ²"},
+      {"key": "rooms", "value": "7", "value_label": "7"},
+      {"key": "bedrooms", "value": "5", "value_label": "5 ch."},
+      {"key": "energy_rate", "value": "c", "value_label": "C"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "IMMO PASSION"}
+    ],
+    "location": {"city_label": "Lyon 69009 Gare de Vaise", "city": "Lyon", "zipcode": "69009", "district": "Gare de Vaise", "lat": 45.790268, "lng": 4.816218},
+    "owner": {"type": "pro", "name": "IMMO PASSION", "siren": "491368031"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3168997913,
+    "first_publication_date": "2026-03-27 11:54:55",
+    "subject": "Logement atypique genre Loft en maison individuelle Lyon 9",
+    "url": "https://www.leboncoin.fr/ad/locations/3168997913",
+    "price": [1800],
+    "images": {
+      "nb_images": 3,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/58/ae/77/58ae776260b7b73f691d02520e872a35ca126113.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/06/6d/10/066d10dc3149c0cdd05e32858fe7316b401c18a3.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/c4/41/1b/c4411bfb0c920c875c2fbf83e62a27a135163373.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/58/ae/77/58ae776260b7b73f691d02520e872a35ca126113.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "80", "value_label": "80 mÂ²"},
+      {"key": "rooms", "value": "4", "value_label": "4"},
+      {"key": "bedrooms", "value": "2", "value_label": "2 ch."},
+      {"key": "energy_rate", "value": "c", "value_label": "C"},
+      {"key": "building_year", "value": "2017"}
+    ],
+    "location": {"city_label": "Lyon 69009 9e Arrondissement", "city": "Lyon", "zipcode": "69009", "district": "9e Arrondissement", "lat": 45.7793, "lng": 4.79646},
+    "owner": {"type": "private", "name": "germain-lyon"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3064459849,
+    "first_publication_date": "2026-05-08 01:05:06",
+    "subject": "Maison 7 piÃ¨ces 166 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3064459849",
+    "price": [3000],
+    "images": {
+      "nb_images": 20,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/b7/1c/d4/b71cd4dbb5fc5b84accd77752525a6a5ddc6bf63.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/fe/17/8d/fe178d494630be73528d0347ab1b0c89fc78877e.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/9f/bf/34/9fbf346372727606e1c8208917f2c9c51746ea3c.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/9c/5b/ea/9c5beade2c8899c3c5db9bca9f616d9febf86875.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d8/b9/83/d8b983a6664116b5b554863ec7ef8cf0a76eb8f9.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/b7/1c/d4/b71cd4dbb5fc5b84accd77752525a6a5ddc6bf63.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "166", "value_label": "166 mÂ²"},
+      {"key": "rooms", "value": "7", "value_label": "7"},
+      {"key": "bedrooms", "value": "5", "value_label": "5 ch."},
+      {"key": "energy_rate", "value": "e", "value_label": "E"},
+      {"key": "mandate_type", "value": "simple"},
+      {"key": "store_name", "value": "ORPI Montchat Immobilier"}
+    ],
+    "location": {"city_label": "Lyon 69003 3e Arrondissement", "city": "Lyon", "zipcode": "69003", "district": "3e Arrondissement", "lat": 45.750687, "lng": 4.892483},
+    "owner": {"type": "pro", "name": "ORPI Montchat Immobilier", "siren": "507846632"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3202487591,
+    "first_publication_date": "2026-05-21 22:50:45",
+    "subject": "Maison T4 avec extÃ©rieur Montchat",
+    "url": "https://www.leboncoin.fr/ad/locations/3202487591",
+    "price": [1520],
+    "images": {
+      "nb_images": 3,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/59/2b/bb/592bbbebeb6f5ad2f1e459da58c68cd64f5cc4ec.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/7a/6c/53/7a6c534df60b8c09e79d45213120875bd335c336.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/7a/57/35/7a5735880d87d8a6ab0c2ffc3a4c3cf0b4318009.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/59/2b/bb/592bbbebeb6f5ad2f1e459da58c68cd64f5cc4ec.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "73", "value_label": "73 mÂ²"},
+      {"key": "rooms", "value": "4", "value_label": "4"},
+      {"key": "bedrooms", "value": "3", "value_label": "3 ch."},
+      {"key": "energy_rate", "value": "c", "value_label": "C"},
+      {"key": "building_year", "value": "1975"}
+    ],
+    "location": {"city_label": "Lyon 69003 3e Arrondissement", "city": "Lyon", "zipcode": "69003", "district": "3e Arrondissement", "lat": 45.75287, "lng": 4.89505},
+    "owner": {"type": "private", "name": "CÃ©d B"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3178993100,
+    "first_publication_date": "2026-04-13 15:25:26",
+    "subject": "Loue maison de ville avec jardin",
+    "url": "https://www.leboncoin.fr/ad/locations/3178993100",
+    "price": [1250],
+    "images": {
+      "nb_images": 3,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/c5/33/ad/c533ad1735a3f5029cc54d232129dd5900e40c1d.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/0c/20/22/0c2022bc746643eea5ccf7acdb423f5b77d7108e.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/06/bc/e4/06bce47d1edae85067dab95fa879521cbe8713d2.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/c5/33/ad/c533ad1735a3f5029cc54d232129dd5900e40c1d.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "69", "value_label": "69 mÂ²"},
+      {"key": "rooms", "value": "3", "value_label": "3"},
+      {"key": "bedrooms", "value": "2", "value_label": "2 ch."},
+      {"key": "building_year", "value": "2020"}
+    ],
+    "location": {"city_label": "Lyon 69008 8e Arrondissement", "city": "Lyon", "zipcode": "69008", "district": "8e Arrondissement", "lat": 45.73371, "lng": 4.8535},
+    "owner": {"type": "private", "name": "videau"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3198283809,
+    "first_publication_date": "2026-05-15 02:38:16",
+    "subject": "Maison 4 piÃ¨ces 88 mÂ²",
+    "url": "https://www.leboncoin.fr/ad/locations/3198283809",
+    "price": [1850],
+    "images": {
+      "nb_images": 7,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/e6/c7/a5/e6c7a509918131f0f18400f484226d9884619a75.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d6/d2/24/d6d22453d09d0f0567ca4ee00dbb0f188143321a.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/63/50/fb/6350fb6ab3a3c6f98f20f0a608ba329cf108afba.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d4/99/3c/d4993c9acaed853a3414ecee9e3ab7541cc84e80.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/07/4f/e8/074fe814d5472c2ac04a02fcb41084b71da9a2d7.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/e6/c7/a5/e6c7a509918131f0f18400f484226d9884619a75.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "furnished", "value": "1", "value_label": "MeublÃ©"},
+      {"key": "square", "value": "88", "value_label": "88 mÂ²"},
+      {"key": "rooms", "value": "4", "value_label": "4"},
+      {"key": "bedrooms", "value": "3", "value_label": "3 ch."},
+      {"key": "energy_rate", "value": "b", "value_label": "B"},
+      {"key": "building_year", "value": "2022"},
+      {"key": "mandate_type", "value": "exclusive"},
+      {"key": "store_name", "value": "We Invest DHG Conseil"}
+    ],
+    "location": {"city_label": "Lyon 69008 Bachut", "city": "Lyon", "zipcode": "69008", "district": "Bachut", "lat": 45.733105, "lng": 4.875392},
+    "owner": {"type": "pro", "name": "We Invest DHG Conseil", "siren": "829584895"},
+    "has_phone": true
+  },
+  {
+    "list_id": 3184375561,
+    "first_publication_date": "2026-04-22 16:58:43",
+    "subject": "Maison T4 Monplaisir",
+    "url": "https://www.leboncoin.fr/ad/locations/3184375561",
+    "price": [1864],
+    "images": {
+      "nb_images": 11,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/06/ca/75/06ca754dc835c5c94302338c7bc117ecc727751c.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/a3/d0/08/a3d0087e0ef97d9eb61d5595d9c5c0bd6721fc5c.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/01/34/da/0134dab375c3e17e943259d075355564c65537d3.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d8/52/d2/d852d265d3f2e0f69da39419f114ca42f85cb647.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/30/b5/08/30b508bc070a0a3c1891b2aef10ab0ea7b0a4b9c.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/06/ca/75/06ca754dc835c5c94302338c7bc117ecc727751c.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "90", "value_label": "90 mÂ²"},
+      {"key": "rooms", "value": "4", "value_label": "4"},
+      {"key": "bedrooms", "value": "3", "value_label": "3 ch."},
+      {"key": "energy_rate", "value": "c", "value_label": "C"},
+      {"key": "building_year", "value": "2015"}
+    ],
+    "location": {"city_label": "Lyon 69008 8e Arrondissement", "city": "Lyon", "zipcode": "69008", "district": "8e Arrondissement", "lat": 45.74218, "lng": 4.87242},
+    "owner": {"type": "private", "name": "Gerard"},
+    "has_phone": false
+  },
+  {
+    "list_id": 3194220290,
+    "first_publication_date": "2026-05-08 21:33:29",
+    "subject": "Échange maison",
+    "url": "https://www.leboncoin.fr/ad/locations/3194220290",
+    "price": [850],
+    "images": {
+      "nb_images": 2,
+      "urls": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/9e/d0/2f/9ed02f3636fc1ed62c6d5402fecf5abbf7a5beb2.jpg?rule=ad-image",
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/d2/1c/17/d21c17566d699b2a6cf1acee62e052745db9acb2.jpg?rule=ad-image"
+      ],
+      "urls_thumb": [
+        "https://img.leboncoin.fr/api/v1/lbcpb1/images/9e/d0/2f/9ed02f3636fc1ed62c6d5402fecf5abbf7a5beb2.jpg?rule=ad-thumb"
+      ]
+    },
+    "attributes": [
+      {"key": "real_estate_type", "value": "1", "value_label": "Maison"},
+      {"key": "square", "value": "90", "value_label": "90 mÂ²"},
+      {"key": "rooms", "value": "4", "value_label": "4"},
+      {"key": "bedrooms", "value": "3", "value_label": "3 ch."},
+      {"key": "energy_rate", "value": "b", "value_label": "B"},
+      {"key": "building_year", "value": "1991"}
+    ],
+    "location": {"city_label": "Lyon 69003 3e Arrondissement", "city": "Lyon", "zipcode": "69003", "district": "3e Arrondissement", "lat": 45.74972, "lng": 4.87569},
+    "owner": {"type": "private", "name": "Malo"},
+    "has_phone": false
+  }
+]
