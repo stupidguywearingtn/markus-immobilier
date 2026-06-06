@@ -32,18 +32,13 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label="Markus Immobilier — accueil"
-          className="flex items-center gap-3 no-underline text-inherit"
+          className="flex items-center no-underline text-inherit"
         >
-          <LogoMark size={solid ? 28 : 34} gradient />
-          <span className="flex flex-col leading-none">
-            <b className="font-bold text-base tracking-[0.14em]">MARKUS</b>
-            <span className="text-[8.5px] tracking-[0.42em] font-medium opacity-80 mt-[3px]">
-              IMMOBILIER
-            </span>
-          </span>
+          {/* Logo M seul (logo-markus-mark.svg) — pas de texte à côté */}
+          <LogoMark size={solid ? 30 : 36} gradient />
         </Link>
 
-        {/* Nav desktop */}
+        {/* Nav desktop — TOUS les liens en MAJUSCULES */}
         <nav className="hidden md:flex items-center gap-[26px]">
           <button
             type="button"
@@ -54,7 +49,7 @@ export function SiteHeader() {
           </button>
           <Link
             href="/contact"
-            className="text-[13px] font-medium tracking-[0.04em] opacity-90 hover:opacity-100 hover:text-sauge transition"
+            className="text-[11.5px] font-semibold uppercase tracking-[0.12em] opacity-90 hover:opacity-100 hover:text-sauge transition"
           >
             Contactez-nous
           </Link>
@@ -78,13 +73,13 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/recrutement"
-            className="text-[13px] font-medium tracking-[0.04em] opacity-90 hover:opacity-100 hover:text-sauge transition"
+            className="text-[11.5px] font-semibold uppercase tracking-[0.12em] opacity-90 hover:opacity-100 hover:text-sauge transition"
           >
             On recrute
           </Link>
           <a
             href={TEL_HREF}
-            className="text-[13px] font-bold tracking-[0.04em] hover:text-sauge transition"
+            className="text-[12px] font-bold tracking-[0.06em] hover:text-sauge transition"
           >
             {TEL}
           </a>
@@ -121,33 +116,33 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
+      {/* Mobile menu dropdown — MAJUSCULES aussi */}
       {open && (
-        <div className="md:hidden bg-anthracite border-t border-white/10 px-5 py-5 flex flex-col gap-3">
+        <div className="md:hidden bg-anthracite border-t border-white/10 px-5 py-5 flex flex-col gap-1">
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="text-sm py-2 border-b border-white/10"
+            className="text-[12.5px] font-semibold uppercase tracking-[0.12em] py-3 border-b border-white/10"
           >
             Contactez-nous
           </Link>
           <Link
             href="/recrutement"
             onClick={() => setOpen(false)}
-            className="text-sm py-2 border-b border-white/10"
+            className="text-[12.5px] font-semibold uppercase tracking-[0.12em] py-3 border-b border-white/10"
           >
             On recrute
           </Link>
           <Link
             href="/espace-client"
             onClick={() => setOpen(false)}
-            className="text-sm py-2 border-b border-white/10"
+            className="text-[12.5px] font-semibold uppercase tracking-[0.12em] py-3 border-b border-white/10"
           >
             Espace client
           </Link>
           <button
             type="button"
-            className="text-sm py-2 text-left"
+            className="text-[12.5px] font-semibold uppercase tracking-[0.12em] py-3 text-left"
             aria-label="Changer la langue"
           >
             FR / EN

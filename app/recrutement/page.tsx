@@ -191,12 +191,9 @@ export default function RecrutementPage() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-md:gap-5">
-            {[
-              { name: "Sophie", role: "Agent depuis 3 ans" },
-              { name: "Karim", role: "En reconversion" },
-              { name: "Léa", role: "Senior commercial" },
-            ].map((t, i) => (
-              <Reveal key={t.name} delay={i * 100}>
+            {/* 3 cartes anonymes "Vidéo à venir" — pas d'identité fictive. */}
+            {[0, 1, 2].map((i) => (
+              <Reveal key={i} delay={i * 100}>
                 <div className="group relative aspect-[3/4] rounded-[18px] overflow-hidden bg-gradient-to-br from-[#454c52] to-[#363b40] cursor-pointer hover:shadow-[0_30px_60px_-20px_rgba(56,62,66,0.5)] transition-all duration-500">
                   {/* Play button */}
                   <div className="absolute inset-0 grid place-items-center">
@@ -206,11 +203,13 @@ export default function RecrutementPage() {
                       </svg>
                     </div>
                   </div>
-                  {/* Caption */}
+                  {/* Caption — accroche commune "Pourquoi pas vous ?" */}
                   <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
-                    <div className="text-blanc font-bold text-lg">{t.name}</div>
-                    <div className="text-white/70 text-xs uppercase tracking-[0.1em]">
-                      {t.role}
+                    <div className="text-blanc font-bold text-lg leading-tight">
+                      Pourquoi pas <span className="text-sauge">vous ?</span>
+                    </div>
+                    <div className="text-white/65 text-xs uppercase tracking-[0.1em] mt-1">
+                      Témoignage à venir
                     </div>
                   </div>
                   <div className="absolute top-4 right-4 text-[10px] uppercase tracking-[0.16em] text-white/60 font-semibold">

@@ -44,11 +44,19 @@ export function Hero() {
       />
 
       {/* Contenu — logo centerpiece + boutons + CTA */}
-      <div className="relative z-[3] px-6 max-w-[900px] flex flex-col items-center">
-        {/* Logo complet (M + MARKUS + IMMOBILIER), centré, blanc — responsive */}
+      <div className="relative z-[3] px-6 max-w-[900px] flex flex-col items-center justify-center">
+        {/* Logo complet (M + MARKUS + IMMOBILIER), centré, blanc.
+            Bornes croisées px / vw / vh — empêche l'explosion sur certains écrans
+            (PC client à zoom 125 %, écrans 4K, laptop 13" portrait) :
+              • cap horizontal : 380 px max, jamais > 80 vw
+              • cap vertical   : 48 vh — le logo a ratio ~1.12 donc 48vh ≈ 54vh de largeur,
+                ce qui est borné par les 380 px côté px sur écrans courants
+            mx-auto centre horizontalement, items-center centre verticalement (cf. parent flex-col + grid place-items-center du <section>). */}
         <div
-          className="mb-10 max-md:mb-8"
-          style={{ width: "clamp(260px, 38vw, 520px)" }}
+          className="mb-10 max-md:mb-8 mx-auto"
+          style={{
+            width: "min(clamp(180px, 26vw, 380px), 48vh, 80vw)",
+          }}
         >
           <LogoFull gradient />
         </div>

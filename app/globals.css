@@ -358,6 +358,72 @@ a:focus-visible,
 }
 
 /* ============================================
+   LEGAL PROSE — typo unifiée pour les pages légales
+   ============================================ */
+.legal-prose {
+  color: #3d4347;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.legal-prose p {
+  margin-bottom: 1rem;
+}
+.legal-prose p:last-child {
+  margin-bottom: 0;
+}
+.legal-prose strong {
+  color: var(--anthracite);
+  font-weight: 600;
+}
+.legal-prose a {
+  color: var(--anthracite);
+  text-decoration: underline;
+  text-decoration-color: var(--bordure);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.legal-prose a:hover {
+  color: var(--sauge);
+  text-decoration-color: var(--sauge);
+}
+.legal-prose h3 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--anthracite);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.legal-prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.legal-prose ul li {
+  margin-bottom: 0.4rem;
+}
+.legal-prose ul li:last-child {
+  margin-bottom: 0;
+}
+.legal-prose .field-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+.legal-prose .field-row > span:first-child {
+  font-weight: 600;
+  color: var(--anthracite);
+  min-width: 220px;
+}
+@media (max-width: 640px) {
+  .legal-prose .field-row > span:first-child {
+    min-width: 0;
+  }
+}
+
+/* ============================================
    ACCESSIBILITÉ — prefers-reduced-motion
    ============================================ */
 @media (prefers-reduced-motion: reduce) {

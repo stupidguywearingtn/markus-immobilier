@@ -7,10 +7,10 @@ import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { ScrollLine } from "./scroll-line";
 
 const STATS = [
-  { target: 13, suffix: "+", label: "Ans d'expérience" },
+  { target: 7, suffix: "", label: "Ans d'expérience" },
   { target: 250, suffix: "+", label: "Biens accompagnés" },
-  { target: 9, suffix: "M€", label: "de projets" },
-  { target: 600, suffix: "+", label: "Clients accompagnés" },
+  { target: 40, suffix: "M€", label: "de projets" },
+  { target: 300, suffix: "+", label: "Clients accompagnés" },
 ];
 
 export function About() {
@@ -60,14 +60,22 @@ export function About() {
             <h2 className="font-bold leading-[1.12] tracking-[-0.01em] text-[clamp(30px,4vw,46px)] mb-4">
               Qui sommes-nous
             </h2>
-            <p className="text-[#5a6166] mb-4">
-              Markus Immobilier est une agence indépendante implantée à
-              Villeurbanne, spécialisée dans la vente, la location et la gestion
-              de biens. Ici, on ne fait pas « juste une vente » : on écoute, on
-              conseille, on protège votre projet.
+            <p className="text-[#3d4347] mb-4 leading-relaxed">
+              Chez Markus Immobilier, l&apos;immobilier est avant tout une{" "}
+              <strong className="font-semibold text-anthracite">
+                histoire de confiance
+              </strong>
+              . Implantée au cœur de Villeurbanne, notre agence indépendante vous
+              accompagne dans la vente, la location et la gestion de vos biens.
             </p>
-            <p className="text-[#9aa09d] italic text-sm mb-2">
-              [Texte de présentation à remplacer par celui que le client doit envoyer]
+            <p className="text-[#3d4347] mb-2 leading-relaxed">
+              Notre indépendance, c&apos;est la liberté de vous conseiller{" "}
+              <strong className="font-semibold text-anthracite">
+                en toute transparence
+              </strong>
+              , avec une vraie connaissance du terrain et une réactivité de
+              chaque instant. À vos côtés à chaque étape, on écoute, on répond
+              vite, on conseille et on protège votre projet.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-[18px] my-9">

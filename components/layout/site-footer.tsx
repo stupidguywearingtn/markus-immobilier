@@ -11,6 +11,7 @@ const SERVICES = [
 const AGENCE = [
   { href: "/#agence", label: "Notre agence" },
   { href: "/equipe", label: "Notre équipe" },
+  { href: "/#avis", label: "Nos avis clients" },
   { href: "/honoraires", label: "Nos honoraires" },
   { href: "/recrutement", label: "Recrutement" },
 ];
@@ -37,6 +38,22 @@ const FOOTER_SOCIALS = [
     stroke: false,
   },
   {
+    href: "https://www.youtube.com/@markusimmobilier",
+    label: "YouTube",
+    svg: (
+      <path d="M21.6 7.2a2.5 2.5 0 00-1.76-1.76C18.25 5 12 5 12 5s-6.25 0-7.84.44A2.5 2.5 0 002.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 001.76 1.76C5.75 19 12 19 12 19s6.25 0 7.84-.44a2.5 2.5 0 001.76-1.76C22 15.2 22 12 22 12s0-3.2-.4-4.8zM10 15V9l5.2 3L10 15z" />
+    ),
+    stroke: false,
+  },
+  {
+    href: "https://x.com/markusimmo_",
+    label: "X (Twitter)",
+    svg: (
+      <path d="M18.244 2H21l-6.52 7.46L22 22h-6.844l-4.96-6.43L4.5 22H2l6.97-7.97L2 2h6.962l4.486 5.93L18.244 2zm-2.4 18h1.9L6.244 4H4.2l11.644 16z" />
+    ),
+    stroke: false,
+  },
+  {
     href: "https://www.linkedin.com/company/markusimmobilier/",
     label: "LinkedIn",
     svg: (
@@ -58,9 +75,10 @@ export function SiteFooter() {
   return (
     <footer className="bg-anthracite text-blanc pt-[72px] pb-[30px]">
       <div className="max-w-content mx-auto px-8 max-md:px-5">
-        <div className="grid gap-10 max-md:gap-7 grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] items-start pb-[46px] border-b border-white/10">
+        {/* 3 colonnes centrées : Services / Marque / L'Agence */}
+        <div className="grid gap-10 max-md:gap-7 grid-cols-1 md:grid-cols-3 items-start pb-[46px] border-b border-white/10 text-center">
           {/* Services */}
-          <div className="max-md:order-2 max-md:text-center">
+          <div className="order-2 md:order-1 flex flex-col items-center">
             <h4 className="text-xs tracking-[0.2em] uppercase text-sauge mb-[18px] font-semibold">
               Services
             </h4>
@@ -69,7 +87,7 @@ export function SiteFooter() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="block text-white/[0.78] no-underline text-sm py-1.5 transition-all hover:text-blanc hover:pl-1.5"
+                    className="block text-white/[0.78] no-underline text-sm py-1.5 transition-colors hover:text-blanc"
                   >
                     {l.label}
                   </Link>
@@ -78,16 +96,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Brand */}
-          <div className="flex flex-col items-center gap-4 max-md:order-1">
-            <LogoFull width={200} color="#fff" />
+          {/* Brand — colonne centrale */}
+          <div className="order-1 md:order-2 flex flex-col items-center gap-4">
+            <LogoFull width={180} color="#fff" />
             <span className="tracking-[0.4em] text-[9px] block text-center opacity-70">
               L&apos;IMMOBILIER EN TOUTE CONFIANCE
             </span>
           </div>
 
           {/* L'agence */}
-          <div className="max-md:order-3 max-md:text-center">
+          <div className="order-3 flex flex-col items-center">
             <h4 className="text-xs tracking-[0.2em] uppercase text-sauge mb-[18px] font-semibold">
               L&apos;agence
             </h4>
@@ -96,7 +114,7 @@ export function SiteFooter() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="block text-white/[0.78] no-underline text-sm py-1.5 transition-all hover:text-blanc hover:pl-1.5"
+                    className="block text-white/[0.78] no-underline text-sm py-1.5 transition-colors hover:text-blanc"
                   >
                     {l.label}
                   </Link>
@@ -106,9 +124,9 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Bottom row */}
-        <div className="flex items-center justify-between gap-5 flex-wrap pt-[26px]">
-          <div className="flex gap-6 flex-wrap text-[13px] text-white/80">
+        {/* Ligne contact — centrée */}
+        <div className="pt-[26px] flex flex-col items-center gap-5">
+          <div className="flex gap-x-6 gap-y-2 flex-wrap text-[13px] text-white/80 justify-center text-center">
             <a href="tel:0478371367" className="hover:text-blanc transition">
               04 78 37 13 67
             </a>
@@ -120,7 +138,9 @@ export function SiteFooter() {
             </a>
             <span>87 rue Édouard Vaillant, 69100 Villeurbanne</span>
           </div>
-          <div className="flex gap-3">
+
+          {/* Réseaux sociaux — centrés */}
+          <div className="flex gap-3 flex-wrap justify-center">
             {FOOTER_SOCIALS.map((s) => (
               <a
                 key={s.label}
@@ -146,6 +166,7 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Bottom — mentions légales centrées */}
         <div className="text-center text-xs text-white/45 mt-[26px]">
           © 2026 Markus Immobilier — Tous droits réservés.{" "}
           <Link href="/mentions-legales" className="text-white/55 no-underline mx-1.5">

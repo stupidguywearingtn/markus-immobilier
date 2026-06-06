@@ -1,64 +1,39 @@
 export type TeamMember = {
   prenom: string;
   nom: string;
+  label?: string; // optionnel — badge au-dessus du poste (ex. "FONDATEUR")
   poste: string;
   email: string;
   telephone: string;
-  /** Couleur de fond du placeholder avatar — choisie parmi nos tons */
+  /** Chemin photo public (peut être null si pas encore livrée → placeholder initiales) */
+  photo?: string | null;
+  /** Couleur de fond du placeholder quand pas de photo */
   avatarTone: "anthracite" | "sauge" | "warm" | "cool";
 };
 
 /**
- * Mock — à remplacer par data réelle dès que le client envoie l'équipe.
- * Chaque membre : photo (placeholder), poste, nom, prénom, mail, tél (cliquables).
+ * Équipe réelle Markus Immobilier.
+ * Placez les photos manquantes dans /public/equipe/ et renseignez `photo`.
  */
 export const TEAM: TeamMember[] = [
   {
-    prenom: "Markus",
-    nom: "Iordachescu",
-    poste: "Fondateur · Directeur",
-    email: "markus@markusimmobilier.fr",
-    telephone: "04 78 37 13 67",
+    prenom: "Tony",
+    nom: "PISTILLI",
+    label: "Fondateur",
+    poste: "CEO – Agent immobilier",
+    email: "tony.pistilli@markusimmobilier.fr",
+    telephone: "06 81 78 77 40",
+    // Nom exact du fichier livré (avec espaces — sera URL-encodé par le navigateur)
+    photo: "/WhatsApp Image 2026-06-03 at 13.26.07.jpeg",
     avatarTone: "anthracite",
   },
   {
-    prenom: "Camille",
-    nom: "Berthier",
-    poste: "Responsable Transaction",
-    email: "camille@markusimmobilier.fr",
-    telephone: "04 78 37 13 67",
-    avatarTone: "sauge",
-  },
-  {
-    prenom: "Thomas",
-    nom: "Lefèvre",
+    prenom: "David",
+    nom: "PISTILLI",
     poste: "Conseiller en immobilier",
-    email: "thomas@markusimmobilier.fr",
-    telephone: "04 78 37 13 67",
-    avatarTone: "warm",
-  },
-  {
-    prenom: "Sophie",
-    nom: "Garnier",
-    poste: "Conseillère en immobilier",
-    email: "sophie@markusimmobilier.fr",
-    telephone: "04 78 37 13 67",
-    avatarTone: "cool",
-  },
-  {
-    prenom: "Karim",
-    nom: "Benyahia",
-    poste: "Gestion locative",
-    email: "karim@markusimmobilier.fr",
-    telephone: "04 78 37 13 67",
-    avatarTone: "anthracite",
-  },
-  {
-    prenom: "Léa",
-    nom: "Dumont",
-    poste: "Assistante Syndic",
-    email: "lea@markusimmobilier.fr",
-    telephone: "04 78 37 13 67",
+    email: "david.pistilli@markusimmobilier.fr",
+    telephone: "06 65 78 01 11",
+    photo: null,
     avatarTone: "sauge",
   },
 ];
