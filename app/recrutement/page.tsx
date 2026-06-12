@@ -111,13 +111,13 @@ export default function RecrutementPage() {
             </p>
           </Reveal>
 
-          {/* Stats */}
+          {/* Stats — alignées sur la home (components/home/about.tsx) */}
           <Reveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-md:gap-4 mb-16 max-md:mb-10 bg-gris rounded-[20px] p-10 max-md:p-7">
+              <Stat target={7} suffix="" label="Ans d'expérience" />
               <Stat target={250} suffix="+" label="Biens accompagnés" />
-              <Stat target={600} suffix="+" label="Clients accompagnés" />
-              <Stat target={9} suffix="M€" label="de projets" />
-              <Stat target={13} suffix="+" label="Ans d'expérience" />
+              <Stat target={40} suffix="M€" label="de projets" />
+              <Stat target={300} suffix="+" label="Clients accompagnés" />
             </div>
           </Reveal>
 

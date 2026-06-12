@@ -34,6 +34,16 @@ export function Button(props: AnchorProps | ButtonProps) {
   const classes = `${variantClass[variant]} ${className}`.trim();
 
   if ("href" in props && props.href) {
+    // tel: / mailto: → ancre native (déclenche l'app téléphone / mail, pas de
+    // routing Next.js, pas de target _blank). Sur mobile, tel: ouvre le
+    // composeur d'appel directement.
+    if (/^(tel:|mailto:)/.test(props.href)) {
+      return (
+        <a href={props.href} className={classes}>
+          {children}
+        </a>
+      );
+    }
     const isExternal = props.external || /^https?:\/\//.test(props.href);
     if (isExternal) {
       return (

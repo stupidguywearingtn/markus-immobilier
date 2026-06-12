@@ -54,14 +54,17 @@ export default function EstimationPage() {
         }
       />
 
-      {/* BÉNÉFICES — bandeau juste sous le hero */}
+      {/* BÉNÉFICES — bandeau juste sous le hero.
+          flex-wrap + whitespace-nowrap sur chaque item : chaque libellé reste
+          sur UNE seule ligne ; c'est l'item entier qui passe à la ligne suivante
+          si besoin (jamais un libellé coupé en deux). */}
       <section className="bg-anthracite text-blanc pb-[40px] lg:pb-[60px] -mt-2 border-b border-white/[0.06]">
         <div className="max-w-content mx-auto px-8 max-md:px-5">
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          <ul className="flex flex-wrap gap-x-7 gap-y-3 justify-center md:justify-between">
             {BENEFITS.map((b, i) => (
               <li
                 key={i}
-                className="flex items-center gap-2.5 text-[14px] text-white/90"
+                className="flex items-center gap-2.5 text-[14px] text-white/90 whitespace-nowrap"
               >
                 <span className="w-6 h-6 shrink-0 rounded-full bg-sauge/20 grid place-items-center">
                   <svg
