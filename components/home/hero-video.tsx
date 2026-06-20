@@ -50,8 +50,38 @@ export function HeroVideo() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (reduce) v.pause();
-    else v.play().catch(() => setFailed(true));
+
+    // Safari : la prop JSX `muted` n'est pas fiablement appliquée au DOM par
+    // React → l'autoplay est bloqué (NotAllowedError) et la vidéo disparaît.
+    // On force la propriété impérativement AVANT play().
+    v.muted = true;
+    v.defaultMuted = true;
+    // playsInline impératif aussi (iOS Safari l'exige pour ne pas passer en
+    // plein écran / bloquer l'autoplay).
+    v.setAttribute("playsinline", "");
+
+    if (reduce) {
+      v.pause();
+      return;
+    }
+
+    const tryPlay = () => v.play().catch(() => { /* on réessaie au canplay */ });
+    tryPlay();
+    // Filet : si la 1re tentative échoue (vidéo pas encore prête sur Safari),
+    // on retente quand le navigateur signale qu'il peut lire.
+    v.addEventListener("canplay", tryPlay, { once: true });
+
+    // Fallback gradient UNIQUEMENT sur vraie erreur média (codec/réseau),
+    // pas sur un simple rejet d'autoplay.
+    const onMediaError = () => {
+      if (v.error) setFailed(true);
+    };
+    v.addEventListener("error", onMediaError, true);
+
+    return () => {
+      v.removeEventListener("canplay", tryPlay);
+      v.removeEventListener("error", onMediaError, true);
+    };
   }, [reduce, src]);
 
   if (failed || !src) return null;
@@ -73,9 +103,10 @@ export function HeroVideo() {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       poster="/videos/hero-poster.jpg"
-      onError={() => setFailed(true)}
+      // Pas de onError → setFailed ici : Safari émet parfois un error transitoire
+      // sur <video> (pas sur <source>) ; on ne veut pas masquer définitivement.
       aria-hidden="true"
     >
       <source src={src} type="video/mp4" />

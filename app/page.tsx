@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { Properties } from "@/components/home/properties";
 import { About } from "@/components/home/about";
@@ -7,6 +8,13 @@ import { Estimation } from "@/components/home/estimation";
 import { Reviews } from "@/components/home/reviews";
 import { Social } from "@/components/home/social";
 import { Agency } from "@/components/home/agency";
+
+export const metadata: Metadata = {
+  title: "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon",
+  description:
+    "Agence immobilière indépendante à Villeurbanne. Vente, location et gestion à Lyon et Villeurbanne. Estimez votre bien gratuitement en moins de 2 minutes.",
+  alternates: { canonical: "/" },
+};
 
 /**
  * Markus Immobilier — Page d'accueil

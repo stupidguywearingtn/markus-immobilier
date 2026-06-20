@@ -28,6 +28,13 @@ export type Property = {
   photos: Array<{ caption: string; variant: PhotoVariant }>;
 };
 
+/**
+ * Les biens affichés sont des EXEMPLES de mise en page, pas de vrais mandats.
+ * Tant que ce flag est `true` : badge « À venir » sur chaque carte + CTA adouci
+ * (pas de lien vers une fiche). Passer à `false` quand de vrais biens existent.
+ */
+export const LISTINGS_COMING_SOON = true;
+
 export function PropertyCard({ property }: { property: Property }) {
   const [index, setIndex] = useState(0);
   const total = property.photos.length;
@@ -102,12 +109,23 @@ export function PropertyCard({ property }: { property: Property }) {
           }}
         />
 
-        {/* Badge À vendre / À louer */}
-        <span
-          className={`absolute top-3.5 left-3.5 z-[4] text-[10.5px] font-semibold tracking-[0.1em] uppercase px-3 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.18)] ${badgeClass}`}
-        >
-          {badgeLabel}
-        </span>
+        {/* Badges haut-gauche : « À venir » (priorité) + type de bien */}
+        <div className="absolute top-3.5 left-3.5 z-[4] flex items-center gap-1.5">
+          {LISTINGS_COMING_SOON && (
+            <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.1em] uppercase px-3 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.18)] bg-amber-400 text-anthracite">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 8v4l3 2" />
+              </svg>
+              À venir
+            </span>
+          )}
+          <span
+            className={`text-[10.5px] font-semibold tracking-[0.1em] uppercase px-3 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.18)] ${badgeClass}`}
+          >
+            {badgeLabel}
+          </span>
+        </div>
 
         {/* Compteur 1/3 */}
         <span className="absolute top-3.5 right-3.5 z-[4] bg-anthracite/[0.78] text-blanc text-[11px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-md tabular-nums">
@@ -170,24 +188,34 @@ export function PropertyCard({ property }: { property: Property }) {
             <b className="text-anthracite font-bold">{property.surface}</b> m²
           </div>
         </div>
-        <Link
-          href={`/annonces/${property.id}`}
-          className="mt-5 text-[12.5px] font-semibold uppercase tracking-[0.08em] text-sauge no-underline inline-flex items-center gap-1.5 transition-all hover:gap-3 group/cta"
-        >
-          Voir le bien
-          <svg
-            viewBox="0 0 24 24"
-            width="14"
-            height="14"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            aria-hidden="true"
-            className="transition-transform group-hover/cta:translate-x-1"
+        {LISTINGS_COMING_SOON ? (
+          <span className="mt-5 text-[12.5px] font-semibold uppercase tracking-[0.08em] text-[#9aa09d] inline-flex items-center gap-1.5 cursor-default select-none">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 8v4l3 2" />
+            </svg>
+            Bientôt disponible
+          </span>
+        ) : (
+          <Link
+            href={`/annonces/${property.id}`}
+            className="mt-5 text-[12.5px] font-semibold uppercase tracking-[0.08em] text-sauge no-underline inline-flex items-center gap-1.5 transition-all hover:gap-3 group/cta"
           >
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
-        </Link>
+            Voir le bien
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+              className="transition-transform group-hover/cta:translate-x-1"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
+        )}
       </div>
     </article>
   );

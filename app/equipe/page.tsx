@@ -8,9 +8,10 @@ import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { TEAM, type TeamMember } from "@/lib/mock-team";
 
 export const metadata: Metadata = {
-  title: "Notre équipe",
+  title: "Notre équipe — Markus Immobilier Villeurbanne",
   description:
-    "Les visages derrière Markus Immobilier. Tony et David Pistilli, à votre service à Villeurbanne.",
+    "Les visages derrière Markus Immobilier. Tony et David Pistilli, à votre service à Lyon et Villeurbanne.",
+  alternates: { canonical: "/equipe" },
 };
 
 const TONES: Record<TeamMember["avatarTone"], string> = {

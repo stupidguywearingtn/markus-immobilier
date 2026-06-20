@@ -9,7 +9,8 @@ import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 export const metadata: Metadata = {
   title: "Nos honoraires — Barème complet",
   description:
-    "Barème détaillé Transaction, Location et Gestion locative. Honoraires Markus Immobilier en toute transparence.",
+    "Barème détaillé Transaction, Location et Gestion locative. Honoraires Markus Immobilier à Lyon et Villeurbanne, en toute transparence.",
+  alternates: { canonical: "/honoraires" },
 };
 
 const TRANSACTION = [

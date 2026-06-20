@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -121,6 +122,9 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </LenisProvider>
+        {/* Vercel Web Analytics — cookieless (pas de bandeau cookies requis).
+            À activer aussi dans Vercel : projet → Analytics → Enable. */}
+        <Analytics />
       </body>
     </html>
   );

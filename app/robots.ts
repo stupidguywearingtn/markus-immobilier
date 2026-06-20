@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/espace-client"],
+        // Outils internes / privés — hors index.
+        disallow: ["/api/", "/espace-client", "/radar", "/admin"],
       },
     ],
     sitemap: "https://markusimmobilier.fr/sitemap.xml",

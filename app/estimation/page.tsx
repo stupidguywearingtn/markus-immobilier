@@ -6,11 +6,44 @@ import { Button, ArrowRight } from "@/components/ui/button";
 import { EstimationForm } from "@/components/forms/estimation-form";
 import { KeysIllust } from "@/components/illustrations/keys";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
+import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "Estimer mon bien — Outil n°1 en 2 minutes",
+  title: "Estimation de bien à Lyon & Villeurbanne — gratuite en 2 min",
   description:
-    "Estimation gratuite et sans engagement : valeur de vente, loyer mensuel, taux de rendement. Rapport PDF envoyé par email en moins de 2 minutes.",
+    "Estimation immobilière gratuite et sans engagement à Lyon et Villeurbanne : valeur de vente, loyer mensuel, taux de rendement. Rapport détaillé envoyé par email en moins de 2 minutes.",
+  alternates: { canonical: "/estimation" },
+  openGraph: {
+    title: "Estimation de bien à Lyon & Villeurbanne — gratuite en 2 min",
+    description:
+      "Valeur de vente, loyer, rendement : votre rapport d'estimation en moins de 2 minutes. Gratuit, sans engagement.",
+    url: "https://markusimmobilier.fr/estimation",
+  },
+};
+
+// JSON-LD : Service (l'outil d'estimation, différenciateur) + fil d'Ariane.
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Estimation immobilière en ligne",
+  serviceType: "Estimation de bien immobilier",
+  description:
+    "Estimation gratuite de la valeur de vente, du loyer et du rendement d'un bien à Lyon et Villeurbanne, avec rapport détaillé en moins de 2 minutes.",
+  areaServed: ["Villeurbanne", "Lyon", "Métropole de Lyon"],
+  url: "https://markusimmobilier.fr/estimation",
+  provider: {
+    "@type": "RealEstateAgent",
+    name: "Markus Immobilier",
+    telephone: "+33478371367",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "87 rue Édouard Vaillant",
+      addressLocality: "Villeurbanne",
+      postalCode: "69100",
+      addressCountry: "FR",
+    },
+  },
+  offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
 };
 
 const BENEFITS = [
@@ -24,6 +57,13 @@ const BENEFITS = [
 export default function EstimationPage() {
   return (
     <>
+      <JsonLd data={serviceLd} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Accueil", path: "/" },
+          { name: "Estimation", path: "/estimation" },
+        ])}
+      />
       <PageHero
         eyebrow="★ Outil n°1"
         title={

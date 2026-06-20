@@ -4,16 +4,28 @@ import { Reveal } from "@/components/reveal";
 import { PageHero } from "@/components/layout/page-hero";
 import { ContactForm } from "@/components/forms/contact-form";
 import { MapPinDrop } from "@/components/illustrations/map-pin-drop";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "Contact — 04 78 37 13 67",
+  title: "Contact — Agence immobilière à Villeurbanne",
   description:
-    "Contactez Markus Immobilier : 87 rue Édouard Vaillant, 69100 Villeurbanne. Téléphone, email, formulaire et plan d'accès.",
+    "Contactez Markus Immobilier : 87 rue Édouard Vaillant, 69100 Villeurbanne. Téléphone 04 78 37 13 67, email, formulaire et plan d'accès.",
+  alternates: { canonical: "/contact" },
+};
+
+const contactBreadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://markusimmobilier.fr/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://markusimmobilier.fr/contact" },
+  ],
 };
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactBreadcrumbLd} />
       <PageHero
         eyebrow="Nous écrire"
         title={

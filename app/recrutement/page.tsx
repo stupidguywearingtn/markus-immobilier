@@ -11,9 +11,10 @@ import { KeysIllust } from "@/components/illustrations/keys";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 
 export const metadata: Metadata = {
-  title: "Recrutement — Rejoignez Markus Immobilier",
+  title: "Recrutement — Rejoignez Markus Immobilier à Villeurbanne",
   description:
-    "Agents commerciaux indépendants : outils innovants, accompagnement, communauté. Rejoignez une agence qui investit dans ses talents.",
+    "Agents commerciaux indépendants à Lyon et Villeurbanne : outils innovants, accompagnement, communauté. Rejoignez une agence qui investit dans ses talents.",
+  alternates: { canonical: "/recrutement" },
 };
 
 const ATOUTS = [

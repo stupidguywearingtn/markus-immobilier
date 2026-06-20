@@ -8,9 +8,10 @@ import { HandshakeIllust } from "@/components/illustrations/handshake";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 
 export const metadata: Metadata = {
-  title: "Faire gérer votre bien — Syndic & gestion locative",
+  title: "Faire gérer votre bien — Syndic & gestion locative à Villeurbanne",
   description:
-    "Confiez la gestion de votre copropriété ou de votre bien locatif à une agence locale aux outils modernes. Étude personnalisée sous 48h.",
+    "Confiez la gestion de votre copropriété ou de votre bien locatif à Lyon et Villeurbanne à une agence locale aux outils modernes. Étude personnalisée sous 48h.",
+  alternates: { canonical: "/faire-gerer" },
 };
 
 export default function FaireGererPage() {

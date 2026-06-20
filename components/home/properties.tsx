@@ -15,8 +15,8 @@ export function Properties() {
               Nos biens disponibles
             </h2>
             <p className="text-lg text-[#5a6166]">
-              Une sélection de biens à la vente et à la location, soigneusement
-              choisis.
+              Un aperçu de la présentation de notre catalogue.{" "}
+              <span className="text-anthracite font-semibold">Nos annonces arrivent très prochainement.</span>
             </p>
           </div>
           <Button href="/annonces" variant="outline">
