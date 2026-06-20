@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { PROPERTIES } from "@/lib/mock-properties";
 
-const BASE = "https://markusimmobilier.fr";
+const BASE = "https://www.markusimmobilier.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

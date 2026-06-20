@@ -11,6 +11,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { track } from "@/lib/track";
 import { useForm, Controller, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -285,6 +286,7 @@ export function EstimationForm() {
 
   const onSubmit = async (data: FormData) => {
     setSubmitError(null);
+    track("estimation_lancee");
     try {
       const res = await fetch("/api/estimation", {
         method: "POST",

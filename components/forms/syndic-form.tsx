@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { track } from "@/lib/track";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
@@ -83,6 +84,7 @@ export function SyndicForm() {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setSubmitError(null);
+    track("form_faire_gerer");
     try {
       const res = await fetch("/api/faire-gerer", {
         method: "POST",

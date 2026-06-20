@@ -127,7 +127,11 @@ export function SiteFooter() {
         {/* Ligne contact — centrée */}
         <div className="pt-[26px] flex flex-col items-center gap-5">
           <div className="flex gap-x-6 gap-y-2 flex-wrap text-[13px] text-white/80 justify-center text-center">
-            <a href="tel:0478371367" className="hover:text-blanc transition">
+            <a
+              href="tel:0478371367"
+              data-umami-event="clic_telephone"
+              className="hover:text-blanc transition"
+            >
               04 78 37 13 67
             </a>
             <a

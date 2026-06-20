@@ -11,7 +11,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-const BASE = "https://markusimmobilier.fr";
+const BASE = "https://www.markusimmobilier.fr";
 
 /** Fil d'Ariane structuré pour une page interne. */
 export function breadcrumbLd(

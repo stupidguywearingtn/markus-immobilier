@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import { track } from "@/lib/track";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
@@ -37,6 +38,7 @@ export function ContactForm() {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setSubmitError(null);
+    track("form_contact");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",

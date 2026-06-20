@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LogoMark } from "@/components/ui/logo";
+import { track } from "@/lib/track";
 
 const TEL = "04 78 37 13 67";
 const TEL_HREF = "tel:0478371367";
@@ -79,6 +80,7 @@ export function SiteHeader() {
           </Link>
           <a
             href={TEL_HREF}
+            onClick={() => track("clic_telephone")}
             className="text-[12px] font-bold tracking-[0.06em] hover:text-sauge transition"
           >
             {TEL}
@@ -89,6 +91,7 @@ export function SiteHeader() {
         <div className="flex md:hidden items-center gap-3">
           <a
             href={TEL_HREF}
+            onClick={() => track("clic_telephone")}
             className="text-[12px] font-bold tracking-[0.04em]"
             aria-label="Appeler Markus Immobilier"
           >

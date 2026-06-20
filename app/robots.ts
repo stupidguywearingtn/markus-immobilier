@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/espace-client", "/radar", "/admin"],
       },
     ],
-    sitemap: "https://markusimmobilier.fr/sitemap.xml",
+    sitemap: "https://www.markusimmobilier.fr/sitemap.xml",
   };
 }

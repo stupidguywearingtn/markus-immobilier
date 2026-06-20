@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "Estimation de bien à Lyon & Villeurbanne — gratuite en 2 min",
     description:
       "Valeur de vente, loyer, rendement : votre rapport d'estimation en moins de 2 minutes. Gratuit, sans engagement.",
-    url: "https://markusimmobilier.fr/estimation",
+    url: "https://www.markusimmobilier.fr/estimation",
   },
 };
 
@@ -30,7 +30,7 @@ const serviceLd = {
   description:
     "Estimation gratuite de la valeur de vente, du loyer et du rendement d'un bien à Lyon et Villeurbanne, avec rapport détaillé en moins de 2 minutes.",
   areaServed: ["Villeurbanne", "Lyon", "Métropole de Lyon"],
-  url: "https://markusimmobilier.fr/estimation",
+  url: "https://www.markusimmobilier.fr/estimation",
   provider: {
     "@type": "RealEstateAgent",
     name: "Markus Immobilier",

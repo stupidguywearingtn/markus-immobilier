@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button, ArrowRight } from "@/components/ui/button";
+import { track } from "@/lib/track";
 import type { Comparable } from "@/lib/dvf";
 import type {
   EstimationResult,
@@ -388,11 +389,15 @@ export function EstimationResultView({
           Visite, stratégie de prix, plan de commercialisation — sans engagement.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Button href="/contact" variant="cta">
+          <Button href="/contact" variant="cta" onClick={() => track("clic_rdv")}>
             Prendre rendez-vous
             <ArrowRight />
           </Button>
-          <Button href="tel:0478371367" variant="ghost">
+          <Button
+            href="tel:0478371367"
+            variant="ghost"
+            onClick={() => track("clic_rdv")}
+          >
             Être rappelé · 04 78 37 13 67
           </Button>
         </div>

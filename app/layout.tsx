@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
+
+// Domaine canonique de production (www). Une seule version en canonique.
+const SITE_URL = "https://www.markusimmobilier.fr";
+// ID Umami Cloud — à définir dans Vercel : NEXT_PUBLIC_UMAMI_WEBSITE_ID
+const UMAMI_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -21,7 +26,8 @@ export const metadata: Metadata = {
   },
   description:
     "Agence indépendante à Villeurbanne. Vente, location, gestion. Estimez votre bien gratuitement en moins de 2 minutes.",
-  metadataBase: new URL("https://markusimmobilier.fr"),
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
     title: "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon",
     description:
       "Agence indépendante à Villeurbanne. Vente, location, gestion. Estimez votre bien gratuitement en moins de 2 minutes.",
-    url: "https://markusimmobilier.fr",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
@@ -53,7 +59,7 @@ const jsonLd = {
   name: "Markus Immobilier",
   description:
     "Agence immobilière indépendante à Villeurbanne. Vente, location, gestion, syndic.",
-  url: "https://markusimmobilier.fr",
+  url: SITE_URL,
   telephone: "+33478371367",
   email: "villeurbanne@markusimmobilier.fr",
   address: {
@@ -122,9 +128,16 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </LenisProvider>
-        {/* Vercel Web Analytics — cookieless (pas de bandeau cookies requis).
-            À activer aussi dans Vercel : projet → Analytics → Enable. */}
-        <Analytics />
+        {/* Umami — analytics cookieless / RGPD-friendly (pas de bandeau cookies).
+            Ne se charge que si NEXT_PUBLIC_UMAMI_WEBSITE_ID est défini. */}
+        {UMAMI_ID && (
+          <Script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id={UMAMI_ID}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

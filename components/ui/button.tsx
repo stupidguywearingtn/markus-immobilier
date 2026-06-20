@@ -22,6 +22,8 @@ type CommonProps = {
 type AnchorProps = CommonProps & {
   href: string;
   external?: boolean;
+  /** Optionnel — utile pour le tracking analytics au clic. */
+  onClick?: () => void;
 };
 
 type ButtonProps = CommonProps &
@@ -34,12 +36,13 @@ export function Button(props: AnchorProps | ButtonProps) {
   const classes = `${variantClass[variant]} ${className}`.trim();
 
   if ("href" in props && props.href) {
+    const onClick = props.onClick;
     // tel: / mailto: → ancre native (déclenche l'app téléphone / mail, pas de
     // routing Next.js, pas de target _blank). Sur mobile, tel: ouvre le
     // composeur d'appel directement.
     if (/^(tel:|mailto:)/.test(props.href)) {
       return (
-        <a href={props.href} className={classes}>
+        <a href={props.href} className={classes} onClick={onClick}>
           {children}
         </a>
       );
@@ -52,13 +55,14 @@ export function Button(props: AnchorProps | ButtonProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={classes}
+          onClick={onClick}
         >
           {children}
         </a>
       );
     }
     return (
-      <Link href={props.href} className={classes}>
+      <Link href={props.href} className={classes} onClick={onClick}>
         {children}
       </Link>
     );

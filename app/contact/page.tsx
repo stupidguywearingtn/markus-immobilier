@@ -17,8 +17,8 @@ const contactBreadcrumbLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://markusimmobilier.fr/" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://markusimmobilier.fr/contact" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.markusimmobilier.fr/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.markusimmobilier.fr/contact" },
   ],
 };
 
