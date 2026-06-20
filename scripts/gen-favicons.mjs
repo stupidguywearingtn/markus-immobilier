@@ -18,6 +18,7 @@ import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const APP = join(__dirname, "..", "app");
+const PUBLIC = join(__dirname, "..", "public");
 
 const ANTHRACITE = "#383E42";
 
@@ -45,9 +46,13 @@ async function pngBuffer(size) {
 }
 
 async function main() {
-  // PNG principaux
+  // PNG principaux (conventions Next App Router)
   await writeFile(join(APP, "icon.png"), await pngBuffer(512));
   await writeFile(join(APP, "apple-icon.png"), await pngBuffer(180));
+
+  // Icônes manifest (Android / PWA / écran d'accueil) — URLs stables dans public/
+  await writeFile(join(PUBLIC, "icon-192.png"), await pngBuffer(192));
+  await writeFile(join(PUBLIC, "icon-512.png"), await pngBuffer(512));
 
   // favicon.ico multi-tailles
   const ico = await pngToIco([
@@ -57,7 +62,9 @@ async function main() {
   ]);
   await writeFile(join(APP, "favicon.ico"), ico);
 
-  console.log("✓ Favicons générés : app/icon.png (512), app/apple-icon.png (180), app/favicon.ico (16/32/48)");
+  console.log(
+    "✓ Favicons générés : app/icon.png (512), app/apple-icon.png (180), app/favicon.ico (16/32/48), public/icon-192.png, public/icon-512.png",
+  );
 }
 
 main().catch((e) => {
