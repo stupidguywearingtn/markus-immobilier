@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -138,6 +139,9 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
+        {/* Vercel Speed Insights — Core Web Vitals, cookieless.
+            À activer aussi dans Vercel : projet → Speed Insights → Enable. */}
+        <SpeedInsights />
       </body>
     </html>
   );
