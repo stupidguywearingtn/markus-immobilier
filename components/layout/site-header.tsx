@@ -49,6 +49,12 @@ export function SiteHeader() {
             FR / EN
           </button>
           <Link
+            href="/blog"
+            className="text-[11.5px] font-semibold uppercase tracking-[0.12em] opacity-90 hover:opacity-100 hover:text-sauge transition"
+          >
+            Blog
+          </Link>
+          <Link
             href="/contact"
             className="text-[11.5px] font-semibold uppercase tracking-[0.12em] opacity-90 hover:opacity-100 hover:text-sauge transition"
           >
@@ -122,6 +128,13 @@ export function SiteHeader() {
       {/* Mobile menu dropdown — MAJUSCULES aussi */}
       {open && (
         <div className="md:hidden bg-anthracite border-t border-white/10 px-5 py-5 flex flex-col gap-1">
+          <Link
+            href="/blog"
+            onClick={() => setOpen(false)}
+            className="text-[12.5px] font-semibold uppercase tracking-[0.12em] py-3 border-b border-white/10"
+          >
+            Blog
+          </Link>
           <Link
             href="/contact"
             onClick={() => setOpen(false)}

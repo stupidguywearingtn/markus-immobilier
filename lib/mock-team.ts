@@ -23,8 +23,8 @@ export const TEAM: TeamMember[] = [
     poste: "CEO – Agent immobilier",
     email: "tony.pistilli@markusimmobilier.fr",
     telephone: "06 81 78 77 40",
-    // Nom exact du fichier livré (avec espaces — sera URL-encodé par le navigateur)
-    photo: "/WhatsApp Image 2026-06-03 at 13.26.07.jpeg",
+    // Déposer la nouvelle photo de Tony ici : public/equipe/tony-pistilli.jpg
+    photo: "/equipe/tony-pistilli.jpg",
     avatarTone: "anthracite",
   },
   {

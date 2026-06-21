@@ -2,16 +2,16 @@ import Link from "next/link";
 import { LogoFull } from "@/components/ui/logo";
 
 const SERVICES = [
-  { href: "/annonces?type=vente", label: "Acheter" },
-  { href: "/annonces?type=location", label: "Louer" },
-  { href: "/faire-gerer", label: "Faire gérer" },
+  { href: "/vendre", label: "Vendre" },
+  { href: "/acheter", label: "Acheter" },
+  { href: "/gestion-locative", label: "Gestion locative" },
   { href: "/estimation", label: "Estimation" },
 ];
 
 const AGENCE = [
-  { href: "/#agence", label: "Notre agence" },
+  { href: "/agence-immobiliere-villeurbanne", label: "Agence Villeurbanne" },
   { href: "/equipe", label: "Notre équipe" },
-  { href: "/#avis", label: "Nos avis clients" },
+  { href: "/blog", label: "Blog" },
   { href: "/honoraires", label: "Nos honoraires" },
   { href: "/recrutement", label: "Recrutement" },
 ];

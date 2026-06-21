@@ -46,24 +46,21 @@ async function pngBuffer(size) {
 }
 
 async function main() {
-  // PNG principaux (conventions Next App Router)
-  await writeFile(join(APP, "icon.png"), await pngBuffer(512));
-  await writeFile(join(APP, "apple-icon.png"), await pngBuffer(180));
-
-  // Icônes manifest (Android / PWA / écran d'accueil) — URLs stables dans public/
-  await writeFile(join(PUBLIC, "icon-192.png"), await pngBuffer(192));
-  await writeFile(join(PUBLIC, "icon-512.png"), await pngBuffer(512));
-
-  // favicon.ico multi-tailles
-  const ico = await pngToIco([
+  // Tous les fichiers dans public/ → URLs stables, sans hash, et balises <link>
+  // contrôlées explicitement via metadata.icons (app/layout.tsx).
+  // Safari iOS va chercher /favicon.ico à la racine → un vrai .ico ici.
+  await writeFile(join(PUBLIC, "favicon.ico"), await pngToIco([
     await pngBuffer(16),
     await pngBuffer(32),
     await pngBuffer(48),
-  ]);
-  await writeFile(join(APP, "favicon.ico"), ico);
+  ]));
+  await writeFile(join(PUBLIC, "icon.png"), await pngBuffer(512));
+  await writeFile(join(PUBLIC, "apple-icon.png"), await pngBuffer(180));
+  await writeFile(join(PUBLIC, "icon-192.png"), await pngBuffer(192));
+  await writeFile(join(PUBLIC, "icon-512.png"), await pngBuffer(512));
 
   console.log(
-    "✓ Favicons générés : app/icon.png (512), app/apple-icon.png (180), app/favicon.ico (16/32/48), public/icon-192.png, public/icon-512.png",
+    "✓ Favicons générés dans public/ : favicon.ico (16/32/48), icon.png (512), apple-icon.png (180), icon-192.png, icon-512.png",
   );
 }
 

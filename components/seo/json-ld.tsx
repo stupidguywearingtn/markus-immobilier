@@ -11,7 +11,21 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-const BASE = "https://www.markusimmobilier.fr";
+export const BASE = "https://www.markusimmobilier.fr";
+
+const PROVIDER = {
+  "@type": "RealEstateAgent",
+  name: "Markus Immobilier",
+  telephone: "+33478371367",
+  url: BASE,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "87 rue Édouard Vaillant",
+    addressLocality: "Villeurbanne",
+    postalCode: "69100",
+    addressCountry: "FR",
+  },
+};
 
 /** Fil d'Ariane structuré pour une page interne. */
 export function breadcrumbLd(
@@ -26,5 +40,24 @@ export function breadcrumbLd(
       name: it.name,
       item: `${BASE}${it.path}`,
     })),
+  };
+}
+
+/** Service immobilier structuré (pages /vendre, /acheter, /gestion-locative…). */
+export function serviceLd(opts: {
+  name: string;
+  serviceType: string;
+  description: string;
+  path: string;
+}): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: opts.name,
+    serviceType: opts.serviceType,
+    description: opts.description,
+    areaServed: ["Villeurbanne", "Lyon", "Métropole de Lyon"],
+    url: `${BASE}${opts.path}`,
+    provider: PROVIDER,
   };
 }

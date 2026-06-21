@@ -24,6 +24,10 @@
 - **SEO** : metadata par page (titres/descriptions localisés Lyon/Villeurbanne), **canonicals** sur pages clés, `metadataBase`/sitemap/robots/OG sur **https://www.markusimmobilier.fr**, **image OG de marque** `app/opengraph-image.tsx` (1200×630), JSON-LD `RealEstateAgent` (layout) + `Service` & `BreadcrumbList` (/estimation, /contact), robots bloque `/api`, `/espace-client`, `/radar`, `/admin`.
 - **Analytics : Umami** (cookieless, RGPD — pas de bandeau cookies). Script dans le layout, gated sur `NEXT_PUBLIC_UMAMI_WEBSITE_ID`. Events : `estimation_lancee`, `form_contact`, `form_faire_gerer`, `form_recrutement`, `clic_telephone` (header/footer), `clic_rdv` (CTA résultat estimation). Helper `lib/track.ts` (`window.umami?.track`, ne jette jamais).
 - **Radar de prospection** (`/radar`, auth admin) : recherche live Apify Leboncoin · DVF · score inversé selon vendeur · tabs Particuliers/Concurrents · « À appeler aujourd'hui » · pagination · carte Leaflet · phone actor à la demande.
+- **Favicon raster** : `public/favicon.ico` (16/32/48) + `icon.png` (512) + `apple-icon.png` (180) + `icon-192/512.png`, M blanc sur anthracite, déclarés via `metadata.icons` (sizes=any pour Safari iOS). Manifest web `/manifest.webmanifest`. Régénérable : `npm run favicons` (sharp + png-to-ico, `scripts/gen-favicons.mjs`).
+- **Pages SEO locales** : `/vendre`, `/acheter`, `/gestion-locative`, `/agence-immobiliere-villeurbanne` (gabarit `components/layout/seo-landing.tsx`, JSON-LD Service + Breadcrumb, contenu localisé, CTA estimation/contact).
+- **Blog** : `/blog` (hub) + `/blog/[slug]` (12 articles SSG, data dans `lib/blog.ts`, rendu `components/blog/article-body.tsx`, JSON-LD BlogPosting + Breadcrumb, CTA vers page « argent »). Liens header + footer + sitemap.
+- **GSC** : balise `google-site-verification` via env `GOOGLE_SITE_VERIFICATION` (à renseigner dans Vercel quand le code GSC est dispo).
 
 ## ⏳ À FAIRE — actions utilisateur (Vercel / externe)
 
@@ -41,8 +45,13 @@
 - Passe de polish design (boutons, matière, micro-interactions) ; audit mobile + a11y + perf (next/image, Lighthouse).
 - i18n FR/EN (à valider client). Google Business Profile (côté client) pour le SEO local.
 
-## 📥 EN ATTENTE DU CLIENT
+## 📥 EN ATTENTE DU CLIENT / ACTIONS USER
 
+- **Photos à déposer dans le repo** (je ne peux pas écrire les images collées dans le chat) :
+  - `public/agence-markus.jpg` → photo de l'agence (section « Qui sommes-nous »). **Tant que le fichier n'est pas là, l'image est cassée sur la home.**
+  - `public/equipe/tony-pistilli.jpg` → nouvelle photo de Tony (carte équipe). Idem.
+- **Articles blog 2 & 9** : ajouter les vrais prix €/m² par quartier (Villeurbanne) dans `lib/blog.ts` — actuellement formulé sans chiffres inventés.
+- **Google Search Console** : créer la propriété `https://www.markusimmobilier.fr`, récupérer le code → var Vercel `GOOGLE_SITE_VERIFICATION` ; soumettre `sitemap.xml`.
 - **Photo David PISTILLI** (fallback initiales DP en attendant).
 - Photo de l'agence, vraies photos des biens, PDF honoraires officiel, **vrais mandats** (→ passer `LISTINGS_COMING_SOON` à `false`).
 - Valider la section bonus « Nos biens vendus » (parallaxe, hors trame).
