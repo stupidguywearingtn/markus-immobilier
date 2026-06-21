@@ -56,11 +56,13 @@ async function main() {
   ]));
   await writeFile(join(PUBLIC, "icon.png"), await pngBuffer(512));
   await writeFile(join(PUBLIC, "apple-icon.png"), await pngBuffer(180));
+  await writeFile(join(PUBLIC, "icon-16.png"), await pngBuffer(16));
+  await writeFile(join(PUBLIC, "icon-32.png"), await pngBuffer(32));
   await writeFile(join(PUBLIC, "icon-192.png"), await pngBuffer(192));
   await writeFile(join(PUBLIC, "icon-512.png"), await pngBuffer(512));
 
   console.log(
-    "✓ Favicons générés dans public/ : favicon.ico (16/32/48), icon.png (512), apple-icon.png (180), icon-192.png, icon-512.png",
+    "✓ Favicons générés dans public/ : favicon.ico (16/32/48), icon-16/32/192/512.png, icon.png (512), apple-icon.png (180)",
   );
 }
 

@@ -65,7 +65,7 @@ export function TeamCard({ member: m }: { member: TeamMember }) {
             src={m.photo}
             alt={`${m.prenom} ${m.nom}`}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-[center_22%]"
+            className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
           />
         ) : (
           <>

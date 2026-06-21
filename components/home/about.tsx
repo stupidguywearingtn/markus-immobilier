@@ -24,9 +24,9 @@ export function About() {
           {/* Colonne gauche : vraie photo de l'agence */}
           <Reveal>
             <div className="relative aspect-[4/5] min-h-[380px] rounded-[14px] overflow-hidden bg-gradient-to-br from-[#dfe2dd] via-[#c9cec6] to-[#b9bfb4] shadow-[0_28px_60px_-28px_rgba(56,62,66,0.35)]">
-              {/* Photo de l'agence — déposer le fichier dans public/agence-markus.jpg */}
+              {/* Photo de l'agence (public/agence.jpeg) */}
               <Image
-                src="/agence-markus.jpg"
+                src="/agence.jpeg"
                 alt="Intérieur de l'agence Markus Immobilier à Villeurbanne"
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
