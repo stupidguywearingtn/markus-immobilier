@@ -1,0 +1,25 @@
+# Markus Immobilier
+
+> Agence immobilière indépendante à Villeurbanne, intervenant à Lyon et dans le Grand Lyon. Vente, achat, location et gestion locative. Estimation immobilière gratuite en ligne en moins de 2 minutes, basée sur les ventes réelles (données DVF).
+
+## Pages principales
+- [Accueil](https://www.markusimmobilier.fr): présentation de l'agence, services et estimation gratuite
+- [Estimation gratuite](https://www.markusimmobilier.fr/estimation): outil d'estimation en ligne basé sur les transactions réelles à Villeurbanne et Lyon
+- [Vendre](https://www.markusimmobilier.fr/vendre): accompagnement à la vente d'un bien à Villeurbanne et Lyon
+- [Acheter](https://www.markusimmobilier.fr/acheter): recherche et achat de biens à Lyon et Villeurbanne
+- [Gestion locative](https://www.markusimmobilier.fr/gestion-locative): gestion locative pour propriétaires bailleurs
+- [Contact](https://www.markusimmobilier.fr/contact): adresse, téléphone et horaires de l'agence
+
+## Blog (conseils immobiliers Lyon / Villeurbanne)
+- [Estimer son bien à Lyon et Villeurbanne](https://www.markusimmobilier.fr/blog/comment-estimer-son-bien-immobilier-lyon-villeurbanne)
+- [Prix immobilier à Villeurbanne en 2026](https://www.markusimmobilier.fr/blog/prix-immobilier-villeurbanne-2026)
+- [Vendre son appartement à Lyon : les étapes](https://www.markusimmobilier.fr/blog/vendre-appartement-lyon-etapes)
+- [Frais de notaire à Lyon en 2026](https://www.markusimmobilier.fr/blog/frais-de-notaire-lyon-2026)
+- [DPE 2026 : ce qui change](https://www.markusimmobilier.fr/blog/dpe-2026-ce-qui-change)
+
+## Informations
+- Nom : Markus Immobilier (SARL)
+- Adresse : 87 rue Édouard Vaillant, 69100 Villeurbanne
+- Téléphone : 04 78 37 13 67
+- Zone d'intervention : Villeurbanne, Lyon, Grand Lyon
+- Services : estimation, vente, achat, location, gestion locative

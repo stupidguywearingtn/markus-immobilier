@@ -28,6 +28,8 @@
 - **Pages SEO locales** : `/vendre`, `/acheter`, `/gestion-locative`, `/agence-immobiliere-villeurbanne` (gabarit `components/layout/seo-landing.tsx`, JSON-LD Service + Breadcrumb, contenu localisé, CTA estimation/contact).
 - **Blog** : `/blog` (hub) + `/blog/[slug]` (12 articles SSG, data dans `lib/blog.ts`, rendu `components/blog/article-body.tsx`, JSON-LD BlogPosting + Breadcrumb, CTA vers page « argent »). Liens header + footer + sitemap.
 - **GSC** : balise `google-site-verification` via env `GOOGLE_SITE_VERIFICATION` (à renseigner dans Vercel quand le code GSC est dispo).
+- **Favicon (recette finale = TEL&CASH)** : convention de fichiers `app/favicon.ico` + `app/icon.png` + `app/apple-icon.png` (PAS de `metadata.icons` explicite → évite les balises en double, fix Safari iOS). Manifest → `public/icon-192/512.png`.
+- **GEO / IA** : `public/llms.txt` (servi sur `/llms.txt`) + **FAQ** sur la home (`components/home/faq.tsx`, 8 Q/R en `<details>` crawlables) avec **JSON-LD `FAQPage`**.
 
 ## ⏳ À FAIRE — actions utilisateur (Vercel / externe)
 

@@ -6,6 +6,7 @@ import { Team } from "@/components/home/team";
 import { SoldParallax } from "@/components/home/sold-parallax";
 import { Estimation } from "@/components/home/estimation";
 import { Reviews } from "@/components/home/reviews";
+import { Faq } from "@/components/home/faq";
 import { Social } from "@/components/home/social";
 import { Agency } from "@/components/home/agency";
 
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
  *   → Nos biens vendus (parallaxe)
  *   → Outil d'estimation
  *   → Nos avis clients
+ *   → FAQ (questions fréquentes + JSON-LD FAQPage / GEO)
  *   → Suivez-nous + Discord
  *   → Notre agence (horaires + carte)
  *   → Footer (dans le layout)
@@ -41,6 +43,7 @@ export default function HomePage() {
       <SoldParallax />
       <Estimation />
       <Reviews />
+      <Faq />
       <Social />
       <Agency />
     </>

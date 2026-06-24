@@ -43,3 +43,7 @@ test.env
 next-env.d.ts
 
 .vercel
+
+# Briefs de session (non versionnés)
+/files.zip
+/files_extracted/
