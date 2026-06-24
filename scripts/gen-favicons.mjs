@@ -49,20 +49,23 @@ async function main() {
   // Tous les fichiers dans public/ → URLs stables, sans hash, et balises <link>
   // contrôlées explicitement via metadata.icons (app/layout.tsx).
   // Safari iOS va chercher /favicon.ico à la racine → un vrai .ico ici.
-  await writeFile(join(PUBLIC, "favicon.ico"), await pngToIco([
+  // Convention de fichiers Next.js (comme TEL & CASH) : icônes dans app/.
+  // Next génère automatiquement les <link rel="icon"> / apple-touch-icon,
+  // sans metadata.icons explicite (évite les balises en double).
+  await writeFile(join(APP, "favicon.ico"), await pngToIco([
     await pngBuffer(16),
     await pngBuffer(32),
     await pngBuffer(48),
   ]));
-  await writeFile(join(PUBLIC, "icon.png"), await pngBuffer(512));
-  await writeFile(join(PUBLIC, "apple-icon.png"), await pngBuffer(180));
-  await writeFile(join(PUBLIC, "icon-16.png"), await pngBuffer(16));
-  await writeFile(join(PUBLIC, "icon-32.png"), await pngBuffer(32));
+  await writeFile(join(APP, "icon.png"), await pngBuffer(512));
+  await writeFile(join(APP, "apple-icon.png"), await pngBuffer(180));
+
+  // Icônes du manifest PWA (Android / écran d'accueil) — servies depuis public/.
   await writeFile(join(PUBLIC, "icon-192.png"), await pngBuffer(192));
   await writeFile(join(PUBLIC, "icon-512.png"), await pngBuffer(512));
 
   console.log(
-    "✓ Favicons générés dans public/ : favicon.ico (16/32/48), icon-16/32/192/512.png, icon.png (512), apple-icon.png (180)",
+    "✓ Favicons générés : app/favicon.ico (16/32/48), app/icon.png (512), app/apple-icon.png (180), public/icon-192.png, public/icon-512.png",
   );
 }
 

@@ -44,19 +44,9 @@ export const metadata: Metadata = {
     description:
       "Agence immobilière à Villeurbanne & Lyon — vente, location, gestion. Estimation gratuite en 2 minutes.",
   },
-  // Favicons déclarés EXPLICITEMENT (fichiers dans public/) — contrôle total des
-  // balises. Safari iOS va chercher /favicon.ico (rel=icon sizes=any) en priorité.
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-16.png", type: "image/png", sizes: "16x16" },
-      { url: "/icon-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
-    ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
-    shortcut: ["/favicon.ico"],
-  },
+  // Favicons : auto-détectés par Next via app/favicon.ico, app/icon.png (onglet)
+  // et app/apple-icon.png (apple-touch-icon / écran d'accueil iOS) — même recette
+  // que TEL & CASH. Pas de metadata.icons explicite (évite les balises en double).
   // Vérification Google Search Console — pose le code dans la var d'env
   // GOOGLE_SITE_VERIFICATION (Vercel). Rend <meta name="google-site-verification">.
   ...(process.env.GOOGLE_SITE_VERIFICATION
