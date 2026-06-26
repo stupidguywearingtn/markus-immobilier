@@ -6,6 +6,7 @@ const SERVICES = [
   { href: "/acheter", label: "Acheter" },
   { href: "/gestion-locative", label: "Gestion locative" },
   { href: "/estimation", label: "Estimation" },
+  { href: "/estimation-immobiliere-lyon", label: "Estimation à Lyon" },
 ];
 
 const AGENCE = [

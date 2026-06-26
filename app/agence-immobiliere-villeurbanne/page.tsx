@@ -58,13 +58,17 @@ export default function AgenceVilleurbannePage() {
           },
           {
             eyebrow: "Notre secteur",
-            h2: "Villeurbanne et la métropole de Lyon",
+            h2: "Villeurbanne, quartier par quartier",
             body: (
               <p>
-                Gratte-Ciel, Charpennes, Cusset, Le Tonkin, Les Brosses… mais aussi
-                Lyon 3, Lyon 6 et la métropole : chaque quartier a sa dynamique et ses
-                niveaux de prix. Notre implantation locale nous permet d'estimer juste
-                et de conseiller avec précision.
+                Chaque quartier de Villeurbanne a sa dynamique et ses niveaux de
+                prix. On intervient notamment à{" "}
+                <a href="/agence-immobiliere-gratte-ciel" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">Gratte-Ciel</a>,{" "}
+                <a href="/agence-immobiliere-charpennes" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">Charpennes</a> et{" "}
+                <a href="/agence-immobiliere-cusset" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">Cusset</a>,
+                mais aussi au Tonkin, aux Brosses, et plus largement sur Lyon et la
+                métropole. Notre implantation locale nous permet d'estimer juste et
+                de conseiller avec précision.
               </p>
             ),
           },

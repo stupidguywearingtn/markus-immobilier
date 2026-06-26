@@ -368,10 +368,352 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Un conseiller local vous aide à repérer les bonnes opportunités et à sécuriser chaque étape." },
     ],
   },
+  {
+    slug: "taxe-fonciere-vente-qui-paie",
+    title: "Taxe foncière et vente : qui paie quoi en 2026 ?",
+    metaDescription:
+      "En cas de vente, qui paie la taxe foncière ? Règle légale, prorata dans le compromis et exemple de calcul.",
+    h1: "Taxe foncière et vente : qui paie quoi ?",
+    excerpt:
+      "Le propriétaire au 1er janvier paie la taxe foncière de l'année entière. Comment se règle le prorata entre vendeur et acheteur.",
+    date: "2026-06-25",
+    internalHref: "/vendre",
+    internalLabel: "Faire estimer mon bien avant de vendre",
+    blocks: [
+      { type: "p", text: "**Le propriétaire au 1er janvier paie la taxe foncière de toute l'année.** C'est la règle légale : même si vous vendez en mars, c'est vous (le vendeur) qui recevez l'avis et qui êtes redevable pour l'année entière auprès du fisc." },
+      { type: "h2", text: "Le prorata, en pratique" },
+      { type: "p", text: "Dans les faits, la plupart des compromis de vente prévoient un **partage au prorata** : l'acheteur rembourse au vendeur la part correspondant à la période où il sera propriétaire. Ce n'est pas une obligation légale, mais un accord privé inscrit dans l'acte — à négocier au moment de la vente." },
+      { type: "h2", text: "Exemple" },
+      { type: "p", text: "Taxe foncière annuelle de 1 200 €, vente signée le 1er juillet. Le vendeur a payé l'année entière ; l'acheteur lui rembourse 6 mois, soit 600 €." },
+      { type: "h2", text: "À retenir" },
+      { type: "p", text: "Vérifiez que ce prorata est bien prévu dans le compromis : c'est souvent oublié, et cela évite les mauvaises surprises." },
+    ],
+  },
+  {
+    slug: "plus-value-immobiliere-calcul",
+    title: "Plus-value immobilière : calcul et exonérations (2026)",
+    metaDescription:
+      "Comment se calcule la plus-value immobilière, qui est exonéré et comment réduire l'impôt ? Le guide clair pour les vendeurs.",
+    h1: "Plus-value immobilière : calcul et exonérations",
+    excerpt:
+      "La plus-value est la différence entre prix de vente et prix d'achat. Qui est exonéré, à quel taux, et les abattements pour durée de détention.",
+    date: "2026-06-11",
+    internalHref: "/vendre",
+    internalLabel: "Estimer la valeur de mon bien",
+    blocks: [
+      { type: "p", text: "**La plus-value, c'est la différence entre votre prix de vente et votre prix d'achat** (majoré des frais et des travaux). Elle est imposée… sauf dans le cas le plus courant : la résidence principale." },
+      { type: "h2", text: "Qui est exonéré ?" },
+      { type: "p", text: "La vente de votre **résidence principale est totalement exonérée** de plus-value. L'impôt ne concerne que les **résidences secondaires** et les **biens locatifs**." },
+      { type: "h2", text: "Le taux" },
+      { type: "p", text: "Sur un bien imposable : **19 % d'impôt sur le revenu + 17,2 % de prélèvements sociaux**, soit 36,2 % de la plus-value." },
+      { type: "h2", text: "Les abattements pour durée de détention" },
+      { type: "p", text: "Plus vous gardez le bien longtemps, moins vous payez :" },
+      { type: "ul", items: [
+        "**Exonération totale d'impôt sur le revenu à partir de 22 ans** de détention.",
+        "**Exonération des prélèvements sociaux à partir de 30 ans.**",
+      ] },
+      { type: "p", text: "Les travaux et les frais d'acquisition viennent réduire la plus-value imposable." },
+    ],
+  },
+  {
+    slug: "vendre-sans-agence",
+    title: "Vendre sans agence : bonne ou mauvaise idée ?",
+    metaDescription:
+      "Vendre son bien seul (de particulier à particulier) : les vrais avantages, les risques et quand il vaut mieux passer par une agence.",
+    h1: "Vendre sans agence : bonne ou mauvaise idée ?",
+    excerpt:
+      "Vendre seul économise la commission, mais vous gérez tout — et une erreur de prix coûte souvent plus que les honoraires.",
+    date: "2026-05-28",
+    internalHref: "/vendre",
+    internalLabel: "Être accompagné pour ma vente",
+    blocks: [
+      { type: "p", text: "**Vendre sans agence permet d'économiser la commission, mais vous prenez en charge tout le processus** — et une erreur de prix coûte souvent plus cher que les honoraires économisés." },
+      { type: "h2", text: "L'avantage" },
+      { type: "p", text: "Pas de commission d'agence (souvent 4 à 6 % du prix)." },
+      { type: "h2", text: "Ce que vous devez gérer seul" },
+      { type: "p", text: "L'estimation juste, les diagnostics, la rédaction de l'annonce, les photos, la diffusion, les visites, le tri des acheteurs, la négociation et toute la partie juridique jusqu'au compromis." },
+      { type: "h2", text: "Le vrai risque" },
+      { type: "p", text: "Un bien **mal estimé** stagne ou se vend en dessous de sa valeur. Une agence apporte le prix juste, un réseau d'acheteurs qualifiés et la sécurité juridique — ce qui compense souvent largement sa commission." },
+      { type: "h2", text: "Pour qui ça marche ?" },
+      { type: "p", text: "Si vous avez du temps, un bien facile à vendre et de bonnes notions juridiques. Sinon, l'accompagnement est vite rentable." },
+    ],
+  },
+  {
+    slug: "home-staging-vendre-plus-cher",
+    title: "Home staging : 8 gestes qui font vendre plus cher",
+    metaDescription:
+      "Le home staging valorise votre bien pour vendre plus vite et plus cher. Découvrez 8 gestes simples et peu coûteux.",
+    h1: "Home staging : 8 gestes qui font vendre plus cher",
+    excerpt:
+      "Mettre en valeur un bien pour que l'acheteur s'y projette, sans gros travaux. Les 8 gestes essentiels.",
+    date: "2026-05-14",
+    internalHref: "/vendre",
+    internalLabel: "Préparer la vente de mon bien",
+    blocks: [
+      { type: "p", text: "**Le home staging consiste à mettre en valeur un bien pour que l'acheteur s'y projette** — sans gros travaux, juste de la présentation. Un bien « prêt à vivre » se vend plus vite et souvent plus cher." },
+      { type: "h2", text: "Les 8 gestes essentiels" },
+      { type: "ol", items: [
+        "**Désencombrer** : retirer le superflu pour agrandir visuellement.",
+        "**Dépersonnaliser** : enlever photos et objets trop personnels.",
+        "**Réparer** les petits défauts (poignée, joint, peinture écaillée).",
+        "**Neutraliser les couleurs** : des tons clairs et neutres.",
+        "**Maximiser la lumière** : rideaux ouverts, ampoules puissantes.",
+        "**Ranger et nettoyer** à fond, surtout cuisine et salle de bain.",
+        "**Neutraliser les odeurs** (aération, pas de tabac).",
+        "**Soigner les photos** : c'est la première impression en ligne.",
+      ] },
+    ],
+  },
+  {
+    slug: "mandat-simple-ou-exclusif",
+    title: "Mandat simple ou exclusif : lequel choisir pour vendre ?",
+    metaDescription:
+      "Mandat simple ou mandat exclusif : différences, avantages et inconvénients pour vendre votre bien au meilleur prix.",
+    h1: "Mandat simple ou exclusif : lequel choisir ?",
+    excerpt:
+      "Le mandat simple ouvre à plusieurs agences ; l'exclusif en confie une seule. Lequel vend le mieux, et pourquoi.",
+    date: "2026-04-30",
+    internalHref: "/vendre",
+    internalLabel: "Discuter de la vente de mon bien",
+    blocks: [
+      { type: "p", text: "**Le mandat simple vous laisse confier le bien à plusieurs agences (et le vendre vous-même) ; le mandat exclusif le confie à une seule agence.** Chacun a sa logique." },
+      { type: "h2", text: "Le mandat simple" },
+      { type: "p", text: "Vous multipliez les canaux. Mais en pratique, un bien « partout » paraît moins exclusif, les agences s'y investissent moins, et le même bien à des prix différents brouille les acheteurs." },
+      { type: "h2", text: "Le mandat exclusif" },
+      { type: "p", text: "Une seule agence, donc un engagement fort : plus de moyens, un suivi dédié, une stratégie claire. Les biens en exclusivité se vendent souvent **plus vite et à un meilleur prix**, car l'agence concentre ses efforts." },
+      { type: "h2", text: "Notre conseil" },
+      { type: "p", text: "L'exclusif est généralement plus efficace, à condition de choisir une agence en qui vous avez confiance." },
+    ],
+  },
+  {
+    slug: "compromis-de-vente-delais",
+    title: "Compromis de vente : délais, rétractation et points de vigilance",
+    metaDescription:
+      "Compromis de vente : ce que c'est, le délai de rétractation de 10 jours, les conditions suspensives et le délai jusqu'à l'acte.",
+    h1: "Compromis de vente : délais et rétractation",
+    excerpt:
+      "L'avant-contrat qui engage vendeur et acheteur. Délai de rétractation, conditions suspensives et délai jusqu'à l'acte.",
+    date: "2026-04-16",
+    internalHref: "/acheter",
+    internalLabel: "Acheter avec un accompagnement",
+    blocks: [
+      { type: "p", text: "**Le compromis de vente est l'avant-contrat qui engage vendeur et acheteur ; l'acheteur dispose ensuite d'un délai de rétractation de 10 jours.** C'est une étape clé, à comprendre avant de signer." },
+      { type: "h2", text: "Le délai de rétractation" },
+      { type: "p", text: "Après la signature, l'**acheteur a 10 jours** pour se rétracter sans justification ni pénalité. Le vendeur, lui, est engagé dès la signature." },
+      { type: "h2", text: "Les conditions suspensives" },
+      { type: "p", text: "Le compromis prévoit des conditions qui annulent la vente si elles ne se réalisent pas — la principale étant l'**obtention du prêt** par l'acheteur. Si la banque refuse, la vente est annulée et le dépôt restitué." },
+      { type: "h2", text: "Le délai jusqu'à l'acte" },
+      { type: "p", text: "Comptez généralement **2 à 3 mois** entre le compromis et la signature de l'acte authentique chez le notaire (le temps des vérifications et du financement)." },
+    ],
+  },
+  {
+    slug: "faire-offre-achat",
+    title: "Faire une offre d'achat : montant, lettre et négociation",
+    metaDescription:
+      "Comment faire une offre d'achat immobilière : la formuler par écrit, fixer le montant, sa valeur d'engagement et bien négocier.",
+    h1: "Faire une offre d'achat : le bon réflexe",
+    excerpt:
+      "Formuler une offre par écrit avec prix, durée et conditions. Sa valeur d'engagement et comment bien négocier.",
+    date: "2026-04-02",
+    internalHref: "/acheter",
+    internalLabel: "Trouver le bon bien avec notre équipe",
+    blocks: [
+      { type: "p", text: "**Une offre d'achat se formule de préférence par écrit, avec un prix, une durée de validité et les conditions (notamment le financement).** Bien faite, elle vous positionne sérieusement sans vous piéger." },
+      { type: "h2", text: "Le montant" },
+      { type: "p", text: "Vous pouvez proposer au prix ou en dessous. Une offre trop basse peut vexer ; une offre au prix sécurise le bien si d'autres acheteurs sont intéressés." },
+      { type: "h2", text: "Sa valeur d'engagement" },
+      { type: "p", text: "Une offre **acceptée au prix** engage les deux parties. Mentionnez vos conditions (obtention de prêt) pour vous protéger." },
+      { type: "h2", text: "Bien négocier" },
+      { type: "p", text: "Appuyez-vous sur des éléments concrets : travaux à prévoir, DPE, durée de mise en vente, prix du secteur. Une négociation argumentée passe mieux qu'un simple « c'est trop cher »." },
+    ],
+  },
+  {
+    slug: "capacite-emprunt-immobilier",
+    title: "Capacité d'emprunt : combien pouvez-vous acheter ?",
+    metaDescription:
+      "Comment calculer sa capacité d'emprunt immobilier : taux d'endettement de 35 %, durée, apport et reste à vivre. Avec exemple.",
+    h1: "Capacité d'emprunt : combien pouvez-vous acheter ?",
+    excerpt:
+      "Votre capacité dépend du taux d'endettement (35 % max), de la durée, de l'apport et du reste à vivre. Exemple chiffré.",
+    date: "2026-03-19",
+    internalHref: "/acheter",
+    internalLabel: "Définir mon projet d'achat",
+    blocks: [
+      { type: "p", text: "**Votre capacité d'emprunt dépend surtout de votre taux d'endettement, plafonné à 35 % de vos revenus (assurance comprise).** C'est la première chose à calculer avant de chercher un bien." },
+      { type: "h2", text: "La règle des 35 %" },
+      { type: "p", text: "Vos mensualités de crédit (assurance incluse) ne doivent pas dépasser **35 % de vos revenus nets**. La durée maximale est généralement de **25 ans**." },
+      { type: "h2", text: "Ce qui compte aussi" },
+      { type: "ul", items: [
+        "**L'apport** : idéalement 10 % minimum pour couvrir les frais de notaire.",
+        "**Le reste à vivre** : ce qu'il vous reste après le crédit.",
+      ] },
+      { type: "h2", text: "Exemple" },
+      { type: "p", text: "Pour 3 500 € de revenus nets, la mensualité maximale est d'environ **1 225 €**, ce qui ouvre une capacité d'emprunt cohérente selon la durée et le taux." },
+    ],
+  },
+  {
+    slug: "charges-copropriete",
+    title: "Charges de copropriété : ce qui est compris (et ce qui ne l'est pas)",
+    metaDescription:
+      "Que couvrent les charges de copropriété ? Charges courantes, exceptionnelles, qui paie quoi et comment les vérifier avant d'acheter.",
+    h1: "Charges de copropriété : ce qui est compris",
+    excerpt:
+      "Les charges couvrent l'entretien des parties communes. Courantes, exceptionnelles, et ce qu'il faut vérifier avant d'acheter.",
+    date: "2026-03-05",
+    internalHref: "/acheter",
+    internalLabel: "Acheter en toute sérénité",
+    blocks: [
+      { type: "p", text: "**Les charges de copropriété couvrent l'entretien et le fonctionnement des parties communes ; leur montant varie fortement selon les équipements de l'immeuble.** Avant d'acheter, c'est un poste à examiner de près." },
+      { type: "h2", text: "Les charges courantes" },
+      { type: "p", text: "Entretien des parties communes, ascenseur, chauffage collectif éventuel, gardiennage, espaces verts, honoraires du syndic, assurance de l'immeuble." },
+      { type: "h2", text: "Les charges exceptionnelles" },
+      { type: "p", text: "Les **gros travaux** (ravalement, toiture…) votés en assemblée générale. Demandez les PV des 3 dernières AG pour connaître les travaux prévus." },
+      { type: "h2", text: "Avant d'acheter" },
+      { type: "p", text: "Vérifiez le montant annuel des charges et les travaux votés : un immeuble avec piscine ou gardien coûte bien plus qu'une petite copropriété." },
+    ],
+  },
+  {
+    slug: "cout-gestion-locative",
+    title: "Gestion locative : combien ça coûte vraiment ?",
+    metaDescription:
+      "Quel est le coût d'une gestion locative en agence ? Pourcentage des loyers, services inclus, garantie loyers impayés et déductibilité.",
+    h1: "Gestion locative : combien ça coûte vraiment ?",
+    excerpt:
+      "En général 6 à 8 % TTC des loyers encaissés, en partie déductibles. Ce que ça inclut et la garantie loyers impayés.",
+    date: "2026-02-19",
+    internalHref: "/gestion-locative",
+    internalLabel: "Découvrir notre gestion locative",
+    blocks: [
+      { type: "p", text: "**Une agence facture généralement entre 6 et 8 % TTC des loyers encaissés pour gérer votre bien.** En échange, elle s'occupe de tout — et ces frais sont en partie déductibles de vos revenus fonciers." },
+      { type: "h2", text: "Ce que ça inclut" },
+      { type: "p", text: "Recherche et sélection du locataire, rédaction du bail, états des lieux, encaissement des loyers, quittances, gestion des sinistres et des impayés, suivi des obligations légales." },
+      { type: "h2", text: "Les options" },
+      { type: "p", text: "La **garantie loyers impayés (GLI)** peut s'ajouter pour sécuriser vos revenus en cas de défaut du locataire." },
+      { type: "h2", text: "Le bon calcul" },
+      { type: "p", text: "Le coût se compare au temps et au risque que vous évitez. Pour un propriétaire occupé ou éloigné, déléguer est vite rentable." },
+    ],
+  },
+  {
+    slug: "rentabilite-locative-lyon",
+    title: "Rentabilité locative à Lyon : comment la calculer",
+    metaDescription:
+      "Calculer la rentabilité locative d'un bien à Lyon ou Villeurbanne : rendement brut, net, et exemple chiffré pour bien investir.",
+    h1: "Rentabilité locative à Lyon : comment la calculer",
+    excerpt:
+      "Rendement brut = loyer annuel ÷ prix d'achat × 100. Mais c'est le net qui compte. Exemple chiffré à Lyon.",
+    date: "2026-02-05",
+    internalHref: "/gestion-locative",
+    internalLabel: "Estimer un bien avant d'investir",
+    blocks: [
+      { type: "p", text: "**La rentabilité brute se calcule en divisant le loyer annuel par le prix d'achat, multiplié par 100.** Mais c'est la rentabilité nette qui compte vraiment." },
+      { type: "h2", text: "Le rendement brut" },
+      { type: "p", text: "(Loyer mensuel × 12) ÷ prix d'achat × 100. Exemple : un studio à 150 000 € loué 650 €/mois → (7 800 ÷ 150 000) × 100 = **5,2 %** brut." },
+      { type: "h2", text: "Le rendement net" },
+      { type: "p", text: "Déduisez les charges non récupérables, la taxe foncière, l'assurance, les éventuels frais de gestion et la vacance locative. Le net est souvent de 1 à 2 points en dessous du brut." },
+      { type: "h2", text: "À Lyon et Villeurbanne" },
+      { type: "p", text: "La forte demande locative (étudiants, actifs) limite la vacance, ce qui sécurise le rendement. Les petites surfaces bien placées offrent souvent la meilleure rentabilité." },
+    ],
+  },
+  {
+    slug: "questions-a-poser-visite",
+    title: "Visite d'un bien : les 15 questions à poser",
+    metaDescription:
+      "La check-list des 15 questions essentielles à poser lors de la visite d'un appartement ou d'une maison avant d'acheter.",
+    h1: "Visite d'un bien : les 15 questions à poser",
+    excerpt:
+      "Les bonnes questions révèlent les vrais coûts et les problèmes éventuels. La check-list à garder en tête en visite.",
+    date: "2026-01-22",
+    internalHref: "/acheter",
+    internalLabel: "Acheter avec notre accompagnement",
+    blocks: [
+      { type: "p", text: "**Avant de faire une offre, posez les bonnes questions : elles révèlent les vrais coûts et les éventuels problèmes.** Voici la check-list à garder en tête." },
+      { type: "h2", text: "Sur le bien" },
+      { type: "ol", items: [
+        "Quelle est la raison de la vente ?",
+        "Depuis quand est-il en vente ?",
+        "Quel est le DPE ?",
+        "Des travaux récents ont-ils été faits ?",
+        "L'isolation et le chauffage ?",
+        "Y a-t-il des traces d'humidité ?",
+      ] },
+      { type: "h2", text: "Sur les coûts" },
+      { type: "ol", items: [
+        "Montant de la taxe foncière ?",
+        "Montant des charges de copropriété ?",
+        "Des travaux sont-ils votés en AG ?",
+        "Coût moyen de l'énergie ?",
+      ] },
+      { type: "h2", text: "Sur l'environnement" },
+      { type: "ol", items: [
+        "Le quartier est-il calme ?",
+        "Quels commerces et transports à proximité ?",
+        "Des projets de construction prévus ?",
+        "Problèmes de voisinage ?",
+        "Stationnement ?",
+      ] },
+    ],
+  },
+  {
+    slug: "loi-carrez-surface",
+    title: "Loi Carrez : comment se mesure la surface d'un bien",
+    metaDescription:
+      "La loi Carrez explique le calcul de la surface en copropriété : ce qui compte, ce qui est exclu et les sanctions en cas d'erreur.",
+    h1: "Loi Carrez : comment se mesure la surface",
+    excerpt:
+      "La surface privative exacte en copropriété : ce qui compte (≥ 1,80 m), ce qui est exclu, et la sanction en cas d'erreur.",
+    date: "2026-01-15",
+    internalHref: "/estimation",
+    internalLabel: "Estimer la valeur de mon bien",
+    blocks: [
+      { type: "p", text: "**La loi Carrez impose d'indiquer la surface privative exacte d'un bien en copropriété lors de la vente.** Elle ne compte que les surfaces dont la hauteur sous plafond dépasse 1,80 m." },
+      { type: "h2", text: "Ce qui est compté" },
+      { type: "p", text: "Les pièces avec une **hauteur sous plafond ≥ 1,80 m**, une fois déduits murs, cloisons, gaines et cages d'escalier." },
+      { type: "h2", text: "Ce qui est exclu" },
+      { type: "p", text: "Caves, garages, parkings, terrasses, balcons, et les surfaces sous 1,80 m." },
+      { type: "h2", text: "En cas d'erreur" },
+      { type: "p", text: "Si la surface réelle est **inférieure de plus de 5 %** à celle annoncée, l'acheteur peut demander une réduction du prix proportionnelle. D'où l'importance d'un mesurage fiable." },
+    ],
+  },
+  {
+    slug: "lmnp-location-meublee",
+    title: "LMNP : le statut idéal pour louer en meublé ?",
+    metaDescription:
+      "Le statut LMNP (loueur meublé non professionnel) : conditions, régimes micro-BIC et réel, et avantages fiscaux pour louer en meublé.",
+    h1: "LMNP : le statut idéal pour louer en meublé ?",
+    excerpt:
+      "Louer en meublé avec une fiscalité avantageuse. Conditions, régimes micro-BIC et réel, et l'intérêt fiscal.",
+    date: "2026-01-08",
+    internalHref: "/gestion-locative",
+    internalLabel: "Faire gérer mon bien en location",
+    blocks: [
+      { type: "p", text: "**Le statut LMNP (loueur meublé non professionnel) permet de louer un logement meublé avec une fiscalité avantageuse sur les loyers.** C'est l'un des montages préférés des investisseurs." },
+      { type: "h2", text: "Les conditions" },
+      { type: "p", text: "Louer un logement **meublé** (équipement suffisant pour y vivre), avec des recettes locatives qui restent sous le seuil du professionnel." },
+      { type: "h2", text: "Les deux régimes" },
+      { type: "ul", items: [
+        "**Micro-BIC** : un abattement forfaitaire de 50 % sur les loyers. Simple, sans comptabilité lourde.",
+        "**Réel** : vous déduisez les charges réelles et **amortissez** le bien et le mobilier — souvent plus avantageux, mais avec une comptabilité.",
+      ] },
+      { type: "h2", text: "L'intérêt" },
+      { type: "p", text: "Bien optimisé, le LMNP permet de réduire fortement (voire d'annuler) l'impôt sur les loyers pendant des années." },
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug);
+}
+
+/**
+ * Articles liés : ceux qui partagent la même page « argent » (internalHref),
+ * du plus récent au plus ancien, hors article courant. Maillage interne.
+ */
+export function getRelatedArticles(slug: string, n = 2): Article[] {
+  const current = getArticle(slug);
+  if (!current) return [];
+  return getArticlesSorted()
+    .filter((a) => a.slug !== slug && a.internalHref === current.internalHref)
+    .slice(0, n);
 }
 
 /** Articles triés du plus récent au plus ancien (pour le hub). */

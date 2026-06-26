@@ -5,10 +5,17 @@
 ## Pages principales
 - [Accueil](https://www.markusimmobilier.fr): présentation de l'agence, services et estimation gratuite
 - [Estimation gratuite](https://www.markusimmobilier.fr/estimation): outil d'estimation en ligne basé sur les transactions réelles à Villeurbanne et Lyon
+- [Estimation immobilière à Lyon](https://www.markusimmobilier.fr/estimation-immobiliere-lyon): estimation gratuite d'un bien à Lyon, basée sur les ventes réelles
 - [Vendre](https://www.markusimmobilier.fr/vendre): accompagnement à la vente d'un bien à Villeurbanne et Lyon
 - [Acheter](https://www.markusimmobilier.fr/acheter): recherche et achat de biens à Lyon et Villeurbanne
 - [Gestion locative](https://www.markusimmobilier.fr/gestion-locative): gestion locative pour propriétaires bailleurs
 - [Contact](https://www.markusimmobilier.fr/contact): adresse, téléphone et horaires de l'agence
+
+## Pages locales (Villeurbanne et quartiers)
+- [Agence immobilière à Villeurbanne](https://www.markusimmobilier.fr/agence-immobiliere-villeurbanne): agence locale, services et secteur d'intervention
+- [Agence immobilière Gratte-Ciel](https://www.markusimmobilier.fr/agence-immobiliere-gratte-ciel): immobilier dans le quartier Gratte-Ciel à Villeurbanne
+- [Agence immobilière Charpennes](https://www.markusimmobilier.fr/agence-immobiliere-charpennes): immobilier dans le quartier Charpennes à Villeurbanne
+- [Agence immobilière Cusset](https://www.markusimmobilier.fr/agence-immobiliere-cusset): immobilier dans le quartier Cusset à Villeurbanne
 
 ## Blog (conseils immobiliers Lyon / Villeurbanne)
 - [Estimer son bien à Lyon et Villeurbanne](https://www.markusimmobilier.fr/blog/comment-estimer-son-bien-immobilier-lyon-villeurbanne)
@@ -16,6 +23,11 @@
 - [Vendre son appartement à Lyon : les étapes](https://www.markusimmobilier.fr/blog/vendre-appartement-lyon-etapes)
 - [Frais de notaire à Lyon en 2026](https://www.markusimmobilier.fr/blog/frais-de-notaire-lyon-2026)
 - [DPE 2026 : ce qui change](https://www.markusimmobilier.fr/blog/dpe-2026-ce-qui-change)
+- [Plus-value immobilière : calcul et exonérations](https://www.markusimmobilier.fr/blog/plus-value-immobiliere-calcul)
+- [Taxe foncière et vente : qui paie quoi](https://www.markusimmobilier.fr/blog/taxe-fonciere-vente-qui-paie)
+- [Capacité d'emprunt : combien pouvez-vous acheter](https://www.markusimmobilier.fr/blog/capacite-emprunt-immobilier)
+- [Rentabilité locative à Lyon : comment la calculer](https://www.markusimmobilier.fr/blog/rentabilite-locative-lyon)
+- [LMNP : louer en meublé](https://www.markusimmobilier.fr/blog/lmnp-location-meublee)
 
 ## Informations
 - Nom : Markus Immobilier (SARL)

@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button, ArrowRight } from "@/components/ui/button";
 import { ArticleBody } from "@/components/blog/article-body";
 import { JsonLd, breadcrumbLd, BASE } from "@/components/seo/json-ld";
-import { ARTICLES, getArticle } from "@/lib/blog";
+import { ARTICLES, getArticle, getRelatedArticles } from "@/lib/blog";
 
 export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
@@ -49,6 +49,8 @@ export default async function ArticlePage({
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) notFound();
+
+  const related = getRelatedArticles(a.slug, 2);
 
   const blogPostingLd = {
     "@context": "https://schema.org",
@@ -101,7 +103,7 @@ export default async function ArticlePage({
             <span className="mx-1.5">/</span>
             <Link href="/blog" className="hover:text-blanc transition">Blog</Link>
           </nav>
-          <Eyebrow className="mb-3">{fmtDate(a.date)}</Eyebrow>
+          <Eyebrow className="mb-3">Mis à jour le {fmtDate(a.date)}</Eyebrow>
           <h1
             className="font-extrabold tracking-[-0.02em] leading-[1.08]"
             style={{ fontSize: "clamp(28px, 4vw, 46px)" }}
@@ -132,6 +134,32 @@ export default async function ArticlePage({
               </Button>
             </div>
           </div>
+
+          {/* Articles liés (maillage interne) */}
+          {related.length > 0 && (
+            <div className="mt-14 max-md:mt-10 pt-10 border-t border-[var(--bordure)]">
+              <Eyebrow className="mb-5">À lire aussi</Eyebrow>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {related.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/blog/${r.slug}`}
+                    className="group block bg-blanc border border-[var(--bordure)] rounded-[14px] p-5 hover:border-sauge/40 hover:shadow-[0_18px_40px_-22px_rgba(56,62,66,0.2)] transition-all no-underline"
+                  >
+                    <h3 className="text-[15px] font-semibold text-anthracite leading-snug mb-1.5">
+                      {r.title}
+                    </h3>
+                    <span className="inline-flex items-center gap-1.5 text-[11.5px] font-bold uppercase tracking-[0.08em] text-sauge group-hover:gap-2.5 transition-all">
+                      Lire l&apos;article
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M5 12h14M13 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Retour blog */}
           <div className="mt-10 text-center">
