@@ -66,17 +66,12 @@ export default function HonorairesPage() {
           </DrawOnScroll>
         }
         actions={
-          <div className="flex flex-col gap-2">
-            <Button href="/bareme-honoraires-markus.pdf" external variant="cta">
-              Télécharger le PDF
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
-              </svg>
-            </Button>
-            <p className="text-[11px] text-white/50">
-              PDF placeholder — sera remplacé par le document officiel du client.
-            </p>
-          </div>
+          <Button href="/bareme-honoraires-markus.pdf" external variant="cta">
+            Télécharger le barème (PDF)
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+            </svg>
+          </Button>
         }
       />
 
