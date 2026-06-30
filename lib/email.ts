@@ -142,3 +142,46 @@ export async function sendEmail(input: SendEmailInput): Promise<SendEmailResult>
 
   return { ok: false, status: primary.status, error: primary.message };
 }
+
+/**
+ * Gabarit HTML d'email de notification de lead (formulaires contact, recrutement…).
+ * En-tête Markus + tableau de champs. Email-safe (styles inline).
+ */
+export function leadEmailHtml(opts: {
+  eyebrow: string;
+  heading: string;
+  fields: { label: string; value: string }[];
+  note?: string;
+}): string {
+  const ANTHRACITE = "#383E42";
+  const SAUGE = "#9EA596";
+  const rows = opts.fields
+    .map(
+      (f) => `<tr>
+        <td style="padding:9px 0;border-bottom:1px solid #eceee9;color:#7a817f;width:140px;vertical-align:top;">${f.label}</td>
+        <td style="padding:9px 0;border-bottom:1px solid #eceee9;color:${ANTHRACITE};">${f.value || "—"}</td>
+      </tr>`,
+    )
+    .join("");
+  return `<div style="margin:0;padding:0;background:#F4F5F3;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F5F3;padding:32px 0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;color:${ANTHRACITE};">
+    <tr><td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(56,62,66,0.10);">
+        <tr><td style="background:${ANTHRACITE};padding:24px 32px;">
+          <span style="color:#ffffff;font-size:18px;font-weight:800;letter-spacing:0.04em;">MARKUS</span>
+          <span style="color:${SAUGE};font-size:11px;letter-spacing:0.32em;display:block;margin-top:2px;">IMMOBILIER</span>
+        </td></tr>
+        <tr><td style="padding:30px 32px;">
+          <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${SAUGE};font-weight:700;margin:0 0 8px;">${opts.eyebrow}</p>
+          <h1 style="font-size:20px;margin:0 0 18px;color:${ANTHRACITE};">${opts.heading}</h1>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;">${rows}</table>
+          ${opts.note ? `<p style="font-size:13px;color:#7a817f;margin:20px 0 0;">${opts.note}</p>` : ""}
+        </td></tr>
+        <tr><td style="background:#F4F5F3;padding:18px 32px;font-size:11px;color:#7a817f;">
+          Markus Immobilier — 87 rue Édouard Vaillant, 69100 Villeurbanne · 04 78 37 13 67
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</div>`;
+}
