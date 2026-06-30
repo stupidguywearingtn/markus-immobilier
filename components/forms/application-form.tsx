@@ -35,6 +35,32 @@ export function ApplicationForm() {
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setSubmitError(null);
     track("form_recrutement");
+
+    // Lecture du CV en base64 pour l'envoyer en pièce jointe (max 4 Mo).
+    let cv: { name: string; type: string; dataBase64: string } | undefined;
+    if (cvFile) {
+      if (cvFile.size > 3 * 1024 * 1024) {
+        setSubmitError("Le CV dépasse 3 Mo. Compressez-le ou envoyez-le par email.");
+        return;
+      }
+      try {
+        const dataUrl = await new Promise<string>((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve(String(r.result));
+          r.onerror = () => reject(new Error("read_error"));
+          r.readAsDataURL(cvFile);
+        });
+        cv = {
+          name: cvFile.name,
+          type: cvFile.type,
+          dataBase64: dataUrl.split(",")[1] ?? "",
+        };
+      } catch {
+        setSubmitError("Lecture du CV impossible. Réessayez sans le fichier.");
+        return;
+      }
+    }
+
     try {
       const res = await fetch("/api/recrutement", {
         method: "POST",
@@ -43,6 +69,7 @@ export function ApplicationForm() {
           ...data,
           cvName: cvFile?.name,
           cvSize: cvFile?.size,
+          cv,
         }),
       });
       if (!res.ok) throw new Error("send_failed");

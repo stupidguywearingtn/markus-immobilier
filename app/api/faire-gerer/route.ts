@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { notify } from "@/lib/notify";
+import { sendEmail, leadEmailHtml } from "@/lib/email";
+
+const NOTIFY_EMAIL =
+  process.env.FAIRE_GERER_NOTIFY_EMAIL || "villeurbanne@markusimmobilier.fr";
+
+const ROLE_LABEL: Record<string, string> = {
+  president: "Président du conseil syndical",
+  "membre-cs": "Membre du conseil syndical",
+  coproprietaire: "Copropriétaire",
+};
 
 const schema = z.object({
   civilite: z.enum(["madame", "monsieur"]),
@@ -24,6 +34,28 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ ok: false, error: "validation_failed" }, { status: 422 });
   }
-  const result = await notify("faire-gerer", parsed.data);
-  return NextResponse.json(result);
+  const d = parsed.data;
+  await notify("faire-gerer", d);
+
+  const send = await sendEmail({
+    to: NOTIFY_EMAIL,
+    replyTo: d.email,
+    subject: `Demande de gestion / syndic — ${d.prenom} ${d.nom} (${d.ville})`,
+    html: leadEmailHtml({
+      eyebrow: "Formulaire faire gérer",
+      heading: `${d.civilite === "madame" ? "Mme" : "M."} ${d.prenom} ${d.nom}`,
+      fields: [
+        { label: "Email", value: `<a href="mailto:${d.email}" style="color:#383E42;font-weight:600;">${d.email}</a>` },
+        { label: "Téléphone", value: `<a href="tel:${d.telephone.replace(/\s/g, "")}" style="color:#383E42;font-weight:600;">${d.telephone}</a>` },
+        { label: "Rôle", value: ROLE_LABEL[d.role] ?? d.role },
+        { label: "Immeuble", value: `${d.adresseImmeuble}, ${d.codePostal} ${d.ville}` },
+        { label: "Nb d'appartements", value: d.nbAppartements != null ? String(d.nbAppartements) : "" },
+      ],
+    }),
+  });
+  if (!send.ok) {
+    console.error(`[faire-gerer/email] échec → ${NOTIFY_EMAIL} : ${send.status} ${send.error}`);
+  }
+
+  return NextResponse.json({ ok: true });
 }

@@ -33,6 +33,8 @@ export type SendEmailInput = {
   subject: string;
   html: string;
   replyTo?: string;
+  /** Pièces jointes : content = base64 (sans préfixe data:). */
+  attachments?: { filename: string; content: string }[];
 };
 
 export type SendEmailResult =
@@ -61,8 +63,9 @@ async function postResend(
         subject: input.subject,
         html: input.html,
         ...(input.replyTo ? { reply_to: input.replyTo } : {}),
+        ...(input.attachments?.length ? { attachments: input.attachments } : {}),
       }),
-      signal: AbortSignal.timeout(15_000),
+      signal: AbortSignal.timeout(20_000),
     });
     const raw = await res.text();
     if (!res.ok) {
