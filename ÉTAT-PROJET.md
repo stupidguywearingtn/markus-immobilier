@@ -43,7 +43,8 @@
 ## 🗺️ ROADMAP RESTANTE
 
 - **Estimation étape 4 (reste)** : PDF téléchargeable du rapport (`@react-pdf/renderer`).
-- Brancher réellement les formulaires contact / faire-gerer / recrutement (aujourd'hui `notify()` ne fait que logger — seul l'estimation envoie de vrais emails).
+- **Formulaires — emails Resend** : estimation ✅, **contact ✅** (→ `villeurbanne@markusimmobilier.fr`, var `CONTACT_NOTIFY_EMAIL`, reply_to demandeur), **recrutement ✅** (→ idem, var `RECRUTEMENT_NOTIFY_EMAIL` ; CV pas encore en pièce jointe). **Reste : `faire-gerer`** (toujours `notify()` log seul).
+- **PDF honoraires** : vrai barème généré via **pdfkit** (`scripts/make-pdf.js` → `npm run … node scripts/make-pdf.js`), bien formé, `public/bareme-honoraires-markus.pdf`.
 - Passe de polish design (boutons, matière, micro-interactions) ; audit mobile + a11y + perf (next/image, Lighthouse).
 - i18n FR/EN (à valider client). Google Business Profile (côté client) pour le SEO local.
 
