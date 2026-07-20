@@ -21,6 +21,7 @@ export type ListingType =
 
 export type ListingTransaction = "vente" | "location";
 export type ListingStatut = "disponible" | "vendu" | "loue";
+export type DpeLettre = "A" | "B" | "C" | "D" | "E" | "F" | "G";
 
 export type ListingPhoto = {
   /** Chemin public, ex. /annonces/<slug>/photo.jpeg */
@@ -41,6 +42,8 @@ export type Listing = {
   prix: number;
   /** Ex. "/mois CC" pour une location. */
   prixSuffixe?: string;
+  /** Mention légale sous le prix, ex. « Honoraires d'agence inclus… ». */
+  prixMention?: string;
   /** Location : détail du loyer hors charges (€/mois). */
   loyerHorsCharges?: number;
   /** Location : charges mensuelles (€/mois). */
@@ -55,6 +58,16 @@ export type Listing = {
   codePostal: string;
   surface?: number;
   pieces?: number;
+  /** Ex. "Rez-de-chaussée", "3e étage". */
+  etage?: string;
+  /** Diagnostic de performance énergétique (A→G). */
+  dpe?: DpeLettre;
+  /** Émissions de gaz à effet de serre (A→G). */
+  ges?: DpeLettre;
+  /** Composition détaillée, ex. ["Séjour + cuisine équipée", "2 chambres"]. */
+  composition?: string[];
+  /** Mis en avant en 1er sur l'accueil et le hub. */
+  miseEnAvant?: boolean;
   /** 1re phrase = description claire et autosuffisante (LLM-ready). */
   description: string;
   atouts: string[];
@@ -93,6 +106,68 @@ const CONTACT_TONY = {
 };
 
 export const LISTINGS: Listing[] = [
+  {
+    id: "appartement-t3-villeurbanne-grand-clement",
+    slug: "appartement-t3-vendre-villeurbanne-grand-clement",
+    titre: "Appartement T3 avec terrasse et jardin — Villeurbanne (Grand Clément)",
+    type: "appartement",
+    transaction: "vente",
+    statut: "disponible",
+    miseEnAvant: true,
+    prix: 279000,
+    prixMention: "Honoraires d'agence inclus · frais de notaire en sus",
+    disponibilite: "Libre en avril 2027",
+    adresse: "4 rue Paul Kruger",
+    quartier: "Grand Clément",
+    ville: "Villeurbanne",
+    codePostal: "69100",
+    surface: 58.67,
+    pieces: 3,
+    etage: "Rez-de-chaussée",
+    dpe: "B",
+    ges: "C",
+    composition: [
+      "Séjour avec cuisine intégrée et équipée",
+      "2 chambres",
+      "Salle de bains avec baignoire",
+      "WC séparé",
+      "Terrasse de 10 m² et jardin privatif de 30 m²",
+      "Place de parking couverte incluse",
+    ],
+    localisationTexte:
+      "un quartier vivant et bien équipé, à proximité immédiate des commerces, des écoles et du tramway qui rejoint Lyon en quelques minutes. Accès rapide aux grands axes.",
+    description:
+      "Cet appartement T3 de 58,67 m² à vendre à Villeurbanne, dans le quartier Grand Clément, est proposé à 279 000 €. Charmant rez-de-chaussée dans une résidence agréable, il offre une pièce de vie lumineuse avec cuisine intégrée et équipée, deux chambres, une salle de bains avec baignoire et un WC séparé.\n\nSes espaces extérieurs sont rares sur le secteur : une terrasse de 10 m², un jardin privatif de 30 m² et une jardinière végétalisée d'environ 30 m². Une place de parking couverte est incluse. Chauffage individuel au gaz, interphone, et un excellent DPE B qui limite les charges d'énergie.\n\nIdéal pour un premier achat, une résidence principale ou un investissement. Le bien est vendu libre de toute occupation : un congé pour vente est en cours, l'appartement sera disponible en avril 2027.",
+    atouts: [
+      "Terrasse de 10 m² et jardin privatif de 30 m²",
+      "Place de parking couverte incluse",
+      "Cuisine intégrée et équipée",
+      "DPE B — excellente performance énergétique",
+      "Chauffage individuel au gaz",
+      "Interphone",
+      "Commerces, écoles et tramway vers Lyon à proximité",
+      "Vendu libre de toute occupation",
+    ],
+    photos: [
+      {
+        src: "/annonces/appartement-t3-vendre-villeurbanne-grand-clement/appartement-t3-villeurbanne-grand-clement-residence-jardin.jpeg",
+        alt: "Résidence de l'appartement T3 à vendre à Villeurbanne Grand Clément",
+      },
+      {
+        src: "/annonces/appartement-t3-vendre-villeurbanne-grand-clement/appartement-t3-villeurbanne-grand-clement-hall-entree.jpeg",
+        alt: "Hall d'entrée de la résidence – T3 Villeurbanne",
+      },
+    ],
+    contact: CONTACT_TONY,
+    seo: {
+      title:
+        "Appartement T3 58 m² avec terrasse et jardin à vendre – Villeurbanne Grand Clément – 279 000 € | Markus Immobilier",
+      description:
+        "T3 de 58 m² en rez-de-chaussée à vendre à Villeurbanne (Grand Clément) : terrasse, jardin privatif, parking couvert. DPE B. 279 000 €. Libre avril 2027.",
+      h1: "Appartement T3 avec terrasse et jardin – Villeurbanne (Grand Clément)",
+    },
+    publishedAt: "2026-07-20",
+  },
   {
     id: "garage-villeurbanne-laurent-bonnevay",
     slug: "garage-a-vendre-villeurbanne-laurent-bonnevay",
@@ -206,11 +281,19 @@ export function getListingsByStatut(statut: ListingStatut): Listing[] {
   return LISTINGS.filter((l) => l.statut === statut);
 }
 
-/** Biens disponibles, du plus récent au plus ancien (home + hub). */
+/** Surface formatée FR : 58.67 → « 58,67 m² », 30 → « 30 m² ». */
+export const surfaceLabel = (m2: number) =>
+  new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(m2) + " m²";
+
+/**
+ * Biens disponibles : mis en avant d'abord, puis du plus récent au plus ancien
+ * (accueil + hub). `miseEnAvant` permet de pousser le bien le plus vendeur.
+ */
 export function getAvailableListings(): Listing[] {
-  return getListingsByStatut("disponible").sort((a, b) =>
-    a.publishedAt < b.publishedAt ? 1 : -1,
-  );
+  return getListingsByStatut("disponible").sort((a, b) => {
+    if (!!a.miseEnAvant !== !!b.miseEnAvant) return a.miseEnAvant ? -1 : 1;
+    return a.publishedAt < b.publishedAt ? 1 : -1;
+  });
 }
 
 /** Libellé court du bandeau : « À vendre » / « À louer ». */

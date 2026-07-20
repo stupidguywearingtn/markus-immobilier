@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   eur,
+  surfaceLabel,
   TYPE_LABEL,
   STATUT_LABEL,
   transactionLabel,
@@ -85,12 +86,22 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
           </div>
           {l.surface != null && (
             <div>
-              <b className="text-anthracite font-bold">{l.surface}</b> m²
+              <b className="text-anthracite font-bold">{surfaceLabel(l.surface)}</b>
             </div>
           )}
           {l.pieces != null && (
             <div>
               <b className="text-anthracite font-bold">{l.pieces}</b> pièces
+            </div>
+          )}
+          {l.dpe && (
+            <div className="ml-auto flex items-center gap-1.5">
+              <span className="text-[11px] uppercase tracking-[0.08em] text-[#7a817f] font-semibold">
+                DPE
+              </span>
+              <span className="grid place-items-center w-[22px] h-[22px] rounded-[6px] bg-sauge text-blanc text-[12px] font-bold leading-none">
+                {l.dpe}
+              </span>
             </div>
           )}
         </div>

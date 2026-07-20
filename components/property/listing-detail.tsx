@@ -6,30 +6,95 @@ import { ListingGallery } from "@/components/property/listing-gallery";
 import { JsonLd, breadcrumbLd, BASE } from "@/components/seo/json-ld";
 import {
   eur,
+  surfaceLabel,
   TYPE_LABEL,
   STATUT_LABEL,
   transactionLabel,
   type Listing,
 } from "@/lib/listings";
 
-/** Fiche complète d'un bien réel : galerie, infos, JSON-LD Product/Offer, CTA. */
+/** Type schema.org du bien décrit (mainEntity du RealEstateListing). */
+const ACCOMMODATION_TYPE: Record<Listing["type"], string> = {
+  appartement: "Apartment",
+  maison: "House",
+  immeuble: "Residence",
+  garage: "Accommodation",
+  parking: "Accommodation",
+  local: "Accommodation",
+  terrain: "Accommodation",
+};
+
+/** Fiche complète d'un bien réel : galerie, infos, JSON-LD RealEstateListing, CTA. */
 export function ListingDetail({ listing: l }: { listing: Listing }) {
   const dispo = l.statut === "disponible";
   const adresseComplete = `${l.adresse}, ${l.codePostal} ${l.ville}`;
 
   const isLocation = l.transaction === "location";
 
-  // JSON-LD : Product/Offer pour la vente, RealEstateListing + Offer avec
-  // priceSpecification mensuelle pour la location.
+  const postalAddress = {
+    "@type": "PostalAddress",
+    streetAddress: l.adresse,
+    addressLocality: l.ville,
+    postalCode: l.codePostal,
+    addressRegion: "Auvergne-Rhône-Alpes",
+    addressCountry: "FR",
+  };
+
+  // JSON-LD : RealEstateListing (la page d'annonce) + mainEntity décrivant le
+  // bien (surface, pièces, DPE/GES) + Offer (prix de vente, ou loyer mensuel
+  // via UnitPriceSpecification en location).
   const productLd = {
     "@context": "https://schema.org",
-    "@type": isLocation ? "RealEstateListing" : "Product",
+    "@type": "RealEstateListing",
     name: l.seo.h1,
     description: l.seo.description,
+    url: `${BASE}/annonces/${l.slug}`,
+    datePosted: l.publishedAt,
     image: l.photos.map((p) => `${BASE}${p.src}`),
-    category: TYPE_LABEL[l.type],
-    ...(isLocation ? { url: `${BASE}/annonces/${l.slug}`, datePosted: l.publishedAt } : {}),
-    brand: { "@type": "Organization", name: "Markus Immobilier" },
+    mainEntity: {
+      "@type": ACCOMMODATION_TYPE[l.type],
+      name: l.titre,
+      description: l.description,
+      address: postalAddress,
+      ...(l.surface != null
+        ? {
+            floorSize: {
+              "@type": "QuantitativeValue",
+              value: l.surface,
+              unitCode: "MTK", // mètre carré
+              unitText: "m²",
+            },
+          }
+        : {}),
+      ...(l.pieces != null ? { numberOfRooms: l.pieces } : {}),
+      ...(l.etage ? { floorLevel: l.etage } : {}),
+      ...(l.dpe || l.ges
+        ? {
+            additionalProperty: [
+              ...(l.dpe
+                ? [
+                    {
+                      "@type": "PropertyValue",
+                      name: "DPE",
+                      value: l.dpe,
+                      description: "Diagnostic de performance énergétique",
+                    },
+                  ]
+                : []),
+              ...(l.ges
+                ? [
+                    {
+                      "@type": "PropertyValue",
+                      name: "GES",
+                      value: l.ges,
+                      description: "Émissions de gaz à effet de serre",
+                    },
+                  ]
+                : []),
+            ],
+          }
+        : {}),
+    },
     offers: {
       "@type": "Offer",
       price: l.prix,
@@ -46,7 +111,7 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
             },
             businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
           }
-        : {}),
+        : { businessFunction: "http://purl.org/goodrelations/v1#Sell" }),
       availability: dispo
         ? "https://schema.org/InStock"
         : "https://schema.org/SoldOut",
@@ -63,16 +128,7 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
           addressCountry: "FR",
         },
       },
-      areaServed: {
-        "@type": "Place",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: l.adresse,
-          addressLocality: l.ville,
-          postalCode: l.codePostal,
-          addressCountry: "FR",
-        },
-      },
+      areaServed: { "@type": "Place", address: postalAddress },
     },
   };
 
@@ -137,6 +193,11 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
                   soit {l.loyerHorsCharges} € hors charges + {l.chargesMensuelles} € de charges
                 </div>
               )}
+              {l.prixMention && (
+                <div className="text-[13px] text-[#7a817f] mt-1.5 max-w-[280px] ml-auto max-md:ml-0 leading-snug">
+                  {l.prixMention}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -156,8 +217,12 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
             <Reveal>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
                 <Spec label="Type" value={TYPE_LABEL[l.type]} />
-                <Spec label="Transaction" value={transactionLabel(l)} />
-                {l.surface != null && <Spec label="Surface" value={`${l.surface} m²`} />}
+                {l.pieces != null && <Spec label="Pièces" value={`${l.pieces} pièces`} />}
+                {l.surface != null && (
+                  <Spec label="Surface" value={surfaceLabel(l.surface)} />
+                )}
+                {l.etage && <Spec label="Étage" value={l.etage} />}
+                {l.pieces == null && <Spec label="Transaction" value={transactionLabel(l)} />}
                 {l.taxeFonciere != null && (
                   <Spec label="Taxe foncière" value={`${l.taxeFonciere} €/an`} />
                 )}
@@ -167,6 +232,18 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
               </div>
             </Reveal>
 
+            {(l.dpe || l.ges) && (
+              <Reveal>
+                <div className="mb-10 rounded-[16px] border border-[var(--bordure)] p-6 max-md:p-5">
+                  <Eyebrow className="mb-4">Performance énergétique</Eyebrow>
+                  <div className="flex flex-wrap gap-8">
+                    {l.dpe && <EnergyScale label="DPE — Consommation" value={l.dpe} />}
+                    {l.ges && <EnergyScale label="GES — Émissions" value={l.ges} />}
+                  </div>
+                </div>
+              </Reveal>
+            )}
+
             <Reveal>
               <Eyebrow className="mb-3">Description</Eyebrow>
               <h2 className="font-bold text-2xl mb-4 tracking-[-0.01em]">Le bien en détail</h2>
@@ -174,6 +251,29 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
                 {l.description}
               </p>
             </Reveal>
+
+            {l.composition && l.composition.length > 0 && (
+              <Reveal delay={100}>
+                <Eyebrow className="mb-3">Composition</Eyebrow>
+                <h2 className="font-bold text-xl mb-5 tracking-[-0.01em]">
+                  L&apos;agencement du bien
+                </h2>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2.5 gap-x-6 list-none mb-10">
+                  {l.composition.map((c) => (
+                    <li
+                      key={c}
+                      className="flex items-start gap-3 text-[15px] text-[#3d4347] border-b border-[var(--bordure)] pb-2.5"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 shrink-0 rounded-full bg-sauge mt-[9px]"
+                        aria-hidden="true"
+                      />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            )}
 
             {l.atouts.length > 0 && (
               <Reveal delay={120}>
@@ -298,6 +398,37 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
         </a>
       </div>
     </>
+  );
+}
+
+const DPE_LETTRES = ["A", "B", "C", "D", "E", "F", "G"] as const;
+
+/** Échelle A→G sobre (tokens de marque, pas de dégradé vert/rouge criard). */
+function EnergyScale({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-[11px] uppercase tracking-[0.1em] text-[#7a817f] font-semibold mb-2.5">
+        {label}
+      </div>
+      <div className="flex items-center gap-1.5" role="img" aria-label={`${label} : ${value} sur une échelle de A à G`}>
+        {DPE_LETTRES.map((lettre) => {
+          const actif = lettre === value;
+          return (
+            <span
+              key={lettre}
+              aria-hidden="true"
+              className={`grid place-items-center rounded-[6px] font-bold leading-none transition ${
+                actif
+                  ? "w-9 h-9 bg-sauge text-blanc text-[16px] shadow-[0_4px_12px_rgba(158,165,150,0.5)]"
+                  : "w-7 h-7 bg-gris text-[#a9b0ad] text-[12px]"
+              }`}
+            >
+              {lettre}
+            </span>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

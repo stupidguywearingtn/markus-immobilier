@@ -6,7 +6,7 @@ import { PropertyCard, LISTINGS_COMING_SOON } from "@/components/property/proper
 import { ListingCard } from "@/components/property/listing-card";
 import { FiltersBar } from "@/components/property/filters-bar";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { getListingsByStatut } from "@/lib/listings";
+import { getAvailableListings, getListingsByStatut } from "@/lib/listings";
 import { HouseIllust } from "@/components/illustrations/house";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import {
@@ -50,8 +50,8 @@ export default async function AnnoncesPage({
         }
       />
 
-      {/* BIENS RÉELS — groupés par statut */}
-      <ListingsByStatus />
+      {/* BIENS RÉELS — groupés par statut, filtrés par transaction si demandé */}
+      <ListingsByStatus transaction={filters.type} />
 
       {/* GRILLE + FILTRES (placeholders de présentation) */}
       <section className="bg-blanc">
@@ -108,35 +108,50 @@ export default async function AnnoncesPage({
  * Biens RÉELS groupés par statut : Disponible / Vendus / Loués.
  * Les vendus et loués restent visibles (preuve d'activité + SEO), dans leur
  * propre sous-section. Se remplit tout seul depuis lib/listings.ts.
+ *
+ * `transaction` vient du filtre Vente/Location de la barre : quand il est posé,
+ * seules les sections correspondantes restent affichées.
  */
-function ListingsByStatus() {
-  const disponibles = getListingsByStatut("disponible");
+function ListingsByStatus({
+  transaction,
+}: {
+  transaction?: "vente" | "location";
+}) {
+  // Mis en avant d'abord (miseEnAvant), puis du plus récent au plus ancien.
+  const disponibles = getAvailableListings();
   const groups = [
     {
       statut: "dispo-vente" as const,
+      transaction: "vente" as const,
       eyebrow: "Disponible — À vendre",
       title: <>Nos biens <span className="grad">à vendre.</span></>,
       items: disponibles.filter((l) => l.transaction === "vente"),
     },
     {
       statut: "dispo-location" as const,
+      transaction: "location" as const,
       eyebrow: "Disponible — À louer",
       title: <>Nos biens <span className="grad">à louer.</span></>,
       items: disponibles.filter((l) => l.transaction === "location"),
     },
     {
       statut: "vendu" as const,
+      transaction: "vente" as const,
       eyebrow: "Vendus",
       title: <>Récemment <span className="grad">vendus.</span></>,
       items: getListingsByStatut("vendu"),
     },
     {
       statut: "loue" as const,
+      transaction: "location" as const,
       eyebrow: "Loués",
       title: <>Récemment <span className="grad">loués.</span></>,
       items: getListingsByStatut("loue"),
     },
-  ].filter((g) => g.items.length > 0);
+  ].filter(
+    (g) =>
+      g.items.length > 0 && (!transaction || g.transaction === transaction),
+  );
 
   if (groups.length === 0) return null;
 
