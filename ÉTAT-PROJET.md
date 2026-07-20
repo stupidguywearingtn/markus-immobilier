@@ -11,6 +11,7 @@
 
 - **Stack** : Next.js 16 + TS + Tailwind v4 + framer-motion + Lenis + react-hook-form + zod.
 - **Home** (ordre) : Hero → Biens dispo → Qui sommes-nous → Équipe → Vendus parallaxe → Estimation → Avis clients → Suivez-nous → Agence.
+- **Section « Qui sommes-nous »** : passée en **section forte anthracite sur vidéo** (design-system §8). Vraie photo de l'agence (`public/agence-markus-villeurbanne.jpg`, salle de réunion) en `next/image`, radius 14px + ombre douce + reveal au scroll. Fond = `components/ui/section-video-bg.tsx` (**réutilisable**) : `/videos/agence-ambiance.mp4` (H.264, sans piste audio, 2,5 Mo → **1,1 Mo**) + poster `/videos/agence-ambiance-poster.jpg`, `autoplay muted loop playsinline`, `preload="metadata"`, **chargée seulement à l'approche du viewport** (IntersectionObserver), overlay `rgba(31,35,38,0.72)` + blur 2px, texte en blanc/85. **`prefers-reduced-motion` → la balise `<video>` n'est jamais montée** (poster figé seul) ; repli poster puis aplat anthracite si la vidéo échoue. Vérifié desktop / mobile 390px / reduced-motion.
 - **Pages** : `/annonces` + `/annonces/[id]`, `/faire-gerer`, `/estimation`, `/contact`, `/recrutement`, `/equipe`, `/honoraires`, `/espace-client` (coming soon), légales (mentions / confidentialité / cookies, contenu réel).
 - **Header** : logo M seul (`logo-markus-mark.svg`), liens nav MAJUSCULES.
 - **Hero** : logo borné `min(clamp(180,26vw,380), 48vh, 80vw)`. Vidéo de fond avec fix autoplay Safari (`muted` impératif + retry `canplay` + fallback gradient sur vraie erreur média).
@@ -58,9 +59,10 @@
 
 ## 📥 EN ATTENTE DU CLIENT / ACTIONS USER
 
-- **Photos à déposer dans le repo** (je ne peux pas écrire les images collées dans le chat) :
-  - `public/agence-markus.jpg` → photo de l'agence (section « Qui sommes-nous »). **Tant que le fichier n'est pas là, l'image est cassée sur la home.**
-  - `public/equipe/tony-pistilli.jpg` → nouvelle photo de Tony (carte équipe). Idem.
+- **Photos à déposer dans le repo** (je ne peux pas écrire les images collées dans le chat) — les déposer dans `public/Photo annonce/` (dossier gitignoré, sert de source brute ; je fais les copies optimisées) :
+  - ✅ Photo de l'agence : faite (`public/agence-markus-villeurbanne.jpg`).
+  - `public/equipe/tony-pistilli.jpg` → nouvelle photo de Tony (carte équipe).
+  - **Photos intérieures du T3 Grand Clément** : la fiche n'a que 2 photos de parties communes (résidence + hall). Il manque le séjour/cuisine, les chambres, la terrasse et le jardin — c'est le bien le plus vendeur, ce sont les photos qui font la différence.
 - **Articles blog 2 & 9** : ajouter les vrais prix €/m² par quartier (Villeurbanne) dans `lib/blog.ts` — actuellement formulé sans chiffres inventés.
 - **Google Search Console** : créer la propriété `https://www.markusimmobilier.fr`, récupérer le code → var Vercel `GOOGLE_SITE_VERIFICATION` ; soumettre `sitemap.xml`.
 - **Photo David PISTILLI** (fallback initiales DP en attendant).
