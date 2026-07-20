@@ -26,6 +26,7 @@
   - `/annonces` : sections **Disponible — À vendre / Disponible — À louer / Vendus / Loués** (biens réels) + grille placeholders « À venir » en dessous. Le **filtre Vente/Location** de la barre filtre aussi ces sections (`?type=vente`).
   - Champs optionnels utiles : `loyerHorsCharges`, `chargesMensuelles`, `disponibilite`, `localisationTexte`, `prixMention`, `etage`, `dpe`, `ges`, `composition[]`, **`miseEnAvant`** (pousse le bien en 1er sur l'accueil et le hub) — aucun texte en dur dans les composants.
   - Fiche : échelle **DPE/GES A→G** (composant `EnergyScale`, tokens de marque), bloc **Composition**, mention de prix (« honoraires inclus… »), surface formatée FR via `surfaceLabel()`.
+- **Section « Nos biens vendus » (parallaxe)** : **9 vraies photos client** (`public/vendus/`, sources 1600px → 1200px, ~1 Mo au total). Data-driven via `lib/sold-gallery.ts` (**ajouter une photo = déposer le fichier + ajouter un objet**). Vignettes passées de **portrait 3:4 à paysage 3:2** (= format natif de 7 photos sur 9, donc quasi aucun recadrage), ratio homogène pour toutes, `next/image` + `loading="lazy"`, radius 10px, ombre douce, badge « Vendu » sauge, titre repris du nom de fichier, **alt = « <titre> vendu(e) par Markus Immobilier »** (accord géré par le champ `feminin`). 3 colonnes desktop / 2 mobile ; chaque colonne = la liste décalée puis **doublée** (sinon un vide apparaît en bas de course, les vignettes paysage étant peu hautes). Scrim radial du titre renforcé (photos d'intérieurs très lumineuses).
 - **Placeholders « À venir »** : flag `LISTINGS_COMING_SOON` (`components/property/property-card.tsx`) — ne concerne QUE les biens de démo. Les biens réels n'ont jamais ce badge. Retirer les mocks quand le catalogue réel sera fourni.
 - **Favicon** : `app/icon.svg` = le M (favicon.ico par défaut supprimé). `app/apple-icon.tsx` généré (M blanc sur anthracite, iOS).
 - **Estimation (étapes 1→3)** : formulaire conditionnel · géocodage BAN · comparables DVF (CSV data.gouv) · score /100 · positionnement · tendance 5 ans · voisinage · locatif · tableau comparables · **analyse LLM « L'œil de l'expert » = Claude Sonnet 4.6** (prompt expert enrichi).
@@ -66,5 +67,6 @@
 - **Articles blog 2 & 9** : ajouter les vrais prix €/m² par quartier (Villeurbanne) dans `lib/blog.ts` — actuellement formulé sans chiffres inventés.
 - **Google Search Console** : créer la propriété `https://www.markusimmobilier.fr`, récupérer le code → var Vercel `GOOGLE_SITE_VERIFICATION` ; soumettre `sitemap.xml`.
 - **Photo David PISTILLI** (fallback initiales DP en attendant).
-- Photo de l'agence, vraies photos des biens, PDF honoraires officiel, **vrais mandats** (→ passer `LISTINGS_COMING_SOON` à `false`).
-- Valider la section bonus « Nos biens vendus » (parallaxe, hors trame).
+- PDF honoraires officiel, **vrais mandats** (→ passer `LISTINGS_COMING_SOON` à `false`).
+- Valider la section bonus « Nos biens vendus » (parallaxe, hors trame) — désormais avec les 9 vraies photos.
+- **Vendus — à confirmer par le client** : les 9 photos sont des biens de l'**Est lyonnais** (Meyzieu ×4, Décines, Jonage, Vaulx-en-Velin, Bron) et non de Villeurbanne/Lyon ; le texte de la section a été ajusté en conséquence. Confirmer que c'est bien le positionnement voulu.

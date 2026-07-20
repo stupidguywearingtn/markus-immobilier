@@ -1,43 +1,38 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { SOLD_ITEMS, soldAlt, type SoldItem } from "@/lib/sold-gallery";
 
-type Column = {
-  speed: [number, number];
-  items: string[];
-};
-
-const COLUMNS: Column[] = [
-  {
-    speed: [-12, -42],
-    items: ["Appartement — Lyon 6e", "Maison — Caluire", "Duplex — Villeurbanne"],
-  },
-  {
-    speed: [-4, -66],
-    items: ["Villa — Écully", "T3 — Part-Dieu", "Loft — Gratte-Ciel"],
-  },
-  {
-    speed: [-18, -40],
-    items: ["Maison — Tassin", "Appartement — Lyon 3e", "Studio — Croix-Luizet"],
-  },
-  {
-    speed: [-8, -58],
-    items: ["Maison — Charpennes", "T4 — Lyon 7e", "Penthouse — Bron"],
-  },
+/** Vitesses de défilement (vh) : début → fin de la traversée de la section. */
+const SPEEDS: Array<[number, number]> = [
+  [-12, -42],
+  [-4, -66],
+  [-18, -40],
 ];
 
-// Variantes de gradient pour rythmer visuellement les 12 cartes
-const CARD_GRADIENTS = [
-  "linear-gradient(135deg, #4a525a, #363b40)",
-  "linear-gradient(135deg, #424950, #2c3236)",
-  "linear-gradient(135deg, #525960, #3a4045)",
-  "linear-gradient(135deg, #3e454b, #2a2f33)",
-];
+/**
+ * Répartit les photos en N colonnes : chaque colonne reçoit la liste complète,
+ * décalée, puis doublée.
+ *
+ * - décalée → deux colonnes voisines n'affichent jamais la même photo côte à côte ;
+ * - doublée → la colonne reste plus haute que la fenêtre sur toute la course de
+ *   la parallaxe (sinon un vide apparaît en bas sur mobile, où les vignettes
+ *   paysage sont peu hautes). Le doublon n'est jamais visible : la fenêtre ne
+ *   montre que ~3 vignettes à la fois.
+ */
+function buildColumn(items: SoldItem[], index: number, total: number): SoldItem[] {
+  const offset = Math.round((items.length / total) * index);
+  const rotated = [...items.slice(offset), ...items.slice(0, offset)];
+  return [...rotated, ...rotated];
+}
 
 export function SoldParallax() {
   const sectionRef = useRef<HTMLElement>(null);
   const colsRef = useRef<Array<HTMLDivElement | null>>([]);
+
+  const columns = SPEEDS.map((_, i) => buildColumn(SOLD_ITEMS, i, SPEEDS.length));
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -47,9 +42,7 @@ export function SoldParallax() {
     if (reduce) {
       colsRef.current.forEach((col, i) => {
         if (col)
-          col.style.transform = `translateY(${
-            (COLUMNS[i].speed[0] + COLUMNS[i].speed[1]) / 2
-          }vh)`;
+          col.style.transform = `translateY(${(SPEEDS[i][0] + SPEEDS[i][1]) / 2}vh)`;
       });
       return;
     }
@@ -62,7 +55,7 @@ export function SoldParallax() {
       const p = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height)));
       colsRef.current.forEach((col, i) => {
         if (!col) return;
-        const [a, b] = COLUMNS[i].speed;
+        const [a, b] = SPEEDS[i];
         col.style.transform = `translateY(${a + (b - a) * p}vh)`;
       });
     };
@@ -90,8 +83,7 @@ export function SoldParallax() {
       className="relative h-[230vh] max-md:h-[180vh] bg-anthracite"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex gap-3.5 p-3.5 bg-anthracite">
-        {/* Cartes parallaxes — chaque carte en aspect-ratio 3/4 strict, plein cadre */}
-        {COLUMNS.map((col, ci) => (
+        {columns.map((items, ci) => (
           <div
             key={ci}
             ref={(el) => {
@@ -99,49 +91,12 @@ export function SoldParallax() {
             }}
             className={[
               "flex-1 min-w-0 flex flex-col gap-3.5 will-change-transform",
+              // 3e colonne masquée sur mobile (vignettes trop étroites à 3 colonnes)
               ci >= 2 ? "max-md:hidden" : "",
             ].join(" ")}
           >
-            {col.items.map((label, ii) => (
-              <div
-                key={ii}
-                className="relative w-full aspect-[3/4] rounded-[10px] overflow-hidden shrink-0 shadow-[0_12px_28px_-12px_rgba(0,0,0,0.5)]"
-              >
-                {/* Visuel plein cadre (gradient en attendant les vraies photos) */}
-                <div
-                  className="absolute inset-0 h-full w-full"
-                  style={{
-                    background: CARD_GRADIENTS[(ci + ii) % CARD_GRADIENTS.length],
-                  }}
-                  aria-hidden="true"
-                />
-                {/* Légende centrée */}
-                <div className="absolute inset-0 grid place-items-center pointer-events-none">
-                  <div className="flex flex-col items-center gap-2 text-center p-4 text-white/55">
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="26"
-                      height="26"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      className="opacity-60"
-                      aria-hidden="true"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <circle cx="9" cy="9" r="2" />
-                      <path d="M21 15l-5-5L5 21" />
-                    </svg>
-                    <span className="text-[10px] tracking-[0.18em] uppercase font-semibold opacity-80">
-                      {label}
-                    </span>
-                  </div>
-                </div>
-                {/* Badge Vendu */}
-                <span className="absolute top-2.5 left-2.5 z-[3] bg-sauge text-blanc text-[9.5px] font-bold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full shadow-[0_4px_10px_rgba(158,165,150,0.4)]">
-                  Vendu
-                </span>
-              </div>
+            {items.map((item, ii) => (
+              <SoldCard key={`${ci}-${ii}`} item={item} />
             ))}
           </div>
         ))}
@@ -149,21 +104,67 @@ export function SoldParallax() {
         {/* Overlay titre (centré, au-dessus de la parallaxe) */}
         <div
           className="absolute inset-0 z-[5] flex flex-col items-center justify-center text-center pointer-events-none text-blanc px-6"
+          // Scrim renforcé : les photos fournies sont des intérieurs très
+          // lumineux (murs blancs, baies vitrées) — sans ça, l'eyebrow sauge et
+          // le paragraphe deviennent illisibles au centre.
           style={{
             background:
-              "radial-gradient(60% 50% at 50% 45%, rgba(56,62,66,.55), transparent)",
+              "radial-gradient(72% 62% at 50% 45%, rgba(32,36,39,.94) 0%, rgba(32,36,39,.82) 40%, rgba(32,36,39,.42) 72%, rgba(32,36,39,0) 100%)",
           }}
         >
-          <Eyebrow className="mb-4">Notre track record</Eyebrow>
+          <Eyebrow className="mb-4 [text-shadow:0_2px_14px_rgba(0,0,0,.7)]">
+            Notre track record
+          </Eyebrow>
           <h2 className="font-bold leading-[1.12] tracking-[-0.01em] text-blanc text-[clamp(30px,4vw,46px)] mb-4 [text-shadow:0_4px_30px_rgba(0,0,0,.5)]">
             Nos biens vendus
           </h2>
-          <p className="text-white/70 max-w-[440px]">
-            Des dizaines de projets menés à bien à Lyon &amp; Villeurbanne. Faites
-            défiler pour découvrir.
+          <p className="text-white/75 max-w-[460px] [text-shadow:0_2px_16px_rgba(0,0,0,.6)]">
+            Des dizaines de projets menés à bien à Lyon, Villeurbanne et dans
+            l&apos;Est lyonnais. Faites défiler pour découvrir.
           </p>
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Vignette paysage 3:2 — le format natif de la majorité des photos fournies,
+ * donc quasiment aucun recadrage. Ratio identique pour toutes (homogénéité).
+ */
+function SoldCard({ item }: { item: SoldItem }) {
+  return (
+    <figure className="relative w-full aspect-[3/2] rounded-[10px] overflow-hidden shrink-0 shadow-[0_12px_28px_-12px_rgba(0,0,0,0.5)] bg-[#3e454b]">
+      <Image
+        src={item.src}
+        alt={soldAlt(item)}
+        fill
+        sizes="(max-width: 768px) 46vw, 31vw"
+        loading="lazy"
+        className="object-cover object-center"
+      />
+
+      {/* Scrim bas : lisibilité du titre quelle que soit la photo */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(24,27,29,0.88) 0%, rgba(24,27,29,0.45) 45%, transparent 100%)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Badge Vendu */}
+      <span className="absolute top-2.5 left-2.5 z-[3] bg-sauge text-blanc text-[9.5px] font-bold tracking-[0.08em] uppercase px-2.5 py-1 rounded-full shadow-[0_4px_10px_rgba(158,165,150,0.4)]">
+        Vendu
+      </span>
+
+      {/* Titre repris du nom de fichier */}
+      <figcaption className="absolute inset-x-0 bottom-0 z-[3] p-3 max-md:p-2.5">
+        <span className="block text-blanc font-semibold leading-tight text-[13px] max-md:text-[11px]">
+          {item.titre}
+        </span>
+      </figcaption>
+    </figure>
   );
 }
