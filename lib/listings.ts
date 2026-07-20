@@ -37,10 +37,18 @@ export type Listing = {
   type: ListingType;
   transaction: ListingTransaction;
   statut: ListingStatut;
-  /** Prix en euros (nombre → formaté à l'affichage et en JSON-LD). */
+  /** Prix en euros. Vente = prix de vente ; location = loyer mensuel (CC). */
   prix: number;
-  /** Ex. "/ mois" pour une location. */
+  /** Ex. "/mois CC" pour une location. */
   prixSuffixe?: string;
+  /** Location : détail du loyer hors charges (€/mois). */
+  loyerHorsCharges?: number;
+  /** Location : charges mensuelles (€/mois). */
+  chargesMensuelles?: number;
+  /** Nuance de dispo affichée, ex. « Disponible rapidement ». */
+  disponibilite?: string;
+  /** Phrase de localisation (transports, commerces…) affichée sur la fiche. */
+  localisationTexte?: string;
   adresse: string;
   quartier: string;
   ville: string;
@@ -97,6 +105,8 @@ export const LISTINGS: Listing[] = [
     quartier: "Laurent Bonnevay",
     ville: "Villeurbanne",
     codePostal: "69100",
+    localisationTexte:
+      "à deux pas du métro Laurent Bonnevay (ligne A). Secteur très bien desservi : transports, commerces et accès rapide au périphérique.",
     description:
       "Ce garage fermé en sous-sol à vendre à Villeurbanne, à deux pas du métro Laurent Bonnevay (ligne A), est proposé à 21 000 €. Idéalement situé dans un secteur recherché et très bien desservi, il convient aussi bien à un usage personnel (stationnement, stockage) qu'à un investissement locatif, dans une zone où la demande de stationnement est forte.",
     atouts: [
@@ -128,6 +138,56 @@ export const LISTINGS: Listing[] = [
       description:
         "Garage fermé en sous-sol à vendre à Villeurbanne, proche métro Laurent Bonnevay (ligne A). Accès sécurisé par badge, électricité. 21 000 €.",
       h1: "Garage fermé à vendre – Villeurbanne (Laurent Bonnevay)",
+    },
+    publishedAt: "2026-07-20",
+  },
+  {
+    id: "garage-location-villeurbanne-laurent-bonnevay",
+    slug: "garage-a-louer-villeurbanne-laurent-bonnevay",
+    titre: "Garage fermé en sous-sol à louer — Villeurbanne (Laurent Bonnevay)",
+    type: "garage",
+    transaction: "location",
+    statut: "disponible",
+    prix: 100,
+    prixSuffixe: "/mois CC",
+    loyerHorsCharges: 90,
+    chargesMensuelles: 10,
+    disponibilite: "Disponible rapidement",
+    adresse: "5 rue Bernard Lecache",
+    quartier: "Laurent Bonnevay",
+    ville: "Villeurbanne",
+    codePostal: "69100",
+    localisationTexte:
+      "à deux pas du métro Laurent Bonnevay (ligne A). Secteur très bien desservi : transports, commerces et accès rapide au périphérique.",
+    description:
+      "Ce garage fermé en sous-sol à louer à Villeurbanne, à deux pas du métro Laurent Bonnevay (ligne A), est proposé à 100 €/mois charges comprises (90 € hors charges + 10 € de charges). Idéalement situé et très bien desservi, il est pratique pour stationner un véhicule ou pour du stockage, dans un secteur où la demande de stationnement est forte.",
+    atouts: [
+      "Électricité dans le garage",
+      "Accès copropriété entièrement sécurisé par portail à badge",
+      "Proximité immédiate métro, commerces et périphérique",
+      "Disponible rapidement",
+    ],
+    photos: [
+      {
+        src: "/annonces/garage-a-louer-villeurbanne-laurent-bonnevay/garage-a-louer-villeurbanne-interieur-porte-ouverte.jpeg",
+        alt: "Garage fermé à louer à Villeurbanne près de Laurent Bonnevay, porte basculante ouverte et éclairage",
+      },
+      {
+        src: "/annonces/garage-a-louer-villeurbanne-laurent-bonnevay/garage-a-louer-villeurbanne-allee-sous-sol.jpeg",
+        alt: "Garage fermé à louer à Villeurbanne près de Laurent Bonnevay, allée du parking en sous-sol",
+      },
+      {
+        src: "/annonces/garage-a-louer-villeurbanne-laurent-bonnevay/garage-a-louer-villeurbanne-portail-acces-securise.jpeg",
+        alt: "Garage fermé à louer à Villeurbanne près de Laurent Bonnevay, portail d'accès sécurisé de la copropriété",
+      },
+    ],
+    contact: CONTACT_TONY,
+    seo: {
+      title:
+        "Garage fermé à louer à Villeurbanne (Laurent Bonnevay) – 100 €/mois | Markus Immobilier",
+      description:
+        "Garage fermé sécurisé à louer à Villeurbanne, proche métro Laurent Bonnevay (ligne A). Électricité, accès par badge. 100 €/mois charges comprises.",
+      h1: "Garage fermé à louer – Villeurbanne (Laurent Bonnevay)",
     },
     publishedAt: "2026-07-20",
   },

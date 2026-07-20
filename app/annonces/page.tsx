@@ -110,12 +110,19 @@ export default async function AnnoncesPage({
  * propre sous-section. Se remplit tout seul depuis lib/listings.ts.
  */
 function ListingsByStatus() {
+  const disponibles = getListingsByStatut("disponible");
   const groups = [
     {
-      statut: "disponible" as const,
-      eyebrow: "Disponible",
-      title: <>Nos biens <span className="grad">à la vente et à la location.</span></>,
-      items: getListingsByStatut("disponible"),
+      statut: "dispo-vente" as const,
+      eyebrow: "Disponible — À vendre",
+      title: <>Nos biens <span className="grad">à vendre.</span></>,
+      items: disponibles.filter((l) => l.transaction === "vente"),
+    },
+    {
+      statut: "dispo-location" as const,
+      eyebrow: "Disponible — À louer",
+      title: <>Nos biens <span className="grad">à louer.</span></>,
+      items: disponibles.filter((l) => l.transaction === "location"),
     },
     {
       statut: "vendu" as const,

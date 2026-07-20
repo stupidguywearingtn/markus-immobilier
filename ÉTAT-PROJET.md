@@ -20,8 +20,10 @@
 - **ANNONCES RÉELLES — système data-driven** : `lib/listings.ts` = source de vérité (un objet = un bien : id, slug, titre, type, transaction, statut, prix, adresse, quartier, description, atouts, taxeFoncière, chargesCopro, photos[alt], contact, seo). **Ajouter un bien = ajouter un objet + déposer les photos dans `public/annonces/<slug>/`** — home, hub, page dédiée, sitemap se mettent à jour seuls.
   - Composants : `components/property/listing-card.tsx`, `listing-gallery.tsx`, `listing-detail.tsx` (JSON-LD `Product`+`Offer`).
   - Route : `app/annonces/[id]` sert **les biens réels par slug en priorité**, repli sur les mocks (pas de conflit de segment dynamique).
-  - **1er bien en ligne** : `/annonces/garage-a-vendre-villeurbanne-laurent-bonnevay` (garage fermé, 21 000 €, Laurent Bonnevay).
-  - `/annonces` : sections **Disponible / Vendus / Loués** (biens réels) + grille placeholders « À venir » en dessous.
+  - **Biens en ligne (2)** : `/annonces/garage-a-vendre-villeurbanne-laurent-bonnevay` (vente, 21 000 €) · `/annonces/garage-a-louer-villeurbanne-laurent-bonnevay` (location, 100 €/mois CC = 90 HC + 10 charges, « Disponible rapidement »).
+  - JSON-LD adaptatif : **`Product`+`Offer`** (vente) / **`RealEstateListing`+`Offer` avec `UnitPriceSpecification` mensuelle** (location).
+  - `/annonces` : sections **Disponible — À vendre / Disponible — À louer / Vendus / Loués** (biens réels) + grille placeholders « À venir » en dessous.
+  - Champs optionnels utiles : `loyerHorsCharges`, `chargesMensuelles`, `disponibilite`, `localisationTexte` (aucun texte en dur dans les composants).
 - **Placeholders « À venir »** : flag `LISTINGS_COMING_SOON` (`components/property/property-card.tsx`) — ne concerne QUE les biens de démo. Les biens réels n'ont jamais ce badge. Retirer les mocks quand le catalogue réel sera fourni.
 - **Favicon** : `app/icon.svg` = le M (favicon.ico par défaut supprimé). `app/apple-icon.tsx` généré (M blanc sur anthracite, iOS).
 - **Estimation (étapes 1→3)** : formulaire conditionnel · géocodage BAN · comparables DVF (CSV data.gouv) · score /100 · positionnement · tendance 5 ans · voisinage · locatif · tableau comparables · **analyse LLM « L'œil de l'expert » = Claude Sonnet 4.6** (prompt expert enrichi).

@@ -17,19 +17,36 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
   const dispo = l.statut === "disponible";
   const adresseComplete = `${l.adresse}, ${l.codePostal} ${l.ville}`;
 
-  // JSON-LD Product + Offer (prix, dispo, images, localisation)
+  const isLocation = l.transaction === "location";
+
+  // JSON-LD : Product/Offer pour la vente, RealEstateListing + Offer avec
+  // priceSpecification mensuelle pour la location.
   const productLd = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": isLocation ? "RealEstateListing" : "Product",
     name: l.seo.h1,
     description: l.seo.description,
     image: l.photos.map((p) => `${BASE}${p.src}`),
     category: TYPE_LABEL[l.type],
+    ...(isLocation ? { url: `${BASE}/annonces/${l.slug}`, datePosted: l.publishedAt } : {}),
     brand: { "@type": "Organization", name: "Markus Immobilier" },
     offers: {
       "@type": "Offer",
       price: l.prix,
       priceCurrency: "EUR",
+      ...(isLocation
+        ? {
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: l.prix,
+              priceCurrency: "EUR",
+              unitCode: "MON", // par mois
+              billingIncrement: 1,
+              description: "Loyer mensuel charges comprises",
+            },
+            businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
+          }
+        : {}),
       availability: dispo
         ? "https://schema.org/InStock"
         : "https://schema.org/SoldOut",
@@ -106,7 +123,7 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
                   {transactionLabel(l)}
                 </span>
                 <span className={`inline-block text-[10.5px] font-bold tracking-[0.1em] uppercase px-3 py-1.5 rounded-full border ${dispo ? "bg-sauge/15 text-sauge border-sauge/40" : "bg-gris text-[#7a817f] border-[var(--bordure)]"}`}>
-                  {STATUT_LABEL[l.statut]}
+                  {l.disponibilite ?? STATUT_LABEL[l.statut]}
                 </span>
               </div>
               <div className="text-[clamp(28px,3.5vw,42px)] font-extrabold tracking-[-0.01em] leading-none tabular-nums">
@@ -115,6 +132,11 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
                   <span className="text-base text-[#7a817f] font-medium"> {l.prixSuffixe}</span>
                 )}
               </div>
+              {l.loyerHorsCharges != null && l.chargesMensuelles != null && (
+                <div className="text-[13px] text-[#7a817f] mt-1.5 tabular-nums">
+                  soit {l.loyerHorsCharges} € hors charges + {l.chargesMensuelles} € de charges
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -178,9 +200,8 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
               <div className="mt-10 bg-gris rounded-[16px] p-6 max-md:p-5">
                 <Eyebrow className="mb-3">Localisation</Eyebrow>
                 <p className="text-[15px] text-[#3d4347] leading-relaxed">
-                  {adresseComplete} — quartier <b className="text-anthracite">{l.quartier}</b>,
-                  à deux pas du métro Laurent Bonnevay (ligne A). Secteur très bien
-                  desservi : transports, commerces et accès rapide au périphérique.
+                  {adresseComplete} — quartier <b className="text-anthracite">{l.quartier}</b>
+                  {l.localisationTexte ? `, ${l.localisationTexte}` : "."}
                 </p>
               </div>
             </Reveal>
