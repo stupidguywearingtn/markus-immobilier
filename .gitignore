@@ -47,3 +47,6 @@ next-env.d.ts
 # Briefs de session (non versionnés)
 /files.zip
 /files_extracted/
+
+# Dossier source des photos brutes (les copies optimisees sont dans public/annonces/)
+/public/Photo annonce/

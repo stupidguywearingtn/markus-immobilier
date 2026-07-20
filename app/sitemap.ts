@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { PROPERTIES } from "@/lib/mock-properties";
 import { ARTICLES } from "@/lib/blog";
+import { LISTINGS } from "@/lib/listings";
 
 const BASE = "https://www.markusimmobilier.fr";
 
@@ -28,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/confidentialite`, lastModified: now, priority: 0.2, changeFrequency: "yearly" },
     { url: `${BASE}/cookies`, lastModified: now, priority: 0.2, changeFrequency: "yearly" },
   ];
+  // Biens RÉELS — priorité haute (pages qui doivent ranker)
+  const listingPages: MetadataRoute.Sitemap = LISTINGS.map((l) => ({
+    url: `${BASE}/annonces/${l.slug}`,
+    lastModified: new Date(l.publishedAt),
+    priority: 0.9,
+    changeFrequency: "weekly",
+  }));
   const blogPages: MetadataRoute.Sitemap = ARTICLES.map((a) => ({
     url: `${BASE}/blog/${a.slug}`,
     lastModified: new Date(a.date),
@@ -40,5 +48,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
     changeFrequency: "weekly",
   }));
-  return [...staticPages, ...blogPages, ...propertyPages];
+  return [...staticPages, ...listingPages, ...blogPages, ...propertyPages];
 }

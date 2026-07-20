@@ -10,6 +10,8 @@ import { MapPinIllust } from "@/components/illustrations/map-pin";
 import { FloorPlanIllust } from "@/components/illustrations/floor-plan";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { PROPERTIES } from "@/lib/mock-properties";
+import { LISTINGS, getListing } from "@/lib/listings";
+import { ListingDetail } from "@/components/property/listing-detail";
 
 type Params = Promise<{ id: string }>;
 
@@ -19,6 +21,25 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const { id } = await params;
+
+  // 1) Bien RÉEL (par slug) — SEO dédié
+  const listing = getListing(id);
+  if (listing) {
+    return {
+      title: listing.seo.title,
+      description: listing.seo.description,
+      alternates: { canonical: `/annonces/${listing.slug}` },
+      openGraph: {
+        type: "website",
+        title: listing.seo.title,
+        description: listing.seo.description,
+        url: `https://www.markusimmobilier.fr/annonces/${listing.slug}`,
+        images: listing.photos.map((p) => ({ url: p.src, alt: p.alt })),
+      },
+    };
+  }
+
+  // 2) Repli : bien de démo
   const property = PROPERTIES.find((p) => p.id === id);
   if (!property) return { title: "Bien introuvable" };
   return {
@@ -28,7 +49,10 @@ export async function generateMetadata({
 }
 
 export function generateStaticParams() {
-  return PROPERTIES.map((p) => ({ id: p.id }));
+  return [
+    ...LISTINGS.map((l) => ({ id: l.slug })),
+    ...PROPERTIES.map((p) => ({ id: p.id })),
+  ];
 }
 
 export default async function PropertyDetailPage({
@@ -37,6 +61,11 @@ export default async function PropertyDetailPage({
   params: Params;
 }) {
   const { id } = await params;
+
+  // Les biens réels ont la priorité sur les placeholders de démo.
+  const listing = getListing(id);
+  if (listing) return <ListingDetail listing={listing} />;
+
   const property = PROPERTIES.find((p) => p.id === id);
   if (!property) notFound();
 

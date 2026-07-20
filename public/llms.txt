@@ -11,6 +11,10 @@
 - [Gestion locative](https://www.markusimmobilier.fr/gestion-locative): gestion locative pour propriétaires bailleurs
 - [Contact](https://www.markusimmobilier.fr/contact): adresse, téléphone et horaires de l'agence
 
+## Annonces (biens à vendre / à louer)
+- [Toutes nos annonces](https://www.markusimmobilier.fr/annonces): biens à vendre et à louer à Villeurbanne et Lyon
+- [Garage fermé à vendre à Villeurbanne (Laurent Bonnevay) — 21 000 €](https://www.markusimmobilier.fr/annonces/garage-a-vendre-villeurbanne-laurent-bonnevay): garage fermé en sous-sol, 5 rue Bernard Lecache 69100 Villeurbanne, proche métro Laurent Bonnevay ligne A, accès sécurisé par badge, électricité
+
 ## Pages locales (Villeurbanne et quartiers)
 - [Agence immobilière à Villeurbanne](https://www.markusimmobilier.fr/agence-immobiliere-villeurbanne): agence locale, services et secteur d'intervention
 - [Agence immobilière Gratte-Ciel](https://www.markusimmobilier.fr/agence-immobiliere-gratte-ciel): immobilier dans le quartier Gratte-Ciel à Villeurbanne

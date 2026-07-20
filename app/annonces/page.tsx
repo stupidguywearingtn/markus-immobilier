@@ -3,7 +3,10 @@ import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
 import { PropertyCard, LISTINGS_COMING_SOON } from "@/components/property/property-card";
+import { ListingCard } from "@/components/property/listing-card";
 import { FiltersBar } from "@/components/property/filters-bar";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { getListingsByStatut } from "@/lib/listings";
 import { HouseIllust } from "@/components/illustrations/house";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import {
@@ -47,7 +50,10 @@ export default async function AnnoncesPage({
         }
       />
 
-      {/* GRILLE + FILTRES */}
+      {/* BIENS RÉELS — groupés par statut */}
+      <ListingsByStatus />
+
+      {/* GRILLE + FILTRES (placeholders de présentation) */}
       <section className="bg-blanc">
         <div className="max-w-content mx-auto px-8 max-md:px-5 pt-10 pb-[120px] max-md:pb-[72px]">
           {LISTINGS_COMING_SOON && (
@@ -60,11 +66,12 @@ export default async function AnnoncesPage({
               </span>
               <div>
                 <p className="text-[14.5px] font-bold text-anthracite leading-tight">
-                  Nos annonces arrivent très prochainement.
+                  D&apos;autres annonces arrivent très prochainement.
                 </p>
                 <p className="text-[13px] text-[#7a6a3a] mt-1 leading-relaxed">
-                  Les biens ci-dessous illustrent la présentation du catalogue. Pour être
-                  averti dès la mise en ligne d&apos;un mandat,{" "}
+                  Les biens ci-dessous illustrent la présentation du catalogue (ils ne
+                  sont pas encore disponibles). Pour être averti dès la mise en ligne
+                  d&apos;un mandat,{" "}
                   <a href="/contact" className="font-semibold underline underline-offset-2 hover:text-anthracite">
                     contactez-nous
                   </a>
@@ -94,6 +101,60 @@ export default async function AnnoncesPage({
         </div>
       </section>
     </>
+  );
+}
+
+/**
+ * Biens RÉELS groupés par statut : Disponible / Vendus / Loués.
+ * Les vendus et loués restent visibles (preuve d'activité + SEO), dans leur
+ * propre sous-section. Se remplit tout seul depuis lib/listings.ts.
+ */
+function ListingsByStatus() {
+  const groups = [
+    {
+      statut: "disponible" as const,
+      eyebrow: "Disponible",
+      title: <>Nos biens <span className="grad">à la vente et à la location.</span></>,
+      items: getListingsByStatut("disponible"),
+    },
+    {
+      statut: "vendu" as const,
+      eyebrow: "Vendus",
+      title: <>Récemment <span className="grad">vendus.</span></>,
+      items: getListingsByStatut("vendu"),
+    },
+    {
+      statut: "loue" as const,
+      eyebrow: "Loués",
+      title: <>Récemment <span className="grad">loués.</span></>,
+      items: getListingsByStatut("loue"),
+    },
+  ].filter((g) => g.items.length > 0);
+
+  if (groups.length === 0) return null;
+
+  return (
+    <section className="bg-blanc pt-[70px] max-md:pt-[50px]">
+      <div className="max-w-content mx-auto px-8 max-md:px-5 space-y-16 max-md:space-y-12">
+        {groups.map((g) => (
+          <div key={g.statut}>
+            <Reveal className="mb-8">
+              <Eyebrow className="mb-3">{g.eyebrow}</Eyebrow>
+              <h2 className="font-bold text-[clamp(26px,3.4vw,38px)] tracking-[-0.01em]">
+                {g.title}
+              </h2>
+            </Reveal>
+            <div className="grid gap-[26px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {g.items.map((l, i) => (
+                <Reveal key={l.id} delay={Math.min(i, 6) * 80}>
+                  <ListingCard listing={l} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

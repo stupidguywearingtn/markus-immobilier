@@ -17,7 +17,12 @@
 - **Équipe** : Tony PISTILLI (Fondateur, vraie photo) · David PISTILLI (initiales DP) · carte « Pourquoi pas vous ? » (silhouette **statique** sauge sur anthracite) → `/recrutement`.
 - **Avis clients** : 3 témoignages (Andrée P. / Roger G. / Didier & Béatrice F.), étoiles + date.
 - **Footer** : centré, colonnes Services / Marque / L'Agence (+ « Nos avis clients »), réseaux Instagram · TikTok · YouTube · X · LinkedIn · Discord.
-- **Annonces « À venir »** : flag `LISTINGS_COMING_SOON` dans `components/property/property-card.tsx`. Badge ambre « À venir » sur chaque carte (home + /annonces), CTA → « Bientôt disponible » (non cliquable), bandeau /annonces. → passer le flag à `false` quand de vrais mandats existent.
+- **ANNONCES RÉELLES — système data-driven** : `lib/listings.ts` = source de vérité (un objet = un bien : id, slug, titre, type, transaction, statut, prix, adresse, quartier, description, atouts, taxeFoncière, chargesCopro, photos[alt], contact, seo). **Ajouter un bien = ajouter un objet + déposer les photos dans `public/annonces/<slug>/`** — home, hub, page dédiée, sitemap se mettent à jour seuls.
+  - Composants : `components/property/listing-card.tsx`, `listing-gallery.tsx`, `listing-detail.tsx` (JSON-LD `Product`+`Offer`).
+  - Route : `app/annonces/[id]` sert **les biens réels par slug en priorité**, repli sur les mocks (pas de conflit de segment dynamique).
+  - **1er bien en ligne** : `/annonces/garage-a-vendre-villeurbanne-laurent-bonnevay` (garage fermé, 21 000 €, Laurent Bonnevay).
+  - `/annonces` : sections **Disponible / Vendus / Loués** (biens réels) + grille placeholders « À venir » en dessous.
+- **Placeholders « À venir »** : flag `LISTINGS_COMING_SOON` (`components/property/property-card.tsx`) — ne concerne QUE les biens de démo. Les biens réels n'ont jamais ce badge. Retirer les mocks quand le catalogue réel sera fourni.
 - **Favicon** : `app/icon.svg` = le M (favicon.ico par défaut supprimé). `app/apple-icon.tsx` généré (M blanc sur anthracite, iOS).
 - **Estimation (étapes 1→3)** : formulaire conditionnel · géocodage BAN · comparables DVF (CSV data.gouv) · score /100 · positionnement · tendance 5 ans · voisinage · locatif · tableau comparables · **analyse LLM « L'œil de l'expert » = Claude Sonnet 4.6** (prompt expert enrichi).
 - **Estimation — emails Resend (étape 4 partielle)** : au submit, 2 emails partent (demandeur + agence via `ESTIMATION_NOTIFY_EMAIL`) depuis `estimation@markusimmobilier.fr`. Logs status+message, repli sandbox si domaine non vérifié. **Testé OK en prod** (`notifyTo` = tony.pistilli@markusimmobilier.fr).
