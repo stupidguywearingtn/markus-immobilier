@@ -26,7 +26,9 @@ export async function generateMetadata({
   const listing = getListing(id);
   if (listing) {
     return {
-      title: listing.seo.title,
+      // `absolute` = on court-circuite le template "%s · Markus Immobilier" du
+      // layout, sinon la marque apparaît deux fois dans le <title>.
+      title: { absolute: listing.seo.title },
       description: listing.seo.description,
       alternates: { canonical: `/annonces/${listing.slug}` },
       openGraph: {
