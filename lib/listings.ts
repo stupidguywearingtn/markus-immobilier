@@ -266,6 +266,85 @@ export const LISTINGS: Listing[] = [
     },
     publishedAt: "2026-07-20",
   },
+  {
+    id: "studio-villeurbanne-tolstoi",
+    slug: "studio-a-vendre-villeurbanne-tolstoi",
+    titre: "Studio à rénover — Villeurbanne (Tolstoï)",
+    type: "appartement",
+    transaction: "vente",
+    statut: "disponible",
+    prix: 109000,
+    prixMention: "Honoraires d'agence inclus · honoraires à la charge du vendeur",
+    disponibilite: "Libre de suite",
+    adresse: "Résidence Le Lafayette II",
+    quartier: "Tolstoï",
+    ville: "Villeurbanne",
+    codePostal: "69100",
+    surface: 33.21,
+    pieces: 1,
+    etage: "Rez-de-chaussée",
+    dpe: "E",
+    ges: "E",
+    composition: [
+      "Pièce de vie spacieuse et facilement aménageable",
+      "Coin cuisine ouvert, possibilité coin repas",
+      "Salle d'eau avec WC",
+      "Grand placard mural",
+      "Cave privative en sous-sol incluse",
+    ],
+    localisationTexte:
+      "un emplacement recherché en cœur de Villeurbanne, à proximité immédiate des commerces, des écoles et des services. Transports en commun accessibles à pied vers Lyon, accès rapide aux grands axes.",
+    description:
+      "Studio de 33,21 m² à vendre à Villeurbanne, au rez-de-chaussée de la résidence Le Lafayette II (quartier Tolstoï), entièrement à rénover, proposé à 109 000 €. Il se compose d'une pièce de vie spacieuse et facilement aménageable, d'un coin cuisine ouvert permettant d'installer un coin repas, d'une salle d'eau avec WC et d'un grand placard mural. Une cave privative en sous-sol est incluse dans la vente.\n\nLe bien est à rénover intégralement : sols, murs, cuisine et salle d'eau sont à reprendre. C'est l'occasion de repenser entièrement la distribution et les prestations, pour un studio remis au goût du jour et immédiatement locatif.\n\nExposition Est, accès de plain-pied sans marche ni escalier. Immeuble de bon standing avec ascenseur et interphone, dans un secteur calme et résidentiel. Chauffage collectif. Emplacement recherché en cœur de Villeurbanne, avec une demande locative constante portée par les étudiants, les jeunes actifs et les seniors.\n\nIdéal pour un investisseur : petite surface, forte rotation locative, DPE classé E permettant la location sans restriction jusqu'en 2034. Bien libre de toute occupation.",
+    atouts: [
+      "À rénover intégralement — potentiel de valorisation",
+      "Cave privative en sous-sol incluse",
+      "Exposition Est, accès de plain-pied",
+      "Immeuble avec ascenseur et interphone",
+      "Chauffage collectif",
+      "Secteur calme et résidentiel, cœur de Villeurbanne",
+      "Forte demande locative (étudiants, jeunes actifs, seniors)",
+      "DPE E — location sans restriction jusqu'en 2034",
+      "Vendu libre de toute occupation",
+    ],
+    taxeFonciere: 756,
+    chargesCopro: 1290,
+    photos: [
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-piece-de-vie.jpeg",
+        alt: "Pièce de vie du studio à vendre à Villeurbanne, quartier Tolstoï, à rénover",
+      },
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-jardin-residence.jpeg",
+        alt: "Jardin et espace vert de la résidence Le Lafayette II à Villeurbanne",
+      },
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-piece-de-vie-2.jpeg",
+        alt: "Pièce de vie du studio à vendre à Villeurbanne Tolstoï, second angle",
+      },
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-cuisine.jpeg",
+        alt: "Coin cuisine du studio à vendre à Villeurbanne, quartier Tolstoï",
+      },
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-hall-entree.jpeg",
+        alt: "Hall d'entrée de la résidence Le Lafayette II à Villeurbanne",
+      },
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-salle-eau.jpeg",
+        alt: "Salle d'eau à rénover du studio à vendre à Villeurbanne Tolstoï",
+      },
+    ],
+    contact: CONTACT_TONY,
+    seo: {
+      title:
+        "Studio 33 m² à rénover à vendre – Villeurbanne Tolstoï – 109 000 € | Markus Immobilier",
+      description:
+        "Studio de 33 m² à rénover à vendre à Villeurbanne (Tolstoï), rez-de-chaussée avec cave. Fort potentiel locatif, DPE E valable jusqu'en 2034. 109 000 €.",
+      h1: "Studio à rénover – Villeurbanne (Tolstoï)",
+    },
+    publishedAt: "2026-08-17",
+  },
 ];
 
 /* ───────── Helpers ───────── */
