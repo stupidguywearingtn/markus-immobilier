@@ -3,6 +3,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button, ArrowRight } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { ListingGallery } from "@/components/property/listing-gallery";
+import { BeforeAfterSection } from "@/components/property/before-after";
 import { JsonLd, breadcrumbLd, BASE } from "@/components/seo/json-ld";
 import {
   eur,
@@ -209,6 +210,10 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
           <ListingGallery photos={l.photos} />
         </div>
       </section>
+
+      {l.avantApres && l.avantApres.length > 0 && (
+        <BeforeAfterSection pairs={l.avantApres} />
+      )}
 
       {/* Description + atouts + infos / colonne contact */}
       <section className="bg-blanc pt-[60px] pb-[100px] max-md:pb-[72px]">

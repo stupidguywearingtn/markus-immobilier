@@ -30,6 +30,13 @@ export type ListingPhoto = {
   alt: string;
 };
 
+/** Paire avant/après pour un bien vendu « à rénover » — vue d'illustration. */
+export type AvantApresPair = {
+  label: string;
+  avant: ListingPhoto;
+  apres: ListingPhoto;
+};
+
 export type Listing = {
   id: string;
   /** URL finale : /annonces/<slug> */
@@ -76,6 +83,8 @@ export type Listing = {
   /** €/an */
   chargesCopro?: number;
   photos: ListingPhoto[];
+  /** Bien « à rénover » : paires avant (état réel) / après (projection). */
+  avantApres?: AvantApresPair[];
   contact: { nom: string; agence: string; telephone: string; email: string };
   /** SEO propre à la page du bien. */
   seo: { title: string; description: string; h1: string };
@@ -333,6 +342,52 @@ export const LISTINGS: Listing[] = [
       {
         src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-salle-eau.jpeg",
         alt: "Salle d'eau à rénover du studio à vendre à Villeurbanne Tolstoï",
+      },
+    ],
+    avantApres: [
+      {
+        label: "Pièce de vie",
+        avant: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-piece-de-vie.jpeg",
+          alt: "Pièce de vie du studio à Villeurbanne Tolstoï avant rénovation",
+        },
+        apres: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-projection-sejour.jpeg",
+          alt: "Projection de la pièce de vie du studio à Villeurbanne Tolstoï après rénovation",
+        },
+      },
+      {
+        label: "Pièce de vie — coin bureau",
+        avant: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-piece-de-vie-2.jpeg",
+          alt: "Second angle de la pièce de vie du studio à Villeurbanne Tolstoï avant rénovation",
+        },
+        apres: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-projection-sejour-2.jpeg",
+          alt: "Projection de la pièce de vie du studio à Villeurbanne Tolstoï après rénovation, coin bureau",
+        },
+      },
+      {
+        label: "Cuisine",
+        avant: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-cuisine.jpeg",
+          alt: "Coin cuisine du studio à Villeurbanne Tolstoï avant rénovation",
+        },
+        apres: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-projection-cuisine.jpeg",
+          alt: "Projection du coin cuisine du studio à Villeurbanne Tolstoï après rénovation",
+        },
+      },
+      {
+        label: "Salle d'eau",
+        avant: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-salle-eau.jpeg",
+          alt: "Salle d'eau du studio à Villeurbanne Tolstoï avant rénovation",
+        },
+        apres: {
+          src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-projection-salle-eau.jpeg",
+          alt: "Projection de la salle d'eau du studio à Villeurbanne Tolstoï après rénovation",
+        },
       },
     ],
     contact: CONTACT_TONY,

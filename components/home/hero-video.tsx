@@ -21,6 +21,7 @@ export function HeroVideo() {
   const [failed, setFailed] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
   const [reduce, setReduce] = useState(false);
+  const [needsTap, setNeedsTap] = useState(false);
 
   // Choix du fichier selon la largeur écran (mobile-first : < 768px = portrait)
   useEffect(() => {
@@ -65,6 +66,7 @@ export function HeroVideo() {
       return;
     }
 
+    setNeedsTap(false);
     const tryPlay = () => v.play().catch(() => { /* on réessaie au canplay */ });
     tryPlay();
     // Filet : si la 1re tentative échoue (vidéo pas encore prête sur Safari),
@@ -78,38 +80,76 @@ export function HeroVideo() {
     };
     v.addEventListener("error", onMediaError, true);
 
+    // Safari en mode économie d'énergie (Mac portable sur batterie) bloque
+    // parfois l'autoplay même muet, sans jamais lever d'erreur média : la
+    // vidéo reste juste en pause. Si elle n'a toujours pas démarré après un
+    // court délai, on propose un bouton de lecture manuel plutôt que de
+    // laisser l'utilisateur face à une image figée sans recours.
+    const checkStalled = window.setTimeout(() => {
+      if (v.paused) setNeedsTap(true);
+    }, 1200);
+
+    const onPlaying = () => setNeedsTap(false);
+    v.addEventListener("playing", onPlaying);
+
     return () => {
       v.removeEventListener("canplay", tryPlay);
       v.removeEventListener("error", onMediaError, true);
+      v.removeEventListener("playing", onPlaying);
+      window.clearTimeout(checkStalled);
     };
   }, [reduce, src]);
+
+  const handleTapPlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play()
+      .then(() => setNeedsTap(false))
+      .catch(() => { /* toujours bloqué : on garde le bouton visible */ });
+  };
 
   if (failed || !src) return null;
 
   return (
-    <video
-      key={src}
-      ref={videoRef}
-      className="z-[1]"
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        objectPosition: "center",
-      }}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster="/videos/hero-poster.jpg"
-      // Pas de onError → setFailed ici : Safari émet parfois un error transitoire
-      // sur <video> (pas sur <source>) ; on ne veut pas masquer définitivement.
-      aria-hidden="true"
-    >
-      <source src={src} type="video/mp4" />
-    </video>
+    <>
+      <video
+        key={src}
+        ref={videoRef}
+        className="z-[1]"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/videos/hero-poster.jpg"
+        // Pas de onError → setFailed ici : Safari émet parfois un error transitoire
+        // sur <video> (pas sur <source>) ; on ne veut pas masquer définitivement.
+        aria-hidden="true"
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+
+      {needsTap && !reduce && (
+        <button
+          type="button"
+          onClick={handleTapPlay}
+          aria-label="Lancer la vidéo"
+          className="absolute z-[4] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border border-blanc/70 bg-anthracite/40 backdrop-blur-md text-blanc grid place-items-center transition hover:bg-anthracite/60 hover:scale-105"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+      )}
+    </>
   );
 }
