@@ -28,6 +28,8 @@ export type ListingPhoto = {
   src: string;
   /** Alt descriptif et localisé (SEO images). */
   alt: string;
+  /** Vue d'illustration (projection après rénovation) — badge « Projection » affiché. */
+  isProjection?: boolean;
 };
 
 /** Paire avant/après pour un bien vendu « à rénover » — vue d'illustration. */
@@ -319,6 +321,11 @@ export const LISTINGS: Listing[] = [
     taxeFonciere: 756,
     chargesCopro: 1290,
     photos: [
+      {
+        src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-projection-sejour.jpeg",
+        alt: "Projection de la pièce de vie après rénovation — studio à vendre à Villeurbanne Tolstoï (vue d'illustration, non contractuelle)",
+        isProjection: true,
+      },
       {
         src: "/annonces/studio-a-vendre-villeurbanne-tolstoi/studio-tolstoi-villeurbanne-piece-de-vie.jpeg",
         alt: "Pièce de vie du studio à vendre à Villeurbanne, quartier Tolstoï, à rénover",

@@ -62,6 +62,11 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
             {l.photos.length} photos
           </span>
         )}
+        {photo?.isProjection && (
+          <span className="absolute bottom-3.5 left-3.5 z-[4] bg-sauge text-blanc text-[10.5px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.18)]">
+            Projection après rénovation
+          </span>
+        )}
       </Link>
 
       <div className="p-6 flex-1 flex flex-col">

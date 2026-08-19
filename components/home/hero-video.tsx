@@ -29,7 +29,7 @@ export function HeroVideo() {
     const mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     // ?v= sert de cache-buster : à bumper à chaque nouvelle génération vidéo
-    const v = "3";
+    const v = "4";
     const apply = () => {
       setSrc(
         mqMobile.matches

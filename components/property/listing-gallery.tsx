@@ -48,6 +48,11 @@ export function ListingGallery({ photos }: { photos: ListingPhoto[] }) {
             </span>
           </>
         )}
+        {current.isProjection && (
+          <span className="absolute top-4 left-4 z-[2] bg-sauge text-blanc text-[10.5px] font-semibold tracking-[0.06em] uppercase px-3 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.18)]">
+            Projection après rénovation — non contractuelle
+          </span>
+        )}
       </div>
 
       {photos.length > 1 && (
