@@ -19,9 +19,8 @@
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
-// Destinataire interne par défaut (test). Surchargeable via ESTIMATION_NOTIFY_EMAIL.
-// ⚠️ orthographe à confirmer côté client (voir note de livraison).
-export const DEFAULT_NOTIFY_EMAIL = "yanisouammou063@gmail.com";
+// Destinataire interne par défaut (agence). Surchargeable via ESTIMATION_NOTIFY_EMAIL.
+export const DEFAULT_NOTIFY_EMAIL = "villeurbanne@markusimmobilier.fr";
 
 // Domaine markusimmobilier.fr vérifié dans Resend → on peut envoyer depuis une
 // adresse @markusimmobilier.fr vers n'importe quel destinataire (plus de limite

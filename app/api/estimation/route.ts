@@ -14,6 +14,10 @@ import {
 } from "@/lib/estimation";
 import { generateAnalysis } from "@/lib/llm";
 
+// Le pipeline (géocodage + DVF + appel Claude non streamé) peut dépasser la
+// limite par défaut des fonctions Vercel — cf. /api/recrutement.
+export const maxDuration = 60;
+
 /**
  * Pipeline d'estimation — étape 3 du build.
  * 1. Valide le payload.

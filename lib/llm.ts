@@ -162,7 +162,7 @@ export async function generateAnalysis(payload: LlmPayload): Promise<{
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: buildUserPrompt(payload) }],
       }),
-      signal: AbortSignal.timeout(30_000),
+      signal: AbortSignal.timeout(55_000),
     });
 
     if (!res.ok) {
