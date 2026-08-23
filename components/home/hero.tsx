@@ -1,12 +1,17 @@
 import { LogoFull } from "@/components/ui/logo";
 import { Button, ArrowRight } from "@/components/ui/button";
 import { HeroVideo } from "@/components/home/hero-video";
+import { getHeroContent } from "@/lib/sanity/queries";
 
 /**
  * Hero plein écran : vidéo de fond (si présente) sur dégradé ken-burns en
  * fallback. L'overlay anthracite + grain est toujours appliqué par-dessus.
+ * Le micro-texte sous le CTA est éditable depuis /studio (Sanity) — le reste
+ * (logo, boutons) n'est pas du contenu CMS.
  */
-export function Hero() {
+export async function Hero() {
+  const { ctaMicrocopy } = await getHeroContent();
+
   return (
     <section
       id="top"
@@ -81,7 +86,7 @@ export function Hero() {
             <ArrowRight />
           </Button>
           <small className="text-xs uppercase tracking-[0.12em] text-white/65">
-            Résultat en moins de 2 minutes
+            {ctaMicrocopy}
           </small>
         </div>
       </div>
