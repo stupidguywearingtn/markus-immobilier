@@ -1,4 +1,5 @@
-import { sanityClient } from "./client";
+import { draftMode } from "next/headers";
+import { sanityClient, getPreviewClient } from "./client";
 
 export type HeroContent = {
   ctaMicrocopy: string;
@@ -18,10 +19,12 @@ const HERO_QUERY = `*[_type == "heroSection"][0]{ ctaMicrocopy }`;
  */
 export async function getHeroContent(): Promise<HeroContent> {
   try {
-    const data = await sanityClient.fetch<{ ctaMicrocopy?: string } | null>(
+    const isDraft = (await draftMode()).isEnabled;
+    const client = isDraft ? getPreviewClient() : sanityClient;
+    const data = await client.fetch<{ ctaMicrocopy?: string } | null>(
       HERO_QUERY,
       {},
-      { next: { revalidate: 60 } },
+      isDraft ? { cache: "no-store" } : { next: { revalidate: 60 } },
     );
     return { ctaMicrocopy: data?.ctaMicrocopy || FALLBACK_HERO.ctaMicrocopy };
   } catch (err) {

@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
+import { draftMode } from "next/headers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -110,9 +112,11 @@ const jsonLd = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const isDraftMode = (await draftMode()).isEnabled;
+
   return (
     <html lang="fr" className={`${montserrat.variable} h-full antialiased`}>
       <head>
@@ -149,6 +153,9 @@ export default function RootLayout({
         {/* Vercel Speed Insights — Core Web Vitals, cookieless.
             À activer aussi dans Vercel : projet → Speed Insights → Enable. */}
         <SpeedInsights />
+        {/* Overlays cliquables du Presentation Tool — actifs uniquement en
+            Draft Mode (aperçu Sanity), jamais sur le site public. */}
+        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );
