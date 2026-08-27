@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button, ArrowRight } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { Counter } from "@/components/ui/counter";
 import { SectionVideoBg } from "@/components/ui/section-video-bg";
+import { EditableText } from "@/components/backoffice/EditableText";
+import { EditableImage } from "@/components/backoffice/EditableImage";
+import { useV } from "@/hooks/useV";
 import { ScrollLine } from "./scroll-line";
 
 const STATS = [
@@ -14,6 +19,8 @@ const STATS = [
 ];
 
 export function About() {
+  const v = useV();
+
   return (
     <section
       id="apropos"
@@ -24,9 +31,6 @@ export function About() {
       <SectionVideoBg
         src="/videos/agence-ambiance.mp4"
         poster="/videos/agence-ambiance-poster.jpg"
-        // 0.72 (et non 0.6) : la vidéo montre la devanture avec des panneaux
-        // d'annonces rétro-éclairés très clairs — mesuré, il faut ce niveau pour
-        // tenir le contraste AA du texte courant sur les zones les plus lumineuses.
         overlay={0.72}
         blur={2}
       />
@@ -36,14 +40,21 @@ export function About() {
           {/* Colonne gauche : vraie photo de l'agence */}
           <Reveal>
             <div className="relative aspect-[4/5] min-h-[380px] rounded-[14px] overflow-hidden bg-gradient-to-br from-[#dfe2dd] via-[#c9cec6] to-[#b9bfb4] shadow-[0_28px_60px_-20px_rgba(0,0,0,0.55)] ring-1 ring-blanc/10">
-              {/* Photo de l'agence (salle de réunion, 87 rue Édouard Vaillant) */}
-              <Image
-                src="/agence-markus-villeurbanne.jpg"
-                alt="Salle de réunion de l'agence Markus Immobilier à Villeurbanne"
-                fill
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover"
-              />
+              <EditableImage
+                section="about"
+                field="photo"
+                value={v("about", "photo", "/agence-markus-villeurbanne.jpg")}
+              >
+                {(url) => (
+                  <Image
+                    src={url}
+                    alt="Salle de réunion de l'agence Markus Immobilier à Villeurbanne"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    className="object-cover"
+                  />
+                )}
+              </EditableImage>
 
               {/* Dégradé bas pour lisibilité de la mention */}
               <div
@@ -62,17 +73,32 @@ export function About() {
           </Reveal>
 
           <Reveal delay={120}>
-            <Eyebrow className="mb-4">À propos</Eyebrow>
+            <Eyebrow className="mb-4">
+              <EditableText
+                section="about"
+                field="eyebrow"
+                value={v("about", "eyebrow", "À propos")}
+              />
+            </Eyebrow>
             <h2 className="font-bold leading-[1.12] tracking-[-0.01em] text-[clamp(30px,4vw,46px)] mb-4">
-              Qui sommes-nous
+              <EditableText
+                section="about"
+                field="title"
+                value={v("about", "title", "Qui sommes-nous")}
+              />
             </h2>
             <p className="text-blanc/85 mb-4 leading-relaxed">
-              Chez Markus Immobilier, l&apos;immobilier est avant tout une{" "}
-              <strong className="font-semibold text-blanc">
-                histoire de confiance
-              </strong>
-              . Implantée au cœur de Villeurbanne, notre agence indépendante vous
-              accompagne dans la vente, la location et la gestion de vos biens.
+              <EditableText
+                as="span"
+                multiline
+                section="about"
+                field="para_1"
+                value={v(
+                  "about",
+                  "para_1",
+                  "Chez Markus Immobilier, l'immobilier est avant tout une histoire de confiance. Implantée au cœur de Villeurbanne, notre agence indépendante vous accompagne dans la vente, la location et la gestion de vos biens.",
+                )}
+              />
             </p>
             <p className="text-blanc/85 mb-2 leading-relaxed">
               Notre indépendance, c&apos;est la liberté de vous conseiller{" "}
@@ -99,8 +125,6 @@ export function About() {
               ))}
             </div>
 
-            {/* ghost = bordure blanche qui se remplit au hover (design-system §5,
-                variante prévue pour les fonds vidéo). */}
             <Button href="/equipe" variant="ghost">
               Notre équipe
               <ArrowRight size={15} />

@@ -1,16 +1,23 @@
+"use client";
+
 import { LogoFull } from "@/components/ui/logo";
 import { Button, ArrowRight } from "@/components/ui/button";
 import { HeroVideo } from "@/components/home/hero-video";
-import { getHeroContent } from "@/lib/sanity/queries";
+import { EditableText } from "@/components/backoffice/EditableText";
+import { useV } from "@/hooks/useV";
 
 /**
  * Hero plein écran : vidéo de fond (si présente) sur dégradé ken-burns en
  * fallback. L'overlay anthracite + grain est toujours appliqué par-dessus.
- * Le micro-texte sous le CTA est éditable depuis /studio (Sanity) — le reste
- * (logo, boutons) n'est pas du contenu CMS.
+ * Le micro-texte sous le CTA est éditable via le back-office (mode édition).
  */
-export async function Hero() {
-  const { ctaMicrocopy } = await getHeroContent();
+export function Hero() {
+  const v = useV();
+  const ctaMicrocopy = v(
+    "hero",
+    "cta_microcopy",
+    "Résultat en moins de 2 minutes",
+  );
 
   return (
     <section
@@ -50,13 +57,6 @@ export async function Hero() {
 
       {/* Contenu — logo centerpiece + boutons + CTA */}
       <div className="relative z-[3] px-6 max-w-[900px] flex flex-col items-center justify-center">
-        {/* Logo complet (M + MARKUS + IMMOBILIER), centré, blanc.
-            Bornes croisées px / vw / vh — empêche l'explosion sur certains écrans
-            (PC client à zoom 125 %, écrans 4K, laptop 13" portrait) :
-              • cap horizontal : 380 px max, jamais > 80 vw
-              • cap vertical   : 48 vh — le logo a ratio ~1.12 donc 48vh ≈ 54vh de largeur,
-                ce qui est borné par les 380 px côté px sur écrans courants
-            mx-auto centre horizontalement, items-center centre verticalement (cf. parent flex-col + grid place-items-center du <section>). */}
         <div
           className="mb-10 max-md:mb-8 mx-auto"
           style={{
@@ -85,9 +85,13 @@ export async function Hero() {
             Estimer mon bien
             <ArrowRight />
           </Button>
-          <small className="text-xs uppercase tracking-[0.12em] text-white/65">
-            {ctaMicrocopy}
-          </small>
+          <EditableText
+            as="small"
+            section="hero"
+            field="cta_microcopy"
+            value={ctaMicrocopy}
+            className="text-xs uppercase tracking-[0.12em] text-white/65"
+          />
         </div>
       </div>
     </section>

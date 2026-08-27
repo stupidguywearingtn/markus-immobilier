@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LogoMark } from "@/components/ui/logo";
+import { ProButton } from "@/components/backoffice/ProButton";
 import { track } from "@/lib/track";
 
 const TEL = "04 78 37 13 67";
@@ -21,8 +22,9 @@ export function SiteHeader() {
 
   return (
     <header
+      style={{ top: "var(--bo-bar-height, 0px)" }}
       className={[
-        "fixed top-0 left-0 right-0 z-[100] text-blanc",
+        "fixed left-0 right-0 z-[100] text-blanc",
         "[transition:all_0.35s_var(--ease)]",
         solid
           ? "bg-anthracite py-[14px] shadow-[0_8px_30px_rgba(0,0,0,0.18)]"
@@ -91,6 +93,7 @@ export function SiteHeader() {
           >
             {TEL}
           </a>
+          <ProButton />
         </nav>
 
         {/* Mobile : tel + burger */}
@@ -103,6 +106,7 @@ export function SiteHeader() {
           >
             {TEL}
           </a>
+          <ProButton />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

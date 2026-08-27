@@ -1,5 +1,9 @@
+"use client";
+
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
+import { EditableText } from "@/components/backoffice/EditableText";
+import { useV } from "@/hooks/useV";
 
 type Review = {
   name: string;
@@ -30,17 +34,33 @@ const REVIEWS: Review[] = [
 ];
 
 export function Reviews() {
+  const v = useV();
   return (
     <section id="avis" className="bg-gris py-[120px] max-md:py-[72px]">
       <div className="max-w-content mx-auto px-8 max-md:px-5">
         <Reveal className="text-center max-w-[640px] mx-auto mb-14 max-md:mb-10">
-          <Eyebrow className="mb-4">Témoignages</Eyebrow>
+          <Eyebrow className="mb-4">
+            <EditableText
+              section="reviews"
+              field="eyebrow"
+              value={v("reviews", "eyebrow", "Témoignages")}
+            />
+          </Eyebrow>
           <h2 className="font-bold leading-[1.12] tracking-[-0.01em] text-[clamp(30px,4vw,46px)] mb-4">
             Nos <span className="grad">avis clients.</span>
           </h2>
           <p className="text-[#5a6166]">
-            Ce que nos clients disent du suivi, de la rigueur et de
-            l&apos;accompagnement Markus.
+            <EditableText
+              as="span"
+              multiline
+              section="reviews"
+              field="subtitle"
+              value={v(
+                "reviews",
+                "subtitle",
+                "Ce que nos clients disent du suivi, de la rigueur et de l'accompagnement Markus.",
+              )}
+            />
           </p>
         </Reveal>
 

@@ -6,6 +6,8 @@ import { Button, ArrowRight } from "@/components/ui/button";
 import { KeysIllust } from "@/components/illustrations/keys";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { SignatureSequence } from "@/components/property/signature-sequence";
+import { EditableText } from "@/components/backoffice/EditableText";
+import { useV } from "@/hooks/useV";
 
 const BENEFITS = [
   { label: <><b>Estimation de vente</b></> },
@@ -21,6 +23,7 @@ const BENEFITS = [
  */
 export function Estimation() {
   const [runKey, setRunKey] = useState(0);
+  const v = useV();
 
   return (
     <section
@@ -37,15 +40,28 @@ export function Estimation() {
           {/* Texte */}
           <Reveal>
             <span className="inline-flex items-center gap-2 bg-sauge/[0.18] text-sauge border border-sauge/40 px-4 py-[7px] rounded-full text-xs font-semibold tracking-[0.12em] uppercase mb-5">
-              ★ Outil n°1
+              <EditableText
+                section="estimation"
+                field="eyebrow"
+                value={v("estimation", "eyebrow", "★ Outil n°1")}
+              />
             </span>
             <h2 className="font-bold leading-[1.12] tracking-[-0.01em] text-[clamp(30px,4vw,46px)] mb-4 text-blanc">
               Estimez votre bien en moins de{" "}
               <span className="grad-light">2 minutes.</span>
             </h2>
             <p className="text-white/70 text-lg max-w-[560px]">
-              Notre outil d&apos;estimation complet vous envoie un rapport PDF
-              détaillé directement sur votre mail.
+              <EditableText
+                as="span"
+                multiline
+                section="estimation"
+                field="subtitle"
+                value={v(
+                  "estimation",
+                  "subtitle",
+                  "Notre outil d'estimation complet vous envoie un rapport PDF détaillé directement sur votre mail.",
+                )}
+              />
             </p>
 
             <ul className="list-none my-7 flex flex-col gap-4">

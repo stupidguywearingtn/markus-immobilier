@@ -1,6 +1,10 @@
+"use client";
+
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
+import { EditableText } from "@/components/backoffice/EditableText";
+import { useV } from "@/hooks/useV";
 
 const HOURS = [
   { days: "Lundi – Samedi", time: "9h00 – 12h00" },
@@ -8,11 +12,18 @@ const HOURS = [
 ];
 
 export function Agency() {
+  const v = useV();
   return (
     <section id="agence" className="py-[120px] max-md:py-[72px] bg-gris">
       <div className="max-w-content mx-auto px-8 max-md:px-5">
         <Reveal className="text-center mb-[50px]">
-          <Eyebrow className="mb-4">Infos pratiques</Eyebrow>
+          <Eyebrow className="mb-4">
+            <EditableText
+              section="agency"
+              field="eyebrow"
+              value={v("agency", "eyebrow", "Infos pratiques")}
+            />
+          </Eyebrow>
           <h2 className="font-bold leading-[1.12] tracking-[-0.01em] text-[clamp(30px,4vw,46px)]">
             Notre <span className="grad">agence.</span>
           </h2>

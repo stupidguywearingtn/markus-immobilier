@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
-import { draftMode } from "next/headers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { VisualEditing } from "next-sanity/visual-editing";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ProviderTree } from "@/components/backoffice/ProviderTree";
+import { getPublishedFields } from "@/lib/supabase/content";
 import "./globals.css";
 
 // Domaine canonique de production (www). Une seule version en canonique.
@@ -115,7 +115,7 @@ const jsonLd = {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const isDraftMode = (await draftMode()).isEnabled;
+  const publishedFields = await getPublishedFields();
 
   return (
     <html lang="fr" className={`${montserrat.variable} h-full antialiased`}>
@@ -133,13 +133,15 @@ export default async function RootLayout({
         >
           Aller au contenu
         </a>
-        <LenisProvider>
-          <SiteHeader />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
-        </LenisProvider>
+        <ProviderTree publishedFields={publishedFields}>
+          <LenisProvider>
+            <SiteHeader />
+            <main id="main" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </LenisProvider>
+        </ProviderTree>
         {/* Umami — analytics cookieless / RGPD-friendly (pas de bandeau cookies).
             Ne se charge que si NEXT_PUBLIC_UMAMI_WEBSITE_ID est défini. */}
         {UMAMI_ID && (
@@ -153,9 +155,6 @@ export default async function RootLayout({
         {/* Vercel Speed Insights — Core Web Vitals, cookieless.
             À activer aussi dans Vercel : projet → Speed Insights → Enable. */}
         <SpeedInsights />
-        {/* Overlays cliquables du Presentation Tool — actifs uniquement en
-            Draft Mode (aperçu Sanity), jamais sur le site public. */}
-        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );

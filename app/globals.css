@@ -73,6 +73,22 @@
   --anthracite-60: rgba(56, 62, 66, 0.6);
   --anthracite-90: rgba(56, 62, 66, 0.9);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Back-office éditable (UI d'admin uniquement, jamais vue du public) ---- */
+  --bo-accent: #383e42; /* barre + base UI édition : anthracite (DA) */
+  --bo-accent-contrast: #ffffff;
+  --bo-dark: #1f2326; /* fond sombre (badge compteur) */
+  --bo-dirty: #9ea596; /* sauge : signale un brouillon non publié */
+  --bo-outline: #9ea596; /* contour au survol d'une zone éditable */
+
+  /* Hauteur de la barre d'édition — posée dynamiquement par EditModeToolbar
+     quand un admin est connecté, sinon 0. Décale <body> et <header>. */
+  --bo-bar-height: 0px;
+}
+
+/* Décalage global quand la barre d'édition admin est présente */
+body {
+  padding-top: var(--bo-bar-height, 0px);
 }
 
 /* ============================================
