@@ -88,8 +88,9 @@ function rowToListing(r: DbListingRow): Listing {
 }
 
 export async function getPublishedDbListings(): Promise<Listing[]> {
-  // `false` = pas de cache : une annonce publiée apparaît au prochain chargement.
-  const supabase = serverSupabase(false);
+  // ISR court : une annonce publiée apparaît sous ~10 s, sans rendre les pages
+  // dynamiques (l'accueil, les fiches et le sitemap restent générés statiquement).
+  const supabase = serverSupabase(10);
   if (!supabase) return [];
   try {
     const { data, error } = await supabase
@@ -103,6 +104,16 @@ export async function getPublishedDbListings(): Promise<Listing[]> {
     if (!data) return [];
     return (data as DbListingRow[]).map(rowToListing);
   } catch (e) {
+    // Next signale « route dynamique » via une erreur de contrôle interne :
+    // il faut la laisser remonter, pas la traiter comme un échec de lecture.
+    if (
+      e &&
+      typeof e === "object" &&
+      "digest" in e &&
+      String((e as { digest?: unknown }).digest).startsWith("DYNAMIC_SERVER_USAGE")
+    ) {
+      throw e;
+    }
     console.error(
       "[listings-all] exception lecture listings :",
       e instanceof Error ? e.message : e,
