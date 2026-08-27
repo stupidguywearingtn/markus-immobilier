@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/reveal";
 import { Button, ArrowRight } from "@/components/ui/button";
-import { TeamCard, JoinUsCard } from "@/app/equipe/page";
+import { TeamCard, JoinUsCard } from "@/components/team/team-card";
 import { TEAM } from "@/lib/mock-team";
 import { TeamIntro } from "@/components/home/team-intro";
 
@@ -23,7 +23,7 @@ export function Team() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 max-md:gap-5">
           {TEAM.map((m, i) => (
             <Reveal key={`${m.prenom}-${m.nom}`} delay={i * 90}>
-              <TeamCard member={m} />
+              <TeamCard member={m} index={i} />
             </Reveal>
           ))}
           <Reveal delay={TEAM.length * 90}>
