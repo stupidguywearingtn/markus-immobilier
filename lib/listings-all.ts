@@ -72,7 +72,8 @@ function rowToListing(r: DbListingRow): Listing {
     miseEnAvant: r.mise_en_avant,
     description: r.description,
     atouts: r.atouts ?? [],
-    photos: photos.length ? photos : [{ src: "", alt: r.titre }],
+    // Pas de photo -> tableau vide (jamais un src="" qui ferait planter next/image).
+    photos,
     contact: CONTACT_TONY,
     seo: {
       title: `${r.titre} | Markus Immobilier`,
@@ -87,16 +88,25 @@ function rowToListing(r: DbListingRow): Listing {
 }
 
 export async function getPublishedDbListings(): Promise<Listing[]> {
-  const supabase = serverSupabase();
+  // `false` = pas de cache : une annonce publiée apparaît au prochain chargement.
+  const supabase = serverSupabase(false);
   if (!supabase) return [];
   try {
     const { data, error } = await supabase
       .from("listings")
       .select(DB_COLS)
       .eq("status", "published");
-    if (error || !data) return [];
+    if (error) {
+      console.error("[listings-all] erreur lecture listings :", error.message);
+      return [];
+    }
+    if (!data) return [];
     return (data as DbListingRow[]).map(rowToListing);
-  } catch {
+  } catch (e) {
+    console.error(
+      "[listings-all] exception lecture listings :",
+      e instanceof Error ? e.message : e,
+    );
     return [];
   }
 }
