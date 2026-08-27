@@ -11,10 +11,14 @@ import { createClient } from "@supabase/supabase-js";
  * console côté navigateur. Le back-office reste alors inactif tant que
  * NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY ne sont pas définis.
  */
+// .trim() : une valeur d'env avec espace/retour-ligne parasite (copier-coller
+// dans Vercel) produit sinon "Failed to execute 'fetch' on 'Window': Invalid value"
+// (caractère invalide dans l'URL ou l'en-tête apikey/Authorization).
 const SUPABASE_URL =
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co";
+  process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() ||
+  "https://placeholder.supabase.co";
 const SUPABASE_KEY =
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder-anon-key";
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() || "placeholder-anon-key";
 
 export const supabaseConfigured = Boolean(
   process.env.NEXT_PUBLIC_SUPABASE_URL &&

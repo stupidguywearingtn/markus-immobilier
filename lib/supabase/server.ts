@@ -10,8 +10,8 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
  *   - `false`    -> aucune mise en cache (`cache: "no-store"`) — données toujours fraîches
  * Renvoie `null` si l'environnement Supabase n'est pas configuré.
  */
-const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
 export function serverSupabase(
   cacheMode: number | false = 60,

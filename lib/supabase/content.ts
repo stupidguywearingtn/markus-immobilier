@@ -11,8 +11,8 @@ import { SITE_ID } from "@/lib/backoffice/config";
  */
 export type PublishedFields = Record<string, string>;
 
-const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const URL = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
 const serverClient =
   URL && KEY
