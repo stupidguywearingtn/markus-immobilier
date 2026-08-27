@@ -40,8 +40,14 @@
 - **GSC** : balise `google-site-verification` via env `GOOGLE_SITE_VERIFICATION` (à renseigner dans Vercel quand le code GSC est dispo).
 - **Favicon (recette finale = TEL&CASH)** : convention de fichiers `app/favicon.ico` + `app/icon.png` + `app/apple-icon.png` (PAS de `metadata.icons` explicite → évite les balises en double, fix Safari iOS). Manifest → `public/icon-192/512.png`.
 - **GEO / IA** : `public/llms.txt` (servi sur `/llms.txt`) + **FAQ** sur la home (`components/home/faq.tsx`, 8 Q/R en `<details>` crawlables) avec **JSON-LD `FAQPage`**.
+- **BACK-OFFICE éditable (Supabase) — remplace Sanity** (2026-08-27). Sanity retiré (`lib/sanity/`, `app/api/draft-mode/`, `next-sanity`, `VisualEditing`) ; dossier `/studio/` laissé inerte sur le disque. Voir `docs/BACK-OFFICE-SETUP.md` + specs `docs/superpowers/specs/2026-08-27-backoffice-*.md`.
+  - **Sous-projet A — édition inline** : un admin connecté (Supabase Auth, `/signin`, bouton clé dans le header) active un « mode édition » et clique les textes/images de la home pour les modifier → brouillons → « Sauvegarder » publie en base (`site_content_fields`, clé `site_id/section/field`). Lecture publiée **server-side** (SEO). Champs câblés sur la home : eyebrows + titres plains + 1 paragraphe « Qui sommes-nous » + photo agence. Composants : `hooks/useAuth|useEditMode|useV`, `components/backoffice/*`. Tokens `--bo-*` dans `globals.css`. `SITE_ID` figé dans `lib/backoffice/config.ts`.
+  - **Sous-projet B — annonces** : `/admin/annonces` (liste + `/new` + `/[id]/edit`), formulaire 4 étapes (`components/admin/listing-form.tsx`), photos → bucket `listings`, workflow brouillon → publier. `lib/listings-all.ts` fusionne les biens statiques (`lib/listings.ts`, inchangés, prioritaires) + les annonces publiées Supabase, pour `/annonces`, `/annonces/[id]`, la home et le `sitemap`.
+  - Migrations SQL versionnées : `supabase/migrations/0001_backoffice.sql`, `0002_listings.sql`.
 
 ## ⏳ À FAIRE — actions utilisateur (Vercel / externe)
+
+- **Supabase (back-office)** — voir `docs/BACK-OFFICE-SETUP.md` : créer le projet, exécuter les 2 migrations SQL, créer le compte admin (+ ligne `user_roles`), poser `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` en local **et** dans Vercel. Tant que ces vars valent le placeholder, le back-office reste inactif (le site public fonctionne normalement).
 
 - **Vercel env vars** (sur le projet `markus-immobilier`) : `APIFY_API_KEY`, `RADAR_PASSWORD`, `RADAR_AUTH_TOKEN`, `ANTHROPIC_API_KEY`, `RESEND_API_KEY` (✓ posées), `ESTIMATION_NOTIFY_EMAIL` (✓), **`NEXT_PUBLIC_UMAMI_WEBSITE_ID`** (à ajouter pour activer Umami).
 - **Umami** : créer le site sur cloud.umami.is, récupérer le website-id → le mettre dans `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
