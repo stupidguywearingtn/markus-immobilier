@@ -6,7 +6,8 @@ import { PropertyCard, LISTINGS_COMING_SOON } from "@/components/property/proper
 import { ListingCard } from "@/components/property/listing-card";
 import { FiltersBar } from "@/components/property/filters-bar";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { getAvailableListings, getListingsByStatut } from "@/lib/listings";
+import { getListingsByStatut, type Listing } from "@/lib/listings";
+import { getAllAvailableListings } from "@/lib/listings-all";
 import { HouseIllust } from "@/components/illustrations/house";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import {
@@ -31,6 +32,8 @@ export default async function AnnoncesPage({
   const sp = await searchParams;
   const filters = parseFilterParams(sp);
   const results = filterProperties(filters);
+  // Biens disponibles = statiques (lib/listings.ts) + annonces publiées (Supabase).
+  const disponibles = await getAllAvailableListings();
 
   return (
     <>
@@ -51,7 +54,7 @@ export default async function AnnoncesPage({
       />
 
       {/* BIENS RÉELS — groupés par statut, filtrés par transaction si demandé */}
-      <ListingsByStatus transaction={filters.type} />
+      <ListingsByStatus transaction={filters.type} disponibles={disponibles} />
 
       {/* GRILLE + FILTRES (placeholders de présentation) */}
       <section className="bg-blanc">
@@ -114,11 +117,13 @@ export default async function AnnoncesPage({
  */
 function ListingsByStatus({
   transaction,
+  disponibles,
 }: {
   transaction?: "vente" | "location";
+  disponibles: Listing[];
 }) {
-  // Mis en avant d'abord (miseEnAvant), puis du plus récent au plus ancien.
-  const disponibles = getAvailableListings();
+  // `disponibles` (statiques + Supabase publiées) est déjà trié : mis en avant
+  // d'abord, puis du plus récent au plus ancien.
   const groups = [
     {
       statut: "dispo-vente" as const,

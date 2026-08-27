@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getAllAvailableListings } from "@/lib/listings-all";
 import { Hero } from "@/components/home/hero";
 import { Properties } from "@/components/home/properties";
 import { About } from "@/components/home/about";
@@ -33,11 +34,12 @@ export const metadata: Metadata = {
  *   → Notre agence (horaires + carte)
  *   → Footer (dans le layout)
  */
-export default function HomePage() {
+export default async function HomePage() {
+  const listings = await getAllAvailableListings();
   return (
     <>
       <Hero />
-      <Properties />
+      <Properties listings={listings} />
       <About />
       <Team />
       <SoldParallax />

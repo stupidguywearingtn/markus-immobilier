@@ -50,3 +50,6 @@ next-env.d.ts
 
 # Dossier source des photos brutes (les copies optimisees sont dans public/annonces/)
 /public/Photo annonce/
+
+# Supabase CLI temp
+supabase/.temp/

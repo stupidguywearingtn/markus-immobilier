@@ -4,7 +4,6 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -37,8 +36,8 @@ type Ctx = {
   cancel: () => void;
   siteId: string;
   publishing: boolean;
-  /** Valeurs publiées connues côté client (map injectée par le serveur). */
-  published: PublishedFields;
+  /** Valeur publiée connue côté client : overlay optimiste puis map serveur. */
+  resolvePublished: (section: string, field: string) => string | undefined;
 };
 
 const EditModeCtx = createContext<Ctx | null>(null);
@@ -55,9 +54,10 @@ export function EditModeProvider({
   const [enabled, setEnabled] = useState(false);
   const [drafts, setDrafts] = useState<Drafts>({});
   const [publishing, setPublishing] = useState(false);
-  // Copie locale re-synchronisée quand le layout serveur re-rend (router.refresh).
-  const [published, setPublished] = useState<PublishedFields>(publishedFields);
-  useEffect(() => setPublished(publishedFields), [publishedFields]);
+  // Overlay des valeurs publiées CETTE session (avant que le prop serveur ne se
+  // rafraîchisse). N'écrase jamais rien de façon durable : après router.refresh
+  // le prop `publishedFields` porte les mêmes valeurs.
+  const [optimistic, setOptimistic] = useState<PublishedFields>({});
 
   const setDraft = useCallback(
     (section: string, field: string, type: DraftType, value: string) => {
@@ -71,6 +71,14 @@ export function EditModeProvider({
     [drafts],
   );
 
+  const resolvePublished = useCallback(
+    (section: string, field: string) => {
+      const k = `${section}.${field}`;
+      return optimistic[k] ?? publishedFields[k];
+    },
+    [optimistic, publishedFields],
+  );
+
   const cancel = useCallback(() => setDrafts({}), []);
 
   const publish = useCallback(async () => {
@@ -78,14 +86,14 @@ export function EditModeProvider({
     if (entries.length === 0) return;
     setPublishing(true);
     try {
-      const rows = entries.map(([k, v]) => {
+      const rows = entries.map(([k, val]) => {
         const [section_key, field_key] = k.split(".");
         return {
           site_id: SITE_ID,
           section_key,
           field_key,
-          content_type: v.type,
-          content_value: v.value,
+          content_type: val.type,
+          content_value: val.value,
         };
       });
       const { error } = await supabase
@@ -93,10 +101,9 @@ export function EditModeProvider({
         .upsert(rows, { onConflict: "site_id,section_key,field_key" });
       if (error) throw error;
 
-      // Fusion optimiste dans la map locale, puis on jette les brouillons.
-      setPublished((prev) => {
+      setOptimistic((prev) => {
         const next = { ...prev };
-        for (const [k, v] of entries) next[k] = v.value;
+        for (const [k, val] of entries) next[k] = val.value;
         return next;
       });
       setDrafts({});
@@ -124,7 +131,7 @@ export function EditModeProvider({
       cancel,
       siteId: SITE_ID,
       publishing,
-      published,
+      resolvePublished,
     }),
     [
       isAdmin,
@@ -135,7 +142,7 @@ export function EditModeProvider({
       publish,
       cancel,
       publishing,
-      published,
+      resolvePublished,
     ],
   );
 

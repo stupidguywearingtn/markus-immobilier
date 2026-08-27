@@ -10,10 +10,13 @@ import { MapPinIllust } from "@/components/illustrations/map-pin";
 import { FloorPlanIllust } from "@/components/illustrations/floor-plan";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { PROPERTIES } from "@/lib/mock-properties";
-import { LISTINGS, getListing } from "@/lib/listings";
+import { getListingBySlug, getAllListingSlugs } from "@/lib/listings-all";
 import { ListingDetail } from "@/components/property/listing-detail";
 
 type Params = Promise<{ id: string }>;
+
+// Les annonces publiées après le build sont rendues à la demande.
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
@@ -23,7 +26,7 @@ export async function generateMetadata({
   const { id } = await params;
 
   // 1) Bien RÉEL (par slug) — SEO dédié
-  const listing = getListing(id);
+  const listing = await getListingBySlug(id);
   if (listing) {
     return {
       // `absolute` = on court-circuite le template "%s · Markus Immobilier" du
@@ -50,9 +53,10 @@ export async function generateMetadata({
   };
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const slugs = await getAllListingSlugs(); // statiques + annonces publiées
   return [
-    ...LISTINGS.map((l) => ({ id: l.slug })),
+    ...slugs.map((slug) => ({ id: slug })),
     ...PROPERTIES.map((p) => ({ id: p.id })),
   ];
 }
@@ -65,7 +69,7 @@ export default async function PropertyDetailPage({
   const { id } = await params;
 
   // Les biens réels ont la priorité sur les placeholders de démo.
-  const listing = getListing(id);
+  const listing = await getListingBySlug(id);
   if (listing) return <ListingDetail listing={listing} />;
 
   const property = PROPERTIES.find((p) => p.id === id);

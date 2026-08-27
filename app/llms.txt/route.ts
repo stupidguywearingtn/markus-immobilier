@@ -1,4 +1,11 @@
-import { LISTINGS, TYPE_LABEL, eur, surfaceLabel, transactionLabel } from "@/lib/listings";
+import {
+  TYPE_LABEL,
+  eur,
+  surfaceLabel,
+  transactionLabel,
+  type Listing,
+} from "@/lib/listings";
+import { getAllListings } from "@/lib/listings-all";
 import { ARTICLES } from "@/lib/blog";
 
 /**
@@ -11,7 +18,7 @@ import { ARTICLES } from "@/lib/blog";
 
 const BASE = "https://www.markusimmobilier.fr";
 
-function listingLine(l: (typeof LISTINGS)[number]): string {
+function listingLine(l: Listing): string {
   const specs = [
     l.surface != null ? surfaceLabel(l.surface) : null,
     l.pieces != null ? `${l.pieces} pièces` : null,
@@ -36,7 +43,8 @@ function articleLine(a: (typeof ARTICLES)[number]): string {
 }
 
 export async function GET() {
-  const disponibles = LISTINGS.filter((l) => l.statut === "disponible");
+  const all = await getAllListings(); // statiques + annonces publiées
+  const disponibles = all.filter((l) => l.statut === "disponible");
   const articlesByDate = [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   const body = `# Markus Immobilier

@@ -109,7 +109,7 @@ export const STATUT_LABEL: Record<ListingStatut, string> = {
   loue: "Loué",
 };
 
-const CONTACT_TONY = {
+export const CONTACT_TONY = {
   nom: "Tony Pistilli",
   agence: "Markus Immobilier",
   telephone: "06 81 78 77 40",

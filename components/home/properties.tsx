@@ -6,13 +6,15 @@ import { Reveal } from "@/components/reveal";
 import { PropertyCard } from "@/components/property/property-card";
 import { ListingCard } from "@/components/property/listing-card";
 import { featuredProperties } from "@/lib/mock-properties";
-import { getAvailableListings } from "@/lib/listings";
+import { getAvailableListings, type Listing } from "@/lib/listings";
 import { EditableText } from "@/components/backoffice/EditableText";
 import { useV } from "@/hooks/useV";
 
-export function Properties() {
+export function Properties({ listings: listingsProp }: { listings?: Listing[] }) {
   const v = useV();
-  const listings = getAvailableListings();
+  // `listings` vient du serveur (statiques + annonces publiées Supabase) ;
+  // repli sur les seules statiques si non fourni.
+  const listings = listingsProp ?? getAvailableListings();
   // On complète la grille avec des placeholders « À venir » tant qu'il y a
   // moins de 3 biens réels. Dès que le catalogue se remplit, ils disparaissent.
   const placeholders = featuredProperties.slice(
