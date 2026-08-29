@@ -185,6 +185,15 @@ export function SiteFooter() {
           <Link href="/cookies" className="text-white/55 no-underline mx-1.5">
             Cookies
           </Link>
+          ·
+          {/* Accès back-office — volontairement très discret, non indexé */}
+          <Link
+            href="/signin"
+            rel="nofollow"
+            className="text-white/30 no-underline mx-1.5 hover:text-white/60 transition-colors"
+          >
+            Espace pro
+          </Link>
         </div>
       </div>
     </footer>

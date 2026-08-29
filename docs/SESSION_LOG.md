@@ -22,7 +22,8 @@
   - Migrations `0001_backoffice.sql` (rôles, `has_role`, `site_content_fields`, bucket `site-images`) et `0002_listings.sql` (table `listings`, bucket `listings`) exécutées.
   - Env `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` posées en local (doublon placeholder nettoyé).
   - **Compte admin** : user `452a22da-e088-41f4-9c63-161395e15504`, mot de passe défini via l'API Admin Auth (HTTP 200). Mot de passe communiqué en privé.
-- Auth Supabase : page `/signin`, bouton clé dans le header (`ProButton`), garde `AdminGuard` sur `/admin/*`.
+- Auth Supabase : page `/signin`, garde `AdminGuard` sur `/admin/*`.
+- **Accès back-office discret** : plus aucun élément dans le header. Un lien « Espace pro » en `text-white/30` (`rel="nofollow"`) tout en bas du footer → `/signin`. L'admin connecté bascule l'édition via la barre du haut (`EditModeToolbar`). Composant `ProButton` supprimé.
 - Barre d'édition (`EditModeToolbar`) : Activer/Désactiver, compteur de brouillons, Sauvegarder (upsert groupé), Annuler, lien « Annonces ».
 - Back-office annonces `/admin/annonces` : liste (brouillons/publiées), `/new`, `/[id]/edit`, formulaire 4 étapes (`components/admin/listing-form.tsx`), upload photos multiple + réordonnancement + alt, workflow brouillon → publier / dépublier / supprimer.
 - Docs : `docs/BACK-OFFICE-SETUP.md`, specs `docs/superpowers/specs/2026-08-27-backoffice-*.md`.

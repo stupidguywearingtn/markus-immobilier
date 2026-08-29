@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LogoMark } from "@/components/ui/logo";
-import { ProButton } from "@/components/backoffice/ProButton";
 import { track } from "@/lib/track";
 
 const TEL = "04 78 37 13 67";
@@ -93,7 +92,6 @@ export function SiteHeader() {
           >
             {TEL}
           </a>
-          <ProButton />
         </nav>
 
         {/* Mobile : tel + burger */}
@@ -106,7 +104,6 @@ export function SiteHeader() {
           >
             {TEL}
           </a>
-          <ProButton />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
