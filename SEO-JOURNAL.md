@@ -20,6 +20,10 @@
   `markusimmobilier.fr` redirige en 308 vers `www`. Ceci **clôt le point
   « High #1 » de l'audit du 2026-08-27** (qui disait le domaine non connecté et
   les canonicals pointant dans le vide). Ne pas le rouvrir.
+- **Déploiement auto Vercel connecté** ✅ — vérifié aujourd'hui : le push sur
+  `main` était en ligne en **moins d'une minute**. `ÉTAT-PROJET.md` le listait
+  encore comme « à faire », c'est fait. Concrètement : un run peut vérifier son
+  propre travail en prod dans la foulée du push, et doit le faire.
 - `robots.txt` OK (bloque `/api/`, `/espace-client`, `/radar`, `/admin`),
   `sitemap.xml` = **60 URLs**.
 - 26 articles de blog en SSG, 4 pages SEO locales + 3 pages quartiers.
@@ -148,6 +152,13 @@ aucune remontée sur les fichiers touchés (les 39 erreurs restantes sont
 pré-existantes, dans `scripts/` et `studio/`). HTML pré-rendu inspecté :
 7 H2 en questions, 3 tableaux, 5 `<summary>`, `datePublished 2026-04-14` /
 `dateModified 2026-09-07`, FAQPage ↔ FAQ visible cohérents.
+
+**Vérifié en production après déploiement** (et pas seulement en local) :
+`https://www.markusimmobilier.fr/blog/prix-immobilier-villeurbanne-2026` sert
+bien les 3 tableaux, les 6 H2 en questions, les 5 entrées de FAQ, le
+`BlogPosting` daté `2026-04-14 → 2026-09-07`, le `FAQPage` cohérent avec la FAQ
+visible. `llms.txt` et `sitemap.xml` (`lastmod 2026-09-07`) ont suivi tout
+seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 
 ---
 
