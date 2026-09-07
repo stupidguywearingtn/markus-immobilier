@@ -39,7 +39,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
   const blogPages: MetadataRoute.Sitemap = ARTICLES.map((a) => ({
     url: `${BASE}/blog/${a.slug}`,
-    lastModified: new Date(a.date),
+    // date de dernière vraie mise à jour du contenu, sinon date de publication
+    lastModified: new Date(a.updated ?? a.date),
     priority: 0.7,
     changeFrequency: "monthly",
   }));

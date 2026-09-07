@@ -58,7 +58,7 @@ export default async function ArticlePage({
     headline: a.h1,
     description: a.metaDescription,
     datePublished: a.date,
-    dateModified: a.date,
+    dateModified: a.updated ?? a.date,
     inLanguage: "fr-FR",
     mainEntityOfPage: `${BASE}/blog/${a.slug}`,
     author: { "@type": "Organization", name: "Markus Immobilier", url: BASE },
@@ -73,6 +73,19 @@ export default async function ArticlePage({
   return (
     <>
       <JsonLd data={blogPostingLd} />
+      {a.faq && a.faq.length > 0 && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: a.faq.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }}
+        />
+      )}
       <JsonLd
         data={breadcrumbLd([
           { name: "Accueil", path: "/" },
@@ -103,7 +116,9 @@ export default async function ArticlePage({
             <span className="mx-1.5">/</span>
             <Link href="/blog" className="hover:text-blanc transition">Blog</Link>
           </nav>
-          <Eyebrow className="mb-3">Mis à jour le {fmtDate(a.date)}</Eyebrow>
+          <Eyebrow className="mb-3">
+            Mis à jour le {fmtDate(a.updated ?? a.date)}
+          </Eyebrow>
           <h1
             className="font-extrabold tracking-[-0.02em] leading-[1.08]"
             style={{ fontSize: "clamp(28px, 4vw, 46px)" }}
@@ -117,6 +132,40 @@ export default async function ArticlePage({
       <section className="bg-blanc py-[70px] max-md:py-[48px]">
         <article className="max-w-[760px] mx-auto px-8 max-md:px-5">
           <ArticleBody blocks={a.blocks} />
+
+          {/* FAQ — visible ET reprise à l'identique en JSON-LD FAQPage */}
+          {a.faq && a.faq.length > 0 && (
+            <div className="mt-12 max-md:mt-9 pt-9 border-t border-[var(--bordure)]">
+              <Eyebrow className="mb-5">Questions fréquentes</Eyebrow>
+              <div className="space-y-3">
+                {a.faq.map((f) => (
+                  <details
+                    key={f.q}
+                    className="group bg-gris rounded-[12px] border border-[var(--bordure)] px-5 py-4"
+                  >
+                    <summary className="cursor-pointer list-none flex items-start justify-between gap-4 text-[15.5px] font-semibold text-anthracite leading-snug">
+                      {f.q}
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="var(--color-sauge)"
+                        strokeWidth="2.4"
+                        className="shrink-0 mt-1 transition-transform group-open:rotate-45"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </summary>
+                    <p className="mt-3 text-[15px] leading-[1.7] text-[#3d4347]">
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* CTA final vers la page argent */}
           <div className="mt-14 max-md:mt-10 bg-gris rounded-[18px] p-8 max-md:p-6 text-center border border-[var(--bordure)]">

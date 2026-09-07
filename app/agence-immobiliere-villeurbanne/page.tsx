@@ -68,7 +68,9 @@ export default function AgenceVilleurbannePage() {
                 <a href="/agence-immobiliere-cusset" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">Cusset</a>,
                 mais aussi au Tonkin, aux Brosses, et plus largement sur Lyon et la
                 métropole. Notre implantation locale nous permet d'estimer juste et
-                de conseiller avec précision.
+                de conseiller avec précision. Nous publions d'ailleurs les{" "}
+                <a href="/blog/prix-immobilier-villeurbanne-2026" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">prix au m² réels par quartier de Villeurbanne</a>,
+                recalculés à partir des ventes officiellement enregistrées.
               </p>
             ),
           },

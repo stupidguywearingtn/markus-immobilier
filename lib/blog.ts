@@ -3,16 +3,28 @@
  * Un article = une page /blog/[slug]. Chaque article pointe (lien interne) vers
  * une page « argent » (estimation, vendre, acheter, gestion locative).
  *
- * NB : les articles « prix-immobilier-villeurbanne-2026 » et
- * « ou-acheter-villeurbanne-quartiers » contiennent une section où le client
- * doit ajouter ses chiffres €/m² réels par quartier (jamais inventer un prix).
+ * NB chiffres : « prix-immobilier-villeurbanne-2026 » publie des prix €/m² par
+ * quartier **calculés** à partir de la base DVF (data.gouv.fr / Etalab) croisée
+ * avec les contours de quartiers de la Métropole de Lyon — méthode et date
+ * d'extraction affichées dans l'article. Ne jamais y écrire un prix qui ne
+ * vienne pas de ce calcul. Reste à traiter de la même façon :
+ * « ou-acheter-villeurbanne-quartiers » (formulé sans chiffres aujourd'hui).
  */
 
 export type Block =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
-  | { type: "ol"; items: string[] };
+  | { type: "ol"; items: string[] }
+  /** Tableau de données. `source` = mention de provenance affichée en légende. */
+  | {
+      type: "table";
+      caption?: string;
+      source?: string;
+      headers: string[];
+      rows: string[][];
+    };
 
 export type Article = {
   slug: string;
@@ -20,10 +32,17 @@ export type Article = {
   metaDescription: string;
   h1: string;
   excerpt: string;
-  date: string; // ISO
+  date: string; // ISO — publication
+  /** ISO — dernière vraie mise à jour du contenu (≠ date de publication). */
+  updated?: string;
   internalHref: string;
   internalLabel: string;
   blocks: Block[];
+  /**
+   * FAQ affichée en bas d'article. Rendue visiblement ET en JSON-LD FAQPage :
+   * les deux doivent toujours rester identiques (sinon mismatch sanctionnable).
+   */
+  faq?: { q: string; a: string }[];
 };
 
 export const ARTICLES: Article[] = [
@@ -67,29 +86,125 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "prix-immobilier-villeurbanne-2026",
-    title: "Prix immobilier à Villeurbanne en 2026 : analyse du marché",
+    title:
+      "Prix au m² à Villeurbanne : les chiffres réels par quartier (ventes 2025)",
     metaDescription:
-      "Quel est le prix au m² à Villeurbanne en 2026 ? Tendances par quartier, facteurs de prix et conseils pour bien estimer votre bien.",
-    h1: "Prix immobilier à Villeurbanne en 2026 : ce qu'il faut savoir",
+      "Prix au m² à Villeurbanne calculés sur 1 875 ventes réelles de 2025 (données DVF) : médiane par quartier, évolution depuis 2022, prix par type de bien.",
+    h1: "Prix au m² à Villeurbanne : les chiffres réels, quartier par quartier",
     excerpt:
-      "Derrière un « prix moyen au m² », les écarts entre quartiers sont importants. Comment lire le marché villeurbannais en 2026.",
+      "Nous avons recalculé les prix de Villeurbanne à partir des 1 875 ventes d'appartements réellement signées en 2025 (données DVF) : 3 567 €/m² en médiane, et jusqu'à 43 % d'écart entre quartiers.",
     date: "2026-04-14",
+    updated: "2026-09-07",
     internalHref: "/estimation",
     internalLabel: "Estimer gratuitement mon bien à Villeurbanne",
     blocks: [
-      { type: "p", text: "Voisine directe de Lyon, Villeurbanne attire familles, cadres et investisseurs. Mais derrière un « prix moyen au m² », les écarts entre quartiers sont importants. Voici comment lire le marché en 2026." },
-      { type: "h2", text: "Ce qui fait le prix à Villeurbanne" },
+      { type: "p", text: "Le prix médian d'un appartement à Villeurbanne est de **3 567 €/m²**, calculé sur les **1 875 ventes d'appartements réellement signées dans la commune en 2025**. Ce n'est pas une moyenne d'annonces : ce sont les prix inscrits chez le notaire, publiés par l'État dans la base DVF. Selon le quartier, la médiane va de 2 738 à 3 923 €/m², soit **43 % d'écart** entre le secteur le moins cher et le plus cher." },
+      { type: "p", text: "Nous refaisons ce calcul nous-mêmes, quartier par quartier, parce que les « prix moyens » publiés par les portails mélangent souvent prix demandés et prix signés. Voici le détail, la méthode, et ce que ces chiffres permettent — ou pas — de conclure sur votre bien." },
+
+      { type: "h2", text: "Quel est le prix au m² à Villeurbanne en 2026 ?" },
+      { type: "p", text: "Le prix médian est de **3 567 €/m² pour un appartement** et **4 186 €/m² pour une maison**, sur les ventes de l'année 2025 (dernière année complète publiée). Le prix médian d'un appartement vendu à Villeurbanne s'établit à **195 000 €**, pour une surface médiane de 62 m²." },
+      { type: "p", text: "Après trois années de baisse, le marché s'est stabilisé : la médiane appartement remonte de **+1,5 % entre 2024 et 2025**, mais reste **10,4 % en dessous de son niveau de 2022**. Autrement dit, le point bas semble passé, sans rattrapage du recul des années précédentes." },
+      {
+        type: "table",
+        caption: "Villeurbanne — appartements anciens, prix de vente signés",
+        headers: ["Année", "Médiane €/m²", "Prix médian", "Ventes analysées"],
+        rows: [
+          ["2022", "3 981 €", "221 760 €", "2 399"],
+          ["2023", "3 851 €", "207 000 €", "1 847"],
+          ["2024", "3 514 €", "194 000 €", "1 648"],
+          ["**2025**", "**3 567 €**", "**195 000 €**", "**1 875**"],
+        ],
+        source:
+          "Source : base DVF (demandes de valeurs foncières), data.gouv.fr / Etalab — extraction du 7 septembre 2026. Calcul Markus Immobilier.",
+      },
+
+      { type: "h2", text: "Quel est le prix au m² par quartier à Villeurbanne ?" },
+      { type: "p", text: "Les trois quartiers les plus chers sont **Ferrandière – Maisons-Neuves (3 923 €/m²)**, **Gratte-Ciel – Dedieu – Charmettes (3 846 €/m²)** et **Charpennes – Tonkin (3 524 €/m²)**. Le plus abordable est **Cyprian – Les Brosses, à 2 738 €/m²**. Chaque valeur ci-dessous est la médiane des ventes d'appartements de 2025 dans le périmètre officiel du quartier." },
+      {
+        type: "table",
+        caption:
+          "Prix médian au m² des appartements vendus en 2025, par quartier de Villeurbanne",
+        headers: ["Quartier", "2025", "vs 2024", "vs 2022", "Ventes 2025"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "3 923 €", "+7,3 %", "−2,0 %", "187"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 846 €", "+1,2 %", "−10,6 %", "655"],
+          ["Charpennes – Tonkin", "3 524 €", "−1,3 %", "−13,2 %", "200"],
+          ["Perralière – Grandclément", "3 375 €", "+1,3 %", "−11,4 %", "330"],
+          ["Buers – Croix-Luizet", "3 271 €", "+2,1 %", "−11,5 %", "223"],
+          ["Cusset – Bonnevay", "3 171 €", "+3,1 %", "−5,8 %", "213"],
+          ["Cyprian – Les Brosses", "2 738 €", "+3,4 %", "−10,0 %", "53"],
+        ],
+        source:
+          "Sources : ventes DVF 2022-2025 (data.gouv.fr / Etalab) rattachées aux contours officiels des quartiers de la Métropole de Lyon (data.grandlyon.com). Extraction du 7 septembre 2026, calcul Markus Immobilier. Le quartier Saint-Jean n'est pas listé : trop peu de ventes pour une médiane fiable.",
+      },
+      { type: "p", text: "Un point mérite d'être souligné : **Ferrandière – Maisons-Neuves est le seul quartier revenu quasiment à son niveau de 2022** (−2,0 %), quand Charpennes – Tonkin reste 13,2 % en dessous. La reprise n'est pas homogène à l'échelle de la commune." },
+
+      { type: "h2", text: "Combien coûte un T2 ou un T3 à Villeurbanne ?" },
+      { type: "p", text: "Un T2 s'est vendu **170 000 € en médiane en 2025** (45 m²), un T3 **226 250 €** (65 m²) et un T4 **255 000 €** (81 m²). Le prix au m² baisse mécaniquement avec la taille : 4 000 €/m² pour un studio contre 2 967 €/m² pour un T5. C'est la règle sur tout le marché lyonnais — les petites surfaces se paient plus cher au mètre carré, portées par la demande locative et étudiante (le campus de la Doua est à Villeurbanne)." },
+      {
+        type: "table",
+        caption: "Appartements vendus à Villeurbanne en 2025, par nombre de pièces",
+        headers: ["Type", "Prix médian", "€/m² médian", "Surface médiane", "Ventes"],
+        rows: [
+          ["Studio / T1", "115 000 €", "4 000 €", "30 m²", "309"],
+          ["T2", "170 000 €", "3 830 €", "45 m²", "435"],
+          ["T3", "226 250 €", "3 494 €", "65 m²", "578"],
+          ["T4", "255 000 €", "3 211 €", "81 m²", "406"],
+          ["T5 et +", "290 670 €", "2 967 €", "100 m²", "116"],
+        ],
+        source:
+          "Source : base DVF 2025 (data.gouv.fr / Etalab), ventes d'appartements à Villeurbanne. Calcul Markus Immobilier, extraction du 7 septembre 2026.",
+      },
+
+      { type: "h2", text: "Comment ces prix ont-ils été calculés ?" },
+      { type: "p", text: "Nous partons de la base **DVF (demandes de valeurs foncières)** publiée par l'État sur data.gouv.fr, qui recense chaque mutation immobilière enregistrée par les notaires, avec son prix réel et sa localisation. Nous ne retenons que les ventes exploitables, puis nous rattachons chaque vente à son quartier par ses coordonnées GPS." },
+      { type: "p", text: "Les règles de filtrage appliquées, pour que vous puissiez juger de la fiabilité des chiffres :" },
       { type: "ul", items: [
-        "**La proximité de Lyon et des transports** : métro A, lignes de tram, accès rapide à la Part-Dieu.",
-        "**Le quartier** : Gratte-Ciel (cœur historique et prisé), Charpennes (très demandé, étudiants et actifs), Cusset, Tonkin, Les Brosses… chacun a sa dynamique.",
-        "**Le type de bien et son état** : un bien rénové avec extérieur se négocie bien au-dessus de la moyenne.",
-        "**Le DPE** : les logements énergivores subissent une décote croissante.",
+        "**Ventes uniquement** (les échanges, adjudications et expropriations sont exclus).",
+        "**Un seul logement par transaction** : les ventes d'immeubles entiers ou de lots multiples sont écartées, car leur prix au m² n'a pas de sens.",
+        "**Surface bâtie ≥ 10 m²** et prix au m² compris entre 800 et 12 000 € — au-delà, il s'agit presque toujours d'une erreur de saisie ou d'une vente atypique.",
+        "**Rattachement au quartier** par point-dans-polygone, à partir des contours officiels de quartiers publiés par la Métropole de Lyon.",
+        "**Médiane et non moyenne** : la médiane n'est pas tirée vers le haut par quelques ventes exceptionnelles.",
       ] },
-      { type: "p", text: "Les prix au m² varient sensiblement d'un quartier à l'autre. Plutôt que de vous fier à une moyenne, demandez une estimation précise basée sur les ventes réelles de votre secteur." },
-      { type: "h2", text: "Acheteur ou vendeur : comment s'en servir" },
-      { type: "p", text: "Un prix moyen ne suffit jamais pour fixer le prix d'un bien précis. Deux appartements de même surface dans la même rue peuvent avoir 15 à 20 % d'écart selon l'étage, l'état et l'exposition." },
-      { type: "h2", text: "Connaître la vraie valeur de votre bien" },
-      { type: "p", text: "Estimez gratuitement votre bien à Villeurbanne : notre outil s'appuie sur les ventes réellement conclues près de chez vous." },
+      { type: "p", text: "Deux limites à connaître. D'abord, **DVF est publiée avec du décalage** : 2025 est la dernière année complète disponible en septembre 2026. Ensuite, la base ne dit rien de l'état du bien, de l'étage, de l'exposition ni du DPE — trois facteurs qui expliquent l'essentiel des écarts à l'intérieur d'un même quartier." },
+
+      { type: "h2", text: "Pourquoi un prix de quartier ne suffit pas à estimer votre bien" },
+      { type: "p", text: "Parce que l'écart à l'intérieur d'un quartier est presque toujours plus grand que l'écart entre quartiers. Deux appartements de même surface dans la même rue peuvent afficher 15 à 20 % de différence selon l'étage, la présence d'un ascenseur, l'exposition, l'état et le DPE. Un prix médian de quartier vous donne un ordre de grandeur, pas une valeur." },
+      { type: "p", text: "Les critères qui font bouger le prix par rapport à la médiane de votre quartier :" },
+      { type: "ul", items: [
+        "**L'étage et l'ascenseur** : un dernier étage avec ascenseur se paie ; un 4ᵉ sans ascenseur se décote.",
+        "**Le DPE** : depuis l'interdiction de louer les logements classés G (janvier 2025) puis F (janvier 2028), les passoires thermiques se négocient nettement en dessous du marché.",
+        "**L'extérieur** : balcon, terrasse ou jardin — un différenciateur majeur depuis 2020.",
+        "**Les charges de copropriété** : élevées, elles réduisent directement le budget de l'acheteur, donc le prix qu'il peut proposer.",
+        "**Le stationnement** : un garage ou une place se valorise à part, en plus du prix au m² habitable.",
+      ] },
+
+      { type: "h2", text: "Ce que ces chiffres changent si vous vendez en 2026" },
+      { type: "p", text: "La stabilisation observée en 2025 signifie qu'un bien correctement positionné se vend — mais que le marché ne rattrape plus les erreurs de prix. Un bien affiché 10 % au-dessus de sa valeur ne trouvera pas d'acheteur en attendant que le marché monte : il stagnera, puis se vendra en dessous de son prix réel après plusieurs baisses successives." },
+      { type: "p", text: "Le nombre de ventes est reparti à la hausse en 2025 (1 875 contre 1 648 en 2024, soit **+14 %**) : il y a des acheteurs. Ils comparent simplement beaucoup mieux qu'en 2021." },
+      { type: "p", text: "Notre estimation en ligne applique la même méthode que cet article, mais à l'échelle de votre rue : elle croise les ventes DVF réellement conclues autour de votre adresse avec les caractéristiques précises de votre logement. Comptez moins de deux minutes, et vous recevez le rapport détaillé." },
+    ],
+    faq: [
+      {
+        q: "Quel est le prix au m² à Villeurbanne en 2026 ?",
+        a: "Le prix médian d'un appartement à Villeurbanne est de 3 567 €/m², calculé sur les 1 875 ventes signées en 2025 (base DVF, dernière année complète publiée). Pour une maison, la médiane est de 4 186 €/m².",
+      },
+      {
+        q: "Quel est le quartier le plus cher de Villeurbanne ?",
+        a: "Ferrandière – Maisons-Neuves, avec une médiane de 3 923 €/m² sur les ventes d'appartements de 2025, devant Gratte-Ciel – Dedieu – Charmettes (3 846 €/m²). Le quartier le plus abordable est Cyprian – Les Brosses, à 2 738 €/m².",
+      },
+      {
+        q: "Les prix de l'immobilier baissent-ils encore à Villeurbanne ?",
+        a: "Non, la baisse s'est arrêtée. Le prix médian au m² des appartements remonte de 1,5 % entre 2024 et 2025. Il reste toutefois 10,4 % en dessous du niveau de 2022, et la reprise est inégale : Ferrandière – Maisons-Neuves est presque revenu à son niveau de 2022, quand Charpennes – Tonkin reste 13,2 % en dessous.",
+      },
+      {
+        q: "Combien coûte un T3 à Villeurbanne ?",
+        a: "Un T3 s'est vendu 226 250 € en médiane à Villeurbanne en 2025, pour une surface médiane de 65 m², soit 3 494 €/m². 578 T3 ont été vendus dans la commune cette année-là.",
+      },
+      {
+        q: "D'où viennent ces prix au m² ?",
+        a: "De la base DVF (demandes de valeurs foncières) publiée par l'État sur data.gouv.fr, qui recense le prix réel de chaque vente enregistrée par les notaires. Markus Immobilier recalcule les médianes en écartant les ventes de lots multiples et les valeurs aberrantes, et rattache chaque vente à son quartier via les contours officiels de la Métropole de Lyon.",
+      },
     ],
   },
   {
