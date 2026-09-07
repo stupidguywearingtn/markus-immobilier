@@ -72,12 +72,22 @@ const jsonLd = {
   url: SITE_URL,
   telephone: "+33478371367",
   email: "villeurbanne@markusimmobilier.fr",
+  logo: `${SITE_URL}/icon-512.png`,
+  image: `${SITE_URL}/agence-markus-villeurbanne.jpg`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "87 rue Édouard Vaillant",
     addressLocality: "Villeurbanne",
     postalCode: "69100",
     addressCountry: "FR",
+  },
+  // Coordonnées du 87 rue Édouard Vaillant, géocodées via la Base Adresse
+  // Nationale (api-adresse.data.gouv.fr) — correspondance exacte au numéro,
+  // score 0,98. Ne pas les remplacer par des coordonnées relevées à la main.
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 45.77238,
+    longitude: 4.880949,
   },
   openingHoursSpecification: [
     {

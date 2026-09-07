@@ -92,7 +92,7 @@
 **High**
 1. **Domaine non connecté.** Tous les canonicals / OG pointent vers `https://www.markusimmobilier.fr` mais le site est servi depuis `markus-immobilier.vercel.app`. Google voit des URLs `vercel.app` avec un canonical vers un domaine qui ne résout pas. → connecter le domaine dans Vercel (action user, déjà au backlog `ÉTAT-PROJET.md`).
 2. **Pas de `<h1>` sur la home (`/`).** Le hero n'a qu'un logo SVG (`LogoFull`). Ajouter un `<h1>` (visuellement discret possible) portant la proposition de valeur + « agence immobilière Villeurbanne / Lyon ».
-3. **Pas de schema `Review` / `AggregateRating`** alors que la home affiche 3 avis clients réels. Ajouter `aggregateRating` + `review[]` au JSON-LD `RealEstateAgent` → possibilité d'étoiles en SERP.
+3. ~~**Pas de schema `Review` / `AggregateRating`**~~ — **ITEM ANNULÉ le 2026-09-07, ne pas le traiter.** Google exclut les avis « self-serving » (avis sur l'entité A publiés sur le site de l'entité A) : une page `LocalBusiness` / `Organization` dans ce cas est *ineligible for star review feature*. Les 3 avis de la home sont exactement ce cas → aucune étoile possible. Voir `SEO-JOURNAL.md` § « Erreurs commises et corrigées » pour les sources. Le levier pour des étoiles est **Google Business Profile**, pas le JSON-LD du site.
 
 **Medium**
 4. **`RealEstateAgent` sans `logo` ni `geo`** (lat/lng). Ajouter les deux (Knowledge Panel + local pack).

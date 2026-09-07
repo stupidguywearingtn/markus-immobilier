@@ -57,6 +57,16 @@ export function Hero() {
 
       {/* Contenu — logo centerpiece + boutons + CTA */}
       <div className="relative z-[3] px-6 max-w-[900px] flex flex-col items-center justify-center">
+        {/* H1 de la page d'accueil.
+            Le titre VISUEL du hero est le logo (DA validée, on n'y touche pas) :
+            ce <h1> porte donc la même information sous forme textuelle, pour les
+            moteurs et les lecteurs d'écran. Il décrit exactement le contenu de
+            la page — ce n'est pas du texte caché à des fins de référencement. */}
+        <h1 className="sr-only">
+          Markus Immobilier — agence immobilière à Villeurbanne et Lyon : achat,
+          vente, location et gestion locative
+        </h1>
+
         <div
           className="mb-10 max-md:mb-8 mx-auto"
           style={{

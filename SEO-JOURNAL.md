@@ -27,11 +27,12 @@
 - `robots.txt` OK (bloque `/api/`, `/espace-client`, `/radar`, `/admin`),
   `sitemap.xml` = **60 URLs**.
 - 26 articles de blog en SSG, 4 pages SEO locales + 3 pages quartiers.
-- **Home : toujours pas de `<h1>`** (vérifié dans le HTML servi le 2026-09-07 —
-  zéro balise `h1`). Le hero n'affiche qu'un logo SVG. **C'est le trou le plus
-  gros qui reste.**
+- ~~**Home : toujours pas de `<h1>`**~~ → **corrigé au run n°2 du 2026-09-07**
+  (`<h1>` unique en `sr-only` dans le hero). Constaté absent en début de
+  journée, présent depuis.
 - JSON-LD servis sur la home : `RealEstateAgent` + `FAQPage` (8 Q/R).
-  `RealEstateAgent` n'a **ni `logo` ni `geo`**.
+  ~~`RealEstateAgent` n'a ni `logo` ni `geo`~~ → **corrigé au run n°2**
+  (`logo`, `image` et `geo` ajoutés).
 - Les autres pages clés ont bien un `<h1>` unique et des `<title>` localisés.
 
 ### Positions mesurées
@@ -54,6 +55,52 @@ suivants doivent se comparer.
 ---
 
 ## Chantiers faits
+
+### 2026-09-07 (run n°2) — Fondations on-page de la home : `<h1>` + `geo`/`logo`
+
+> ⚠️ **Deux runs de la routine ont tourné en parallèle ce 2026-09-07** (13:11 et
+> 13:24 UTC). Le second a démarré sur un clone antérieur aux commits du premier
+> et a donc **refait le même chantier DVF de son côté, sans le savoir**. Ce
+> travail en double a été **jeté sans être poussé** dès la découverte des
+> commits amont : la version du premier run était déjà en ligne et vérifiée, et
+> elle s'appuie sur les **contours officiels de la Métropole de Lyon**, plus
+> légitimes que le regroupement d'IRIS INSEE qu'avait fait le second.
+> **Leçon opératoire, à appliquer dès demain : commencer tout run par
+> `git fetch origin main && git log --oneline HEAD..origin/main` AVANT de lire
+> le journal.** Le journal du clone local peut être périmé de plusieurs commits ;
+> lui seul ne suffit pas à savoir ce qui est déjà fait.
+
+**Chantier retenu à la place** : les deux points en tête du backlog, tous deux
+re-vérifiés absents sur le HTML servi en production avant d'agir. Ils sont
+petits mais concernent la page la plus forte du site et la requête la plus
+rentable (« agence immobilière Villeurbanne »).
+
+1. **`<h1>` sur la home** — il n'y en avait *aucun*. Ajouté dans
+   `components/home/hero.tsx` : « Markus Immobilier — agence immobilière à
+   Villeurbanne et Lyon : achat, vente, location et gestion locative ».
+   - **En `sr-only`, volontairement.** Le titre visuel du hero est le logo, et
+     la DA est validée : `CLAUDE.md` interdit de la réinventer et impose de
+     s'abstenir en cas de doute sur un changement de rendu. Un `h1` textuel
+     visible aurait modifié le hero ; le `sr-only` apporte la sémantique
+     manquante **sans toucher un pixel**. Ce n'est pas du cloaking : le texte
+     décrit exactement le contenu de la page, et `sr-only` est déjà le motif
+     utilisé ailleurs dans le projet (skip-link du layout, formulaires).
+   - Vérifié : **exactement un `<h1>`** dans le HTML généré, hero visuellement
+     inchangé, `useV()` du back-office non impacté.
+2. **`geo` + `logo` dans `RealEstateAgent`** (`app/layout.tsx`) — ajoutés, plus
+   `image` (photo de l'agence). Coordonnées **géocodées via la Base Adresse
+   Nationale** (`api-adresse.data.gouv.fr`), correspondance exacte au numéro,
+   score 0,978 : **lat 45.77238 / lon 4.880949**. Relevées à la source, pas à la
+   main — commentaire posé dans le code pour qu'on ne les « corrige » pas plus
+   tard au jugé.
+
+**Contrôle qualité** : `tsc --noEmit` OK · `eslint` OK sur les 2 fichiers
+touchés · `npm run build` OK (81 pages) · HTML pré-rendu inspecté (1 seul `h1`,
+`logo` / `image` / `geo` bien sérialisés dans le JSON-LD).
+
+**Décidé de NE PAS faire** : republier une seconde version des chiffres DVF.
+Deux jeux de médianes concurrents sur le même sujet (17 quartiers IRIS vs 8
+quartiers officiels) auraient été une régression de crédibilité, pas un gain.
 
 ### 2026-09-07 — Prix au m² par quartier de Villeurbanne, calculés sur données réelles
 
@@ -167,32 +214,29 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-1. **`<h1>` sur la home** (vérifié absent le 2026-09-07). C'est le plus gros
-   trou on-page restant, sur la page la plus forte du site, pour la requête
-   principale « agence immobilière Villeurbanne ». Pas fait aujourd'hui pour ne
-   pas mélanger deux chantiers, et parce que le hero est un Client Component
-   câblé au back-office : la modif touche au rendu, elle mérite son propre run.
-   *Piste* : `<h1>` visuellement discret (ou en `sr-only` assumé) sous le logo,
-   du type « Markus Immobilier — agence immobilière à Villeurbanne et Lyon ».
-   Vérifier après coup que le `useV()` du hero n'est pas impacté.
-2. **`logo` + `geo` (lat/lng) dans le JSON-LD `RealEstateAgent`** — confirmé
-   absents dans le HTML servi. Peu risqué, utile pour le pack local.
-3. **Article `ou-acheter-villeurbanne-quartiers`** : même traitement que
+~~1. `<h1>` sur la home~~ — **fait au run n°2 du 2026-09-07.**
+~~2. `logo` + `geo` dans `RealEstateAgent`~~ — **fait au run n°2 du 2026-09-07.**
+
+1. **Vérifier en production le travail du run n°2** (il a été poussé en fin de
+   run sans que la prod ait pu être re-fetchée derrière) : `<h1>` unique sur
+   `/`, `geo`/`logo` dans le JSON-LD servi. **À faire en tout premier demain**,
+   c'est deux `curl`.
+2. **Article `ou-acheter-villeurbanne-quartiers`** : même traitement que
    l'article prix, avec les chiffres déjà calculés ci-dessus (par quartier), et
    un angle différent (où acheter selon le profil). Le calcul est déjà fait, il
    n'y a plus qu'à écrire.
-4. **Créer la propriété Google Search Console** + poser
+3. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
    client**, mais c'est ce qui débloquera de vraies mesures de position à la
    place des recherches web approximatives. À rappeler.
-5. **Pas de page dédiée « estimation immobilière Villeurbanne »** alors que
+4. **Pas de page dédiée « estimation immobilière Villeurbanne »** alors que
    `/estimation-immobiliere-lyon` existe. Le trou est réel (requête commerciale
    n°1 dans la ville du client), mais attention à ne pas créer un quasi-doublon
    de `/estimation` : à ne faire qu'avec un angle et un contenu propres
    (ex. adossé aux chiffres DVF par quartier).
-6. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
+5. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
    `/cookies` ; `/signin` non `noindex`. Petit, à caser en fin de run.
-7. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
+6. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
    `author` = Organization. Un auteur humain identifié (Tony Pistilli) serait
    plus fort.
 
@@ -237,6 +281,23 @@ de suite un chantier « contenu blog ».
   « High #1 » le fait que le domaine ne soit pas connecté. Il l'est depuis.
   Leçon appliquée : **toujours refetcher le site avant de croire une note
   d'audit**, y compris celles de ce journal.
+
+- **2026-09-07 (run n°2) — Item de backlog invalidé : `AggregateRating` /
+  `Review` pour obtenir des étoiles en SERP.** `docs/SESSION_LOG.md` le classe
+  encore en « High #3 » (« ajouter `aggregateRating` + `review[]` au JSON-LD
+  `RealEstateAgent` → possibilité d'étoiles en SERP »). **C'est faux : ne pas le
+  faire.** Google exclut explicitement les avis « self-serving » — un avis
+  portant sur l'entité A publié sur le site de l'entité A : *« if the entity
+  that's being reviewed controls the reviews about itself, their pages that use
+  LocalBusiness or any other type of Organization structured data are ineligible
+  for star review feature »*. Les 3 avis de la home sont exactement ce cas.
+  Gain attendu : **zéro étoile**, pour un balisage à risque.
+  Sources : [Review snippet — Google Search Central](https://developers.google.com/search/docs/appearance/structured-data/review-snippet)
+  et [Making Review Rich Results more helpful](https://developers.google.com/search/blog/2019/09/making-review-rich-results-more-helpful)
+  (règle en vigueur depuis 2019, revérifiée le 2026-09-07).
+  → **Item mort. Ne pas le ressortir du backlog historique.** Si on veut des
+  étoiles un jour, le levier est la fiche **Google Business Profile**, pas le
+  JSON-LD du site.
 
 ---
 
