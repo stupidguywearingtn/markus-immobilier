@@ -98,6 +98,11 @@ rentable (« agence immobilière Villeurbanne »).
 touchés · `npm run build` OK (81 pages) · HTML pré-rendu inspecté (1 seul `h1`,
 `logo` / `image` / `geo` bien sérialisés dans le JSON-LD).
 
+**Vérifié en production après déploiement** (≈ 1 min après le push, cohérent
+avec ce qu'avait constaté le run n°1) : `https://www.markusimmobilier.fr/` sert
+bien **un `<h1>` unique** et le `RealEstateAgent` avec `logo`, `image` et
+`geo`.
+
 **Décidé de NE PAS faire** : republier une seconde version des chiffres DVF.
 Deux jeux de médianes concurrents sur le même sujet (17 quartiers IRIS vs 8
 quartiers officiels) auraient été une régression de crédibilité, pas un gain.
@@ -217,26 +222,22 @@ de suite un chantier « contenu blog ».
 ~~1. `<h1>` sur la home~~ — **fait au run n°2 du 2026-09-07.**
 ~~2. `logo` + `geo` dans `RealEstateAgent`~~ — **fait au run n°2 du 2026-09-07.**
 
-1. **Vérifier en production le travail du run n°2** (il a été poussé en fin de
-   run sans que la prod ait pu être re-fetchée derrière) : `<h1>` unique sur
-   `/`, `geo`/`logo` dans le JSON-LD servi. **À faire en tout premier demain**,
-   c'est deux `curl`.
-2. **Article `ou-acheter-villeurbanne-quartiers`** : même traitement que
+1. **Article `ou-acheter-villeurbanne-quartiers`** : même traitement que
    l'article prix, avec les chiffres déjà calculés ci-dessus (par quartier), et
    un angle différent (où acheter selon le profil). Le calcul est déjà fait, il
    n'y a plus qu'à écrire.
-3. **Créer la propriété Google Search Console** + poser
+2. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
    client**, mais c'est ce qui débloquera de vraies mesures de position à la
    place des recherches web approximatives. À rappeler.
-4. **Pas de page dédiée « estimation immobilière Villeurbanne »** alors que
+3. **Pas de page dédiée « estimation immobilière Villeurbanne »** alors que
    `/estimation-immobiliere-lyon` existe. Le trou est réel (requête commerciale
    n°1 dans la ville du client), mais attention à ne pas créer un quasi-doublon
    de `/estimation` : à ne faire qu'avec un angle et un contenu propres
    (ex. adossé aux chiffres DVF par quartier).
-5. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
+4. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
    `/cookies` ; `/signin` non `noindex`. Petit, à caser en fin de run.
-6. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
+5. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
    `author` = Organization. Un auteur humain identifié (Tony Pistilli) serait
    plus fort.
 
