@@ -49,6 +49,16 @@ export default function AgenceVilleurbannePage() {
           {
             eyebrow: "Nos services",
             h2: "Tout votre projet immobilier, au même endroit",
+            body: (
+              <p className="mb-3">
+                Vous préparez une vente ? Commencez par notre{" "}
+                <a href="/estimation-immobiliere-villeurbanne" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">
+                  estimation immobilière à Villeurbanne
+                </a>{" "}
+                : repères de prix par quartier calculés sur les ventes réelles,
+                et fourchette personnalisée en moins de 2 minutes.
+              </p>
+            ),
             bullets: [
               "Estimation gratuite de votre bien en moins de 2 minutes.",
               "Vente d'appartements et de maisons, du juste prix à la signature.",

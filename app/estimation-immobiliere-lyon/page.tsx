@@ -77,7 +77,12 @@ export default function EstimationLyonPage() {
               <p>
                 Lyon 1 à Lyon 9, Villeurbanne, Caluire, Bron, Vénissieux… chaque
                 secteur a sa dynamique. Implantés à Villeurbanne, nous estimons et
-                accompagnons sur toute la métropole lyonnaise. Pour affiner la
+                accompagnons sur toute la métropole lyonnaise. Si votre bien se
+                trouve à Villeurbanne, notre page dédiée à l&apos;
+                <a href="/estimation-immobiliere-villeurbanne" className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge">
+                  estimation immobilière à Villeurbanne
+                </a>{" "}
+                publie les repères de prix quartier par quartier. Pour affiner la
                 fourchette, un conseiller peut se déplacer gratuitement.
               </p>
             ),

@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/acheter`, lastModified: now, priority: 0.9, changeFrequency: "monthly" },
     { url: `${BASE}/gestion-locative`, lastModified: now, priority: 0.85, changeFrequency: "monthly" },
     { url: `${BASE}/estimation-immobiliere-lyon`, lastModified: now, priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/estimation-immobiliere-villeurbanne`, lastModified: now, priority: 0.9, changeFrequency: "monthly" },
     { url: `${BASE}/agence-immobiliere-villeurbanne`, lastModified: now, priority: 0.85, changeFrequency: "monthly" },
     { url: `${BASE}/agence-immobiliere-gratte-ciel`, lastModified: now, priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE}/agence-immobiliere-charpennes`, lastModified: now, priority: 0.8, changeFrequency: "monthly" },

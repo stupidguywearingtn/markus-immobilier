@@ -43,6 +43,47 @@ export function breadcrumbLd(
   };
 }
 
+/**
+ * FAQ structurée. **Toujours construire ce JSON-LD à partir du MÊME tableau que
+ * la FAQ affichée** (cf. `<FaqBlock>`) : une FAQPage qui ne correspond pas au
+ * contenu visible est un mismatch sanctionnable par Google.
+ * Objectif ici : citabilité par les LLM, pas un rich result (Google réserve
+ * l'affichage FAQ aux sites gouvernementaux et de santé depuis août 2023).
+ */
+export function faqLd(items: { q: string; a: string }[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+/** Procédure structurée (contenus « comment faire »), reprise du contenu visible. */
+export function howToLd(opts: {
+  name: string;
+  description: string;
+  totalTime?: string;
+  steps: { name: string; text: string }[];
+}): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: opts.name,
+    description: opts.description,
+    ...(opts.totalTime ? { totalTime: opts.totalTime } : {}),
+    step: opts.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 /** Service immobilier structuré (pages /vendre, /acheter, /gestion-locative…). */
 export function serviceLd(opts: {
   name: string;

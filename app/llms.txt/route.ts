@@ -55,6 +55,7 @@ export async function GET() {
 - [Accueil](${BASE}): présentation de l'agence, services et estimation gratuite
 - [Estimation gratuite](${BASE}/estimation): outil d'estimation en ligne basé sur les transactions réelles à Villeurbanne et Lyon
 - [Estimation immobilière à Lyon](${BASE}/estimation-immobiliere-lyon): estimation gratuite d'un bien à Lyon, basée sur les ventes réelles
+- [Estimation immobilière à Villeurbanne](${BASE}/estimation-immobiliere-villeurbanne): estimation gratuite d'un bien à Villeurbanne, repères de prix par quartier calculés sur les ventes DVF 2025 (médiane 3 567 €/m², de 2 738 à 3 923 €/m² selon le quartier)
 - [Vendre](${BASE}/vendre): accompagnement à la vente d'un bien à Villeurbanne et Lyon
 - [Acheter](${BASE}/acheter): recherche et achat de biens à Lyon et Villeurbanne
 - [Gestion locative](${BASE}/gestion-locative): gestion locative pour propriétaires bailleurs

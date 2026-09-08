@@ -16,13 +16,22 @@ export type SeoSection = {
  * Hero + sections alternées (blanc / gris) + bloc CTA estimation/contact.
  * Respecte la DA : Eyebrow sauge, dégradé partiel de titre, reveal au scroll.
  */
+const fmtDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
 export function SeoLanding({
   eyebrow,
   title,
   lead,
   illustration,
   intro,
+  updated,
   sections,
+  afterSections,
   ctaTitle,
   ctaText,
   primaryHref = "/estimation",
@@ -33,7 +42,15 @@ export function SeoLanding({
   lead: string;
   illustration?: ReactNode;
   intro?: ReactNode;
+  /**
+   * ISO. Affiche « Dernière mise à jour : … » en tête de contenu.
+   * La fraîcheur affichée pèse lourd dans la citation par les LLM — mais ne la
+   * bouger QUE si le contenu change réellement (redater à vide = signal de spam).
+   */
+  updated?: string;
   sections: SeoSection[];
+  /** Contenu libre inséré après les sections (FAQ, tableau…), dans la colonne de texte. */
+  afterSections?: ReactNode;
   ctaTitle: ReactNode;
   ctaText: string;
   primaryHref?: string;
@@ -61,6 +78,14 @@ export function SeoLanding({
 
       <section className="bg-blanc py-[100px] max-md:py-[64px]">
         <div className="max-w-[860px] mx-auto px-8 max-md:px-5">
+          {updated && (
+            <Reveal>
+              <p className="text-[13px] text-[#6b7276] mb-6">
+                Dernière mise à jour :{" "}
+                <time dateTime={updated}>{fmtDate(updated)}</time>
+              </p>
+            </Reveal>
+          )}
           {intro && (
             <Reveal>
               <p className="text-[17px] leading-relaxed text-[#3d4347] mb-14 max-md:mb-10">
@@ -105,6 +130,8 @@ export function SeoLanding({
               </Reveal>
             ))}
           </div>
+
+          {afterSections && <Reveal>{afterSections}</Reveal>}
         </div>
       </section>
 
