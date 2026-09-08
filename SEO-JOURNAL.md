@@ -14,6 +14,24 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-08**
+
+- **Le clone local était à jour ce matin** (`git log HEAD..origin/main` vide) :
+  la leçon du run n°2 (fetch avant tout) a été appliquée, aucun travail en
+  double. **À refaire chaque jour, en premier.**
+- `sitemap.xml` = **61 URLs** (60 la veille : +1 avec la nouvelle page
+  estimation Villeurbanne). `robots.txt` ne bloque aucune page SEO.
+- **8 pages SEO hors blog** : 4 locales (Villeurbanne + 3 quartiers), 2
+  estimation (Lyon + **Villeurbanne, créée aujourd'hui**), vendre, acheter,
+  gestion locative. 26 articles de blog.
+- `node_modules` **n'est pas dans le conteneur au démarrage** : `npm ci` prend
+  ~1 min et est indispensable avant `tsc`/`lint`/`build`. Sans lui, `tsc`
+  crache une centaine de faux « Cannot find module » — ne pas les prendre pour
+  des erreurs du code.
+- **Délai de déploiement Vercel : ~60-80 s** (mesuré : 404 aux 3 premières
+  tentatives, 200 à la 4ᵉ, soit ≈ 70 s après le push). Prévoir une boucle de
+  ré-essai, ne pas conclure à un échec sur un premier 404.
+
 **Au 2026-09-07**
 
 - **Domaine connecté** ✅ — `https://www.markusimmobilier.fr` répond 200,
@@ -41,20 +59,128 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-07 | Run précédent |
+| Requête | 2026-09-08 | 2026-09-07 |
 |---|---|---|
-| agence immobilière Villeurbanne | **absent** du top 8 (PagesJaunes, Laforêt, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux) | — |
-| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 9 (Nestenn, Square Habitat, imkiz, MonMandatLocal, SAFTI, Salengro, En Mode Immo, Solvimo) | — |
-| prix m2 Villeurbanne par quartier | **absent** du top 9 (MeilleursAgents, PAP, SeLoger, efficity, Square Habitat, fonciris, prix-au-m2.fr) | — |
+| agence immobilière Villeurbanne | **absent** du top 8 (PagesJaunes, Laforêt, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux) | absent, **SERP identique** |
+| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 9 (Nestenn ×2, Square Habitat, imkiz, MonMandatLocal, SAFTI, Salengro, En Mode Immo, Solvimo) | absent, **SERP identique** |
+| prix m2 Villeurbanne par quartier | **absent** du top 8 (Square Habitat, MeilleursAgents, PAP, SeLoger, JournalDuNet, immosudest, Régie Carron, netvendeur) | absent (SERP proche, quelques acteurs différents) |
+| vendre appartement Villeurbanne | **absent** du top 7 (Logic-Immo, Orpi, Century 21, PAP, SeLoger, Nestenn, Immo de France) | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | **absent** du top 8 (Human Immobilier, PagesJaunes, Orpi, Guy Hoquet, MeilleursAgents, ERA, Superimmo ×2) | *non mesuré* |
 
-**Lecture** : le site n'apparaît sur aucune requête commerciale visée. C'est
-cohérent avec un domaine branché récemment et non encore soumis à GSC. Le
-premier run sert donc de **ligne de base** : c'est à cette table que les runs
-suivants doivent se comparer.
+**Lecture** : toujours aucune position sur les 5 requêtes commerciales testées,
+et les SERP sont **identiques à la veille**. C'est le résultat attendu, pas un
+échec : l'article prix publié le 07/09 n'a que 24 h et rien n'indique encore
+qu'il soit indexé. **Ne pas en conclure que le chantier de la veille a raté, ni
+le refaire.** Sur ces requêtes, le délai utile de jugement se compte en
+semaines, pas en jours.
+
+Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
+
+- Le top de « agence immobilière Villeurbanne » et de « agence immobilière
+  Gratte-Ciel » est occupé par des **annuaires (PagesJaunes, Superimmo,
+  MeilleursAgents) et des réseaux franchisés**. Sur ces requêtes, le levier
+  décisif est la **fiche Google Business Profile et les citations d'annuaires**,
+  pas le contenu du site. À dire au client : c'est une action qui lui appartient.
+- Sur « prix m2 » et « estimation », les résultats sont des **pages de données**
+  (portails). C'est le seul terrain où la traçabilité du chiffre peut battre
+  l'autorité de domaine — d'où le choix des chantiers du 07/09 et du 08/09.
 
 ---
 
 ## Chantiers faits
+
+### 2026-09-08 — Page dédiée « estimation immobilière Villeurbanne »
+
+**Angle du jour** : *création d'une page sur une requête non couverte* — pas de
+contenu blog, pour ne pas refaire deux jours de suite le même type de chantier.
+
+**Pourquoi celui-là.** C'était le point 3 du backlog, et c'est le trou le plus
+coûteux du site : `/estimation-immobiliere-lyon` existait, mais **rien sur
+« estimation immobilière Villeurbanne »** — la requête commerciale la plus
+rentable dans la ville même de l'agence (intention de vente, et l'outil
+d'estimation est le différenciateur du site). Vérifié avant d'agir : absent du
+top 9, et la page `/estimation` ne sert qu'un `<h1>` générique
+(« Estimez votre bien en moins de 2 minutes ») sans aucun ancrage Villeurbanne.
+
+**Le risque du doublon, traité de front.** Le backlog prévenait : ne pas créer un
+quasi-doublon de `/estimation`. Les quatre pages du champ ont donc des angles
+explicitement séparés, et un commentaire en tête de fichier les rappelle :
+
+| Page | Rôle |
+|---|---|
+| `/estimation` | l'outil (formulaire), transactionnel |
+| `/estimation-immobiliere-lyon` | même service, échelle Lyon |
+| `/blog/prix-immobilier-villeurbanne-2026` | l'analyse du marché et ses chiffres |
+| **`/estimation-immobiliere-villeurbanne`** | **« combien vaut mon bien ici, et comment l'estimer »** |
+
+**Ce qui a été fait.**
+
+1. **Page `/estimation-immobiliere-villeurbanne`** (statique, SSG). Contenu
+   ancré sur des chiffres réels, **aucun chiffre nouveau inventé** : tout vient
+   du calcul DVF 2025 déjà publié le 07/09 (extraction du 07/09/2026).
+2. **Tableau de repères par quartier** — la seule donnée vraiment neuve, et
+   c'est une *dérivation transparente*, pas une invention : médiane €/m² du
+   quartier × surface médiane du type de bien, pour un T2 (45 m²) et un T3
+   (65 m²). Ex. T3 à Gratte-Ciel ≈ 250 000 €, à Cyprian – Les Brosses
+   ≈ 178 000 €. La légende dit explicitement que c'est **un ordre de grandeur de
+   départ, pas l'estimation d'un logement**. Utile parce que ça répond à la
+   question réellement posée (« combien vaut mon T3 à Cusset »), que personne ne
+   publie par quartier.
+3. **Volet GEO appliqué à fond** :
+   - **6 H2, tous formulés en questions réelles** (« Combien vaut un appartement
+     à Villeurbanne aujourd'hui ? », « Pourquoi le prix au m² de votre quartier
+     ne suffit-il pas ? »…).
+   - **Réponses autonomes** : première rédaction faite, puis **relue et corrigée**
+     parce que 4 réponses sur 6 commençaient par un fragment dépendant du titre
+     (« Parce que… », « Les deux, dans cet ordre. », « Oui, parce que… », « Sur
+     les ventes réellement conclues »). Réécrites pour se suffire hors contexte.
+     **C'est le piège n°1 du volet GEO : on croit avoir écrit une réponse directe
+     alors qu'on a écrit une suite de phrase.** À revérifier systématiquement.
+   - **`Dernière mise à jour` visible** (« 8 septembre 2026 ») dans un `<time
+     dateTime>`.
+   - **FAQ de 6 questions**, visible et reprise à l'identique en JSON-LD.
+4. **Données structurées** : `Service` + **`HowTo`** (3 étapes, nouveau type sur
+   ce site) + `FAQPage` + `BreadcrumbList`. **Les trois derniers sont générés
+   depuis les mêmes tableaux JS que l'affichage** (`ETAPES`, `FAQ`) : la
+   désynchronisation est structurellement impossible, pas juste « vérifiée ».
+5. **Maillage interne entrant** depuis `/agence-immobiliere-villeurbanne` et
+   `/estimation-immobiliere-lyon` (liens contextuels, pas un bloc de liens), et
+   sortant vers l'article prix, `/vendre`, les 3 pages quartiers et Lyon.
+   `sitemap.ts` et `llms.txt` mis à jour.
+
+**Support technique ajouté — additif, rien de modifié dans l'existant** :
+helpers `faqLd()` / `howToLd()` dans `components/seo/json-ld.tsx`, composant
+`components/seo/faq-block.tsx`, et **deux props optionnelles** sur `SeoLanding`
+(`updated`, `afterSections`). Les 7 pages qui utilisent `SeoLanding` ne passent
+aucune de ces props et sont donc rendues exactement comme avant — vérifié sur
+le HTML pré-rendu (1 `<h1>` chacune, contenus intacts).
+
+**Contrôle qualité** : `npm ci` puis `tsc --noEmit` **0 erreur** · `eslint` **0
+erreur** sur tous les fichiers touchés (les 6 erreurs restantes sur
+`agence-immobiliere-villeurbanne` et `estimation-immobiliere-lyon` sont
+**pré-existantes** — vérifié en lintant la version `HEAD` stashée, mêmes erreurs
+aux mêmes endroits) · `npm run build` OK, page pré-rendue en statique.
+
+**Vérifié en production** (≈ 70 s après le push) : la page sert **1 seul `<h1>`**,
+les 6 H2 en questions, **6 `<summary>` visibles pour 6 `Question` en JSON-LD**
+(correspondance exacte), `HowTo` + 3 `HowToStep`, `Service`, `BreadcrumbList`,
+le `<time dateTime="2026-09-08">`, le canonical correct. `sitemap.xml` est passé
+à **61 URLs**, `llms.txt` porte la nouvelle ligne, et les **2 liens entrants sont
+bien servis**. `robots.txt` ne la bloque pas.
+
+**Décidé de NE PAS faire, et pourquoi :**
+
+- **Ajouter le support des liens dans le corps des articles de blog.** Le
+  rendu `inline()` de `components/blog/article-body.tsx` ne gère que le gras :
+  impossible de poser un lien contextuel depuis l'article prix vers la nouvelle
+  page. Y toucher aurait modifié le rendu des **26 articles** pour un seul lien.
+  Écarté au titre de « en cas de doute sur un changement touchant au rendu
+  existant, ne pas le faire ». → noté en attente.
+- **Changer l'`internalHref` de l'article prix** (`/estimation` → nouvelle page).
+  Meilleur pour le maillage, mais ça allonge le chemin de conversion vers
+  l'outil. Pas touché : le client a demandé de ne rien casser qui marche.
+- **Réutiliser le chiffre « 9 % »** dans le contenu estimation. Voir « Erreurs
+  commises » : ce n'est pas un honoraire de vente.
 
 ### 2026-09-07 (run n°2) — Fondations on-page de la home : `<h1>` + `geo`/`logo`
 
@@ -221,25 +347,37 @@ de suite un chantier « contenu blog ».
 
 ~~1. `<h1>` sur la home~~ — **fait au run n°2 du 2026-09-07.**
 ~~2. `logo` + `geo` dans `RealEstateAgent`~~ — **fait au run n°2 du 2026-09-07.**
+~~3. Page dédiée « estimation immobilière Villeurbanne »~~ — **faite le 2026-09-08.**
+
+**Angle du dernier run : création de page.** Ne pas enchaîner sur une deuxième
+page neuve demain — alterner (contenu blog, technique, ou maillage).
 
 1. **Article `ou-acheter-villeurbanne-quartiers`** : même traitement que
    l'article prix, avec les chiffres déjà calculés ci-dessus (par quartier), et
    un angle différent (où acheter selon le profil). Le calcul est déjà fait, il
-   n'y a plus qu'à écrire.
+   n'y a plus qu'à écrire. **C'est le meilleur candidat pour le prochain run
+   « contenu ».**
 2. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
    client**, mais c'est ce qui débloquera de vraies mesures de position à la
    place des recherches web approximatives. À rappeler.
-3. **Pas de page dédiée « estimation immobilière Villeurbanne »** alors que
-   `/estimation-immobiliere-lyon` existe. Le trou est réel (requête commerciale
-   n°1 dans la ville du client), mais attention à ne pas créer un quasi-doublon
-   de `/estimation` : à ne faire qu'avec un angle et un contenu propres
-   (ex. adossé aux chiffres DVF par quartier).
+3. **Fiche Google Business Profile** — constat de SERP du 08/09 : les requêtes
+   « agence immobilière Villeurbanne / Gratte-Ciel » sont tenues par des
+   annuaires et des franchises. Sur celles-là, le contenu du site ne suffira
+   pas ; le levier est la fiche GBP + les citations d'annuaires (PagesJaunes,
+   Superimmo, MeilleursAgents…). **Action client**, à remonter avec le point 2.
 4. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
    `/cookies` ; `/signin` non `noindex`. Petit, à caser en fin de run.
 5. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
    `author` = Organization. Un auteur humain identifié (Tony Pistilli) serait
    plus fort.
+6. **Liens dans le corps des articles de blog** : `inline()` dans
+   `components/blog/article-body.tsx` ne gère que `**gras**`. Aucun lien
+   contextuel n'est possible depuis le texte d'un article — c'est une vraie
+   limite de maillage interne sur 26 pages. Ajouter une syntaxe `[texte](href)`
+   est faisable, mais **ça touche le rendu des 26 articles** : à faire comme
+   chantier à part entière, avec vérification du HTML pré-rendu article par
+   article, jamais en passant.
 
 ---
 
@@ -261,6 +399,16 @@ de suite un chantier « contenu blog ».
   pour la citabilité LLM**, ce qui est un objectif différent et explicite du
   cahier des charges. Aucune contradiction, mais ne pas en attendre d'étoiles
   ni d'accordéon dans Google.
+- **Les colonnes « T2 45 m² » / « T3 65 m² » de la page estimation Villeurbanne
+  sont une dérivation, pas une mesure** : médiane €/m² du quartier × surface
+  médiane du type. Elles sont légendées comme telles (« ordre de grandeur de
+  départ, pas l'estimation de votre logement »). **Deux points à surveiller** :
+  (1) si l'article prix est un jour recalculé, **ces 14 valeurs doivent être
+  recalculées en même temps**, sinon les deux pages se contrediront ; (2) c'est
+  le seul endroit du site où l'on publie un prix en euros pour un bien
+  théorique — **à soumettre au client** s'il relit la page, il n'a pas demandé
+  ça explicitement. Le retirer est trivial (constante `REPERES`).
+
 - **DVF est révisée rétroactivement** à chaque publication. Les chiffres 2022-2024
   publiés aujourd'hui peuvent bouger de quelques euros. Si on republie ces
   tableaux plus tard, **tout recalculer** plutôt que d'ajouter une colonne à des
@@ -277,6 +425,19 @@ de suite un chantier « contenu blog ».
 ## Erreurs commises et corrigées
 
 *(rien à corriger de runs précédents : ce journal démarre aujourd'hui)*
+
+- **2026-09-08 — Piège évité sur les « chiffres validés » : le 9 % n'est PAS un
+  honoraire de vente.** La consigne de la routine liste « honoraires 9 % part
+  propriétaire » parmi les chiffres réutilisables tels quels. J'allais m'en
+  servir dans une FAQ sur l'estimation avant vente. Vérification faite dans
+  `app/honoraires/page.tsx` : **9 % = part propriétaire sur la _mise en
+  location_, calculée sur le loyer annuel hors charges** (et 2,5 % = assurance
+  GLI, également locatif). **Rien dans le code ne donne un barème d'honoraires
+  de vente.** Écrire « 9 % de commission sur la vente » aurait été une erreur
+  factuelle publiée sur le site d'une agence — la faute la plus coûteuse
+  possible ici. → **Règle : un « chiffre validé » ne dit pas à quoi il
+  s'applique. Toujours retrouver son contexte dans le code avant de l'employer
+  dans une nouvelle phrase.**
 
 - **Audit du 2026-08-27 partiellement périmé** — corrigé ici : il classait en
   « High #1 » le fait que le domaine ne soit pas connecté. Il l'est depuis.
@@ -303,6 +464,29 @@ de suite un chantier « contenu blog ».
 ---
 
 ## Techniques apprises
+
+### 2026-09-08 — Méthode : garantir la correspondance JSON-LD ↔ contenu visible
+
+Pas de veille aujourd'hui (**mardi** — la veille se fait le lundi, celle du
+07/09 reste d'actualité). Deux méthodes réutilisables sont sorties du chantier :
+
+- **Ne jamais recopier une FAQ ou une procédure dans son JSON-LD.** Déclarer un
+  tableau JS (`FAQ`, `ETAPES`), le passer *à la fois* au rendu visible et au
+  générateur de balisage (`faqLd(FAQ)`, `howToLd({steps: ETAPES})`). Le mismatch
+  devient **impossible par construction**, au lieu d'être « vérifié une fois ».
+  Outils désormais disponibles : `faqLd()` et `howToLd()` dans
+  `components/seo/json-ld.tsx`, `<FaqBlock items={…}>` dans
+  `components/seo/faq-block.tsx`. **Les réutiliser, ne pas en réécrire d'autres.**
+- **Enrichir un gabarit partagé sans risque** : ajouter des **props
+  optionnelles** (ici `updated` et `afterSections` sur `SeoLanding`) plutôt que
+  de modifier le rendu existant. Les pages qui ne les passent pas sont
+  strictement inchangées — et ça se vérifie en comparant le HTML pré-rendu.
+- **Distinguer les erreurs de lint pré-existantes des siennes** : `git stash`,
+  linter la version `HEAD`, `git stash pop`, comparer. Sur ce repo, 6 erreurs
+  `react/no-unescaped-entities` / `no-html-link-for-pages` sont pré-existantes
+  dans les pages SEO (plus 39 dans `scripts/` et `studio/`) : ne pas les
+  « corriger » au passage, mais **ne jamais en ajouter**. Dans une page neuve,
+  utiliser `next/link` et `&apos;` dès le départ.
 
 ### 2026-09-07 — Veille GEO (lundi)
 
