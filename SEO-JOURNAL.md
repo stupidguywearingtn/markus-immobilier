@@ -14,6 +14,20 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-09**
+
+- Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : la
+  routine « fetch avant tout » tient depuis trois runs. Un seul run a tourné
+  aujourd'hui, pas de travail en double.
+- `sitemap.xml` en production = **61 URLs** (inchangé : le chantier du jour
+  réécrit une page existante, il n'en crée pas). Build local = **82 pages**.
+- **Mesuré en ligne avant d'agir** (pas cru sur parole) :
+  `/blog/ou-acheter-villeurbanne-quartiers` servait bien la version faible —
+  ~270 mots, 2 H2, aucun chiffre, aucune FAQ, aucun tableau, « Mis à jour le
+  2 juin 2026 ». C'est ce qui a décidé du chantier.
+- Rappel opératoire confirmé : `npm ci` (~1 min) est indispensable avant
+  `tsc`/`lint`/`build`, `node_modules` n'est pas dans le conteneur au démarrage.
+
 **Au 2026-09-08**
 
 - **Le clone local était à jour ce matin** (`git log HEAD..origin/main` vide) :
@@ -59,20 +73,34 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-08 | 2026-09-07 |
-|---|---|---|
-| agence immobilière Villeurbanne | **absent** du top 8 (PagesJaunes, Laforêt, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux) | absent, **SERP identique** |
-| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 9 (Nestenn ×2, Square Habitat, imkiz, MonMandatLocal, SAFTI, Salengro, En Mode Immo, Solvimo) | absent, **SERP identique** |
-| prix m2 Villeurbanne par quartier | **absent** du top 8 (Square Habitat, MeilleursAgents, PAP, SeLoger, JournalDuNet, immosudest, Régie Carron, netvendeur) | absent (SERP proche, quelques acteurs différents) |
-| vendre appartement Villeurbanne | **absent** du top 7 (Logic-Immo, Orpi, Century 21, PAP, SeLoger, Nestenn, Immo de France) | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | **absent** du top 8 (Human Immobilier, PagesJaunes, Orpi, Guy Hoquet, MeilleursAgents, ERA, Superimmo ×2) | *non mesuré* |
+| Requête | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---|---|---|---|
+| agence immobilière Villeurbanne | **absent** du top 8 — SERP **identique** au 08/09 (PagesJaunes, Laforêt, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux) | absent | absent, SERP identique |
+| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 9 — SERP **identique** au 08/09 (Nestenn ×2, Square Habitat, imkiz, MonMandatLocal, SAFTI, Salengro, En Mode Immo, Solvimo) | absent | absent, SERP identique |
+| prix m2 Villeurbanne par quartier | **absent** du top 8 — 1 entrant vs 08/09 : efficity remplace Square Habitat (MeilleursAgents, PAP, efficity, SeLoger, JournalDuNet, immosudest, Régie Carron, netvendeur) | absent | absent |
+| vendre appartement Villeurbanne | *non remesuré* (SERP stable les deux jours précédents, priorité donnée aux requêtes acheteur) | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | **absent** du top 9 (Logic-Immo, SeLoger, PagesJaunes, Guy Hoquet, Orpi, Superimmo, Salengro, Decultieux, repimmo) | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | **absent** du top 8 (homeloop, SeLoger ×2, Century 21, BienIci, au-magasin, Chomel, ParuVendu) | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | **absent** du top 8 (ymanci, SeLoger, edito SeLoger, drhouse-immo, BNP, geraldinearrou, moninvestimmo, hotel-lyonnord) | *non mesuré* | *non mesuré* |
 
-**Lecture** : toujours aucune position sur les 5 requêtes commerciales testées,
-et les SERP sont **identiques à la veille**. C'est le résultat attendu, pas un
-échec : l'article prix publié le 07/09 n'a que 24 h et rien n'indique encore
-qu'il soit indexé. **Ne pas en conclure que le chantier de la veille a raté, ni
-le refaire.** Sur ces requêtes, le délai utile de jugement se compte en
-semaines, pas en jours.
+**Lecture** : toujours aucune position, et les deux SERP suivies depuis trois
+jours sont **strictement identiques**. Rien de neuf à en conclure : l'article
+prix a 2 jours, la page estimation Villeurbanne 1 jour. Le délai de jugement se
+compte en semaines. **Ne pas refaire ces chantiers.**
+
+Ce qui est **nouveau et a décidé du chantier du jour** : les deux requêtes
+« acheteur » mesurées pour la première fois montrent une SERP **nettement plus
+faible** que celles déjà suivies. Sur « où acheter à Villeurbanne quartier », le
+seul résultat éditorial du top 8 est un **billet de blog homeloop de 2021** ;
+le reste, ce sont des pages de listes d'annonces (SeLoger, Century 21, BienIci,
+ParuVendu) qui ne répondent pas à la question posée, plus un résultat hors sujet
+(un annuaire de magasins). Sur « quel quartier choisir… 2026 », les 8 résultats
+sont des articles génériques d'acteurs nationaux ou de blogs d'investissement :
+**aucun ne publie de prix par quartier sourcé**. C'est le terrain le moins tenu
+identifié depuis le début de ce journal — d'où le choix de renforcer l'article
+acheteur plutôt que d'insister sur les requêtes « agence » et « estimation »,
+tenues par des annuaires et des portails.
 
 Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
@@ -88,6 +116,105 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-09 — Réécriture de l'article « où acheter à Villeurbanne » (angle acheteur)
+
+**Angle du jour** : *réécriture en profondeur d'un article faible*. La veille
+était une création de page ; le journal interdisait d'enchaîner deux créations.
+
+**Pourquoi celui-là.** C'était le point 1 du backlog, et les mesures de l'étape 2
+l'ont confirmé plutôt que l'inverse : les deux requêtes acheteur testées pour la
+première fois ont la SERP la plus faible rencontrée jusqu'ici (voir « Positions
+mesurées »). En face, l'article existant était le plus mauvais du site sur un
+sujet où l'on a de la donnée : **~270 mots, 2 H2, cinq puces qualitatives, zéro
+chiffre, zéro source, pas de FAQ** — vérifié en production avant d'agir, pas
+déduit du code.
+
+**Le principe suivi : zéro chiffre nouveau.** Toutes les médianes viennent du
+calcul DVF du 07/09 déjà publié. Rien n'a été recalculé « à la louche », rien
+n'a été inventé. Ce qui est neuf, ce sont des **dérivations transparentes** de
+ces médianes, chacune légendée comme telle.
+
+**Ce qui a été fait.**
+
+1. **Réécriture complète** de `ou-acheter-villeurbanne-quartiers` dans
+   `lib/blog.ts` : ~1 500 mots, 7 H2, 2 tableaux, 1 liste ordonnée, FAQ de 5
+   questions. Nouveaux `title`, `h1`, `metaDescription`, `excerpt` alignés sur
+   la requête réelle (« où acheter à Villeurbanne », « quel quartier »).
+2. **Tableau « budget → surface »** — la donnée vraiment neuve du site :
+   200 000 / 250 000 / 300 000 € convertis en m² au prix médian de chaque
+   quartier. Résultat parlant : **65 m² à Gratte-Ciel contre 91 m² à
+   Cyprian – Les Brosses pour 250 000 €**. Personne ne publie ça, et ça répond
+   exactement à la question posée à voix haute à une IA.
+3. **Tableau de positionnement** : écart au prix médian communal (en %) +
+   volume de ventes 2025 par quartier. L'écart en % est une dérivation neuve ;
+   le volume est réutilisé sous un angle nouveau (**liquidité / facilité de
+   revente**, pas « taille d'échantillon »).
+4. **Refus explicite de publier un rendement locatif par quartier**, écrit noir
+   sur blanc dans l'article. Le seul loyer de référence public est **communal**
+   (14,6 €/m² HC, `lib/loyers.ts`) ; l'appliquer à chaque quartier aurait
+   fabriqué des chiffres faux. Seul le rendement brut **communal** est publié
+   (≈ 4,9 % = 14,6 × 12 ÷ 3 567), avec ses limites. Dire pourquoi on ne publie
+   pas un chiffre est un signal de fiabilité, pas un manque.
+5. **Aucune prévision de prix.** La section « résistance depuis 2022 » se
+   termine explicitement par : ces écarts disent d'où vient chaque quartier, pas
+   où il va.
+6. **Volet GEO appliqué** : 7 H2 tous formulés en questions réelles ; réponse
+   autonome de 2-3 phrases en tête de chaque H2 — **relues une par une contre le
+   piège n°1 du journal** (un fragment qui dépend du titre : « Parce que… »,
+   « Oui, mais… ») ; chiffre-clé dans le tout premier paragraphe ; FAQ de 5
+   questions visible et reprise à l'identique en JSON-LD ; `updated` =
+   2026-09-09, donc `dateModified` et `lastmod` du sitemap suivent.
+
+**Maillage entrant — 4 nouveaux liens contextuels** vers l'article, depuis
+`/acheter` et les 3 pages quartier (`gratte-ciel`, `charpennes`, `cusset`). Ces
+3 pages y gagnent au passage **la médiane €/m² de leur propre secteur**, qu'elles
+n'avaient pas : elles ciblent « agence immobilière <quartier> » et n'avaient
+aucune donnée chiffrée. Liens en `next/link` et apostrophes échappées, pour ne
+pas ajouter d'erreur de lint.
+
+**Contrôle qualité** : `npm ci`, `tsc --noEmit` **0 erreur**, `npm run build` OK
+(82 pages). Lint : **13 erreurs après vs 14 avant** sur les 5 fichiers touchés
+(comparaison faite en lintant la version `HEAD` stashée) — donc **aucune erreur
+ajoutée**, et une pré-existante corrigée au passage sur Charpennes.
+HTML pré-rendu vérifié : **1 seul `<h1>`**, les 7 H2, **5 `<summary>` visibles
+pour 5 `Question` en JSON-LD**, 2 `<table>`, `datePublished 2026-06-02` /
+`dateModified 2026-09-09`, « Mis à jour le 9 septembre 2026 » affiché,
+`lastmod 2026-09-09` dans le sitemap, et **1 lien entrant servi sur chacune des
+4 pages**, toutes toujours à 1 seul `<h1>`.
+
+**Vérifié en production** — le déploiement Vercel était en ligne **dès la
+première tentative** (plus rapide que les ~70 s mesurées le 08/09).
+`https://www.markusimmobilier.fr/blog/ou-acheter-villeurbanne-quartiers` sert
+1 `<h1>`, 7 `<h2>`, 2 `<table>`, **5 `<summary>` pour 5 `Question`**,
+`BlogPosting` + `FAQPage` + `BreadcrumbList`, `dateModified 2026-09-09`.
+`sitemap.xml` porte `lastmod 2026-09-09`, `llms.txt` a repris le nouveau titre
+et le nouvel `excerpt` chiffré tout seul. Les 4 liens entrants sont servis.
+
+> ⚠️ **Piège de vérification rencontré** : au premier passage,
+> `/agence-immobiliere-cusset` renvoyait **0 lien** alors que les 3 autres pages
+> en servaient 1 — c'était un **cache CDN encore chaud**, pas un bug. Relancé
+> avec un paramètre anti-cache : 1 lien, immédiatement. **Ne pas conclure à un
+> échec de déploiement sur une seule requête ; refaire l'appel avec
+> `?cb=<random>` avant de rouvrir un chantier.**
+
+**Décidé de NE PAS faire, et pourquoi :**
+
+- **Ajouter la syntaxe `[texte](href)` dans `inline()`** pour poser des liens
+  dans le corps des articles (backlog n°6). Ça reste le vrai plafond du maillage
+  interne, mais ça touche le rendu des **26 articles** : c'est un chantier à
+  part entière, pas un à-côté. Les 4 liens entrants ont été posés depuis des
+  pages React, où c'était sans risque. → toujours en attente.
+- **Republier le tableau des prix par quartier** dans cet article. Il est déjà
+  dans l'article prix ; le dupliquer aurait mis deux pages du site en
+  concurrence sur la même requête. L'article acheteur ne reprend que les
+  médianes dont il a besoin, sous un angle différent.
+- **Publier un rendement locatif par quartier** (voir point 4).
+- **Décrire la desserte transports des 4 quartiers sans page dédiée**
+  (Ferrandière, Perralière – Grandclément, Buers, Cyprian). Les lignes exactes
+  n'étaient pas vérifiables ici sans risque d'erreur factuelle sur le site d'une
+  agence. Pour Gratte-Ciel / Charpennes / Cusset, on s'en tient à ce que les
+  pages du site affirment déjà (métro A ; A+B + tram ; A + tram).
 
 ### 2026-09-08 — Page dédiée « estimation immobilière Villeurbanne »
 
@@ -348,15 +475,16 @@ de suite un chantier « contenu blog ».
 ~~1. `<h1>` sur la home~~ — **fait au run n°2 du 2026-09-07.**
 ~~2. `logo` + `geo` dans `RealEstateAgent`~~ — **fait au run n°2 du 2026-09-07.**
 ~~3. Page dédiée « estimation immobilière Villeurbanne »~~ — **faite le 2026-09-08.**
+~~4. Article `ou-acheter-villeurbanne-quartiers`~~ — **réécrit le 2026-09-09.**
 
-**Angle du dernier run : création de page.** Ne pas enchaîner sur une deuxième
-page neuve demain — alterner (contenu blog, technique, ou maillage).
+**Angle du dernier run : réécriture d'article + maillage entrant.** Les trois
+derniers runs ont tous porté sur du **contenu** (blog, page, blog). Le prochain
+run devrait basculer sur un angle **technique** ou **structurel** — les points 1
+et 4 ci-dessous sont les meilleurs candidats.
 
-1. **Article `ou-acheter-villeurbanne-quartiers`** : même traitement que
-   l'article prix, avec les chiffres déjà calculés ci-dessus (par quartier), et
-   un angle différent (où acheter selon le profil). Le calcul est déjà fait, il
-   n'y a plus qu'à écrire. **C'est le meilleur candidat pour le prochain run
-   « contenu ».**
+1. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
+   `/cookies` ; `/signin` non `noindex`. Petit, technique, et jamais fait —
+   c'est le candidat le plus simple pour rompre la série « contenu ».
 2. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
    client**, mais c'est ce qui débloquera de vraies mesures de position à la
@@ -366,11 +494,21 @@ page neuve demain — alterner (contenu blog, technique, ou maillage).
    annuaires et des franchises. Sur celles-là, le contenu du site ne suffira
    pas ; le levier est la fiche GBP + les citations d'annuaires (PagesJaunes,
    Superimmo, MeilleursAgents…). **Action client**, à remonter avec le point 2.
-4. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
-   `/cookies` ; `/signin` non `noindex`. Petit, à caser en fin de run.
-5. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
+4. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
    `author` = Organization. Un auteur humain identifié (Tony Pistilli) serait
    plus fort.
+5. **Autres articles faibles à réécrire** (même traitement que l'article prix et
+   l'article acheteur). Mesuré aujourd'hui sur `lib/blog.ts`, aucun n'a de FAQ
+   ni de champ `updated` :
+   - `investir-locatif-lyon` — ~227 mots, **aucun chiffre** ;
+   - `estimation-en-ligne-ou-agence` — ~242 mots, **aucun chiffre**, alors que
+     c'est une page d'entonnoir directe vers l'outil d'estimation ;
+   - `rentabilite-locative-lyon` — ~194 mots ; il n'a qu'un **exemple fictif**
+     (150 000 € / 650 € / 5,2 %), pas de donnée de marché. On dispose pourtant
+     du loyer médian communal (14,6 €/m² HC) et des prix par typologie.
+
+   **Ne pas les enchaîner** : un par semaine au plus, en alternance avec des
+   chantiers techniques.
 6. **Liens dans le corps des articles de blog** : `inline()` dans
    `components/blog/article-body.tsx` ne gère que `**gras**`. Aucun lien
    contextuel n'est possible depuis le texte d'un article — c'est une vraie
@@ -382,6 +520,31 @@ page neuve demain — alterner (contenu blog, technique, ou maillage).
 ---
 
 ## Hypothèses à vérifier
+
+- **Trois pages du site publient désormais des dérivations des mêmes médianes
+  DVF 2025.** Si ces médianes sont un jour recalculées, **les trois doivent être
+  refaites dans le même run**, sinon le site se contredit :
+  1. `/blog/prix-immobilier-villeurbanne-2026` — les médianes elles-mêmes ;
+  2. `/estimation-immobiliere-villeurbanne` — constante `REPERES` (T2 45 m² /
+     T3 65 m² par quartier) ;
+  3. `/blog/ou-acheter-villeurbanne-quartiers` — tableau budget → surface
+     (200/250/300 k€) et écarts en % au prix médian communal.
+  Un commentaire en tête de `lib/blog.ts` le rappelle. La règle « DVF est révisée
+  rétroactivement, tout recalculer plutôt que patcher » (plus bas) s'applique aux
+  trois.
+- **Le rendement brut communal publié (≈ 4,9 %) croise deux millésimes** : loyer
+  médian 14,6 €/m² issu du jeu « Carte des loyers » (data.gouv.fr, millésime
+  2023-2024, tel que documenté dans `lib/loyers.ts`) et prix médian DVF 2025.
+  C'est assumé et dit dans l'article, mais **à revérifier si un millésime plus
+  récent de la carte des loyers sort** — et le chiffre doit rester cohérent avec
+  ce que l'outil d'estimation affiche, puisqu'il utilise la même constante.
+- **Les 3 pages quartier affichent maintenant un prix médian** (Gratte-Ciel
+  3 846 €/m², Charpennes – Tonkin 3 524, Cusset – Bonnevay 3 171). Le périmètre
+  du quartier officiel ne coïncide pas exactement avec l'usage courant du nom
+  (« Cusset » vs « Cusset – Bonnevay ») : le nom complet du quartier officiel est
+  écrit à chaque fois pour ne pas induire en erreur. **À signaler au client s'il
+  relit ces pages** — comme le tableau `REPERES`, il n'a pas explicitement
+  demandé qu'on affiche des prix sur les pages quartier.
 
 - **Les positions mesurées ne viennent pas de Google.fr.** L'outil de recherche
   disponible ici est orienté US et ne reproduit pas exactement une SERP
@@ -464,6 +627,33 @@ page neuve demain — alterner (contenu blog, technique, ou maillage).
 ---
 
 ## Techniques apprises
+
+### 2026-09-09 — Méthode : produire de la donnée neuve sans nouveau calcul
+
+Pas de veille aujourd'hui (**mercredi** — la veille se fait le lundi ; celle du
+07/09 reste la référence). Trois méthodes réutilisables sont sorties du chantier.
+
+- **La dérivation transparente vaut un calcul neuf.** On a produit une donnée
+  que personne d'autre ne publie (« ce que 250 000 € achètent, par quartier »)
+  **sans toucher une seule fois à DVF** : c'est une division du budget par une
+  médiane déjà publiée, légendée comme telle. Coût : zéro. Risque de
+  contradiction avec les pages existantes : zéro, puisque la source est la même.
+  → **Avant de relancer un calcul, chercher quelle question de lecteur les
+  chiffres déjà publiés permettraient de trancher sous un autre angle.** Un même
+  jeu de médianes peut alimenter « combien ça coûte » (vendeur), « combien vaut
+  mon bien » (estimation) et « ce que mon budget achète » (acheteur) sans jamais
+  se répéter.
+- **Écrire pourquoi on ne publie pas un chiffre est un contenu en soi.** On
+  aurait pu afficher un rendement locatif par quartier en appliquant le loyer
+  communal partout : c'est ce que font les sites concurrents, et c'est faux. Le
+  dire explicitement dans l'article (« nous ne publions volontairement pas de
+  rendement par quartier, voici pourquoi ») donne un passage court, autonome et
+  factuel — exactement le format qu'une IA cite. **À réutiliser** : chaque fois
+  qu'on renonce à un chiffre pour une raison méthodologique, la raison se publie.
+- **Deux pages ne doivent jamais porter le même tableau.** L'article acheteur
+  aurait pu reprendre le tableau des prix par quartier ; il ne reprend que les
+  valeurs dont ses propres H2 ont besoin. Règle : **une donnée, une page
+  canonique** ; les autres pages la citent en la transformant pour leur angle.
 
 ### 2026-09-08 — Méthode : garantir la correspondance JSON-LD ↔ contenu visible
 
