@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { BuildingIllust } from "@/components/illustrations/building";
@@ -53,9 +54,19 @@ export default function CharpennesPage() {
               <p>
                 Ultra-desservi (croisement métro A/B + tram), bordé de commerces
                 et tout proche du Parc de la Tête d'Or, Charpennes concentre une
-                demande locative forte et continue. Les petites surfaces s'y
+                demande locative forte et continue. Les petites surfaces s&apos;y
                 louent vite, ce qui en fait un terrain de choix pour les
-                investisseurs.
+                investisseurs. Sur les ventes de 2025 (base DVF), la médiane du
+                quartier Charpennes – Tonkin ressort à 3 524 €/m², au niveau de
+                la médiane communale (−1,2 %) : environ 71 m² pour un budget de
+                250 000 €. Comparaison quartier par quartier dans notre guide{" "}
+                <Link
+                  href="/blog/ou-acheter-villeurbanne-quartiers"
+                  className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge"
+                >
+                  où acheter à Villeurbanne
+                </Link>
+                .
               </p>
             ),
           },

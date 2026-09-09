@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { BuildingIllust } from "@/components/illustrations/building";
@@ -54,7 +55,19 @@ export default function CussetPage() {
                 Entre l'avenue Salengro et la place de la Nation, Cusset offre un
                 cadre résidentiel calme, des écoles, des commerces et un accès
                 rapide au centre de Villeurbanne comme à Lyon. Des prix souvent
-                plus doux que Gratte-Ciel, pour une qualité de vie reconnue.
+                plus doux que Gratte-Ciel, pour une qualité de vie reconnue. Les
+                chiffres le confirment : la médiane du quartier Cusset – Bonnevay
+                est de 3 171 €/m² sur les ventes de 2025 (base DVF), soit 11 %
+                sous la médiane de Villeurbanne — environ 79 m² pour un budget de
+                250 000 €, contre 65 m² à Gratte-Ciel. Le comparatif complet est
+                dans notre guide{" "}
+                <Link
+                  href="/blog/ou-acheter-villeurbanne-quartiers"
+                  className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge"
+                >
+                  où acheter à Villeurbanne
+                </Link>
+                .
               </p>
             ),
           },

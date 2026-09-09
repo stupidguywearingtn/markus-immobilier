@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { HouseIllust } from "@/components/illustrations/house";
@@ -85,7 +86,16 @@ export default function AcheterPage() {
               <p>
                 Gratte-Ciel, Charpennes, Lyon 3, Lyon 6… chaque secteur a sa dynamique
                 et ses niveaux de prix. On vous oriente vers les opportunités qui
-                correspondent vraiment à votre projet et à votre budget.
+                correspondent vraiment à votre projet et à votre budget. Pour situer
+                votre budget avant même de visiter, notre guide{" "}
+                <Link
+                  href="/blog/ou-acheter-villeurbanne-quartiers"
+                  className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge"
+                >
+                  où acheter à Villeurbanne selon votre budget
+                </Link>{" "}
+                traduit les prix réels de chaque quartier en mètres carrés
+                accessibles.
               </p>
             ),
           },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { BuildingIllust } from "@/components/illustrations/building";
@@ -55,7 +56,19 @@ export default function GratteCielPage() {
                 lignes de bus, accès rapide à la Part-Dieu), Gratte-Ciel attire
                 familles, cadres et primo-accédants. Son cachet architectural et
                 son extension en cours en font un secteur à forte demande — donc
-                au marché tendu, où les biens bien présentés partent vite.
+                au marché tendu, où les biens bien présentés partent vite. Côté
+                prix, la médiane du quartier Gratte-Ciel – Dedieu – Charmettes
+                ressort à 3 846 €/m² sur les ventes d&apos;appartements de 2025
+                (base DVF), soit 7,8 % au-dessus de la médiane de Villeurbanne :
+                environ 65 m² pour un budget de 250 000 €. Le détail budget par
+                budget est dans notre guide{" "}
+                <Link
+                  href="/blog/ou-acheter-villeurbanne-quartiers"
+                  className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge"
+                >
+                  où acheter à Villeurbanne
+                </Link>
+                .
               </p>
             ),
           },

@@ -7,8 +7,13 @@
  * quartier **calculés** à partir de la base DVF (data.gouv.fr / Etalab) croisée
  * avec les contours de quartiers de la Métropole de Lyon — méthode et date
  * d'extraction affichées dans l'article. Ne jamais y écrire un prix qui ne
- * vienne pas de ce calcul. Reste à traiter de la même façon :
- * « ou-acheter-villeurbanne-quartiers » (formulé sans chiffres aujourd'hui).
+ * vienne pas de ce calcul.
+ *
+ * « ou-acheter-villeurbanne-quartiers » réutilise EXACTEMENT les mêmes médianes
+ * (angle acheteur : budget → surface, liquidité, résistance depuis 2022). Si les
+ * médianes sont un jour recalculées, les deux articles — plus le tableau REPERES
+ * de /estimation-immobiliere-villeurbanne — doivent être mis à jour ensemble,
+ * sinon le site se contredit d'une page à l'autre.
  */
 
 export type Block =
@@ -378,28 +383,117 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "ou-acheter-villeurbanne-quartiers",
-    title: "Quartiers de Villeurbanne : où acheter en 2026 ?",
+    title: "Où acheter à Villeurbanne : quel quartier pour quel budget",
     metaDescription:
-      "Gratte-Ciel, Charpennes, Cusset, Tonkin… Découvrez les quartiers de Villeurbanne où acheter en 2026 selon votre projet.",
-    h1: "Quartiers de Villeurbanne : où acheter en 2026 ?",
+      "Quel quartier de Villeurbanne choisir pour acheter en 2026 ? Ce que 200 000, 250 000 et 300 000 € achètent vraiment quartier par quartier (ventes 2025, DVF).",
+    h1: "Où acheter à Villeurbanne ? Le bon quartier selon votre budget",
     excerpt:
-      "Villeurbanne n'est pas un marché uniforme. Chaque quartier a son ambiance, son public et son niveau de prix.",
+      "Avec 250 000 €, vous achetez 65 m² à Gratte-Ciel et 91 m² à Cyprian – Les Brosses. Ce que chaque budget permet vraiment, quartier par quartier, d'après les 1 875 ventes signées en 2025.",
     date: "2026-06-02",
+    updated: "2026-09-09",
     internalHref: "/acheter",
     internalLabel: "Trouver le bon bien avec notre équipe",
     blocks: [
-      { type: "p", text: "Villeurbanne n'est pas un marché uniforme. Chaque quartier a son ambiance, son public et son niveau de prix." },
-      { type: "h2", text: "Les quartiers à connaître" },
-      { type: "ul", items: [
-        "**Gratte-Ciel** : le cœur historique et commerçant, très recherché. Idéal pour habiter au centre.",
-        "**Charpennes** : ultra-connecté (métro/tram), prisé des étudiants et jeunes actifs — un bon terrain d'investissement.",
-        "**Le Tonkin** : résidentiel, proche de la Part-Dieu.",
-        "**Cusset / République** : familial, bonne offre de commerces.",
-        "**Les Brosses, Saint-Jean** : plus calmes, souvent plus accessibles.",
+      { type: "p", text: "Avec un budget de **250 000 €**, vous achetez environ **65 m² à Gratte-Ciel** et **91 m² à Cyprian – Les Brosses** : 27 m² d'écart, pour le même prix, dans la même commune. C'est le premier chiffre à avoir en tête avant d'acheter à Villeurbanne. Le prix médian des appartements y va de **2 738 à 3 923 €/m² selon le quartier**, soit **43 % d'écart**, d'après les 1 875 ventes réellement signées en 2025." },
+      { type: "p", text: "Cet article ne classe pas les quartiers du « meilleur » au « moins bon » : ça ne veut rien dire tant qu'on ne connaît pas votre projet. Il traduit les prix réels en décisions concrètes — combien de mètres carrés votre budget achète où, quels secteurs se revendent le plus facilement, et ce que ces chiffres ne peuvent pas vous dire." },
+
+      { type: "h2", text: "Dans quel quartier de Villeurbanne acheter avec 200 000, 250 000 ou 300 000 € ?" },
+      { type: "p", text: "Avec 250 000 € — soit un peu plus que le prix médian d'un T3 à Villeurbanne (226 250 € en 2025) — vous visez environ **64 à 65 m² dans les deux quartiers les plus chers**, Ferrandière – Maisons-Neuves et Gratte-Ciel, contre **91 m² à Cyprian – Les Brosses**. Le tableau ci-dessous convertit trois budgets courants en surface, quartier par quartier." },
+      {
+        type: "table",
+        caption:
+          "Surface accessible par budget, au prix médian au m² de chaque quartier (2025)",
+        headers: ["Quartier", "Médiane €/m²", "200 000 €", "250 000 €", "300 000 €"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "3 923 €", "51 m²", "64 m²", "76 m²"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 846 €", "52 m²", "65 m²", "78 m²"],
+          ["Charpennes – Tonkin", "3 524 €", "57 m²", "71 m²", "85 m²"],
+          ["Perralière – Grandclément", "3 375 €", "59 m²", "74 m²", "89 m²"],
+          ["Buers – Croix-Luizet", "3 271 €", "61 m²", "76 m²", "92 m²"],
+          ["Cusset – Bonnevay", "3 171 €", "63 m²", "79 m²", "95 m²"],
+          ["Cyprian – Les Brosses", "2 738 €", "73 m²", "91 m²", "110 m²"],
+        ],
+        source:
+          "Calcul Markus Immobilier : budget ÷ prix médian au m² du quartier. Médianes établies sur les ventes d'appartements DVF 2025 (data.gouv.fr / Etalab) rattachées aux contours officiels des quartiers de la Métropole de Lyon, extraction du 7 septembre 2026. Surfaces hors frais d'acquisition.",
+      },
+      { type: "p", text: "Deux précautions d'usage. D'abord, ces surfaces sont **hors frais d'acquisition** : dans l'ancien, comptez 7 à 8 % du prix en plus, soit 18 000 à 20 000 € sur un achat à 250 000 €. Ensuite, un prix médian de quartier reste un **point de départ** : à surface égale, l'étage, l'ascenseur, l'extérieur et le DPE font varier le prix réel de 15 à 20 % à l'intérieur d'un même secteur." },
+
+      { type: "h2", text: "Quels sont les quartiers les moins chers de Villeurbanne ?" },
+      { type: "p", text: "**Cyprian – Les Brosses est le quartier le plus abordable de Villeurbanne, à 2 738 €/m²**, soit 23 % sous le prix médian de la commune (3 567 €/m²). Viennent ensuite **Cusset – Bonnevay** (3 171 €/m², −11 %) et **Buers – Croix-Luizet** (3 271 €/m², −8 %). À l'autre bout, Ferrandière – Maisons-Neuves et Gratte-Ciel se paient 8 à 10 % au-dessus de la médiane communale." },
+      {
+        type: "table",
+        caption:
+          "Positionnement de chaque quartier par rapport au prix médian de Villeurbanne (3 567 €/m², appartements, 2025)",
+        headers: ["Quartier", "Écart au prix médian", "Ventes d'appartements en 2025"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "+10,0 %", "187"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "+7,8 %", "655"],
+          ["Charpennes – Tonkin", "−1,2 %", "200"],
+          ["Perralière – Grandclément", "−5,4 %", "330"],
+          ["Buers – Croix-Luizet", "−8,3 %", "223"],
+          ["Cusset – Bonnevay", "−11,1 %", "213"],
+          ["Cyprian – Les Brosses", "−23,2 %", "53"],
+        ],
+        source:
+          "Sources : ventes DVF 2025 (data.gouv.fr / Etalab) et contours de quartiers de la Métropole de Lyon (data.grandlyon.com). Calcul Markus Immobilier, extraction du 7 septembre 2026. Le quartier Saint-Jean n'est pas listé : trop peu de ventes pour une médiane fiable.",
+      },
+      { type: "p", text: "Ne lisez pas ce classement comme un classement de qualité de vie. La médiane d'un quartier reflète surtout **le type de biens qui s'y vendent** — âge du bâti, surfaces, part de copropriétés récentes ou à rénover. Un T4 rénové avec balcon à Cyprian – Les Brosses peut parfaitement se payer plus cher au m² qu'un T2 sans ascenseur à Gratte-Ciel." },
+
+      { type: "h2", text: "Quel quartier de Villeurbanne choisir pour un investissement locatif ?" },
+      { type: "p", text: "À l'échelle de la commune, le rendement brut d'un appartement à Villeurbanne tourne autour de **4,9 %** : un loyer médian de 14,6 €/m² hors charges rapporté à un prix médian de 3 567 €/m². Mécaniquement, plus le prix d'achat est bas, plus le rendement affiché monte — mais le rendement brut ne dit rien de la vacance locative, des charges, de la taxe foncière ni des travaux." },
+      { type: "p", text: "**Nous ne publions volontairement pas de rendement par quartier.** Le seul loyer de référence public disponible est communal : l'appliquer tel quel à chaque quartier reviendrait à inventer des rendements. Ce qui est vérifiable, en revanche, c'est la demande étudiante : **Charpennes – Tonkin et Buers – Croix-Luizet bordent le campus de la Doua** (Université Lyon 1, INSA), ce qui soutient durablement la location de petites surfaces dans ces deux secteurs." },
+      { type: "p", text: "Rappel utile pour calibrer un projet locatif : à Villeurbanne, en 2025, un **studio ou T1 s'est vendu 115 000 € en médiane** (30 m²) et un **T2 170 000 €** (45 m²). Ce sont les typologies les plus chères au mètre carré à l'achat — 4 000 €/m² pour un T1 contre 2 967 €/m² pour un T5 — précisément parce que la demande locative les tire." },
+
+      { type: "h2", text: "Dans quel quartier un appartement se revend-il le plus facilement ?" },
+      { type: "p", text: "**Gratte-Ciel – Dedieu – Charmettes concentre de loin le plus de transactions : 655 ventes d'appartements en 2025**, soit plus d'un tiers des ventes des sept quartiers analysés. À l'inverse, Cyprian – Les Brosses n'en compte que 53. Plus un quartier échange de biens, plus il est facile d'y trouver un acheteur le jour de la revente." },
+      { type: "p", text: "Ce volume a une seconde conséquence, moins évidente : **il conditionne la fiabilité du prix lui-même**. Une médiane calculée sur 655 ventes est solide ; sur 53, elle bouge d'une année à l'autre pour des raisons de composition, pas de marché. C'est aussi pour cette raison que nous ne publions aucun chiffre pour le quartier Saint-Jean : moins de 40 ventes par an en moyenne, ce n'est pas un échantillon, c'est une anecdote." },
+      { type: "p", text: "Si la revente à horizon 5 ans fait partie de votre projet, un quartier liquide est un vrai filet de sécurité — c'est un critère au moins aussi important que les 300 €/m² d'écart entre deux secteurs voisins." },
+
+      { type: "h2", text: "Quels quartiers ont le mieux résisté à la baisse des prix depuis 2022 ?" },
+      { type: "p", text: "**Ferrandière – Maisons-Neuves est le seul quartier de Villeurbanne quasiment revenu à son niveau de 2022 (−2,0 %)**, quand Charpennes – Tonkin reste **13,2 % en dessous**. Sur l'ensemble de la commune, la médiane a reculé de 10,4 % depuis 2022, avant de remonter de 1,5 % entre 2024 et 2025." },
+      { type: "p", text: "Autrement dit, la correction de 2022-2024 n'a pas frappé partout de la même façon, et la reprise amorcée en 2025 non plus. Six des sept quartiers analysés remontent entre 2024 et 2025 ; seul Charpennes – Tonkin recule encore légèrement (−1,3 %)." },
+      { type: "p", text: "Ces écarts disent d'où vient chaque quartier — **ils ne disent pas où il va**. Nous ne publions pas de prévision de prix : personne ne peut en produire une honnêtement à l'échelle d'un quartier." },
+
+      { type: "h2", text: "Comment choisir son quartier à Villeurbanne, concrètement ?" },
+      { type: "p", text: "La méthode tient en cinq étapes, dans cet ordre. L'erreur la plus fréquente est de commencer par le quartier : on se retrouve alors à arbitrer sur la surface ou sur l'état du bien, ce qui coûte bien plus cher qu'un changement de secteur." },
+      { type: "ol", items: [
+        "**Fixez d'abord la surface dont vous avez besoin**, pas le quartier : 65 m² pour un T3, 81 m² pour un T4 sont les surfaces médianes réellement vendues à Villeurbanne.",
+        "**Calculez votre budget d'acquisition complet**, frais compris (7 à 8 % dans l'ancien), puis divisez-le par les médianes du tableau ci-dessus : vous obtenez la liste des quartiers réellement accessibles.",
+        "**Éliminez les secteurs incompatibles avec votre quotidien** — trajet domicile-travail, école, desserte. Ce filtre-là ne se négocie pas, contrairement au prix.",
+        "**Vérifiez la liquidité du quartier retenu** si vous envisagez de revendre à moyen terme : un secteur à 50 ventes par an se revend moins vite qu'un secteur à 650.",
+        "**Faites estimer les biens visités au prix du quartier, pas au prix de la ville** : entre Cyprian – Les Brosses et Ferrandière, l'écart de référence atteint 43 %.",
       ] },
-      { type: "p", text: "Les fourchettes de prix varient nettement d'un quartier à l'autre. Pour connaître la valeur précise d'un bien dans le secteur qui vous intéresse, demandez une estimation basée sur les ventes réelles." },
-      { type: "h2", text: "Choisir selon son projet" },
-      { type: "p", text: "Habiter, investir ou viser une plus-value future : le « bon » quartier dépend de votre objectif et de votre budget." },
+
+      { type: "h2", text: "Que ne disent pas ces chiffres ?" },
+      { type: "p", text: "Ces médianes décrivent des ventes passées, pas votre futur achat. Trois limites doivent être posées clairement, parce qu'elles conditionnent l'usage que vous pouvez en faire." },
+      { type: "ul", items: [
+        "**Le décalage de publication.** La base DVF paraît avec du retard : 2025 est la dernière année complète disponible en septembre 2026. Les chiffres décrivent donc le marché tel qu'il s'est conclu, pas tel qu'il se négocie ce mois-ci.",
+        "**L'absence de qualité du bien.** DVF enregistre un prix, une surface et une adresse — ni l'étage, ni l'exposition, ni l'état, ni le DPE. Or ces critères expliquent l'essentiel des écarts entre deux appartements d'un même immeuble.",
+        "**L'écart intra-quartier.** Il est presque toujours supérieur à l'écart entre quartiers. Choisir le bon secteur vous fait gagner un cadrage ; choisir le bon bien dans ce secteur vous fait gagner beaucoup plus.",
+      ] },
+      { type: "p", text: "C'est exactement là qu'un conseiller qui visite le secteur toutes les semaines apporte ce qu'aucune base de données ne contient. Nos conseillers connaissent les immeubles, les copropriétés et les rues de chacun de ces quartiers — et savent quand un prix affiché est justifié ou non." },
+    ],
+    faq: [
+      {
+        q: "Quel est le quartier le moins cher de Villeurbanne ?",
+        a: "Cyprian – Les Brosses, avec un prix médian de 2 738 €/m² sur les ventes d'appartements de 2025, soit 23 % de moins que la médiane communale (3 567 €/m²). Suivent Cusset – Bonnevay (3 171 €/m²) et Buers – Croix-Luizet (3 271 €/m²).",
+      },
+      {
+        q: "Quelle surface achète-t-on avec 250 000 € à Villeurbanne ?",
+        a: "Environ 64 à 65 m² dans les quartiers les plus chers (Ferrandière – Maisons-Neuves, Gratte-Ciel – Dedieu – Charmettes), 71 m² à Charpennes – Tonkin et jusqu'à 91 m² à Cyprian – Les Brosses. Ces surfaces sont calculées au prix médian au m² de 2025 et s'entendent hors frais d'acquisition, qui représentent 7 à 8 % du prix dans l'ancien.",
+      },
+      {
+        q: "Quel quartier de Villeurbanne choisir pour un investissement locatif ?",
+        a: "Le rendement brut moyen d'un appartement à Villeurbanne est d'environ 4,9 % (loyer médian de 14,6 €/m² hors charges rapporté au prix médian de 3 567 €/m²). Markus Immobilier ne publie pas de rendement par quartier, faute de loyer de référence public à cette échelle. Charpennes – Tonkin et Buers – Croix-Luizet bordent le campus de la Doua, ce qui soutient la demande locative sur les petites surfaces.",
+      },
+      {
+        q: "Dans quel quartier de Villeurbanne se vend-il le plus d'appartements ?",
+        a: "Gratte-Ciel – Dedieu – Charmettes, avec 655 ventes d'appartements en 2025, loin devant Perralière – Grandclément (330), Buers – Croix-Luizet (223), Cusset – Bonnevay (213), Charpennes – Tonkin (200), Ferrandière – Maisons-Neuves (187) et Cyprian – Les Brosses (53). Un quartier où il se vend beaucoup de biens est aussi un quartier où il est plus facile de revendre.",
+      },
+      {
+        q: "D'où viennent ces prix par quartier de Villeurbanne ?",
+        a: "De la base DVF (demandes de valeurs foncières) publiée par l'État sur data.gouv.fr, qui recense le prix réel de chaque vente enregistrée par les notaires. Markus Immobilier calcule les médianes 2025 en écartant les ventes de lots multiples et les valeurs aberrantes, puis rattache chaque vente à son quartier via les contours officiels de la Métropole de Lyon. Extraction du 7 septembre 2026.",
+      },
     ],
   },
   {
