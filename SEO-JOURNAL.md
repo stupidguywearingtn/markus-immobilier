@@ -14,6 +14,31 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-10**
+
+- Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : quatre
+  runs de suite. Un seul run aujourd'hui, pas de travail en double.
+- 🟢 **PREMIÈRE PREUVE D'INDEXATION.** L'hypothèse « indexation réelle inconnue »,
+  ouverte depuis le 2026-09-07, est **partiellement levée** :
+  `https://www.markusimmobilier.fr/` **remonte en résultat** sur la requête
+  `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière`. Le site est
+  donc bien indexé sur le nouveau domaine. Mesure obtenue **sans chercher le nom
+  de marque** (requête adresse + secteur), donc conforme à la consigne client.
+  → **Conséquence pour les prochains runs** : une absence de position n'est plus
+  imputable à une non-indexation de la home. Ce n'est pas « le site n'est pas
+  connu de Google », c'est « le site ne fait pas le poids sur ces requêtes ».
+- ⚠️ **Aucune page profonde ne remonte, elle.** Testé avec une requête portant sur
+  une donnée exclusive du site (`"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²`) :
+  8 résultats, **aucun de markusimmobilier.fr**, alors que la donnée exacte n'existe
+  que chez nous. Deux lectures possibles (voir « Hypothèses ») : pages trop récentes,
+  ou pages indexées mais trop faibles. **À remesurer chaque run avec cette requête**
+  — c'est le meilleur test d'indexation profonde dont on dispose sans GSC.
+- `sitemap.xml` en production = **61 URLs** (inchangé : le chantier du jour ne crée
+  aucune page).
+- **Bug constaté en production, pas dans une note d'audit** : les pages légales
+  servaient un `<link rel="canonical">` pointant vers **la home**, pas vers
+  elles-mêmes. Corrigé aujourd'hui (voir « Chantiers faits »).
+
 **Au 2026-09-09**
 
 - Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : la
@@ -73,21 +98,49 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-09 | 2026-09-08 | 2026-09-07 |
-|---|---|---|---|
-| agence immobilière Villeurbanne | **absent** du top 8 — SERP **identique** au 08/09 (PagesJaunes, Laforêt, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux) | absent | absent, SERP identique |
-| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 9 — SERP **identique** au 08/09 (Nestenn ×2, Square Habitat, imkiz, MonMandatLocal, SAFTI, Salengro, En Mode Immo, Solvimo) | absent | absent, SERP identique |
-| prix m2 Villeurbanne par quartier | **absent** du top 8 — 1 entrant vs 08/09 : efficity remplace Square Habitat (MeilleursAgents, PAP, efficity, SeLoger, JournalDuNet, immosudest, Régie Carron, netvendeur) | absent | absent |
-| vendre appartement Villeurbanne | *non remesuré* (SERP stable les deux jours précédents, priorité donnée aux requêtes acheteur) | absent du top 7 | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | absent du top 8 | *non mesuré* |
-| agence immobilière Charpennes Villeurbanne | **absent** du top 9 (Logic-Immo, SeLoger, PagesJaunes, Guy Hoquet, Orpi, Superimmo, Salengro, Decultieux, repimmo) | *non mesuré* | *non mesuré* |
-| où acheter à Villeurbanne quartier | **absent** du top 8 (homeloop, SeLoger ×2, Century 21, BienIci, au-magasin, Chomel, ParuVendu) | *non mesuré* | *non mesuré* |
-| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | **absent** du top 8 (ymanci, SeLoger, edito SeLoger, drhouse-immo, BNP, geraldinearrou, moninvestimmo, hotel-lyonnord) | *non mesuré* | *non mesuré* |
+| Requête | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---|---|---|---|---|
+| agence immobilière Villeurbanne | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
+| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
+| prix m2 Villeurbanne par quartier **2026** | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
+| vendre appartement Villeurbanne **agence** | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
 
-**Lecture** : toujours aucune position, et les deux SERP suivies depuis trois
-jours sont **strictement identiques**. Rien de neuf à en conclure : l'article
-prix a 2 jours, la page estimation Villeurbanne 1 jour. Le délai de jugement se
-compte en semaines. **Ne pas refaire ces chantiers.**
+**Lecture au 2026-09-10** — le fait marquant n'est pas dans les positions
+(toujours aucune, comme attendu : les contenus ont 1 à 3 jours), il est dans les
+**deux tests d'indexation ajoutés aujourd'hui**, qui se contredisent utilement :
+
+- La **home est indexée** — elle sort sur une requête adresse. On peut donc
+  **fermer le débat « Google ne connaît pas le site »**.
+- Mais une requête sur une **donnée exclusive** du site (la médiane 3 923 €/m²
+  de Ferrandière, publiée nulle part ailleurs) ne le fait **pas** remonter. Si
+  l'article prix était indexé et jugé pertinent, il devrait sortir premier sur
+  sa propre donnée : personne d'autre ne peut répondre. **C'est le signal le
+  plus actionnable obtenu depuis le début de ce journal.**
+
+Deux explications possibles, à départager les prochains runs (voir
+« Hypothèses ») : (a) délai d'indexation des pages profondes, ou (b) pages
+profondes crawlées mais peu ou pas indexées, faute de signaux internes. **C'est
+(b) qui a décidé du chantier du jour** : jusqu'à aujourd'hui, les 26 articles ne
+pouvaient émettre **aucun lien** depuis leur corps de texte, et les 2 pages de
+données les plus riches du site ne recevaient donc quasiment rien.
+
+Second point de SERP, sur « prix m2 Villeurbanne par quartier 2026 » : la SERP
+s'est **renouvelée de moitié** en 24 h, et l'un des entrants (**immovrai**)
+affiche explicitement « ventes DVF » — c'est-à-dire **exactement notre angle**.
+Le créneau « prix sourcé DVF » n'est plus vide ; il se peuple. Ne pas en
+conclure qu'il faut l'abandonner, mais **ne plus le considérer comme un terrain
+libre**.
+
+**Lecture au 2026-09-09** : toujours aucune position, et les deux SERP suivies
+depuis trois jours sont **strictement identiques**. Rien de neuf à en conclure :
+l'article prix a 2 jours, la page estimation Villeurbanne 1 jour. Le délai de
+jugement se compte en semaines. **Ne pas refaire ces chantiers.**
 
 Ce qui est **nouveau et a décidé du chantier du jour** : les deux requêtes
 « acheteur » mesurées pour la première fois montrent une SERP **nettement plus
@@ -116,6 +169,127 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-10 — Déblocage du maillage interne depuis le corps des articles + canonicals des pages légales
+
+**Angle du jour** : *technique / structurel*. Les trois runs précédents portaient
+tous sur du contenu ; le journal demandait explicitement de basculer.
+
+**Pourquoi celui-là.** C'était le **backlog n°6, reporté trois runs de suite**
+(08/09, 09/09) avec à chaque fois la même raison : « ça touche le rendu des 26
+articles, c'est un chantier à part entière ». Aujourd'hui était le jour prévu
+pour ce chantier à part entière — et la mesure de l'étape 2 l'a confirmé plutôt
+que l'inverse : le test d'indexation profonde montre que nos pages de données ne
+sortent même pas sur leur propre chiffre exclusif, alors qu'elles ne recevaient
+presque aucun lien interne.
+
+#### 1. Syntaxe de lien dans le corps des articles
+
+`inline()` (`components/blog/article-body.tsx`) ne gérait que `**gras**`. Ajout
+de `[texte](/chemin)` → `next/link`, et `[texte](https://…)` → `<a>` avec
+`target="_blank"` + `rel="noopener noreferrer"`.
+
+**Le point qui rendait ce chantier sûr, et qu'il faut retenir** : la syntaxe
+était **inexistante dans les 26 articles** (vérifié par grep avant d'écrire une
+ligne). Le changement est donc **inerte par construction** sur tout article où
+je ne pose pas de lien — ce n'est pas « probablement sans risque », c'est
+démontrable.
+
+Et démontré, pas seulement raisonné : **double build (version modifiée, puis
+version `HEAD` stashée) et diff du texte rendu des 26 pages pré-rendues**.
+Résultat : **20 articles sur 26 rendent un texte identique à l'octet près**, et
+les **6 qui changent sont exactement les 6 où j'ai posé un lien**. C'est la
+méthode à réutiliser pour tout chantier touchant un gabarit partagé.
+
+> ⚠️ **Piège du diff HTML brut** : comparer les fichiers `.html` directement
+> donne « 26/26 modifiés » et ne prouve rien — Turbopack ré-hache les noms de
+> chunks à chaque build. **Comparer le texte rendu** (tags retirés, espaces
+> normalisés), pas le HTML.
+
+#### 2. Les 11 liens contextuels posés
+
+Tous dans des **phrases déjà existantes**, jamais dans un bloc « voir aussi ».
+Cible choisie sur un critère unique : les pages stratégiques qui recevaient le
+moins de liens entrants.
+
+| Page cible | Liens entrants gagnés |
+|---|---|
+| `/blog/prix-immobilier-villeurbanne-2026` | **+5** |
+| `/estimation-immobiliere-villeurbanne` | **+4** (elle passe de 2 à 6) |
+| `/blog/ou-acheter-villeurbanne-quartiers` | **+2** |
+
+Articles émetteurs : `comment-estimer-son-bien…` (2), `estimation-en-ligne-ou-agence`
+(2), `investir-locatif-lyon` (2), `ou-acheter-villeurbanne-quartiers` (2),
+`prix-immobilier-villeurbanne-2026` (2), `vendre-appartement-lyon-etapes` (1).
+Les deux articles de données se lient désormais **réciproquement**.
+
+**Aucun chiffre nouveau n'a été écrit.** Les rares phrases ajoutées ne servent
+qu'à porter le lien.
+
+**`updated` volontairement NON modifié sur les 6 articles.** C'est l'application
+directe de la veille du 07/09 : « ne bouger `updated` que si le contenu change
+vraiment — redater sans réécrire est un signal de spam ». Poser un lien n'est
+pas une réécriture. Conséquence assumée : pas de gain de fraîcheur aujourd'hui.
+
+#### 3. Canonical fautif des pages légales (problème découvert à l'étape 2)
+
+Le backlog n°1 annonçait « canonicals **manquants** ». La production disait
+autre chose : les canonicals étaient **présents et faux**. `/mentions-legales`,
+`/confidentialite`, `/cookies` et `/espace-client` servaient
+`<link rel="canonical" href="https://www.markusimmobilier.fr">` — elles se
+**déclaraient donc comme des doublons de la home**.
+
+**Cause** : `app/layout.tsx` posait `alternates: { canonical: "/" }`. Dans
+l'App Router, **les metadata d'un layout sont héritées par toute page qui ne les
+surcharge pas** — le canonical fuyait sur tout le site. Les pages SEO n'étaient
+pas touchées (elles posent toutes le leur), d'où l'invisibilité du bug.
+
+Correction : défaut retiré du layout (la home garde le sien dans `app/page.tsx`,
+vérifié inchangé), + canonical propre sur les 3 pages légales. Un commentaire
+dans `layout.tsx` explique pourquoi il ne faut pas le remettre.
+
+`/signin` passe en `noindex, nofollow` via un `app/signin/layout.tsx` dédié (la
+page est un composant client, elle ne peut pas exporter de `metadata`).
+**Volontairement pas ajoutée au `disallow` de `robots.txt`** : une URL bloquée
+au crawl ne peut pas être lue, donc son `noindex` n'est jamais vu. Bloquer et
+désindexer sont deux actions contradictoires.
+
+**Contrôle qualité** : `tsc --noEmit` **0 erreur** · `eslint` **0 erreur** sur
+les 7 fichiers touchés · `npm run build` OK (82 pages) · JSON-LD de l'article
+prix intact (**5 `Question` / 5 `Answer`**, `FAQPage`, `BlogPosting`,
+`BreadcrumbList`) · **1 seul `<h1>`** sur chacun des 6 articles modifiés · aucun
+marqueur `[texte](href)` non parsé, et aucune fuite de marqueur dans les
+`metaDescription`, `excerpt` ou FAQ (celles-ci ne contiennent aucun lien).
+
+**Vérifié en production** : les 3 pages légales servent leur propre canonical,
+la home garde le sien, `/signin` sert `noindex, nofollow`, les 6 articles
+servent leurs 11 liens, aucun marqueur brut, `sitemap.xml` toujours à 61 URLs
+(aucune page créée, c'est attendu).
+
+> ⚠️ **Cache CDN rencontré deux fois** — exactement le piège noté le 09/09, et
+> le `?cb=<random>` **n'a pas suffi cette fois**. `/mentions-legales` a servi
+> l'ancienne version au 1ᵉʳ appel, et l'article acheteur a alterné
+> ancien/nouveau/ancien sur trois passes espacées de 15 s. Après ~60 s de plus :
+> **5 passes sur 5 correctes**. **Leçon affinée : sur un cache multi-nœuds, un
+> seul appel anti-cache ne prouve rien — il faut plusieurs passes espacées, et
+> ne conclure à un échec qu'après une série entièrement négative.**
+
+**Décidé de NE PAS faire, et pourquoi :**
+
+- **Réécrire un article faible** (`investir-locatif-lyon`, `rentabilite-locative-lyon`,
+  `estimation-en-ligne-ou-agence`). Ils restent les plus mauvais du site, mais
+  c'était un jour « technique » : enchaîner un 4ᵉ run de contenu aurait laissé
+  le maillage bloqué une semaine de plus. → toujours en attente, backlog n°5.
+- **Retirer `/espace-client` du `disallow` de `robots.txt` pour lui poser un
+  `noindex`.** Ce serait la manœuvre correcte (le lien 👤 du header la rend
+  atteignable, donc indexable en URL seule), mais ça revient à **ouvrir au crawl
+  une page que le client a explicitement fermée**. Pas une décision de run
+  automatique. → noté en « Hypothèses à vérifier », à soumettre au client.
+- **Bumper les dates `updated`** des 6 articles (voir plus haut).
+- **Poser plus de 11 liens.** Il aurait été facile d'en mettre 30 : chaque
+  article parle de prix ou d'estimation. Un maillage qui répète le même lien
+  dans 26 pages sur des ancres identiques est un signal de manipulation, pas de
+  structure. Un lien n'a été posé que là où la phrase existante l'appelait déjà.
 
 ### 2026-09-09 — Réécriture de l'article « où acheter à Villeurbanne » (angle acheteur)
 
@@ -476,46 +650,57 @@ de suite un chantier « contenu blog ».
 ~~2. `logo` + `geo` dans `RealEstateAgent`~~ — **fait au run n°2 du 2026-09-07.**
 ~~3. Page dédiée « estimation immobilière Villeurbanne »~~ — **faite le 2026-09-08.**
 ~~4. Article `ou-acheter-villeurbanne-quartiers`~~ — **réécrit le 2026-09-09.**
+~~5. Canonicals des pages légales + `/signin` noindex~~ — **fait le 2026-09-10**
+(le canonical n'était pas manquant mais **faux** : il pointait vers la home).
+~~6. Liens dans le corps des articles de blog~~ — **fait le 2026-09-10**
+(syntaxe `[texte](href)` + 11 liens posés).
 
-**Angle du dernier run : réécriture d'article + maillage entrant.** Les trois
-derniers runs ont tous porté sur du **contenu** (blog, page, blog). Le prochain
-run devrait basculer sur un angle **technique** ou **structurel** — les points 1
-et 4 ci-dessous sont les meilleurs candidats.
+**Angle du dernier run : technique / structurel.** Le run du 2026-09-10 a levé
+les deux verrous techniques du backlog. **Le prochain run doit rebasculer sur du
+contenu** — et le candidat évident est le point 2 ci-dessous, maintenant que les
+articles peuvent enfin émettre des liens.
 
-1. **Canonicals manquants** sur `/mentions-legales`, `/confidentialite`,
-   `/cookies` ; `/signin` non `noindex`. Petit, technique, et jamais fait —
-   c'est le candidat le plus simple pour rompre la série « contenu ».
-2. **Créer la propriété Google Search Console** + poser
+1. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
    client**, mais c'est ce qui débloquera de vraies mesures de position à la
-   place des recherches web approximatives. À rappeler.
-3. **Fiche Google Business Profile** — constat de SERP du 08/09 : les requêtes
-   « agence immobilière Villeurbanne / Gratte-Ciel » sont tenues par des
-   annuaires et des franchises. Sur celles-là, le contenu du site ne suffira
-   pas ; le levier est la fiche GBP + les citations d'annuaires (PagesJaunes,
-   Superimmo, MeilleursAgents…). **Action client**, à remonter avec le point 2.
-4. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
-   `author` = Organization. Un auteur humain identifié (Tony Pistilli) serait
-   plus fort.
-5. **Autres articles faibles à réécrire** (même traitement que l'article prix et
-   l'article acheteur). Mesuré aujourd'hui sur `lib/blog.ts`, aucun n'a de FAQ
-   ni de champ `updated` :
-   - `investir-locatif-lyon` — ~227 mots, **aucun chiffre** ;
+   place des recherches web approximatives. À rappeler. **Priorité montée d'un
+   cran le 10/09** : le test d'indexation profonde pose une question (les pages
+   profondes sont-elles indexées ?) que **seule GSC peut trancher**. On tourne
+   à l'aveugle sur ce point précis.
+
+2. **Réécrire un article faible, maintenant qu'il peut porter des liens** —
+   c'est le chantier du prochain run. Les trois candidats, aucun n'a de FAQ ni
+   de champ `updated` :
    - `estimation-en-ligne-ou-agence` — ~242 mots, **aucun chiffre**, alors que
-     c'est une page d'entonnoir directe vers l'outil d'estimation ;
+     c'est une page d'entonnoir directe vers l'outil d'estimation. **Le meilleur
+     candidat** : il vient de gagner 2 liens sortants, il est court, et son
+     sujet (« en ligne ou agence ? ») est une question réellement posée à voix
+     haute à une IA ;
+   - `investir-locatif-lyon` — ~227 mots, **aucun chiffre** ;
    - `rentabilite-locative-lyon` — ~194 mots ; il n'a qu'un **exemple fictif**
      (150 000 € / 650 € / 5,2 %), pas de donnée de marché. On dispose pourtant
      du loyer médian communal (14,6 €/m² HC) et des prix par typologie.
 
    **Ne pas les enchaîner** : un par semaine au plus, en alternance avec des
    chantiers techniques.
-6. **Liens dans le corps des articles de blog** : `inline()` dans
-   `components/blog/article-body.tsx` ne gère que `**gras**`. Aucun lien
-   contextuel n'est possible depuis le texte d'un article — c'est une vraie
-   limite de maillage interne sur 26 pages. Ajouter une syntaxe `[texte](href)`
-   est faisable, mais **ça touche le rendu des 26 articles** : à faire comme
-   chantier à part entière, avec vérification du HTML pré-rendu article par
-   article, jamais en passant.
+
+3. **Fiche Google Business Profile** — constat de SERP reconfirmé le 10/09 : les
+   requêtes « agence immobilière Villeurbanne / Gratte-Ciel » sont tenues par
+   des annuaires et des franchises (sur Gratte-Ciel, **Superimmo apparaît deux
+   fois** dans le top 8). Sur celles-là, le contenu du site ne suffira pas ; le
+   levier est la fiche GBP + les citations d'annuaires (PagesJaunes, Superimmo,
+   MeilleursAgents…). **Action client**, à remonter avec le point 1.
+
+4. **Bloc auteur + `author` sur les articles** (E-E-A-T) — actuellement
+   `author` = Organization. Un auteur humain identifié (Tony Pistilli) serait
+   plus fort. Bon candidat pour le prochain run technique.
+
+5. **Étendre le maillage aux 20 articles non touchés le 10/09.** La syntaxe
+   existe désormais, mais seuls 6 articles sur 26 émettent un lien. **À faire
+   par petits lots** (5-6 articles par run, en complément d'un autre chantier),
+   jamais d'un coup : poser 40 liens en une fois, sur des ancres proches, est un
+   motif de sur-optimisation. Règle appliquée le 10/09 à conserver : **un lien
+   seulement là où la phrase existante l'appelle déjà**.
 
 ---
 
@@ -552,9 +737,38 @@ et 4 ci-dessous sont les meilleurs candidats.
   d'absence, mais les positions fines (page 2 vs page 3) ne le sont pas. **Ne
   pas surinterpréter une variation d'une place d'un run à l'autre** : tant que
   GSC n'est pas branché, seul le passage absent → présent compte vraiment.
-- **Indexation réelle inconnue.** Rien ne prouve encore que Google a indexé le
-  site sur le nouveau domaine. À vérifier dès que GSC est disponible ; d'ici là,
-  ne pas conclure d'une absence de position qu'un contenu est mauvais.
+- ~~**Indexation réelle inconnue.**~~ → **partiellement levée le 2026-09-10** :
+  la home **est indexée** (elle remonte sur une requête adresse). Ne plus
+  rouvrir ce point pour la home.
+  **Ce qui reste ouvert, et qui est maintenant la question n°1 du site** : les
+  **pages profondes** sont-elles indexées ? Une requête sur la médiane
+  3 923 €/m² de Ferrandière — chiffre publié **nulle part ailleurs** — ne fait
+  pas remonter l'article prix. Deux lectures :
+  **(a)** délai d'indexation (l'article a été réécrit le 07/09, soit 3 jours) ;
+  **(b)** pages crawlées mais jugées trop faibles, faute de signaux internes.
+  Le maillage posé le 10/09 agit sur (b). **Protocole pour départager** :
+  remesurer la requête Ferrandière à chaque run. Si elle reste négative
+  **au-delà de deux semaines** (soit après le ~21/09), (a) devient
+  indéfendable et il faudra chercher un blocage technique d'indexation, pas
+  écrire plus de contenu. **Seule GSC peut vraiment trancher** (backlog n°1).
+
+- **`/espace-client` est `disallow` dans `robots.txt` mais reste liée depuis le
+  header (icône 👤).** Une URL bloquée au crawl peut malgré tout être indexée
+  « en URL seule » si elle est liée, et son `noindex` ne sera jamais lu puisque
+  Google n'a pas le droit de la charger. La manœuvre correcte serait de
+  **retirer le `disallow` et de poser un `noindex`** — mais cela revient à
+  ouvrir au crawl une page que le client a fermée. **Non fait volontairement le
+  10/09 : à soumettre au client**, ce n'est pas une décision de run automatique.
+  (`/radar` est dans le même cas ; `/signin`, lui, n'était pas bloqué, d'où le
+  `noindex` posé sans hésitation.)
+
+- **Le créneau « prix sourcé DVF » se peuple.** Au 10/09, la SERP « prix m2
+  Villeurbanne par quartier 2026 » s'est renouvelée de moitié en 24 h, et
+  **immovrai.com y entre en affichant explicitement « ventes DVF »** — le même
+  argument que le nôtre. À surveiller : si plusieurs acteurs publient du DVF
+  recalculé, notre différenciateur ne sera plus la source mais **la finesse du
+  découpage** (contours officiels de quartiers) et **la transparence de la
+  méthode**. Ne pas abandonner l'angle, mais ne plus le traiter comme vide.
 - **`FAQPage` sur la home + sur cet article** : l'audit du 2026-08-27 notait de
   ne pas ajouter de nouveaux `FAQPage` en espérant un rich result (Google les a
   restreints aux sites gouv/santé depuis août 2023). Cette note reste vraie
@@ -627,6 +841,39 @@ et 4 ci-dessous sont les meilleurs candidats.
 ---
 
 ## Techniques apprises
+
+### 2026-09-10 — Méthode : modifier un gabarit partagé et le prouver inoffensif
+
+Pas de veille aujourd'hui (**jeudi** — la veille se fait le lundi ; celle du
+07/09 reste la référence). Quatre méthodes réutilisables sont sorties du run.
+
+- **Le test « donnée exclusive » : un diagnostic d'indexation gratuit.** Pour
+  savoir si une page profonde est indexée sans GSC, chercher **un chiffre que
+  seule cette page publie**. Si la page ne sort pas sur sa propre donnée
+  exclusive, ce n'est pas une question de concurrence — personne d'autre ne peut
+  répondre — c'est un problème d'indexation ou de crédibilité. **Bien plus
+  informatif qu'une requête commerciale**, où l'absence s'explique par mille
+  raisons. À refaire chaque run.
+- **Rendre un changement risqué *démontrablement* inerte, au lieu de l'éviter.**
+  Le maillage a été reporté 3 runs parce qu'il « touche le rendu des 26
+  articles ». La sortie n'était pas d'oser, c'était de **choisir une syntaxe
+  absente du contenu existant**, puis de le prouver : grep avant d'écrire, puis
+  **double build (version modifiée vs `HEAD` stashée) + diff du texte rendu**.
+  20/26 identiques à l'octet près, 6 modifiés = exactement les 6 voulus.
+  → **Généralisable** : avant de renoncer à un chantier « qui touche à
+  l'existant », chercher s'il existe une forme du changement dont l'inocuité se
+  *mesure*. La règle « en cas de doute, ne pas faire » vise le doute, pas le
+  risque : un risque mesuré n'est plus un doute.
+- **Diffs de build : comparer le texte rendu, jamais le HTML brut.** Turbopack
+  ré-hache les noms de chunks à chaque build, donc un `cmp` sur les `.html`
+  donne « 100 % modifiés » et ne prouve rien. Retirer `<script>`/`<style>`,
+  supprimer les tags, normaliser les espaces, puis comparer.
+- **Un backlog n'est pas une mesure.** Le backlog annonçait « canonicals
+  **manquants** » sur les pages légales. La production servait des canonicals
+  **présents et faux** (pointant vers la home) — un problème différent, avec une
+  cause différente (héritage des metadata du layout Next). Un item de backlog
+  décrit un symptôme observé un jour donné ; **le refetch de l'étape 2 n'est pas
+  une formalité, il requalifie le chantier**.
 
 ### 2026-09-09 — Méthode : produire de la donnée neuve sans nouveau calcul
 
