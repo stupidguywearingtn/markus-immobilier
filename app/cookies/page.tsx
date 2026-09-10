@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Politique de cookies — Markus Immobilier",
   description:
     "Cookies utilisés par markusimmobilier.fr et comment les gérer dans votre navigateur.",
+  alternates: { canonical: "/cookies" },
 };
 
 export default function CookiesPage() {

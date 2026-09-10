@@ -80,13 +80,14 @@ export const ARTICLES: Article[] = [
       ] },
       { type: "h2", text: "Les méthodes (de la moins à la plus fiable)" },
       { type: "ul", items: [
-        "**Le prix au m² « de quartier »** : utile pour une première idée, mais c'est une moyenne trompeuse.",
+        "**Le prix au m² « de quartier »** : utile pour une première idée, mais c'est une moyenne trompeuse. À Villeurbanne, nous publions [les médianes réelles par quartier](/blog/prix-immobilier-villeurbanne-2026), calculées sur les ventes signées.",
         "**La comparaison avec les ventes réelles** : la méthode des pros, basée sur les prix réellement signés (données officielles DVF), pas les prix affichés.",
         "**L'expertise terrain** : un conseiller ajuste avec ce qu'aucun algorithme ne voit (luminosité, calme, qualité de copropriété).",
       ] },
       { type: "p", text: "La meilleure estimation combine les trois." },
       { type: "h2", text: "Estimez votre bien gratuitement" },
       { type: "p", text: "Notre outil croise les ventes réelles près de chez vous, les caractéristiques précises de votre logement et une analyse du marché Lyon / Villeurbanne, pour une fourchette réaliste — sans engagement." },
+      { type: "p", text: "Si votre bien se situe à Villeurbanne, la page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne) donne l'ordre de grandeur par quartier avant même de remplir le formulaire." },
     ],
   },
   {
@@ -143,6 +144,7 @@ export const ARTICLES: Article[] = [
           "Sources : ventes DVF 2022-2025 (data.gouv.fr / Etalab) rattachées aux contours officiels des quartiers de la Métropole de Lyon (data.grandlyon.com). Extraction du 7 septembre 2026, calcul Markus Immobilier. Le quartier Saint-Jean n'est pas listé : trop peu de ventes pour une médiane fiable.",
       },
       { type: "p", text: "Un point mérite d'être souligné : **Ferrandière – Maisons-Neuves est le seul quartier revenu quasiment à son niveau de 2022** (−2,0 %), quand Charpennes – Tonkin reste 13,2 % en dessous. La reprise n'est pas homogène à l'échelle de la commune." },
+      { type: "p", text: "Si vous achetez plutôt que vous ne vendez, nous avons traduit ces mêmes médianes en surfaces accessibles : [ce que 200 000, 250 000 et 300 000 € achètent, quartier par quartier](/blog/ou-acheter-villeurbanne-quartiers)." },
 
       { type: "h2", text: "Combien coûte un T2 ou un T3 à Villeurbanne ?" },
       { type: "p", text: "Un T2 s'est vendu **170 000 € en médiane en 2025** (45 m²), un T3 **226 250 €** (65 m²) et un T4 **255 000 €** (81 m²). Le prix au m² baisse mécaniquement avec la taille : 4 000 €/m² pour un studio contre 2 967 €/m² pour un T5. C'est la règle sur tout le marché lyonnais — les petites surfaces se paient plus cher au mètre carré, portées par la demande locative et étudiante (le campus de la Doua est à Villeurbanne)." },
@@ -175,6 +177,7 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Pourquoi un prix de quartier ne suffit pas à estimer votre bien" },
       { type: "p", text: "Parce que l'écart à l'intérieur d'un quartier est presque toujours plus grand que l'écart entre quartiers. Deux appartements de même surface dans la même rue peuvent afficher 15 à 20 % de différence selon l'étage, la présence d'un ascenseur, l'exposition, l'état et le DPE. Un prix médian de quartier vous donne un ordre de grandeur, pas une valeur." },
+      { type: "p", text: "Pour resserrer ce cadrage, nos [repères d'estimation par quartier à Villeurbanne](/estimation-immobiliere-villeurbanne) déclinent ces médianes par typologie (T2, T3) plutôt qu'au mètre carré nu." },
       { type: "p", text: "Les critères qui font bouger le prix par rapport à la médiane de votre quartier :" },
       { type: "ul", items: [
         "**L'étage et l'ascenseur** : un dernier étage avec ascenseur se paie ; un 4ᵉ sans ascenseur se décote.",
@@ -226,7 +229,7 @@ export const ARTICLES: Article[] = [
     blocks: [
       { type: "p", text: "Vendre vite et au bon prix ne s'improvise pas. Voici le parcours d'une vente réussie à Lyon." },
       { type: "ol", items: [
-        "**Faire estimer son bien justement.** C'est le point de départ : un prix juste attire les acheteurs dès le premier jour.",
+        "**Faire estimer son bien justement.** C'est le point de départ : un prix juste attire les acheteurs dès le premier jour. À Villeurbanne, partez [des prix réellement signés par quartier](/blog/prix-immobilier-villeurbanne-2026), pas des prix affichés.",
         "**Réunir les diagnostics obligatoires.** DPE, amiante, plomb, électricité… mieux vaut les anticiper.",
         "**Préparer le bien.** Désencombrer, réparer les petits défauts, soigner la lumière : un bien « prêt à vivre » se vend mieux.",
         "**Créer une annonce qui sort du lot.** Photos professionnelles, texte clair, mise en avant des atouts.",
@@ -378,7 +381,7 @@ export const ARTICLES: Article[] = [
         "**Surveillez le DPE** : un bien F ou G est de plus en plus contraint à la location. Intégrez le coût d'éventuels travaux dès l'achat.",
       ] },
       { type: "h2", text: "Bien démarrer" },
-      { type: "p", text: "Un bon investissement commence par une estimation juste du prix d'achat et du loyer réaliste." },
+      { type: "p", text: "Un bon investissement commence par une estimation juste du prix d'achat et du loyer réaliste. À Villeurbanne, appuyez-vous sur [les prix au m² réellement signés par quartier](/blog/prix-immobilier-villeurbanne-2026) et sur [ce que chaque budget achète selon le secteur](/blog/ou-acheter-villeurbanne-quartiers)." },
     ],
   },
   {
@@ -394,7 +397,7 @@ export const ARTICLES: Article[] = [
     internalHref: "/acheter",
     internalLabel: "Trouver le bon bien avec notre équipe",
     blocks: [
-      { type: "p", text: "Avec un budget de **250 000 €**, vous achetez environ **65 m² à Gratte-Ciel** et **91 m² à Cyprian – Les Brosses** : 27 m² d'écart, pour le même prix, dans la même commune. C'est le premier chiffre à avoir en tête avant d'acheter à Villeurbanne. Le prix médian des appartements y va de **2 738 à 3 923 €/m² selon le quartier**, soit **43 % d'écart**, d'après les 1 875 ventes réellement signées en 2025." },
+      { type: "p", text: "Avec un budget de **250 000 €**, vous achetez environ **65 m² à Gratte-Ciel** et **91 m² à Cyprian – Les Brosses** : 27 m² d'écart, pour le même prix, dans la même commune. C'est le premier chiffre à avoir en tête avant d'acheter à Villeurbanne. Le prix médian des appartements y va de **2 738 à 3 923 €/m² selon le quartier**, soit **43 % d'écart**, d'après les [1 875 ventes réellement signées en 2025](/blog/prix-immobilier-villeurbanne-2026)." },
       { type: "p", text: "Cet article ne classe pas les quartiers du « meilleur » au « moins bon » : ça ne veut rien dire tant qu'on ne connaît pas votre projet. Il traduit les prix réels en décisions concrètes — combien de mètres carrés votre budget achète où, quels secteurs se revendent le plus facilement, et ce que ces chiffres ne peuvent pas vous dire." },
 
       { type: "h2", text: "Dans quel quartier de Villeurbanne acheter avec 200 000, 250 000 ou 300 000 € ?" },
@@ -461,7 +464,7 @@ export const ARTICLES: Article[] = [
         "**Calculez votre budget d'acquisition complet**, frais compris (7 à 8 % dans l'ancien), puis divisez-le par les médianes du tableau ci-dessus : vous obtenez la liste des quartiers réellement accessibles.",
         "**Éliminez les secteurs incompatibles avec votre quotidien** — trajet domicile-travail, école, desserte. Ce filtre-là ne se négocie pas, contrairement au prix.",
         "**Vérifiez la liquidité du quartier retenu** si vous envisagez de revendre à moyen terme : un secteur à 50 ventes par an se revend moins vite qu'un secteur à 650.",
-        "**Faites estimer les biens visités au prix du quartier, pas au prix de la ville** : entre Cyprian – Les Brosses et Ferrandière, l'écart de référence atteint 43 %.",
+        "**Faites estimer les biens visités au prix du quartier, pas au prix de la ville** : entre Cyprian – Les Brosses et Ferrandière, l'écart de référence atteint 43 %. Nos [repères par quartier et par typologie](/estimation-immobiliere-villeurbanne) donnent ce point de départ.",
       ] },
 
       { type: "h2", text: "Que ne disent pas ces chiffres ?" },
@@ -510,12 +513,12 @@ export const ARTICLES: Article[] = [
     blocks: [
       { type: "p", text: "Pour connaître la valeur de votre bien, deux voies s'offrent à vous. La bonne nouvelle : les meilleures combinent les deux." },
       { type: "h2", text: "L'estimation en ligne" },
-      { type: "p", text: "Rapide, gratuite et sans engagement. Une bonne estimation en ligne s'appuie sur les ventes réellement conclues (données DVF) et les caractéristiques de votre bien pour donner une fourchette réaliste en quelques minutes. Idéale pour avoir une première base solide." },
+      { type: "p", text: "Rapide, gratuite et sans engagement. Une bonne estimation en ligne s'appuie sur [les ventes réellement conclues (données DVF)](/blog/prix-immobilier-villeurbanne-2026) et les caractéristiques de votre bien pour donner une fourchette réaliste en quelques minutes. Idéale pour avoir une première base solide." },
       { type: "p", text: "Sa limite : un outil ne voit pas la luminosité réelle, le calme de la rue ou l'état précis du bien." },
       { type: "h2", text: "L'estimation par une agence" },
       { type: "p", text: "Un conseiller se déplace, voit ce qu'un algorithme ne peut pas voir et affine le prix avec sa connaissance fine du secteur. C'est l'étape qui transforme une fourchette en prix de mise en vente." },
       { type: "h2", text: "La meilleure approche" },
-      { type: "p", text: "Commencez en ligne pour une base chiffrée et fiable, puis faites affiner par un professionnel local." },
+      { type: "p", text: "Commencez en ligne pour une base chiffrée et fiable, puis faites affiner par un professionnel local. Pour un bien à Villeurbanne, notre page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne) détaille les deux étapes et les repères de prix par quartier." },
     ],
   },
   {

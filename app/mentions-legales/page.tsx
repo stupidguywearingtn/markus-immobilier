@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Mentions légales — Markus Immobilier",
   description:
     "Mentions légales du site markusimmobilier.fr : éditeur, carte professionnelle, garantie financière, assurance RCP, médiation, hébergement.",
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegalesPage() {

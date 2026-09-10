@@ -30,7 +30,12 @@ export const metadata: Metadata = {
   description:
     "Agence indépendante à Villeurbanne. Vente, location, gestion. Estimez votre bien gratuitement en moins de 2 minutes.",
   metadataBase: new URL(SITE_URL),
-  alternates: { canonical: "/" },
+  // PAS de `alternates.canonical` ici : dans l'App Router, les metadata du
+  // layout sont héritées par toute page qui ne les surcharge pas. Un canonical
+  // « / » posé à ce niveau se retrouvait servi sur /mentions-legales,
+  // /confidentialite, /cookies et /espace-client, qui se déclaraient donc
+  // comme des doublons de la home. Chaque page pose son propre canonical
+  // (la home le fait dans app/page.tsx).
   openGraph: {
     type: "website",
     locale: "fr_FR",

@@ -1,14 +1,51 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import type { Block } from "@/lib/blog";
 
-/** Parse les **gras** inline → <strong>. */
+/**
+ * Marqueurs inline reconnus dans le texte des articles :
+ *   **gras**            → <strong>
+ *   [texte](/chemin)    → <Link> interne
+ *   [texte](https://…)  → <a> externe (nouvel onglet, rel sûr)
+ *
+ * Le href doit commencer par « / » ou « http(s):// » et ne contient ni espace
+ * ni parenthèse fermante : une phrase qui écrit « … (voir plus bas) » après des
+ * crochets ne peut donc pas être capturée par erreur.
+ */
+const INLINE_RE =
+  /(\*\*[^*]+\*\*|\[[^\]\n]+\]\((?:\/|https?:\/\/)[^)\s]+\))/g;
+const LINK_RE = /^\[([^\]\n]+)\]\(((?:\/|https?:\/\/)[^)\s]+)\)$/;
+
+/** Lien de corps d'article : texte anthracite, soulignement sauge (accent). */
+const LINK_CLASS =
+  "text-anthracite font-medium underline decoration-sauge decoration-2 underline-offset-[3px] hover:decoration-anthracite transition-colors";
+
 function inline(text: string): ReactNode[] {
-  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) => {
+  return text.split(INLINE_RE).map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
         <strong key={i} className="font-semibold text-anthracite">
           {part.slice(2, -2)}
         </strong>
+      );
+    }
+    const link = LINK_RE.exec(part);
+    if (link) {
+      const [, label, href] = link;
+      return href.startsWith("/") ? (
+        <Link key={i} href={href} className={LINK_CLASS}>
+          {label}
+        </Link>
+      ) : (
+        <a
+          key={i}
+          href={href}
+          className={LINK_CLASS}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {label}
+        </a>
       );
     }
     return <span key={i}>{part}</span>;

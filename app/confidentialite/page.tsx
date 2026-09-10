@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité — Markus Immobilier",
   description:
     "Comment Markus Immobilier collecte, traite et protège vos données personnelles, conformément au RGPD.",
+  alternates: { canonical: "/confidentialite" },
 };
 
 export default function ConfidentialitePage() {
