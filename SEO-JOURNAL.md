@@ -14,6 +14,36 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-11**
+
+- Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : cinq
+  runs de suite. Un seul run aujourd'hui, pas de travail en double.
+- `sitemap.xml` en production = **61 URLs** (inchangé : le chantier réécrit une
+  page existante, il n'en crée aucune). Build local = **82 pages**.
+- **Mesuré en ligne avant d'agir**, pas déduit du code :
+  `/blog/estimation-en-ligne-ou-agence` servait bien la version faible —
+  **216 mots**, 3 H2 descriptifs (« L'estimation en ligne », « L'estimation par
+  une agence », « La meilleure approche »), **aucun chiffre**, aucune FAQ, aucun
+  tableau, `dateModified` = `datePublished` = 2026-06-09. Les 2 liens sortants
+  posés le 10/09 étaient bien là. C'est ce qui a confirmé le chantier.
+- 🟢 **Les chiffres DVF publiés depuis le 07/09 ont été recalculés à la source
+  aujourd'hui et sont EXACTS.** Reproduction indépendante (nouvelle extraction
+  du 11/09, même méthode) : commune **3 567 €/m²**, prix médian 195 000 €,
+  surface médiane 62 m² ; Ferrandière **3 923**, Gratte-Ciel **3 846**,
+  Charpennes **3 524**, Perralière **3 375**, Buers **3 271**, Cusset **3 171**,
+  Cyprian **2 738** ; T1 4 000 / T2 3 830 / T3 3 494 / T4 3 211. **Tout
+  correspond au chiffre près.** Seul écart : 1 876 ventes exploitables contre
+  1 875 publiées (une vente de plus dans la révision DVF ; 1 875 restent
+  rattachées à un quartier, donc le chiffre affiché sur le site reste juste).
+  → **L'hypothèse « si les médianes sont recalculées, les pages se
+  contrediront » est levée pour ce millésime.** Ne pas relancer ce calcul avant
+  la prochaine publication DVF.
+- ⚠️ **Piège de rendu JSX rencontré et corrigé avant publication** : un espace
+  entre `</strong>` et le mot suivant a été **avalé au build** (« 76 000 €
+  d'écartsur 62 m² ») alors que le code source en contenait un. Corrigé avec un
+  `{" "}` explicite, rebuild, revérifié. **À retenir : sur ce projet, toujours
+  relire le TEXTE RENDU après un build, pas seulement le JSX.**
+
 **Au 2026-09-10**
 
 - Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : quatre
@@ -98,18 +128,50 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
-|---|---|---|---|---|
-| agence immobilière Villeurbanne | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
-| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
-| prix m2 Villeurbanne par quartier **2026** | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
-| vendre appartement Villeurbanne **agence** | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
-| agence immobilière Charpennes Villeurbanne | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
-| où acheter à Villeurbanne quartier | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+| Requête | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---|---|---|---|---|---|
+| agence immobilière Villeurbanne | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
+| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
+| estimation immobilière en ligne ou agence Villeurbanne fiable | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| prix m2 Villeurbanne par quartier **2026** | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
+| vendre appartement Villeurbanne **agence** | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+
+**Lecture au 2026-09-11** — trois enseignements, dont un qui change la façon de
+choisir les prochains chantiers.
+
+1. **La requête « en ligne ou agence » est le terrain le moins tenu mesuré
+   jusqu'ici.** Sur les 10 résultats, **aucun ne publie un seul chiffre** : ce
+   sont des pages de service d'agences et de portails qui affirment « l'agence
+   est plus fiable » sans jamais dire de combien. L'intention est pourtant
+   franchement vendeur (qui compare les deux méthodes prépare une vente). C'est
+   ce qui a décidé du chantier du jour, et c'est un cas d'école : **la SERP la
+   plus faible n'est pas celle où les concurrents sont petits, c'est celle où
+   personne ne répond vraiment à la question posée.**
+2. **Le test d'indexation profonde reste négatif, à J+4.** Un **second** test a
+   été ajouté aujourd'hui, sur la donnée exclusive de l'article acheteur
+   (budget → surface) : négatif lui aussi. Deux données que personne d'autre ne
+   publie, deux absences. Le protocole du 10/09 tient : **si c'est encore
+   négatif après le ~21/09, l'explication « délai d'indexation » devient
+   indéfendable** et il faudra chercher un blocage technique, pas écrire plus.
+3. **Le créneau « donnée de transaction » se peuple vite.** Le 10/09, immovrai
+   entrait en affichant « ventes DVF ». Aujourd'hui, **MonMandatLocal entre sur
+   la requête estimation en affichant « 1 998 transactions réelles »**. Deux
+   acteurs en deux jours. Notre différenciateur ne peut plus être « nous, on
+   source » : ce sera **la finesse** (contours officiels de quartiers,
+   typologies, dispersion) et **la transparence de la méthode**, y compris ses
+   limites. Le chantier du jour va exactement dans ce sens.
+
+Un quatrième point, pour éviter de perdre du temps : sur **« agence immobilière
+Charpennes Villeurbanne »**, le top 9 est occupé quatre fois par une agence
+locale nommée **« Agence Charpennes Rolin Bainson »**, relayée par Logic-Immo,
+SeLoger, Superimmo et repimmo. Le nom du quartier *est* le nom d'un concurrent :
+**cette requête ne se prend pas au contenu**. Ne pas y consacrer un chantier.
 
 **Lecture au 2026-09-10** — le fait marquant n'est pas dans les positions
 (toujours aucune, comme attendu : les contenus ont 1 à 3 jours), il est dans les
@@ -169,6 +231,144 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-11 — Réécriture de « estimation en ligne ou agence » : la fiabilité mesurée, pas affirmée
+
+**Angle du jour** : *réécriture en profondeur d'un article faible*. Le 10/09
+était un jour technique ; le journal demandait explicitement de rebasculer sur
+du contenu, et désignait **cet article comme meilleur candidat**. C'est ce qui a
+été fait.
+
+**Pourquoi celui-là, confirmé par la mesure.** C'était le point 2 du backlog. Les
+deux mesures de l'étape 2 l'ont confirmé plutôt que l'inverse : (a) la page
+servait bien **216 mots sans un seul chiffre** (vérifié en production, pas
+déduit du code) ; (b) la SERP correspondante est **la plus faible mesurée depuis
+le début de ce journal** — dix résultats, zéro chiffre, alors que l'intention est
+vendeur.
+
+#### L'idée : répondre à la question que tout le monde élude
+
+Tous les concurrents écrivent « l'estimation en ligne est moins fiable qu'une
+agence ». **Aucun ne dit de combien.** C'est une question factuelle, et nous
+avions de quoi y répondre : la base DVF permet de mesurer l'écart entre ce que
+donne la méthode du prix au m² et ce que les gens ont réellement payé.
+
+**Le test publié** : pour chacune des 1 875 ventes d'appartements de 2025 à
+Villeurbanne, calculer `médiane €/m² du quartier × surface`, puis comparer au
+prix réel enregistré chez le notaire.
+
+| Résultat | Valeur |
+|---|---|
+| Ventes estimées à moins de 5 % près | **18 %** |
+| à moins de 10 % près | **36 %** |
+| à moins de 20 % près | **62 %** |
+| Erreur médiane | **15,5 %** |
+| Idem avec la médiane **communale** au lieu du quartier | 31 % à moins de 10 % |
+
+Ce dernier point est le plus intéressant éditorialement : **connaître le quartier
+ne fait gagner que 5 points**. L'essentiel de l'écart ne vient donc pas de la
+localisation mais de ce que DVF ne contient pas (étage, état, DPE, charges) —
+c'est-à-dire exactement ce que la visite d'un conseiller apporte. L'article
+démontre l'utilité de l'agence **avec les chiffres de l'agence**, au lieu de
+l'affirmer.
+
+**Les deux tableaux publiés** (données neuves, publiées nulle part ailleurs) :
+
+1. **Dispersion par quartier** — médiane, moitié centrale des ventes (P25–P75),
+   et l'écart converti **en euros** sur la surface médiane du quartier. Commune :
+   2 954 – 4 173 €/m², soit **≈ 76 000 € sur 62 m²**. Par quartier, de
+   ≈ 58 000 € (Perralière – Grandclément) à ≈ 78 000 € (Cyprian – Les Brosses).
+2. **Dispersion par typologie** — T1 ≈ 38 000 €, T2 ≈ 48 000 €, T3 ≈ 75 000 €,
+   T4 ≈ 92 000 €. *Plus le logement est grand, moins l'estimation automatique est
+   précise* : une phrase vraie, chiffrée, et que personne ne publie.
+
+Et le passage le plus citable, parce qu'il est contre-intuitif et vérifiable :
+**la fiabilité d'une estimation automatique dépend du quartier.** À
+Gratte-Ciel – Dedieu – Charmettes, 42 % des ventes 2025 tombent à moins de 10 %
+près ; à Buers – Croix-Luizet et Cyprian – Les Brosses, **25 %**.
+
+#### Le garde-fou : recalculer avant de dériver
+
+Publier la dispersion **autour** de médianes déjà publiées imposait de vérifier
+d'abord que ces médianes tiennent toujours (DVF est révisée rétroactivement).
+Elles ont donc été **entièrement recalculées à la source** avant d'écrire une
+ligne : les 8 quartiers et les 4 typologies correspondent **au chiffre près** à
+ce qui est en ligne depuis le 07/09 (détail dans « État des lieux »). Sans cette
+vérification, l'article aurait pu contredire deux autres pages du site.
+
+Un commentaire en tête de `lib/blog.ts` recense désormais **quatre** contenus
+dérivés des mêmes médianes (l'article prix, l'article acheteur, le tableau
+`REPERES` de la page estimation Villeurbanne, et ce nouvel article) : ils devront
+être refaits **ensemble** au prochain recalcul.
+
+#### Volet GEO appliqué
+
+- **8 H2, tous formulés en questions réellement posées** (« Une estimation
+  immobilière en ligne est-elle fiable ? », « De combien le prix au m² varie-t-il
+  à l'intérieur d'un même quartier ? », « L'estimation en ligne est-elle moins
+  précise pour un grand logement ? »).
+- **Réponses autonomes de 2-3 phrases en tête de chaque H2**, relues une par une
+  contre le piège n°1 du journal (le fragment qui dépend du titre). Une seule
+  réécriture a été nécessaire cette fois — sur « Pourquoi deux appartements
+  identiques… », dont la réponse commençait par « Parce que… ».
+- **Chiffre-clé dans la première phrase de l'article**, pas gardé pour la fin.
+- **FAQ de 5 questions**, visible et reprise à l'identique en JSON-LD `FAQPage`
+  (générée depuis le même tableau que l'affichage).
+- **`updated` = 2026-09-11** — et cette fois c'est légitime : 216 → 2 055 mots.
+- **Méthode ET limites publiées**, dont celle qui coûte : *le test est favorable
+  à la méthode testée*, puisque la médiane est calculée sur les ventes mêmes
+  qu'elle sert à prédire. Le dire renforce le chiffre au lieu de l'affaiblir.
+
+**Maillage** : 3 liens sortants contextuels (article prix, guide d'estimation,
+page estimation Villeurbanne) + **2 liens entrants** posés dans des phrases que
+le texte existant appelait déjà — depuis l'article prix et depuis
+`/estimation-immobiliere-villeurbanne`. L'article passait de **0 lien entrant**.
+
+**Bonus qualité** : sur `/estimation-immobiliere-villeurbanne`, le corps de texte
+affirmait un écart de **« 15 à 20 % »** sans source. Remplacé par l'écart
+interquartile réellement mesuré (2 954 – 4 173 €/m², ≈ 76 000 € sur 62 m²) et un
+lien vers la démonstration. La mesure du jour **confirme** d'ailleurs l'ordre de
+grandeur (erreur médiane 15,5 %) : le chiffre n'était pas faux, il n'était pas
+sourçable.
+
+**Contrôle qualité** : `npm ci` · `tsc --noEmit` **0 erreur** · `eslint` **0
+erreur** sur les 2 fichiers touchés · `npm run build` OK (**82 pages**). HTML
+pré-rendu : **1 seul `<h1>`**, 8 `<h2>`, 2 `<table>`, **5 `<summary>` visibles
+pour 5 `Question` / 5 `Answer` en JSON-LD** (libellés comparés un à un, pas
+seulement comptés), `BlogPosting` + `FAQPage` + `BreadcrumbList`,
+`datePublished 2026-06-09` / `dateModified 2026-09-11`, **aucun marqueur
+`[texte](href)` non parsé**, et les 2 pages liées toujours à 1 `<h1>` avec leur
+FAQ intacte (5 et 6 questions).
+
+**Vérifié en production** après déploiement : 2 passes anti-cache concordantes
+sur l'article (8 H2, 2 tableaux, 5 FAQ visibles ↔ 5 `Question`,
+`dateModified 2026-09-11`, aucun marqueur brut) ; `sitemap.xml` toujours à
+**61 URLs** avec `lastmod 2026-09-11` sur l'article ; `llms.txt` a repris le
+nouveau titre tout seul ; **4 occurrences du lien** servies sur l'article prix et
+**2** sur la page estimation Villeurbanne.
+
+**Décidé de NE PAS faire, et pourquoi :**
+
+- **Publier une ligne « T5 et + »** dans le tableau de dispersion. Le calcul
+  montre que le « T5+ » publié le 07/09 (2 967 €/m²) correspond en réalité aux
+  logements de **5 pièces exactement**, pas à « 5 pièces et plus » (2 984 €/m²
+  sur 144 ventes). Publier une ligne T5 aujourd'hui aurait soit contredit le
+  tableau existant, soit propagé une étiquette inexacte. → **noté en
+  « Hypothèses à vérifier »**, à corriger dans le même run que le prochain
+  recalcul, pas à la volée.
+- **Corriger les 3 autres occurrences du « 15 à 20 % » non sourcé** (FAQ de la
+  page estimation Villeurbanne, et 2 passages dans `lib/blog.ts`). La mesure du
+  jour les confirme, ils ne sont donc pas faux ; les réécrire aurait élargi le
+  chantier à 4 fichiers pour un gain nul. → à traiter le jour où l'un de ces
+  contenus sera réécrit pour une autre raison.
+- **Toucher au bloc de résultat de l'outil d'estimation** pour y afficher la
+  fourchette de dispersion. Ce serait pertinent — l'outil pourrait dire « à ce
+  stade, la fourchette réelle de votre quartier est de X à Y » — mais la consigne
+  client sur l'outil est « il faut juste rien casser », et c'est un chantier de
+  produit, pas de SEO. → **noté en « Chantiers en attente »**, à soumettre au
+  client d'abord.
+- **Changer l'`internalHref` de l'article** (`/estimation`). Il envoie vers
+  l'outil, c'est le chemin de conversion le plus court. Non touché.
 
 ### 2026-09-10 — Déblocage du maillage interne depuis le corps des articles + canonicals des pages légales
 
@@ -654,11 +854,13 @@ de suite un chantier « contenu blog ».
 (le canonical n'était pas manquant mais **faux** : il pointait vers la home).
 ~~6. Liens dans le corps des articles de blog~~ — **fait le 2026-09-10**
 (syntaxe `[texte](href)` + 11 liens posés).
+~~7. Réécrire `estimation-en-ligne-ou-agence`~~ — **fait le 2026-09-11**
+(216 → 2 055 mots, dispersion DVF mesurée, FAQ, 2 liens entrants).
 
-**Angle du dernier run : technique / structurel.** Le run du 2026-09-10 a levé
-les deux verrous techniques du backlog. **Le prochain run doit rebasculer sur du
-contenu** — et le candidat évident est le point 2 ci-dessous, maintenant que les
-articles peuvent enfin émettre des liens.
+**Angle du dernier run : contenu (réécriture d'article).** Le prochain run doit
+**rebasculer sur un chantier technique ou structurel** — ne pas enchaîner deux
+réécritures. Les meilleurs candidats sont les points 4 et 5 ci-dessous ; le
+point 1 reste l'action client la plus utile à rappeler.
 
 1. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
@@ -668,21 +870,31 @@ articles peuvent enfin émettre des liens.
    profondes sont-elles indexées ?) que **seule GSC peut trancher**. On tourne
    à l'aveugle sur ce point précis.
 
-2. **Réécrire un article faible, maintenant qu'il peut porter des liens** —
-   c'est le chantier du prochain run. Les trois candidats, aucun n'a de FAQ ni
-   de champ `updated` :
-   - `estimation-en-ligne-ou-agence` — ~242 mots, **aucun chiffre**, alors que
-     c'est une page d'entonnoir directe vers l'outil d'estimation. **Le meilleur
-     candidat** : il vient de gagner 2 liens sortants, il est court, et son
-     sujet (« en ligne ou agence ? ») est une question réellement posée à voix
-     haute à une IA ;
+2. **Réécrire un article faible** — il en reste deux, aucun n'a de FAQ ni de
+   champ `updated` :
    - `investir-locatif-lyon` — ~227 mots, **aucun chiffre** ;
    - `rentabilite-locative-lyon` — ~194 mots ; il n'a qu'un **exemple fictif**
      (150 000 € / 650 € / 5,2 %), pas de donnée de marché. On dispose pourtant
      du loyer médian communal (14,6 €/m² HC) et des prix par typologie.
 
    **Ne pas les enchaîner** : un par semaine au plus, en alternance avec des
-   chantiers techniques.
+   chantiers techniques. **Pas avant un run technique**, le 11/09 était déjà un
+   run de contenu.
+
+   > Piste pour ces deux-là, sortie du chantier du 11/09 : la méthode
+   > « dispersion » se transpose au locatif. On ne peut pas publier un
+   > rendement par quartier (un seul loyer de référence, communal — voir
+   > 09/09), mais on peut publier **la dispersion des prix d'achat par
+   > typologie**, déjà calculée, et en déduire honnêtement **une fourchette de
+   > rendement** au lieu d'un chiffre unique faussement précis.
+
+6. **Afficher une fourchette de dispersion dans le résultat de l'outil
+   d'estimation.** Les données existent désormais (P25–P75 par quartier et par
+   typologie, ventes 2025). Dire « votre quartier affiche X à Y €/m² sur les
+   ventes réelles » rendrait le rapport nettement plus crédible et réutiliserait
+   le travail du 11/09. **Mais c'est le bloc de résultat de l'outil** : la
+   consigne client est « il faut juste rien casser ». → **à soumettre au client
+   avant de coder quoi que ce soit.**
 
 3. **Fiche Google Business Profile** — constat de SERP reconfirmé le 10/09 : les
    requêtes « agence immobilière Villeurbanne / Gratte-Ciel » sont tenues par
@@ -706,17 +918,34 @@ articles peuvent enfin émettre des liens.
 
 ## Hypothèses à vérifier
 
-- **Trois pages du site publient désormais des dérivations des mêmes médianes
-  DVF 2025.** Si ces médianes sont un jour recalculées, **les trois doivent être
+- **QUATRE pages du site publient désormais des dérivations des mêmes médianes
+  DVF 2025.** Si ces médianes sont un jour recalculées, **les quatre doivent être
   refaites dans le même run**, sinon le site se contredit :
   1. `/blog/prix-immobilier-villeurbanne-2026` — les médianes elles-mêmes ;
   2. `/estimation-immobiliere-villeurbanne` — constante `REPERES` (T2 45 m² /
-     T3 65 m² par quartier) ;
+     T3 65 m² par quartier) **et, depuis le 11/09, l'écart interquartile cité
+     dans le corps de texte** (2 954 – 4 173 €/m², ≈ 76 000 € sur 62 m²) ;
   3. `/blog/ou-acheter-villeurbanne-quartiers` — tableau budget → surface
-     (200/250/300 k€) et écarts en % au prix médian communal.
+     (200/250/300 k€) et écarts en % au prix médian communal ;
+  4. **`/blog/estimation-en-ligne-ou-agence`** *(11/09)* — quartiles par quartier
+     et par typologie, écarts en euros, et les taux 18 / 36 / 62 % + erreur
+     médiane 15,5 %.
   Un commentaire en tête de `lib/blog.ts` le rappelle. La règle « DVF est révisée
   rétroactivement, tout recalculer plutôt que patcher » (plus bas) s'applique aux
-  trois.
+  quatre.
+  → **Bonne nouvelle du 11/09** : le recalcul indépendant fait ce jour-là rend
+  les médianes **exactes au chiffre près**. Le risque est donc théorique tant
+  qu'un nouveau millésime DVF n'est pas publié. **Ne pas relancer ce calcul
+  « pour vérifier » avant cette publication** : c'est une heure de run pour rien.
+
+- **Étiquette « T5+ » probablement inexacte dans l'article prix.** Le tableau par
+  typologie du 07/09 affiche « T5+ : 2 967 €/m² ». Le recalcul du 11/09 montre
+  que 2 967 €/m² correspond aux logements de **5 pièces exactement** (n = 116) ;
+  « 5 pièces et plus » donne **2 984 €/m²** (n = 144). L'écart est mince mais
+  l'étiquette est fausse. **Non corrigé volontairement le 11/09** : toucher au
+  tableau de l'article prix pour 17 €/m² aurait élargi un chantier de contenu à
+  une page qui fonctionne. → **à corriger dans le même run que le prochain
+  recalcul DVF**, pas isolément.
 - **Le rendement brut communal publié (≈ 4,9 %) croise deux millésimes** : loyer
   médian 14,6 €/m² issu du jeu « Carte des loyers » (data.gouv.fr, millésime
   2023-2024, tel que documenté dans `lib/loyers.ts`) et prix médian DVF 2025.
@@ -842,6 +1071,51 @@ articles peuvent enfin émettre des liens.
 
 ## Techniques apprises
 
+### 2026-09-11 — Méthode : chiffrer ce que les concurrents se contentent d'affirmer
+
+Pas de veille aujourd'hui (**vendredi** — la veille se fait le lundi ; celle du
+07/09 reste la référence). Quatre méthodes réutilisables sont sorties du run.
+
+- **Chercher la phrase que tout le monde écrit sans jamais la chiffrer.** Les dix
+  résultats de la SERP « estimation en ligne ou agence » affirment la même chose
+  — l'agence est plus fiable — et **aucun ne dit de combien**. Une affirmation
+  universellement répétée et jamais quantifiée est une **place vide** :
+  la chiffrer donne un passage court, autonome, vérifiable, sans concurrence.
+  → **Généralisable** : avant d'écrire un article de conseil, lister les
+  affirmations que la SERP répète, et se demander laquelle nos données peuvent
+  transformer en mesure. C'est plus rentable que d'écrire « mieux » la même
+  chose.
+- **Mesurer la faiblesse de sa propre méthode est un argument commercial, pas un
+  aveu.** L'article démontre qu'une estimation au prix au m² se trompe souvent —
+  alors que le site vend justement un outil d'estimation en ligne. Ce n'est pas
+  un tir dans le pied : le chiffre qui « accuse » l'outil (36 % seulement) est
+  celui qui **justifie la visite du conseiller**, donc le métier de l'agence. La
+  preuve en est le détail le plus fort du run : passer de la médiane communale à
+  celle du quartier ne fait gagner que **5 points** — donc l'essentiel de
+  l'écart tient à ce qu'un humain seul peut voir.
+  → **Généralisable** : quand une donnée semble desservir le client, vérifier
+  d'abord à quoi elle sert *après* la phrase. Souvent elle vend l'étape
+  suivante.
+- **Recalculer avant de dériver, toujours.** Publier la dispersion *autour* de
+  médianes déjà en ligne supposait que ces médianes tiennent encore. Elles ont
+  été recalculées **entièrement** avant d'écrire une ligne — et elles
+  correspondaient au chiffre près. Coût : une dizaine de minutes. Gain : la
+  certitude de ne pas mettre quatre pages du site en contradiction.
+  **Corollaire** : c'est ce recalcul qui a révélé l'étiquette « T5+ » inexacte
+  (voir « Hypothèses »). Une vérification de routine trouve des choses que
+  personne ne cherchait.
+- **Reproduire une méthode décrite dans le journal : le piège du filtre.** La
+  recette notée le 07/09 dit « une seule ligne bâtie par mutation ». Appliquée
+  au pied de la lettre en comptant **aussi les dépendances** comme lignes bâties,
+  elle donne **220 ventes au lieu de 1 875** (tout appartement avec une cave est
+  écarté) et une surface médiane de 32 m² au lieu de 62. Le résultat était
+  absurde et l'a signalé tout seul. **Règle : quand un pipeline reproduit un
+  chiffre connu, le comparer à ce chiffre AVANT d'exploiter ses sorties.** Ici,
+  « 1 875 ventes » publié servait de test de non-régression gratuit.
+  → *Correction de la recette* : « une seule ligne **de logement**
+  (`type_local` ∈ {Appartement, Maison}) par mutation » — les dépendances et les
+  locaux commerciaux ne comptent pas.
+
 ### 2026-09-10 — Méthode : modifier un gabarit partagé et le prouver inoffensif
 
 Pas de veille aujourd'hui (**jeudi** — la veille se fait le lundi ; celle du
@@ -966,5 +1240,19 @@ ne pas produire de faux contenu communautaire.
 La recette DVF + contours Grand Lyon décrite plus haut est **réutilisable telle
 quelle pour n'importe quelle commune de la métropole** : changer le code INSEE
 (69266 = Villeurbanne, 69123 = Lyon, 69266… voir data.gouv). Les deux pièges :
-(1) ne garder que les mutations à **une seule ligne bâtie**, sinon les €/m² sont
-absurdes ; (2) utiliser la **médiane**, jamais la moyenne.
+(1) ne garder que les mutations à **une seule ligne de logement**, sinon les
+€/m² sont absurdes ; (2) utiliser la **médiane**, jamais la moyenne.
+
+> ⚠️ **Précision ajoutée le 11/09, après s'y être fait prendre** : « une seule
+> ligne de logement » = une seule ligne dont le `type_local` vaut
+> **Appartement ou Maison**. Les **dépendances** (caves, parkings) et les locaux
+> commerciaux ne comptent pas dans ce décompte. En les comptant, on écarte tout
+> appartement vendu avec sa cave et on tombe à **220 ventes au lieu de 1 875**
+> pour 2025. Autres filtres : `nature_mutation = Vente`, surface ≥ 10 m²,
+> 800 ≤ €/m² ≤ 12 000. Les URLs DVF **redirigent** : utiliser `curl -sL`
+> (sans `-L`, on récupère 138 octets de HTML et un fichier vide).
+>
+> **Chiffres de contrôle pour Villeurbanne 2025** (à réutiliser comme test de
+> non-régression avant d'exploiter un nouveau calcul) : 1 876 ventes
+> d'appartements exploitables, dont 1 875 rattachées à un quartier ; médiane
+> communale 3 567 €/m² ; prix médian 195 000 € ; surface médiane 62 m².
