@@ -10,10 +10,13 @@
  * vienne pas de ce calcul.
  *
  * « ou-acheter-villeurbanne-quartiers » réutilise EXACTEMENT les mêmes médianes
- * (angle acheteur : budget → surface, liquidité, résistance depuis 2022). Si les
- * médianes sont un jour recalculées, les deux articles — plus le tableau REPERES
- * de /estimation-immobiliere-villeurbanne — doivent être mis à jour ensemble,
- * sinon le site se contredit d'une page à l'autre.
+ * (angle acheteur : budget → surface, liquidité, résistance depuis 2022) et
+ * « estimation-en-ligne-ou-agence » publie la DISPERSION autour de ces mêmes
+ * médianes (quartiles, écart en euros, part des ventes estimées à moins de 10 %
+ * près — extraction du 11/09/2026, médianes revérifiées identiques à celles du
+ * 07/09). Si les médianes sont un jour recalculées, les trois articles — plus le
+ * tableau REPERES de /estimation-immobiliere-villeurbanne — doivent être mis à
+ * jour ensemble, sinon le site se contredit d'une page à l'autre.
  */
 
 export type Block =
@@ -191,6 +194,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "La stabilisation observée en 2025 signifie qu'un bien correctement positionné se vend — mais que le marché ne rattrape plus les erreurs de prix. Un bien affiché 10 % au-dessus de sa valeur ne trouvera pas d'acheteur en attendant que le marché monte : il stagnera, puis se vendra en dessous de son prix réel après plusieurs baisses successives." },
       { type: "p", text: "Le nombre de ventes est reparti à la hausse en 2025 (1 875 contre 1 648 en 2024, soit **+14 %**) : il y a des acheteurs. Ils comparent simplement beaucoup mieux qu'en 2021." },
       { type: "p", text: "Notre estimation en ligne applique la même méthode que cet article, mais à l'échelle de votre rue : elle croise les ventes DVF réellement conclues autour de votre adresse avec les caractéristiques précises de votre logement. Comptez moins de deux minutes, et vous recevez le rapport détaillé." },
+      { type: "p", text: "Une précision utile avant de vous lancer : une médiane de quartier ne suffit jamais à elle seule à fixer un prix. Nous avons mesuré [de combien un prix au m² peut se tromper à Villeurbanne](/blog/estimation-en-ligne-ou-agence) — l'écart est plus large qu'on ne le croit, et il varie fortement d'un quartier à l'autre." },
     ],
     faq: [
       {
@@ -501,24 +505,134 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "estimation-en-ligne-ou-agence",
-    title: "Estimation en ligne ou par une agence : que choisir ?",
+    title:
+      "Estimation en ligne ou agence : laquelle est fiable ? (mesuré sur 1 875 ventes)",
     metaDescription:
-      "Estimation immobilière en ligne ou par une agence : avantages, limites et la meilleure approche pour connaître la vraie valeur de votre bien.",
-    h1: "Estimation en ligne ou par une agence : que choisir ?",
+      "Une estimation en ligne suffit-elle ? Sur les 1 875 ventes d'appartements de 2025 à Villeurbanne, le prix au m² du quartier tombe à moins de 10 % du prix réel dans 36 % des cas.",
+    h1: "Estimation en ligne ou par une agence : laquelle est vraiment fiable ?",
     excerpt:
-      "Deux voies pour connaître la valeur de votre bien — et la bonne nouvelle : les meilleures combinent les deux.",
+      "Mesuré sur les 1 875 ventes d'appartements de 2025 à Villeurbanne : le prix médian du quartier appliqué à la surface tombe à moins de 10 % du prix réellement payé dans 36 % des cas seulement.",
     date: "2026-06-09",
+    updated: "2026-09-11",
     internalHref: "/estimation",
     internalLabel: "Lancer mon estimation gratuite en ligne",
     blocks: [
-      { type: "p", text: "Pour connaître la valeur de votre bien, deux voies s'offrent à vous. La bonne nouvelle : les meilleures combinent les deux." },
-      { type: "h2", text: "L'estimation en ligne" },
-      { type: "p", text: "Rapide, gratuite et sans engagement. Une bonne estimation en ligne s'appuie sur [les ventes réellement conclues (données DVF)](/blog/prix-immobilier-villeurbanne-2026) et les caractéristiques de votre bien pour donner une fourchette réaliste en quelques minutes. Idéale pour avoir une première base solide." },
-      { type: "p", text: "Sa limite : un outil ne voit pas la luminosité réelle, le calme de la rue ou l'état précis du bien." },
-      { type: "h2", text: "L'estimation par une agence" },
-      { type: "p", text: "Un conseiller se déplace, voit ce qu'un algorithme ne peut pas voir et affine le prix avec sa connaissance fine du secteur. C'est l'étape qui transforme une fourchette en prix de mise en vente." },
-      { type: "h2", text: "La meilleure approche" },
-      { type: "p", text: "Commencez en ligne pour une base chiffrée et fiable, puis faites affiner par un professionnel local. Pour un bien à Villeurbanne, notre page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne) détaille les deux étapes et les repères de prix par quartier." },
+      { type: "p", text: "Une estimation en ligne donne une base chiffrée en deux minutes, mais elle ne suffit pas à fixer un prix de mise en vente. Nous l'avons mesuré sur les 1 875 ventes d'appartements enregistrées à Villeurbanne en 2025 : appliquer le prix médian du quartier à la surface du bien tombe à moins de 10 % du prix réellement payé dans **36 % des cas seulement**, avec une erreur médiane de 15,5 %. Voici ce que cet écart représente en euros, quartier par quartier, et à quel moment la visite d'un professionnel devient indispensable." },
+
+      { type: "h2", text: "Une estimation immobilière en ligne est-elle fiable ?" },
+      { type: "p", text: "Une estimation en ligne est fiable pour donner un ordre de grandeur, pas pour fixer un prix de vente. À Villeurbanne, le prix médian du quartier multiplié par la surface s'écarte de plus de 10 % du prix réellement payé dans près de deux ventes sur trois. C'est un point de départ chiffré, que la visite vient ensuite corriger — pas un verdict." },
+      { type: "p", text: "Le test est simple : pour chacune des 1 875 ventes d'appartements de 2025, nous avons calculé le prix qu'aurait donné la méthode de base de toute estimation automatique — prix médian du quartier × surface — puis comparé au prix réellement payé, celui enregistré chez le notaire." },
+      { type: "ul", items: [
+        "**18 % des ventes** tombent à moins de 5 % du prix réel ;",
+        "**36 %** à moins de 10 % ;",
+        "**62 %** à moins de 20 % ;",
+        "l'erreur médiane est de **15,5 %**.",
+      ] },
+      { type: "p", text: "Point important : connaître le quartier n'apporte que peu. En remplaçant la médiane du quartier par celle de la commune entière, on passe de 36 % à 31 % de ventes estimées à moins de 10 % près. Autrement dit, **l'essentiel de l'écart ne vient pas de la localisation**, mais de tout ce qu'un fichier de ventes ne contient pas." },
+
+      { type: "h2", text: "De combien le prix au m² varie-t-il à l'intérieur d'un même quartier ?" },
+      { type: "p", text: "Beaucoup plus qu'on ne l'imagine. À Villeurbanne, la moitié centrale des ventes d'appartements de 2025 s'est conclue entre 2 954 et 4 173 €/m², autour d'une médiane de 3 567 €/m². Sur un appartement de 62 m² — la surface médiane vendue dans la commune — cet écart représente près de **76 000 €**." },
+      { type: "p", text: "Il ne s'agit pas des extrêmes : un quart des ventes s'est fait sous 2 954 €/m², un quart au-dessus de 4 173 €/m². En élargissant à 80 % des ventes, le haut de la fourchette atteint presque le double du bas : 2 489 €/m² contre 4 770 €/m²." },
+      {
+        type: "table",
+        caption: "Dispersion des prix au m² à l'intérieur de chaque quartier — ventes d'appartements 2025",
+        source: "Calcul Markus Immobilier sur la base DVF (data.gouv.fr / Etalab), croisée avec les contours de quartiers de la Métropole de Lyon. Extraction du 11 septembre 2026. « Moitié centrale » = de 25 % à 75 % des ventes, la médiane du quartier étant inchangée par rapport à nos chiffres publiés le 7 septembre 2026.",
+        headers: ["Quartier", "Médiane 2025", "Moitié centrale des ventes", "Écart, sur la surface médiane du quartier", "Ventes"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "3 923 €/m²", "3 282 – 4 404 €/m²", "≈ 73 000 € (65 m²)", "187"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 846 €/m²", "3 333 – 4 329 €/m²", "≈ 63 000 € (63 m²)", "655"],
+          ["Charpennes – Tonkin", "3 524 €/m²", "2 894 – 4 217 €/m²", "≈ 73 000 € (55 m²)", "200"],
+          ["Perralière – Grandclément", "3 375 €/m²", "2 879 – 3 845 €/m²", "≈ 58 000 € (60 m²)", "330"],
+          ["Buers – Croix-Luizet", "3 271 €/m²", "2 738 – 4 089 €/m²", "≈ 76 000 € (56 m²)", "223"],
+          ["Cusset – Bonnevay", "3 171 €/m²", "2 671 – 3 839 €/m²", "≈ 75 000 € (64 m²)", "213"],
+          ["Cyprian – Les Brosses", "2 738 €/m²", "2 214 – 3 333 €/m²", "≈ 78 000 € (70 m²)", "53"],
+          ["Villeurbanne (ensemble)", "3 567 €/m²", "2 954 – 4 173 €/m²", "≈ 76 000 € (62 m²)", "1 875"],
+        ],
+      },
+      { type: "p", text: "Le détail des médianes et leur évolution depuis 2022 sont dans notre article [prix au m² à Villeurbanne, quartier par quartier](/blog/prix-immobilier-villeurbanne-2026)." },
+
+      { type: "h2", text: "Dans quels quartiers de Villeurbanne l'estimation en ligne est-elle la plus juste ?" },
+      { type: "p", text: "À Gratte-Ciel – Dedieu – Charmettes, le prix médian du quartier appliqué à la surface tombe à moins de 10 % du prix réel dans 42 % des ventes de 2025. À Buers – Croix-Luizet et à Cyprian – Les Brosses, ce n'est le cas que dans 25 % des ventes. Un même outil est donc nettement plus précis dans un quartier au bâti homogène que dans un quartier disparate." },
+      { type: "ul", items: [
+        "**Gratte-Ciel – Dedieu – Charmettes** : fourchette la plus resserrée (26 % de la médiane), 42 % des ventes estimées à moins de 10 % près — c'est aussi le quartier le plus actif, avec 655 ventes en 2025 ;",
+        "**Ferrandière – Maisons-Neuves** et **Perralière – Grandclément** : fourchette de 29 %, 35 à 37 % des ventes à moins de 10 % près ;",
+        "**Cusset – Bonnevay** : fourchette de 37 %, 33 % des ventes ;",
+        "**Charpennes – Tonkin** : fourchette de 38 %, 28 % des ventes ;",
+        "**Buers – Croix-Luizet** et **Cyprian – Les Brosses** : les plus dispersés (41 %), 25 % des ventes seulement.",
+      ] },
+      { type: "p", text: "La lecture est mécanique : un quartier dont le parc mêle petites copropriétés anciennes, immeubles récents et biens à rénover produit des prix au m² plus dispersés, donc une estimation automatique moins sûre. Si votre bien se trouve à Buers ou à Cyprian – Les Brosses, la fourchette en ligne doit être considérée comme une simple mise en route." },
+
+      { type: "h2", text: "Pourquoi deux appartements identiques sur le papier ne se vendent-ils pas au même prix ?" },
+      { type: "p", text: "Un fichier de ventes voit l'adresse, la surface et le nombre de pièces. Il ne voit ni l'étage, ni l'ascenseur, ni l'exposition, ni l'état du bien, ni le DPE, ni le montant des charges. Ces éléments-là expliquent l'essentiel de l'écart de prix entre deux logements voisins de même taille." },
+      { type: "ul", items: [
+        "**L'étage et l'ascenseur** : un dernier étage avec ascenseur et un rez-de-chaussée sur rue n'ont pas la même valeur, à surface identique.",
+        "**L'état réel** : rénové, à rafraîchir ou à refaire entièrement.",
+        "**Le DPE** : une étiquette F ou G pèse sur le prix et restreint la location.",
+        "**L'exposition et le calme** : lumière du jour, vis-à-vis, bruit de la rue.",
+        "**La copropriété** : montant des charges, travaux votés, état des parties communes.",
+        "**Les annexes** : balcon, terrasse, cave, parking ou box.",
+      ] },
+      { type: "p", text: "Aucune de ces informations ne figure dans les données publiques de vente. Le détail des critères qui font le prix est développé dans notre guide [comment estimer son bien à Lyon et Villeurbanne](/blog/comment-estimer-son-bien-immobilier-lyon-villeurbanne)." },
+
+      { type: "h2", text: "L'estimation en ligne est-elle moins précise pour un grand logement ?" },
+      { type: "p", text: "Oui, et l'écart se creuse avec la surface. À Villeurbanne en 2025, la moitié centrale des ventes de T2 tient dans une fourchette de 48 000 €, contre 92 000 € pour les T4. Plus le logement est grand, plus un même pourcentage d'écart pèse lourd en euros — et plus l'état du bien compte dans le prix final." },
+      {
+        type: "table",
+        caption: "Dispersion des prix au m² par typologie — appartements vendus à Villeurbanne en 2025",
+        source: "Calcul Markus Immobilier sur la base DVF (data.gouv.fr / Etalab). Extraction du 11 septembre 2026. L'écart en euros est calculé sur la surface médiane vendue pour chaque typologie.",
+        headers: ["Type", "Médiane 2025", "Moitié centrale des ventes", "Écart, sur la surface médiane", "Ventes"],
+        rows: [
+          ["T1", "4 000 €/m²", "3 464 – 4 724 €/m²", "≈ 38 000 € (30 m²)", "309"],
+          ["T2", "3 830 €/m²", "3 268 – 4 333 €/m²", "≈ 48 000 € (45 m²)", "436"],
+          ["T3", "3 494 €/m²", "2 912 – 4 059 €/m²", "≈ 75 000 € (65 m²)", "578"],
+          ["T4", "3 211 €/m²", "2 696 – 3 831 €/m²", "≈ 92 000 € (81 m²)", "406"],
+        ],
+      },
+
+      { type: "h2", text: "Que voit un conseiller qu'un outil ne voit pas ?" },
+      { type: "p", text: "Un conseiller qui se déplace constate ce qui ne figure dans aucun fichier : la lumière réelle à l'heure de la visite, le bruit de la rue, l'état des parties communes, les travaux votés en assemblée, la qualité d'une rénovation. Il connaît aussi les biens comparables réellement vendus dans le secteur, et pas seulement les prix affichés dans les annonces." },
+      { type: "p", text: "C'est l'étape qui transforme une fourchette en prix de mise en vente. Chez Markus Immobilier, elle s'appuie sur 7 ans d'expérience sur ce marché et plus de 250 biens accompagnés depuis Villeurbanne." },
+
+      { type: "h2", text: "Faut-il faire les deux, et dans quel ordre ?" },
+      { type: "p", text: "Commencez par l'estimation en ligne, puis faites-la confirmer sur place. L'outil donne une fourchette chiffrée en moins de deux minutes et évite de partir d'une idée fausse ; la visite resserre cette fourchette en un prix. L'ordre inverse vous prive du repère qui permet de vérifier ce qu'on vous annonce." },
+      { type: "ol", items: [
+        "**Estimation en ligne** — deux minutes, gratuite, sans engagement : vous obtenez une fourchette fondée sur les ventes réellement conclues.",
+        "**Visite d'estimation** — un conseiller mesure ce que les données ne contiennent pas et resserre la fourchette.",
+        "**Prix de mise en vente** — arbitré avec vous, en fonction de votre délai et du niveau de demande du moment.",
+      ] },
+      { type: "p", text: "Pour un bien situé dans la commune, notre page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne) détaille les deux étapes et donne des repères de prix par quartier et par typologie." },
+
+      { type: "h2", text: "Comment ces chiffres ont-ils été calculés ?" },
+      { type: "p", text: "Ces chiffres proviennent de la base DVF (demandes de valeurs foncières) publiée par l'État sur data.gouv.fr, qui recense le prix réel de chaque vente enregistrée par les notaires. Nous avons retenu les ventes d'appartements de 2025 à Villeurbanne portant sur un seul logement, écarté les valeurs aberrantes, puis rattaché chaque vente à son quartier via les contours officiels de la Métropole de Lyon. Extraction du 11 septembre 2026." },
+      { type: "p", text: "Trois limites, qu'il faut connaître pour lire ces chiffres correctement :" },
+      { type: "ul", items: [
+        "**Le test est favorable à la méthode.** La médiane du quartier est calculée sur les ventes-là mêmes qu'elle sert à estimer. Un outil appliqué à des ventes futures, qu'il ne connaît pas encore, ne fait pas mieux.",
+        "**Il porte sur la méthode « prix au m² × surface »**, socle de toute estimation automatique, et non sur un outil commercial précis : les estimateurs qui croisent d'autres critères réduisent l'écart, sans le supprimer.",
+        "**DVF ignore l'étage, l'état, le DPE et les charges.** C'est précisément ce que la dispersion mesurée ci-dessus met en évidence : la part du prix que la localisation et la surface n'expliquent pas.",
+      ] },
+      { type: "p", text: "Les médianes par quartier utilisées ici ont été recalculées le 11 septembre 2026 et sont identiques à celles publiées le 7 septembre : les deux articles ne se contredisent pas." },
+    ],
+    faq: [
+      {
+        q: "Une estimation immobilière en ligne est-elle fiable ?",
+        a: "Elle est fiable pour obtenir un ordre de grandeur, pas pour fixer un prix de mise en vente. Sur les 1 875 ventes d'appartements enregistrées à Villeurbanne en 2025, le prix médian du quartier appliqué à la surface tombe à moins de 10 % du prix réellement payé dans 36 % des cas, avec une erreur médiane de 15,5 %. C'est une base de départ chiffrée, que la visite d'un professionnel vient corriger.",
+      },
+      {
+        q: "Quel écart peut-il y avoir entre une estimation au prix au m² et le prix de vente réel ?",
+        a: "À Villeurbanne, la moitié centrale des ventes d'appartements de 2025 s'est conclue entre 2 954 et 4 173 €/m², pour une médiane de 3 567 €/m². Sur un appartement de 62 m², la surface médiane vendue dans la commune, cet écart représente près de 76 000 €. L'écart grandit avec la surface : 48 000 € sur un T2, 92 000 € sur un T4.",
+      },
+      {
+        q: "Dans quel quartier de Villeurbanne l'estimation automatique est-elle la moins fiable ?",
+        a: "À Buers – Croix-Luizet et à Cyprian – Les Brosses. Dans ces deux quartiers, le prix médian appliqué à la surface tombe à moins de 10 % du prix réel dans 25 % des ventes de 2025 seulement, contre 42 % à Gratte-Ciel – Dedieu – Charmettes. Plus le parc de logements est hétérogène, moins une estimation automatique est précise.",
+      },
+      {
+        q: "L'estimation en ligne de Markus Immobilier est-elle gratuite ?",
+        a: "Oui, elle est gratuite, prend moins de deux minutes et n'engage à rien. Elle couvre la vente, la location et le rendement locatif, et vous recevez un rapport. La visite d'estimation se programme ensuite sur rendez-vous, du lundi au samedi de 9 h à 12 h et du lundi au vendredi de 14 h à 19 h, au 04 78 37 13 67.",
+      },
+      {
+        q: "Faut-il faire estimer son bien par plusieurs agences ?",
+        a: "Comparer plusieurs avis est utile, à condition de comparer ce qui est justifié. Demandez à chaque interlocuteur sur quelles ventes réellement conclues son prix s'appuie, et à quelle date. Un prix annoncé sans référence de vente comparable n'est pas une estimation, c'est une proposition commerciale.",
+      },
     ],
   },
   {

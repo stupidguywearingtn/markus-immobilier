@@ -291,13 +291,21 @@ export default function EstimationVilleurbannePage() {
               <>
                 <p>
                   Le prix au m² d&apos;un quartier ne suffit pas à estimer un
-                  bien, parce que deux appartements de même surface dans la même
-                  rue peuvent afficher <strong>15 à 20 % d&apos;écart</strong>. La
-                  base DVF ne dit rien de l&apos;état du bien, de l&apos;étage,
-                  de l&apos;exposition ni du DPE — or ce sont eux qui expliquent
-                  l&apos;essentiel des différences à l&apos;intérieur d&apos;un
-                  quartier. Ce qui fait bouger votre prix par rapport à la
-                  médiane :
+                  bien, et l&apos;écart se mesure : sur les ventes de 2025, la
+                  moitié centrale des appartements vendus à Villeurbanne s&apos;est
+                  conclue entre <strong>2 954 et 4 173 €/m²</strong>, soit près de{" "}
+                  <strong>76 000 € d&apos;écart</strong>{" "}
+                  sur 62 m² — la surface médiane vendue dans la commune. La base
+                  DVF ne dit rien de
+                  l&apos;état du bien, de l&apos;étage, de l&apos;exposition ni du
+                  DPE — or ce sont eux qui expliquent l&apos;essentiel des
+                  différences à l&apos;intérieur d&apos;un quartier. Nous avons
+                  mesuré{" "}
+                  <Link href="/blog/estimation-en-ligne-ou-agence" className={A}>
+                    de combien un prix au m² peut se tromper, quartier par
+                    quartier
+                  </Link>
+                  . Ce qui fait bouger votre prix par rapport à la médiane :
                 </p>
                 <ul className="mt-3 space-y-2.5">
                   {[
