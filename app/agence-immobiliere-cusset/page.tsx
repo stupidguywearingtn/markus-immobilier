@@ -87,9 +87,16 @@ export default function CussetPage() {
             body: (
               <p>
                 À Cusset, les écarts de prix se jouent sur l'état du bien, l'étage,
-                le calme de la rue et la proximité des transports. Notre
-                connaissance locale nous permet d'estimer juste et de conseiller
-                avec précision, que vous vendiez ou achetiez.
+                le calme de la rue et la proximité des transports. La
+                connaissance locale de{" "}
+                <Link
+                  href="/agence-immobiliere-villeurbanne"
+                  className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge"
+                >
+                  notre agence à Villeurbanne
+                </Link>{" "}
+                nous permet d&apos;estimer juste et de conseiller avec
+                précision, que vous vendiez ou achetiez.
               </p>
             ),
           },

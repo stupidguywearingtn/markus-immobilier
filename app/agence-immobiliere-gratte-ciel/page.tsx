@@ -89,8 +89,14 @@ export default function GratteCielPage() {
               <p>
                 Estimer un bien à Gratte-Ciel ne se résume pas à un prix au m²
                 moyen : l'étage, le cachet de l'immeuble, la luminosité et la
-                proximité du marché jouent énormément. Notre implantation locale
-                nous permet d'ajuster au plus juste.
+                proximité du marché jouent énormément. L&apos;implantation de{" "}
+                <Link
+                  href="/agence-immobiliere-villeurbanne"
+                  className="text-anthracite font-semibold underline underline-offset-2 hover:text-sauge"
+                >
+                  notre agence à Villeurbanne
+                </Link>{" "}
+                nous permet d&apos;ajuster au plus juste.
               </p>
             ),
           },

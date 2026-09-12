@@ -81,7 +81,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Une estimation en ligne suffit-elle pour fixer son prix de vente ?",
-    a: "Elle donne une fourchette fiable, mais pas le prix final. Aucune donnée publique ne connaît la luminosité, le calme, la qualité de la copropriété ou les travaux votés : ces facteurs pèsent 15 à 20 % entre deux biens de même surface dans la même rue. La visite gratuite d'un conseiller sert précisément à resserrer la fourchette.",
+    a: "Elle donne une fourchette fiable, mais pas le prix final. Aucune donnée publique ne connaît la luminosité, le calme, la qualité de la copropriété ou les travaux votés. Mesurée sur les 1 875 ventes de 2025, une estimation fondée sur le seul prix au m² du quartier se trompe de 15,5 % en médiane, et ne tombe à moins de 10 % du prix réellement payé que dans 36 % des cas. La visite gratuite d'un conseiller sert précisément à resserrer la fourchette.",
   },
   {
     q: "Faut-il faire estimer son bien avant de le mettre en vente à Villeurbanne ?",

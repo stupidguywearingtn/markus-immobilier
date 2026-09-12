@@ -59,6 +59,7 @@ export async function GET() {
 - [Vendre](${BASE}/vendre): accompagnement à la vente d'un bien à Villeurbanne et Lyon
 - [Acheter](${BASE}/acheter): recherche et achat de biens à Lyon et Villeurbanne
 - [Gestion locative](${BASE}/gestion-locative): gestion locative pour propriétaires bailleurs
+- [Honoraires](${BASE}/honoraires): barème public complet — vente à la charge du vendeur (9 000 € de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % de 300 001 à 500 000 €), location, gestion courante 6 % des encaissements, GLI 2,5 %
 - [Contact](${BASE}/contact): adresse, téléphone et horaires de l'agence
 
 ## Annonces (biens à vendre / à louer)
@@ -66,7 +67,7 @@ export async function GET() {
 ${disponibles.map(listingLine).join("\n")}
 
 ## Pages locales (Villeurbanne et quartiers)
-- [Agence immobilière à Villeurbanne](${BASE}/agence-immobiliere-villeurbanne): agence locale, services et secteur d'intervention
+- [Agence immobilière à Villeurbanne](${BASE}/agence-immobiliere-villeurbanne): agence indépendante au 87 rue Édouard Vaillant — ce que coûte une agence pour vendre (≈ 11 700 € TTC sur le prix médian de 195 000 €), honoraires de gestion locative, prix au m² par quartier, horaires
 - [Agence immobilière Gratte-Ciel](${BASE}/agence-immobiliere-gratte-ciel): immobilier dans le quartier Gratte-Ciel à Villeurbanne
 - [Agence immobilière Charpennes](${BASE}/agence-immobiliere-charpennes): immobilier dans le quartier Charpennes à Villeurbanne
 - [Agence immobilière Cusset](${BASE}/agence-immobiliere-cusset): immobilier dans le quartier Cusset à Villeurbanne
