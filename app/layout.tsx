@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ProviderTree } from "@/components/backoffice/ProviderTree";
 import { getPublishedFields } from "@/lib/supabase/content";
+import { AGENCY_ID } from "@/components/seo/json-ld";
 import "./globals.css";
 
 // Domaine canonique de production (www). Une seule version en canonique.
@@ -67,10 +68,13 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// JSON-LD RealEstateAgent — pour Google Knowledge Panel & rich results
+// JSON-LD RealEstateAgent — pour Google Knowledge Panel & rich results.
+// C'est la description COMPLÈTE de l'agence ; les autres pages ne font que la
+// référencer par son `@id` (AGENCY_ID) au lieu de la redécrire à moitié.
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
+  "@id": AGENCY_ID,
   name: "Markus Immobilier",
   description:
     "Agence immobilière indépendante à Villeurbanne. Vente, location, gestion, syndic.",

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
 import { ContractIllust } from "@/components/illustrations/contract";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
+import { JsonLd, breadcrumbLd, offerCatalogLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Nos honoraires — Barème complet",
@@ -53,9 +54,67 @@ const GESTION_OCCASIONNELLE = [
   ["Gestion des travaux", "5 % du montant des travaux"],
 ];
 
+/**
+ * Les deux taux affichés hors tableau (encadrés « Part propriétaire » et
+ * « Assurance GLI »). Constantes pour que l'affichage et le JSON-LD lisent la
+ * même valeur — c'est la règle du site : un barème balisé ne doit jamais
+ * pouvoir diverger du barème visible.
+ */
+const LOCATION_PROPRIETAIRE = "9 %";
+const GLI = "2,5 %";
+
+/**
+ * Barème structuré — construit à partir des MÊMES constantes que les tableaux
+ * rendus plus bas. Ajouter une ligne au barème l'ajoute donc au balisage sans
+ * rien faire de plus ; en retirer une la retire des deux côtés.
+ */
+const bareme = offerCatalogLd({
+  name: "Barème d'honoraires Markus Immobilier",
+  description:
+    "Barème complet des honoraires TTC de l'agence Markus Immobilier à Villeurbanne : transaction (à la charge du vendeur), location et gestion locative.",
+  path: "/honoraires",
+  sections: [
+    {
+      name: "Honoraires de transaction",
+      note: "À la charge du vendeur.",
+      rows: TRANSACTION,
+    },
+    {
+      name: "Honoraires de location — part locataire",
+      note: "Baux d'habitation soumis à la loi du 6 juillet 1989 (conforme loi ALUR) et meublés. Montant maximum ne pouvant être supérieur aux honoraires facturés au propriétaire.",
+      rows: LOCATION_LOCATAIRE,
+    },
+    {
+      name: "Honoraires de location — part propriétaire",
+      note: "Calculés sur le loyer annuel hors charges. Les honoraires facturés au propriétaire sont a minima équivalents à ceux du locataire.",
+      // Libellés repris mot pour mot de l'encadré visible (titre + légende du
+      // chiffre), pour que chaque `name` balisé existe tel quel sur la page.
+      rows: [["Part propriétaire", `${LOCATION_PROPRIETAIRE} du loyer annuel HC`]],
+    },
+    {
+      name: "Gestion locative courante",
+      rows: [
+        ...GESTION_COURANTE,
+        ["Assurance GLI", `${GLI} du loyer`],
+      ],
+    },
+    {
+      name: "Honoraires de gestion occasionnels",
+      rows: GESTION_OCCASIONNELLE,
+    },
+  ],
+});
+
 export default function HonorairesPage() {
   return (
     <>
+      <JsonLd data={bareme} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Accueil", path: "/" },
+          { name: "Nos honoraires", path: "/honoraires" },
+        ])}
+      />
       <PageHero
         eyebrow="Transparence"
         title={<>Nos <span className="grad-light">honoraires.</span></>}
@@ -137,7 +196,7 @@ export default function HonorairesPage() {
               </p>
               <div className="flex items-baseline gap-3">
                 <div className="text-[clamp(36px,5vw,52px)] font-extrabold text-anthracite leading-none">
-                  9 %
+                  {LOCATION_PROPRIETAIRE}
                 </div>
                 <div className="text-sm text-[#7a817f]">du loyer annuel HC</div>
               </div>
@@ -178,7 +237,7 @@ export default function HonorairesPage() {
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="text-[clamp(28px,4vw,40px)] font-extrabold text-anthracite leading-none">
-                  2,5 %
+                  {GLI}
                 </span>
                 <span className="text-sm text-[#7a817f]">du loyer</span>
               </div>

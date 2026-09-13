@@ -14,6 +14,39 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-13**
+
+- Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : sept
+  runs de suite. Un seul run aujourd'hui, pas de travail en double.
+- **Dimanche** : pas de veille (elle se fait le lundi). Celle du 07/09 reste la
+  référence.
+- `sitemap.xml` inchangé à **61 URLs**, build local **82 pages** : le chantier du
+  jour n'ajoute ni page ni contenu visible, **uniquement du balisage**.
+- ⚠️ **Piège d'outil découvert aujourd'hui, à retenir absolument : `WebFetch` ne
+  peut pas servir à auditer des données structurées.** Il convertit la page en
+  markdown et **supprime les `<script>`** : il a répondu « aucun bloc JSON-LD »
+  sur `/equipe` **et** sur `/blog`, alors que les deux en servent (le
+  `RealEstateAgent` du layout, plus un `BreadcrumbList` sur `/blog`). Il s'est
+  aussi trompé sur un comptage simple : **24 articles annoncés sur `/blog`, 26
+  en réalité**. → **Pour tout contrôle de balisage ou de comptage, `curl` sur le
+  HTML brut, jamais `WebFetch`.** Un run qui aurait cru `WebFetch` aurait pu
+  conclure que le site n'a aucune donnée structurée et tout réécrire.
+- **Mesuré dans le HTML servi (curl), pas déduit du code** — ce qui a décidé du
+  chantier :
+  - `/honoraires` servait **zéro JSON-LD spécifique**. C'est pourtant la page
+    la plus citable du site pour une IA (un barème public complet, 25 lignes
+    tarifées, 4 tableaux) — constat déjà fait le 12/09, resté sans suite côté
+    balisage.
+  - `/equipe` servait **zéro JSON-LD spécifique** (confirmé : ni `Person`, ni
+    `BreadcrumbList`), et n'a **aucun `<h2>`** — la page est construite en
+    `<h1>` + `<h3>`.
+  - `/blog` servait `BreadcrumbList` mais **ni `Blog` ni `ItemList`**.
+  - **Le `RealEstateAgent` du layout n'avait pas d'`@id`**, et le `PROVIDER`
+    des `Service` non plus. Conséquence : chaque page déclarait une agence
+    *distincte* au lieu de décrire la même. C'est le vrai défaut de fond
+    trouvé aujourd'hui, et il n'était dans aucun backlog.
+  - `/equipe` **ne figurait pas dans `llms.txt`**.
+
 **Au 2026-09-12**
 
 - Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : six
@@ -162,20 +195,58 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
-|---|---|---|---|---|---|---|
-| agence immobilière Villeurbanne | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
-| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
-| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
-| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
-| agence immobilière Charpennes Villeurbanne | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
-| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| investir locatif Villeurbanne : rendement et quartier **2026** | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+| Requête | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---| --- |---|---|---|---|---|---|
+| agence immobilière Villeurbanne | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
+| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
+| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
+| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| investir locatif Villeurbanne : rendement et quartier **2026** | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
+
+**Lecture au 2026-09-13** — le test d'indexation profonde est **reconstruit**, et
+la SERP « agence » confirme pour la septième fois qu'elle ne se prend pas au
+contenu.
+
+1. **Le nouveau test d'indexation profonde est en place et il est meilleur que
+   l'ancien.** Il porte sur l'**erreur médiane de 15,5 %** publiée le 11/09 :
+   contrairement à la médiane de Ferrandière (que safti publie à 12 € près), ce
+   chiffre suppose d'avoir rejoué 1 875 estimations contre les prix réellement
+   payés. **Aucun concurrent ne peut le produire par hasard.** Première mesure :
+   **négatif**. Le compteur du protocole repart donc d'aujourd'hui, pas du
+   10/09 : → **si ce test est encore négatif après le ~27/09**, l'explication
+   « délai d'indexation » devient indéfendable et il faudra chercher un blocage
+   technique. D'ici là, une absence ne prouve rien.
+2. **7 mesures, 7 absences, et 8 résultats sur 9 sont des annuaires ou des
+   franchises** sur « agence immobilière Villeurbanne ». Le nouvel entrant du
+   jour est **immodvisor**, un annuaire d'avis — c'est-à-dire *encore* un
+   annuaire. Le diagnostic du 09/09 n'a jamais été démenti depuis : **sur cette
+   requête, le levier est la fiche Google Business Profile et les citations
+   d'annuaires, pas le contenu du site.** C'est une action client (backlog n°1
+   et n°3) et elle devient la chose la plus utile à faire remonter.
+3. **Troisième confirmation que la SERP investissement est fermée** : la requête
+   du nouveau test a fait sortir **ma-rentabilite.fr**, qui publie prix au m²,
+   loyers *et* rendement **par quartier villeurbannais** (« Les Poulettes »).
+   Après CPIM et consorts le 12/09, c'est le troisième acteur à le faire. La
+   note du 12/09 tient : sur ces deux articles, l'angle n'est pas « encore des
+   chiffres », c'est **l'écart entre prix affichés et prix réellement payés**.
+4. Point de vigilance repéré au passage, **sans action aujourd'hui** : les
+   agrégateurs de cette SERP donnent des noms de quartiers et des classements
+   qui ne recoupent pas les nôtres (l'un annonce « Perralliere » quartier **le
+   plus cher** à 3 955 €/m² quand nos ventes DVF 2025 donnent
+   Perralière – Grandclément à 3 375 €/m², et Ferrandière en tête à 3 923).
+   Ce n'est **pas une contradiction de nos chiffres** — périmètres et périodes
+   diffèrent (« 12 derniers mois » chez eux, année 2025 chez nous, contours
+   officiels chez nous) — mais c'est exactement pourquoi notre différenciateur
+   doit rester **le contour officiel du quartier et la méthode publiée**. Noté
+   en « Hypothèses à vérifier », rien à corriger sur le site.
 
 **Lecture au 2026-09-12** — deux faits neufs, dont un qui **retire un outil de
 diagnostic** au journal.
@@ -297,6 +368,158 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-13 — Données structurées : une seule agence, un barème balisé, deux conseillers nommés, 26 articles listés
+
+**Angle du jour** : *données structurées*. C'est l'angle que le journal du 12/09
+désignait explicitement (« jamais servi depuis le début du journal, et il est
+petit »), après une page « argent » le 12/09 et du contenu blog le 11/09.
+**Aucun contenu visible n'a été écrit ni modifié aujourd'hui** — et c'est
+prouvé, pas affirmé (voir « Contrôle qualité »).
+
+**Pourquoi ces pages-là, décidé par la mesure `curl`** (et non par `WebFetch`,
+qui s'est révélé inutilisable pour ça — voir « État des lieux ») :
+
+| Page | Ce qu'elle servait ce matin |
+|---|---|
+| `/honoraires` | **aucun JSON-LD**, alors que c'est un barème public de 25 lignes tarifées — le contenu le plus citable du site |
+| `/equipe` | **aucun JSON-LD**, alors que 2 conseillers y sont nommés avec e-mail et téléphone directs |
+| `/blog` | `BreadcrumbList` seul — **ni `Blog` ni `ItemList`** pour ses 26 articles |
+| toutes | le `RealEstateAgent` **sans `@id`** → une agence différente déclarée à chaque page |
+
+#### 1. Le défaut de fond, qui n'était dans aucun backlog : l'agence sans identité
+
+Le site décrivait l'agence **au moins deux fois par page** sans jamais dire que
+c'était la même : le `RealEstateAgent` complet du layout (adresse, `geo`,
+horaires, `sameAs`) d'un côté, et le `PROVIDER` abrégé des `Service` de l'autre.
+Pour un moteur, ce sont **deux entités jumelles et concurrentes**, chacune
+moitié moins bien décrite que la vraie.
+
+Correction : une constante `AGENCY_ID` (`…/#agence`) portée par le nœud du
+layout **et** par le `provider` des `Service`. Toutes les mentions fusionnent
+désormais en un seul nœud. Vérifié : l'`@id` est servi sur **67 des 68 pages
+pré-rendues** — la 68ᵉ est `_global-error`, qui n'utilise pas le layout.
+
+C'est la modification la plus structurante du jour, et elle tient en une ligne
+par fichier. **Elle n'était dans aucun backlog** : elle est sortie de la lecture
+du code, pas d'une liste.
+
+#### 2. `/honoraires` — le barème publié devient un barème lisible par une machine
+
+`offerCatalogLd()` construit un `OfferCatalog` de **27 offres** réparties en 5
+sections, **à partir des mêmes constantes qui rendent les tableaux** (`TRANSACTION`,
+`LOCATION_LOCATAIRE`, `GESTION_COURANTE`, `GESTION_OCCASIONNELLE`). Même
+garantie que `faqLd()` : ajouter une ligne au barème l'ajoute au balisage, en
+retirer une la retire des deux côtés — **le mismatch est impossible par
+construction**, pas seulement évité.
+
+Les deux taux affichés **hors tableau** (9 % part propriétaire, 2,5 % GLI)
+étaient écrits en dur dans le JSX. Ils sont passés en constantes
+(`LOCATION_PROPRIETAIRE`, `GLI`) **lues à la fois par l'affichage et par le
+JSON-LD** — sinon ces deux-là, et eux seuls, auraient pu diverger.
+
+**Le point de rigueur du jour** : un `price` numérique n'est émis que lorsque la
+cellule est un **montant en euros ferme**. Sur 27 offres, **5 seulement** en
+portent un (2 000, 5 000, 9 000, 120, 100 €). Tout le reste — « 6 % », « 8 €/m² »,
+« 20 €/an », « 70 € + 10 €/lot suppl. », « Vacation » — reste une chaîne
+reprise mot pour mot. Baliser « 8 €/m² » comme `price: 8` aurait affirmé un prix
+que la page ne dit pas : c'est un tarif au mètre carré, pas un montant.
+
+#### 3. `/equipe` — deux personnes réelles, balisées sans rien affirmer de neuf
+
+`teamLd(TEAM)` émet 2 `Person` (nom, `jobTitle`, bio, e-mail, téléphone en
+E.164, photo) reliés à l'agence par `worksFor`, plus le rattachement inverse
+`employee` sur le nœud `AGENCY_ID`. **Tout vient de `TEAM`, la source qui rend
+déjà les cartes** : aucune affirmation nouvelle sur une personne réelle — c'est
+la condition posée le 12/09 quand l'item « auteur humain » a été écarté.
+`BreadcrumbList` ajouté au passage (il manquait).
+
+#### 4. `/blog` — les 26 articles déclarés d'un bloc
+
+`blogLd()` émet un nœud `Blog` (+ `publisher` → `AGENCY_ID`) et un `ItemList` de
+**26 `ListItem`** dans l'ordre d'affichage des cartes, avec URL et titre visible.
+C'est **la seule page du site qui déclare les 26 URLs d'articles d'un seul bloc,
+sous forme lisible par une machine** — ce qui vise directement la question n°1
+du journal (les pages profondes sont-elles indexées ?).
+
+Choix délibéré : l'`ItemList` **pointe** vers les articles, il ne les redécrit
+pas. Publier 26 `BlogPosting` complets ici aurait créé un second jeu de nœuds
+concurrent de celui des pages d'articles — avec un conflit garanti, puisque la
+carte affiche `title` et la page d'article `h1`, qui diffèrent. Le détail
+éditorial reste déclaré par la page qui le porte. Chaque `BlogPosting` reçoit en
+revanche un `@id` stable et un `isPartOf` vers le `Blog` : le graphe se referme.
+**`author` et `publisher` des articles n'ont pas été touchés** — ils
+fonctionnent.
+
+#### 5. `llms.txt`
+
+`/equipe` **n'y figurait pas du tout**. Ligne ajoutée, **générée depuis `TEAM`**
+(donc elle ne dérivera pas) : les deux conseillers, leur poste et leurs
+coordonnées directes. C'est la réponse à « qui contacter chez Markus
+Immobilier », que le fichier ne donnait pas.
+
+#### Contrôle qualité
+
+`npm ci` · `tsc --noEmit` **0 erreur** · `eslint` **0 erreur** sur les 7 fichiers
+touchés · `npm run build` OK (**82 pages**, 68 pré-rendues, inchangé).
+
+**La preuve d'innocuité, faite et pas supposée.** Le chantier touche
+`app/layout.tsx` (toutes les pages) et le gabarit des 26 articles : c'est
+exactement le cas où le journal du 10/09 impose le **double build**. Fait —
+build de HEAD stashé, build de la version modifiée, puis comparaison du **texte
+visible** des 68 pages pré-rendues (`<script>` et `<style>` retirés, balises
+retirées, espaces normalisés) :
+
+> **68 pages sur 68 : texte visible identique à l'octet près.**
+
+Les deux littéraux `9 %` et `2,5 %` passés en constantes rendent donc bien la
+même chose, et le passage de l'`@id` dans le layout n'a rien déplacé.
+
+**Vérifications de correspondance JSON-LD ↔ visible**, une par une et pas
+seulement comptées :
+
+- `/honoraires` : les **27 libellés de prestation** et les **27 tarifs** sont
+  cherchés dans le texte visible de la page → **0 absent**. Deux libellés
+  l'étaient à la première passe (« Mise en location », « Assurance GLI —
+  Garantie des Loyers Impayés » : ma formulation, pas celle de la page) →
+  remplacés par le texte exact de l'encadré (« Part propriétaire »,
+  « Assurance GLI ») avant rebuild.
+- `/equipe` : 2 `Person` pour 2 membres affichés, téléphones convertis
+  correctement (`06 81 78 77 40` → `+33681787740`), `employee` ↔ `worksFor`
+  cohérents dans les deux sens.
+- `/blog` : `numberOfItems` = 26 = nombre de `ListItem` = nombre de `<h2>` servis
+  par la page, **26 URLs uniques**.
+
+**Décidé de NE PAS faire, et pourquoi :**
+
+- **Mettre une date « Dernière mise à jour » sur `/honoraires`.** L'étape 4 de la
+  routine la demande sur les pages de fond, et cette page n'en a pas. Mais je ne
+  peux pas savoir depuis un run **depuis quand ce barème est en vigueur** :
+  afficher « à jour au 13/09/2026 » serait une attestation que rien ne fonde, sur
+  la page la plus engageante du site juridiquement. Le PDF téléchargeable est un
+  troisième exemplaire que je ne peux pas relire. → **à demander au client** :
+  une date d'entrée en vigueur du barème, à afficher et à porter en
+  `priceValidUntil`. Noté en « Hypothèses à vérifier ».
+- **Remplacer `author`/`publisher` des 26 articles par une référence à
+  `AGENCY_ID`.** Ce serait plus juste sur le plan des entités (le
+  `RealEstateAgent` *est* une `Organization`). Mais ça modifie un balisage
+  d'auteur qui fonctionne sur 26 pages, pour un gain d'élégance. Règle du
+  projet : on ne corrige pas ce qui marche. Seuls `@id` et `isPartOf` ont été
+  **ajoutés**.
+- **Ajouter une FAQ à `/honoraires`.** Ce serait le complément naturel du barème
+  (« qui paie les honoraires ? », « sont-ils négociables ? ») et la page s'y
+  prête. Mais c'est un **chantier de contenu**, et aujourd'hui était un jour de
+  balisage : une `FAQPage` sans FAQ visible serait précisément le mismatch que
+  le projet s'interdit. → noté en « Chantiers en attente », c'est un bon
+  candidat pour un prochain run de contenu.
+- **Baliser `/faire-gerer`, `/recrutement` et `/annonces`**, qui ne servent eux
+  non plus aucun JSON-LD spécifique. Le chantier en aurait fait 6 pages au lieu
+  de 3, et ces trois-là n'ont ni la citabilité du barème, ni l'enjeu d'entité de
+  l'équipe, ni les 26 URLs du blog. → noté en « Chantiers en attente ».
+- **Ajouter un `<h2>` à `/equipe`.** La page n'en a aucun (`<h1>` puis des
+  `<h3>`), ce qui la rend mal découpée pour un LLM. Mais corriger ça, c'est
+  toucher au rendu d'une page qui fonctionne, un jour où j'ai justement démontré
+  que je ne touchais à rien de visible. → « Hypothèses à vérifier ».
 
 ### 2026-09-12 — Renforcement de `/agence-immobiliere-villeurbanne` : publier ce que coûte une agence
 
@@ -1019,21 +1242,25 @@ de suite un chantier « contenu blog ».
 ~~8. Renforcer `/agence-immobiliere-villeurbanne`~~ — **fait le 2026-09-12**
 (404 → 1 261 mots, barème d'honoraires publié sur la page, FAQ de 6 Q/R,
 2 liens entrants, `llms.txt` complété).
+~~9. Données structurées `Person` sur `/equipe` + `employee`~~ — **fait le
+2026-09-13**, avec trois compléments que la mesure a fait apparaître :
+`OfferCatalog` du barème sur `/honoraires` (27 offres), `Blog` + `ItemList` des
+26 articles sur `/blog`, et surtout **un `@id` unique pour l'agence** sur tout
+le site. `/blog` avait bien le manque `Blog`/`ItemList` annoncé.
 
-**Angle du dernier run : page « argent » (renforcement d'une page de service).**
-Angle du 11/09 : contenu blog. → **Le prochain run ne doit reprendre ni l'un ni
-l'autre.** Il reste deux angles non servis depuis le début du journal :
-**données structurées** (point 4 ci-dessous, désormais le meilleur candidat, et
-il est petit) et **technique pur**. Le point 1 reste l'action client la plus
-utile à rappeler.
+**Angle du dernier run : données structurées.** Angle du 12/09 : page « argent ».
+Angle du 11/09 : contenu blog. → **Le prochain run ne doit reprendre aucun des
+trois.** L'angle **technique pur** n'a jamais été servi (le 10/09 était
+mi-technique mi-maillage) ; **contenu blog** redevient disponible, et le point 2
+ci-dessous l'attend depuis le 09/09. Le point 1 reste l'action client la plus
+utile à rappeler — et la mesure du 13/09 (7 absences, 8 annuaires sur 9) le
+rend plus urgent que n'importe quel chantier de contenu.
 
-**À faire en premier au prochain run, avant de choisir** : refaire le test
-d'indexation profonde **avec une nouvelle requête**. L'ancienne (médiane
-Ferrandière) n'est plus valide, un concurrent publie le même chiffre — voir
-« Lecture au 2026-09-12 ». Candidat : une requête sur un chiffre de dispersion,
-que personne d'autre ne calcule, par exemple
-`Villeurbanne "moitié centrale des ventes" 2 954 4 173 €/m²` ou
-`estimation prix au m² erreur médiane 15,5 % Villeurbanne`.
+**À faire en premier au prochain run** : remesurer le **nouveau** test
+d'indexation profonde (`Villeurbanne estimation "erreur médiane" 15,5 % prix au
+m² quartier ventes DVF 2025`). Il a été posé le 13/09, première mesure négative.
+**Échéance du protocole : ~27/09.** Négatif après cette date ⇒ arrêter d'écrire
+et chercher un blocage technique d'indexation.
 
 1. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
@@ -1087,7 +1314,26 @@ que personne d'autre ne calcule, par exemple
    levier est la fiche GBP + les citations d'annuaires (PagesJaunes, Superimmo,
    MeilleursAgents…). **Action client**, à remonter avec le point 1.
 
-4. **Données structurées `Person` sur `/equipe` + `employee` sur l'agence** —
+7. **FAQ visible sur `/honoraires`** *(ouvert le 13/09)* — la page porte
+   désormais son barème en `OfferCatalog`, mais elle ne répond toujours pas aux
+   questions que les gens posent autour du prix : « qui paie les honoraires
+   d'agence ? », « sont-ils négociables ? », « sont-ils dus si la vente ne se
+   fait pas ? », « que couvre exactement le pourcentage ? ». Réponses factuelles
+   possibles sans rien inventer (barème + mandat + usage), FAQ visible + `faqLd()`
+   sur le même tableau. **Bon candidat pour un prochain run de contenu**, et il
+   complète le chantier du 13/09 au lieu de le répéter.
+
+8. **Baliser `/faire-gerer`, `/recrutement`, `/annonces`** *(ouvert le 13/09)* —
+   les trois dernières pages sans JSON-LD spécifique. Candidats naturels :
+   `Service` sur `/faire-gerer`, `JobPosting` sur `/recrutement` **seulement si
+   une offre réelle et datée y est affichée** (sinon s'abstenir : un `JobPosting`
+   sans poste ouvert est trompeur), `ItemList` des annonces sur `/annonces`.
+   Petit chantier, à grouper avec autre chose.
+
+~~4. **Données structurées `Person` sur `/equipe` + `employee` sur l'agence**~~ —
+**FAIT le 2026-09-13.** *(Texte d'origine conservé ci-dessous : il explique
+pourquoi cet item a remplacé « auteur humain », et cette raison reste valable.)*
+—
    **remplace l'ancien item « bloc auteur + `author` humain sur les articles »,
    qui est écarté** (voir « Erreurs commises », 12/09 : attribuer la rédaction
    des articles à Tony Pistilli serait une affirmation fausse, et le client a
@@ -1113,6 +1359,34 @@ que personne d'autre ne calcule, par exemple
 ---
 
 ## Hypothèses à vérifier
+
+- **Depuis quand le barème d'honoraires est-il en vigueur ? — à demander au
+  client** *(13/09)*. `/honoraires` n'affiche aucune date, et le run ne peut pas
+  en inventer une. Deux conséquences : (1) pas de « Dernière mise à jour » sur
+  cette page, alors que la routine la demande sur les pages de fond ; (2) le
+  balisage `OfferCatalog` posé aujourd'hui **n'a pas de `priceValidUntil`**, qui
+  serait pourtant le champ le plus utile pour un moteur de réponse. Dès que le
+  client donne une date d'entrée en vigueur, les deux se règlent d'un coup.
+  À poser en même temps que la question sur le PDF (voir plus bas).
+
+- **`/equipe` n'a aucun `<h2>`** *(13/09)*. La page est construite en `<h1>` puis
+  `<h3>` de cartes. Pour un LLM, elle n'a donc aucun point d'extraction
+  intermédiaire — c'est contraire à la règle GEO « chaque H2 ouvre par une
+  réponse autonome ». **Non corrigé le 13/09 volontairement** : c'était un run
+  de balisage, dont l'engagement était de ne toucher à aucun rendu. À traiter le
+  jour où cette page sera reprise pour son contenu (elle ne fait que ~290 mots).
+
+- **Les agrégateurs publient des quartiers qui ne sont pas les nôtres**
+  *(13/09)*. Sur la SERP du nouveau test, un agrégateur donne « Perralliere »
+  comme quartier **le plus cher** de Villeurbanne à 3 955 €/m², là où nos ventes
+  DVF 2025 donnent **Perralière – Grandclément à 3 375 €/m²** et placent
+  Ferrandière – Maisons-Neuves en tête (3 923). **Ce n'est pas une contradiction
+  de nos chiffres** : périodes différentes (« 12 derniers mois » vs année 2025)
+  et surtout **périmètres différents** — nous utilisons les contours officiels
+  de la Métropole, eux un découpage maison. Rien à corriger. Mais si un client
+  ou un lecteur oppose un jour ces chiffres aux nôtres, **la réponse est la
+  méthode publiée**, et c'est une raison de plus de ne jamais la retirer des
+  articles.
 
 - 🔴 **Le test d'indexation profonde du 10/09 n'est plus valide** *(constaté le
   12/09)*. Il supposait que la médiane « 3 923 €/m² à Ferrandière –
@@ -1324,6 +1598,47 @@ que personne d'autre ne calcule, par exemple
 ---
 
 ## Techniques apprises
+
+### 2026-09-13 — Méthode : baliser une entité, et ne jamais baliser plus que ce qu'on voit
+
+Pas de veille aujourd'hui (**dimanche** — elle se fait le lundi ; celle du 07/09
+reste la référence). Quatre méthodes réutilisables sont sorties du run.
+
+- **⚠️ `WebFetch` ne sert pas à auditer du balisage — `curl` obligatoire.**
+  L'outil convertit la page en markdown et **supprime les `<script>`** : il a
+  affirmé « aucun JSON-LD » sur deux pages qui en servent, et compté 24 articles
+  là où il y en a 26. **C'est le genre d'erreur qui fait refaire un travail déjà
+  fait**, ou conclure à tort qu'une page est nue. Pour tout ce qui est balisage,
+  comptage de balises, canonical ou méta : `curl` sur le HTML brut, et on lit
+  soi-même.
+
+- **Un site qui décrit son entreprise sur chaque page sans `@id` ne décrit pas
+  une entreprise, il en décrit vingt.** C'est le défaut trouvé aujourd'hui, et
+  il était invisible page par page : chaque bloc JSON-LD était correct isolément.
+  Il ne se voit qu'en se demandant *« ces deux nœuds parlent-ils du même
+  objet, et comment le moteur est-il censé le savoir ? »*. **Réflexe à garder :
+  une entité récurrente (l'agence, le blog, une personne) doit avoir un `@id`
+  unique et stable, déclarée en entier à un seul endroit et référencée partout
+  ailleurs.**
+
+- **Ne jamais convertir en nombre ce que la page n'affiche pas comme un nombre.**
+  La tentation, sur un barème, est de tout passer en `price`. Mais « 8 €/m² »
+  n'est pas un prix de 8 €, et « 6 % » n'est pas un prix du tout. Sur 27 offres,
+  **5 seulement** ont reçu un `price` numérique ; les 22 autres gardent le tarif
+  en texte, mot pour mot. Un balisage qui sur-affirme est pire qu'un balisage
+  pauvre : il est **faux**, et il est opposable.
+
+- **La garantie « impossible par construction » se généralise.** Le projet
+  l'appliquait déjà aux FAQ (`faqLd(FAQ)` lit le tableau affiché). Elle vaut pour
+  tout balisage dérivé d'un contenu visible : **construire le JSON-LD depuis la
+  même constante que le rendu**, jamais le recopier. Corollaire trouvé
+  aujourd'hui : quand une valeur est écrite **en dur dans le JSX** (les taux
+  9 % et 2,5 % hors tableau), il faut **l'extraire en constante d'abord** —
+  sinon c'est exactement là, et seulement là, que les deux versions divergeront
+  un jour. Et le contrôle final ne se fait pas sur le code mais sur le rendu :
+  **chercher chaque libellé et chaque tarif balisé dans le texte visible de la
+  page servie** (2 libellés sur 27 ne passaient pas à la première passe — ma
+  formulation, pas celle de la page).
 
 ### 2026-09-12 — Méthode : chercher la réponse qu'on possède déjà sans la publier
 

@@ -4,7 +4,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/reveal";
 import { ContractIllust } from "@/components/illustrations/contract";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
-import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
+import { JsonLd, blogLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { getArticlesSorted } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -36,6 +36,17 @@ export default function BlogPage() {
           { name: "Accueil", path: "/" },
           { name: "Blog", path: "/blog" },
         ])}
+      />
+      {/* Le blog comme collection + la liste ordonnée de ses articles, dans
+          l'ordre où les cartes sont affichées (du plus récent au plus ancien).
+          C'est la seule page du site qui déclare les 26 URLs d'articles d'un
+          bloc, sous forme lisible par une machine. */}
+      <JsonLd
+        data={blogLd(articles, {
+          name: "Le blog Markus Immobilier",
+          description:
+            "Conseils immobiliers pour vendre, acheter, estimer et investir à Lyon et Villeurbanne : prix au m² par quartier, DPE, frais de notaire, gestion locative et marché local.",
+        })}
       />
       <PageHero
         eyebrow="Conseils & marché"

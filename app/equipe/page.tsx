@@ -5,6 +5,7 @@ import { BuildingIllust } from "@/components/illustrations/building";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { TeamCard, JoinUsCard } from "@/components/team/team-card";
 import { TEAM } from "@/lib/mock-team";
+import { JsonLd, breadcrumbLd, teamLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Notre équipe — Markus Immobilier Villeurbanne",
@@ -16,6 +17,16 @@ export const metadata: Metadata = {
 export default function EquipePage() {
   return (
     <>
+      {/* Balisage des deux conseillers DÉJÀ affichés sur la page (nom, poste,
+          e-mail et téléphone directs), rattachés à l'agence par `employee`.
+          Construit depuis TEAM, la même source que les cartes. */}
+      <JsonLd data={teamLd(TEAM, "/equipe")} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Accueil", path: "/" },
+          { name: "Notre équipe", path: "/equipe" },
+        ])}
+      />
       <PageHero
         eyebrow="Les visages"
         title={<>Notre <span className="grad-light">équipe.</span></>}

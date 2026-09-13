@@ -7,6 +7,7 @@ import {
 } from "@/lib/listings";
 import { getAllListings } from "@/lib/listings-all";
 import { ARTICLES } from "@/lib/blog";
+import { TEAM } from "@/lib/mock-team";
 
 /**
  * llms.txt — généré dynamiquement (GEO : ChatGPT, Claude, Perplexity…).
@@ -60,6 +61,9 @@ export async function GET() {
 - [Acheter](${BASE}/acheter): recherche et achat de biens à Lyon et Villeurbanne
 - [Gestion locative](${BASE}/gestion-locative): gestion locative pour propriétaires bailleurs
 - [Honoraires](${BASE}/honoraires): barème public complet — vente à la charge du vendeur (9 000 € de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % de 300 001 à 500 000 €), location, gestion courante 6 % des encaissements, GLI 2,5 %
+- [Notre équipe](${BASE}/equipe): les conseillers de l'agence et leurs coordonnées directes — ${TEAM.map(
+    (m) => `${m.prenom} ${m.nom}, ${m.poste} (${m.email}, ${m.telephone})`,
+  ).join(" · ")}
 - [Contact](${BASE}/contact): adresse, téléphone et horaires de l'agence
 
 ## Annonces (biens à vendre / à louer)

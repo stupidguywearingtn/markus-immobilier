@@ -55,6 +55,11 @@ export default async function ArticlePage({
   const blogPostingLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    // Identité stable de l'article + rattachement à la collection déclarée sur
+    // /blog. `author`/`publisher` restent décrits en toutes lettres ci-dessous :
+    // ils fonctionnent, on n'y touche pas.
+    "@id": `${BASE}/blog/${a.slug}#article`,
+    isPartOf: { "@id": `${BASE}/blog#blog` },
     headline: a.h1,
     description: a.metaDescription,
     datePublished: a.date,
