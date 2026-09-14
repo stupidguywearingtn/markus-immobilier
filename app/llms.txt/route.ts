@@ -60,7 +60,7 @@ export async function GET() {
 - [Vendre](${BASE}/vendre): accompagnement à la vente d'un bien à Villeurbanne et Lyon
 - [Acheter](${BASE}/acheter): recherche et achat de biens à Lyon et Villeurbanne
 - [Gestion locative](${BASE}/gestion-locative): gestion locative pour propriétaires bailleurs
-- [Honoraires](${BASE}/honoraires): barème public complet — vente à la charge du vendeur (9 000 € de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % de 300 001 à 500 000 €), location, gestion courante 6 % des encaissements, GLI 2,5 %
+- [Honoraires](${BASE}/honoraires): barème public complet — vente à la charge du vendeur (9 000 € de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % de 300 001 à 500 000 €), location, gestion courante 6 % des encaissements, GLI 2,5 %. La page détaille aussi le taux effectivement payé selon le prix (11 700 € TTC soit 6,0 % sur le prix médian villeurbannais de 195 000 €), l'effet de seuil du barème à 170 000 € et 300 000 €, et rappelle qu'aucun honoraire n'est dû si la vente n'aboutit pas (article 6 de la loi Hoguet)
 - [Notre équipe](${BASE}/equipe): les conseillers de l'agence et leurs coordonnées directes — ${TEAM.map(
     (m) => `${m.prenom} ${m.nom}, ${m.poste} (${m.email}, ${m.telephone})`,
   ).join(" · ")}
