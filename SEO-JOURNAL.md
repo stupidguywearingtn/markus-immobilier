@@ -435,6 +435,116 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-09-15 (run n°2, session interactive) — Les trois pages quartiers deviennent des pages de recherche : prix DVF, budgets chiffrés, FAQ, et le maillage `/estimation` → quartiers enfin posé
+
+**Pourquoi ce chantier, et pourquoi maintenant.** C'est le dernier trou béant
+identifié par l'audit live du 07/09 et jamais comblé depuis : les trois pages
+quartiers faisaient **350 à 650 mots, aucun prix, aucune FAQ**, alors que les
+résultats qui tiennent ces SERP (Human Immobilier sur Gratte-Ciel, Nestenn,
+Laforêt, Hosman, imkiz) publient 2 500 à 8 000 mots avec données de marché.
+Ce sont des pages de marque, pas des pages de recherche — et elles ne sortent
+sur aucune des requêtes visées.
+
+Le second motif est le maillage, que la veille du 15/09 désigne comme le levier
+le mieux corrélé à la citation : **`/estimation` n'émettait aucun lien vers les
+pages quartiers**, alors que les trois pages quartiers pointaient déjà vers
+elle. Le sens retour manquait, sur la page commerciale n°1 du site.
+
+**Ce qui a été fait.**
+
+1. **`lib/quartiers.ts` — source de vérité unique** des chiffres DVF par
+   quartier (les 7 médianes publiables, la médiane communale, les typologies, le
+   loyer médian communal), plus les helpers de formatage et de calcul
+   (`ecartCommune`, `surfacePourBudget`, `honorairesVente`). Conséquence
+   directe : **aucune page n'écrit plus un chiffre en dur**, donc deux pages ne
+   peuvent plus diverger, et la mise à jour DVF 2026 se fera en un seul endroit.
+   Les valeurs sont exactement celles publiées le 07/09, pas un recalcul.
+
+2. **`components/seo/quartier-prix.tsx`** — tableau des 7 quartiers + ligne
+   commune, la ligne du quartier courant surlignée, scroll dans le cadre (jamais
+   de scroll de page), source et limites en `figcaption` (dont le non-publié
+   Saint-Jean et son motif).
+
+3. **Les trois pages quartiers réécrites** — H2 formulés en questions
+   réellement posées, réponse autonome en tête de chaque section, `updated`
+   visible, FAQ de 5 Q/R **générée depuis le même tableau que le JSON-LD
+   `FAQPage`** (impossible de désynchroniser). Un angle propre par page, aucun
+   contenu recopié d'une page à l'autre :
+   - **Gratte-Ciel** → l'angle est le **volume** : 655 ventes sur 1 875, soit
+     ~35 % du marché villeurbannais dans un seul quartier. Un marché liquide se
+     paie en semaines de visites quand le prix est faux. Et une réponse honnête
+     sur l'extension du centre-ville : **aucune accélération mesurable** dans les
+     prix de vente (+1,2 % quartier contre +1,5 % commune), donc on le dit au
+     lieu de le supposer.
+   - **Charpennes** → l'angle est **l'écart annonces / ventes réelles**, le seul
+     angle libre trouvé le 12/09 : un site d'investissement affichait
+     5 120 €/m² contre 3 524 €/m² en DVF, soit **+45 %**, ≈ 112 000 € d'écart de
+     budget sur un T3 de 70 m². Plus le rendement locatif **calculé** (T2 40 m²
+     → ~5,0 % brut) avec ses deux limites écrites noir sur blanc : loyer de
+     référence **communal** (il n'existe pas de loyer par quartier) et rendement
+     brut. C'est exactement ce que les concurrents affirment sans le sourcer.
+   - **Cusset** → l'angle est la **surface par euro** : seul quartier métro A
+     moins cher que la médiane communale de plus de 10 %, 14 m² de plus qu'à
+     Gratte-Ciel pour 250 000 €. Et le constat de résistance : −5,8 % depuis
+     2022, deuxième meilleur de la commune après Ferrandière.
+
+4. **Maillage posé dans les deux sens.** Nouvelle section statique sur
+   `/estimation` (« Sur quoi repose l'estimation ? ») avec le tableau des
+   quartiers et **6 liens sortants** : les 3 quartiers, la page Villeurbanne,
+   l'article prix au m², et `/estimation-immobiliere-lyon`. Chaque page quartier
+   émet de son côté vers `/estimation`, `/honoraires`, l'article prix,
+   `/agence-immobiliere-villeurbanne` et **ses deux quartiers voisins** (maillage
+   latéral). Règle du 10/09 respectée : un lien seulement là où la phrase
+   l'appelait déjà.
+
+5. **Correction factuelle.** La page Cusset annonçait « métro A **et
+   tramway** ». Il n'y a **pas de tramway** à Cusset ni à Laurent Bonnevay : la
+   desserte est le métro A (stations Cusset et Flachet, terminus Laurent
+   Bonnevay – Astroballe) et les bus. Vérifié avant publication, commentaire
+   posé dans le fichier pour ne pas le réintroduire. La page Charpennes annonçait
+   « métro A et B, tramway » sans préciser : les lignes **T1 et T4** sont
+   nommées, vérifiées.
+
+**Contrôle qualité fait.** `npx tsc --noEmit` clean, `eslint` sans aucune
+remontée sur les 6 fichiers touchés, `npm run build` OK. HTML pré-rendu
+inspecté page par page :
+
+| Page | Mots rendus (avant → après) | FAQPage | `<summary>` visibles | Tableau |
+|---|---|---|---|---|
+| `/agence-immobiliere-gratte-ciel` | ~375 → **1 380** | 5 Q | 5 | 1 |
+| `/agence-immobiliere-charpennes` | ~600 → **1 443** | 5 Q | 5 | 1 |
+| `/agence-immobiliere-cusset` | ~375 → **1 295** | 5 Q | 5 | 1 |
+| `/estimation` | ~250 → **581** | — | — | 1 |
+
+Et surtout : **`FAQPage.mainEntity[].name` comparé un à un aux `<summary>`
+rendus sur les trois pages — identiques, zéro mismatch.** Les valeurs calculées
+ont été relues dans le HTML servi (3 846 €/m², 65 m² pour 250 000 €, 14 300 €
+d'honoraires, +7,8 % ; 5 120 €/m² et +45 % à Charpennes ; 79 m² et 14 m² de gain
+à Cusset).
+
+> ⚠️ **L'outil d'estimation n'a pas été touché.** La consigne client est « il
+> faut juste rien casser » : la nouvelle section vit **en dehors** de
+> `<EstimationForm />`, elle est purement statique, et le bloc résultat
+> (`components/property/estimation-result.tsx`) n'a pas été ouvert. Le chantier
+> n°6 des « Chantiers en attente » (fourchette de dispersion dans le résultat)
+> reste donc entier et toujours à soumettre au client.
+
+**Limite de la vérification.** `npm run build` a été validé avec un stub local
+de `next/font/google` (le proxy de la session bloque `fonts.googleapis.com`) —
+ce stub n'est **pas** commité, `app/layout.tsx` est inchangé. Le rendu des pages
+et tout le HTML inspecté ci-dessus sont donc réels ; seule la police était
+remplacée pendant la vérification. À confirmer en production après déploiement
+Vercel.
+
+**À faire au prochain run** : vérifier en prod que les trois pages servent bien
+leur `FAQPage` et leur tableau, puis **reprendre le chantier n°5** (maillage des
+20 articles de blog non touchés) — c'est le seul angle « maillage » qui reste, et
+le run du 15/09 n°2 vient de servir l'angle « contenu de page de fond » pour la
+deuxième fois de la journée. **Ne pas réécrire de page quartier avant une mesure
+de position.**
+
+---
+
 ### 2026-09-15 — `/honoraires` répond enfin en toutes lettres : 6 questions, le droit cité et daté, le cas villeurbannais chiffré
 
 **Angle du jour** : *contenu sur une page de fond*. Angles récents : données
@@ -1465,12 +1575,20 @@ le site. `/blog` avait bien le manque `Blog`/`ItemList` annoncé.
 de celles de `/agence-immobiliere-villeurbanne`, droit cité et daté, cas
 locataire villeurbannais chiffré, `FAQPage`, `llms.txt` étendu).
 
-**Angle du dernier run : contenu sur une page de fond** (15/09). Angles
-précédents : données structurées (13/09), page « argent » (12/09), contenu blog
-(11/09). → **Le prochain run ne doit reprendre aucun de ces angles.** L'angle
-**maillage interne** est celui que la veille du 15/09 désigne maintenant comme
-le plus rentable (voir ci-dessous) et il n'a pas été servi seul depuis le
-10/09 : **c'est le point 5, et il passe devant le point 8.**
+~~10. Contenu des trois pages quartiers + maillage `/estimation` → quartiers~~
+— **fait le 2026-09-15 (run n°2, session interactive)** : 350-650 mots → 1 295
+à 1 443 mots par page, médianes DVF par quartier via la nouvelle source unique
+`lib/quartiers.ts`, FAQ de 5 Q/R + `FAQPage` sur chacune, un angle distinct par
+page, et les 6 liens sortants de `/estimation` qui manquaient. Un trou ouvert
+depuis l'audit du 07/09.
+
+**Angle des deux derniers runs : contenu sur une page de fond** (15/09, deux
+fois). Angles précédents : données structurées (13/09), page « argent » (12/09),
+contenu blog (11/09). → **Le prochain run ne doit reprendre aucun de ces
+angles**, et surtout pas « contenu de page ». L'angle **maillage interne** dans
+le blog reste le plus rentable d'après la veille du 15/09 : **c'est le point 5**
+— le volet `/estimation` ↔ quartiers est fait, le volet blog (20 articles
+n'émettant aucun lien) est entier.
 
 **⚠️ Re-priorisation du 15/09, motivée par la veille, pas par une intuition.**
 L'étude Seer (mai 2026) trouve que le **schema FAQ/HowTo ne corrèle pas** avec

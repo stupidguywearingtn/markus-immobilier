@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { QuartierPrixTable } from "@/components/seo/quartier-prix";
+import { DVF_ANNEE } from "@/lib/quartiers";
 import { Reveal } from "@/components/reveal";
 import { PageHero } from "@/components/layout/page-hero";
 import { Button, ArrowRight } from "@/components/ui/button";
@@ -45,6 +48,9 @@ const serviceLd = {
   },
   offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
 };
+
+const LNK =
+  "text-anthracite font-semibold underline underline-offset-2 hover:text-sauge";
 
 const BENEFITS = [
   "Estimation de vente",
@@ -149,6 +155,80 @@ export default function EstimationPage() {
 
           <Reveal delay={100}>
             <EstimationForm />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* REPÈRES DE PRIX — contenu statique, SOUS le formulaire.
+          Ajouté le 2026-09-15 pour deux raisons :
+          1. maillage : /estimation n'émettait AUCUN lien vers les pages
+             quartiers, alors que les trois pages quartiers pointent ici. La
+             veille du 15/09 désigne les liens internes comme le levier de
+             citation le mieux corrélé — ce sens-là manquait.
+          2. contenu : la page ne servait qu'un H1, un H2 et un H3, sans une
+             seule donnée de marché, sur une requête commerciale majeure.
+          ⚠️ NE TOUCHE PAS au bloc résultat de l'outil (consigne client
+          « il faut juste rien casser ») : cette section est purement statique
+          et vit en dehors de <EstimationForm />. */}
+      <section className="bg-blanc py-[100px] max-md:py-[64px]">
+        <div className="max-w-[860px] mx-auto px-8 max-md:px-5">
+          <Reveal>
+            <Eyebrow className="mb-3">Repères de prix</Eyebrow>
+            <h2
+              className="font-bold tracking-[-0.01em] text-anthracite mb-4 leading-[1.15]"
+              style={{ fontSize: "clamp(22px, 2.6vw, 30px)" }}
+            >
+              Sur quoi repose l&apos;estimation ?
+            </h2>
+            <div className="text-[15.5px] leading-relaxed text-[#3d4347] space-y-3">
+              <p>
+                Sur les ventes réellement signées autour de votre bien, pas sur
+                une moyenne d&apos;annonces. L&apos;outil interroge la base DVF
+                publiée par l&apos;État — les prix inscrits aux actes notariés —
+                puis pondère les comparables selon leur distance et leur
+                ancienneté. À titre de repère, voici les médianes de{" "}
+                {DVF_ANNEE} par quartier de Villeurbanne, calculées avec la même
+                source et le même filtrage.
+              </p>
+            </div>
+            <QuartierPrixTable />
+            <div className="text-[15.5px] leading-relaxed text-[#3d4347] space-y-3">
+              <p>
+                Un prix au m² de quartier ne remplace pas une estimation :
+                l&apos;étage, l&apos;ascenseur, le DPE, l&apos;extérieur et
+                l&apos;état déplacent facilement la valeur de 10 à 20 % autour de
+                la médiane. C&apos;est précisément ce que le formulaire ci-dessus
+                intègre.
+              </p>
+              <p>
+                Nous détaillons le marché secteur par secteur sur nos pages{" "}
+                <Link href="/agence-immobiliere-gratte-ciel" className={LNK}>
+                  Gratte-Ciel
+                </Link>
+                ,{" "}
+                <Link href="/agence-immobiliere-charpennes" className={LNK}>
+                  Charpennes
+                </Link>{" "}
+                et{" "}
+                <Link href="/agence-immobiliere-cusset" className={LNK}>
+                  Cusset
+                </Link>
+                , ainsi que sur la page{" "}
+                <Link href="/agence-immobiliere-villeurbanne" className={LNK}>
+                  agence immobilière à Villeurbanne
+                </Link>
+                . La méthode de calcul complète, les prix par typologie et les
+                limites assumées de la base DVF sont dans notre analyse des{" "}
+                <Link href="/blog/prix-immobilier-villeurbanne-2026" className={LNK}>
+                  prix au m² réels par quartier de Villeurbanne
+                </Link>
+                . Pour un bien à Lyon, voir{" "}
+                <Link href="/estimation-immobiliere-lyon" className={LNK}>
+                  estimation immobilière à Lyon
+                </Link>
+                .
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
