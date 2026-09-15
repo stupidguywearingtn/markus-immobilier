@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
 import { ContractIllust } from "@/components/illustrations/contract";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
-import { JsonLd, breadcrumbLd, offerCatalogLd } from "@/components/seo/json-ld";
+import {
+  JsonLd,
+  breadcrumbLd,
+  faqLd,
+  offerCatalogLd,
+} from "@/components/seo/json-ld";
+import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 
 export const metadata: Metadata = {
   title: "Nos honoraires — Barème complet",
@@ -105,10 +112,64 @@ const bareme = offerCatalogLd({
   ],
 });
 
+/**
+ * Date à laquelle les textes cités dans la FAQ ont été revérifiés à la source.
+ *
+ * ⚠️ Elle ne date **pas** le barème : l'agence n'a jamais communiqué sa date
+ * d'entrée en vigueur, et l'inventer serait une attestation sans fondement sur
+ * la page la plus engageante du site. Elle ne couvre que les références
+ * légales ci-dessous, qui, elles, sont vérifiables.
+ */
+const LEGAL_CHECKED = "2026-09-15";
+
+/**
+ * FAQ visible — le JSON-LD `FAQPage` est généré depuis ce MÊME tableau
+ * (`faqLd(FAQ)`), jamais recopié : affichage et balisage ne peuvent pas diverger.
+ *
+ * Ces six questions sont volontairement disjointes de celles de
+ * `/agence-immobiliere-villeurbanne`, qui traite déjà « combien coûte une agence
+ * pour vendre », « honoraires de gestion locative » et « faut-il payer pour
+ * faire estimer ». Dupliquer une FAQ d'une page à l'autre reviendrait à servir
+ * deux `FAQPage` concurrentes sur les mêmes questions.
+ *
+ * Tous les montants cités proviennent des constantes du barème ci-dessus. Les
+ * seules dérivations sont arithmétiques (45 m² × 10 €/m², puis × 3 €/m²).
+ */
+const FAQ: FaqItem[] = [
+  {
+    q: "Qui paie les honoraires d'agence lors d'une vente ?",
+    a: "Le barème ci-dessus place les honoraires de transaction à la charge du vendeur. Aucune loi ne l'impose : c'est le mandat signé entre le vendeur et l'agence qui désigne le redevable, et un mandat peut tout aussi bien prévoir une charge acquéreur ou un partage. C'est donc une question à poser avant de signer un mandat, quelle que soit l'agence.",
+  },
+  {
+    q: "Les honoraires d'agence sont-ils dus si la vente ne se fait pas ?",
+    a: "Non. L'article 6 de la loi Hoguet (loi n° 70-9 du 2 janvier 1970) interdit à une agence de percevoir la moindre somme tant que l'opération n'est pas effectivement conclue et constatée par un acte écrit. Estimation, reportage photo, diffusion des annonces, visites et négociation ne sont donc facturés ni pendant le mandat, ni si la vente n'aboutit pas. Les honoraires sont réglés chez le notaire, le jour de la signature de l'acte authentique (décret n° 72-678 du 20 juillet 1972, article 73).",
+  },
+  {
+    q: "Les honoraires sont-ils compris dans le prix affiché dans les annonces ?",
+    a: "Oui, puisqu'ils sont à la charge du vendeur : le prix annoncé est celui que règle l'acquéreur, sans honoraires d'agence à ajouter. À ne pas confondre avec les frais de notaire, qui sont dus en plus par l'acquéreur et ne reviennent pas à l'agence : ils sont constitués pour l'essentiel des droits de mutation perçus par l'État et les collectivités.",
+  },
+  {
+    q: "Combien un locataire paie-t-il à l'agence à Villeurbanne ?",
+    a: "Villeurbanne est classée en zone tendue. La part locataire y est de 10 €/m² de surface habitable pour la visite, la constitution du dossier et la rédaction du bail, plus 3 €/m² pour l'état des lieux d'entrée. Pour un T2 de 45 m², cela représente 450 € puis 135 €, soit 585 € TTC au total. Ces deux montants restent inférieurs aux plafonds légaux applicables depuis le 1er janvier 2026 — 10,09 €/m² en zone tendue et 3,03 €/m² pour l'état des lieux — fixés par les arrêtés des 17 juillet et 20 novembre 2025, qui indexent désormais ces plafonds sur l'indice de référence des loyers après onze ans de gel.",
+  },
+  {
+    q: "Quels frais s'ajoutent aux 6 % de la gestion locative ?",
+    a: "Le barème distingue la gestion courante des interventions occasionnelles. En gestion courante s'ajoutent aux 6 % des encaissements 20 € par an de frais et débours (extranet) et, si les courriers sont envoyés par voie postale, 45 € par lot et par an. En occasionnel : vacation horaire à 100 €, aide à la déclaration des revenus fonciers à 70 € (plus 10 € par lot supplémentaire), envoi d'un congé par lettre recommandée à 100 € par lot, clôture de gestion à 90 € (plus 10 € par lot supplémentaire), et gestion de travaux à 5 % de leur montant.",
+  },
+  {
+    q: "Pourquoi une agence doit-elle afficher son barème, et les montants sont-ils TTC ?",
+    a: "Toutes les lignes du barème sont exprimées TTC : c'est le montant réellement facturé, sans supplément. L'affichage n'est pas un geste commercial mais une obligation : l'arrêté du 10 janvier 2017, modifié le 26 janvier 2022, impose à tout professionnel de l'immobilier de publier ses prix maximum toutes taxes comprises, en vitrine comme sur son site internet. Concrètement, cela permet de comparer deux agences sur le même terrain avant même de les rencontrer.",
+  },
+];
+
+const A =
+  "text-anthracite font-semibold underline underline-offset-2 hover:text-sauge";
+
 export default function HonorairesPage() {
   return (
     <>
       <JsonLd data={bareme} />
+      <JsonLd data={faqLd(FAQ)} />
       <JsonLd
         data={breadcrumbLd([
           { name: "Accueil", path: "/" },
@@ -252,6 +313,56 @@ export default function HonorairesPage() {
               headers={["Prestation", "Tarif TTC"]}
               rows={GESTION_OCCASIONNELLE}
             />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-gris py-[120px] max-md:py-[80px]">
+        <div className="max-w-[900px] mx-auto px-8 max-md:px-5">
+          <Reveal className="text-center mb-10 max-md:mb-8">
+            <Eyebrow className="mb-3">Vos questions</Eyebrow>
+            <h2 className="font-bold text-[clamp(30px,4vw,46px)] tracking-[-0.01em]">
+              Ce qu&apos;il faut savoir{" "}
+              <span className="grad">avant de signer.</span>
+            </h2>
+          </Reveal>
+
+          <Reveal>
+            <div className="bg-blanc rounded-[16px] p-9 max-md:p-5 border border-[var(--bordure)]">
+              <p className="text-[16px] leading-relaxed text-[#3d4347]">
+                En vente, nos honoraires sont à la charge du vendeur et ne sont
+                dus qu&apos;une fois la vente signée chez le notaire. En
+                location, la part locataire est de 10 €/m² à Villeurbanne,
+                commune classée en zone tendue, plus 3 €/m² d&apos;état des
+                lieux. En gestion, 6 % des encaissements. Le détail de chaque
+                cas est ci-dessous.
+              </p>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#3d4347]">
+                Pour rapporter ces montants à un bien réel,{" "}
+                <Link href="/estimation" className={A}>
+                  l&apos;estimation en ligne
+                </Link>{" "}
+                est gratuite et sans engagement, la page{" "}
+                <Link href="/agence-immobiliere-villeurbanne" className={A}>
+                  agence immobilière à Villeurbanne
+                </Link>{" "}
+                situe le barème face au prix médian de la commune, et{" "}
+                <Link href="/faire-gerer" className={A}>
+                  faire gérer son bien
+                </Link>{" "}
+                détaille ce que recouvre la gestion locative.
+              </p>
+
+              <FaqBlock items={FAQ} />
+
+              <p className="mt-8 text-[12px] text-[#7a817f] italic">
+                Références légales vérifiées le{" "}
+                <time dateTime={LEGAL_CHECKED}>15 septembre 2026</time>. Cette
+                date ne préjuge pas de la date d&apos;entrée en vigueur du
+                barème lui-même.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>

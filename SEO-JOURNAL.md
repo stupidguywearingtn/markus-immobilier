@@ -14,6 +14,42 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-15**
+
+- Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : huit
+  runs de suite. Un seul run aujourd'hui, pas de travail en double.
+- ⚠️ **Le run du lundi 14/09 n'a pas eu lieu** — aucune entrée de journal,
+  aucun commit ce jour-là. Conséquence concrète : **la veille hebdomadaire du
+  lundi a sauté**. Elle a donc été faite aujourd'hui (mardi), et elle a
+  rapporté la trouvaille la plus importante depuis le début du journal (voir
+  « Techniques apprises », 15/09). → **Si un lundi saute, rattraper la veille
+  le lendemain**, ne pas attendre le lundi suivant : elle a huit jours de
+  retard quand on la néglige.
+- `sitemap.xml` inchangé à **61 URLs**, build local **82 pages** : le chantier
+  du jour renforce une page existante, il n'en crée aucune.
+- **Mesuré en ligne avant d'agir** (`curl` sur le HTML servi, jamais
+  `WebFetch` — piège du 13/09) : `/honoraires` sert bien son `OfferCatalog` de
+  27 offres et son `BreadcrumbList` posés le 13/09. Mais la page **n'a aucune
+  prose** : hors titres de section et libellés de tableaux, elle ne contient
+  **pas une seule phrase**. C'est le contenu le plus citable du site (un barème
+  public complet) et il **ne répond à aucune question en toutes lettres** —
+  exactement le trou que l'étape 4 de la routine vise. C'est ce constat qui a
+  décidé du chantier.
+- **La SERP « qui paie les honoraires d'agence immobilière vente Villeurbanne »
+  est mesurée pour la première fois, et elle est 100 % nationale et générique** :
+  Foncia, PAP, Crédit Agricole, Barraine, Propriétés Privées, deux blogs de
+  coachs. **Aucun résultat local, aucun barème réel, aucune référence légale
+  datée.** La réponse-type des neuf résultats est « ça dépend du mandat, comptez
+  3 à 8 % » — c'est-à-dire pas une réponse.
+- 🔴 **Découverte à remonter au client** (voir « Hypothèses à vérifier ») : les
+  trois montants de la part locataire du barème (8 / 10 / 12 €/m²) et les
+  3 €/m² d'état des lieux **sont exactement les plafonds légaux d'avant 2026**.
+  Ces plafonds ont été revalorisés au **1ᵉʳ janvier 2026** (10,09 €/m² en zone
+  tendue, 3,03 €/m² pour l'état des lieux). Le barème de l'agence reste donc
+  **parfaitement légal — il est sous le plafond** — mais il n'a visiblement pas
+  été réindexé. **Rien n'a été modifié** : un barème est une décision
+  commerciale du client, pas d'un run.
+
 **Au 2026-09-13**
 
 - Clone local **à jour** au démarrage (`git log HEAD..origin/main` vide) : sept
@@ -195,21 +231,51 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
-|---| --- |---|---|---|---|---|---|
-| agence immobilière Villeurbanne | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
-| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
-| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
-| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
-| agence immobilière Charpennes Villeurbanne | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
-| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| investir locatif Villeurbanne : rendement et quartier **2026** | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
+| Requête | 2026-09-15 | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---| --- | --- |---|---|---|---|---|---|
+| **NOUVEAU — `qui paie les honoraires d'agence immobilière vente Villeurbanne`** | **absent**, **1ʳᵉ mesure**. SERP **entièrement nationale et générique** : Foncia, PAP, Crédit Agricole e-immobilier, Barraine, Propriétés Privées, Levine, + 2 blogs de coachs. **Zéro résultat local, zéro barème chiffré, zéro référence légale datée.** La réponse commune est « ça dépend du mandat, comptez 3 à 8 % ». **C'est la SERP la plus faible mesurée depuis le 11/09**, et c'est celle du chantier du jour. | — | — | — | — | — | — | — |
+| agence immobilière Villeurbanne | **absent** du top 9 — **8ᵉ mesure, 8ᵉ absence**. SERP stable, deux rotations : **Square Habitat et ERA rentrent**, immodvisor et un des deux Nestenn sortent. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises** — pire qu'au 13/09 (8 sur 9). | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
+| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
+| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
+| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | *non remesuré* | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| investir locatif Villeurbanne : rendement et quartier **2026** | *non remesuré* | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | 🔴 **absent** du top 7, **2ᵉ mesure, J+2**. SERP presque inchangée (prix-au-m2, immovrai, lespriximmo, immosudest, fonciris) avec 2 entrants — **immo-land.fr** et **valoris-immo.fr**. Le moteur n'a de nouveau **pas trouvé le chiffre** : il répond que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+2. | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
+
+**Lecture au 2026-09-15** — la veille rattrapée change la hiérarchie des
+priorités du journal. Quatre points, dont deux qui corrigent une croyance.
+
+1. 🟢 **« Absent du top 10 » n'interdit pas d'être cité par une IA — et c'est
+   mesuré.** L'étude Seer (8 500 mots-clés, mai 2026) et les statistiques
+   agrégées 2026 convergent : **83 % des citations d'AI Overview proviennent de
+   pages situées hors du top 10 organique**, et le recouvrement entre citations
+   AIO et top 10 est tombé de ~76 % (mi-2025) à 17–54 % (début 2026). **C'est
+   la meilleure nouvelle de ce journal depuis son ouverture** : huit absences
+   de suite sur « agence immobilière Villeurbanne » ne condamnent **pas** la
+   stratégie de citabilité. Les deux objectifs (classer, être cité) se
+   dissocient réellement, et le second ne passe plus par le premier.
+2. 🔴 **Mais la même étude dit que le schema FAQ n'est pas le levier — et ce
+   journal en a fait beaucoup.** Détail et lecture critique en « Techniques
+   apprises ». Conséquence immédiate sur le backlog : **le maillage interne
+   (point 5) passe devant le balisage des dernières pages (point 8)**, parce
+   que les liens internes sont l'un des rares signaux qui corrèlent
+   *positivement* avec la citation.
+3. **La SERP du chantier du jour est la plus faible mesurée depuis le 11/09.**
+   « Qui paie les honoraires d'agence » ne ramène que des pages nationales
+   génériques qui répondent « ça dépend, comptez 3 à 8 % ». Le schéma du 11/09
+   se répète à l'identique : **la SERP la plus prenable n'est pas celle où les
+   concurrents sont petits, c'est celle où personne ne répond vraiment.**
+4. **La SERP « agence immobilière Villeurbanne » s'est encore refermée** : 9
+   résultats sur 9 sont désormais des annuaires ou des franchises (8 sur 9 au
+   13/09). Le diagnostic du 09/09 tient pour la huitième fois — **le levier y
+   est la fiche Google Business Profile, pas le contenu.** Action client
+   (backlog n°1 et n°3), et c'est la chose la plus utile à faire remonter.
 
 **Lecture au 2026-09-13** — le test d'indexation profonde est **reconstruit**, et
 la SERP « agence » confirme pour la septième fois qu'elle ne se prend pas au
@@ -368,6 +434,153 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-15 — `/honoraires` répond enfin en toutes lettres : 6 questions, le droit cité et daté, le cas villeurbannais chiffré
+
+**Angle du jour** : *contenu sur une page de fond*. Angles récents : données
+structurées (13/09), page « argent » (12/09), contenu blog (11/09). Le run du
+14/09 n'a pas eu lieu. Ce chantier **complète** celui du 13/09 (qui avait balisé
+le barème sans écrire une ligne) au lieu de le répéter : c'est le backlog n°7,
+ouvert ce jour-là précisément pour ça.
+
+**Pourquoi cette page, décidé par deux mesures et pas par le backlog seul :**
+
+1. `/honoraires` **ne contient aucune prose**. Hors titres de section et
+   libellés de tableaux, la page n'a **pas une seule phrase**. C'est le contenu
+   le plus citable du site — un barème public de 27 lignes tarifées — et il ne
+   répond à **aucune question en toutes lettres**. Un moteur de réponse ne peut
+   pas citer un tableau comme réponse à « qui paie les honoraires ».
+2. La SERP « qui paie les honoraires d'agence immobilière vente Villeurbanne »,
+   mesurée pour la première fois, est **100 % nationale et générique** : neuf
+   résultats (Foncia, PAP, Crédit Agricole, coachs…) dont la réponse commune
+   est « ça dépend du mandat, comptez 3 à 8 % ». **Aucun barème réel, aucune
+   référence légale datée, aucun ancrage local.**
+
+#### Ce qui a été publié : 6 questions, aucune redondante
+
+La page reçoit une section FAQ (eyebrow + `<h2>`, la page passe de 4 à 5 `<h2>`),
+un chapeau de réponse autonome, 6 Q/R visibles et un `FAQPage` généré depuis le
+même tableau.
+
+**Le point de méthode du jour — la FAQ a été écrite _en soustrayant_ celle qui
+existe déjà.** `/agence-immobiliere-villeurbanne` porte depuis le 12/09 une FAQ
+de 6 Q/R qui traite déjà « combien coûte une agence pour vendre », « honoraires
+de gestion locative » et « faut-il payer pour faire estimer ». C'étaient mes
+trois premières idées. Les reprendre aurait servi **deux `FAQPage` concurrentes
+sur les mêmes questions**, à deux URLs du même site — le contraire de l'effet
+recherché. Les six retenues sont donc **disjointes par construction**, et un
+commentaire dans le code le dit pour que le prochain run ne défasse pas ce choix.
+
+| Question | Ce qu'elle apporte, et que la SERP n'a pas |
+|---|---|
+| Qui paie les honoraires d'agence lors d'une vente ? | le barème dit « charge vendeur », **et** la précision que la loi ne l'impose pas : c'est le mandat qui désigne le redevable |
+| Les honoraires sont-ils dus si la vente ne se fait pas ? | **non**, article 6 de la loi Hoguet (loi n° 70-9 du 2 janvier 1970) ; règlement chez le notaire à l'acte authentique (décret n° 72-678 du 20 juillet 1972, art. 73) |
+| Les honoraires sont-ils compris dans le prix affiché ? | oui (charge vendeur), **et** la distinction d'avec les frais de notaire, qui ne reviennent pas à l'agence |
+| Combien un locataire paie-t-il à l'agence **à Villeurbanne** ? | **la réponse la plus exclusive de la page** — voir ci-dessous |
+| Quels frais s'ajoutent aux 6 % de la gestion locative ? | les 5 lignes de gestion occasionnelle, chiffrées ; personne ne publie ça |
+| Pourquoi une agence doit-elle afficher son barème, TTC ? | arrêté du 10 janvier 2017, modifié le 26 janvier 2022 (« prix maximum pratiqués ») |
+
+#### La réponse que personne d'autre ne peut donner
+
+**Villeurbanne est classée en zone tendue** — donc la part locataire du barème
+(10 €/m² + 3 €/m² d'état des lieux) s'applique, soit **585 € TTC pour un T2 de
+45 m²**. Un montant en euros, pour un logement type, dans une commune nommée :
+c'est le format exact qu'un moteur de réponse peut reprendre tel quel.
+
+Et la réponse va plus loin que le barème : ces montants sont **inférieurs aux
+plafonds légaux applicables depuis le 1ᵉʳ janvier 2026** — 10,09 €/m² en zone
+tendue et 3,03 €/m² pour l'état des lieux, fixés par les **arrêtés des 17 juillet
+et 20 novembre 2025**, qui indexent désormais ces plafonds sur l'IRL après onze
+ans de gel. **Aucun des neuf résultats de la SERP ne mentionne cette
+revalorisation.**
+
+#### Vérification des faits juridiques — le vrai travail du jour
+
+Rien de tout cela n'a été écrit de mémoire. Chaque texte cité a été vérifié, et
+**une source s'est révélée périmée en cours de route** : `juridiquimmo` annonce
+encore que « les nouveaux montants ne sont pas fixés », parce que l'article est
+antérieur à l'arrêté du 20 novembre 2025. Les montants n'ont été publiés
+qu'après recoupement de **deux sources professionnelles concordantes au
+centime** (Journal de l'Agence, citant l'arrêté du 20/11/2025 ; CLCV). La
+classification de Villeurbanne en zone tendue a été vérifiée séparément.
+→ **Règle appliquée : sur un chiffre de droit, une source récente ne suffit
+pas ; il faut deux sources concordantes et la date du texte.**
+
+#### La date visible, sans attestation mensongère
+
+Le 13/09 avait refusé toute date sur cette page, faute de connaître la date
+d'entrée en vigueur du barème — et ce refus reste juste. La routine demande
+pourtant une date visible sur les pages de fond. **Solution retenue :
+« Références légales vérifiées le 15 septembre 2026 », suivie de « Cette date ne
+préjuge pas de la date d'entrée en vigueur du barème lui-même ».** La date ne
+couvre que ce qui est vérifiable — les textes cités. Le blocage du 13/09 est
+donc **contourné honnêtement, pas levé** : la question au client reste ouverte.
+
+#### Maillage
+
+3 liens sortants contextuels posés dans le chapeau, **chacun appelé par la
+phrase** (règle du 10/09) : `/estimation`, `/agence-immobiliere-villeurbanne`
+(qui rapporte le barème au prix médian communal) et `/faire-gerer`. La veille du
+jour valide ce réflexe : le maillage interne est l'un des rares signaux qui
+corrèlent *positivement* avec la citation en AI Overview.
+
+#### `llms.txt`
+
+La ligne `/honoraires` ne portait que les chiffres du barème. Elle porte
+désormais **les réponses** : qui paie, quand c'est dû (loi Hoguet), les 585 €
+du T2 villeurbannais et les plafonds 2026, les frais occasionnels, l'obligation
+d'affichage. C'est ce qu'un LLM lit quand il cherche à répondre, pas un tableau.
+
+#### Contrôle qualité
+
+`npm ci` · `tsc --noEmit` **0 erreur** · `eslint` **0 erreur** sur les 2 fichiers
+touchés · `npm run build` OK (**82 pages**, inchangé).
+
+**Innocuité prouvée, pas supposée.** Le diff est **purement additif** : sur les
+113 lignes ajoutées, les **seules** suppressions sont la ligne d'`import`
+(réécrite en multi-lignes) et la ligne `llms.txt` (étendue). **Aucune ligne de
+rendu existante n'a été modifiée** — les quatre tableaux du barème sont
+intacts, ce qui est vérifié côté balisage : l'`OfferCatalog` sert toujours
+**5 sections et 27 offres**. Pas de double build cette fois : aucun gabarit
+partagé n'est touché, contrairement au 13/09.
+
+**Correspondance JSON-LD ↔ visible, vérifiée par script sur le HTML pré-rendu** —
+et pas seulement comptée : les **6 questions ET les 6 réponses** du `FAQPage`
+sont cherchées *mot pour mot* dans le texte visible de la page (scripts et
+styles retirés, entités HTML décodées, espaces normalisés) → **12 sur 12
+présentes, 0 écart**. Servi : `RealEstateAgent`, `OfferCatalog`, `FAQPage`,
+`BreadcrumbList` · **6 `<summary>` visibles pour 6 `Question`** · **1 `<h1>`**,
+5 `<h2>`. **Contrôle anti-collage** (le piège JSX des 11 et 12/09, où un espace
+en fin de ligne après `</strong>` est avalé au build) passé par regex sur tout
+le texte rendu : **aucun motif suspect**. Les réponses étant des chaînes d'un
+tableau TS et non du JSX, elles y échappent par construction — seul le chapeau
+était exposé, et ses `{" "}` sont explicites.
+
+**Décidé de NE PAS faire, et pourquoi :**
+
+- **Citer le prix médian villeurbannais (195 000 €) pour chiffrer les
+  honoraires de vente.** C'était tentant et plus local. Mais
+  `/agence-immobiliere-villeurbanne` porte déjà ce calcul (≈ 11 700 € TTC), et
+  le journal signale depuis le 12/09 que ce chiffre **dépend de la tranche du
+  barème** : le dupliquer aurait créé une **6ᵉ page couplée aux médianes DVF**,
+  à refaire au prochain recalcul. La question « combien coûte une agence pour
+  vendre » est d'ailleurs déjà traitée là-bas. → aucun couplage DVF ajouté
+  aujourd'hui, la liste des 5 pages dérivées reste close.
+- **Corriger la part locataire du barème (8/10/12 €/m²) pour l'aligner sur les
+  plafonds 2026.** C'est la découverte du jour, et elle est tentante à
+  « corriger ». **Il ne faut surtout pas** : le barème est **légal tel quel**
+  (il est *sous* le plafond), et le montant facturé par une agence est une
+  **décision commerciale du client**, jamais d'un run. → remonté en
+  « Hypothèses à vérifier ».
+- **Ajouter une question sur la négociabilité des honoraires.** C'est l'une des
+  questions les plus posées, et elle aurait bien marché. Mais y répondre
+  suppose de connaître la politique commerciale de l'agence : toute réponse
+  aurait été une invention sur le client.
+- **Retirer ou alléger le `FAQPage`** à la lumière de la veille du jour (le
+  schema FAQ ne corrèle pas avec la citation). Raisonnement et refus détaillés
+  en « Techniques apprises » : la valeur est dans la **FAQ visible**, le
+  balisage est gratuit, sans risque de mismatch ici, et l'étude ne montre pas
+  de pénalité. On cesse d'en attendre un gain, on ne le démonte pas.
 
 ### 2026-09-13 — Données structurées : une seule agence, un barème balisé, deux conseillers nommés, 26 articles listés
 
@@ -1248,19 +1461,42 @@ de suite un chantier « contenu blog ».
 26 articles sur `/blog`, et surtout **un `@id` unique pour l'agence** sur tout
 le site. `/blog` avait bien le manque `Blog`/`ItemList` annoncé.
 
-**Angle du dernier run : données structurées.** Angle du 12/09 : page « argent ».
-Angle du 11/09 : contenu blog. → **Le prochain run ne doit reprendre aucun des
-trois.** L'angle **technique pur** n'a jamais été servi (le 10/09 était
-mi-technique mi-maillage) ; **contenu blog** redevient disponible, et le point 2
-ci-dessous l'attend depuis le 09/09. Le point 1 reste l'action client la plus
-utile à rappeler — et la mesure du 13/09 (7 absences, 8 annuaires sur 9) le
-rend plus urgent que n'importe quel chantier de contenu.
+~~7. FAQ visible sur `/honoraires`~~ — **fait le 2026-09-15** (6 Q/R disjointes
+de celles de `/agence-immobiliere-villeurbanne`, droit cité et daté, cas
+locataire villeurbannais chiffré, `FAQPage`, `llms.txt` étendu).
+
+**Angle du dernier run : contenu sur une page de fond** (15/09). Angles
+précédents : données structurées (13/09), page « argent » (12/09), contenu blog
+(11/09). → **Le prochain run ne doit reprendre aucun de ces angles.** L'angle
+**maillage interne** est celui que la veille du 15/09 désigne maintenant comme
+le plus rentable (voir ci-dessous) et il n'a pas été servi seul depuis le
+10/09 : **c'est le point 5, et il passe devant le point 8.**
+
+**⚠️ Re-priorisation du 15/09, motivée par la veille, pas par une intuition.**
+L'étude Seer (mai 2026) trouve que le **schema FAQ/HowTo ne corrèle pas** avec
+la citation en AI Overview, alors que **les liens internes** et **les citations
+de sources officielles (.gov/.edu)** corrèlent positivement. Conséquences :
+- le point **5 (maillage : 6 articles sur 26 seulement émettent un lien)** monte
+  au rang de chantier prioritaire, il n'est plus un « complément » ;
+- le point **8 (baliser les 3 dernières pages)** descend : c'est du confort, pas
+  un levier de citation ;
+- **ne plus ouvrir de chantier dont la justification principale est « ajouter du
+  schema »**. Le balisage reste bienvenu quand il accompagne du contenu ; il ne
+  vaut plus un run à lui seul.
 
 **À faire en premier au prochain run** : remesurer le **nouveau** test
 d'indexation profonde (`Villeurbanne estimation "erreur médiane" 15,5 % prix au
-m² quartier ventes DVF 2025`). Il a été posé le 13/09, première mesure négative.
+m² quartier ventes DVF 2025`). Posé le 13/09, **2 mesures, 2 absences** (la
+seconde le 15/09, à J+2 — rien à en conclure encore).
 **Échéance du protocole : ~27/09.** Négatif après cette date ⇒ arrêter d'écrire
 et chercher un blocage technique d'indexation.
+
+**Nouveau, à mesurer à partir du prochain run** : `qui paie les honoraires
+d'agence immobilière vente Villeurbanne` — c'est la requête du chantier du
+15/09, mesurée absente le jour même (SERP 100 % nationale et générique). C'est
+aussi **le meilleur test de la thèse « on peut être cité sans classer »** que la
+veille du 15/09 vient d'établir : la page ne vise pas la 1ʳᵉ page Google, elle
+vise la citation. **Ne pas la juger avant deux semaines** (~29/09).
 
 1. **Créer la propriété Google Search Console** + poser
    `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
@@ -1360,8 +1596,33 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 ## Hypothèses à vérifier
 
+- 🔴 **La part locataire du barème n'a pas été réindexée sur les plafonds 2026 —
+  à remonter au client** *(15/09)*. Les trois montants affichés (**8 / 10 /
+  12 €/m²** selon la zone) et les **3 €/m²** d'état des lieux sont **exactement
+  les plafonds légaux d'avant 2026**. Ces plafonds ont été revalorisés au
+  **1ᵉʳ janvier 2026** et sont désormais indexés sur l'IRL : **8,07 / 10,09 /
+  12,10 €/m²** et **3,03 €/m²** (arrêtés des 17 juillet et 20 novembre 2025,
+  +0,87 % après onze ans de gel), applicables aux **baux signés à compter du
+  1ᵉʳ janvier 2026**.
+  **Rien n'a été modifié, et rien ne doit l'être sans le client** : le barème
+  est **parfaitement légal tel quel** — il est *sous* le plafond — et le montant
+  facturé est une décision commerciale. Deux conséquences si le client décide
+  de réindexer : (1) les montants changent dans `LOCATION_LOCATAIRE`
+  (`app/honoraires/page.tsx`), **et le JSON-LD suit automatiquement** ; (2) mais
+  la **FAQ posée le 15/09 cite « 10 €/m² », « 3 €/m² » et « 585 € pour un T2 de
+  45 m² » en clair** — ces trois valeurs devraient être mises à jour **dans le
+  même run**, sinon la page se contredit. C'est le seul couplage manuel
+  introduit aujourd'hui, et il est volontaire (un calcul d'exemple ne se génère
+  pas depuis un tableau de tarifs sans compliquer le code plus que ça ne vaut).
+  **À poser en même temps que la question sur la date du barème et sur le PDF.**
+
 - **Depuis quand le barème d'honoraires est-il en vigueur ? — à demander au
-  client** *(13/09)*. `/honoraires` n'affiche aucune date, et le run ne peut pas
+  client** *(13/09)*. **Toujours ouvert au 15/09**, mais **contourné** : la page
+  porte désormais « Références légales vérifiées le 15 septembre 2026 », avec la
+  mention explicite que cette date **ne préjuge pas** de l'entrée en vigueur du
+  barème. La routine a donc sa date visible sans attestation mensongère. Ce qui
+  reste bloqué tant que le client n'a pas répondu : le `priceValidUntil` de
+  l'`OfferCatalog`. `/honoraires` n'affiche aucune date, et le run ne peut pas
   en inventer une. Deux conséquences : (1) pas de « Dernière mise à jour » sur
   cette page, alors que la routine la demande sur les pages de fond ; (2) le
   balisage `OfferCatalog` posé aujourd'hui **n'a pas de `priceValidUntil`**, qui
@@ -1598,6 +1859,109 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 ---
 
 ## Techniques apprises
+
+### 2026-09-15 — Veille (rattrapage du lundi manqué) : deux résultats qui changent la stratégie, dont un contre nous
+
+> Le run du lundi 14/09 n'a pas eu lieu ; la veille hebdomadaire a donc été
+> faite le mardi. La précédente datait du **07/09** — huit jours. **Leçon de
+> cadence : si un lundi saute, rattraper la veille le lendemain.**
+
+#### 1. 🟢 Être cité ne passe plus par le classement — et c'est chiffré
+
+**Le recouvrement entre les citations d'AI Overview et le top 10 organique
+s'est effondré** : ~76 % mi-2025, **17 à 54 % début 2026** selon les études, et
+**83 % des citations d'AIO proviennent de pages hors du top 10**. Un AIO
+contient en moyenne **13,34 sources**, puisées dans un vivier bien plus large
+que les dix résultats visibles.
+
+**Pourquoi ça compte ici, précisément** : ce journal mesure depuis huit runs
+une absence totale sur « agence immobilière Villeurbanne », et cette absence a
+servi d'aiguillon permanent. Elle ne dit **rien** de la citabilité. Les deux
+objectifs du cahier des charges (classer sur Google *et* être cité par les IA)
+étaient traités comme un seul avec deux échéances ; **ce sont deux objectifs
+distincts, et le second n'a pas besoin du premier.** → Ne plus lire une absence
+de position comme un échec du travail de citabilité, et ne plus différer un
+chantier de citabilité au motif que la SERP est tenue par des annuaires.
+
+Sources : [Seer Interactive — *What It Takes To Rank In Google's AI Overviews
+in 2026*](https://www.seerinteractive.com/insights/what-it-takes-to-rank-in-googles-ai-overviews-in-2026-is-not-what-you-think)
+(8 500 mots-clés stratifiés sur 30 secteurs, capturés du 7 au 13 mai 2026 via
+SerpAPI, 6 354 pages gagnantes analysées) ·
+[SeoProfy — statistiques AI Overviews 2026](https://seoprofy.com/blog/google-ai-overviews/).
+Consultées le 2026-09-15.
+
+#### 2. 🔴 Le schema FAQ ne corrèle pas avec la citation — et ce journal en a beaucoup posé
+
+La même étude Seer trouve que **les deux signaux les plus travaillés par le
+métier — le schema et l'E-E-A-T — sont ceux qui corrèlent le moins** avec une
+première citation. Les sites à **69 % de couverture schema FAQ sous-performent
+d'environ 10×** face à Reddit (0 % de FAQ) ; la cohorte à **76 % de bios
+d'auteur** ne pèse que **1,94 %** des citations, quand Reddit, sans aucune bio,
+en capte **20,4 %**. Ce qui corrèle **positivement** : **plus de liens
+internes**, **~2× plus de citations de sources .gov/.edu**, un format de
+**1 000–2 000 mots** plutôt que des guides de 5 000+, et un **schema minimal**
+(« Article + Breadcrumb suffit »).
+
+**Lecture critique, parce que le chiffre invite à une conclusion trop rapide.**
+La comparaison de référence est Reddit : un site d'UGC qui gagne pour des
+raisons (volume, fraîcheur, discussion, valeur d'entraînement) sans rapport
+avec l'absence de schema. **C'est une corrélation, pas une causalité**, et les
+auteurs le reconnaissent eux-mêmes en avançant l'hypothèse que les plateformes
+d'IA ont un intérêt structurel à remonter le contenu dont elles ont besoin. Un
+site qui couvre 69 % de ses pages en schema FAQ est, en pratique, souvent un
+site qui empile des FAQ creuses — **ce que l'étude mesure est probablement la
+FAQ de remplissage, pas le balisage lui-même.**
+
+**Ce qui a donc été décidé, et ce qui ne l'a pas été :**
+- ❌ **On ne retire aucun `FAQPage` existant.** Rien dans l'étude ne montre de
+  pénalité ; sur ce site le balisage est généré depuis le contenu visible
+  (mismatch impossible) et son coût est nul. Démonter du balisage sain sur la
+  foi d'une corrélation serait exactement l'erreur que ce journal reproche aux
+  notes d'audit périmées.
+- ✅ **On cesse d'en attendre un gain.** Le `FAQPage` n'est plus un argument
+  suffisant pour ouvrir un chantier — c'est ce qui fait descendre le backlog
+  n°8 et monter le n°5 (maillage interne).
+- ✅ **Le format visé se confirme** : les articles réécrits ici font 1 200 à
+  2 100 mots, pile dans la fourchette qui gagne. **Ne pas céder à la tentation
+  du guide de 5 000 mots.**
+- ✅ **Citer des sources officielles est un levier, pas un ornement.** Le
+  chantier du jour cite loi Hoguet, décret de 1972 et trois arrêtés ; les
+  articles prix citent DVF (data.gouv.fr). C'est exactement le signal
+  « .gov/.edu » que l'étude voit corréler. **À systématiser** : quand une
+  affirmation peut s'adosser à un texte officiel daté, le citer.
+
+#### 3. ChatGPT et Perplexity ne citent pas les mêmes sources
+
+**Seuls ~11 % des domaines sont cités à la fois par ChatGPT et par Perplexity.**
+Wikipédia pèse **47,9 %** du top 10 des sources de ChatGPT ; Perplexity, dont
+Reddit était la première source jusqu'au procès d'octobre 2025 (**−86 %** de
+citations Reddit ensuite), a la plus forte part de **.edu (3,2 %)** et de
+domaines nationaux (**4,4 %**). Un document doit passer des filtres de
+**pertinence sémantique, fraîcheur, qualité structurelle, autorité et
+engagement** avant d'être cité.
+
+**Application ici** : viser « être cité par les IA » comme un objectif unique
+est une erreur de cadrage — les moteurs ne se recouvrent presque pas. Pour une
+agence locale, le levier commun aux deux reste **la donnée locale factuelle,
+datée et sourcée**, qu'aucun des deux ne trouve ailleurs. C'est déjà la ligne
+du journal ; elle est confirmée, pas modifiée. Source :
+[AI Platform Citation Source Index 2026](https://everything-pr.com/ai-platform-citation-source-index-2026)
+(synthèse de 6 études, >680 M de citations, août 2024 – avril 2026), consultée
+le 2026-09-15.
+
+#### 4. Méthode — vérifier un chiffre de droit avant de le publier
+
+Sortie du chantier du jour, et réutilisable partout. En cherchant les plafonds
+d'honoraires de location 2026, **trois sources ont donné trois réponses** :
+l'une les anciens montants (8/10/12), l'autre « pas encore fixés », la troisième
+les nouveaux au centime. Aucune n'était malhonnête — **elles avaient des dates
+de rédaction différentes**, et le texte qui fixe les montants (arrêté du
+20 novembre 2025) est postérieur à celui qui annonce le principe (17 juillet
+2025). → **Sur un chiffre de droit : deux sources professionnelles concordantes
+minimum, et toujours identifier le texte ET sa date.** Une source récente mais
+antérieure au dernier texte est fausse sans être mensongère. Publier un plafond
+légal erroné sur le site d'une agence serait une faute comparable à celle
+évitée le 08/09 sur le « 9 % ».
 
 ### 2026-09-13 — Méthode : baliser une entité, et ne jamais baliser plus que ce qu'on voit
 
