@@ -17,6 +17,20 @@
  * 07/09). Si les médianes sont un jour recalculées, les trois articles — plus le
  * tableau REPERES de /estimation-immobiliere-villeurbanne — doivent être mis à
  * jour ensemble, sinon le site se contredit d'une page à l'autre.
+ *
+ * Depuis le 16/09/2026, trois articles de plus CITENT (sans les recalculer) des
+ * chiffres issus de ces mêmes médianes, et doivent donc suivre le même sort :
+ *   - « vendre-sans-agence »        → prix médian 195 000 € et les ≈ 11 700 €
+ *                                     d'honoraires qui en découlent ;
+ *   - « frais-de-notaire-lyon-2026 »→ prix médian 195 000 € ;
+ *   - « capacite-emprunt-immobilier » → 250 000 € = 65 m² à Gratte-Ciel /
+ *                                     91 m² à Cyprian – Les Brosses.
+ *
+ * Trois articles citent par ailleurs le BARÈME d'honoraires de
+ * app/honoraires/page.tsx (gestion 6 %, GLI 2,5 %, frais fixes 20 €/45 €,
+ * transaction 9 000 € / 6 % / 5 %) : « cout-gestion-locative »,
+ * « gestion-locative-villeurbanne-deleguer-ou-non » et « vendre-sans-agence ».
+ * Si le client change son barème, ces textes doivent bouger avec lui.
  */
 
 export type Block =
@@ -254,6 +268,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Les « frais de notaire » sont surtout des taxes. Composition, taux dans l'ancien et le neuf, et un exemple de calcul concret.",
     date: "2026-04-28",
+    updated: "2026-09-16",
     internalHref: "/acheter",
     internalLabel: "Être accompagné pour mon achat",
     blocks: [
@@ -271,7 +286,9 @@ export const ARTICLES: Article[] = [
         "**La contribution de sécurité immobilière** : environ 0,10 %.",
       ] },
       { type: "h2", text: "Exemple" },
-      { type: "p", text: "Pour un appartement ancien à **300 000 €**, comptez environ **22 000 à 24 000 €** de frais — à intégrer dès votre plan de financement." },
+      { type: "p", text: "Pour un appartement ancien à **300 000 €**, comptez environ **22 000 à 24 000 €** de frais — à intégrer dès votre plan de financement. Sur le prix médian d'un appartement villeurbannais, [195 000 € sur les ventes de 2025](/blog/prix-immobilier-villeurbanne-2026), la même règle donne environ **13 500 à 15 600 €**." },
+      { type: "h2", text: "Les frais de notaire incluent-ils les honoraires d'agence ?" },
+      { type: "p", text: "**Non : les frais de notaire ne comprennent pas les honoraires d'agence.** Les premiers sont dus par l'acquéreur et reviennent pour l'essentiel à l'État et aux collectivités ; les seconds rémunèrent l'agence et relèvent d'un barème propre à chaque enseigne. Dans notre barème, ils sont [à la charge du vendeur](/honoraires) : le prix affiché est donc celui que règle l'acheteur — sans honoraires à ajouter, mais avec les frais de notaire en plus." },
     ],
   },
   {
@@ -338,6 +355,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Gérer un bien en location prend du temps et demande de la rigueur juridique. Comment trancher entre délégation et gestion directe.",
     date: "2026-05-19",
+    updated: "2026-09-16",
     internalHref: "/gestion-locative",
     internalLabel: "Découvrir notre gestion locative",
     blocks: [
@@ -351,7 +369,7 @@ export const ARTICLES: Article[] = [
         "Suivi des travaux et des obligations légales (DPE, décence…).",
       ] },
       { type: "h2", text: "Combien ça coûte" },
-      { type: "p", text: "En général **6 à 8 % TTC** des loyers encaissés — souvent en partie déductible des revenus fonciers. Une garantie loyers impayés (GLI) peut s'ajouter." },
+      { type: "p", text: "En général **6 à 8 %** des loyers encaissés — souvent en partie déductible des revenus fonciers. À Villeurbanne, notre gestion courante est à **6 % des encaissements**, avec une garantie loyers impayés en option à **2,5 %** : [le barème détaillé est publié sur le site](/honoraires), frais fixes compris." },
       { type: "h2", text: "Gérer soi-même : pour qui ?" },
       { type: "p", text: "Pertinent si vous avez du temps, un seul bien proche de chez vous, et que vous maîtrisez les obligations légales (qui se durcissent, notamment sur le DPE)." },
       { type: "h2", text: "Le bon choix" },
@@ -479,6 +497,7 @@ export const ARTICLES: Article[] = [
         "**L'écart intra-quartier.** Il est presque toujours supérieur à l'écart entre quartiers. Choisir le bon secteur vous fait gagner un cadrage ; choisir le bon bien dans ce secteur vous fait gagner beaucoup plus.",
       ] },
       { type: "p", text: "C'est exactement là qu'un conseiller qui visite le secteur toutes les semaines apporte ce qu'aucune base de données ne contient. Nos conseillers connaissent les immeubles, les copropriétés et les rues de chacun de ces quartiers — et savent quand un prix affiché est justifié ou non." },
+      { type: "p", text: "Trois de ces secteurs ont leur propre page, avec le prix au m² du quartier, la surface qu'un budget y achète et ce que coûte une vente sur place : [Gratte-Ciel](/agence-immobiliere-gratte-ciel), [Charpennes – Tonkin](/agence-immobiliere-charpennes) et [Cusset – Bonnevay](/agence-immobiliere-cusset)." },
     ],
     faq: [
       {
@@ -650,7 +669,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Vendre rapidement ne veut pas dire vendre moins cher. Tout se joue sur la préparation." },
       { type: "h2", text: "Les leviers d'une vente rapide" },
       { type: "ul", items: [
-        "**Le bon prix dès le départ.** Les deux premières semaines génèrent le plus de visites : un prix juste capte cette vague d'attention.",
+        "**Le bon prix dès le départ.** Les deux premières semaines génèrent le plus de visites : un prix juste capte cette vague d'attention. À Villeurbanne, calez-le sur [les prix réellement signés dans votre quartier](/estimation-immobiliere-villeurbanne).",
         "**Une présentation impeccable.** Bien rangé, lumineux, neutre : l'acheteur doit pouvoir se projeter.",
         "**Des photos professionnelles.** La majorité des acheteurs trient sur la photo principale.",
         "**De la réactivité.** Répondre vite aux demandes et proposer des créneaux de visite flexibles.",
@@ -750,16 +769,18 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Vendre seul économise la commission, mais vous gérez tout — et une erreur de prix coûte souvent plus que les honoraires.",
     date: "2026-05-28",
+    updated: "2026-09-16",
     internalHref: "/vendre",
     internalLabel: "Être accompagné pour ma vente",
     blocks: [
       { type: "p", text: "**Vendre sans agence permet d'économiser la commission, mais vous prenez en charge tout le processus** — et une erreur de prix coûte souvent plus cher que les honoraires économisés." },
       { type: "h2", text: "L'avantage" },
-      { type: "p", text: "Pas de commission d'agence (souvent 4 à 6 % du prix)." },
+      { type: "p", text: "Pas de commission d'agence. Sur le marché, elle représente souvent 4 à 6 % du prix, mais la plupart des agences ne publient pas de barème : il faut le demander. Le nôtre est en ligne — **9 000 € forfaitaires entre 50 001 et 170 000 €**, puis **6 % entre 170 001 et 300 000 €**, 5 % jusqu'à 500 000 €, et il est à la charge du vendeur." },
+      { type: "p", text: "Un ordre de grandeur concret : le prix médian d'un appartement vendu à Villeurbanne était de [195 000 € sur les ventes de 2025](/blog/prix-immobilier-villeurbanne-2026). À ce niveau, nos honoraires représentent environ **11 700 €** — c'est la somme que vendre seul permet d'économiser, et celle à comparer au risque ci-dessous." },
       { type: "h2", text: "Ce que vous devez gérer seul" },
       { type: "p", text: "L'estimation juste, les diagnostics, la rédaction de l'annonce, les photos, la diffusion, les visites, le tri des acheteurs, la négociation et toute la partie juridique jusqu'au compromis." },
       { type: "h2", text: "Le vrai risque" },
-      { type: "p", text: "Un bien **mal estimé** stagne ou se vend en dessous de sa valeur. Une agence apporte le prix juste, un réseau d'acheteurs qualifiés et la sécurité juridique — ce qui compense souvent largement sa commission." },
+      { type: "p", text: "Un bien **mal estimé** stagne ou se vend en dessous de sa valeur. Une agence apporte le prix juste, un réseau d'acheteurs qualifiés et la sécurité juridique — ce qui compense souvent largement sa commission, dont [le montant est publié tranche par tranche](/honoraires) avant même que vous ne signiez un mandat." },
       { type: "h2", text: "Pour qui ça marche ?" },
       { type: "p", text: "Si vous avez du temps, un bien facile à vendre et de bonnes notions juridiques. Sinon, l'accompagnement est vite rentable." },
     ],
@@ -799,6 +820,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Le mandat simple ouvre à plusieurs agences ; l'exclusif en confie une seule. Lequel vend le mieux, et pourquoi.",
     date: "2026-04-30",
+    updated: "2026-09-16",
     internalHref: "/vendre",
     internalLabel: "Discuter de la vente de mon bien",
     blocks: [
@@ -808,7 +830,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Le mandat exclusif" },
       { type: "p", text: "Une seule agence, donc un engagement fort : plus de moyens, un suivi dédié, une stratégie claire. Les biens en exclusivité se vendent souvent **plus vite et à un meilleur prix**, car l'agence concentre ses efforts." },
       { type: "h2", text: "Notre conseil" },
-      { type: "p", text: "L'exclusif est généralement plus efficace, à condition de choisir une agence en qui vous avez confiance." },
+      { type: "p", text: "L'exclusif est généralement plus efficace, à condition de choisir une agence en qui vous avez confiance. Un point à vérifier avant de signer, quelle que soit l'agence : le type de mandat ne doit pas changer le tarif. [Notre barème de transaction](/honoraires) est le même dans les deux cas — il ne distingue pas mandat simple et mandat exclusif." },
     ],
   },
   {
@@ -862,6 +884,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Votre capacité dépend du taux d'endettement (35 % max), de la durée, de l'apport et du reste à vivre. Exemple chiffré.",
     date: "2026-03-19",
+    updated: "2026-09-16",
     internalHref: "/acheter",
     internalLabel: "Définir mon projet d'achat",
     blocks: [
@@ -875,6 +898,8 @@ export const ARTICLES: Article[] = [
       ] },
       { type: "h2", text: "Exemple" },
       { type: "p", text: "Pour 3 500 € de revenus nets, la mensualité maximale est d'environ **1 225 €**, ce qui ouvre une capacité d'emprunt cohérente selon la durée et le taux." },
+      { type: "h2", text: "Combien de mètres carrés votre capacité d'emprunt achète-t-elle à Villeurbanne ?" },
+      { type: "p", text: "**Avec 250 000 €, vous achetez environ 65 m² à Gratte-Ciel et 91 m² à Cyprian – Les Brosses** : 27 m² d'écart pour le même budget, dans la même commune. Une capacité d'emprunt ne veut rien dire tant qu'on ne l'a pas traduite en surface. Nous avons converti trois budgets types en [surface accessible quartier par quartier](/blog/ou-acheter-villeurbanne-quartiers), à partir des ventes réellement signées à Villeurbanne en 2025." },
     ],
   },
   {
@@ -907,14 +932,16 @@ export const ARTICLES: Article[] = [
     excerpt:
       "En général 6 à 8 % TTC des loyers encaissés, en partie déductibles. Ce que ça inclut et la garantie loyers impayés.",
     date: "2026-02-19",
+    updated: "2026-09-16",
     internalHref: "/gestion-locative",
     internalLabel: "Découvrir notre gestion locative",
     blocks: [
-      { type: "p", text: "**Une agence facture généralement entre 6 et 8 % TTC des loyers encaissés pour gérer votre bien.** En échange, elle s'occupe de tout — et ces frais sont en partie déductibles de vos revenus fonciers." },
+      { type: "p", text: "**Une agence facture généralement entre 6 et 8 % des loyers encaissés pour gérer votre bien.** Chez Markus Immobilier, la gestion courante est facturée **6 % du total des encaissements mensuels par lot** (minimum 25 €), soit le bas de cette fourchette — [notre barème de gestion locative](/honoraires) est public, ligne par ligne. Ces frais sont en partie déductibles de vos revenus fonciers." },
       { type: "h2", text: "Ce que ça inclut" },
       { type: "p", text: "Recherche et sélection du locataire, rédaction du bail, états des lieux, encaissement des loyers, quittances, gestion des sinistres et des impayés, suivi des obligations légales." },
+      { type: "p", text: "Deux frais fixes s'ajoutent au pourcentage dans notre barème, et c'est précisément ce que les fourchettes publiées ailleurs ne disent pas : **20 € par an** de frais et débours (extranet), et **45 € par lot et par an** si vous souhaitez recevoir les courriers par voie postale." },
       { type: "h2", text: "Les options" },
-      { type: "p", text: "La **garantie loyers impayés (GLI)** peut s'ajouter pour sécuriser vos revenus en cas de défaut du locataire." },
+      { type: "p", text: "La **garantie loyers impayés (GLI)** peut s'ajouter pour sécuriser vos revenus en cas de défaut du locataire : elle est facturée **2,5 %** chez Markus Immobilier. Les interventions ponctuelles (aide à la déclaration des revenus fonciers, envoi d'un congé en recommandé, clôture de gestion, suivi de travaux) sont tarifées à part, à l'unité." },
       { type: "h2", text: "Le bon calcul" },
       { type: "p", text: "Le coût se compare au temps et au risque que vous évitez. Pour un propriétaire occupé ou éloigné, déléguer est vite rentable." },
     ],
@@ -938,6 +965,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Déduisez les charges non récupérables, la taxe foncière, l'assurance, les éventuels frais de gestion et la vacance locative. Le net est souvent de 1 à 2 points en dessous du brut." },
       { type: "h2", text: "À Lyon et Villeurbanne" },
       { type: "p", text: "La forte demande locative (étudiants, actifs) limite la vacance, ce qui sécurise le rendement. Les petites surfaces bien placées offrent souvent la meilleure rentabilité." },
+      { type: "p", text: "Un point de méthode qui change le résultat : au dénominateur, partez des [prix réellement payés par quartier à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026), pas des prix affichés dans les annonces. Les frais de gestion, eux, se chiffrent à l'avance — [notre barème](/honoraires) les détaille." },
     ],
   },
   {

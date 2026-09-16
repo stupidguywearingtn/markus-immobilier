@@ -72,9 +72,9 @@ ${disponibles.map(listingLine).join("\n")}
 
 ## Pages locales (Villeurbanne et quartiers)
 - [Agence immobilière à Villeurbanne](${BASE}/agence-immobiliere-villeurbanne): agence indépendante au 87 rue Édouard Vaillant — ce que coûte une agence pour vendre (≈ 11 700 € TTC sur le prix médian de 195 000 €), honoraires de gestion locative, prix au m² par quartier, horaires
-- [Agence immobilière Gratte-Ciel](${BASE}/agence-immobiliere-gratte-ciel): immobilier dans le quartier Gratte-Ciel à Villeurbanne
-- [Agence immobilière Charpennes](${BASE}/agence-immobiliere-charpennes): immobilier dans le quartier Charpennes à Villeurbanne
-- [Agence immobilière Cusset](${BASE}/agence-immobiliere-cusset): immobilier dans le quartier Cusset à Villeurbanne
+- [Agence immobilière Gratte-Ciel](${BASE}/agence-immobiliere-gratte-ciel): quartier Gratte-Ciel – Dedieu – Charmettes — médiane 3 846 €/m² sur 655 ventes d'appartements en 2025 (le quartier le plus actif de Villeurbanne), surface accessible par budget, ce que coûte une vente sur place, FAQ
+- [Agence immobilière Charpennes](${BASE}/agence-immobiliere-charpennes): quartier Charpennes – Tonkin — médiane 3 524 €/m² sur les ventes 2025, secteur le plus touché par la baisse depuis 2022 (−13,2 %), surface accessible par budget, FAQ
+- [Agence immobilière Cusset](${BASE}/agence-immobiliere-cusset): quartier Cusset – Bonnevay — médiane 3 171 €/m² sur 213 ventes en 2025, soit 11 % sous la médiane communale, surface accessible par budget, FAQ
 
 ## Blog (conseils immobiliers Lyon / Villeurbanne)
 ${articlesByDate.map(articleLine).join("\n")}
