@@ -671,6 +671,26 @@ sert **aucun** `meta robots` et garde son `canonical` ; sur `/annonces`, la
 balise `data-nosnippet` s'ouvre **après** le dernier bien réel du DOM
 (position 29 214 contre 24 055) et avant le footer.
 
+**Vérifié EN PRODUCTION après déploiement** (≈ 50 s, deux essais) :
+`sitemap.xml` servi = **53 URLs, aucune fiction**, **29 `lastmod` distincts**
+(contre 31 URLs partageant l'heure du build ce matin) ;
+`/annonces/lyon-2-bellecour-loft` sert `noindex, follow` ;
+`/annonces/studio-a-vendre-villeurbanne-tolstoi` sert son `canonical` et
+**aucun** `meta robots` ; `/annonces` sert `data-nosnippet` avec les 6 biens
+réels **avant** l'ouverture de la section (39 237 dans le DOM, footer à
+100 296) ; `llms.txt` toujours sans aucune fiche fictive ; `/`, `/honoraires`,
+`/estimation`, `/annonces`, `/equipe`, `/faire-gerer`,
+`/agence-immobiliere-gratte-ciel` et un article de blog répondent **200**.
+
+> ⚠️ **Piège de vérification à retenir** : au **premier** essai, `/annonces`
+> ne servait pas encore `data-nosnippet` alors que le sitemap, lui, était déjà
+> à jour — puis la balise est apparue. `/annonces` est une route **dynamique**
+> (elle lit les `searchParams` des filtres), elle n'est donc pas pré-rendue et
+> se propage indépendamment des pages statiques. → **Ne pas conclure à un échec
+> de déploiement sur un premier contrôle ; re-tester avec un cache-buster.**
+> Et, corollaire du 15/09 : cette page ne peut pas se vérifier dans
+> `.next/server/app/*.html` — il faut un `next start` local ou la production.
+
 ---
 
 ### 2026-09-16 — Le blog cesse d'être une impasse : 9 articles s'ouvrent vers les pages stratégiques, et les articles « combien ça coûte » citent enfin le barème réel
