@@ -1,4 +1,6 @@
 export type TeamMember = {
+  /** Présent quand le membre vient de la base (géré dans /admin/equipe). */
+  id?: string;
   prenom: string;
   nom: string;
   label?: string; // optionnel — badge au-dessus du poste (ex. "FONDATEUR")
@@ -14,8 +16,10 @@ export type TeamMember = {
 };
 
 /**
- * Équipe réelle Markus Immobilier.
- * Placez les photos manquantes dans /public/equipe/ et renseignez `photo`.
+ * Équipe Markus Immobilier — REPLI statique.
+ * Source réelle : table Supabase `team_members`, gérée dans /admin/equipe
+ * (ajouter / modifier / supprimer / réordonner un collaborateur). Cette liste
+ * n'est affichée que si la base est injoignable (voir lib/content-db.ts).
  */
 export const TEAM: TeamMember[] = [
   {

@@ -28,21 +28,40 @@ export function TeamCard({
 }) {
   const v = useV();
   const k = (field: string) => `member_${index}_${field}`;
+  // Membre venu de la base → il se gère dans /admin/equipe (formulaire), pas en
+  // édition inline : des clés par index se décaleraient à chaque suppression.
+  // L'édition inline ne reste active que sur le repli statique.
+  const inline = !m.id;
+  const val = (field: string, fallback: string) =>
+    inline ? v("team", k(field), fallback) : fallback;
 
-  const prenom = v("team", k("prenom"), m.prenom);
-  const nom = v("team", k("nom"), m.nom);
-  const poste = v("team", k("poste"), m.poste);
-  const bio = v("team", k("bio"), m.bio ?? "");
-  const photo = v("team", k("photo"), m.photo ?? "");
-  const label = v("team", k("label"), m.label ?? "");
+  const prenom = val("prenom", m.prenom);
+  const nom = val("nom", m.nom);
+  const poste = val("poste", m.poste);
+  const bio = val("bio", m.bio ?? "");
+  const photo = val("photo", m.photo ?? "");
+  const label = val("label", m.label ?? "");
 
-  return (
-    <article className="group h-full bg-blanc border border-[var(--bordure)] rounded-[20px] overflow-hidden hover:border-sauge/40 hover:shadow-[0_28px_56px_-20px_rgba(56,62,66,0.22)] hover:-translate-y-1.5 transition-all duration-500">
-      {/* Avatar : photo si fournie, sinon placeholder initiales tonalisé */}
-      <div className={`relative aspect-[4/5] ${TONES[m.avatarTone]}`}>
-        <EditableImage section="team" field={k("photo")} value={photo}>
-          {(url) =>
-            url ? (
+  const txt = (
+    field: string,
+    value: string,
+    opts: { multiline?: boolean; className?: string } = {},
+  ) =>
+    inline ? (
+      <EditableText
+        as="span"
+        multiline={opts.multiline}
+        section="team"
+        field={k(field)}
+        value={value}
+        className={opts.className}
+      />
+    ) : (
+      <span className={opts.className}>{value}</span>
+    );
+
+  const renderAvatar = (url: string) =>
+    url ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={url}
@@ -56,9 +75,19 @@ export function TeamCard({
                   {(prenom[0] ?? "") + (nom[0] ?? "")}
                 </span>
               </div>
-            )
-          }
+            );
+
+  return (
+    <article className="group h-full bg-blanc border border-[var(--bordure)] rounded-[20px] overflow-hidden hover:border-sauge/40 hover:shadow-[0_28px_56px_-20px_rgba(56,62,66,0.22)] hover:-translate-y-1.5 transition-all duration-500">
+      {/* Avatar : photo si fournie, sinon placeholder initiales tonalisé */}
+      <div className={`relative aspect-[4/5] ${TONES[m.avatarTone]}`}>
+        {inline ? (
+        <EditableImage section="team" field={k("photo")} value={photo}>
+          {(url) => renderAvatar(url)}
         </EditableImage>
+        ) : (
+          renderAvatar(photo)
+        )}
 
         {!photo && (
           <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 bg-blanc/15 backdrop-blur rounded-full text-[10px] uppercase tracking-[0.14em] text-blanc/85 font-semibold pointer-events-none">
@@ -73,7 +102,7 @@ export function TeamCard({
 
         {label && (
           <div className="absolute top-4 right-4 px-3 py-1.5 bg-sauge text-blanc rounded-full text-[10px] uppercase tracking-[0.18em] font-extrabold shadow-[0_4px_12px_-2px_rgba(158,165,150,0.6)]">
-            <EditableText section="team" field={k("label")} value={label} />
+            {txt("label", label)}
           </div>
         )}
         <div
@@ -87,27 +116,21 @@ export function TeamCard({
 
       <div className="p-6 max-md:p-5">
         <Eyebrow className="mb-2 !text-[10.5px]">
-          <EditableText section="team" field={k("poste")} value={poste} />
+          {txt("poste", poste)}
         </Eyebrow>
         <h3 className="text-[20px] font-bold tracking-[-0.01em] mb-3">
-          <EditableText section="team" field={k("prenom")} value={prenom} />{" "}
+          {txt("prenom", prenom)}{" "}
           <span className="text-anthracite">
-            <EditableText section="team" field={k("nom")} value={nom} />
+            {txt("nom", nom)}
           </span>
         </h3>
 
         <p className="text-[13.5px] text-[#5a6166] leading-relaxed mb-4 min-h-[1.2em]">
-          <EditableText
-            as="span"
-            multiline
-            section="team"
-            field={k("bio")}
-            value={bio}
-            className="min-w-[8ch] inline-block"
-          />
+          {txt("bio", bio, { multiline: true, className: "min-w-[8ch] inline-block" })}
         </p>
 
         <div className="space-y-2.5 text-[13.5px]">
+          {m.email && (
           <a
             href={`mailto:${m.email}`}
             className="flex items-center gap-2.5 text-anthracite hover:text-sauge transition"
@@ -118,6 +141,8 @@ export function TeamCard({
             </svg>
             <span className="break-all">{m.email}</span>
           </a>
+          )}
+          {m.telephone && (
           <a
             href={`tel:${m.telephone.replace(/\s/g, "")}`}
             className="flex items-center gap-2.5 text-anthracite hover:text-sauge transition"
@@ -127,6 +152,7 @@ export function TeamCard({
             </svg>
             {m.telephone}
           </a>
+          )}
         </div>
       </div>
     </article>

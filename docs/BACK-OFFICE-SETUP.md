@@ -166,3 +166,17 @@ git push
 - Les pages `/admin/*` sont aussi bloquées dans `robots.txt`.
 - Suppression définitive possible plus tard : dossier `/studio/` (Sanity, inerte)
   et lignes `NEXT_PUBLIC_SANITY_*` / `SANITY_API_READ_TOKEN` dans `.env.local`.
+
+
+---
+
+## Équipe, avis clients, biens vendus (ajout du 17/09/2026)
+
+Migration **`supabase/migrations/0003_equipe_avis_vendus.sql`** → SQL Editor → Run (une fois).
+
+- Crée `team_members`, `reviews`, `sold_items` + RLS (lecture publique des lignes visibles, écriture admin).
+- Pré-remplit avec ce qui est en ligne (Tony & David en reprenant les retouches inline déjà faites, les 3 avis, les 9 biens vendus). Ré-exécutable : n'écrase jamais.
+- Tant qu'elle n'est pas passée, le site affiche les listes statiques d'origine : rien ne casse.
+
+Pages : `/admin/equipe`, `/admin/avis`, `/admin/vendus` (onglets en haut de chaque page admin, liens dans la barre d'édition, et bouton « Gérer… » sur chaque section quand l'admin est connecté).
+Chaque page : ajouter · modifier · masquer/afficher · monter/descendre · supprimer. Photos réduites automatiquement (1800 px, JPEG) dans le bucket `site-images`.

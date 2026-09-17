@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 import { AdminShell } from "@/components/admin/admin-shell";
 
 export const metadata: Metadata = {
-  title: "Annonces — Admin",
+  title: "Équipe — Admin",
   robots: { index: false, follow: false },
 };
 
-export default function AdminAnnoncesLayout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return <AdminShell>{children}</AdminShell>;
 }

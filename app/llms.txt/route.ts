@@ -7,7 +7,7 @@ import {
 } from "@/lib/listings";
 import { getAllListings } from "@/lib/listings-all";
 import { ARTICLES } from "@/lib/blog";
-import { TEAM } from "@/lib/mock-team";
+import { getTeam } from "@/lib/content-db";
 
 /**
  * llms.txt — généré dynamiquement (GEO : ChatGPT, Claude, Perplexity…).
@@ -44,6 +44,7 @@ function articleLine(a: (typeof ARTICLES)[number]): string {
 }
 
 export async function GET() {
+  const team = await getTeam();
   const all = await getAllListings(); // statiques + annonces publiées
   const disponibles = all.filter((l) => l.statut === "disponible");
   const articlesByDate = [...ARTICLES].sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -61,8 +62,11 @@ export async function GET() {
 - [Acheter](${BASE}/acheter): recherche et achat de biens à Lyon et Villeurbanne
 - [Gestion locative](${BASE}/gestion-locative): gestion locative pour propriétaires bailleurs
 - [Honoraires](${BASE}/honoraires): barème public complet — vente à la charge du vendeur (9 000 € de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % de 300 001 à 500 000 €), location, gestion courante 6 % des encaissements, GLI 2,5 %. Répond aussi à : qui paie les honoraires (le mandat désigne le redevable), quand ils sont dus (aucune somme avant la vente effectivement conclue — article 6 de la loi Hoguet ; règlement chez le notaire à l'acte authentique), ce que paie un locataire à Villeurbanne (commune en zone tendue : 10 €/m² + 3 €/m² d'état des lieux, soit 585 € pour un T2 de 45 m², sous les plafonds légaux du 1er janvier 2026 de 10,09 et 3,03 €/m²), les frais de gestion occasionnels, et l'obligation d'affichage TTC (arrêté du 10 janvier 2017 modifié le 26 janvier 2022)
-- [Notre équipe](${BASE}/equipe): les conseillers de l'agence et leurs coordonnées directes — ${TEAM.map(
-    (m) => `${m.prenom} ${m.nom}, ${m.poste} (${m.email}, ${m.telephone})`,
+- [Notre équipe](${BASE}/equipe): les conseillers de l'agence et leurs coordonnées directes — ${team.map(
+    (m) =>
+      `${m.prenom} ${m.nom}, ${m.poste}${
+        m.email || m.telephone ? ` (${[m.email, m.telephone].filter(Boolean).join(", ")})` : ""
+      }`,
   ).join(" · ")}
 - [Contact](${BASE}/contact): adresse, téléphone et horaires de l'agence
 

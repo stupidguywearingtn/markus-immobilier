@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -14,12 +14,13 @@ import { useAuth } from "@/hooks/useAuth";
 export function AdminGuard({ children }: { children: ReactNode }) {
   const { isAdmin, loading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!loading && !isAdmin) {
-      router.replace("/signin?from=/admin/annonces");
+      router.replace(`/signin?from=${encodeURIComponent(pathname || "/admin/annonces")}`);
     }
-  }, [loading, isAdmin, router]);
+  }, [loading, isAdmin, router, pathname]);
 
   if (loading) {
     return (

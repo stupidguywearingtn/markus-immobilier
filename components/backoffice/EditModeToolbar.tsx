@@ -99,12 +99,22 @@ export function EditModeToolbar() {
 
           <div className="flex-1" />
 
-          <Link
-            href="/admin/annonces"
-            className="hidden md:inline text-xs opacity-80 hover:opacity-100 underline underline-offset-2 flex-none"
-          >
-            Annonces
-          </Link>
+          <nav className="hidden md:flex items-center gap-3 flex-none" aria-label="Gérer">
+            {[
+              ["/admin/annonces", "Annonces"],
+              ["/admin/equipe", "Équipe"],
+              ["/admin/avis", "Avis"],
+              ["/admin/vendus", "Vendus"],
+            ].map(([href, label]) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-xs opacity-80 hover:opacity-100 underline underline-offset-2"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
 
           {enabled && hasDrafts && (
             <>

@@ -4,37 +4,16 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
 import { EditableText } from "@/components/backoffice/EditableText";
 import { useV } from "@/hooks/useV";
+import { AdminManageLink } from "@/components/backoffice/AdminManageLink";
+import type { Review } from "@/lib/reviews";
 
-type Review = {
-  name: string;
-  date: string; // format "JJ/MM/AAAA"
-  stars: number;
-  text: string;
-};
-
-const REVIEWS: Review[] = [
-  {
-    name: "Andrée P.",
-    date: "19/05/2020",
-    stars: 5,
-    text: "Équipe très dynamique… Connaît bien le terrain et cible parfaitement sa clientèle. Merci à Monsieur Pistilli qui s'est investi à 100 % pour la vente de mon appartement. Bravo à vous tous.",
-  },
-  {
-    name: "Roger G.",
-    date: "28/09/2021",
-    stars: 5,
-    text: "Tony a mené d'une main de maître un doublé : la vente d'une maison et l'achat d'un appartement. Nous avons été suivis, accompagnés et très bien conseillés du premier jour jusqu'à la signature chez le notaire.",
-  },
-  {
-    name: "Didier & Béatrice F.",
-    date: "07/05/2021",
-    stars: 5,
-    text: "Écoute, disponibilité, réactivité, et surtout un conseiller extrêmement compétent qui a traité notre dossier de bout en bout avec exemplarité. Les services de Tony Pistilli sont à la fois de qualité et différenciants. Encore merci !",
-  },
-];
-
-export function Reviews() {
+/**
+ * Avis clients — la liste vient de la base (gérée dans /admin/avis : auteur,
+ * date, note, texte, ordre, masquer). Aucun avis visible → section masquée.
+ */
+export function Reviews({ reviews }: { reviews: Review[] }) {
   const v = useV();
+  if (reviews.length === 0) return <AdminEmptyReviews />;
   return (
     <section id="avis" className="bg-gris py-[120px] max-md:py-[72px]">
       <div className="max-w-content mx-auto px-8 max-md:px-5">
@@ -62,11 +41,14 @@ export function Reviews() {
               )}
             />
           </p>
+          <div className="mt-6 flex justify-center empty:hidden">
+            <AdminManageLink href="/admin/avis" label="Gérer les avis" />
+          </div>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 max-md:gap-5">
-          {REVIEWS.map((r, i) => (
-            <Reveal key={`${r.name}-${r.date}`} delay={i * 100}>
+          {reviews.map((r, i) => (
+            <Reveal key={r.id ?? `${r.name}-${r.date}`} delay={Math.min(i, 5) * 100}>
               <ReviewCard review={r} />
             </Reveal>
           ))}
@@ -130,6 +112,15 @@ function Stars({ count }: { count: number }) {
           <path d="M12 2l2.6 6.3 6.8.6-5.2 4.5 1.6 6.6L12 16.7l-5.8 3.3 1.6-6.6L2.6 8.9l6.8-.6L12 2z" />
         </svg>
       ))}
+    </div>
+  );
+}
+
+/** Section vide : rien pour le visiteur, un raccourci pour l'admin. */
+function AdminEmptyReviews() {
+  return (
+    <div className="flex justify-center py-6 empty:hidden">
+      <AdminManageLink href="/admin/avis" label="Aucun avis affiché — ajouter un avis" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getAllAvailableListings } from "@/lib/listings-all";
+import { getReviews, getSoldItems } from "@/lib/content-db";
 import { Hero } from "@/components/home/hero";
 import { Properties } from "@/components/home/properties";
 import { About } from "@/components/home/about";
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
  *   Hero
  *   → Nos biens disponibles
  *   → Qui sommes-nous
- *   → Notre équipe (Tony, David, « Pourquoi pas vous ? »)
+ *   → Notre équipe (collaborateurs gérés dans /admin/equipe + « Pourquoi pas vous ? »)
  *   → Nos biens vendus (parallaxe)
  *   → Outil d'estimation
  *   → Nos avis clients
@@ -35,16 +36,20 @@ export const metadata: Metadata = {
  *   → Footer (dans le layout)
  */
 export default async function HomePage() {
-  const listings = await getAllAvailableListings();
+  const [listings, reviews, sold] = await Promise.all([
+    getAllAvailableListings(),
+    getReviews(),
+    getSoldItems(),
+  ]);
   return (
     <>
       <Hero />
       <Properties listings={listings} />
       <About />
       <Team />
-      <SoldParallax />
+      <SoldParallax items={sold} />
       <Estimation />
-      <Reviews />
+      <Reviews reviews={reviews} />
       <Faq />
       <Social />
       <Agency />

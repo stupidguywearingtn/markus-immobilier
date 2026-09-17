@@ -205,9 +205,10 @@ export function teamLd(
     familyName: m.nom,
     jobTitle: m.poste,
     ...(m.bio ? { description: m.bio } : {}),
-    email: m.email,
-    telephone: `+33${m.telephone.replace(/[\s  .]/g, "").replace(/^0/, "")}`,
-    ...(m.photo ? { image: `${BASE}${m.photo}` } : {}),
+    // Coordonnées optionnelles (back-office) : jamais de valeur vide balisée.
+    ...(m.email ? { email: m.email } : {}),
+    ...(m.telephone ? { telephone: `+33${m.telephone.replace(/[\s  .]/g, "").replace(/^0/, "")}` } : {}),
+    ...(m.photo ? { image: /^https?:\/\//.test(m.photo) ? m.photo : `${BASE}${m.photo}` } : {}),
     url: `${BASE}${path}`,
     worksFor: { "@id": AGENCY_ID },
   }));

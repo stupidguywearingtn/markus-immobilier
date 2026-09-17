@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { SOLD_ITEMS, soldAlt, type SoldItem } from "@/lib/sold-gallery";
+import { soldAlt, type SoldItem } from "@/lib/sold-gallery";
+import { AdminManageLink } from "@/components/backoffice/AdminManageLink";
 
 /** Vitesses de défilement (vh) : début → fin de la traversée de la section. */
 const SPEEDS: Array<[number, number]> = [
@@ -28,11 +29,11 @@ function buildColumn(items: SoldItem[], index: number, total: number): SoldItem[
   return [...rotated, ...rotated];
 }
 
-export function SoldParallax() {
+export function SoldParallax({ items }: { items: SoldItem[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const colsRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  const columns = SPEEDS.map((_, i) => buildColumn(SOLD_ITEMS, i, SPEEDS.length));
+  const columns = SPEEDS.map((_, i) => buildColumn(items, i, SPEEDS.length));
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -75,6 +76,15 @@ export function SoldParallax() {
     };
   }, []);
 
+  // Aucun bien vendu visible : pas de parallaxe vide (raccourci admin seulement).
+  if (items.length === 0) {
+    return (
+      <div className="flex justify-center py-6 empty:hidden">
+        <AdminManageLink href="/admin/vendus" label="Aucun bien vendu affiché — en ajouter" />
+      </div>
+    );
+  }
+
   return (
     <section
       ref={sectionRef}
@@ -96,7 +106,7 @@ export function SoldParallax() {
             ].join(" ")}
           >
             {items.map((item, ii) => (
-              <SoldCard key={`${ci}-${ii}`} item={item} />
+              <SoldCard key={`${ci}-${ii}-${item.id ?? item.src}`} item={item} />
             ))}
           </div>
         ))}
@@ -122,6 +132,9 @@ export function SoldParallax() {
             Des dizaines de projets menés à bien à Lyon, Villeurbanne et dans
             l&apos;Est lyonnais. Faites défiler pour découvrir.
           </p>
+          <div className="mt-6 empty:hidden">
+            <AdminManageLink href="/admin/vendus" label="Gérer les biens vendus" />
+          </div>
         </div>
       </div>
     </section>

@@ -1,8 +1,9 @@
 /**
  * BIENS VENDUS — galerie parallaxe de la home (section bonus « Nos biens vendus »).
  *
- * ➜ AJOUTER UNE PHOTO = déposer le fichier dans public/vendus/ + ajouter un objet
- *   ici. La grille se remplit toute seule.
+ * ➜ Source réelle : table Supabase `sold_items`, gérée dans /admin/vendus
+ *   (ajout, suppression, ordre, photo). Cette liste n'est plus qu'un REPLI,
+ *   affiché si la base est injoignable (voir lib/content-db.ts).
  *
  * Le titre reprend le nom du fichier fourni par le client, remis en typographie
  * française (accents + noms de communes corrects) : « T3 - DECINES » →
@@ -10,6 +11,8 @@
  */
 
 export type SoldItem = {
+  /** Présent quand le bien vient de la base (géré dans /admin/vendus). */
+  id?: string;
   src: string;
   /** Titre affiché sur la vignette. */
   titre: string;
