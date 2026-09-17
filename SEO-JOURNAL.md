@@ -14,6 +14,58 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-17**
+
+- Clone local **à jour** au démarrage : `git fetch origin` **en tout premier**
+  (règle du 16/09), puis `git rev-list --left-right --count origin/main...HEAD`
+  = `0 0`. Le run du 16/09 est bien en ligne, rien à refaire.
+- **Jeudi** : pas de veille (elle se fait le lundi ; celle du 15/09 reste la
+  référence).
+- 🔴 **Le fait du jour, et il n'était dans aucun backlog : le sitemap de
+  production soumettait à Google 10 fiches de biens FICTIFS.**
+  `lib/mock-properties.ts` — dont l'en-tête dit « Extended mock — 10 biens
+  variés (à remplacer par data réelle) » — alimentait un bloc `propertyPages`
+  dans `app/sitemap.ts`. Résultat en ligne : `/annonces/lyon-2-bellecour-loft`
+  (« Loft d'exception sur Bellecour, 1 250 000 € »),
+  `/annonces/ecully-villa-famille`, `/annonces/lyon-6-foch-t4`… **10 pages sur
+  les 63 du sitemap, soit 16 % de ce que le site déclare à Google, décrivaient
+  des biens qui n'existent pas**, avec le vrai téléphone et le vrai e-mail de
+  l'agence en pied de fiche. La consigne client est pourtant explicite :
+  « pas de fausse annonce ».
+- **Comment il a été trouvé — et pourquoi neuf runs l'avaient raté** : c'est la
+  première fois qu'un run **liste** les URLs du sitemap au lieu de les
+  **compter**. Les entrées du 07/09 au 16/09 écrivent « sitemap = 60 / 61 / 63
+  URLs » sans jamais regarder lesquelles. (Voir « Erreurs commises ».)
+- **Audit complet des 63 URLs de production**, téléchargées une par une et
+  analysées (titre, meta description, canonical, meta robots, nombre de `<h1>`,
+  types JSON-LD, mots rendus). Ce qui est **sain** : **aucun titre dupliqué**,
+  **aucune description dupliquée ni vide**, **un `<h1>` et un seul sur les 63
+  pages**, aucun `noindex` parasite, `RealEstateAgent` servi partout. Le seul
+  défaut structurel trouvé : **les 10 fiches de démo n'ont pas de `canonical`**
+  (les 6 vraies annonces l'ont) et **pas de `RealEstateListing`** — la
+  différence de traitement était déjà dans le code, personne ne l'avait lue.
+- **Second défaut technique mesuré : le `lastmod` du sitemap mentait.**
+  **31 URLs sur 63** portaient exactement la même valeur —
+  `2026-09-16T06:26:59.361Z`, c'est-à-dire **l'heure du build**. Les pages
+  statiques étaient horodatées `new Date()`. Comme ce site est redéployé
+  presque tous les jours (ces runs), le sitemap annonçait chaque jour « 21
+  pages modifiées aujourd'hui ». Google documente qu'un `lastmod` jugé non
+  fiable est ignoré **pour tout le fichier** — donc aussi pour les 26 articles
+  et les annonces, dont les dates, elles, étaient exactes.
+- **Ce qui, en revanche, est honnête et n'a pas été touché** : sur `/annonces`,
+  les 10 cartes de démo sont précédées d'un encart visible (« Les biens
+  ci-dessous illustrent la présentation du catalogue — ils ne sont pas encore
+  disponibles »), portent un badge « À venir / Bientôt disponible » et **ne
+  sont cliquables depuis nulle part**. La home n'en affiche **aucune** (le code
+  ne complète la grille que s'il y a moins de 3 biens réels : il y en a 6).
+  `llms.txt` **ne contient aucune fiche fictive** (vérifié ligne à ligne).
+  **Le problème n'était donc pas la démo elle-même : c'était que le sitemap
+  envoyait Google sur les pages de détail, seule surface où la fiction n'est
+  pas signalée.**
+- **La fiction n'est pas indexée aujourd'hui** (test SERP ajouté au tableau) :
+  le chantier du jour est **préventif**, pas curatif. C'est dit tel quel, sans
+  le gonfler.
+
 **Au 2026-09-16**
 
 - Clone local **à jour** après `git fetch` : `origin/main` = `b22137b`, les deux
@@ -264,23 +316,53 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-16 | 2026-09-15 | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
-|---| --- | --- | --- |---|---|---|---|---|---|
-| **NOUVEAU — `gestion locative Villeurbanne tarif agence pourcentage loyers`** | **absent** du top 8, **1ʳᵉ mesure**. SERP tenue par des plateformes nationales de gestion en ligne : BailFacile, Oqoro, Foncia, Imodirect, Plusse, louer-et-gerer, votregestionlocative — **une seule agence locale**, Murani. Fait décisif pour le chantier du jour : **un seul de ces huit acteurs publie un taux précis** (Oqoro, 4,9 % charges comprises). Tous les autres répondent « entre 6 et 8 % HT, selon le bien » ou renvoient vers un formulaire. **Personne ne publie les frais fixes qui s'ajoutent au pourcentage** — c'est exactement ce que notre barème contient et ce que les deux articles touchés aujourd'hui publient désormais. | — | — | — | — | — | — | — | — |
-| **NOUVEAU — `qui paie les honoraires d'agence immobilière vente Villeurbanne`** | *non remesuré* — **ne pas juger avant le ~29/09** (protocole posé le 15/09 : cette page vise la citation, pas la 1ʳᵉ page) | **absent**, **1ʳᵉ mesure**. SERP **entièrement nationale et générique** : Foncia, PAP, Crédit Agricole e-immobilier, Barraine, Propriétés Privées, Levine, + 2 blogs de coachs. **Zéro résultat local, zéro barème chiffré, zéro référence légale datée.** La réponse commune est « ça dépend du mandat, comptez 3 à 8 % ». **C'est la SERP la plus faible mesurée depuis le 11/09**, et c'est celle du chantier du jour. | — | — | — | — | — | — | — |
-| agence immobilière Villeurbanne | **absent** du top 9 — **9ᵉ mesure, 9ᵉ absence**. SERP **strictement identique à celle du 15/09, sans une seule rotation** : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises**, pour le deuxième run consécutif. | **absent** du top 9 — **8ᵉ mesure, 8ᵉ absence**. SERP stable, deux rotations : **Square Habitat et ERA rentrent**, immodvisor et un des deux Nestenn sortent. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises** — pire qu'au 13/09 (8 sur 9). | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
-| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
-| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
-| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
-| agence immobilière Charpennes Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
-| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| investir locatif Villeurbanne : rendement et quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* | *non remesuré* | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | 🔴 **absent** du top 7, **3ᵉ mesure, J+3**. SERP quasi inchangée (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, fonciris, immosudest). Le moteur de réponse dit à nouveau **explicitement** ne pas trouver l'« erreur médiane » de 15,5 %. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+3. | 🔴 **absent** du top 7, **2ᵉ mesure, J+2**. SERP presque inchangée (prix-au-m2, immovrai, lespriximmo, immosudest, fonciris) avec 2 entrants — **immo-land.fr** et **valoris-immo.fr**. Le moteur n'a de nouveau **pas trouvé le chiffre** : il répond que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+2. | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
+| Requête | 2026-09-17 | 2026-09-16 | 2026-09-15 | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---| --- | --- | --- | --- |---|---|---|---|---|---|
+| **NOUVEAU — `faire gérer son bien locatif Villeurbanne agence syndic gestion`** | **absent** du top 9, **1ʳᵉ mesure**. SERP tenue par des pages « faire gérer » de franchises (Orpi Key Solutions, Laforêt Villeurbanne), deux pages d'annuaire PagesJaunes (syndics / administrateurs de biens), Square Habitat, Manda, C&F Gestion, Immo de France, mairie.com. **Aucun de ces résultats ne publie de tarif** — notre `/honoraires` et les deux articles du 16/09 le font. Requête notée pour un futur chantier ; **pas travaillée aujourd'hui** (le run est technique). | | | | | | | | | |
+| 🟡 **NOUVEAU TEST — la fiction du site est-elle indexée ?** — `"Loft d'exception sur Bellecour" markusimmobilier annonce Lyon 2e` | **aucune page de markusimmobilier.fr ne remonte** (SeLoger, ParuVendu, Belles Demeures, Airbnb…). **1ʳᵉ mesure, et c'est la bonne nouvelle du jour** : les 10 fiches de biens fictifs que le sitemap soumettait à Google ne sont **pas** indexées. Le chantier du jour est donc **préventif**, pas curatif. **À remesurer une fois** vers le 01/10 pour confirmer que le `noindex` n'a rien laissé passer. | | | | | | | | | |
+| **NOUVEAU — `gestion locative Villeurbanne tarif agence pourcentage loyers`** | *non remesuré* | **absent** du top 8, **1ʳᵉ mesure**. SERP tenue par des plateformes nationales de gestion en ligne : BailFacile, Oqoro, Foncia, Imodirect, Plusse, louer-et-gerer, votregestionlocative — **une seule agence locale**, Murani. Fait décisif pour le chantier du jour : **un seul de ces huit acteurs publie un taux précis** (Oqoro, 4,9 % charges comprises). Tous les autres répondent « entre 6 et 8 % HT, selon le bien » ou renvoient vers un formulaire. **Personne ne publie les frais fixes qui s'ajoutent au pourcentage** — c'est exactement ce que notre barème contient et ce que les deux articles touchés aujourd'hui publient désormais. | — | — | — | — | — | — | — | — |
+| **NOUVEAU — `qui paie les honoraires d'agence immobilière vente Villeurbanne`** | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09** (protocole posé le 15/09 : cette page vise la citation, pas la 1ʳᵉ page) | **absent**, **1ʳᵉ mesure**. SERP **entièrement nationale et générique** : Foncia, PAP, Crédit Agricole e-immobilier, Barraine, Propriétés Privées, Levine, + 2 blogs de coachs. **Zéro résultat local, zéro barème chiffré, zéro référence légale datée.** La réponse commune est « ça dépend du mandat, comptez 3 à 8 % ». **C'est la SERP la plus faible mesurée depuis le 11/09**, et c'est celle du chantier du jour. | — | — | — | — | — | — | — |
+| agence immobilière Villeurbanne | **absent** du top 9 — **10ᵉ mesure, 10ᵉ absence**. Une rotation par rapport au 15-16/09 : **immodvisor revient**, ERA sort. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn (Villeurbanne Ouest), Salengro, Immo de France, Decultieux, immodvisor. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le troisième run consécutif. | **absent** du top 9 — **9ᵉ mesure, 9ᵉ absence**. SERP **strictement identique à celle du 15/09, sans une seule rotation** : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises**, pour le deuxième run consécutif. | **absent** du top 9 — **8ᵉ mesure, 8ᵉ absence**. SERP stable, deux rotations : **Square Habitat et ERA rentrent**, immodvisor et un des deux Nestenn sortent. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises** — pire qu'au 13/09 (8 sur 9). | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
+| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
+| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
+| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| investir locatif Villeurbanne : rendement et quartier **2026** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | 🔴 **absent** du top 9, **4ᵉ mesure, J+4**. SERP stable (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, immosudest, fonciris) + valoris-immo. Le moteur de réponse répond encore explicitement que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+4. | 🔴 **absent** du top 7, **3ᵉ mesure, J+3**. SERP quasi inchangée (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, fonciris, immosudest). Le moteur de réponse dit à nouveau **explicitement** ne pas trouver l'« erreur médiane » de 15,5 %. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+3. | 🔴 **absent** du top 7, **2ᵉ mesure, J+2**. SERP presque inchangée (prix-au-m2, immovrai, lespriximmo, immosudest, fonciris) avec 2 entrants — **immo-land.fr** et **valoris-immo.fr**. Le moteur n'a de nouveau **pas trouvé le chiffre** : il répond que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+2. | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
+
+**Lecture au 2026-09-17** — trois points, dont un qui concerne la **méthode de
+ce journal** plus que le site.
+
+1. **Une mesure de routine n'est une mesure que si on regarde le contenu.**
+   « `sitemap.xml` = 63 URLs » a été écrit dans ce journal cinq runs de suite.
+   Le chiffre était juste (à partir du 16/09) et il ne servait à rien : dix de
+   ces URLs étaient des biens inventés. La ligne « robots.txt OK, sitemap OK »
+   est devenue un rituel, et un rituel ne trouve rien. → **Règle posée
+   aujourd'hui : un contrôle de routine qui produit toujours le même résultat
+   doit être approfondi ou supprimé, pas répété.**
+2. **La SERP « agence immobilière Villeurbanne » est fermée pour la dixième
+   fois de suite** — 9 résultats sur 9 sont des annuaires ou des franchises, et
+   le seul mouvement en trois runs est une permutation ERA ⇄ immodvisor,
+   c'est-à-dire **un annuaire qui remplace une franchise**. Le diagnostic du
+   09/09 n'a jamais été démenti en dix mesures : **sur cette requête le levier
+   est la fiche Google Business Profile, pas le contenu**. C'est la chose la
+   plus utile à faire remonter au client, et elle ne coûte rien à écrire une
+   onzième fois.
+3. **Une SERP neuve, mesurée aujourd'hui, et laissée volontairement de côté** :
+   « faire gérer son bien locatif Villeurbanne ». Neuf résultats, **aucun ne
+   publie de tarif** — le même trou que celui qui a fait le chantier du 15/09
+   (« qui paie les honoraires ») et celui du 16/09 (gestion locative). C'est le
+   troisième relevé consécutif où le créneau prenable est « personne ne répond
+   avec un chiffre ». `/faire-gerer` fait **290 mots, 2 H2, aucun JSON-LD
+   propre** : c'est désormais le meilleur candidat « contenu » du backlog. Il
+   n'a **pas** été traité aujourd'hui — le run devait être technique, et il
+   l'est resté.
 
 **Lecture au 2026-09-16** — trois faits, dont un qui **corrige une erreur de
 diagnostic que j'ai failli écrire dans ce journal**.
@@ -499,6 +581,97 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-17 — Le sitemap cesse de déclarer de la fiction, et cesse de mentir sur les dates
+
+**Angle du jour : technique.** C'est l'angle que le backlog du 16/09 imposait
+(« le prochain run ne doit reprendre ni maillage ni contenu de page »). Angles
+récents : maillage (16/09), contenu de page de fond (15/09 ×2), données
+structurées (13/09), page « argent » (12/09), contenu blog (11/09).
+
+**Pourquoi ce chantier plutôt qu'un autre.** Il n'était dans aucun backlog : il
+sort entièrement de l'étape 2. En listant — pour la première fois — les 63 URLs
+du sitemap au lieu de les compter, deux défauts sont apparus, tous deux dans le
+même fichier (`app/sitemap.ts`) et tous deux portant sur **ce que le site
+raconte à Google de lui-même** :
+
+1. **10 des 63 URLs soumises étaient des biens inventés.** Un bloc
+   `propertyPages` poussait dans le sitemap les 10 placeholders de
+   `lib/mock-properties.ts` — « Loft d'exception sur Bellecour, 1 250 000 € »,
+   « Villa familiale 6 pièces piscine, Écully », « T4 d'exception, Lyon 6e
+   Foch »… Sur `/annonces`, ces cartes sont honnêtement présentées (encart
+   « ils ne sont pas encore disponibles », badge « À venir », aucun lien). Mais
+   **les pages de détail, elles, ne portent aucun avertissement** : elles
+   affichent « À vendre — 1 250 000 € », une galerie, des « points forts » et
+   le vrai téléphone de l'agence. Et c'est **exactement** cette surface que le
+   sitemap soumettait, à `priority` 0.6, sans même un `canonical`. Un visiteur
+   venu de Google y aurait lu une annonce ; le client a explicitement interdit
+   les fausses annonces.
+2. **Le `lastmod` était faux sur 31 URLs sur 63** : les pages statiques étaient
+   horodatées `new Date()`, donc à l'heure du build. Ce site étant redéployé
+   presque chaque jour, le sitemap annonçait quotidiennement « 21 pages
+   modifiées aujourd'hui ». Google ignore un `lastmod` qu'il juge non fiable —
+   **et il l'ignore pour tout le fichier**, y compris pour les 26 articles et
+   les annonces, dont les dates étaient justes. Le seul signal de fraîcheur que
+   le site contrôle s'annulait lui-même.
+
+**Ce qui a été fait — 3 fichiers, aucune modification visible du site.**
+
+| Fichier | Changement | Effet |
+|---|---|---|
+| `app/sitemap.ts` | suppression du bloc `propertyPages` (import de `PROPERTIES` retiré) | **63 → 53 URLs** en production (51 au build local, qui n'a pas accès aux 2 annonces Supabase). Plus une seule URL fictive soumise. |
+| `app/sitemap.ts` | table `PAGE_LASTMOD` (21 pages) + `STATIC_PAGES` | chaque page statique porte **sa vraie date de dernier changement de contenu**, reprise du dernier commit l'ayant touchée. Plus de valeur commune : **30 dates distinctes** au lieu de 31 URLs partageant l'heure du build. |
+| `app/sitemap.ts` | `LISTING_DRIVEN` = `{ "/", "/annonces" }` | ces deux pages affichent le catalogue : leur `lastmod` est la plus récente des deux dates (page / dernière annonce publiée). Automatique, donc sans dérive. |
+| `app/annonces/[id]/page.tsx` | `robots: { index: false, follow: true }` **dans la seule branche « bien de démo »** | les 10 fiches fictives sortent de l'index si Google en a crawlé. Les vraies annonces sortent de la fonction **avant** cette branche : leur metadata, leur `canonical` et leur `RealEstateListing` sont **strictement inchangés** (vérifié dans le HTML construit). |
+| `app/annonces/page.tsx` | `data-nosnippet` sur la `<section>` des placeholders | Google et les réponses génératives ne peuvent plus citer « Loft d'exception sur Bellecour — 1 250 000 € » comme une annonce de l'agence. **Zéro changement visuel**, zéro effet sur l'indexation de la page, et les 6 biens réels sont **au-dessus**, hors du bloc (vérifié par position dans le DOM rendu). |
+
+**Le volet GEO du jour est celui-là.** Aucun contenu nouveau n'a été écrit —
+c'est un run technique — mais la règle « ne jamais publier de fausse donnée »
+vaut autant pour ce qu'une IA peut citer que pour ce qu'un lecteur peut lire.
+Un moteur de réponse interrogé sur le catalogue de l'agence pouvait jusqu'à
+aujourd'hui reprendre une fiche inventée : `data-nosnippet` + `noindex` ferment
+les deux portes. `llms.txt`, lui, était déjà propre (il est généré depuis les
+vraies annonces) — **vérifié, pas supposé**.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi :**
+
+- **Ne pas supprimer `lib/mock-properties.ts` ni les 10 pages.** Elles
+  alimentent la grille et les filtres de `/annonces` (encart d'avertissement
+  compris) et la grille de la home quand le catalogue tombe sous 3 biens. Les
+  retirer, c'est toucher au **rendu** d'une page qui fonctionne et que le
+  client a validée — la consigne est de ne pas le faire. `noindex` +
+  `data-nosnippet` + sortie du sitemap règlent tout le volet SEO/GEO **sans
+  rien changer à l'écran**.
+- **Ne pas ajouter d'avertissement sur les 10 fiches de détail.** Ce serait la
+  bonne correction éditoriale (elles sont la seule surface où la fiction n'est
+  pas signalée), mais c'est une modification de rendu. → **à soumettre au
+  client**, noté en « Hypothèses à vérifier ».
+- **Ne pas déclencher le protocole « blocage technique d'indexation ».** Le
+  test profond est négatif pour la 4ᵉ fois (J+4) ; l'échéance posée le 13/09
+  est le **~27/09**. Rien à conclure avant.
+- **Ne pas traiter `/faire-gerer`** alors que sa SERP mesurée aujourd'hui est
+  ouverte (aucun des 9 résultats ne publie de tarif) : c'est un chantier de
+  **contenu**, et le run du jour devait être technique. Il part en tête du
+  backlog.
+- **Ne pas dériver le `lastmod` de `git log` au build.** Ce serait sans
+  entretien, mais Vercel clone en profondeur limitée : un `git log` y est peu
+  fiable et un build qui casse coûte plus cher que la table. La table a par
+  ailleurs le bon sens de panne — **l'oublier sous-déclare une modification
+  (bénin) ; c'est la sur-déclarer qui nuit**, et c'est ce qu'on vient de
+  supprimer.
+
+**Contrôles avant push** : `npx tsc --noEmit` propre ; `eslint` sans aucune
+remontée sur les 3 fichiers touchés ; `npm run build` = **82 pages**, identique
+à hier (aucune page créée ni supprimée). Vérifié **dans le HTML construit et
+sur un serveur de production local** (`next start`), pas dans le code :
+`sitemap.xml` servi = 51 URLs, **0 URL fictive**, 30 `lastmod` distincts ;
+`/annonces/lyon-2-bellecour-loft` sert `<meta name="robots" content="noindex,
+follow">` ; `/annonces/studio-a-vendre-villeurbanne-tolstoi` (bien réel) ne
+sert **aucun** `meta robots` et garde son `canonical` ; sur `/annonces`, la
+balise `data-nosnippet` s'ouvre **après** le dernier bien réel du DOM
+(position 29 214 contre 24 055) et avant le footer.
+
+---
 
 ### 2026-09-16 — Le blog cesse d'être une impasse : 9 articles s'ouvrent vers les pages stratégiques, et les articles « combien ça coûte » citent enfin le barème réel
 
@@ -1733,11 +1906,33 @@ depuis l'audit du 07/09.
 petits lots). Les pages qui manquaient le plus de liens entrants contextuels
 — `/honoraires` et les 3 pages quartiers — en ont désormais.
 
-**Angle du dernier run : maillage interne** (16/09). Angles précédents :
-contenu sur une page de fond (15/09, deux fois), données structurées (13/09),
-page « argent » (12/09), contenu blog (11/09). → **Le prochain run ne doit
-reprendre ni « maillage » ni « contenu de page ».** Deux candidats sérieux, dans
-cet ordre :
+~~Sortir les 10 fiches fictives de l'index + `lastmod` véridique~~ — **fait le
+2026-09-17** (sitemap 63 → 53 URLs, `noindex` sur les fiches de démo,
+`data-nosnippet` sur le bloc placeholders de `/annonces`, table `PAGE_LASTMOD`).
+Trouvé à l'étape 2, absent de tous les backlogs.
+
+**Angle du dernier run : technique** (17/09). Angles précédents : maillage
+interne (16/09), contenu sur une page de fond (15/09, deux fois), données
+structurées (13/09), page « argent » (12/09), contenu blog (11/09).
+→ **Le prochain run ne doit pas reprendre « technique ».** Le candidat n°1 est
+désormais **`/faire-gerer`** (voir ci-dessous) : c'est du contenu, et deux runs
+techniques se sont enchaînés au sens large (maillage puis sitemap).
+
+**NOUVEAU candidat n°1 — renforcer `/faire-gerer`** *(ouvert le 17/09)*.
+Mesuré aujourd'hui : la page fait **290 mots, 2 H2, aucun JSON-LD propre**
+(seulement le `RealEstateAgent` du gabarit) — c'est, rapportée à son enjeu, la
+page stratégique la plus faible du site depuis que
+`/agence-immobiliere-villeurbanne` a été reprise le 12/09. Et sa SERP, mesurée
+le même jour, est **ouverte pour la même raison que celles du 15/09 et du
+16/09** : les 9 résultats (Orpi Key Solutions, Laforêt, PagesJaunes ×2, Square
+Habitat, Manda, C&F Gestion, Immo de France, mairie.com) **ne publient aucun
+tarif**. Le site, lui, a le barème complet à un clic — et il a déjà écrit les
+bonnes phrases dans deux articles le 16/09. Angle : ce que coûte la gestion
+(6 % des encaissements, min. 25 €/lot, GLI 2,5 %, débours 20 €/an, 45 €/lot/an
+si courrier postal), ce que le mandat couvre, et le cas syndic. Ce chantier
+peut absorber le point 8 (baliser la page en `Service`) au passage.
+
+Les deux candidats posés le 16/09, qui restent valables ensuite :
 - **un run technique** — le point 8 (baliser `/faire-gerer`, `/recrutement`,
   `/annonces`) est petit mais c'est du confort ; plus utile serait de chercher
   **un blocage technique d'indexation** si le test profond est encore négatif
@@ -1885,6 +2080,31 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 ## Hypothèses à vérifier
 
+- 🔴 **Les 10 biens de démonstration — trois questions à poser au client**
+  *(17/09)*. Ce sont des placeholders inventés (`lib/mock-properties.ts`,
+  en-tête « à remplacer par data réelle ») qui restent **visibles** sur
+  `/annonces`, sous un encart honnête et sans lien cliquable. Le run a coupé
+  toute exposition aux moteurs (hors sitemap, `noindex`, `data-nosnippet`) et
+  **n'a rien changé à l'écran**, conformément à la consigne. Restent trois
+  décisions qui appartiennent au client :
+  1. **Garde-t-on des biens fictifs sur le site public ?** Avec 6 vraies
+     annonces, la grille se tient sans eux. Les retirer est un changement de
+     rendu, donc pas une décision de run.
+  2. **Si on les garde, faut-il un avertissement sur les fiches de détail ?**
+     Elles affichent « À vendre — 1 250 000 € » sans aucune mention de démo :
+     c'est la seule surface du site où la fiction n'est pas signalée. Elles ne
+     sont plus atteignables que par URL directe, mais l'incohérence reste.
+  3. **Le jour où de vrais mandats les remplacent**, trois choses se défont
+     ensemble : le `noindex` de `app/annonces/[id]/page.tsx`, le
+     `data-nosnippet` de `app/annonces/page.tsx`, et il faudra remettre ces
+     URLs dans le sitemap. Un commentaire le rappelle aux trois endroits.
+- **`PAGE_LASTMOD` (`app/sitemap.ts`) est un couplage manuel assumé**
+  *(17/09)* : quand un run modifie vraiment le contenu d'une page statique, il
+  doit avancer sa date dans cette table — comme le champ `updated` d'un
+  article. **Oublier est bénin** (Google recrawle quand même) ; ce qui nuisait,
+  et qui est corrigé, c'est de déclarer 21 pages modifiées à chaque
+  déploiement. Les articles de blog et les annonces ne sont pas concernés :
+  leurs dates sont déjà générées depuis leurs propres champs.
 - **Trois articles de blog citent désormais le BARÈME, en clair** *(16/09)* :
   `cout-gestion-locative` et
   `gestion-locative-villeurbanne-deleguer-ou-non` (gestion **6 %**, min. 25 €,
@@ -2106,6 +2326,21 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 *(rien à corriger de runs précédents : ce journal démarre aujourd'hui)*
 
+- **2026-09-17 — Neuf runs ont « vérifié le sitemap » sans jamais le lire.**
+  Du 07/09 au 16/09, chaque entrée de ce journal porte une ligne du type
+  « `sitemap.xml` = 60 / 61 / 63 URLs, `robots.txt` OK ». Le chiffre a même été
+  corrigé le 16/09 (61 → 63) — donc le fichier a été **recompté**, et toujours
+  pas **regardé**. En listant les URLs pour la première fois aujourd'hui, on
+  trouve que **10 d'entre elles décrivent des biens qui n'existent pas**, sur
+  un site dont la consigne client n°1 est « n'invente jamais ». Le défaut était
+  en ligne depuis l'ouverture du domaine.
+  Ce que ça a coûté : dix jours d'exposition, et un chantier trouvé par hasard
+  plutôt que par méthode.
+  → **Règle : un contrôle de routine qui rend toujours le même verdict doit
+  être approfondi ou supprimé.** « Combien d'URLs » n'est pas une mesure ;
+  « lesquelles, et que contiennent-elles » en est une. Corollaire pratique :
+  quand un audit se résume à un compteur, remplacer le compteur par une liste.
+
 - **2026-09-16 — Diagnostic de maillage faux, pris avant publication : le
   `grep` de code ne voit pas les liens de gabarit.** J'ai mesuré les liens
   entrants de chaque page stratégique avec un motif `href="/honoraires"` sur les
@@ -2201,6 +2436,45 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 ---
 
 ## Techniques apprises
+
+### 2026-09-17 — Méthode : auditer un site par ce qu'il déclare, et neutraliser sans supprimer
+
+Deux choses réutilisables sont sorties du run technique du jour.
+
+**1. L'audit « par déclaration » : partir du sitemap comme d'une liste, pas
+comme d'un compteur.** La procédure tient en quelques minutes et elle a trouvé
+ce que dix runs de lecture de code avaient manqué :
+
+1. `curl` le `sitemap.xml`, **extraire les `<loc>` et les lire une par une** ;
+2. télécharger **chaque** URL et en extraire mécaniquement : `<title>`, meta
+   description, `canonical`, meta `robots`, nombre de `<h1>`/`<h2>`, types
+   JSON-LD, nombre de mots rendus ;
+3. chercher les **anomalies de groupe**, pas les pages une par une — titres ou
+   descriptions dupliqués, `canonical` manquant, `lastmod` identiques,
+   pages anormalement courtes. **Les 10 fiches fictives se sont signalées
+   toutes seules : c'était le seul groupe sans `canonical`.**
+
+Le principe général : **les défauts d'un site se voient dans les écarts entre
+pages comparables**, pas dans la lecture d'une page isolée. Un tableau de 63
+lignes trié par colonne les fait apparaître en quelques secondes.
+
+**2. Neutraliser sans supprimer, quand la consigne est « ne rien casser ».**
+Face à un contenu qu'on ne doit pas montrer à Google mais qu'on n'a pas le
+droit de retirer de l'écran, trois leviers se combinent, du plus large au plus
+fin, et **aucun ne change le rendu** :
+
+| Levier | Ce qu'il fait | Ce qu'il ne fait pas |
+|---|---|---|
+| Retirer l'URL du `sitemap.xml` | on cesse de **soumettre** la page | ne la désindexe pas si elle est déjà connue |
+| `robots: { index: false, follow: true }` | la sort de l'index ; les liens qu'elle porte continuent de circuler | inutile si `robots.txt` bloque le crawl — **la page doit rester crawlable pour que le `noindex` soit lu** |
+| `data-nosnippet` sur une `<section>` | interdit l'usage de ce texte en extrait et dans les réponses génératives | ne désindexe pas la page, n'affecte pas son classement |
+
+Le troisième est le plus utile en GEO et le moins connu : il permet de laisser
+un bloc visible pour l'humain tout en le rendant **non citable** par une IA. Il
+n'est honoré que sur `div`, `span` et `section`. Le piège à éviter : vérifier
+**la position réelle dans le DOM rendu** de ce qu'on englobe — ici, s'assurer
+que les 6 vraies annonces sont bien **avant** l'ouverture de la section, sans
+quoi on rendrait le vrai catalogue non citable en voulant masquer la démo.
 
 ### 2026-09-16 — Méthode : un lien interne se justifie par la phrase, pas par la cible
 

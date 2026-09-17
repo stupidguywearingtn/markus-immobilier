@@ -50,6 +50,13 @@ export async function generateMetadata({
   return {
     title: `${property.title} — ${property.location}`,
     description: property.description.slice(0, 160),
+    // Ces fiches décrivent des biens FICTIFS (placeholders de démonstration) :
+    // prix, surfaces et descriptifs sont inventés. Elles ne sont liées depuis
+    // aucune page du site — seul le sitemap les exposait, il ne le fait plus.
+    // `noindex` les sort de l'index si Google en a déjà crawlé ; `follow`
+    // laisse remonter les liens qu'elles portent vers les vraies pages.
+    // À retirer le jour où ces placeholders sont remplacés par de vrais biens.
+    robots: { index: false, follow: true },
   };
 }
 

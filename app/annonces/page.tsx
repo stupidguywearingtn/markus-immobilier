@@ -57,7 +57,18 @@ export default async function AnnoncesPage({
       <ListingsByStatus transaction={filters.type} disponibles={disponibles} />
 
       {/* GRILLE + FILTRES (placeholders de présentation) */}
-      <section className="bg-blanc">
+      {/*
+        `data-nosnippet` : tout ce bloc décrit des biens FICTIFS (placeholders
+        de `lib/mock-properties.ts`). L'encart au-dessus le dit au lecteur, mais
+        un extrait de Google ou une réponse d'IA reprend des cartes isolées,
+        sans l'encart : « Loft d'exception sur Bellecour, 1 250 000 € » serait
+        alors présenté comme une annonce réelle de l'agence. L'attribut interdit
+        l'usage de ce texte en snippet et dans les réponses génératives ; il ne
+        change ni l'affichage, ni l'indexation de la page, ni les biens réels
+        (affichés plus haut par <ListingsByStatus />). À retirer le jour où ces
+        placeholders sont remplacés par de vrais mandats.
+      */}
+      <section className="bg-blanc" data-nosnippet>
         <div className="max-w-content mx-auto px-8 max-md:px-5 pt-10 pb-[120px] max-md:pb-[72px]">
           {LISTINGS_COMING_SOON && (
             <div className="mb-8 flex items-start gap-3.5 rounded-[14px] border border-amber-300/60 bg-amber-50 px-5 py-4">
