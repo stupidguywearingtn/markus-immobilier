@@ -640,7 +640,7 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
-### 2026-09-18 — `/faire-gerer` passe de 290 à 1 780 mots : ce que coûte vraiment la gestion d'un bien à Villeurbanne, et pourquoi un syndic n'affiche pas de prix
+### 2026-09-18 — `/faire-gerer` passe de 290 à 1 919 mots : ce que coûte vraiment la gestion d'un bien à Villeurbanne, et pourquoi un syndic n'affiche pas de prix
 
 **Pourquoi cette page.** Elle était, depuis le 12/09, la page stratégique la
 plus faible du site : **290 mots, 2 H2 décoratifs (« Une agence, deux métiers »,
@@ -726,8 +726,16 @@ description et le `Service` en même temps — ils ne peuvent pas se contredire.
 **OK** (82 pages, aucune régression), `npm run lint` **0 problème sur les trois
 fichiers touchés** (les 27 erreurs restantes sont préexistantes et vivent dans
 `studio/` et `scripts/`), `/honoraires`, `/gestion-locative` et la home
-toujours en **200**. Page rendue mesurée : **1 780 mots** (290 avant), **1 seul
-`<h1>`**, 4 JSON-LD propres.
+toujours en **200**. Page rendue mesurée : **1 919 mots** (290 avant, même
+méthode de comptage), **1 seul `<h1>`**, 4 JSON-LD propres.
+
+**Vérifié EN PRODUCTION après déploiement** (`curl -sL` sur
+`www.markusimmobilier.fr`, ~2 min après le push) : `/faire-gerer` sert bien
+**1 919 mots** (290 avant), ses **4 JSON-LD propres** (`Service`, `FAQPage` avec
+ses 6 `Question`, `HowTo` avec ses 3 `HowToStep`, `BreadcrumbList`), le
+`lastmod` du sitemap est passé au **2026-09-18**, la ligne `/faire-gerer` est
+bien dans `llms.txt`, et le contrôle de collage typographique ne trouve **aucun
+cas** sur la page servie. Le chantier est en ligne, pas seulement commité.
 
 **Ce que j'ai décidé de NE PAS faire, et pourquoi :**
 - **Ne pas inventer un tarif de syndic**, même « à partir de ». Le barème de
@@ -2114,7 +2122,7 @@ chercher un blocage d'indexation si le test profond est encore négatif après l
 `rentabilite-locative-lyon`** (point 2), qui est du contenu blog, donc pas deux
 runs de contenu d'affilée.
 
-~~**Candidat n°1 — renforcer `/faire-gerer`**~~ *(ouvert le 17/09)* — **FAIT le 2026-09-18** : 290 → 1 780 mots, 6 H2 en questions, chiffrage complet de la gestion sur un cas villeurbannais, volet syndic traité **sans inventer de tarif** (contrat type, forfait voté en AG, article 21), FAQ de 6 Q/R, `Service` + `FAQPage` + `HowTo` + `BreadcrumbList`, entrée `llms.txt` créée. Le point 8 (baliser la page en `Service`) est absorbé au passage. *(Texte d'origine conservé ci-dessous : son diagnostic de SERP reste la référence.)*
+~~**Candidat n°1 — renforcer `/faire-gerer`**~~ *(ouvert le 17/09)* — **FAIT le 2026-09-18** : 290 → 1 919 mots, 6 H2 en questions, chiffrage complet de la gestion sur un cas villeurbannais, volet syndic traité **sans inventer de tarif** (contrat type, forfait voté en AG, article 21), FAQ de 6 Q/R, `Service` + `FAQPage` + `HowTo` + `BreadcrumbList`, entrée `llms.txt` créée. Le point 8 (baliser la page en `Service`) est absorbé au passage. *(Texte d'origine conservé ci-dessous : son diagnostic de SERP reste la référence.)*
 
 **Diagnostic d'origine du 17/09.**
 Mesuré aujourd'hui : la page fait **290 mots, 2 H2, aucun JSON-LD propre**
