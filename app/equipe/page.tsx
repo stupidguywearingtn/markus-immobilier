@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { Reveal } from "@/components/reveal";
 import { PageHero } from "@/components/layout/page-hero";
 import { BuildingIllust } from "@/components/illustrations/building";
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
   description:
     "Les visages derrière Markus Immobilier. Tony et David Pistilli, à votre service à Lyon et Villeurbanne.",
   alternates: { canonical: "/equipe" },
+  ...shareMeta({
+    title: "Notre équipe — Markus Immobilier Villeurbanne",
+    description:
+      "Tony et David Pistilli, les conseillers de l'agence, avec leurs coordonnées directes.",
+    path: "/equipe",
+  }),
 };
 
 export default async function EquipePage() {

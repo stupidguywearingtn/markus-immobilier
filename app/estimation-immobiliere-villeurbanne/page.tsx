@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import {
@@ -37,12 +38,12 @@ export const metadata: Metadata = {
   description:
     "Estimation immobilière gratuite à Villeurbanne, basée sur les ventes réelles (DVF) : médiane 3 567 €/m² en 2025, repères par quartier, valeur de vente, loyer et rendement en moins de 2 minutes.",
   alternates: { canonical: "/estimation-immobiliere-villeurbanne" },
-  openGraph: {
+  ...shareMeta({
     title: "Estimation immobilière à Villeurbanne — gratuite en 2 min",
     description:
       "Combien vaut votre bien à Villeurbanne ? Repères par quartier calculés sur les ventes réelles, et estimation gratuite en moins de 2 minutes.",
-    url: "https://www.markusimmobilier.fr/estimation-immobiliere-villeurbanne",
-  },
+    path: "/estimation-immobiliere-villeurbanne",
+  }),
 };
 
 /** Étapes affichées ET reprises à l'identique dans le JSON-LD HowTo. */

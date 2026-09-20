@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { KeysIllust } from "@/components/illustrations/keys";
@@ -9,12 +10,12 @@ export const metadata: Metadata = {
   description:
     "Vendez votre appartement ou maison à Villeurbanne et Lyon au juste prix : estimation gratuite, accompagnement complet, délais maîtrisés. Agence indépendante Markus Immobilier.",
   alternates: { canonical: "/vendre" },
-  openGraph: {
+  ...shareMeta({
     title: "Vendre son bien à Villeurbanne & Lyon — Markus Immobilier",
     description:
       "Estimation, diagnostics, mise en valeur, négociation, signature : on sécurise chaque étape de votre vente.",
-    url: "https://www.markusimmobilier.fr/vendre",
-  },
+    path: "/vendre",
+  }),
 };
 
 export default function VendrePage() {

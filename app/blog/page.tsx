@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -12,12 +13,12 @@ export const metadata: Metadata = {
   description:
     "Conseils immobiliers pour vendre, acheter, estimer et investir à Lyon et Villeurbanne : prix, DPE, frais de notaire, gestion locative et marché local.",
   alternates: { canonical: "/blog" },
-  openGraph: {
+  ...shareMeta({
     title: "Blog immobilier Markus — conseils Lyon & Villeurbanne",
     description:
       "Vendre, acheter, estimer, investir : nos guides pour réussir votre projet immobilier.",
-    url: "https://www.markusimmobilier.fr/blog",
-  },
+    path: "/blog",
+  }),
 };
 
 const fmtDate = (iso: string) =>

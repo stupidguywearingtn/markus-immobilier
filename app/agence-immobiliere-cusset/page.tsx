@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, faqLd, serviceLd } from "@/components/seo/json-ld";
@@ -53,11 +54,11 @@ export const metadata: Metadata = {
   title: "Agence immobilière Cusset (Villeurbanne) — prix au m² réels",
   description: `Prix médian à Cusset – Bonnevay : ${fmtM2(Q.median)} sur les ${Q.n} ventes d'appartements de 2025 (base DVF), ${fmtPct(ECART)} vs Villeurbanne. Le quartier métro A le plus accessible de la ville. Estimation gratuite Markus Immobilier.`,
   alternates: { canonical: "/agence-immobiliere-cusset" },
-  openGraph: {
+  ...shareMeta({
     title: "Agence immobilière Cusset — Markus Immobilier",
     description: `Prix au m² réels à Cusset (${fmtM2(Q.median)}, ventes 2025), estimation gratuite, vente, achat et gestion locative.`,
-    url: "https://www.markusimmobilier.fr/agence-immobiliere-cusset",
-  },
+    path: "/agence-immobiliere-cusset",
+  }),
 };
 
 /** FAQ visible — le JSON-LD FAQPage est généré depuis ce même tableau. */

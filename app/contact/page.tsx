@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
 import { PageHero } from "@/components/layout/page-hero";
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
   description:
     "Contactez Markus Immobilier : 87 rue Édouard Vaillant, 69100 Villeurbanne. Téléphone 04 78 37 13 67, email, formulaire et plan d'accès.",
   alternates: { canonical: "/contact" },
+  ...shareMeta({
+    title: "Contacter Markus Immobilier — Villeurbanne",
+    description:
+      "87 rue Édouard Vaillant, 69100 Villeurbanne. 04 78 37 13 67, formulaire, horaires et plan d'accès.",
+    path: "/contact",
+  }),
 };
 
 const contactBreadcrumbLd = {

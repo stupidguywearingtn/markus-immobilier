@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { KeysIllust } from "@/components/illustrations/keys";
@@ -9,12 +10,12 @@ export const metadata: Metadata = {
   description:
     "Estimation immobilière gratuite à Lyon, basée sur les ventes réelles : valeur de vente, loyer et rendement. Rapport détaillé en moins de 2 minutes avec Markus Immobilier.",
   alternates: { canonical: "/estimation-immobiliere-lyon" },
-  openGraph: {
+  ...shareMeta({
     title: "Estimation immobilière à Lyon — gratuite en 2 min",
     description:
       "Estimez votre bien à Lyon gratuitement, à partir des transactions réelles du secteur.",
-    url: "https://www.markusimmobilier.fr/estimation-immobiliere-lyon",
-  },
+    path: "/estimation-immobiliere-lyon",
+  }),
 };
 
 export default function EstimationLyonPage() {

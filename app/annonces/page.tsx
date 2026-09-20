@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
@@ -21,6 +22,12 @@ export const metadata: Metadata = {
   description:
     "Sélection de biens à la vente et à la location à Lyon et Villeurbanne. Filtrez par type, localisation, surface, budget, pièces.",
   alternates: { canonical: "/annonces" },
+  ...shareMeta({
+    title: "Nos annonces — acheter ou louer à Lyon & Villeurbanne",
+    description:
+      "Les biens à la vente et à la location de l'agence, filtrables par type, secteur, surface et budget.",
+    path: "/annonces",
+  }),
 };
 
 export default async function AnnoncesPage({

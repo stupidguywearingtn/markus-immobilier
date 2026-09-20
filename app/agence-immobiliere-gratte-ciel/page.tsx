@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, faqLd, serviceLd } from "@/components/seo/json-ld";
@@ -46,11 +47,11 @@ export const metadata: Metadata = {
   title: "Agence immobilière Gratte-Ciel (Villeurbanne) — prix au m² réels",
   description: `Prix médian à Gratte-Ciel : ${fmtM2(Q.median)} sur les ${Q.n} ventes d'appartements de 2025 (base DVF), soit ${fmtPct(ECART)} vs Villeurbanne. Markus Immobilier : estimation gratuite, vente, achat, location et gestion dans le quartier.`,
   alternates: { canonical: "/agence-immobiliere-gratte-ciel" },
-  openGraph: {
+  ...shareMeta({
     title: "Agence immobilière Gratte-Ciel — Markus Immobilier",
     description: `Prix au m² réels à Gratte-Ciel (${fmtM2(Q.median)}, ventes 2025), estimation gratuite, vente, achat et gestion locative.`,
-    url: "https://www.markusimmobilier.fr/agence-immobiliere-gratte-ciel",
-  },
+    path: "/agence-immobiliere-gratte-ciel",
+  }),
 };
 
 /** FAQ visible — le JSON-LD FAQPage est généré depuis ce même tableau. */

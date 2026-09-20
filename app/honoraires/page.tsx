@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
   description:
     "Barème détaillé Transaction, Location et Gestion locative. Honoraires Markus Immobilier à Lyon et Villeurbanne, en toute transparence.",
   alternates: { canonical: "/honoraires" },
+  ...shareMeta({
+    title: "Nos honoraires — barème public complet",
+    description:
+      "Vente, location, gestion locative : le barème détaillé de Markus Immobilier, affiché en toutes lettres, et qui paie quoi.",
+    path: "/honoraires",
+  }),
 };
 
 const TRANSACTION = [

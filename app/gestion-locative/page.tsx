@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
 import { PlantIllust } from "@/components/illustrations/plant";
@@ -9,12 +10,12 @@ export const metadata: Metadata = {
   description:
     "Confiez la gestion locative de votre bien à Villeurbanne et Lyon : sélection du locataire, loyers, quittances, sinistres, obligations légales. Tranquillité totale avec Markus Immobilier.",
   alternates: { canonical: "/gestion-locative" },
-  openGraph: {
+  ...shareMeta({
     title: "Gestion locative à Villeurbanne & Lyon — Markus Immobilier",
     description:
       "On gère votre bien locatif de A à Z : locataire, loyers, sinistres, conformité.",
-    url: "https://www.markusimmobilier.fr/gestion-locative",
-  },
+    path: "/gestion-locative",
+  }),
 };
 
 export default function GestionLocativePage() {

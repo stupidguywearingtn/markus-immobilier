@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   description:
     "Achetez votre appartement ou maison à Lyon et Villeurbanne avec une agence locale : recherche ciblée, conseils acquéreur, financement, frais de notaire. Markus Immobilier.",
   alternates: { canonical: "/acheter" },
-  openGraph: {
+  ...shareMeta({
     title: "Acheter à Lyon & Villeurbanne — Markus Immobilier",
     description:
       "Recherche ciblée, conseils d'acquéreur et accompagnement jusqu'à la signature.",
-    url: "https://www.markusimmobilier.fr/acheter",
-  },
+    path: "/acheter",
+  }),
 };
 
 export default function AcheterPage() {

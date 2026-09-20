@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, faqLd, serviceLd } from "@/components/seo/json-ld";
@@ -33,12 +34,12 @@ export const metadata: Metadata = {
   description:
     "Markus Immobilier, agence indépendante à Villeurbanne (87 rue Édouard Vaillant) : barème d'honoraires public, prix au m² par quartier calculés sur les ventes réelles, estimation gratuite en 2 minutes.",
   alternates: { canonical: "/agence-immobiliere-villeurbanne" },
-  openGraph: {
+  ...shareMeta({
     title: "Agence immobilière à Villeurbanne — Markus Immobilier",
     description:
       "Agence indépendante au cœur de Villeurbanne : honoraires publiés, prix par quartier, vente, achat, location et gestion.",
-    url: "https://www.markusimmobilier.fr/agence-immobiliere-villeurbanne",
-  },
+    path: "/agence-immobiliere-villeurbanne",
+  }),
 };
 
 /** FAQ visible — le JSON-LD FAQPage est généré depuis ce même tableau. */

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
 import { JsonLd, breadcrumbLd, faqLd, serviceLd } from "@/components/seo/json-ld";
@@ -60,11 +61,11 @@ export const metadata: Metadata = {
   title: "Agence immobilière Charpennes (Villeurbanne) — prix et rendement réels",
   description: `Prix médian à Charpennes – Tonkin : ${fmtM2(Q.median)} sur les ${Q.n} ventes d'appartements de 2025 (base DVF), ${fmtPct(Q.vs2022)} depuis 2022. Markus Immobilier : estimation gratuite, vente, location et gestion locative.`,
   alternates: { canonical: "/agence-immobiliere-charpennes" },
-  openGraph: {
+  ...shareMeta({
     title: "Agence immobilière Charpennes — Markus Immobilier",
     description: `Prix au m² réels à Charpennes (${fmtM2(Q.median)}, ventes 2025), rendement locatif chiffré, estimation gratuite.`,
-    url: "https://www.markusimmobilier.fr/agence-immobiliere-charpennes",
-  },
+    path: "/agence-immobiliere-charpennes",
+  }),
 };
 
 /** FAQ visible — le JSON-LD FAQPage est généré depuis ce même tableau. */

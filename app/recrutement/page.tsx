@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
 import { Button, ArrowRight } from "@/components/ui/button";
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   description:
     "Agents commerciaux indépendants à Lyon et Villeurbanne : outils innovants, accompagnement, communauté. Rejoignez une agence qui investit dans ses talents.",
   alternates: { canonical: "/recrutement" },
+  ...shareMeta({
+    title: "Rejoindre Markus Immobilier — Villeurbanne & Lyon",
+    description:
+      "Agents commerciaux indépendants : outils, accompagnement et communauté dans une agence indépendante de Villeurbanne.",
+    path: "/recrutement",
+  }),
 };
 
 const ATOUTS = [

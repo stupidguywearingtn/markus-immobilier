@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { QuartierPrixTable } from "@/components/seo/quartier-prix";
@@ -16,12 +17,12 @@ export const metadata: Metadata = {
   description:
     "Estimation immobilière gratuite et sans engagement à Lyon et Villeurbanne : valeur de vente, loyer mensuel, taux de rendement. Rapport détaillé envoyé par email en moins de 2 minutes.",
   alternates: { canonical: "/estimation" },
-  openGraph: {
+  ...shareMeta({
     title: "Estimation de bien à Lyon & Villeurbanne — gratuite en 2 min",
     description:
       "Valeur de vente, loyer, rendement : votre rapport d'estimation en moins de 2 minutes. Gratuit, sans engagement.",
-    url: "https://www.markusimmobilier.fr/estimation",
-  },
+    path: "/estimation",
+  }),
 };
 
 // JSON-LD : Service (l'outil d'estimation, différenciateur) + fil d'Ariane.

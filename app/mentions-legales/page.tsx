@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { PageHero } from "@/components/layout/page-hero";
 import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section";
 
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   description:
     "Mentions légales du site markusimmobilier.fr : éditeur, carte professionnelle, garantie financière, assurance RCP, médiation, hébergement.",
   alternates: { canonical: "/mentions-legales" },
+  ...shareMeta({
+    title: "Mentions légales — Markus Immobilier",
+    description:
+      "Éditeur, carte professionnelle, garantie financière, assurance RCP, médiation et hébergement du site.",
+    path: "/mentions-legales",
+  }),
 };
 
 export default function MentionsLegalesPage() {

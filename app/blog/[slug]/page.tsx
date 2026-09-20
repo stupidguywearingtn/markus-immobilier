@@ -6,6 +6,7 @@ import { Button, ArrowRight } from "@/components/ui/button";
 import { ArticleBody } from "@/components/blog/article-body";
 import { JsonLd, breadcrumbLd, BASE } from "@/components/seo/json-ld";
 import { ARTICLES, getArticle, getRelatedArticles } from "@/lib/blog";
+import { shareArticleMeta } from "@/lib/seo/share";
 
 export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
@@ -19,18 +20,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) return {};
-  const url = `${BASE}/blog/${a.slug}`;
   return {
     title: a.title,
     description: a.metaDescription,
     alternates: { canonical: `/blog/${a.slug}` },
-    openGraph: {
-      type: "article",
+    ...shareArticleMeta({
       title: a.title,
       description: a.metaDescription,
-      url,
+      path: `/blog/${a.slug}`,
       publishedTime: a.date,
-    },
+      modifiedTime: a.updated ?? a.date,
+    }),
   };
 }
 

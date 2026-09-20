@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/reveal";
@@ -76,12 +77,12 @@ export const metadata: Metadata = {
     GESTION_AN_TOTAL,
   )} par an sur un appartement loué au loyer médian de la commune. Syndic de copropriété, étude chiffrée sous 48h ouvrées.`,
   alternates: { canonical: "/faire-gerer" },
-  openGraph: {
+  ...shareMeta({
     title: "Faire gérer votre bien — gestion locative & syndic à Villeurbanne",
     description:
       "Ce que coûte réellement la gestion d'un bien locatif à Villeurbanne, barème public à l'appui, et comment est fixée la rémunération d'un syndic de copropriété.",
-    url: "https://www.markusimmobilier.fr/faire-gerer",
-  },
+    path: "/faire-gerer",
+  }),
 };
 
 /**

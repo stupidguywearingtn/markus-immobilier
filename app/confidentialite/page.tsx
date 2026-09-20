@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { PageHero } from "@/components/layout/page-hero";
 import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section";
 
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   description:
     "Comment Markus Immobilier collecte, traite et protège vos données personnelles, conformément au RGPD.",
   alternates: { canonical: "/confidentialite" },
+  ...shareMeta({
+    title: "Politique de confidentialité — Markus Immobilier",
+    description:
+      "Comment l'agence collecte, traite et protège vos données personnelles, conformément au RGPD.",
+    path: "/confidentialite",
+  }),
 };
 
 export default function ConfidentialitePage() {

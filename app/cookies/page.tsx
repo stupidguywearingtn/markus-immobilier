@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { PageHero } from "@/components/layout/page-hero";
 import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section";
 
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   description:
     "Cookies utilisés par markusimmobilier.fr et comment les gérer dans votre navigateur.",
   alternates: { canonical: "/cookies" },
+  ...shareMeta({
+    title: "Politique de cookies — Markus Immobilier",
+    description:
+      "Les cookies utilisés par markusimmobilier.fr et comment les gérer depuis votre navigateur.",
+    path: "/cookies",
+  }),
 };
 
 export default function CookiesPage() {

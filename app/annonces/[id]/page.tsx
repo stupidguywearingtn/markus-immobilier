@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/seo/share";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -34,13 +35,12 @@ export async function generateMetadata({
       title: { absolute: listing.seo.title },
       description: listing.seo.description,
       alternates: { canonical: `/annonces/${listing.slug}` },
-      openGraph: {
-        type: "website",
+      ...shareMeta({
         title: listing.seo.title,
         description: listing.seo.description,
-        url: `https://www.markusimmobilier.fr/annonces/${listing.slug}`,
+        path: `/annonces/${listing.slug}`,
         images: listing.photos.map((p) => ({ url: p.src, alt: p.alt })),
-      },
+      }),
     };
   }
 
