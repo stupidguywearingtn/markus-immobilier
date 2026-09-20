@@ -808,6 +808,30 @@ identiques sur les 51 pages**.
 - **Pas de chantier de contenu aujourd'hui** : le run du 18/09 en était un, et
   celui du 19/09 n'a pas eu lieu — l'alternance s'applique quand même.
 
+**Vérification en production, faite le jour même (2026-09-20, après déploiement
+Vercel).** Les 53 URLs du sitemap re-téléchargées et relues une par une :
+
+- **`og:image` : 53/53** (contre 14/51 avant le run).
+- **`og:site_name` et `og:locale` : 53/53.**
+- **`og:url` égale le `canonical` sur les 53 pages** — plus aucune page ne se
+  déclare comme la home.
+- **`article:modified_time` : 26/26 articles**, et il **correspond au
+  `dateModified` du JSON-LD** (vérifié sur `cout-gestion-locative` 2026-09-16,
+  `charges-copropriete` 2026-03-05, `estimation-en-ligne-ou-agence`
+  2026-09-11).
+- **`twitter:title` : 53 valeurs distinctes** là où le site en servait **une
+  seule** pour toutes ses pages.
+- **Le rendu n'a pas bougé** : les 23 articles téléchargés avant le push ont été
+  recomptés après — **nombre de mots rendus identique au mot près sur les 23**.
+
+Note d'outillage : deux téléchargements sur 53 ont échoué en transit (`/blog` et
+`blog/gestion-locative-villeurbanne-deleguer-ou-non`, 0 octet) puis ont répondu
+200 à la reprise. Ce n'est pas le site, c'est le proxy du conteneur — **un
+audit de masse doit vérifier que chaque fichier est non vide avant de conclure**,
+sinon il compte une page saine comme absente. Le même symptôme (`000`) s'était
+produit plus tôt dans le run sur le PDF du barème, qui se télécharge
+parfaitement à la seconde tentative.
+
 ### 2026-09-18 — `/faire-gerer` passe de 290 à 1 919 mots : ce que coûte vraiment la gestion d'un bien à Villeurbanne, et pourquoi un syndic n'affiche pas de prix
 
 **Pourquoi cette page.** Elle était, depuis le 12/09, la page stratégique la
