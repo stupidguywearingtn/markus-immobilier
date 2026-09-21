@@ -42,6 +42,14 @@
   profonde est **négatif à J+8** — **échéance du protocole : ~27/09**, soit le
   prochain dimanche ; négatif après cette date, la consigne écrite le 13/09
   s'applique : arrêter d'écrire et chercher un blocage technique.
+- ✅ **Vérifié en production après déploiement** (Vercel a mis ~19 tentatives de
+  polling, soit quelques minutes) : `/gestion-locative` sert bien **1 780 mots**,
+  1 `<h1>`, 6 H2, les 4 JSON-LD (`RealEstateAgent`, `Service`, `FAQPage`,
+  `BreadcrumbList`), une **correspondance FAQPage ↔ texte visible sans écart**,
+  le canonical et l'`og:url` sur la bonne page, une `og:image`, et la date
+  visible au 21/09. `llms.txt` en ligne porte la nouvelle entrée, le sitemap
+  reste à **53 URLs** avec `lastmod` du 21/09 sur cette page. Aucune espace
+  perdue au rendu sur le HTML servi.
 - **Nouvelle SERP, sur le créneau du chantier du jour** : « gestion locative
   Villeurbanne tarif honoraires ». Neuf résultats, **aucun villeurbannais** —
   Oqoro, BailFacile, Manda, Foncia, Imodirect, Plusse, Flatlooker, louer-et-gerer,
