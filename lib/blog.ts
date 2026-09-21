@@ -359,7 +359,7 @@ export const ARTICLES: Article[] = [
     internalHref: "/gestion-locative",
     internalLabel: "Découvrir notre gestion locative",
     blocks: [
-      { type: "p", text: "Gérer un bien en location prend du temps et demande de la rigueur juridique. Voici comment trancher." },
+      { type: "p", text: "Gérer un bien en location prend du temps et demande de la rigueur juridique. Voici comment trancher. Pour l'arbitrage chiffré — ce que la délégation coûte réellement après impôt sur un appartement villeurbannais, et ce que le bailleur assume seul — la page [déléguer ou gérer seul : le calcul](/gestion-locative) le détaille." },
       { type: "h2", text: "Ce que fait une agence à votre place" },
       { type: "ul", items: [
         "Recherche et sélection du locataire (solvabilité, dossier).",
