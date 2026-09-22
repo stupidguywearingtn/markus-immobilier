@@ -903,25 +903,46 @@ site hors blog n'a bougé d'un mot.
 Ni l'outil d'estimation, ni le sitemap, ni les données structurées, ni
 `llms.txt` (aucune page nouvelle : rien à y déclarer).
 
-⏳ **Déploiement : non confirmé à la clôture de ce run.** Le commit `cc3c4c9`
-est bien sur `main` (auteur et committer « Yanis Ouammou », vérifiés côté
-GitHub), mais **55 minutes après le push la production servait toujours
-l'ancien bloc « À lire aussi »** — `/blog/diagnostics-obligatoires-vente`
-renvoyait encore `taxe-fonciere-vente-qui-paie` + `vendre-vite-lyon`, et aucun
-des 11 liens de corps. Vérifié avec un paramètre anti-cache à chaque tentative,
-donc ce n'est pas un cache de CDN. Le dépôt n'a **ni `.github/workflows` ni
-`vercel.json`** : le déploiement passe par l'intégration GitHub de Vercel, qui
-n'est pas observable depuis ce runner. Pour mémoire, le run du 21/09 voyait sa
-mise en ligne en quelques minutes.
-→ **Premier point du run du 23/09**, avant tout autre chose : vérifier que
-`cc3c4c9` est bien en ligne (chercher `href="/blog/loi-carrez-surface"` dans
-`/blog/diagnostics-obligatoires-vente`). Si ce n'est toujours pas le cas, le
-sujet n'est **pas** SEO : c'est un déploiement Vercel bloqué ou en échec, à
-remonter au client — lui seul voit le tableau de bord Vercel. Ne rien
-recommitter en attendant, et surtout ne pas repousser le même chantier en
-croyant qu'il a échoué : le code est juste et vérifié sur le build local.
+✅ **Vérifié en production après déploiement.** La mise en ligne a pris
+**~1 h 15** après le push (contre quelques minutes les jours précédents) —
+long, mais elle a fini par se faire ; rien à remonter au client de ce côté. Le
+`git push` a été le seul geste nécessaire.
 
-### 2026-09-21 — `/gestion-locative` : l'arbitrage « déléguer ou gérer seul » chiffré, et le fait que personne ne publie — au loyer médian villeurbannais, les honoraires de gestion ne sont **pas** déductibles
+Relecture des **26 articles téléchargés un par un depuis la production**, avec
+un paramètre anti-cache sur chaque requête :
+
+- **liens entrants inter-articles : minimum 2, maximum 9, aucun article à
+  zéro** — contre 13 articles à une seule page entrante (`/blog`) ce matin.
+  Le cycle fonctionne exactement comme simulé ;
+- **zéro markdown brut** dans le texte visible des 26 articles (recherche des
+  sous-chaînes `](` et `**`) : les 5 liens qui s'affichaient en clair au
+  premier rendu sont bien rendus en `<a href>` ;
+- **les 11 liens du jour sont tous servis**, avec les bonnes ancres —
+  `achat-immobilier-lyon-checklist` en porte 5, `diagnostics-obligatoires-vente`
+  et `faire-offre-achat` 2 chacun, les trois autres 1 ;
+- **JSON-LD inchangé** : types identiques, et `dateModified` toujours égal à
+  `datePublished` sur les articles touchés (12/05, 23/06, 05/05) — aucune date
+  gonflée, conformément à la décision ci-dessus.
+
+**Non-régression hors blog, mesurée sur les mêmes pages qu'au début du run** :
+`/honoraires` 1 054 mots, `/gestion-locative` 1 780, `/faire-gerer` 1 832,
+`/estimation-immobiliere-villeurbanne` 1 620, `/blog` 989, home 1 351 —
+**identique au mot près** à la mesure d'avant chantier. `sitemap.xml` toujours
+à **53 URLs**. Aucune page hors blog n'a bougé.
+
+⚠️ **Un troisième piège d'instrument, dans la vérification elle-même.** La
+première passe de contrôle hors blog a rendu `/faire-gerer` = 1 780 mots
+(exactement la valeur de `/gestion-locative`) et la home = 989 (celle de
+`/blog`). Cause : `curl -o p.html` avait échoué sur ces deux URLs et **le
+fichier de la page précédente était encore là**, donc le script a mesuré deux
+fois la même page sans rien signaler. → **Règle : après un téléchargement,
+vérifier que le fichier a bien été réécrit (`rm` avant, test de taille après)
+avant de mesurer quoi que ce soit.** Deux valeurs identiques sur deux pages
+différentes sont un signal d'alerte, pas une coïncidence. C'est le troisième
+piège d'outillage de la journée, après le `pkill` qui tuait son propre shell et
+le moteur de recherche sans recherche exacte.
+
+### 2026-09-21### 2026-09-21 — `/gestion-locative` : l'arbitrage « déléguer ou gérer seul » chiffré, et le fait que personne ne publie — au loyer médian villeurbannais, les honoraires de gestion ne sont **pas** déductibles
 
 **Ce qui a décidé du chantier.** Candidat ouvert le 18/09 et arrivé en tête du
 backlog : la page reçoit un lien sitewide depuis le footer, et elle servait
