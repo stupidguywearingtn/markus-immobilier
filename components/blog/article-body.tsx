@@ -4,24 +4,61 @@ import type { Block } from "@/lib/blog";
 
 /**
  * Marqueurs inline reconnus dans le texte des articles :
- *   **gras**            → <strong>
- *   [texte](/chemin)    → <Link> interne
- *   [texte](https://…)  → <a> externe (nouvel onglet, rel sûr)
+ *   **gras**              → <strong>
+ *   [texte](/chemin)      → <Link> interne
+ *   [texte](https://…)    → <a> externe (nouvel onglet, rel sûr)
+ *   **[texte](/chemin)**  → le même lien, en gras
  *
  * Le href doit commencer par « / » ou « http(s):// » et ne contient ni espace
  * ni parenthèse fermante : une phrase qui écrit « … (voir plus bas) » après des
  * crochets ne peut donc pas être capturée par erreur.
+ *
+ * ⚠️ L'ordre des alternatives compte, et il a déjà coûté un bug (22/09/2026) :
+ * `**[DPE](/blog/…)**` ne contient aucune `*` entre ses deux paires, donc
+ * l'alternative « gras » le capturait en entier et l'affichait tel quel —
+ * crochets et URL visibles par le lecteur. La forme « lien en gras » doit donc
+ * rester **en premier**, sinon le markdown ressort brut à l'écran. Vérifier
+ * toute modification de cette regex sur le HTML rendu, jamais sur le source.
  */
 const INLINE_RE =
-  /(\*\*[^*]+\*\*|\[[^\]\n]+\]\((?:\/|https?:\/\/)[^)\s]+\))/g;
+  /(\*\*\[[^\]\n]+\]\((?:\/|https?:\/\/)[^)\s]+\)\*\*|\*\*[^*]+\*\*|\[[^\]\n]+\]\((?:\/|https?:\/\/)[^)\s]+\))/g;
 const LINK_RE = /^\[([^\]\n]+)\]\(((?:\/|https?:\/\/)[^)\s]+)\)$/;
+const BOLD_LINK_RE =
+  /^\*\*\[([^\]\n]+)\]\(((?:\/|https?:\/\/)[^)\s]+)\)\*\*$/;
 
 /** Lien de corps d'article : texte anthracite, soulignement sauge (accent). */
 const LINK_CLASS =
   "text-anthracite font-medium underline decoration-sauge decoration-2 underline-offset-[3px] hover:decoration-anthracite transition-colors";
+/** Même lien, au poids du <strong> voisin (listes « terme : définition »). */
+const LINK_CLASS_BOLD = LINK_CLASS.replace("font-medium", "font-semibold");
+
+function link(
+  key: number,
+  label: string,
+  href: string,
+  className: string,
+): ReactNode {
+  return href.startsWith("/") ? (
+    <Link key={key} href={href} className={className}>
+      {label}
+    </Link>
+  ) : (
+    <a
+      key={key}
+      href={href}
+      className={className}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {label}
+    </a>
+  );
+}
 
 function inline(text: string): ReactNode[] {
   return text.split(INLINE_RE).map((part, i) => {
+    const bold = BOLD_LINK_RE.exec(part);
+    if (bold) return link(i, bold[1], bold[2], LINK_CLASS_BOLD);
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
         <strong key={i} className="font-semibold text-anthracite">
@@ -29,25 +66,8 @@ function inline(text: string): ReactNode[] {
         </strong>
       );
     }
-    const link = LINK_RE.exec(part);
-    if (link) {
-      const [, label, href] = link;
-      return href.startsWith("/") ? (
-        <Link key={i} href={href} className={LINK_CLASS}>
-          {label}
-        </Link>
-      ) : (
-        <a
-          key={i}
-          href={href}
-          className={LINK_CLASS}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {label}
-        </a>
-      );
-    }
+    const plain = LINK_RE.exec(part);
+    if (plain) return link(i, plain[1], plain[2], LINK_CLASS);
     return <span key={i}>{part}</span>;
   });
 }

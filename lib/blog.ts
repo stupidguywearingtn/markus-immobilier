@@ -315,7 +315,7 @@ export const ARTICLES: Article[] = [
       ] },
       { type: "p", text: "Les logements F et G subissent par ailleurs un gel des loyers (pas d'augmentation tant que le bien reste une passoire)." },
       { type: "h2", text: "Et pour vendre ?" },
-      { type: "p", text: "La vente d'une passoire thermique reste autorisée, mais un audit énergétique est obligatoire pour les biens classés F ou G. Dans tous les cas, un mauvais DPE entraîne une décote : les acheteurs anticipent les travaux." },
+      { type: "p", text: "La vente d'une passoire thermique reste autorisée, mais un audit énergétique est obligatoire pour les biens classés F ou G — il s'ajoute aux [diagnostics déjà exigés avant toute vente](/blog/diagnostics-obligatoires-vente). Dans tous les cas, un mauvais DPE entraîne une décote : les acheteurs anticipent les travaux." },
     ],
   },
   {
@@ -333,14 +333,14 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Avant toute vente, le vendeur doit fournir un dossier de diagnostics techniques (DDT). Les anticiper évite de retarder la signature." },
       { type: "h2", text: "Les principaux diagnostics" },
       { type: "ul", items: [
-        "**DPE** : performance énergétique (valable 10 ans).",
+        "**[DPE](/blog/dpe-2026-ce-qui-change)** : performance énergétique (valable 10 ans).",
         "**Amiante** : pour les biens dont le permis est antérieur à juillet 1997.",
         "**Plomb (CREP)** : logements construits avant 1949.",
         "**Électricité et gaz** : si l'installation a plus de 15 ans.",
         "**État des risques (ERP)** : risques naturels, miniers, technologiques (valable 6 mois).",
         "**Termites** : dans les zones concernées par arrêté préfectoral.",
         "**Assainissement** : pour les installations non collectives.",
-        "**Loi Carrez** : mesurage de la surface en copropriété.",
+        "**[Loi Carrez](/blog/loi-carrez-surface)** : mesurage de la surface en copropriété.",
       ] },
       { type: "h2", text: "Le bon réflexe" },
       { type: "p", text: "Faites réaliser les diagnostics avant de mettre en vente : un dossier complet rassure l'acheteur et accélère la transaction." },
@@ -694,19 +694,19 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Acheter est un parcours en plusieurs étapes. Cette check-list vous évite les mauvaises surprises." },
       { type: "h2", text: "Avant de chercher" },
       { type: "ul", items: [
-        "**Définir son budget** : capacité d'emprunt, apport, et frais de notaire (≈ 7-8 % dans l'ancien).",
+        "**Définir son budget** : [capacité d'emprunt](/blog/capacite-emprunt-immobilier), apport, et [frais de notaire](/blog/frais-de-notaire-lyon-2026) (≈ 7-8 % dans l'ancien).",
         "**Lister ses critères** : secteur, surface, étage, extérieur, transports.",
       ] },
       { type: "h2", text: "Pendant les visites" },
       { type: "ul", items: [
         "Vérifier l'**état réel** (humidité, isolation, luminosité).",
-        "Demander le **DPE**, le montant des **charges** et les **travaux votés** en copropriété.",
+        "Demander le **DPE**, le montant des **[charges](/blog/charges-copropriete)** et les **travaux votés** en copropriété.",
         "Se renseigner sur le **quartier** (nuisances, projets urbains).",
       ] },
       { type: "h2", text: "Au moment d'acheter" },
       { type: "ul", items: [
-        "Faire une **offre** au juste prix.",
-        "Signer le **compromis** (délai de rétractation de 10 jours).",
+        "Faire une **[offre](/blog/faire-offre-achat)** au juste prix.",
+        "Signer le **[compromis](/blog/compromis-de-vente-delais)** (délai de rétractation de 10 jours).",
         "Obtenir son **prêt**, puis signer l'**acte authentique** chez le notaire.",
       ] },
       { type: "h2", text: "Acheter accompagné" },
@@ -727,7 +727,7 @@ export const ARTICLES: Article[] = [
     blocks: [
       { type: "p", text: "**Le propriétaire au 1er janvier paie la taxe foncière de toute l'année.** C'est la règle légale : même si vous vendez en mars, c'est vous (le vendeur) qui recevez l'avis et qui êtes redevable pour l'année entière auprès du fisc." },
       { type: "h2", text: "Le prorata, en pratique" },
-      { type: "p", text: "Dans les faits, la plupart des compromis de vente prévoient un **partage au prorata** : l'acheteur rembourse au vendeur la part correspondant à la période où il sera propriétaire. Ce n'est pas une obligation légale, mais un accord privé inscrit dans l'acte — à négocier au moment de la vente." },
+      { type: "p", text: "Dans les faits, la plupart des [compromis de vente](/blog/compromis-de-vente-delais) prévoient un **partage au prorata** : l'acheteur rembourse au vendeur la part correspondant à la période où il sera propriétaire. Ce n'est pas une obligation légale, mais un accord privé inscrit dans l'acte — à négocier au moment de la vente." },
       { type: "h2", text: "Exemple" },
       { type: "p", text: "Taxe foncière annuelle de 1 200 €, vente signée le 1er juillet. Le vendeur a payé l'année entière ; l'acheteur lui rembourse 6 mois, soit 600 €." },
       { type: "h2", text: "À retenir" },
@@ -757,7 +757,7 @@ export const ARTICLES: Article[] = [
         "**Exonération totale d'impôt sur le revenu à partir de 22 ans** de détention.",
         "**Exonération des prélèvements sociaux à partir de 30 ans.**",
       ] },
-      { type: "p", text: "Les travaux et les frais d'acquisition viennent réduire la plus-value imposable." },
+      { type: "p", text: "Les travaux et les [frais d'acquisition](/blog/frais-de-notaire-lyon-2026) viennent réduire la plus-value imposable." },
     ],
   },
   {
@@ -870,9 +870,9 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Le montant" },
       { type: "p", text: "Vous pouvez proposer au prix ou en dessous. Une offre trop basse peut vexer ; une offre au prix sécurise le bien si d'autres acheteurs sont intéressés." },
       { type: "h2", text: "Sa valeur d'engagement" },
-      { type: "p", text: "Une offre **acceptée au prix** engage les deux parties. Mentionnez vos conditions (obtention de prêt) pour vous protéger." },
+      { type: "p", text: "Une offre **acceptée au prix** engage les deux parties. Mentionnez vos conditions ([obtention de prêt](/blog/capacite-emprunt-immobilier)) pour vous protéger." },
       { type: "h2", text: "Bien négocier" },
-      { type: "p", text: "Appuyez-vous sur des éléments concrets : travaux à prévoir, DPE, durée de mise en vente, prix du secteur. Une négociation argumentée passe mieux qu'un simple « c'est trop cher »." },
+      { type: "p", text: "Appuyez-vous sur des éléments concrets : travaux à prévoir, DPE, durée de mise en vente, [prix du secteur](/blog/prix-immobilier-villeurbanne-2026). Une négociation argumentée passe mieux qu'un simple « c'est trop cher »." },
     ],
   },
   {
@@ -1059,15 +1059,39 @@ export function getArticle(slug: string): Article | undefined {
 }
 
 /**
- * Articles liés : ceux qui partagent la même page « argent » (internalHref),
- * du plus récent au plus ancien, hors article courant. Maillage interne.
+ * Articles liés : les `n` articles qui SUIVENT l'article courant dans son
+ * groupe (même page « argent »), la liste étant triée du plus récent au plus
+ * ancien et **parcourue en boucle**.
+ *
+ * Pourquoi une boucle, et pas « les n plus récents du groupe » (version
+ * d'origine) — mesuré sur le HTML rendu en production le 22/09/2026 :
+ * ce choix-là ne désignait jamais que les **deux articles les plus récents de
+ * chaque groupe**, soit 8 articles sur 26. Les 18 autres ne recevaient de lien
+ * d'aucun article frère, et **13 d'entre eux n'avaient, sur tout le site, que
+ * la liste `/blog` comme unique page entrante**. Le blog était un entonnoir :
+ * tout le monde pointait vers les mêmes 8 pages.
+ *
+ * Le parcours cyclique donne à chaque article d'un groupe d'au moins 3
+ * articles exactement 2 liens entrants et 2 liens sortants — un cycle, pas un
+ * entonnoir. Il reste déterministe (aucun aléa, aucune dépendance à la date du
+ * jour) : le rendu statique est stable d'un build à l'autre.
+ *
+ * Groupes au 22/09/2026 : `/vendre` (9), `/acheter` (8), `/estimation` (5),
+ * `/gestion-locative` (4) — tous ≥ 3, donc tous les articles sont couverts.
  */
 export function getRelatedArticles(slug: string, n = 2): Article[] {
   const current = getArticle(slug);
   if (!current) return [];
-  return getArticlesSorted()
-    .filter((a) => a.slug !== slug && a.internalHref === current.internalHref)
-    .slice(0, n);
+  const groupe = getArticlesSorted().filter(
+    (a) => a.internalHref === current.internalHref,
+  );
+  const i = groupe.findIndex((a) => a.slug === slug);
+  if (i < 0) return [];
+  const suivants: Article[] = [];
+  for (let k = 1; k < groupe.length && suivants.length < n; k++) {
+    suivants.push(groupe[(i + k) % groupe.length]);
+  }
+  return suivants;
 }
 
 /** Articles triés du plus récent au plus ancien (pour le hub). */
