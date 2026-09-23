@@ -953,6 +953,20 @@ toujours en 200.
 **Un seul fichier modifié : `lib/blog.ts`.** Aucun composant, aucun gabarit,
 aucune page. L'outil d'estimation n'a pas été approché.
 
+**✅ Vérifié en production après déploiement** (Vercel a pris ~1 minute, 4
+tentatives de polling à 15 s). `/blog/rentabilite-locative-lyon` sert bien
+**2 379 mots**, 7 `<h2>`, **2 tableaux**, **zéro markdown brut**, les 4 JSON-LD,
+`dateModified` = `2026-09-23`, la **correspondance `FAQPage` ↔ texte visible
+sans écart sur les 6 Q/R**, le canonical sur la bonne page, une `og:image` et
+la date visible « Mis à jour le 23 septembre 2026 ». Le `sitemap.xml` en ligne
+reste à **53 URLs** — aucune URL créée, c'est une réécriture — avec `lastmod`
+au 23/09 sur cette seule page, et `llms.txt` porte le nouvel extrait chiffré.
+Les deux pages touchées indirectement sont saines elles aussi :
+`ou-acheter-villeurbanne-quartiers` sert la nouvelle fourchette 4,47–6,40 % et
+ses **5 Q/R restent conformes à son `FAQPage`** ; `investir-locatif-lyon` sert
+son lien de corps vers l'article réécrit, sans markdown brut, et passe de 225 à
+260 mots — il reste mince, c'est assumé, il est au backlog.
+
 ### 2026-09-22 — Le blog cesse d'être un entonnoir : 18 articles sur 26 ne recevaient aucun lien d'un frère, 13 n'avaient que `/blog` comme seule page entrante
 
 **Angle : maillage interne** (le précédent datait du 16/09 ; le 21/09 était un
