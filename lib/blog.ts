@@ -26,6 +26,16 @@
  *   - « capacite-emprunt-immobilier » → 250 000 € = 65 m² à Gratte-Ciel /
  *                                     91 m² à Cyprian – Les Brosses.
  *
+ * Depuis le 23/09/2026, « rentabilite-locative-lyon » publie un RENDEMENT BRUT
+ * par quartier : il divise le loyer annuel tiré de `LOYER_MEDIAN_HC`
+ * (14,6 €/m² HC, carte des loyers data.gouv.fr) par ces mêmes médianes DVF,
+ * plus les médianes par typologie (T1 4 000 €/m², T4 3 211 €/m²) et la
+ * médiane 2022 (3 981 €/m²). Il suit donc le même sort que les articles
+ * ci-dessus si les médianes bougent. ⚠️ Le loyer appliqué est COMMUNAL, faute
+ * de loyer de référence par quartier : cette limite doit rester écrite noir
+ * sur blanc dans l'article et dans la FAQ de « ou-acheter-villeurbanne-
+ * quartiers », comme elle l'est déjà sur /agence-immobiliere-charpennes.
+ *
  * Trois articles citent par ailleurs le BARÈME d'honoraires de
  * app/honoraires/page.tsx (gestion 6 %, GLI 2,5 %, frais fixes 20 €/45 €,
  * transaction 9 000 € / 6 % / 5 %) : « cout-gestion-locative »,
@@ -404,6 +414,7 @@ export const ARTICLES: Article[] = [
       ] },
       { type: "h2", text: "Bien démarrer" },
       { type: "p", text: "Un bon investissement commence par une estimation juste du prix d'achat et du loyer réaliste. À Villeurbanne, appuyez-vous sur [les prix au m² réellement signés par quartier](/blog/prix-immobilier-villeurbanne-2026) et sur [ce que chaque budget achète selon le secteur](/blog/ou-acheter-villeurbanne-quartiers)." },
+      { type: "p", text: "Avant de retenir un secteur, regardez ce qu'il rapporte vraiment : nous publions le [rendement locatif brut des sept quartiers de Villeurbanne](/blog/rentabilite-locative-lyon), calculé sur les prix signés en 2025 et frais de notaire déduits." },
     ],
   },
   {
@@ -510,7 +521,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Quel quartier de Villeurbanne choisir pour un investissement locatif ?",
-        a: "Le rendement brut moyen d'un appartement à Villeurbanne est d'environ 4,9 % (loyer médian de 14,6 €/m² hors charges rapporté au prix médian de 3 567 €/m²). Markus Immobilier ne publie pas de rendement par quartier, faute de loyer de référence public à cette échelle. Charpennes – Tonkin et Buers – Croix-Luizet bordent le campus de la Doua, ce qui soutient la demande locative sur les petites surfaces.",
+        a: "Le rendement brut moyen d'un appartement à Villeurbanne est d'environ 4,9 % (loyer médian de 14,6 €/m² hors charges rapporté au prix médian de 3 567 €/m²). Par quartier, à loyer communal constant, il va de 4,47 % à Ferrandière – Maisons-Neuves à 6,40 % à Cyprian – Les Brosses : le détail et ses limites sont dans notre article sur la rentabilité locative à Villeurbanne. Il n'existe pas de loyer de référence public à la maille du quartier, donc ces écarts sont des écarts de prix, pas de loyer. Charpennes – Tonkin et Buers – Croix-Luizet bordent le campus de la Doua, ce qui soutient la demande locative sur les petites surfaces.",
       },
       {
         q: "Dans quel quartier de Villeurbanne se vend-il le plus d'appartements ?",
@@ -948,24 +959,121 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "rentabilite-locative-lyon",
-    title: "Rentabilité locative à Lyon : comment la calculer",
+    title:
+      "Rentabilité locative à Villeurbanne : le rendement réel, quartier par quartier",
     metaDescription:
-      "Calculer la rentabilité locative d'un bien à Lyon ou Villeurbanne : rendement brut, net, et exemple chiffré pour bien investir.",
-    h1: "Rentabilité locative à Lyon : comment la calculer",
+      "Rendement locatif brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : 4,47 % à Ferrandière, 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune. Frais de notaire, passage au net et loyer plafonné.",
+    h1: "Rentabilité locative à Villeurbanne : le rendement réel, quartier par quartier",
     excerpt:
-      "Rendement brut = loyer annuel ÷ prix d'achat × 100. Mais c'est le net qui compte. Exemple chiffré à Lyon.",
+      "Le rendement brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : de 4,47 % à Ferrandière – Maisons-Neuves à 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune entière. Frais de notaire compris, il faut retirer 0,31 à 0,45 point.",
     date: "2026-02-05",
-    internalHref: "/gestion-locative",
+    updated: "2026-09-23",
+    internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
-      { type: "p", text: "**La rentabilité brute se calcule en divisant le loyer annuel par le prix d'achat, multiplié par 100.** Mais c'est la rentabilité nette qui compte vraiment." },
-      { type: "h2", text: "Le rendement brut" },
-      { type: "p", text: "(Loyer mensuel × 12) ÷ prix d'achat × 100. Exemple : un studio à 150 000 € loué 650 €/mois → (7 800 ÷ 150 000) × 100 = **5,2 %** brut." },
-      { type: "h2", text: "Le rendement net" },
-      { type: "p", text: "Déduisez les charges non récupérables, la taxe foncière, l'assurance, les éventuels frais de gestion et la vacance locative. Le net est souvent de 1 à 2 points en dessous du brut." },
-      { type: "h2", text: "À Lyon et Villeurbanne" },
-      { type: "p", text: "La forte demande locative (étudiants, actifs) limite la vacance, ce qui sécurise le rendement. Les petites surfaces bien placées offrent souvent la meilleure rentabilité." },
-      { type: "p", text: "Un point de méthode qui change le résultat : au dénominateur, partez des [prix réellement payés par quartier à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026), pas des prix affichés dans les annonces. Les frais de gestion, eux, se chiffrent à l'avance — [notre barème](/honoraires) les détaille." },
+      { type: "p", text: "**À Villeurbanne, le rendement locatif brut d'un appartement va de 4,47 % à 6,40 % selon le quartier, et il s'établit à 4,91 % sur la commune entière.** Ces chiffres croisent les prix réellement signés en 2025 (base DVF) et le loyer médian communal, 14,60 €/m² hors charges. Ils sont plus bas que la plupart des rendements affichés en ligne, pour une raison simple : ils partent des prix payés, pas des prix demandés." },
+
+      { type: "h2", text: "Quelle rentabilité locative peut-on vraiment espérer à Villeurbanne ?" },
+      { type: "p", text: "**Entre 4,5 % et 6,4 % brut selon le quartier, et 4,9 % au niveau de la commune.** Le calcul est toujours le même : loyer annuel hors charges divisé par le prix d'achat. Ce qui change d'un tableau à l'autre, c'est le prix placé au dénominateur — ici la médiane des ventes d'appartements enregistrées à Villeurbanne en 2025 dans la base DVF, et non un prix d'annonce." },
+      {
+        type: "table",
+        caption:
+          "Rendement locatif brut par quartier de Villeurbanne, au prix médian des ventes 2025 et au loyer médian communal",
+        headers: [
+          "Quartier",
+          "Médiane 2025",
+          "Rendement brut",
+          "Frais de notaire inclus",
+        ],
+        rows: [
+          ["Cyprian – Les Brosses", "2 738 €/m²", "6,40 %", "5,95 %"],
+          ["Cusset – Bonnevay", "3 171 €/m²", "5,53 %", "5,14 %"],
+          ["Buers – Croix-Luizet", "3 271 €/m²", "5,36 %", "4,98 %"],
+          ["Perralière – Grandclément", "3 375 €/m²", "5,19 %", "4,83 %"],
+          ["Charpennes – Tonkin", "3 524 €/m²", "4,97 %", "4,62 %"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 846 €/m²", "4,56 %", "4,24 %"],
+          ["Ferrandière – Maisons-Neuves", "3 923 €/m²", "4,47 %", "4,15 %"],
+          ["**Villeurbanne (commune)**", "**3 567 €/m²**", "**4,91 %**", "**4,57 %**"],
+        ],
+        source:
+          "Prix : médianes DVF 2025 (data.gouv.fr / Etalab), calcul Markus Immobilier. Loyer : 14,60 €/m² hors charges, médiane communale de la carte des loyers publiée sur data.gouv.fr. Frais de notaire : 7,5 %.",
+      },
+      { type: "p", text: "**Ce que ce tableau ne dit pas.** Il applique le même loyer à tous les quartiers, parce qu'il n'existe pas de loyer de référence publié à la maille du quartier. Les écarts que vous lisez ci-dessus sont donc exactement des écarts de prix, à loyer constant : un secteur où les loyers réels dépassent la médiane communale rendra un peu plus, un secteur en dessous un peu moins. Nous préférons l'écrire plutôt que de fabriquer un loyer par quartier que personne ne mesure." },
+      { type: "p", text: "C'est aussi pourquoi nous ne publions pas le même tableau par nombre de pièces : un T1 se loue nettement plus cher au mètre carré qu'un T4, et un loyer unique donnerait un classement faux. Ce que nos données disent sans ambiguïté, en revanche, c'est le prix — le T1 médian s'échange à 4 000 €/m² à Villeurbanne en 2025, le T4 à 3 211 €/m², soit 24,6 % de moins." },
+
+      { type: "h2", text: "Pourquoi le rendement que je calcule est-il plus bas que celui qu'on m'annonce ?" },
+      { type: "p", text: "**Parce que le calcul annoncé part presque toujours d'un prix trop bas et d'un loyer trop haut.** Trois erreurs reviennent, et toutes les trois poussent le résultat dans le même sens : vers le haut. Les corriger fait perdre entre un demi-point et un point et demi." },
+      { type: "ol", items: [
+        "**Le prix d'annonce n'est pas le prix signé.** Un rendement calculé sur un prix demandé est un rendement que personne n'obtient. Les [prix réellement payés par quartier à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026) sont publics : ils viennent de la base DVF, qui enregistre les mutations effectives.",
+        "**Le loyer de référence est pris trop haut.** Démonstration au prix médian de Gratte-Ciel – Dedieu – Charmettes, 3 846 €/m² en 2025 : pour afficher 6 % de rendement brut, il faudrait louer à 19,23 €/m² hors charges, soit près de 32 % au-dessus de la médiane communale. Ce n'est pas impossible, mais ce n'est plus un cas médian — et à Villeurbanne le loyer est plafonné (voir plus bas).",
+        "**Les frais d'acquisition disparaissent du dénominateur.** Une opération ne coûte pas le prix affiché, mais ce prix plus les [frais de notaire, 7 à 8 % dans l'ancien](/blog/frais-de-notaire-lyon-2026).",
+      ] },
+
+      { type: "h2", text: "Faut-il inclure les frais de notaire dans le calcul de rentabilité ?" },
+      { type: "p", text: "**Oui, et cela retire entre 0,31 et 0,45 point de rendement brut selon le quartier.** Ce qui est immobilisé dans une opération, c'est le prix plus les frais : c'est donc ce total qui doit figurer au dénominateur. En appliquant 7,5 %, milieu de la fourchette de l'ancien, le rendement communal passe de 4,91 % à 4,57 %." },
+      { type: "p", text: "L'effet est mécaniquement plus fort là où le rendement de départ est élevé : Cyprian – Les Brosses perd 0,45 point (6,40 % → 5,95 %), Ferrandière – Maisons-Neuves 0,31 point (4,47 % → 4,15 %). Le classement des quartiers, lui, ne bouge pas : des frais proportionnels n'inversent aucun ordre." },
+
+      { type: "h2", text: "Comment passer du rendement brut au rendement net ?" },
+      { type: "p", text: "**En convertissant chaque charge annuelle en points de rendement, puis en les retranchant du brut.** C'est plus fiable que de chercher un « rendement net moyen » : les charges d'un logement sont propres à ce logement. Sur le cas de référence ci-dessous, chaque tranche de 100 € de charge annuelle retire 0,055 point." },
+      { type: "p", text: "**Le cas de référence.** Un T2 au prix médian villeurbannais de 2025 — 170 000 € pour 44 m², la médiane T2 étant de 3 830 €/m² — loué au loyer médian communal, soit 642 € par mois hors charges et 7 704 € par an. Rendement brut sur le prix : 4,53 %. Sur le coût total de l'opération, frais de notaire à 7,5 % compris (182 750 €) : 4,22 %." },
+      {
+        type: "table",
+        caption:
+          "Ce que chaque poste coûte en points de rendement — T2 de 44 m² acheté 170 000 € et loué 642 €/mois HC",
+        headers: ["Poste", "Montant", "Effet sur le rendement"],
+        rows: [
+          ["Frais de notaire (7,5 %)", "12 750 € à l'achat", "−0,32 point"],
+          ["Un mois de vacance locative", "642 €", "−0,35 point"],
+          ["Gestion locative déléguée (6 % des encaissements + 20 € de débours)", "482 €/an", "−0,26 point"],
+          ["Garantie loyers impayés (2,5 %)", "193 €/an", "−0,11 point"],
+          ["**Toute autre charge : taxe foncière, charges non récupérables, assurance PNO, entretien**", "**par tranche de 100 €/an**", "**−0,055 point**"],
+        ],
+        source:
+          "Prix et surface : médianes DVF 2025 des T2 villeurbannais. Loyer : médiane communale, carte des loyers data.gouv.fr. Taux de gestion et GLI : barème public Markus Immobilier. Calcul Markus Immobilier, rendements rapportés au coût total de l'opération.",
+      },
+      { type: "p", text: "**Nous ne publions pas de montant de taxe foncière, et c'est volontaire.** Elle dépend de la valeur locative cadastrale du lot : deux appartements du même immeuble peuvent être imposés différemment, et toute « moyenne villeurbannaise » serait une invention. La seule donnée fiable est l'avis de taxe foncière du vendeur — réclamez-le avant de signer, puis reportez le montant dans la dernière ligne du tableau. Mille euros de taxe foncière, ce sont 0,55 point de rendement en moins." },
+      { type: "p", text: "La gestion déléguée est la seule de ces lignes dont le coût est connu à l'avance : [notre barème](/honoraires) est public et [ce qu'il couvre exactement](/blog/cout-gestion-locative) est détaillé ailleurs. L'arbitrage complet — déléguer ou gérer seul, fiscalité comprise — est traité sur [notre page gestion locative](/gestion-locative)." },
+
+      { type: "h2", text: "Le loyer que je peux demander est-il plafonné à Villeurbanne ?" },
+      { type: "p", text: "**Oui. Villeurbanne applique l'encadrement des loyers, au même titre que Lyon.** Le loyer hors charges d'un bail neuf ou renouvelé ne peut pas dépasser un plafond — le « loyer de référence majoré » — fixé par arrêté préfectoral, qui varie selon le secteur, le nombre de pièces, l'époque de construction et le caractère meublé ou vide du logement. Un rendement bâti sur un loyer supérieur à ce plafond n'est pas optimiste : il est inapplicable." },
+      { type: "p", text: "Le dispositif a connu une secousse judiciaire qu'un investisseur doit connaître. Le [tribunal administratif de Lyon a annulé, le 14 octobre 2025, l'arrêté préfectoral du 29 septembre 2023](https://lyon.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/encadrement-des-loyers-a-lyon-et-villeurbanne-le-tribunal-annule-l-arrete-prefectoral-prevoyant-sa-mise-en-place) qui instaurait l'encadrement à Lyon et Villeurbanne, en jugeant que la carte annexée ne permettait pas de déterminer les contours exacts des secteurs (requête n° 2309987). L'annulation porte sur un arrêté, pas sur le principe : l'encadrement reste un dispositif légal et [Lyon et Villeurbanne figurent toujours parmi les communes concernées](https://www.service-public.gouv.fr/particuliers/vosdroits/F1314)." },
+      { type: "p", text: "En pratique : avant de fixer un loyer ou d'en tirer un rendement, vérifiez le plafond applicable à la date de signature du bail dans [l'arrêté en vigueur publié par la préfecture du Rhône](https://www.rhone.gouv.fr/Actions-de-l-Etat/Amenagement-du-territoire-urbanisme-construction-logement/Logement/Encadrement-des-loyers). Nous ne reproduisons pas ces plafonds ici : ils sont révisés chaque année, et une valeur périmée coûterait plus cher qu'une absence de valeur." },
+
+      { type: "h2", text: "Quel quartier de Villeurbanne offre le meilleur rendement locatif ?" },
+      { type: "p", text: "**Cyprian – Les Brosses, avec 6,40 % brut, devant Cusset – Bonnevay (5,53 %) et Buers – Croix-Luizet (5,36 %).** Ce sont les trois quartiers où le prix au mètre carré est le plus bas, et à loyer constant le rendement brut n'est rien d'autre que l'inverse du prix. Le meilleur rendement n'est donc pas une performance : c'est un prix d'entrée bas." },
+      { type: "p", text: "Deux réserves avant d'en faire une stratégie. D'abord l'échantillon : la médiane de Cyprian – Les Brosses repose sur 53 ventes en 2025, contre 655 à Gratte-Ciel — elle est plus sensible à quelques transactions atypiques. Ensuite la revente : un rendement élevé ne dit rien de la liquidité du secteur. Le détail quartier par quartier, budget par budget, est dans [notre comparatif des quartiers de Villeurbanne](/blog/ou-acheter-villeurbanne-quartiers)." },
+
+      { type: "h2", text: "Le rendement locatif villeurbannais a-t-il monté ou baissé ?" },
+      { type: "p", text: "**Il a monté, mais par le bas : ce sont les prix qui ont reculé.** La médiane communale est passée de 3 981 €/m² en 2022 à 3 567 €/m² en 2025, soit −10,4 %. À loyer inchangé, cette seule baisse a ajouté 0,51 point de rendement brut, de 4,40 % à 4,91 %." },
+      { type: "p", text: "La nuance compte pour un acheteur : le rendement d'aujourd'hui est meilleur qu'en 2022 parce que le bien coûte moins cher, pas parce qu'il rapporte davantage. Elle compte tout autant pour un propriétaire qui veut savoir [ce que vaut réellement son bien aujourd'hui](/estimation-immobiliere-villeurbanne)." },
+
+      { type: "p", text: "**Méthode.** Prix : médianes des ventes d'appartements enregistrées à Villeurbanne (commune 69266) en 2025 dans la base DVF publiée par Etalab sur data.gouv.fr, rattachées aux contours de quartiers officiels de la Métropole de Lyon — une seule ligne bâtie par mutation, surfaces d'au moins 10 m², médiane et jamais moyenne. Loyer : médiane communale hors charges de la carte des loyers publiée sur data.gouv.fr, 14,60 €/m² pour un appartement. Frais de notaire : 7,5 %, milieu de la fourchette de l'ancien. Rendements calculés par Markus Immobilier et arrondis au centième de point." },
+    ],
+    faq: [
+      {
+        q: "Rendement brut ou rendement net : lequel faut-il regarder ?",
+        a: "Le brut sert à comparer des biens entre eux, le net sert à décider. Le rendement brut — loyer annuel hors charges divisé par le prix d'achat — ne dépend que de deux chiffres, ce qui le rend comparable d'un bien à l'autre ; c'est sa seule vertu. Le rendement net retranche les charges réelles du logement (taxe foncière, charges non récupérables, assurance propriétaire non occupant, gestion, vacance) et c'est le seul qui corresponde à ce que vous encaisserez. Sur notre cas de référence villeurbannais, un T2 de 44 m² acheté 170 000 €, chaque tranche de 100 € de charge annuelle retire 0,055 point au brut.",
+      },
+      {
+        q: "Où trouver les prix réellement signés à Villeurbanne ?",
+        a: "Dans la base DVF (demandes de valeurs foncières), publiée en accès libre par Etalab sur data.gouv.fr. Elle recense les mutations enregistrées par l'administration fiscale, c'est-à-dire les prix effectivement portés dans les actes, et non les prix demandés dans les annonces. C'est la source des médianes publiées sur cette page : 3 567 €/m² pour la commune en 2025, sur 1 875 ventes d'appartements exploitables, et de 2 738 à 3 923 €/m² selon le quartier.",
+      },
+      {
+        q: "Comment connaître la taxe foncière d'un logement avant de l'acheter ?",
+        a: "En demandant au vendeur son dernier avis de taxe foncière, avant de signer le compromis. Le montant dépend de la valeur locative cadastrale du lot et des taux votés par les collectivités : deux appartements du même immeuble peuvent être imposés différemment, et aucune moyenne communale ne remplace l'avis réel. Réclamez dans le même mouvement les trois derniers procès-verbaux d'assemblée générale et le détail des charges de copropriété non récupérables : ce sont les deux autres lignes qui creusent l'écart entre rendement brut et rendement net.",
+      },
+      {
+        q: "Faut-il déduire la vacance locative du rendement ?",
+        a: "Oui, et son poids se chiffre simplement : sur notre cas de référence villeurbannais, un mois sans locataire coûte 642 € et retire 0,35 point de rendement. C'est davantage qu'une année entière de gestion déléguée, qui revient à 482 € et 0,26 point. Un rendement annoncé sans hypothèse de vacance suppose implicitement douze mois de loyer sur douze, chaque année, changements de locataire compris.",
+      },
+      {
+        q: "Un rendement brut de 6 % est-il atteignable à Villeurbanne ?",
+        a: "Oui, mais pas partout ni au loyer médian. Au prix médian 2025 de Cyprian – Les Brosses, 2 738 €/m², le rendement brut ressort à 6,40 % avec le seul loyer médian communal. En revanche, au prix médian de Gratte-Ciel – Dedieu – Charmettes, 3 846 €/m², atteindre 6 % exigerait un loyer de 19,23 €/m² hors charges, soit près de 32 % au-dessus de la médiane communale — sachant qu'à Villeurbanne le loyer d'un bail neuf ou renouvelé est plafonné par l'arrêté préfectoral d'encadrement des loyers.",
+      },
+      {
+        q: "Les petites surfaces rapportent-elles vraiment plus ?",
+        a: "Elles se louent plus cher au mètre carré, mais elles s'achètent aussi plus cher au mètre carré, et c'est ce second point qu'on oublie. À Villeurbanne, sur les ventes de 2025, le T1 médian s'échange à 4 000 €/m² contre 3 211 €/m² pour le T4, soit 24,6 % de plus. Markus Immobilier ne publie pas de rendement par nombre de pièces parce qu'il n'existe pas de loyer de référence public à cette maille : appliquer un loyer unique à toutes les typologies donnerait un classement faux, artificiellement favorable aux grandes surfaces.",
+      },
     ],
   },
   {
