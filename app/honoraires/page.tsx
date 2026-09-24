@@ -12,8 +12,10 @@ import {
   breadcrumbLd,
   faqLd,
   offerCatalogLd,
+  webPageLd,
 } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
+import { fmtDateFr, lastmodOf } from "@/lib/seo/lastmod";
 
 export const metadata: Metadata = {
   title: "Nos honoraires — Barème complet",
@@ -172,9 +174,21 @@ const FAQ: FaqItem[] = [
 const A =
   "text-anthracite font-semibold underline underline-offset-2 hover:text-sauge";
 
+/** Date de dernière modification réelle — source unique, cf. `lib/seo/lastmod.ts`. */
+const UPDATED = lastmodOf("/honoraires");
+
 export default function HonorairesPage() {
   return (
     <>
+      <JsonLd
+        data={webPageLd({
+          path: "/honoraires",
+          name: "Nos honoraires — Barème complet",
+          description:
+            "Barème détaillé Transaction, Location et Gestion locative de Markus Immobilier, à Lyon et Villeurbanne.",
+          dateModified: lastmodOf("/honoraires"),
+        })}
+      />
       <JsonLd data={bareme} />
       <JsonLd data={faqLd(FAQ)} />
       <JsonLd
@@ -205,6 +219,13 @@ export default function HonorairesPage() {
       {/* TRANSACTION */}
       <section className="bg-blanc py-[120px] max-md:py-[80px]">
         <div className="max-w-content mx-auto px-8 max-md:px-5">
+          <Reveal className="text-center mb-10 max-md:mb-8">
+            <p className="text-[13px] text-[#6b7276]">
+              Barème en vigueur — dernière mise à jour :{" "}
+              <time dateTime={UPDATED}>{fmtDateFr(UPDATED)}</time>
+            </p>
+          </Reveal>
+
           <Reveal className="text-center mb-12 max-md:mb-8">
             <Eyebrow className="mb-3">Vente</Eyebrow>
             <h2 className="font-bold text-[clamp(30px,4vw,46px)] tracking-[-0.01em] mb-3">

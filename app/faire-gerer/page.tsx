@@ -14,9 +14,11 @@ import {
   faqLd,
   howToLd,
   serviceLd,
+  webPageLd,
 } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC } from "@/lib/quartiers";
+import { lastmodOf } from "@/lib/seo/lastmod";
 
 /**
  * Page « faire gérer son bien » — gestion locative + syndic.
@@ -41,7 +43,7 @@ import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC } from "@/lib/quartiers";
  */
 
 /** Date de dernière modification réelle du contenu de cette page (ISO). */
-const UPDATED = "2026-09-18";
+const UPDATED = lastmodOf("/faire-gerer");
 
 /* --- Barème (source : /honoraires, montants TTC) ------------------------- */
 const TAUX_GESTION = 0.06;
@@ -169,6 +171,15 @@ const fmtDate = (iso: string) =>
 export default function FaireGererPage() {
   return (
     <>
+      <JsonLd
+        data={webPageLd({
+          path: "/faire-gerer",
+          name: "Faire gérer votre bien — syndic et gestion locative à Villeurbanne",
+          description:
+            "Ce que coûte la gestion d'un bien à Villeurbanne, ce que le mandat couvre et comment fonctionne un syndic.",
+          dateModified: lastmodOf("/faire-gerer"),
+        })}
+      />
       <JsonLd
         data={serviceLd({
           name: "Gestion locative et syndic de copropriété à Villeurbanne",

@@ -8,10 +8,12 @@ import {
   faqLd,
   howToLd,
   serviceLd,
+  webPageLd,
 } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 import { KeysIllust } from "@/components/illustrations/keys";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
+import { lastmodOf } from "@/lib/seo/lastmod";
 
 /**
  * Page « estimation immobilière Villeurbanne » — requête commerciale n°1 dans la
@@ -31,7 +33,7 @@ import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
  * rétroactivement).
  */
 
-const UPDATED = "2026-09-08";
+const UPDATED = lastmodOf("/estimation-immobiliere-villeurbanne");
 
 export const metadata: Metadata = {
   title: "Estimation immobilière à Villeurbanne — gratuite en 2 min",
@@ -164,6 +166,15 @@ function RepereTable() {
 export default function EstimationVilleurbannePage() {
   return (
     <>
+      <JsonLd
+        data={webPageLd({
+          path: "/estimation-immobiliere-villeurbanne",
+          name: "Estimation immobilière à Villeurbanne",
+          description:
+            "Estimation gratuite en 2 minutes, appuyée sur les ventes réelles enregistrées à Villeurbanne.",
+          dateModified: lastmodOf("/estimation-immobiliere-villeurbanne"),
+        })}
+      />
       <JsonLd
         data={serviceLd({
           name: "Estimation immobilière à Villeurbanne",

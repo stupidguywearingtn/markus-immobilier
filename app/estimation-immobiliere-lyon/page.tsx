@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { shareMeta } from "@/lib/seo/share";
 import { SeoLanding } from "@/components/layout/seo-landing";
-import { JsonLd, breadcrumbLd, serviceLd } from "@/components/seo/json-ld";
+import { JsonLd, breadcrumbLd, serviceLd, webPageLd } from "@/components/seo/json-ld";
 import { KeysIllust } from "@/components/illustrations/keys";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
+import { lastmodOf } from "@/lib/seo/lastmod";
 
 export const metadata: Metadata = {
   title: "Estimation immobilière à Lyon — gratuite en 2 min",
@@ -22,6 +23,15 @@ export default function EstimationLyonPage() {
   return (
     <>
       <JsonLd
+        data={webPageLd({
+          path: "/estimation-immobiliere-lyon",
+          name: "Estimation immobilière à Lyon",
+          description:
+            "Estimation gratuite en 2 minutes, appuyée sur les ventes réelles enregistrées dans l'agglomération lyonnaise.",
+          dateModified: lastmodOf("/estimation-immobiliere-lyon"),
+        })}
+      />
+      <JsonLd
         data={serviceLd({
           name: "Estimation immobilière à Lyon",
           serviceType: "Estimation de bien immobilier",
@@ -37,6 +47,7 @@ export default function EstimationLyonPage() {
         ])}
       />
       <SeoLanding
+        updated={lastmodOf("/estimation-immobiliere-lyon")}
         eyebrow="Estimation · Lyon"
         title={<>Estimation immobilière à <span className="grad-light">Lyon.</span></>}
         lead="Combien vaut votre bien à Lyon ? Obtenez une fourchette de prix réaliste, gratuite et sans engagement, en moins de 2 minutes — basée sur les ventes réelles près de chez vous."

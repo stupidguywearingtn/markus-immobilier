@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
-import { JsonLd, breadcrumbLd, faqLd, serviceLd } from "@/components/seo/json-ld";
+import { JsonLd, breadcrumbLd, faqLd, serviceLd, webPageLd } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 import { BuildingIllust } from "@/components/illustrations/building";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
+import { lastmodOf } from "@/lib/seo/lastmod";
 
 /**
  * Page « agence immobilière Villeurbanne » — requête commerciale n°1 de la ville
@@ -27,7 +28,7 @@ import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
  *    (ventes 2025). Ne jamais écrire ici un prix qui n'en vienne pas.
  */
 
-const UPDATED = "2026-09-12";
+const UPDATED = lastmodOf("/agence-immobiliere-villeurbanne");
 
 export const metadata: Metadata = {
   title: "Agence immobilière à Villeurbanne — honoraires et secteur",
@@ -76,6 +77,15 @@ const A =
 export default function AgenceVilleurbannePage() {
   return (
     <>
+      <JsonLd
+        data={webPageLd({
+          path: "/agence-immobiliere-villeurbanne",
+          name: "Agence immobilière à Villeurbanne — honoraires et secteur",
+          description:
+            "Ce que coûte une agence à Villeurbanne, le barème détaillé et les prix au m² par quartier.",
+          dateModified: lastmodOf("/agence-immobiliere-villeurbanne"),
+        })}
+      />
       <JsonLd
         data={serviceLd({
           name: "Agence immobilière à Villeurbanne",

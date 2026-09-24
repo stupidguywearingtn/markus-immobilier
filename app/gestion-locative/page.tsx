@@ -7,11 +7,13 @@ import {
   breadcrumbLd,
   faqLd,
   serviceLd,
+  webPageLd,
 } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 import { PlantIllust } from "@/components/illustrations/plant";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC } from "@/lib/quartiers";
+import { lastmodOf } from "@/lib/seo/lastmod";
 
 /**
  * Page « gestion locative » — angle : DÉLÉGUER OU GÉRER SOI-MÊME, chiffré.
@@ -47,7 +49,7 @@ import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC } from "@/lib/quartiers";
  */
 
 /** Date de dernière modification réelle du contenu de cette page (ISO). */
-const UPDATED = "2026-09-21";
+const UPDATED = lastmodOf("/gestion-locative");
 
 /* --- Barème (source : /honoraires, montants TTC) ------------------------- */
 const TAUX_GESTION = 0.06;
@@ -140,6 +142,15 @@ const FAQ: FaqItem[] = [
 export default function GestionLocativePage() {
   return (
     <>
+      <JsonLd
+        data={webPageLd({
+          path: "/gestion-locative",
+          name: "Déléguer sa gestion locative ou gérer seul — le calcul à Villeurbanne",
+          description:
+            "L'arbitrage déléguer / gérer seul chiffré à Villeurbanne, fiscalité comprise.",
+          dateModified: lastmodOf("/gestion-locative"),
+        })}
+      />
       <JsonLd
         data={serviceLd({
           name: "Gestion locative",

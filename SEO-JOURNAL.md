@@ -14,6 +14,61 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-24**
+
+- `git fetch origin` **en tout premier** (règle du 16/09) : le conteneur était
+  cette fois **en retard d'un run** — `origin/main` pointait sur `0befbc4`
+  (22/09) alors que le vrai `main` distant portait déjà `4a04964`, la
+  vérification du 23/09. `git fetch` a aligné, `HEAD` == `origin/main` ensuite.
+  **Quatrième occurrence sur neuf runs** (16, 18, 22, 24/09) : la règle a servi
+  une fois sur deux, elle reste.
+- ⚠️ **Le conteneur démarre toujours sans `node_modules`** — `npm ci` avant tout
+  contrôle. Cinquième constat identique (21 → 24/09) : étape de démarrage
+  normale, plus une anomalie.
+- 🆕 **Piège d'outillage nouveau, à connaître avant toute mesure en production :
+  `curl` échoue en TLS (`exit 35`) sur ce conteneur sans
+  `--cacert /root/.ccr/ca-bundle.crt`.** La première mesure du run est tombée
+  dedans et rendait `HTTP 000`, ce qui ressemble à s'y méprendre à un site
+  hors-ligne. Détail et parade en « Techniques apprises ».
+- **Jeudi : pas de veille** (elle se fait le lundi ; celle du 21/09 est la
+  référence, la prochaine est due le **lundi 28/09**).
+- `sitemap.xml` en production = **53 URLs**, inchangé depuis le 17/09, et
+  **les 53 ont été téléchargées et relues une par une** : 53 × HTTP 200.
+- **Deux signaux jamais audités jusqu'ici, tous deux sains** : les **53
+  `<title>` sont uniques** et tiennent entre 54 et 123 caractères ; les **53
+  `<meta name="description">` sont présentes, uniques et non tronquées**. Rien
+  à faire de ce côté — c'est noté pour ne pas le réauditer.
+- ✅ **Le maillage du 22/09 tient, et il invalide le candidat inscrit pour
+  aujourd'hui.** Le graphe reconstruit sur le HTML rendu des 53 pages donne
+  **zéro page à zéro lien entrant**. Surtout,
+  `/blog/rentabilite-locative-lyon` — que le backlog décrivait hier comme
+  n'ayant « qu'un seul lien de corps entrant » — en reçoit en fait **4**
+  (`/blog`, `prix-immobilier-villeurbanne-2026`, `investir-locatif-lyon`,
+  `comment-estimer-son-bien-immobilier-lyon-villeurbanne`). **Le chantier
+  maillage prévu pour le 24/09 était donc sans objet** : il a été abandonné
+  après mesure, pas exécuté par habitude.
+- 🔴 **Le défaut du jour, trouvé en auditant la fraîcheur déclarée des 53 pages,
+  et il n'était dans aucun backlog : le site publiait un espace réservé de
+  rédaction.** `/confidentialite` et `/cookies` servaient en production, en
+  toutes lettres, **« Dernière mise à jour : [À DATER au jour de la mise en
+  ligne] »**. Deux pages légales — celles où un lecteur et un moteur vont
+  précisément chercher un gage de sérieux.
+- 🔴 **Et le miroir du même défaut, plus grave pour le SEO : une page se
+  contredisait elle-même sur sa propre fraîcheur.**
+  `/estimation-immobiliere-villeurbanne` affichait **« 8 septembre 2026 »** à un
+  lecteur pendant que le sitemap annonçait **« 12 septembre 2026 »** à Google.
+  Cause : la date visible vivait dans un `const UPDATED` recopié à la main dans
+  chaque page, et la date du sitemap dans la table `PAGE_LASTMOD` de
+  `app/sitemap.ts`. Deux copies manuelles de la même information, qui avaient
+  dérivé. C'est le chantier du jour.
+- **Troisième volet du même trou** : **aucune page non-blog ne déclarait de
+  `dateModified`**. Les 26 `BlogPosting` sont datés ; les 21 pages statiques —
+  dont `/honoraires`, que ce journal appelle depuis le 20/09 « la page la plus
+  citable du site » — ne portaient **aucune date**, ni visible ni structurée.
+- **Trois SERP mesurées** (détail au tableau). « Agence immobilière
+  Villeurbanne » **absente pour la 16ᵉ fois sur 16**, composition inchangée
+  depuis le 22/09 (6 annuaires ou franchises contre 3 indépendantes locales).
+
 **Au 2026-09-23**
 
 - `git fetch origin` **en tout premier** (règle du 16/09) : pas de piège ce
@@ -534,27 +589,27 @@ Mesure faite via recherche web (pas de Search Console : la propriété GSC n'est
 toujours pas créée, `GOOGLE_SITE_VERIFICATION` non renseigné). **Aucune
 recherche sur le nom de marque — interdit par le client.**
 
-| Requête | 2026-09-23 | 2026-09-22 | 2026-09-21 | 2026-09-20 | 2026-09-18 | 2026-09-17 | 2026-09-16 | 2026-09-15 | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
-|---|---|---|---| --- | --- | --- | --- | --- | --- |---|---|---|---|---|---|
-| **NOUVEAU — `rentabilité locative Villeurbanne quel rendement net réel`** | **absent**, **1ʳᵉ mesure**. Neuf résultats, **aucun villeurbannais**, et surtout **aucun ne publie de rendement par quartier calculé sur des prix de vente réels** : fourchette nationale, prix moyen commune entière, ou renvoi vers leur propre simulateur. ⚠️ **Vérifié page par page, jamais sur le résumé du moteur** : les deux pages les mieux classées (horiz.io, lybox.fr), téléchargées directement, **ne publient en fait aucun prix, aucun loyer et aucun rendement** pour Villeurbanne — alors que le résumé du moteur leur en attribuait de précis. C'est le créneau du chantier du jour. | | | | | | | | | | | | | | |
-| **NOUVEAU — `syndic de copropriété Villeurbanne tarif honoraires petite copropriété`** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent**, **1ʳᵉ mesure — et la SERP la plus vide rencontrée depuis l'ouverture du journal sur une requête locale** : **zéro résultat villeurbannais**. Neuf résultats, tous nationaux et génériques (Manda, Cotoit, MySweetimmo, Syndic One ×2, Pichet, Lea-syndic, LogicielSyndic, Syndicalur), qui répondent tous par une fourchette France entière (« 150 à 250 € par lot et par an », « forfait minimum de 3 000 à 4 000 € HT »). **Aucune agence de Villeurbanne ne se positionne sur le prix d'un syndic.** C'est cette mesure qui a élargi le chantier du jour au volet syndic. | | | | | | | | | | |
-| **NOUVEAU — `faire gérer son bien locatif Villeurbanne agence syndic gestion`** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 9, **2ᵉ mesure**. SERP à nouveau **sans un seul tarif affiché** : Laforêt Villeurbanne (« faire gérer »), Manda, PagesJaunes ×2 (syndics / administrateurs de biens), Orpi Cetrim, Guy Hoquet Villeurbanne Zola, Immo de France ×2, mairie.com. Deux rotations en 24 h (Orpi Cetrim et Guy Hoquet entrent, Square Habitat et C&F Gestion sortent) — la composition, elle, ne bouge pas : franchises + annuaires. **C'est la requête du chantier du jour** : mesure de référence avant renforcement de `/faire-gerer`. | **absent** du top 9, **1ʳᵉ mesure**. SERP tenue par des pages « faire gérer » de franchises (Orpi Key Solutions, Laforêt Villeurbanne), deux pages d'annuaire PagesJaunes (syndics / administrateurs de biens), Square Habitat, Manda, C&F Gestion, Immo de France, mairie.com. **Aucun de ces résultats ne publie de tarif** — notre `/honoraires` et les deux articles du 16/09 le font. Requête notée pour un futur chantier ; **pas travaillée aujourd'hui** (le run est technique). | | | | | | | | | |
-| 🟡 **NOUVEAU TEST — la fiction du site est-elle indexée ?** — `"Loft d'exception sur Bellecour" markusimmobilier annonce Lyon 2e` | *non remesuré* | *non remesuré* — protocole du 17/09 : une seule remesure vers le 01/10. | *non remesuré* | *non remesuré* | *non remesuré* — protocole posé le 17/09 : **une seule remesure vers le 01/10**, pas avant. | **aucune page de markusimmobilier.fr ne remonte** (SeLoger, ParuVendu, Belles Demeures, Airbnb…). **1ʳᵉ mesure, et c'est la bonne nouvelle du jour** : les 10 fiches de biens fictifs que le sitemap soumettait à Google ne sont **pas** indexées. Le chantier du jour est donc **préventif**, pas curatif. **À remesurer une fois** vers le 01/10 pour confirmer que le `noindex` n'a rien laissé passer. | | | | | | | | | |
-| **NOUVEAU — `gestion locative Villeurbanne tarif agence pourcentage loyers`** | *non remesuré* | *non remesuré* | **absent**, **2ᵉ mesure** (formulée `gestion locative Villeurbanne tarif honoraires`). Neuf résultats, **aucun villeurbannais** : Oqoro, BailFacile, Manda, Murani (lyonnais), Foncia, louer-et-gerer, Imodirect, Plusse, Flatlooker. Composition **inchangée depuis le 16/09** : des plateformes nationales de gestion en ligne. **Oqoro publie toujours 4,9 % TTC**, les autres restent sur « 8 à 15 % » ou un formulaire. **Différence décisive avec le créneau syndic du 18/09** : ici les concurrents donnent bien des chiffres. Le trou n'est donc pas « personne ne chiffre » mais **« personne ne chiffre localement, et personne ne va au bout du calcul fiscal »** — c'est l'angle du chantier du jour, mesure de référence avant renforcement de `/gestion-locative`. | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8, **1ʳᵉ mesure**. SERP tenue par des plateformes nationales de gestion en ligne : BailFacile, Oqoro, Foncia, Imodirect, Plusse, louer-et-gerer, votregestionlocative — **une seule agence locale**, Murani. Fait décisif pour le chantier du jour : **un seul de ces huit acteurs publie un taux précis** (Oqoro, 4,9 % charges comprises). Tous les autres répondent « entre 6 et 8 % HT, selon le bien » ou renvoient vers un formulaire. **Personne ne publie les frais fixes qui s'ajoutent au pourcentage** — c'est exactement ce que notre barème contient et ce que les deux articles touchés aujourd'hui publient désormais. | — | — | — | — | — | — | — | — |
-| **NOUVEAU — `qui paie les honoraires d'agence immobilière vente Villeurbanne`** | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09**. | *non remesuré* | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09**. | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09** (protocole posé le 15/09 : cette page vise la citation, pas la 1ʳᵉ page) | **absent**, **1ʳᵉ mesure**. SERP **entièrement nationale et générique** : Foncia, PAP, Crédit Agricole e-immobilier, Barraine, Propriétés Privées, Levine, + 2 blogs de coachs. **Zéro résultat local, zéro barème chiffré, zéro référence légale datée.** La réponse commune est « ça dépend du mandat, comptez 3 à 8 % ». **C'est la SERP la plus faible mesurée depuis le 11/09**, et c'est celle du chantier du jour. | — | — | — | — | — | — | — |
-| agence immobilière Villeurbanne | **absent** du top 9 — **15ᵉ mesure, 15ᵉ absence**. La composition corrigée le 22/09 est **confirmée à l'identique** : 6 annuaires ou franchises (PagesJaunes, Immodvisor, **Nestenn ×2** — Est et Ouest, Orpi Cité Immo, Laforêt) contre **3 indépendantes locales** (Salengro, Immo de France, Decultieux). Rotation du jour : **Square Habitat, 1ᵉʳ le 22/09, sort du top 9** ; Nestenn y place deux agences. | **absent** du top 9 — **14ᵉ mesure, 14ᵉ absence**. Deux rotations : **Square Habitat revient et prend la 1ʳᵉ place, immodvisor sort** ; Nestenn Est recule de 1 à 2. Square Habitat, Nestenn Est, PagesJaunes, Orpi Cité Immo, Nestenn Ouest, Laforêt République, Salengro, Immo de France, Decultieux. ⚠️ **Correction d'une formule répétée six runs de suite dans ce journal** : « 9 résultats sur 9 sont des annuaires ou des franchises » est **faux**, et l'a toujours été. Le compte exact est **6** (PagesJaunes = annuaire ; Square Habitat, Nestenn ×2, Orpi, Laforêt = franchises) contre **3 agences indépendantes locales** — Salengro, Immo de France (au même endroit depuis plus de 40 ans) et Decultieux (fondée en 1962). La conclusion en est **renversée** : des indépendantes classent bien sur cette requête, elles sont simplement **anciennes et ancrées**. Ce qui les distingue de nous n'est donc pas leur statut mais leur ancienneté de domaine et leur notoriété locale — ce que ni le contenu ni le maillage ne fabriquent en quinze jours. Le levier fiche GBP (backlog n°3) reste valable, mais il faut cesser d'écrire que la SERP est fermée aux indépendantes : elle ne l'est pas. | **absent** du top 9 — **13ᵉ mesure, 13ᵉ absence**. Deux rotations : **Nestenn Est passe 1ᵉʳ et immodvisor sort**, Nestenn Ouest et Decultieux restent. Nestenn Est, PagesJaunes, Orpi Cité Immo, Nestenn Ouest, Laforêt République, Salengro, Immo de France, Decultieux, immodvisor. **9 sur 9 sont encore des annuaires ou des franchises**, sixième run consécutif. En six runs, aucune agence indépendante n'y entre ni n'en sort : seuls permutent un annuaire et deux franchises. **La veille du jour explique pourquoi le contenu n'y changera rien** — sur les requêtes locales, l'IA cite la fiche Google Business Profile avant le site (Profound : google.com 2ᵉ domaine le plus cité d'AI Mode). Levier = point 3 du backlog, action client. | **absent** du top 9 — **12ᵉ mesure, 12ᵉ absence**. Deux rotations : **immodvisor revient et Nestenn Est entre**, Square Habitat et ERA sortent. Nestenn Est, PagesJaunes, Orpi Cité Immo, Nestenn Ouest, Laforêt, Salengro, Immo de France, Decultieux, immodvisor. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le cinquième run consécutif. En cinq runs, le seul mouvement de cette SERP est le va-et-vient d'un annuaire (immodvisor) et de deux franchises (ERA, Square Habitat, Nestenn Est) — **aucune agence indépendante n'y entre, dans aucun sens**. | **absent** du top 9 — **11ᵉ mesure, 11ᵉ absence**. Une rotation : **ERA revient**, immodvisor sort. Square Habitat, PagesJaunes, Orpi Cité Immo, Nestenn (Villeurbanne Ouest), Laforêt, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le quatrième run consécutif — le seul mouvement en quatre runs reste la permutation ERA ⇄ immodvisor, un annuaire contre une franchise. | **absent** du top 9 — **10ᵉ mesure, 10ᵉ absence**. Une rotation par rapport au 15-16/09 : **immodvisor revient**, ERA sort. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn (Villeurbanne Ouest), Salengro, Immo de France, Decultieux, immodvisor. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le troisième run consécutif. | **absent** du top 9 — **9ᵉ mesure, 9ᵉ absence**. SERP **strictement identique à celle du 15/09, sans une seule rotation** : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises**, pour le deuxième run consécutif. | **absent** du top 9 — **8ᵉ mesure, 8ᵉ absence**. SERP stable, deux rotations : **Square Habitat et ERA rentrent**, immodvisor et un des deux Nestenn sortent. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises** — pire qu'au 13/09 (8 sur 9). | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
-| estimation immobilière Villeurbanne gratuite en ligne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
-| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| prix m2 Villeurbanne par quartier **2026** | *non remesuré* | **absent** du top 9, **2ᵉ mesure** (la 1ʳᵉ datait du 10/09). SERP à nouveau renouvelée de moitié : MeilleursAgents, PAP, SeLoger, **CPIM**, prix-au-m2, fonciris, **regiefranchet**, immosudest, immovrai. Deux faits utiles. (1) **immovrai titre explicitement « ventes DVF 2026 »** : la donnée notariale n'est plus notre exclusivité d'affichage. (2) **CPIM publie « Charpennes 5 120 €/m² »**, soit **45 % au-dessus** des 3 524 €/m² que donnent les ventes DVF réelles sur Charpennes – Tonkin — exactement l'écart relevé le 12/09, toujours là neuf jours plus tard et toujours en première page. MeilleursAgents annonce de son côté 3 806 €/m² toutes typologies et une fourchette appartements de 2 625 à 5 205 €/m². **L'angle « écart entre prix affichés et prix réellement payés » reste donc intact et non publié** (backlog point 2). | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
-| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
-| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
-| agence immobilière Charpennes Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
-| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
-| investir locatif Villeurbanne : rendement et quartier **2026** | **absent**, sur **deux** formulations mesurées ce matin (`investir locatif Lyon Villeurbanne rentabilité prix au m2 réel` et `rentabilité locative Villeurbanne quel rendement net réel`). **Zéro agence villeurbannaise dans les 9 résultats des deux** : horiz.io, Trackstone, Lybox, homelikehome, investissement-locatif.com, cashflowpositif, Hagnéré, Ynspir, pierre-de-lyon, cyriljarnias — et Immo de France (lyonnais) en 9ᵉ sur une seule. **C'est la SERP du chantier du jour.** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* | *non remesuré* — test abandonné le 13/09. | *non remesuré* | *non remesuré* | *non remesuré* — test abandonné le 13/09. | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
-| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | *non remesuré* | 🔴 **absent** du top 9, **8ᵉ mesure, J+9**. SERP **encore identique** (PAP, imkiz, prix-au-m2, immovrai, lespriximmo, fonciris, immosudest, valoris-immo, france-dpe) et le moteur répond une fois de plus, explicitement, que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Huit mesures, huit absences** — le seuil que le 21/09 avait fixé pour déclencher la consigne du 13/09 est donc atteint. ⚠️ **Mais il ne faut PAS la déclencher, et la raison est un défaut de l'instrument, découvert aujourd'hui** : l'outil de recherche de ce runner **n'honore ni l'opérateur `site:` ni la recherche exacte entre guillemets**. Vérifié deux fois ce matin : `site:markusimmobilier.fr honoraires` a rendu neuf PDF de l'Assemblée nationale, et une phrase recopiée mot pour mot de `/honoraires` (« Pour un T2 de 45 m²… 585 € TTC ») a rendu neuf pages thématiques sans correspondance exacte. Ce test ne mesure donc **pas** l'indexation : il mesure un classement thématique sur une requête longue, ce qu'aucune page neuve ne gagne. **Huit « absences » ne prouvent aucun blocage technique.** Conséquence, écrite pour le run du 27/09 : le protocole du 13/09 est **suspendu, pas déclenché** — voir « Techniques apprises » et « Hypothèses à vérifier ». | 🔴 **absent** du top 9, **7ᵉ mesure, J+8**. SERP **encore identique** (imkiz, prix-au-m2, immovrai, lespriximmo, fonciris, immosudest, valoris-immo, PAP, france-dpe). Le moteur de réponse répond une nouvelle fois, explicitement, que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Échéance du protocole : ~27/09, soit dimanche prochain.** Sept mesures, sept absences : si la huitième l'est aussi, la consigne du 13/09 s'applique sans discussion — arrêter d'écrire et chercher un blocage technique d'indexation. | 🔴 **absent** du top 9, **6ᵉ mesure, J+7**. SERP **strictement identique** à celle du 18/09 (imkiz, prix-au-m2, immovrai, lespriximmo, ma-rentabilite, immo-land, fonciris, immosudest, valoris-immo). Le moteur de réponse répond encore explicitement que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+7. | 🔴 **absent** du top 9, **5ᵉ mesure, J+5**. SERP stable (imkiz, prix-au-m2, immovrai, lespriximmo, ma-rentabilite, immo-land, fonciris, immosudest, valoris-immo). Le moteur de réponse répond encore explicitement que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+5. | 🔴 **absent** du top 9, **4ᵉ mesure, J+4**. SERP stable (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, immosudest, fonciris) + valoris-immo. Le moteur de réponse répond encore explicitement que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+4. | 🔴 **absent** du top 7, **3ᵉ mesure, J+3**. SERP quasi inchangée (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, fonciris, immosudest). Le moteur de réponse dit à nouveau **explicitement** ne pas trouver l'« erreur médiane » de 15,5 %. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+3. | 🔴 **absent** du top 7, **2ᵉ mesure, J+2**. SERP presque inchangée (prix-au-m2, immovrai, lespriximmo, immosudest, fonciris) avec 2 entrants — **immo-land.fr** et **valoris-immo.fr**. Le moteur n'a de nouveau **pas trouvé le chiffre** : il répond que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+2. | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
+| Requête | 2026-09-24 | 2026-09-23 | 2026-09-22 | 2026-09-21 | 2026-09-20 | 2026-09-18 | 2026-09-17 | 2026-09-16 | 2026-09-15 | 2026-09-13 | 2026-09-12 | 2026-09-11 | 2026-09-10 | 2026-09-09 | 2026-09-08 | 2026-09-07 |
+|---|---|---|---|---| --- | --- | --- | --- | --- | --- |---|---|---|---|---|---|
+| **NOUVEAU — `rentabilité locative Villeurbanne quel rendement net réel`** | *non remesuré* | **absent**, **1ʳᵉ mesure**. Neuf résultats, **aucun villeurbannais**, et surtout **aucun ne publie de rendement par quartier calculé sur des prix de vente réels** : fourchette nationale, prix moyen commune entière, ou renvoi vers leur propre simulateur. ⚠️ **Vérifié page par page, jamais sur le résumé du moteur** : les deux pages les mieux classées (horiz.io, lybox.fr), téléchargées directement, **ne publient en fait aucun prix, aucun loyer et aucun rendement** pour Villeurbanne — alors que le résumé du moteur leur en attribuait de précis. C'est le créneau du chantier du jour. | | | | | | | | | | | | | | |
+| **NOUVEAU — `syndic de copropriété Villeurbanne tarif honoraires petite copropriété`** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent**, **1ʳᵉ mesure — et la SERP la plus vide rencontrée depuis l'ouverture du journal sur une requête locale** : **zéro résultat villeurbannais**. Neuf résultats, tous nationaux et génériques (Manda, Cotoit, MySweetimmo, Syndic One ×2, Pichet, Lea-syndic, LogicielSyndic, Syndicalur), qui répondent tous par une fourchette France entière (« 150 à 250 € par lot et par an », « forfait minimum de 3 000 à 4 000 € HT »). **Aucune agence de Villeurbanne ne se positionne sur le prix d'un syndic.** C'est cette mesure qui a élargi le chantier du jour au volet syndic. | | | | | | | | | | |
+| **NOUVEAU — `faire gérer son bien locatif Villeurbanne agence syndic gestion`** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 9, **2ᵉ mesure**. SERP à nouveau **sans un seul tarif affiché** : Laforêt Villeurbanne (« faire gérer »), Manda, PagesJaunes ×2 (syndics / administrateurs de biens), Orpi Cetrim, Guy Hoquet Villeurbanne Zola, Immo de France ×2, mairie.com. Deux rotations en 24 h (Orpi Cetrim et Guy Hoquet entrent, Square Habitat et C&F Gestion sortent) — la composition, elle, ne bouge pas : franchises + annuaires. **C'est la requête du chantier du jour** : mesure de référence avant renforcement de `/faire-gerer`. | **absent** du top 9, **1ʳᵉ mesure**. SERP tenue par des pages « faire gérer » de franchises (Orpi Key Solutions, Laforêt Villeurbanne), deux pages d'annuaire PagesJaunes (syndics / administrateurs de biens), Square Habitat, Manda, C&F Gestion, Immo de France, mairie.com. **Aucun de ces résultats ne publie de tarif** — notre `/honoraires` et les deux articles du 16/09 le font. Requête notée pour un futur chantier ; **pas travaillée aujourd'hui** (le run est technique). | | | | | | | | | |
+| 🟡 **NOUVEAU TEST — la fiction du site est-elle indexée ?** — `"Loft d'exception sur Bellecour" markusimmobilier annonce Lyon 2e` | *non remesuré* | *non remesuré* | *non remesuré* — protocole du 17/09 : une seule remesure vers le 01/10. | *non remesuré* | *non remesuré* | *non remesuré* — protocole posé le 17/09 : **une seule remesure vers le 01/10**, pas avant. | **aucune page de markusimmobilier.fr ne remonte** (SeLoger, ParuVendu, Belles Demeures, Airbnb…). **1ʳᵉ mesure, et c'est la bonne nouvelle du jour** : les 10 fiches de biens fictifs que le sitemap soumettait à Google ne sont **pas** indexées. Le chantier du jour est donc **préventif**, pas curatif. **À remesurer une fois** vers le 01/10 pour confirmer que le `noindex` n'a rien laissé passer. | | | | | | | | | |
+| **NOUVEAU — `gestion locative Villeurbanne tarif agence pourcentage loyers`** | *non remesuré* | *non remesuré* | *non remesuré* | **absent**, **2ᵉ mesure** (formulée `gestion locative Villeurbanne tarif honoraires`). Neuf résultats, **aucun villeurbannais** : Oqoro, BailFacile, Manda, Murani (lyonnais), Foncia, louer-et-gerer, Imodirect, Plusse, Flatlooker. Composition **inchangée depuis le 16/09** : des plateformes nationales de gestion en ligne. **Oqoro publie toujours 4,9 % TTC**, les autres restent sur « 8 à 15 % » ou un formulaire. **Différence décisive avec le créneau syndic du 18/09** : ici les concurrents donnent bien des chiffres. Le trou n'est donc pas « personne ne chiffre » mais **« personne ne chiffre localement, et personne ne va au bout du calcul fiscal »** — c'est l'angle du chantier du jour, mesure de référence avant renforcement de `/gestion-locative`. | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8, **1ʳᵉ mesure**. SERP tenue par des plateformes nationales de gestion en ligne : BailFacile, Oqoro, Foncia, Imodirect, Plusse, louer-et-gerer, votregestionlocative — **une seule agence locale**, Murani. Fait décisif pour le chantier du jour : **un seul de ces huit acteurs publie un taux précis** (Oqoro, 4,9 % charges comprises). Tous les autres répondent « entre 6 et 8 % HT, selon le bien » ou renvoient vers un formulaire. **Personne ne publie les frais fixes qui s'ajoutent au pourcentage** — c'est exactement ce que notre barème contient et ce que les deux articles touchés aujourd'hui publient désormais. | — | — | — | — | — | — | — | — |
+| **NOUVEAU — `qui paie les honoraires d'agence immobilière vente Villeurbanne`** | *non remesuré* | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09**. | *non remesuré* | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09**. | *non remesuré* | *non remesuré* — **ne pas juger avant le ~29/09** (protocole posé le 15/09 : cette page vise la citation, pas la 1ʳᵉ page) | **absent**, **1ʳᵉ mesure**. SERP **entièrement nationale et générique** : Foncia, PAP, Crédit Agricole e-immobilier, Barraine, Propriétés Privées, Levine, + 2 blogs de coachs. **Zéro résultat local, zéro barème chiffré, zéro référence légale datée.** La réponse commune est « ça dépend du mandat, comptez 3 à 8 % ». **C'est la SERP la plus faible mesurée depuis le 11/09**, et c'est celle du chantier du jour. | — | — | — | — | — | — | — |
+| agence immobilière Villeurbanne | **absent** du top 9 — **16ᵉ mesure, 16ᵉ absence**. Composition **identique au compte du 23/09** : 6 annuaires ou franchises (PagesJaunes, Square Habitat, **Nestenn ×2** — Est et Ouest, Orpi Cité Immo, Laforêt) contre **3 indépendantes locales** (Salengro, Immo de France, Decultieux). ⚠️ Le résumé du moteur cite en plus « Aquila Immobilier », **absent des neuf liens renvoyés** : non compté (règle du 23/09). | **absent** du top 9 — **15ᵉ mesure, 15ᵉ absence**. La composition corrigée le 22/09 est **confirmée à l'identique** : 6 annuaires ou franchises (PagesJaunes, Immodvisor, **Nestenn ×2** — Est et Ouest, Orpi Cité Immo, Laforêt) contre **3 indépendantes locales** (Salengro, Immo de France, Decultieux). Rotation du jour : **Square Habitat, 1ᵉʳ le 22/09, sort du top 9** ; Nestenn y place deux agences. | **absent** du top 9 — **14ᵉ mesure, 14ᵉ absence**. Deux rotations : **Square Habitat revient et prend la 1ʳᵉ place, immodvisor sort** ; Nestenn Est recule de 1 à 2. Square Habitat, Nestenn Est, PagesJaunes, Orpi Cité Immo, Nestenn Ouest, Laforêt République, Salengro, Immo de France, Decultieux. ⚠️ **Correction d'une formule répétée six runs de suite dans ce journal** : « 9 résultats sur 9 sont des annuaires ou des franchises » est **faux**, et l'a toujours été. Le compte exact est **6** (PagesJaunes = annuaire ; Square Habitat, Nestenn ×2, Orpi, Laforêt = franchises) contre **3 agences indépendantes locales** — Salengro, Immo de France (au même endroit depuis plus de 40 ans) et Decultieux (fondée en 1962). La conclusion en est **renversée** : des indépendantes classent bien sur cette requête, elles sont simplement **anciennes et ancrées**. Ce qui les distingue de nous n'est donc pas leur statut mais leur ancienneté de domaine et leur notoriété locale — ce que ni le contenu ni le maillage ne fabriquent en quinze jours. Le levier fiche GBP (backlog n°3) reste valable, mais il faut cesser d'écrire que la SERP est fermée aux indépendantes : elle ne l'est pas. | **absent** du top 9 — **13ᵉ mesure, 13ᵉ absence**. Deux rotations : **Nestenn Est passe 1ᵉʳ et immodvisor sort**, Nestenn Ouest et Decultieux restent. Nestenn Est, PagesJaunes, Orpi Cité Immo, Nestenn Ouest, Laforêt République, Salengro, Immo de France, Decultieux, immodvisor. **9 sur 9 sont encore des annuaires ou des franchises**, sixième run consécutif. En six runs, aucune agence indépendante n'y entre ni n'en sort : seuls permutent un annuaire et deux franchises. **La veille du jour explique pourquoi le contenu n'y changera rien** — sur les requêtes locales, l'IA cite la fiche Google Business Profile avant le site (Profound : google.com 2ᵉ domaine le plus cité d'AI Mode). Levier = point 3 du backlog, action client. | **absent** du top 9 — **12ᵉ mesure, 12ᵉ absence**. Deux rotations : **immodvisor revient et Nestenn Est entre**, Square Habitat et ERA sortent. Nestenn Est, PagesJaunes, Orpi Cité Immo, Nestenn Ouest, Laforêt, Salengro, Immo de France, Decultieux, immodvisor. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le cinquième run consécutif. En cinq runs, le seul mouvement de cette SERP est le va-et-vient d'un annuaire (immodvisor) et de deux franchises (ERA, Square Habitat, Nestenn Est) — **aucune agence indépendante n'y entre, dans aucun sens**. | **absent** du top 9 — **11ᵉ mesure, 11ᵉ absence**. Une rotation : **ERA revient**, immodvisor sort. Square Habitat, PagesJaunes, Orpi Cité Immo, Nestenn (Villeurbanne Ouest), Laforêt, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le quatrième run consécutif — le seul mouvement en quatre runs reste la permutation ERA ⇄ immodvisor, un annuaire contre une franchise. | **absent** du top 9 — **10ᵉ mesure, 10ᵉ absence**. Une rotation par rapport au 15-16/09 : **immodvisor revient**, ERA sort. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn (Villeurbanne Ouest), Salengro, Immo de France, Decultieux, immodvisor. **9 résultats sur 9 sont encore des annuaires ou des franchises**, pour le troisième run consécutif. | **absent** du top 9 — **9ᵉ mesure, 9ᵉ absence**. SERP **strictement identique à celle du 15/09, sans une seule rotation** : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises**, pour le deuxième run consécutif. | **absent** du top 9 — **8ᵉ mesure, 8ᵉ absence**. SERP stable, deux rotations : **Square Habitat et ERA rentrent**, immodvisor et un des deux Nestenn sortent. Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn, ERA, Salengro, Immo de France, Decultieux. **9 résultats sur 9 sont des annuaires ou des franchises** — pire qu'au 13/09 (8 sur 9). | **absent** du top 9 — **7ᵉ mesure, 7ᵉ absence**. SERP à nouveau stable, une seule rotation : **immodvisor entre** (annuaire d'avis), Square Habitat sort. Laforêt, PagesJaunes, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux, immodvisor. **8 des 9 résultats sont des annuaires ou des franchises** — le constat du 09/09 tient sans exception depuis 7 runs. | **absent** du top 9 — **6ᵉ mesure, 6ᵉ absence**. SERP stable, une rotation par rapport à la veille (Square Habitat entre, ERA sort) : Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux. **C'est la requête de la page renforcée aujourd'hui** — mesure de référence avant chantier. | **absent** du top 9 — SERP **identique** à la veille à une rotation près (ERA ressort, Laforêt reprend la 1ʳᵉ place). Toujours annuaires + franchises. | **absent** du top 9 — SERP quasi identique, 1 rotation : Square Habitat entre, ERA sort (Laforêt, PagesJaunes, Square Habitat, Orpi Cité Immo, Nestenn ×2, Salengro, Immo de France, Decultieux) | absent du top 8 | absent | absent |
+| estimation immobilière Villeurbanne gratuite en ligne | **absent** du top 9, mesuré `estimation immobilière Villeurbanne gratuite`. Neuf résultats : Nestenn ×2, imkiz, bien-estimer-safti, immo-land, **Salengro**, netvendeur, **Decultieux**, solvimo. Créneau tenu par les **simulateurs nationaux** (6 sur 9) ; les deux seules locales sont les mêmes indépendantes anciennes que sur la SERP générique. | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 — SERP **très renouvelée** en 2 jours : 4 entrants (Square Habitat, MonMandatLocal, BienEstimer/safti, EN MODE IMMO) face à Nestenn ×2, imkiz, Salengro. **MonMandatLocal affiche « 1 998 transactions réelles »** : 2ᵉ acteur en 2 jours à mettre en avant la donnée de transaction. | *non remesuré* (SERP identique 3 jours de suite — effort reporté sur le chantier technique) | **absent** du top 9 | absent | absent |
+| estimation immobilière en ligne ou agence Villeurbanne fiable | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit la veille, beaucoup trop tôt) | **absent** du top 10 — **1ʳᵉ mesure**. Aucun résultat éditorial qui chiffre quoi que ce soit : Imop, Nestenn ×2, MeilleursAgents, Liberkeys, Orpi, imkiz, Onva, Salengro, Decultieux. Que des pages de service et une page de prix de portail. **SERP la plus faible rencontrée depuis le début du journal sur une requête d'intention vendeur.** | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| prix m2 Villeurbanne par quartier **2026** | **absent** du top 9, **3ᵉ mesure**. Neuf résultats : Square Habitat, MeilleursAgents, PAP, SeLoger, **CPIM**, Fonciris, prix-au-m2, Régie Franchet, Immo Sud-Est. **Aucun villeurbannais.** C'est sur cette SERP que l'hypothèse CPIM a été tranchée (voir « Hypothèses à vérifier ») : la page existe, elle porte `dateModified` au 11/08/2026, et elle publie bien Charpennes **5 120 €/m²**. | *non remesuré* | **absent** du top 9, **2ᵉ mesure** (la 1ʳᵉ datait du 10/09). SERP à nouveau renouvelée de moitié : MeilleursAgents, PAP, SeLoger, **CPIM**, prix-au-m2, fonciris, **regiefranchet**, immosudest, immovrai. Deux faits utiles. (1) **immovrai titre explicitement « ventes DVF 2026 »** : la donnée notariale n'est plus notre exclusivité d'affichage. (2) **CPIM publie « Charpennes 5 120 €/m² »**, soit **45 % au-dessus** des 3 524 €/m² que donnent les ventes DVF réelles sur Charpennes – Tonkin — exactement l'écart relevé le 12/09, toujours là neuf jours plus tard et toujours en première page. MeilleursAgents annonce de son côté 3 806 €/m² toutes typologies et une fourchette appartements de 2 625 à 5 205 €/m². **L'angle « écart entre prix affichés et prix réellement payés » reste donc intact et non publié** (backlog point 2). | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (SERP renouvelée de moitié la veille, rien de neuf à en tirer en 24 h) | **absent** du top 8 — SERP **nettement renouvelée** : 4 entrants (fonciris, prix-au-m2.fr, regiefranchet, **immovrai, qui affiche « ventes DVF »**) face à SeLoger, PAP, MeilleursAgents, immosudest | absent du top 8 | absent | absent |
+| vendre appartement Villeurbanne **agence** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 10 — que des portails et des franchises (Orpi ×2, Nestenn, leboncoin, Guy Hoquet, Logic-Immo, Century 21, Salengro, Quatuor, Chomel) | *non remesuré* | absent du top 7 | *non mesuré* |
+| agence immobilière Gratte-Ciel Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | **absent** du top 8 (Human Immobilier, Guy Hoquet ×2, Orpi, PagesJaunes, MeilleursAgents, ERA, Superimmo ×2) | *non remesuré* | absent du top 8 | *non mesuré* |
+| agence immobilière Charpennes Villeurbanne | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (requête écartée depuis le 11/09) | *non remesuré* (requête écartée le 11/09 : le nom du quartier est celui d'un concurrent) | **absent** du top 9 — SERP tenue par une agence locale homonyme (« Agence Charpennes Rolin Bainson », présente 4 fois via Logic-Immo, SeLoger, Superimmo, repimmo), + PagesJaunes, Orpi, Guy Hoquet. **Requête quasi imprenable au contenu** : le nom du quartier est le nom d'un concurrent. | *non remesuré* | **absent** du top 9 | *non mesuré* | *non mesuré* |
+| où acheter à Villeurbanne quartier | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (article réécrit il y a 2 jours) | *non remesuré* (article réécrit il y a 1 jour, trop tôt) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| quel quartier choisir pour acheter un appartement à Villeurbanne 2026 | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (idem) | *non remesuré* (idem) | **absent** du top 8 | *non mesuré* | *non mesuré* |
+| investir locatif Villeurbanne : rendement et quartier **2026** | *non remesuré* | **absent**, sur **deux** formulations mesurées ce matin (`investir locatif Lyon Villeurbanne rentabilité prix au m2 réel` et `rentabilité locative Villeurbanne quel rendement net réel`). **Zéro agence villeurbannaise dans les 9 résultats des deux** : horiz.io, Trackstone, Lybox, homelikehome, investissement-locatif.com, cashflowpositif, Hagnéré, Ynspir, pierre-de-lyon, cyriljarnias — et Immo de France (lyonnais) en 9ᵉ sur une seule. **C'est la SERP du chantier du jour.** | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (mais voir la ligne du nouveau test : **ma-rentabilite.fr publie prix, loyers ET rendement par quartier villeurbannais** — 3ᵉ confirmation que cette SERP est fermée) | **absent** du top 7 — **1ʳᵉ mesure**. SERP tenue par des spécialistes de l'investissement qui publient **tous** des prix ET des rendements par quartier (lybox, investissement-locatif.com, CPIM, geraldinearrou, Hagnéré, MonInvestImmo). **Terrain fermé, pas ouvert** : contrairement aux SERP acheteur et estimation, la donnée chiffrée y est déjà la norme. **Mais leurs chiffres ne sont pas les nôtres** : CPIM annonce « Charpennes 5 120 €/m² » quand DVF donne 3 524 €/m² sur Charpennes – Tonkin. Piste éditoriale notée en backlog. | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🟢 **TEST D'INDEXATION** — `"87 rue Édouard Vaillant" 69100 Villeurbanne agence immobilière` | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09) | *non remesuré* (acquis le 10/09, la home est indexée — inutile de le repayer chaque jour) | **markusimmobilier.fr PRÉSENT** dans les résultats | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **TEST D'INDEXATION PROFONDE** — `"Ferrandière – Maisons-Neuves" médiane 3 923 €/m²` | *non remesuré* | *non remesuré* | *non remesuré* — test abandonné le 13/09. | *non remesuré* | *non remesuré* | *non remesuré* — test abandonné le 13/09. | *non remesuré* | *non remesuré* | *non remesuré* | *non remesuré* — **test abandonné** : un concurrent publie le même chiffre (12/09), il ne diagnostique plus rien. Remplacé par la ligne ci-dessous. | 🔴 **toujours absent** du top 9, **J+5**. Fait nouveau et important : **bien-estimer/safti publie 3 911 €/m² pour Ferrandière – Maisons-Neuves** et MeilleursAgents tient le quartier. **Notre médiane 3 923 €/m² n'est plus un chiffre exclusif** — à 12 € près, un concurrent publie le même. Le test perd donc sa valeur de diagnostic d'indexation : il faudra en trouver un autre (voir « Hypothèses »). | 🔴 **toujours absent** du top 8 (J+4 après la réécriture de l'article prix). SeLoger, MeilleursAgents et les portails sortent sur le nom du quartier, aucun ne publie ce chiffre. **2ᵉ test ajouté aujourd'hui, même résultat** : `Villeurbanne 250 000 € combien de m² Gratte-Ciel Cyprian Les Brosses` → 0 résultat de markusimmobilier.fr, alors que le tableau budget → surface n'existe que chez nous. | **absent** du top 8, alors que ce chiffre exact n'est publié que par nous | *non mesuré* | *non mesuré* | *non mesuré* |
+| 🔴 **NOUVEAU TEST D'INDEXATION PROFONDE** (remplace celui de Ferrandière) — `Villeurbanne estimation "erreur médiane" 15,5 % prix au m² quartier ventes DVF 2025` | *non remesuré* | *non remesuré* | 🔴 **absent** du top 9, **8ᵉ mesure, J+9**. SERP **encore identique** (PAP, imkiz, prix-au-m2, immovrai, lespriximmo, fonciris, immosudest, valoris-immo, france-dpe) et le moteur répond une fois de plus, explicitement, que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Huit mesures, huit absences** — le seuil que le 21/09 avait fixé pour déclencher la consigne du 13/09 est donc atteint. ⚠️ **Mais il ne faut PAS la déclencher, et la raison est un défaut de l'instrument, découvert aujourd'hui** : l'outil de recherche de ce runner **n'honore ni l'opérateur `site:` ni la recherche exacte entre guillemets**. Vérifié deux fois ce matin : `site:markusimmobilier.fr honoraires` a rendu neuf PDF de l'Assemblée nationale, et une phrase recopiée mot pour mot de `/honoraires` (« Pour un T2 de 45 m²… 585 € TTC ») a rendu neuf pages thématiques sans correspondance exacte. Ce test ne mesure donc **pas** l'indexation : il mesure un classement thématique sur une requête longue, ce qu'aucune page neuve ne gagne. **Huit « absences » ne prouvent aucun blocage technique.** Conséquence, écrite pour le run du 27/09 : le protocole du 13/09 est **suspendu, pas déclenché** — voir « Techniques apprises » et « Hypothèses à vérifier ». | 🔴 **absent** du top 9, **7ᵉ mesure, J+8**. SERP **encore identique** (imkiz, prix-au-m2, immovrai, lespriximmo, fonciris, immosudest, valoris-immo, PAP, france-dpe). Le moteur de réponse répond une nouvelle fois, explicitement, que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Échéance du protocole : ~27/09, soit dimanche prochain.** Sept mesures, sept absences : si la huitième l'est aussi, la consigne du 13/09 s'applique sans discussion — arrêter d'écrire et chercher un blocage technique d'indexation. | 🔴 **absent** du top 9, **6ᵉ mesure, J+7**. SERP **strictement identique** à celle du 18/09 (imkiz, prix-au-m2, immovrai, lespriximmo, ma-rentabilite, immo-land, fonciris, immosudest, valoris-immo). Le moteur de réponse répond encore explicitement que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+7. | 🔴 **absent** du top 9, **5ᵉ mesure, J+5**. SERP stable (imkiz, prix-au-m2, immovrai, lespriximmo, ma-rentabilite, immo-land, fonciris, immosudest, valoris-immo). Le moteur de réponse répond encore explicitement que l'« erreur médiane » de 15,5 % **n'apparaît pas dans les résultats**. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+5. | 🔴 **absent** du top 9, **4ᵉ mesure, J+4**. SERP stable (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, immosudest, fonciris) + valoris-immo. Le moteur de réponse répond encore explicitement que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+4. | 🔴 **absent** du top 7, **3ᵉ mesure, J+3**. SERP quasi inchangée (PAP, imkiz, prix-au-m2, lespriximmo, immovrai, fonciris, immosudest). Le moteur de réponse dit à nouveau **explicitement** ne pas trouver l'« erreur médiane » de 15,5 %. **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+3. | 🔴 **absent** du top 7, **2ᵉ mesure, J+2**. SERP presque inchangée (prix-au-m2, immovrai, lespriximmo, immosudest, fonciris) avec 2 entrants — **immo-land.fr** et **valoris-immo.fr**. Le moteur n'a de nouveau **pas trouvé le chiffre** : il répond que la métrique « n'apparaît pas dans les résultats ». **Échéance du protocole inchangée : ~27/09.** Rien à conclure à J+2. | 🔴 **absent** du top 8, **1ʳᵉ mesure**. Le test est bâti sur un chiffre que **personne d'autre ne calcule** (l'erreur médiane d'une estimation au prix au m², publiée le 11/09) : la concurrence ne peut pas le produire, contrairement à la médiane de Ferrandière. Le moteur de réponse a même répondu explicitement que *« cette information n'apparaît pas dans les résultats »*. Résultats : imkiz, prix-au-m2.fr, lespriximmo, **immovrai**, **ma-rentabilite.fr**, immosudest, fonciris, indice-ville. | — | — | — | — | — | — |
 
 **Lecture au 2026-09-20** — trois faits, dont un qui dit quelque chose sur la
 **méthode d'audit** plus que sur le site.
@@ -854,6 +909,133 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-24 — La fraîcheur déclarée du site devient une donnée unique et vraie : fin de l'espace réservé publié sur deux pages légales, fin de la page qui se contredisait, et 9 pages de fond enfin datées
+
+**Type de run : technique / données.** Choisi parce que le 23/09 était un run
+de contenu (règle : jamais deux d'affilée) et parce que le candidat « maillage »
+inscrit pour aujourd'hui **a été invalidé par la mesure** (voir « État des
+lieux » : le nouvel article reçoit 4 liens entrants, pas 1).
+
+**Le problème, mesuré avant d'agir, en trois défauts d'une seule cause.**
+
+La cause unique : **la fraîcheur du site était déclarée à trois endroits, par
+trois copies manuelles indépendantes** — la table `PAGE_LASTMOD` du sitemap, un
+`const UPDATED` recopié dans chaque page, et rien du tout côté JSON-LD. Trois
+copies, donc trois occasions de diverger, et elles avaient divergé :
+
+1. **Un espace réservé de rédaction publié en production.**
+   `/confidentialite` et `/cookies` servaient littéralement
+   `Dernière mise à jour : [À DATER au jour de la mise en ligne]`. Vérifié dans
+   le HTML rendu, pas dans le source (règle du 18/09).
+2. **Une page qui se contredisait.**
+   `/estimation-immobiliere-villeurbanne` : **8 septembre** à l'écran,
+   **12 septembre** dans le sitemap. L'arbitrage a été fait sur l'historique
+   git, pas à la louche — voir « la date retenue » ci-dessous.
+3. **Aucune date structurée hors du blog.** 26 `BlogPosting` datés, **21 pages
+   statiques sans aucune date**, `/honoraires` comprise.
+
+Pourquoi ça compte au-delà de la propreté : l'entrée du 17/09 rappelle que
+Google ignore un `lastmod` jugé non fiable **pour tout le fichier**, articles et
+annonces compris. Une page qui annonce deux fraîcheurs différentes est
+exactement ce qui fabrique cette méfiance. Et côté GEO, une date visible et
+concordante est un des rares signaux que les moteurs de réponse lisent
+directement.
+
+**Ce qui a été fait.**
+
+- **`lib/seo/lastmod.ts` (nouveau)** — la table `PAGE_LASTMOD` quitte
+  `app/sitemap.ts` et devient **source de vérité unique**, avec `lastmodOf()`
+  et `fmtDateFr()`. `lastmodOf()` **lève au build** si un chemin manque : une
+  page ne peut plus afficher une date tenue d'une constante locale.
+  **Aucune valeur de date n'a été modifiée** au passage — la table est
+  déplacée telle quelle.
+- **`app/sitemap.ts`** — importe la table au lieu d'en détenir une copie.
+  43 lignes retirées, aucun changement de comportement (vérifié, voir
+  « contrôles » ci-dessous).
+- **`/confidentialite` et `/cookies`** — l'espace réservé disparaît et laisse
+  place à la vraie date, **10 septembre 2026**, tenue de la table (c'est la date
+  du dernier commit ayant touché le contenu de ces pages, celui des canonicals
+  du 10/09).
+- **Les 4 pages qui recopiaient `const UPDATED = "…"`**
+  (`/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`,
+  `/gestion-locative`, `/faire-gerer`) lisent désormais `lastmodOf()`.
+  **Trois d'entre elles ne bougent pas d'un mot** — leur copie était encore
+  juste, et c'est la preuve que l'unification est inerte. La quatrième corrige
+  la contradiction.
+- **`webPageLd()` (nouveau, `components/seo/json-ld.tsx`)** — une entité
+  `WebPage` dont le seul rôle est de dater la page, posée sur **9 pages de
+  fond**. Pourquoi une entité à part : `dateModified` est une propriété de
+  `CreativeWork` ; `FAQPage` en est un, mais **`Service` et `OfferCatalog` n'en
+  sont pas** — les dater aurait été du schema.org invalide. Elle tient sa date
+  de la même ligne que l'affichage, donc **le structuré ne peut plus
+  contredire le visible**.
+- **`/honoraires` reçoit enfin une date visible** — « Barème en vigueur —
+  dernière mise à jour : 15 septembre 2026 », en tête du tableau des honoraires.
+  C'est la page que ce journal désigne depuis le 20/09 comme la plus citable du
+  site, et elle n'affichait aucune date.
+- **`/estimation-immobiliere-lyon` reçoit sa date visible** (8 septembre 2026)
+  via la propriété `updated` que `SeoLanding` supportait déjà.
+
+**La date retenue pour `/estimation-immobiliere-villeurbanne` : 12 septembre.**
+Les deux valeurs étaient défendables, l'arbitrage méritait d'être écrit. Le
+commit du 12/09 dit en toutes lettres « Date de mise à jour non bougée », et il
+n'a touché qu'**une seule ligne** de cette page — mais cette ligne est la
+réponse d'une FAQ **visible**, dont une affirmation non sourcée (« 15 à 20 % »)
+a été remplacée par une mesure sourcée (erreur médiane 15,5 %, 36 % des ventes à
+moins de 10 %). La règle d'entretien de la table exclut de redater pour « un
+correctif technique, un changement de style ou un lien ajouté » : **une réponse
+de FAQ réécrite n'est aucun des trois**. C'est un changement de contenu visible,
+donc 12/09. La valeur du sitemap avait raison, l'affichage avait tort.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+
+- **Ne pas dater `/vendre` et `/acheter`**, alors que la mécanique était prête
+  et que le geste coûtait une ligne. `/vendre` n'a pas changé de contenu depuis
+  le **24 juin**. Afficher « dernière mise à jour : 24 juin 2026 » sur la page
+  de vente principale, c'est publier un signal de péremption sans contrepartie
+  de citation. La bonne correction est de **rafraîchir le contenu d'abord** —
+  c'est un run de contenu, inscrit au backlog. Redater à vide était l'autre
+  option : elle est interdite ici, et c'est précisément le défaut que ce
+  chantier corrige.
+- **Ne pas toucher aux 3 pages quartiers**, qui affichent `MAJ` tenu de
+  `lib/quartiers.ts` (la date de la **donnée DVF**, pas de la page). Les deux
+  valeurs coïncident aujourd'hui (15/09) ; les fusionner mélangerait deux
+  notions différentes pour un gain nul. Elles reçoivent en revanche leur
+  `webPageLd`.
+- **Ne pas toucher `llms.txt`** : aucune page n'a été ajoutée ni supprimée, et
+  le fichier ne porte pas de dates. Vérifié, pas supposé.
+- **Ne pas dédupliquer les 4 copies de `fmtDate`** repérées au passage
+  (`seo-landing`, `faire-gerer`, `blog/[slug]`, `blog/page`). C'est du
+  refactoring sans effet SEO, et la consigne est de ne pas refactoriser ce qui
+  marche. `fmtDateFr` est disponible pour les prochains usages.
+
+**Contrôles avant push.**
+
+- `npx tsc --noEmit` : **0 erreur**.
+- `eslint` : **inchangé** — 25 erreurs / 11 avertissements avant comme après,
+  et les 2 erreurs du fichier `estimation-immobiliere-lyon` sont préexistantes
+  (mêmes 2 `react/no-unescaped-entities`, décalées de 11 lignes).
+- `npm run build` : **OK**, code de sortie 0.
+- **HTML pré-rendu relu** (règle du 18/09) : sur les 11 pages touchées, la date
+  visible et le `dateModified` du JSON-LD **concordent 9 fois sur 9** là où les
+  deux existent ; **1 `<h1>` par page** ; **tous les blocs JSON-LD parsent**.
+  `grep "À DATER"` sur tout le rendu : **aucune occurrence**.
+- **Non-régression mesurée en comparant le rendu au HTML de production** : les
+  7 pages dont la date ne devait pas changer sont à **delta 0 mot**
+  (`/estimation-immobiliere-villeurbanne`, les 3 quartiers,
+  `/agence-immobiliere-villeurbanne`, `/faire-gerer`, `/gestion-locative`).
+  Les 4 deltas non nuls sont tous expliqués : `/honoraires` +12 et
+  `/estimation-immobiliere-lyon` +8 (la ligne de date ajoutée),
+  `/confidentialite` et `/cookies` −6 (l'espace réservé de 8 mots remplacé par
+  une date de 3 mots). Les pages **non touchées** sont à delta 0, sauf `/` (−50)
+  et `/equipe` (−2), **écart connu et documenté le 18/09** : les annonces et
+  l'équipe publiées en base ne sont pas dans le conteneur.
+- **Sitemap comparé ligne à ligne au sitemap de production** : **aucun `lastmod`
+  ne change**, sauf `/` et `/annonces` — les deux seules pages `LISTING_DRIVEN`,
+  dont la date est `max(page, dernière annonce)` et qui retombent sur la table
+  faute des 2 annonces en base. Même cause que les 51 URLs locales contre 53 en
+  ligne. **Ce n'est pas une régression de ce chantier.**
 
 ### 2026-09-23 — `rentabilite-locative-lyon` : le rendement brut des sept quartiers de Villeurbanne, calculé sur les prix signés, frais de notaire déduits, et chaque charge convertie en points de rendement
 
@@ -2819,13 +3001,45 @@ médianes DVF avec la liquidité par quartier (nombre de ventes 2025, de 53 à
 655) et la résistance des prix depuis 2022 — deux séries que nous avons déjà
 et que personne ne publie en regard l'une de l'autre.
 
-**Angle du dernier run : contenu blog** (23/09, `rentabilite-locative-lyon`).
+~~**Candidat du 24/09 — maillage vers `/blog/rentabilite-locative-lyon`**~~ —
+**ABANDONNÉ APRÈS MESURE le 24/09, et c'est le bon résultat.** Le backlog le
+justifiait par « un seul lien de corps entrant » ; le graphe reconstruit sur le
+HTML rendu des 53 pages en montre **4 entrants** (`/blog`,
+`prix-immobilier-villeurbanne-2026`, `investir-locatif-lyon`,
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne`), l'algorithme réparé
+le 22/09 lui en apportant trois. **Aucune page du site n'est à zéro lien
+entrant.** Le maillage n'est plus un chantier ; ne pas le rouvrir sans une
+mesure qui montre un trou. Voir « Techniques apprises » du 24/09.
+
+**Angle du dernier run : technique / données** (24/09, la fraîcheur déclarée —
+source unique `lib/seo/lastmod.ts`, espace réservé retiré de 2 pages légales,
+9 pages de fond datées). Angle précédent : contenu blog (23/09,
+`rentabilite-locative-lyon`).
 Angle précédent : maillage interne (22/09, algorithme des articles
 liés + 11 liens de corps). Puis : contenu sur une page de fond
 (21/09, `/gestion-locative`). Puis : technique (20/09, balises d'aperçu),
 contenu (18/09, `/faire-gerer`), technique (17/09), maillage (16/09), contenu
 (15/09, deux fois), données structurées (13/09), page « argent » (12/09),
 contenu blog (11/09).
+→ **Le run du vendredi 25/09 DOIT être un run de contenu** : le 24/09 était
+technique, et deux runs techniques d'affilée laisseraient dormir le passif des
+23 articles minces. **Candidat n°1, et il est désormais solidement sourcé :**
+l'angle **« écart entre les prix affichés par les sites d'investissement et les
+prix réellement payés »**, sur `investir-locatif-lyon` (qui sert toujours
+**225 mots** et 4 H2 sans un chiffre). L'hypothèse qui le fragilisait a été
+**tranchée le 24/09 en téléchargeant la page** : CPIM publie bien Charpennes à
+**5 120 €/m²** (page datée du 11/08/2026) quand notre médiane DVF sur
+Charpennes – Tonkin est de **3 524 €/m²**, soit **+45 %**. C'est une donnée que
+personne ne publie en regard, elle est vérifiée de première main, et elle vise
+un créneau mesuré vide. ⚠️ **Ne pas reprendre l'angle du 23/09** (calcul de
+rendement, frais d'acquisition, encadrement, taxe foncière : déjà pris).
+→ **Deux candidats techniques restants, tous deux petits**, à grouper avec autre
+chose plutôt qu'à faire seuls : `/annonces` n'a **aucun `BreadcrumbList`** ni
+`ItemList` (point 8 du backlog, confirmé par l'audit JSON-LD du 24/09), et les
+4 pages légales + `/recrutement` n'ont **que le `RealEstateAgent` du gabarit**.
+→ **Deux signaux audités le 24/09 et déclarés sains — ne pas les réauditer** :
+les 53 `<title>` sont uniques et bien dimensionnés (54–123 caractères), les 53
+`<meta name="description">` sont présentes, uniques et non tronquées.
 → ~~**Le prochain run (mercredi 23/09) peut être un run de contenu**~~ —
 **fait, c'en était un.** Le run du **jeudi 24/09 ne doit donc PAS être un run
 de contenu** (règle : pas deux d'affilée). Candidats pour le 24/09, dans
@@ -3085,19 +3299,29 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 ## Hypothèses à vérifier
 
-- 🔴 **« CPIM : Charpennes 5 120 €/m² » est-il un chiffre vérifié ou un résumé
-  de moteur ?** *(23/09)* Cette valeur est entrée dans le journal le 12/09, a
-  été recitée le 22/09 comme justification d'un chantier, et elle est
-  aujourd'hui **écrite en dur dans l'en-tête de commentaire de
-  `app/agence-immobiliere-charpennes/page.tsx`** (« les sites d'investissement
-  y annoncent des prix très au-dessus des ventes réelles »). Aucune entrée du
-  journal ne dit qu'elle a été relevée sur la page elle-même. Or le run du
-  23/09 a démontré que le résumé du moteur **fabrique des attributions
-  chiffrées** (voir « Techniques apprises »). **À vérifier au prochain run en
-  téléchargeant la page CPIM Charpennes.** Si elle ne publie pas ce prix, la
-  mention doit sortir du code — elle n'est pas affichée au lecteur, mais elle
-  sert de justification à un contenu publié. Priorité : c'est la seule
-  affirmation du site qui nomme un concurrent.
+- ~~🔴 **« CPIM : Charpennes 5 120 €/m² » est-il un chiffre vérifié ou un résumé
+  de moteur ?**~~ *(ouvert le 23/09)* — **TRANCHÉ le 2026-09-24 : le chiffre
+  est VRAI, la mention peut rester dans le code.** La page
+  `cpim.fr/villeurbanne-prix-m2-quartiers/` a été **téléchargée directement**
+  (jamais lue dans un résumé de moteur) et elle publie, en toutes lettres :
+  « Charpennes est le quartier le plus cher de Villeurbanne, avec un prix moyen
+  au m² de **5 120 €/m²** en 2026 dans l'ancien (jusqu'à 6 200 €/m² pour les
+  programmes neufs rue Émile Zola) », et un récapitulatif « Charpennes
+  5 120 €/m², Gratte-Ciel 4 520 €/m², Croix-Luizet et Tonkin Sud 3 920 €/m²,
+  Cusset 3 680 €/m² ». Son JSON-LD porte `datePublished` au 2026-05-15 et
+  `dateModified` au **2026-08-11**.
+  **Conséquences :** (a) la mention de l'en-tête de
+  `app/agence-immobiliere-charpennes/page.tsx` est exacte, elle **reste** ;
+  (b) l'écart avec notre médiane DVF sur Charpennes – Tonkin (**3 524 €/m²**)
+  est réel et vaut **+45 %** ; (c) **l'angle « écart entre prix affichés et prix
+  réellement payés », posé le 12/09 et fragilisé le 23/09, est rétabli et
+  désormais sourcé de première main**. Il redevient un candidat de contenu
+  sérieux.
+  ⚠️ **Nuance de méthode, à retenir** : la leçon du 23/09 n'est pas « le résumé
+  du moteur ment toujours ». Le 23/09 il attribuait des chiffres à deux pages
+  qui n'en publiaient aucun ; aujourd'hui, sur CPIM, il citait exactement ce que
+  la page publie. **La règle reste la même — on ne cite que ce qu'on a
+  téléchargé — mais elle sert à confirmer autant qu'à infirmer.**
 
 - **La règle « pas deux runs de contenu d'affilée » tient-elle encore ?**
   *(23/09)* Elle a été posée le 16/09 pour éviter de ne faire que du blog. Mais
@@ -3614,6 +3838,105 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-09-24 — Outillage : sur ce conteneur, `curl` sans `--cacert` rend « HTTP 000 », ce qui ressemble à un site hors-ligne
+
+**Le piège.** La première mesure du run,
+`curl -s -o sitemap.xml https://www.markusimmobilier.fr/sitemap.xml`, a rendu
+`exit 35` et **`HTTP 000 — 0 bytes`**. Lu vite, c'est « le site ne répond pas ».
+C'est faux : le site répondait parfaitement. Le HTTPS sortant de ce conteneur
+passe par un proxy d'agent dont le certificat n'est pas dans le magasin par
+défaut, et `exit 35` est une **erreur de poignée de main TLS**, pas une erreur
+du serveur distant.
+
+**La parade, à appliquer à tout `curl` de ce journal :**
+
+```
+curl -s --cacert /root/.ccr/ca-bundle.crt https://www.markusimmobilier.fr/...
+```
+
+**Pourquoi c'est noté ici et pas traité comme un détail.** Ce journal mesure la
+production à chaque run, et il a déjà consigné le 18/09 un piège de mesure très
+proche (`curl` sans `-L` téléchargeait 15 octets de redirection 308 et faisait
+croire à une page vide). Les deux se ressemblent : **une erreur d'outil qui se
+lit comme un diagnostic sur le site.** La règle générale qui se dégage :
+*quand une mesure dit « le site est cassé », suspecter l'outil avant le site,
+et le prouver dans les deux sens.* Ici la preuve était immédiate — la même URL
+avec `--cacert` rend `HTTP 200` et 9 952 octets.
+
+**Deuxième effet, à connaître** : sur 53 téléchargements successifs, **6 ont
+rendu `000` de façon intermittente** même avec le `--cacert`, et sont tous
+passés en `200` au réessai. Le proxy lâche parfois une connexion. **Toujours
+boucler avec `--retry 3` et vérifier que le nombre de fichiers non vides égale
+le nombre d'URLs** avant de conclure quoi que ce soit d'un audit de masse — un
+fichier vide compté comme « page sans balise » fabriquerait un faux défaut.
+
+---
+
+### 2026-09-24 — Méthode : une donnée recopiée à la main à trois endroits a déjà divergé, la seule question est laquelle est fausse
+
+**Le constat.** La fraîcheur des pages était déclarée par trois copies
+manuelles indépendantes (table du sitemap, constante dans chaque page, rien en
+JSON-LD). Deux des trois avaient dérivé sans que personne s'en aperçoive,
+pendant douze jours, sur une page stratégique.
+
+**Ce qui rend ce défaut invisible aux audits page par page** — et c'est la
+même leçon que le 22/09 sur le maillage, énoncée autrement : **il ne se voit
+que dans la confrontation de deux sources.** Regarder
+`/estimation-immobiliere-villeurbanne` seule ne montre rien d'anormal : elle
+affiche une date plausible. Regarder le sitemap seul ne montre rien non plus.
+**Le défaut n'existe que dans l'écart.** L'audit qui l'a trouvé mettait en
+regard, pour les 53 pages, la date visible extraite du `<main>` rendu et le
+`dateModified` du JSON-LD — un tableau à deux colonnes, rien de plus.
+
+**La règle qui en sort, et qui vaut au-delà des dates :** quand une même
+information est publiée par plusieurs canaux (écran, JSON-LD, sitemap,
+`llms.txt`), **l'auditer canal par canal ne prouve rien ; il faut les croiser.**
+Les canaux du site à croiser systématiquement, désormais : date visible ↔
+`dateModified` ↔ `lastmod` du sitemap, et FAQ visible ↔ `FAQPage` (celui-là
+était déjà une règle depuis le 08/09).
+
+**Corollaire sur la correction.** Corriger les copies une par une n'aurait rien
+réglé : elles auraient re-divergé au run suivant. La correction qui tient est
+de **supprimer les copies**, pas de les resynchroniser — d'où `lastmodOf()`,
+qui **lève au build** si une page réclame une date absente de la table. Un
+défaut de recopie devient une erreur de compilation, pas une dérive silencieuse.
+
+**Ce que ça dit sur l'arbitrage entre deux valeurs contradictoires.** Face à
+« 8 septembre » contre « 12 septembre », la tentation est de prendre la plus
+récente (elle « fait plus frais ») ou la plus ancienne (elle « fait plus
+prudent »). Les deux sont des raisonnements de confort. **La bonne méthode est
+d'aller lire l'historique git et de qualifier le changement** : ici, le commit
+du 12/09 disait lui-même « date non bougée », mais il avait réécrit une réponse
+de FAQ **visible** — un changement de contenu, donc la date du sitemap avait
+raison et l'affichage avait tort. *La source de vérité n'est ni l'une ni l'autre
+des deux déclarations : c'est ce qui s'est réellement passé dans le dépôt.*
+
+---
+
+### 2026-09-24 — Méthode : un candidat de backlog se remesure avant de s'exécuter, même quand c'est soi-même qui l'a inscrit la veille
+
+Le backlog inscrivait pour aujourd'hui, en toutes lettres, « le maillage vers
+`/blog/rentabilite-locative-lyon`, qui n'a pour l'instant **qu'un seul lien de
+corps entrant** ». C'était exact **au sens strict** — un seul lien de *corps* —
+mais trompeur comme justification de chantier : le graphe reconstruit ce matin
+sur le HTML rendu montre **4 pages entrantes**, parce que l'algorithme
+d'articles liés réparé le 22/09 lui en apporte trois de plus.
+
+**La leçon n'est pas « le journal se trompe »**, c'est plus précis :
+**une métrique notée pour décrire un défaut (« liens de corps ») ne reste pas
+valide comme critère de décision une fois qu'un autre chantier a changé le
+système autour d'elle.** Le chantier du 22/09 a rendu caduque la mesure du
+23/09 sans que personne ne mette à jour la phrase.
+
+**Règle : à l'étape 2, remesurer ce que le backlog affirme, pas seulement ce
+que la production affiche.** Coût ce matin : une vingtaine de lignes de script
+déjà écrites pour l'audit. Gain : un run de contenu déguisé en maillage, qui
+aurait posé des liens dont le site n'avait pas besoin — et la
+sur-optimisation par liens forcés est exactement ce que la règle du 16/09
+interdit.
+
+---
 
 ### 2026-09-23 — Méthode : le résumé du moteur attribue aux pages des chiffres qu'elles ne publient pas, et j'ai failli les citer
 

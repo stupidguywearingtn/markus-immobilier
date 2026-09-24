@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { shareMeta } from "@/lib/seo/share";
 import { PageHero } from "@/components/layout/page-hero";
+import { fmtDateFr, lastmodOf } from "@/lib/seo/lastmod";
 import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section";
+
+/** Date de dernière modification réelle — source unique, cf. `lib/seo/lastmod.ts`. */
+const UPDATED = lastmodOf("/confidentialite");
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — Markus Immobilier",
@@ -35,7 +39,7 @@ export default function ConfidentialitePage() {
           <p className="inline-block bg-gris border border-[var(--bordure)] rounded-full px-3.5 py-1.5 text-[12px] text-[#5a6166] mb-10">
             Dernière mise à jour :{" "}
             <strong className="text-anthracite font-semibold">
-              [À DATER au jour de la mise en ligne]
+              <time dateTime={UPDATED}>{fmtDateFr(UPDATED)}</time>
             </strong>
           </p>
 

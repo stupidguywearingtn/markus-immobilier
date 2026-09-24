@@ -266,3 +266,39 @@ export function blogLd(
     ],
   };
 }
+
+/**
+ * Entité `WebPage` d'une page statique, dont le seul rôle est de **dater** la
+ * page pour les moteurs de réponse.
+ *
+ * Pourquoi une entité à part plutôt qu'un champ ajouté aux schémas existants :
+ * `dateModified` est une propriété de `CreativeWork`. `FAQPage` en est un et
+ * pourrait la porter, mais `Service` et `OfferCatalog` — les deux schémas qui
+ * couvrent le plus de pages ici — n'en sont pas : les dater serait du
+ * schema.org invalide. Un `WebPage` daté est la forme correcte, et elle vaut
+ * pour les 21 pages statiques sans distinction.
+ *
+ * La date vient de `PAGE_LASTMOD` (`lib/seo/lastmod.ts`), la même ligne que
+ * celle affichée à l'écran et que celle envoyée au sitemap : le `dateModified`
+ * structuré ne peut donc pas contredire la date visible.
+ */
+export function webPageLd(opts: {
+  path: string;
+  name: string;
+  description: string;
+  dateModified: string;
+}): Record<string, unknown> {
+  const url = opts.path === "/" ? BASE : `${BASE}${opts.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#page`,
+    url,
+    name: opts.name,
+    description: opts.description,
+    inLanguage: "fr-FR",
+    dateModified: opts.dateModified,
+    isPartOf: { "@type": "WebSite", "@id": `${BASE}/#site`, url: BASE, name: "Markus Immobilier" },
+    publisher: { "@id": AGENCY_ID },
+  };
+}

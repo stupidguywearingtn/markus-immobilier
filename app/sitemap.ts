@@ -1,53 +1,11 @@
 import type { MetadataRoute } from "next";
 import { ARTICLES } from "@/lib/blog";
 import { getAllListings } from "@/lib/listings-all";
+import { PAGE_LASTMOD } from "@/lib/seo/lastmod";
 
 const BASE = "https://www.markusimmobilier.fr";
 
 type Freq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
-
-/**
- * Date de dernière modification RÉELLE de chaque page statique (AAAA-MM-JJ, UTC).
- *
- * Pourquoi une table tenue à la main plutôt que `new Date()` : jusqu'au
- * 2026-09-17, chaque page statique déclarait la date du BUILD. Le site étant
- * redéployé presque tous les jours, le sitemap annonçait « 21 pages modifiées
- * aujourd'hui » à chaque déploiement. Google documente qu'une valeur `lastmod`
- * jugée non fiable est ignorée POUR TOUT LE FICHIER — y compris pour les
- * articles et les annonces, dont les dates sont exactes, elles.
- *
- * Règle d'entretien : on met la date du jour ici QUAND LE CONTENU DE LA PAGE
- * CHANGE VRAIMENT, exactement comme le champ `updated` d'un article de blog.
- * Un correctif technique, un changement de style ou un lien ajouté ne la
- * bougent pas. Oublier de l'avancer est sans gravité (Google recrawle de
- * toute façon) ; l'avancer à tort est le défaut coûteux — celui qu'on corrige.
- *
- * Valeurs initiales = date du dernier commit ayant touché la page (et ses
- * composants propres pour la home, dont le contenu vit dans `components/home`).
- */
-const PAGE_LASTMOD: Record<string, string> = {
-  "/": "2026-09-07",
-  "/estimation": "2026-09-15",
-  "/vendre": "2026-06-24",
-  "/acheter": "2026-09-09",
-  "/gestion-locative": "2026-09-21",
-  "/estimation-immobiliere-lyon": "2026-09-08",
-  "/estimation-immobiliere-villeurbanne": "2026-09-12",
-  "/agence-immobiliere-villeurbanne": "2026-09-12",
-  "/agence-immobiliere-gratte-ciel": "2026-09-15",
-  "/agence-immobiliere-charpennes": "2026-09-15",
-  "/agence-immobiliere-cusset": "2026-09-15",
-  "/annonces": "2026-08-27",
-  "/faire-gerer": "2026-09-18",
-  "/blog": "2026-09-13",
-  "/contact": "2026-06-24",
-  "/recrutement": "2026-06-24",
-  "/equipe": "2026-09-13",
-  "/honoraires": "2026-09-15",
-  "/mentions-legales": "2026-09-10",
-  "/confidentialite": "2026-09-10",
-  "/cookies": "2026-09-10",
-};
 
 /** Priorités et fréquences inchangées depuis l'origine du fichier. */
 const STATIC_PAGES: { path: string; priority: number; changeFrequency: Freq }[] = [

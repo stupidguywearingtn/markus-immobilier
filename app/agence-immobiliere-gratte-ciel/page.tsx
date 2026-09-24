@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { SeoLanding } from "@/components/layout/seo-landing";
-import { JsonLd, breadcrumbLd, faqLd, serviceLd } from "@/components/seo/json-ld";
+import { JsonLd, breadcrumbLd, faqLd, serviceLd, webPageLd } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 import { QuartierPrixTable } from "@/components/seo/quartier-prix";
 import { BuildingIllust } from "@/components/illustrations/building";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
+import { lastmodOf } from "@/lib/seo/lastmod";
 import {
   COMMUNE,
   MAJ,
@@ -84,6 +85,15 @@ const A =
 export default function GratteCielPage() {
   return (
     <>
+      <JsonLd
+        data={webPageLd({
+          path: "/agence-immobiliere-gratte-ciel",
+          name: "Agence immobilière Gratte-Ciel (Villeurbanne)",
+          description:
+            "Prix au m² réels du quartier Gratte-Ciel, calculés sur les ventes enregistrées.",
+          dateModified: lastmodOf("/agence-immobiliere-gratte-ciel"),
+        })}
+      />
       <JsonLd
         data={serviceLd({
           name: "Agence immobilière à Gratte-Ciel",
