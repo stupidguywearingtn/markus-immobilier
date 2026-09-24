@@ -1037,6 +1037,25 @@ donc 12/09. La valeur du sitemap avait raison, l'affichage avait tort.
   faute des 2 annonces en base. Même cause que les 51 URLs locales contre 53 en
   ligne. **Ce n'est pas une régression de ce chantier.**
 
+**✅ Vérifié en production après déploiement** (Vercel a mis ~1 minute) — les
+11 pages touchées ont été retéléchargées et relues :
+
+- **L'espace réservé a disparu du site** : `grep "À DATER"` sur les 11 pages
+  servies ne rend **aucune occurrence**. `/confidentialite` et `/cookies`
+  affichent « Dernière mise à jour : **10 septembre 2026** ».
+- **La contradiction est levée** : `/estimation-immobiliere-villeurbanne` sert
+  **12 septembre 2026** à l'écran **et** `"dateModified":"2026-09-12"` en
+  JSON-LD — la même valeur que son `lastmod` au sitemap.
+- **Date visible ↔ `dateModified` : 9 accords sur 9** (les 2 pages légales
+  n'ayant pas de `webPageLd`, sans objet).
+- **1 `<h1>` par page**, **tous les blocs JSON-LD parsent**, aucun bloc perdu.
+- `/honoraires` sert bien sa date (**15 septembre 2026**) et ses 5 JSON-LD.
+- **`sitemap.xml` : 53 URLs avant, 53 après, et ZÉRO `lastmod` modifié**,
+  comparé ligne à ligne au sitemap téléchargé en début de run. Le déplacement
+  de la table est donc inerte côté sitemap, comme prévu.
+- ⚠️ 4 des 11 téléchargements ont rendu `000` au premier passage et `200` au
+  réessai — le proxy du conteneur, pas le site (voir « Techniques apprises »).
+
 ### 2026-09-23 — `rentabilite-locative-lyon` : le rendement brut des sept quartiers de Villeurbanne, calculé sur les prix signés, frais de notaire déduits, et chaque charge convertie en points de rendement
 
 **Pourquoi cet angle.** Le backlog désignait depuis le 12/09 la paire
