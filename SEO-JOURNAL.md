@@ -14,6 +14,58 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-09-25**
+
+- `git fetch origin` **en tout premier** (règle du 16/09) : piège **partiel**,
+  et d'une forme nouvelle. `origin/main` du conteneur était figé au `0befbc4`
+  (22/09), mais le `HEAD` local portait déjà `74036cb` (la vérification du
+  24/09) : c'est la **référence distante** qui était en retard, pas le
+  worktree. `git ls-remote` donnait bien `74036cb`. **Cinquième occurrence sur
+  dix runs** — la règle reste, mais avec la nuance : comparer `HEAD`,
+  `origin/main` ET `git ls-remote`, les trois, parce que ce n'est pas toujours
+  le même des trois qui décroche.
+- ⚠️ **Le conteneur démarre toujours sans `node_modules`** — `npm ci` d'abord.
+  Sixième constat identique (21 → 25/09). Étape de démarrage, pas une anomalie.
+- **Vendredi : pas de veille** (elle se fait le lundi ; celle du 21/09 reste la
+  référence, la prochaine est due le **lundi 28/09**).
+- **Deux SERP mesurées.** « Agence immobilière Villeurbanne » : site **absent
+  pour la 17ᵉ fois sur 17**, composition inchangée depuis le 22/09 (6 annuaires
+  ou franchises — HUMAN, Nestenn ×2, PagesJaunes, Orpi, Laforêt — contre 3
+  indépendantes locales : Salengro, Immo de France, Decultieux).
+  « Investir locatif Villeurbanne prix au m² réel quartier » : **site absent**,
+  9 résultats, **aucune agence villeurbannaise**, que des sites
+  d'investissement nationaux et des simulateurs.
+- 🔴 **Le créneau visé n'est plus aussi vide que le backlog le croyait, et
+  c'est la mesure la plus importante du run.** Le journal répétait depuis le
+  12/09 qu'« aucun concurrent ne publie de prix par quartier issus de DVF ».
+  **C'est faux au 25/09** : `moninvestimmo.com` (résultat n°8, page datée du
+  20/08/2026, téléchargée ce matin) publie un tableau de médianes par quartier
+  en citant explicitement DVF 2024-2025. L'angle « personne ne publie DVF » est
+  **mort** ; celui qui le remplace est plus solide (voir ci-dessous).
+- ✅ **L'écart réel, mesuré ce matin sur les pages téléchargées** — et il est
+  beaucoup plus intéressant que le « +45 % » que le backlog voulait publier :
+  **au niveau de la commune les sources s'accordent** (3 567 €/m² chez nous
+  contre 3 548 €/m² chez eux, **0,5 %**), **c'est à la maille du quartier
+  qu'elles divergent**, de −0,7 % à **+12,8 %**. Et les deux écarts qui
+  dépassent 11 % portent **exactement** sur les deux quartiers dont le libellé
+  publié ne recouvre pas le contour officiel (« Charpennes » sans le Tonkin,
+  +11,2 % ; « La Doua / Croix-Luizet » sans les Buers, +12,8 %). Là où le nom
+  colle au contour — Gratte-Ciel +2,4 %, Grandclément +2,6 %, Cusset −0,7 % —
+  l'écart s'effondre. **L'écart est une affaire de frontières, pas de
+  méthode.** Personne ne publie ça.
+- 🔴 **La source que le backlog voulait citer est hors ligne.**
+  `cpim.fr/villeurbanne-prix-m2-quartiers/` (« Charpennes 5 120 €/m² »,
+  vérifiée de première main le 24/09) répond aujourd'hui **HTTP 503,
+  `DEPLOYMENT_PAUSED`**, sur 4 essais. Elle a donc été **écartée de l'article
+  publié** : on ne publie pas un chiffre attribué à une source qu'un lecteur ne
+  peut pas aller vérifier. Conséquence à connaître pour les runs suivants, voir
+  « Hypothèses à vérifier ».
+- **Mesuré avant d'écrire, sur le HTML rendu en production** :
+  `/blog/investir-locatif-lyon` servait **260 mots**, 4 H2 en chaînes de
+  mots-clés, `BlogPosting` + `BreadcrumbList` seulement, aucun chiffre ; son
+  frère `rentabilite-locative-lyon` en sert **2 379** depuis le 23/09 et
+  `ou-acheter-villeurbanne-quartiers` **2 145**.
+
 **Au 2026-09-24**
 
 - `git fetch origin` **en tout premier** (règle du 16/09) : le conteneur était
@@ -909,6 +961,71 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-09-25 — `investir-locatif-lyon` : 260 → 1 944 mots, sur l'écart entre prix affichés et prix signés
+
+**Pourquoi celui-là.** Le backlog l'imposait (« le run du vendredi 25/09 DOIT
+être un run de contenu », le 24/09 étant technique) et c'était le dernier des
+deux articles « locatif » resté à l'état de guide générique. Les trois angles
+voisins étant déjà pris — rendement, frais d'acquisition et encadrement par
+`rentabilite-locative-lyon` (23/09), liquidité et résistance depuis 2022 par
+`ou-acheter-villeurbanne-quartiers` — **le seul créneau libre était la
+fiabilité des prix eux-mêmes**. Vérifié article par article avant d'écrire, pas
+supposé.
+
+**Ce qui est publié.** 6 H2 formulés comme des questions réelles, chacun ouvrant
+sur une réponse autonome de 2-3 phrases (doctrine GEO) :
+1. Quel prix au m² faut-il croire avant d'investir à Villeurbanne ? → **le
+   tableau comparatif quartier par quartier** (nos médianes DVF 2025 / prix
+   publié en ligne / écart / libellé employé), avec la démonstration que les
+   deux écarts > 11 % sont ceux dont le périmètre publié ne recouvre pas le
+   contour officiel ;
+2. Pourquoi deux sources donnent-elles un prix différent ? → 4 mécanismes
+   (périmètre, moyenne vs médiane, prix demandé vs signé, période) ;
+3. Combien cet écart coûte-t-il ? → **~27 700 € sur un T3 de 70 m²** à
+   Charpennes – Tonkin, ~19 800 € sur un T2 de 50 m² ;
+4. Villeurbanne ou un arrondissement de Lyon ? → tableau des loyers médians
+   (14,60 €/m² contre 17,60 à Lyon 6e, 16,80 à Lyon 3e), **avec le refus
+   explicite de classer les rendements** faute de médiane de prix lyonnaise ;
+5. Comment vérifier soi-même un prix au m² ? → 4 étapes ;
+6. Ce que ces chiffres ne disent pas → médiane ≠ estimation, angle mort du
+   neuf dans DVF, absence de loyer de référence par quartier.
+
+FAQ de 6 Q/R centrée sur la fiabilité des sources (disjointe de celles des deux
+articles frères), `FAQPage` **vérifié identique au visible, 6/6**.
+`updated: "2026-09-25"` → lastmod du sitemap, date visible et `dateModified`
+alignés automatiquement par la source unique posée le 24/09. `llms.txt` s'est
+mis à jour tout seul (il dérive du titre et de l'excerpt) — **rien à y faire à
+la main, contrairement à ce que la consigne laisse entendre pour les articles**.
+
+**Ce qui a été écarté, et pourquoi.**
+- **La citation CPIM « Charpennes 5 120 €/m² » (+45 %), que le backlog
+  présentait comme le cœur du chantier.** La page répond **HTTP 503
+  (`DEPLOYMENT_PAUSED`)** ce matin, 4 essais. Publier un chiffre attribué à une
+  source hors ligne, sur une page destinée à vivre des mois, est exactement le
+  genre d'affirmation invérifiable que ce journal s'interdit depuis le 23/09.
+  Remplacée par une source **vivante, datée et téléchargée ce matin**.
+- **Nommer le site tiers.** Doctrine déjà appliquée sur
+  `/agence-immobiliere-charpennes` (« un site d'investissement locatif relevé
+  en septembre 2026 ») : on date et on caractérise, on ne nomme pas. Cohérence
+  + rien à gagner à attaquer un concurrent nommément.
+- **Ajouter un `HowTo`** sur le H2 procédural. La re-priorisation du 15/09 dit
+  de ne plus ouvrir de chantier dont la justification est « ajouter du
+  schema », et le blog ne sait pas rendre `HowTo` : il aurait fallu toucher
+  `app/blog/[slug]/page.tsx`, partagé par les 26 articles. Règle « en cas de
+  doute sur le rendu, ne pas le faire ». Le contenu procédural est là, sans le
+  balisage.
+- **Le `+45 %` comme accroche.** L'écart mesuré honnêtement est de −0,7 % à
+  +12,8 %. Moins spectaculaire, vrai, et bien plus citable — un écart nuancé et
+  expliqué se reprend mieux qu'un chiffre choc invérifiable.
+
+**Vérifications avant push** : `tsc --noEmit` OK, `npm run build` OK, rendu
+local relu (0 markdown brut, 2 `<table>`, 5 liens internes sortants), FAQPage
+== visible 6/6, sitemap **inchangé en structure** (26 articles ; l'écart
+51 local / 53 production = les 2 annonces du back-office, absentes hors DB —
+vérifié par différence des deux jeux d'URLs, ce n'est pas une régression).
+**Un seul fichier touché : `lib/blog.ts`.**
+
 
 ### 2026-09-24 — La fraîcheur déclarée du site devient une donnée unique et vraie : fin de l'espace réservé publié sur deux pages légales, fin de la page qui se contredisait, et 9 pages de fond enfin datées
 
@@ -3030,6 +3147,38 @@ le 22/09 lui en apportant trois. **Aucune page du site n'est à zéro lien
 entrant.** Le maillage n'est plus un chantier ; ne pas le rouvrir sans une
 mesure qui montre un trou. Voir « Techniques apprises » du 24/09.
 
+~~**Point 2 (b) — réécriture de `investir-locatif-lyon`**~~ — **FAIT le
+2026-09-25** : 260 → 1 944 mots, angle « quel prix au m² faut-il croire »,
+tableau comparatif par quartier, FAQ de 6 Q/R + `FAQPage`. **Le point 2 est
+donc entièrement soldé** : les deux articles « locatif » sont réécrits.
+⚠️ **Et il a fait tomber une affirmation que ce journal répétait depuis le
+12/09** : « aucun concurrent ne publie de prix par quartier issus de DVF » est
+**faux au 25/09** (voir « Erreurs commises »). Ne plus l'écrire.
+
+**➡️ ANGLE DU RUN DU SAMEDI 26/09 : PAS DU CONTENU BLOG** (règle des deux runs
+d'affilée — le 25/09 en était un). Dans l'ordre :
+1. **Le passif des 22 articles minces reste le premier chantier en volume**,
+   mais il attend un run sur deux. Prochain article de contenu : voir le
+   classement ci-dessous, les plus courts sont `charges-copropriete` (165),
+   `loi-carrez-surface` (173), `lmnp-location-meublee` (175). ⚠️ **Avant d'en
+   réécrire un, vérifier qu'il reste un angle libre** : c'est la leçon du
+   25/09, trois des angles évidents étaient déjà pris par des articles frères.
+2. **Candidat technique groupé** (les deux sont petits, à faire ensemble) :
+   `/annonces` n'a **aucun `BreadcrumbList`** ni `ItemList`, et les 4 pages
+   légales + `/recrutement` n'ont que le `RealEstateAgent` du gabarit.
+   ⚠️ Rappel du 15/09 : « ajouter du schema » ne justifie pas un run à soi
+   seul — à grouper avec autre chose, ou à traiter vite.
+3. **Nouveau candidat ouvert aujourd'hui, et il est sérieux** :
+   **rendre le tableau comparatif du 25/09 reproductible.** L'article publie
+   une colonne « prix publié en ligne » relevée à la main sur une page tierce
+   datée du 20/08/2026. Cette colonne **vieillira en silence** et personne ne
+   le saura. Soit on la redate à chaque révision, soit on écrit dans
+   `lib/blog.ts` la date de relevé à côté du chiffre (c'est fait, en
+   commentaire d'en-tête) et on inscrit ici un rappel de re-mesure.
+   **→ RE-MESURER CETTE COLONNE VERS LE 25/12/2026** (3 mois), ou plus tôt si
+   les médianes DVF sont recalculées.
+
+**Angle du dernier run : contenu blog** (25/09, `investir-locatif-lyon`).
 **Angle du dernier run : technique / données** (24/09, la fraîcheur déclarée —
 source unique `lib/seo/lastmod.ts`, espace réservé retiré de 2 pages légales,
 9 pages de fond datées). Angle précédent : contenu blog (23/09,
@@ -3317,6 +3466,36 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 ---
 
 ## Hypothèses à vérifier
+
+- 🔴 **La source CPIM est hors ligne — que fait-on de la mention qui reste dans
+  le code ?** *(ouvert le 25/09)* `cpim.fr/villeurbanne-prix-m2-quartiers/`
+  répond **HTTP 503 `DEPLOYMENT_PAUSED`** (4 essais ce matin). Or
+  `app/agence-immobiliere-charpennes/page.tsx` publie toujours, **visiblement**,
+  « un site d'investissement locatif relevé en septembre 2026 affichait
+  5 120 €/m² pour Charpennes » (constante `PRIX_AFFICHE_INVEST`).
+  **Rien n'a été touché, et c'est volontaire** : l'affirmation est datée, elle
+  ne nomme pas la source, et elle a été vérifiée de première main le 24/09 —
+  elle reste donc exacte au moment du relevé, même si la page a disparu depuis.
+  **Mais la question se posera** si le site ne revient pas : au bout de
+  plusieurs mois, « relevé en septembre 2026 » sur une source évaporée devient
+  invérifiable pour un lecteur. **À re-tester dans ~1 mois (vers le 25/10)** :
+  si toujours 503, envisager de reformuler la phrase sans le chiffre, ou de la
+  remplacer par l'écart mesuré le 25/09 sur une source vivante (+11,2 %).
+  ⚠️ Ne pas y toucher avant : la page tourne, et la règle du client est
+  « il faut juste rien casser ».
+
+- **La colonne « prix publié en ligne » de `investir-locatif-lyon` va vieillir
+  sans prévenir.** *(25/09)* Elle fige un relevé du 25/09/2026 sur une page
+  tierce datée du 20/08/2026. Si ce site met ses chiffres à jour, notre tableau
+  compare un chiffre périmé à nos médianes — exactement le défaut de fraîcheur
+  corrigé le 24/09, mais sur une donnée externe cette fois, que `lastmodOf()`
+  ne peut pas surveiller. **Re-mesure inscrite au backlog pour ~25/12/2026.**
+  Question ouverte, non tranchée : vaut-il mieux (a) re-mesurer
+  périodiquement, (b) retirer la colonne tierce et ne garder que le mécanisme
+  (périmètre, moyenne/médiane…), qui lui ne périme pas ? **(b) est tentant et
+  plus robuste**, mais il enlève la seule preuve chiffrée de l'article. Ne pas
+  trancher sur une intuition : voir d'abord si la page tierce bouge.
+
 
 - ~~🔴 **« CPIM : Charpennes 5 120 €/m² » est-il un chiffre vérifié ou un résumé
   de moteur ?**~~ *(ouvert le 23/09)* — **TRANCHÉ le 2026-09-24 : le chiffre
@@ -3662,6 +3841,47 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 ## Erreurs commises et corrigées
 
+### 2026-09-25 — « Aucun concurrent ne publie de prix par quartier issus de DVF » : répété depuis le 12/09, faux aujourd'hui
+
+**Ce que le journal affirmait.** Depuis le 12/09, et re-écrit les 22, 23 et
+24/09, le backlog justifiait l'angle du jour par : les sites d'investissement
+« annoncent des prix nettement au-dessus des ventes réelles », personne ne
+publie de médiane DVF par quartier, le créneau est vide. C'est sur cette base
+que l'angle « écart entre prix affichés et prix payés » a survécu treize jours.
+
+**Ce que la mesure donne.** `moninvestimmo.com`, huitième résultat sur la
+requête du jour, page datée du **20/08/2026**, téléchargée ce matin : elle
+publie un tableau de **médianes DVF 2024-2025 par quartier** de Villeurbanne,
+en citant la source, et elle tombe à **0,5 % de notre médiane communale**
+(3 548 contre 3 567 €/m²). Le créneau n'est pas vide, et le « +45 % » que le
+backlog voulait publier n'est pas représentatif de ce que publient les
+concurrents aujourd'hui.
+
+**Pourquoi l'erreur a tenu si longtemps.** Parce qu'elle a été **vérifiée une
+fois, en septembre, sur une seule page (CPIM), puis recopiée de backlog en
+backlog comme un fait général**. Le 24/09 a re-vérifié le chiffre CPIM — donc
+la bonne chose — mais pas l'affirmation générale qui en avait été tirée. **Une
+vérification ponctuelle avait été promue en loi de marché sans que personne ne
+re-teste la loi.**
+
+**La règle qui en sort, et elle complète celle du 24/09.** Le 24/09 disait :
+« un candidat de backlog se remesure avant de s'exécuter ». Elle visait les
+métriques du site. **Elle vaut aussi, et surtout, pour les affirmations sur les
+CONCURRENTS** — qui bougent, eux, sans qu'on les déploie. Concrètement : avant
+de publier un contenu dont l'argument est « personne d'autre ne publie X »,
+**télécharger les premiers résultats et vérifier que X est toujours absent**.
+Coût ce matin : trois `curl`. Gain : un article qui aurait affirmé une
+exclusivité fausse, sur la requête même où le concurrent fait mieux.
+
+**Ce que ça a changé dans le contenu publié.** L'angle n'a pas été abandonné,
+il a été **corrigé et resserré** : plutôt que « ils affichent n'importe quoi »,
+l'article publie l'écart réel (−0,7 % à +12,8 %) et **explique d'où il vient**
+(le périmètre des quartiers, pas la méthode). C'est plus juste, plus utile, et
+ça reste unique — personne ne met les deux découpages en regard.
+
+---
+
+
 ### 2026-09-22 — J'ai publié cinq liens qui s'affichaient en markdown brut, et je ne l'ai vu qu'en relisant le HTML **rendu**
 
 **Ce que j'ai fait.** En posant les liens de corps de texte du jour, j'ai écrit
@@ -3857,6 +4077,71 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-09-25 — Une source qu'on cite peut disparaître entre la vérification et la publication
+
+**Le fait.** `cpim.fr` a été téléchargée et vérifiée mot à mot le 24/09. Le
+25/09 au matin, elle répond **HTTP 503 `DEPLOYMENT_PAUSED`** sur 4 essais. Un
+jour d'écart entre la vérification et la publication a suffi.
+
+**Pourquoi ce n'est pas un détail d'outillage.** Le 24/09 avait conclu, à juste
+titre, « le chiffre est vrai, la mention peut rester dans le code ». Cette
+conclusion portait sur l'**exactitude**. Elle ne dit rien de la
+**vérifiabilité**, qui est une propriété différente et qui, elle, dépend de
+quelqu'un d'autre que nous. **Un chiffre peut être exact et invérifiable en
+même temps**, et c'est ce second état qui abîme la crédibilité d'une page
+publique : un lecteur qui clique sur une source morte conclut que le chiffre
+est inventé, pas qu'il est périmé.
+
+**La règle retenue.** Avant de publier un chiffre attribué à un tiers, le
+re-télécharger **le jour de la publication**, pas la veille. Et quand il existe
+deux sources — une hors ligne au chiffre spectaculaire, une vivante au chiffre
+modeste — **publier la vivante**. Appliqué ce matin : le « +45 % » de CPIM a
+été remplacé par le « +11,2 % » d'une source téléchargeable, et l'article y a
+gagné en solidité ce qu'il a perdu en effet d'annonce.
+
+**Corollaire pour les contenus déjà en ligne.** Une affirmation tierce publiée
+n'est pas acquise une fois pour toutes : elle a une date de péremption qu'on ne
+contrôle pas. D'où les deux rappels de re-mesure posés aujourd'hui dans
+« Hypothèses à vérifier » (25/10 pour la mention Charpennes, ~25/12 pour la
+colonne comparative du nouvel article). **Sans rappel écrit, une donnée externe
+pourrit en silence** — c'est la version « données des autres » du défaut de
+fraîcheur corrigé le 24/09 sur nos propres dates.
+
+---
+
+### 2026-09-25 — Chercher l'angle libre AVANT d'écrire : trois des quatre angles évidents étaient déjà pris par nos propres articles
+
+**Ce qui a failli arriver.** L'article à réécrire s'appelle « investir dans le
+locatif ». Les quatre angles qui viennent naturellement — le rendement, le
+choix du quartier, la liquidité à la revente, la typologie à viser — ont tous
+été testés contre l'existant avant d'écrire une ligne. **Trois étaient déjà
+traités, et mieux**, par des articles frères : `rentabilite-locative-lyon`
+(23/09) tient le rendement, les frais d'acquisition, l'encadrement et même le
+T1 4 000 / T4 3 211 ; `ou-acheter-villeurbanne-quartiers` tient la liquidité
+(655 ventes à Gratte-Ciel), la résistance depuis 2022 et possède même un H2
+« Quel quartier choisir pour un investissement locatif ? ».
+
+**Le coût de ne pas vérifier.** Écrire le quatrième article du site sur le
+rendement locatif villeurbannais, c'est-à-dire **se cannibaliser** : deux pages
+qui visent la même requête se concurrencent au lieu de s'additionner, et aucune
+des deux ne fait autorité.
+
+**La méthode, reproductible en 3 minutes.** Télécharger les articles frères en
+production, extraire leurs H2 et chercher les mots-clés de l'angle envisagé
+dans le texte rendu (`arrondissement`, `T1`, `CPIM`, `affich`…). Le script
+d'audit du 24/09 le fait déjà ; il a suffi de le pointer sur deux URLs. Sortie
+utile : *ce qui n'apparaît nulle part* — ici, aucune occurrence de
+« arrondissement » ni de comparaison de sources dans les 26 articles.
+
+**La règle.** **Pour un article de blog, l'angle ne se choisit pas contre les
+concurrents mais d'abord contre ses propres frères.** Un site de 26 articles
+sur un territoire aussi étroit que Villeurbanne sature vite ses propres
+créneaux : à partir d'un certain point, le risque n°1 n'est plus le concurrent,
+c'est soi-même.
+
+---
+
 
 ### 2026-09-24 — Outillage : sur ce conteneur, `curl` sans `--cacert` rend « HTTP 000 », ce qui ressemble à un site hors-ligne
 
