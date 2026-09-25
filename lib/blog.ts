@@ -36,6 +36,20 @@
  * sur blanc dans l'article et dans la FAQ de « ou-acheter-villeurbanne-
  * quartiers », comme elle l'est déjà sur /agence-immobiliere-charpennes.
  *
+ * Depuis le 25/09/2026, « investir-locatif-lyon » CITE lui aussi ces médianes
+ * (3 567 €/m² commune, 1 875 ventes, et les médianes de Buers – Croix-Luizet,
+ * Charpennes – Tonkin, Perralière – Grandclément, Gratte-Ciel – Dedieu –
+ * Charmettes et Cusset – Bonnevay), plus les médianes T1/T4 et le −10,4 %
+ * depuis 2022 : il suit donc le même sort que les articles ci-dessus si les
+ * médianes bougent. Il publie en outre une colonne « prix publié en ligne »
+ * relevée le 25/09/2026 sur un site tiers (page datée du 20/08/2026) et des
+ * loyers d'arrondissements lyonnais issus de `lib/loyers.ts` (carte des loyers
+ * data.gouv.fr). ⚠️ Les chiffres de la colonne tierce ont été relevés en
+ * téléchargeant la page, jamais dans un résumé de moteur ; le site n'est pas
+ * nommé, conformément à la doctrine déjà appliquée sur
+ * app/agence-immobiliere-charpennes/page.tsx. Si ces médianes sont un jour
+ * recalculées, l'écart publié dans le tableau doit être recalculé avec elles.
+ *
  * Trois articles citent par ailleurs le BARÈME d'honoraires de
  * app/honoraires/page.tsx (gestion 6 %, GLI 2,5 %, frais fixes 20 €/45 €,
  * transaction 9 000 € / 6 % / 5 %) : « cout-gestion-locative »,
@@ -388,33 +402,120 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "investir-locatif-lyon",
-    title: "Investir dans l'immobilier locatif à Lyon : le guide 2026",
+    title:
+      "Investir dans le locatif à Lyon et Villeurbanne : quel prix au m² faut-il croire ?",
     metaDescription:
-      "Pourquoi et comment investir dans le locatif à Lyon et Villeurbanne en 2026 : quartiers, types de biens, rendement et fiscalité.",
-    h1: "Investir dans l'immobilier locatif à Lyon",
+      "Pour un même quartier de Villeurbanne, les prix au m² publiés en ligne s'écartent jusqu'à 12,8 % des ventes réellement signées en 2025 (DVF). Comparaison source par source, et ce que l'écart coûte sur un budget d'investissement.",
+    h1: "Investir dans le locatif à Lyon et Villeurbanne : quel prix au m² faut-il croire ?",
     excerpt:
-      "Deuxième métropole de France, Lyon offre une demande locative solide. Quartiers, types de biens, rendement et fiscalité.",
+      "Au niveau de la commune, les sources s'accordent à 0,5 % près. À l'échelle du quartier — celle où se décide un investissement — elles divergent jusqu'à 12,8 %. Comparaison avec les 1 875 ventes signées en 2025.",
     date: "2026-05-26",
+    updated: "2026-09-25",
     internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
-      { type: "p", text: "Deuxième métropole de France, Lyon offre une demande locative solide, portée par les étudiants, les jeunes actifs et les cadres." },
-      { type: "h2", text: "Pourquoi Lyon et Villeurbanne" },
-      { type: "ul", items: [
-        "Bassin d'emploi dynamique et population en croissance.",
-        "Forte demande étudiante (campus, écoles).",
-        "Réseau de transports dense qui valorise de nombreux quartiers.",
+      { type: "p", text: "**Pour un même quartier de Villeurbanne, les prix au m² publiés en ligne s'écartent jusqu'à 12,8 % des prix réellement signés.** Au niveau de la commune entière, en revanche, les sources tombent d'accord à 0,5 % près. L'écart n'apparaît donc qu'à la maille du quartier — précisément celle à laquelle se décide un investissement locatif." },
+      { type: "p", text: "Cet article ne dit pas que les autres chiffres sont faux. Il montre d'où vient l'écart, quartier par quartier, et ce qu'il représente en euros sur un budget réel. Nos médianes sont calculées sur les **1 875 ventes d'appartements enregistrées à Villeurbanne en 2025** dans la base DVF de l'État." },
+
+      { type: "h2", text: "Quel prix au m² faut-il croire avant d'investir à Villeurbanne ?" },
+      { type: "p", text: "**Celui qui vient des ventes enregistrées, et dont le périmètre est nommé.** La médiane des appartements vendus à Villeurbanne en 2025 s'établit à **3 567 €/m²**. Un site d'investissement locatif spécialisé, relevé le 25 septembre 2026, publie **3 548 €/m²** pour la même commune : **0,5 % d'écart**, autant dire aucun. À la maille du quartier, le même site s'écarte de nos médianes de **−0,7 % à +12,8 %**." },
+      {
+        type: "table",
+        caption:
+          "Prix au m² publié en ligne et prix réellement signé, quartier par quartier (Villeurbanne, appartements)",
+        headers: [
+          "Quartier (contour officiel)",
+          "Médiane des ventes 2025",
+          "Prix publié en ligne",
+          "Écart",
+          "Libellé employé en ligne",
+        ],
+        rows: [
+          ["Buers – Croix-Luizet", "3 271 €/m²", "3 650 à 3 730 €/m²", "+12,8 %", "« La Doua / Croix-Luizet »"],
+          ["Charpennes – Tonkin", "3 524 €/m²", "3 920 €/m²", "+11,2 %", "« Charpennes »"],
+          ["Perralière – Grandclément", "3 375 €/m²", "3 464 €/m²", "+2,6 %", "« Grandclément »"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 846 €/m²", "3 940 €/m²", "+2,4 %", "« Gratte-Ciel »"],
+          ["Cusset – Bonnevay", "3 171 €/m²", "3 150 €/m²", "−0,7 %", "« Cusset »"],
+          ["**Villeurbanne (commune)**", "**3 567 €/m²**", "**3 548 €/m²**", "**−0,5 %**", "« Villeurbanne »"],
+        ],
+        source:
+          "Nos médianes : ventes d'appartements DVF 2025 (data.gouv.fr / Etalab) rattachées aux contours officiels de quartiers de la Métropole de Lyon, calcul Markus Immobilier. Colonne « prix publié en ligne » : relevé le 25 septembre 2026 sur un site spécialisé dans l'investissement locatif, dont la page est datée du 20 août 2026 et annonce des médianes DVF 2024-2025. L'écart de Buers – Croix-Luizet est calculé sur le milieu de la fourchette publiée (3 690 €/m²).",
+      },
+      { type: "p", text: "**Le tableau se lit dans un ordre précis.** Les deux quartiers où l'écart dépasse 11 % sont exactement les deux dont le libellé publié ne recouvre pas le contour officiel : « Charpennes » sans le Tonkin, « La Doua / Croix-Luizet » sans les Buers. Là où le nom correspond au contour — Gratte-Ciel, Grandclément, Cusset — l'écart retombe sous 3 %. **Ce n'est donc pas une divergence de méthode, c'est une divergence de frontières**, et elle se corrige en vérifiant ce que le quartier annoncé contient." },
+
+      { type: "h2", text: "Pourquoi deux sources donnent-elles un prix différent pour le même quartier ?" },
+      { type: "p", text: "**Quatre raisons, et aucune n'est une erreur de calcul.** Elles se cumulent, et elles poussent presque toujours dans le même sens : vers le haut. Les connaître suffit à rendre deux chiffres comparables — ou à constater qu'ils ne le sont pas." },
+      { type: "ol", items: [
+        "**Le périmètre n'est pas le même.** « Charpennes » désigne selon les sites un carrefour, un secteur autour du métro, ou le contour officiel Charpennes – Tonkin retenu ici. Un découpage plus serré autour des rues les plus chères remonte mécaniquement la médiane, sans que personne n'ait triché.",
+        "**Moyenne ou médiane.** La moyenne est tirée vers le haut par quelques ventes exceptionnelles ; la médiane ne l'est pas. Un autre site consulté le 25 septembre 2026 publie pour Villeurbanne un **prix moyen de 3 520 €/m² en 2025, dans une fourchette annoncée de 2 856 à 5 255 €/m²** : l'amplitude est telle que la moyenne et la médiane n'y racontent pas la même ville. Nous publions toujours des médianes, et nous l'écrivons.",
+        "**Prix demandé ou prix signé.** Beaucoup de chiffres en ligne viennent d'annonces ou d'estimations de propriétaires. Un bien affiché n'est pas un bien vendu : entre les deux, il y a la négociation. La base DVF, elle, n'enregistre que des mutations effectives.",
+        "**La période retenue.** Une médiane 2024-2025 et une médiane 2025 ne décrivent pas le même marché, surtout après une baisse : la médiane villeurbannaise a reculé de 10,4 % depuis 2022 avant de remonter de 1,5 % sur la dernière année. Mélanger deux millésimes lisse ce retournement.",
       ] },
-      { type: "h2", text: "Quel bien viser" },
-      { type: "p", text: "Les **studios et T2** bien situés se louent vite et offrent souvent le meilleur rendement. Près des campus et des transports, la vacance locative est faible." },
-      { type: "h2", text: "Fiscalité et points d'attention" },
-      { type: "ul", items: [
-        "Statuts comme le **LMNP** (meublé) ou le **déficit foncier** peuvent optimiser la rentabilité.",
-        "**Surveillez le DPE** : un bien F ou G est de plus en plus contraint à la location. Intégrez le coût d'éventuels travaux dès l'achat.",
+
+      { type: "h2", text: "Combien cet écart coûte-t-il sur un budget d'investissement ?" },
+      { type: "p", text: "**Sur un T3 de 70 m² à Charpennes – Tonkin, l'écart entre le prix publié et la médiane des ventes représente environ 27 700 €.** Sur un T2 de 50 m², environ 19 800 €. Ce n'est pas une marge de négociation : c'est un budget de départ faux, qui fausse ensuite tout le plan de financement." },
+      { type: "p", text: "Un investisseur qui cale son enveloppe sur 3 920 €/m² cherche un bien qui n'existe pas au prix où le marché le traite ; un vendeur qui fixe son prix dessus reste en vitrine. **Et le rendement suit** : à loyer identique, plus le prix au dénominateur est haut, plus le rendement affiché est bas une fois l'achat réel effectué. Nous publions le détail de ce calcul dans le [rendement locatif brut des sept quartiers de Villeurbanne](/blog/rentabilite-locative-lyon), frais de notaire déduits." },
+
+      { type: "h2", text: "Vaut-il mieux investir à Villeurbanne ou dans un arrondissement de Lyon ?" },
+      { type: "p", text: "**Les loyers villeurbannais se situent 10 à 20 % en dessous des arrondissements centraux de Lyon, et au même niveau que Lyon 8e et Lyon 9e.** C'est le seul terme de la comparaison que nous mesurons nous-mêmes des deux côtés ; le second terme — le prix d'achat lyonnais — ne fait pas partie de notre périmètre de calcul, et nous ne l'inventerons pas." },
+      {
+        type: "table",
+        caption:
+          "Loyer médian d'un appartement, hors charges, à Villeurbanne et dans les arrondissements lyonnais",
+        headers: ["Commune", "Loyer médian HC", "Écart avec Villeurbanne"],
+        rows: [
+          ["Lyon 6e", "17,60 €/m²", "+20,5 %"],
+          ["Lyon 3e", "16,80 €/m²", "+15,1 %"],
+          ["Lyon 7e", "16,00 €/m²", "+9,6 %"],
+          ["Lyon 5e", "14,90 €/m²", "+2,1 %"],
+          ["**Villeurbanne**", "**14,60 €/m²**", "**référence**"],
+          ["Lyon 8e", "14,50 €/m²", "−0,7 %"],
+          ["Lyon 9e", "14,00 €/m²", "−4,1 %"],
+        ],
+        source:
+          "Carte des loyers publiée sur data.gouv.fr (jeu 2023-2024), valeurs médianes indicatives en €/m² hors charges pour les appartements. Écarts calculés par Markus Immobilier.",
+      },
+      { type: "p", text: "**La limite est importante et nous la posons franchement.** Notre calcul DVF porte sur la commune de Villeurbanne (69266) : nous ne publions pas de médiane de prix pour les arrondissements lyonnais. Comparer un rendement villeurbannais mesuré chez nous à un rendement lyonnais repris ailleurs reviendrait à additionner deux méthodes différentes — c'est exactement le défaut décrit plus haut. Tant que nous n'aurons pas calculé les deux avec le même protocole, nous ne publierons pas ce classement." },
+
+      { type: "h2", text: "Comment vérifier soi-même un prix au m² avant d'acheter ?" },
+      { type: "p", text: "**La base DVF est publique, gratuite et consultable en ligne : c'est la seule source qui recense des prix effectivement payés, transmis par l'administration fiscale.** Vérifier un chiffre prend quelques minutes et ne demande aucun outil payant." },
+      { type: "ol", items: [
+        "**Cherchez l'adresse, pas la ville.** Les ventes sont géolocalisées à la parcelle : regardez la rue et les rues voisines plutôt qu'une moyenne communale.",
+        "**Écartez ce qui n'est pas comparable.** Ne retenez que les appartements, sur une surface proche de celle qui vous intéresse — un T1 se négocie à 4 000 €/m² à Villeurbanne quand un T4 est à 3 211 €/m².",
+        "**Prenez la médiane, jamais la moyenne**, et regardez combien de ventes la composent : sous une vingtaine de transactions, un chiffre de quartier devient une anecdote.",
+        "**Confrontez au terrain.** Étage, ascenseur, exposition, DPE, travaux de copropriété votés : aucune base ne les connaît, et ils expliquent l'essentiel de l'écart entre deux biens au même prix au m².",
       ] },
-      { type: "h2", text: "Bien démarrer" },
-      { type: "p", text: "Un bon investissement commence par une estimation juste du prix d'achat et du loyer réaliste. À Villeurbanne, appuyez-vous sur [les prix au m² réellement signés par quartier](/blog/prix-immobilier-villeurbanne-2026) et sur [ce que chaque budget achète selon le secteur](/blog/ou-acheter-villeurbanne-quartiers)." },
-      { type: "p", text: "Avant de retenir un secteur, regardez ce qu'il rapporte vraiment : nous publions le [rendement locatif brut des sept quartiers de Villeurbanne](/blog/rentabilite-locative-lyon), calculé sur les prix signés en 2025 et frais de notaire déduits." },
+
+      { type: "h2", text: "Ce que ces chiffres ne disent pas" },
+      { type: "p", text: "**Une médiane de quartier n'est pas une estimation.** Elle situe un marché, elle ne vaut pas pour votre bien : au sein d'un même quartier, l'écart entre le premier et le dernier quart des ventes se compte en centaines d'euros par mètre carré. Nous publions cette [dispersion réelle autour des médianes](/blog/estimation-en-ligne-ou-agence) plutôt que de la masquer." },
+      { type: "p", text: "Deux autres limites méritent d'être écrites. La base DVF ne couvre pas l'intégralité des mutations — les ventes en l'état futur d'achèvement y apparaissent mal, ce qui fait du neuf un angle mort. Et **il n'existe pas de loyer de référence publié à la maille du quartier** : tous les rendements par quartier, les nôtres comme ceux des autres, appliquent un loyer communal. C'est une approximation, et elle doit être dite." },
+      { type: "p", text: "Avant d'arrêter un secteur, regardez aussi [ce que chaque budget achète quartier par quartier](/blog/ou-acheter-villeurbanne-quartiers) et les [prix au m² détaillés des sept quartiers de Villeurbanne](/blog/prix-immobilier-villeurbanne-2026)." },
+    ],
+    faq: [
+      {
+        q: "Pourquoi les prix au m² affichés en ligne sont-ils souvent plus élevés que les prix signés ?",
+        a: "Parce qu'ils reposent fréquemment sur des annonces ou des estimations de propriétaires, et non sur des ventes conclues, et parce que le périmètre du « quartier » annoncé est souvent plus serré que le contour officiel. À Villeurbanne, sur les quartiers où le libellé publié correspond au contour officiel, l'écart avec nos médianes DVF 2025 reste sous 3 % ; là où il ne correspond pas, il atteint 11 à 13 %.",
+      },
+      {
+        q: "Quelle est la source la plus fiable pour connaître le prix au m² à Villeurbanne ?",
+        a: "La base DVF (demandes de valeurs foncières), publiée par l'État sur data.gouv.fr : elle recense les mutations réellement enregistrées, transmises par l'administration fiscale. C'est la source de nos médianes, calculées sur les 1 875 ventes d'appartements de 2025. Elle est gratuite et consultable par tous.",
+      },
+      {
+        q: "Un prix au m² de quartier suffit-il pour estimer un bien ?",
+        a: "Non. Une médiane situe un marché mais ne décrit aucun bien en particulier : étage, exposition, ascenseur, DPE, état et travaux votés en copropriété font varier le prix bien au-delà de l'écart entre deux quartiers. Une médiane de quartier est un point de départ, pas une estimation.",
+      },
+      {
+        q: "Les prix au m² issus de la base DVF sont-ils à jour ?",
+        a: "Ils portent sur des ventes déjà signées, donc ils décrivent le marché avec quelques mois de décalage — c'est le prix à payer pour des chiffres certains plutôt qu'annoncés. Nos médianes portent sur l'année 2025 complète. Elles sont recalculées à chaque nouvelle publication de la base.",
+      },
+      {
+        q: "Combien de ventes faut-il pour qu'un prix au m² de quartier soit fiable ?",
+        a: "Il n'existe pas de seuil officiel, mais en dessous d'une vingtaine de transactions une médiane devient très sensible à quelques biens atypiques. C'est pour cette raison que nous publions sept quartiers de Villeurbanne et pas huit : le secteur Saint-Jean, avec 153 ventes sur quatre ans, a un échantillon annuel trop mince pour une médiane honnête.",
+      },
+      {
+        q: "Les loyers sont-ils plus élevés à Lyon qu'à Villeurbanne ?",
+        a: "Oui dans les arrondissements centraux : d'après la carte des loyers publiée sur data.gouv.fr, le loyer médian d'un appartement hors charges atteint 17,60 €/m² à Lyon 6e et 16,80 €/m² à Lyon 3e, contre 14,60 €/m² à Villeurbanne. L'écart s'annule en revanche avec Lyon 8e (14,50 €/m²) et s'inverse avec Lyon 9e (14,00 €/m²).",
+      },
     ],
   },
   {
