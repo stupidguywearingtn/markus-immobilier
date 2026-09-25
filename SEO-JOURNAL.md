@@ -4078,6 +4078,39 @@ reste du diff n'est que de l'ajout.
 
 ## Techniques apprises
 
+### 2026-09-25 — Outillage : `git push origin main` est REFUSÉ sur ce conteneur, il faut pousser sur la branche de run
+
+**Le piège.** La consigne du run dit « commit direct sur main ». Le push est
+pourtant rejeté en **`non-fast-forward`**, avec le message trompeur « a pushed
+branch tip is behind its remote counterpart » — alors que la vérification
+donne l'inverse : `git merge-base --is-ancestor origin/main HEAD` répond OUI,
+le fast-forward est parfaitement possible. **Ce n'est pas un problème d'état
+git, c'est le proxy de la session qui n'autorise pas l'écriture sur `main`.**
+Lu vite, on croit son dépôt en retard et on est tenté d'un `pull --rebase`
+voire d'un `--force` : les deux sont inutiles ici, et le second dangereux.
+
+**La parade.** Pousser sur la branche de run désignée par la session
+(`claude/dazzling-feynman-…`), qui est acceptée immédiatement :
+
+```
+git checkout -B claude/dazzling-feynman-<id> && git push -u origin claude/dazzling-feynman-<id>
+```
+
+**Pourquoi ça ne change rien au résultat.** `git ls-remote --heads origin`
+montre **une branche par run passé** (`…-2xk3cu` = 4a04964 du 23/09,
+`…-8x36zn` = 0befbc4 du 22/09, `…-w3s676` = 2442ebf du 20/09…), **et tous ces
+commits sont dans l'historique de `main`**. Le circuit normal est donc : le run
+pousse sa branche, elle est fusionnée dans `main` ensuite. Le travail n'est pas
+perdu, il est simplement en attente de fusion — **mais il ne se déploie pas
+tant que la fusion n'a pas eu lieu**, ce qu'un run suivant doit garder en tête
+avant de s'étonner que la production ne reflète pas la veille.
+
+**Règle** : vérifier l'ancêtre AVANT de croire un message de rejet git, et ne
+jamais forcer un push sur `main` pour contourner un refus de proxy.
+
+---
+
+
 ### 2026-09-25 — Une source qu'on cite peut disparaître entre la vérification et la publication
 
 **Le fait.** `cpim.fr` a été téléchargée et vérifiée mot à mot le 24/09. Le
