@@ -1,11 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { EditableText } from "@/components/backoffice/EditableText";
 import { EditableImage } from "@/components/backoffice/EditableImage";
 import { useV } from "@/hooks/useV";
 import type { TeamMember } from "@/lib/mock-team";
+
+/**
+ * Une URL de photo n'est confiée à l'optimiseur `next/image` que si elle est
+ * couverte par les `remotePatterns` de `next.config.ts` (tout `*.supabase.co`,
+ * d'où viennent les photos téléversées) ou servie par le site lui-même.
+ *
+ * Raison du garde-fou : le back-office permet de **coller une URL à la main**
+ * (« Utiliser cette URL » dans `EditableImage`), qui peut pointer n'importe où.
+ * L'optimiseur refuse un hôte non déclaré et l'image ne s'afficherait plus.
+ * Dans ce cas on garde la balise `<img>` d'origine : rendu inchangé.
+ */
+function isOptimizable(url: string) {
+  if (url.startsWith("/")) return true;
+  try {
+    return new URL(url).hostname.endsWith(".supabase.co");
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Largeur réelle d'une carte dans la grille (identique sur la home et
+ * `/equipe` : `max-w-content` = 1240 px, `px-8`, `gap-7`, 1 → 2 → 3 colonnes).
+ * Sans cet attribut, `next/image` demanderait une image dimensionnée pour la
+ * largeur du viewport, soit 4 à 5 fois trop grande pour une carte.
+ */
+const AVATAR_SIZES = "(min-width: 1024px) 373px, (min-width: 640px) 50vw, 100vw";
 
 const TONES: Record<TeamMember["avatarTone"], string> = {
   anthracite: "bg-gradient-to-br from-[#4a5258] to-[#2c3135]",
@@ -62,13 +90,26 @@ export function TeamCard({
 
   const renderAvatar = (url: string) =>
     url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={url}
-                alt={`${prenom} ${nom}`}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
-              />
+              isOptimizable(url) ? (
+                // `fill` : le parent porte déjà `relative aspect-[4/5]`, donc le
+                // cadrage et les proportions sont inchangés par rapport à la
+                // balise `<img>` qui précédait (chargement paresseux par défaut).
+                <Image
+                  src={url}
+                  alt={`${prenom} ${nom}`}
+                  fill
+                  sizes={AVATAR_SIZES}
+                  className="object-cover object-[center_20%]"
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={url}
+                  alt={`${prenom} ${nom}`}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
+                />
+              )
             ) : (
               <div className="absolute inset-0 grid place-items-center">
                 <span className="text-blanc/90 font-extrabold text-[clamp(48px,8vw,84px)] tracking-[-0.02em] leading-none">
