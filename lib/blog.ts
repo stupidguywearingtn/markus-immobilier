@@ -26,6 +26,20 @@
  *   - « capacite-emprunt-immobilier » → 250 000 € = 65 m² à Gratte-Ciel /
  *                                     91 m² à Cyprian – Les Brosses.
  *
+ * Depuis le 29/09/2026, « frais-de-notaire-lyon-2026 » est celui qui dépend LE
+ * PLUS de lib/quartiers.ts : il reprend les 7 médianes de quartier, la surface
+ * médiane (62 m²), le prix médian communal et les 4 prix médians par typologie
+ * (T1 115 000, T2 170 000, T3 226 250, T4 255 000), et en DÉRIVE des montants de
+ * taxes et d'émoluments à l'euro près. Si les médianes bougent, ses trois
+ * tableaux et les montants cités dans le texte et dans la FAQ doivent être
+ * RECALCULÉS (script de calcul consigné dans SEO-JOURNAL.md, entrée du
+ * 29/09/2026), jamais patchés à la main.
+ * ⚠️ Ses taux fiscaux ont leur propre péremption, indépendante de DVF : le taux
+ * de 5,00 % voté par la Métropole de Lyon vient du tableau DGFiP « au 1ᵉʳ juin
+ * 2026 » (impots.gouv.fr publie une nouvelle version régulièrement), et la
+ * fenêtre de majoration se referme le 31/03/2028. À revérifier à chaque
+ * nouvelle version du tableau, et impérativement avant avril 2028.
+ *
  * Depuis le 27/09/2026, « investir-locatif-lyon » met les médianes DVF EN REGARD
  * des prix affichés par trois sites tiers (cpim.fr, moninvestimmo.com,
  * trackstone.fr), relevés en téléchargeant chaque page le 27/09/2026 et datés
@@ -284,34 +298,140 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "frais-de-notaire-lyon-2026",
-    title: "Frais de notaire à Lyon en 2026 : comment les calculer",
+    title: "Frais de notaire à Villeurbanne et à Lyon en 2026 : le calcul exact",
     metaDescription:
-      "Combien coûtent les frais de notaire à Lyon en 2026 ? Composition, taux dans l'ancien et le neuf, exemple de calcul et nouveautés 2026.",
-    h1: "Frais de notaire à Lyon en 2026 : comment les calculer",
+      "La Métropole de Lyon a voté 5,00 % de droits de mutation, 4,50 % pour un primo-accédant. Frais de notaire calculés quartier par quartier sur les prix signés à Villeurbanne.",
+    h1: "Frais de notaire à Villeurbanne et à Lyon en 2026 : le calcul exact",
     excerpt:
-      "Les « frais de notaire » sont surtout des taxes. Composition, taux dans l'ancien et le neuf, et un exemple de calcul concret.",
+      "Le taux voté par la Métropole de Lyon, le barème des émoluments, et la facture réelle calculée sur les prix d'appartements signés en 2025 dans les 7 quartiers de Villeurbanne.",
     date: "2026-04-28",
-    updated: "2026-09-16",
+    updated: "2026-09-29",
     internalHref: "/acheter",
     internalLabel: "Être accompagné pour mon achat",
     blocks: [
-      { type: "p", text: "Mal nommés, les « frais de notaire » ne vont en réalité pas (ou peu) dans la poche du notaire : ce sont surtout des taxes pour l'État et les collectivités." },
-      { type: "h2", text: "Combien ça représente" },
+      { type: "p", text: "Mal nommés, les « frais de notaire » ne vont pour l'essentiel pas au notaire : ce sont d'abord des taxes. Et ces taxes ne sont pas les mêmes partout en France — leur taux principal est voté collectivité par collectivité. Cet article publie le taux réellement applicable à Villeurbanne au 1ᵉʳ juin 2026, le barème national des émoluments, et la facture recalculée sur les prix d'appartements réellement signés dans chacun des 7 quartiers de la commune." },
+
+      { type: "h2", text: "Quel est le taux des frais de notaire à Villeurbanne en 2026 ?" },
+      { type: "p", text: "**La part principale des frais, le droit de mutation départemental, est de 5,00 % à Villeurbanne — et de 4,50 % si l'acheteur est primo-accédant.** Villeurbanne ne relève pas du département du Rhône mais de la **Métropole de Lyon**, qui vote son propre taux : les deux collectivités sont d'ailleurs listées séparément dans le tableau officiel de la DGFiP. Taxe communale et prélèvement de l'État compris, la part fiscale représente **6,32 % du prix** pour un acheteur ordinaire et **5,81 %** pour un primo-accédant." },
+      { type: "p", text: "Le taux départemental n'est pas la seule taxe. Deux prélèvements s'y ajoutent automatiquement, dans des proportions beaucoup plus faibles :" },
+      {
+        type: "table",
+        caption: "Les trois taxes dues sur une vente d'appartement ancien à Villeurbanne",
+        source:
+          "Taux départemental : tableau « Droits d'enregistrement et taxe de publicité foncière — taux applicables au 1ᵉʳ juin 2026 », DGFiP (impots.gouv.fr), ligne « 69 Métropole de Lyon », téléchargé le 29/09/2026. Taxe communale : article 1584 du CGI ; le même document liste les deux seules communes de France ayant voté une réduction en 2026, et Villeurbanne n'en fait pas partie. Prélèvement de l'État : article 1647, V du CGI (2,37 % du droit départemental).",
+        headers: ["Taxe", "Acheteur ordinaire", "Primo-accédant"],
+        rows: [
+          ["Droit de mutation, part Métropole de Lyon", "5,00 % du prix", "4,50 % du prix"],
+          ["Taxe communale additionnelle (Villeurbanne)", "1,20 % du prix", "1,20 % du prix"],
+          ["Prélèvement de l'État pour frais d'assiette", "2,37 % du droit ci-dessus", "2,37 % du droit ci-dessus"],
+          ["**Total de la part fiscale**", "**6,32 % du prix**", "**5,81 % du prix**"],
+        ],
+      },
+      { type: "p", text: "Ce 5,00 % n'est pas le taux historique. Jusqu'en 2025, le plafond légal était de 4,50 % : la loi de finances pour 2025 a autorisé les départements et métropoles à le relever jusqu'à 5 %, **pour les actes signés entre le 1ᵉʳ avril 2025 et le 31 mars 2028** (BOFiP, document mis à jour le 17/06/2026). La Métropole de Lyon a utilisé cette faculté. Autrement dit : ce demi-point est daté, il a une date de fin inscrite dans la loi, et il ne s'applique pas à tout le monde." },
+
+      { type: "h2", text: "Combien coûtent vraiment les frais de notaire pour un appartement à Villeurbanne ?" },
+      { type: "p", text: "**Entre 12 900 € et 18 200 € pour un appartement de 62 m² — la surface médiane des ventes villeurbannaises de 2025 — selon le quartier.** L'écart d'un bout à l'autre de la commune atteint 5 360 €, et il ne tient qu'au prix du bien : le taux, lui, est identique dans les 7 quartiers. Le tableau ci-dessous part des prix réellement signés, pas des prix affichés." },
+      {
+        type: "table",
+        caption:
+          "Taxes + émoluments du notaire pour un appartement de 62 m² au prix médian de chaque quartier (acheteur ordinaire)",
+        source:
+          "Prix : médianes DVF 2025 des ventes d'appartements à Villeurbanne (data.gouv.fr / Etalab), calcul Markus Immobilier — les mêmes que celles publiées dans nos autres articles. Taxes : taux DGFiP au 1ᵉʳ juin 2026. Émoluments : barème réglementé, tableau 5 n° 54 de l'article A. 444-91 du code de commerce, TVA 20 % comprise. Débours et contribution de sécurité immobilière non compris (voir plus bas).",
+        headers: ["Quartier", "Prix pour 62 m²", "Taxes", "Émoluments TTC", "Total"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "243 226 €", "15 368 €", "2 862 €", "18 231 €"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "238 452 €", "15 067 €", "2 816 €", "17 882 €"],
+          ["Charpennes – Tonkin", "218 488 €", "13 805 €", "2 621 €", "16 426 €"],
+          ["Perralière – Grandclément", "209 250 €", "13 221 €", "2 530 €", "15 752 €"],
+          ["Buers – Croix-Luizet", "202 802 €", "12 814 €", "2 467 €", "15 282 €"],
+          ["Cusset – Bonnevay", "196 602 €", "12 422 €", "2 407 €", "14 829 €"],
+          ["Cyprian – Les Brosses", "169 756 €", "10 726 €", "2 145 €", "12 871 €"],
+        ],
+      },
+      { type: "p", text: "Sur le prix médian d'un appartement villeurbannais, [195 000 € toutes tailles confondues en 2025](/blog/prix-immobilier-villeurbanne-2026), le même calcul donne **12 321 € de taxes et 2 391 € d'émoluments TTC, soit 14 712 €**. Ces montants sont à provisionner en plus de l'apport : ils ne sont pas finançables par le prêt dans la plupart des montages, ce qui les rend structurants pour [votre capacité d'emprunt](/blog/capacite-emprunt-immobilier)." },
+      { type: "p", text: "À titre de repère par typologie, toujours au prix médian villeurbannais de 2025 : **8 876 € pour un T1** (115 000 €), **12 889 € pour un T2** (170 000 €), **16 992 € pour un T3** (226 250 €), **19 090 € pour un T4** (255 000 €)." },
+
+      { type: "h2", text: "Quelle est la différence de frais entre un primo-accédant et un autre acheteur ?" },
+      { type: "p", text: "**Un primo-accédant échappe au demi-point de majoration voté en 2025 : il économise entre 869 € et 1 245 € sur un 62 m² villeurbannais, et 998 € au prix médian de la commune.** L'exception est inscrite dans la loi de finances pour 2025 elle-même : la majoration ne s'applique pas quand le bien « constitue pour l'acquéreur une première propriété » destinée « à l'usage de sa résidence principale », au sens de l'article L. 31-10-3 du code de la construction et de l'habitation." },
+      {
+        type: "table",
+        caption: "Ce que la qualité de primo-accédant fait gagner, par quartier (62 m²)",
+        source:
+          "Calcul Markus Immobilier sur les médianes DVF 2025 et les deux taux votés par la Métropole de Lyon (5,00 % et 4,50 %), prélèvement de 2,37 % inclus. Le gain porte sur la seule part fiscale ; les émoluments sont identiques dans les deux cas.",
+        headers: ["Quartier", "Taxes, acheteur ordinaire", "Taxes, primo-accédant", "Économie"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "15 368 €", "14 123 €", "1 245 €"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "15 067 €", "13 846 €", "1 221 €"],
+          ["Charpennes – Tonkin", "13 805 €", "12 687 €", "1 118 €"],
+          ["Perralière – Grandclément", "13 221 €", "12 150 €", "1 071 €"],
+          ["Buers – Croix-Luizet", "12 814 €", "11 776 €", "1 038 €"],
+          ["Cusset – Bonnevay", "12 422 €", "11 416 €", "1 006 €"],
+          ["Cyprian – Les Brosses", "10 726 €", "9 857 €", "869 €"],
+        ],
+      },
+      { type: "p", text: "Le critère de « première propriété » renvoie à la définition utilisée pour le prêt à taux zéro : **ne pas avoir été propriétaire de sa résidence principale au cours des deux années précédentes**. Un investisseur qui achète pour louer n'y a donc pas droit, puisque la condition de résidence principale n'est pas remplie — un point à intégrer au [calcul de rentabilité](/blog/rentabilite-locative-lyon). C'est le notaire qui vérifie les conditions et les fait déclarer dans l'acte : ne considérez jamais l'avantage comme acquis avant qu'il l'ait confirmé." },
+
+      { type: "h2", text: "Comment sont calculés les émoluments du notaire ?" },
+      { type: "p", text: "**Les émoluments sont un tarif national réglementé, dégressif, strictement identique à Villeurbanne, à Lyon et partout en France.** Ils ne se négocient pas au coup par coup et ne dépendent ni du notaire choisi ni de la commune. C'est la raison pour laquelle comparer deux études sur le prix de l'acte n'a pas de sens : ce qui change d'un achat à l'autre, c'est la taxe locale, pas la rémunération de l'officier public." },
+      {
+        type: "table",
+        caption: "Barème des émoluments proportionnels sur une vente d'immeuble",
+        source:
+          "Tableau 5, n° 54 de l'article A. 444-91 du code de commerce (arrêté du 26 février 2016 fixant les tarifs réglementés des notaires). Taux hors TVA ; la TVA à 20 % s'ajoute.",
+        headers: ["Tranche du prix", "Taux HT"],
+        rows: [
+          ["de 0 à 6 500 €", "3,945 %"],
+          ["de 6 500 à 17 000 €", "1,627 %"],
+          ["de 17 000 à 60 000 €", "1,085 %"],
+          ["au-delà de 60 000 €", "0,814 %"],
+        ],
+      },
+      { type: "p", text: "Le barème étant dégressif, les émoluments pèsent proportionnellement moins lourd à mesure que le prix monte : **1,40 % du prix pour un T1 à 115 000 €, 1,23 % au prix médian villeurbannais, 1,17 % pour un T4 à 255 000 €**. Au-delà d'un seuil fixé par le même arrêté, le notaire peut en outre accorder une remise ; elle reste à sa main, et il doit alors l'appliquer à tous ses clients dans les mêmes conditions." },
+
+      { type: "h2", text: "Pourquoi la règle des « 7 à 8 % » tombe-t-elle dans le haut de la fourchette à Villeurbanne ?" },
+      { type: "p", text: "**Parce que les deux postes qu'on sait calculer à l'euro près — taxes et émoluments — atteignent déjà 7,49 % à 7,72 % du prix aux niveaux villeurbannais, avant même d'ajouter les débours.** La règle de pouce « 7 à 8 % dans l'ancien » reste juste, mais à Villeurbanne en 2026 elle penche nettement vers 8 % plutôt que vers 7 %, du fait du demi-point de majoration voté par la Métropole." },
+      { type: "p", text: "Restent deux postes que cet article ne chiffre volontairement pas, parce qu'ils dépendent du dossier et non d'un taux public : les **débours**, c'est-à-dire les sommes que le notaire avance pour votre compte (documents d'urbanisme, état hypothécaire, syndic, géomètre le cas échéant), et la **contribution de sécurité immobilière** perçue par l'État lors de la publication de l'acte. Ensemble, ils représentent en général quelques centaines d'euros — de quoi porter la facture réelle près du haut de la fourchette. Votre notaire est le seul à pouvoir les arrêter précisément, et il le fait sur devis avant la signature." },
+      { type: "p", text: "Dans le neuf, la logique est différente : la vente est soumise à la TVA immobilière et le droit de mutation tombe à un taux réduit, ce qui ramène les frais d'acquisition autour de **2 à 3 %** du prix. Le barème des émoluments, lui, ne change pas." },
+
+      { type: "h2", text: "Les frais de notaire comprennent-ils les honoraires d'agence ?" },
+      { type: "p", text: "**Non : les frais de notaire ne comprennent pas les honoraires d'agence, et les deux ne vont pas dans la même poche.** Les premiers sont dus par l'acquéreur et reviennent pour l'essentiel à la Métropole, à la commune et à l'État ; les seconds rémunèrent l'agence et relèvent d'un barème propre à chaque enseigne, obligatoirement affiché." },
+      { type: "p", text: "Dans notre barème, les honoraires de transaction sont [à la charge du vendeur](/honoraires) : le prix affiché sur nos annonces est donc celui que règle l'acheteur — sans honoraires à ajouter, mais avec les frais d'acquisition en plus. Cela a une conséquence directe sur la fiscalité de l'achat : quand les honoraires sont mis à la charge de l'acquéreur, ils s'ajoutent au prix mais **sortent de l'assiette** des droits de mutation ; quand ils sont à la charge du vendeur, l'assiette est le prix entier. Si vous voulez fixer le prix de départ avant de faire ces calculs, notre [estimation à Villeurbanne](/estimation-immobiliere-villeurbanne) donne une fourchette en moins de deux minutes." },
+
+      { type: "h2", text: "Méthode et sources" },
       { type: "ul", items: [
-        "**Dans l'ancien** : comptez environ **7 à 8 %** du prix de vente.",
-        "**Dans le neuf** : environ **2 à 3 %** (frais réduits).",
+        "**Taux de la Métropole de Lyon** : tableau « Droits d'enregistrement et taxe de publicité foncière — taux, abattements de base et réductions de taux applicables au 1ᵉʳ juin 2026 » publié par la DGFiP sur impots.gouv.fr, ligne « 69 Métropole de Lyon ». Document téléchargé et lu le 29/09/2026 ; c'est la version la plus récente publiée à cette date.",
+        "**Dispositif temporaire de majoration** : article 116 de la loi n° 2025-127 du 14 février 2025 de finances pour 2025, commenté au BOFiP (document mis à jour le 17/06/2026). Fenêtre d'application : 1ᵉʳ avril 2025 – 31 mars 2028.",
+        "**Prélèvement pour frais d'assiette et de recouvrement** : article 1647, V du CGI — 2,37 % du montant du droit départemental.",
+        "**Émoluments** : tableau 5, n° 54 de l'article A. 444-91 du code de commerce (arrêté du 26 février 2016).",
+        "**Prix** : médianes des ventes d'appartements enregistrées à Villeurbanne (commune 69266) en 2025 dans la base DVF publiée par Etalab sur data.gouv.fr, rattachées aux contours de quartiers officiels de la Métropole de Lyon — une seule ligne bâtie par mutation, surfaces d'au moins 10 m², médiane et jamais moyenne. Surface de référence : 62 m², médiane communale.",
+        "**Non chiffrés ici** : débours et contribution de sécurité immobilière, qui dépendent du dossier. Tous les montants sont arrondis à l'euro et ne valent pas devis.",
       ] },
-      { type: "h2", text: "De quoi se composent-ils" },
-      { type: "ol", items: [
-        "**Les droits de mutation (taxes)** : la plus grosse part. Depuis 2025, les départements peuvent majorer leur part jusqu'à 0,5 point (sur 2025-2028), ce qui augmente légèrement la facture dans l'ancien — vérifiez le taux du Rhône au moment de l'achat. Certains primo-accédants peuvent en être exonérés.",
-        "**Les émoluments du notaire** : tarif national réglementé et dégressif.",
-        "**Les débours** : frais avancés par le notaire (documents, formalités).",
-        "**La contribution de sécurité immobilière** : environ 0,10 %.",
-      ] },
-      { type: "h2", text: "Exemple" },
-      { type: "p", text: "Pour un appartement ancien à **300 000 €**, comptez environ **22 000 à 24 000 €** de frais — à intégrer dès votre plan de financement. Sur le prix médian d'un appartement villeurbannais, [195 000 € sur les ventes de 2025](/blog/prix-immobilier-villeurbanne-2026), la même règle donne environ **13 500 à 15 600 €**." },
-      { type: "h2", text: "Les frais de notaire incluent-ils les honoraires d'agence ?" },
-      { type: "p", text: "**Non : les frais de notaire ne comprennent pas les honoraires d'agence.** Les premiers sont dus par l'acquéreur et reviennent pour l'essentiel à l'État et aux collectivités ; les seconds rémunèrent l'agence et relèvent d'un barème propre à chaque enseigne. Dans notre barème, ils sont [à la charge du vendeur](/honoraires) : le prix affiché est donc celui que règle l'acheteur — sans honoraires à ajouter, mais avec les frais de notaire en plus." },
+    ],
+    faq: [
+      {
+        q: "Quel est le taux des droits de mutation à Villeurbanne en 2026 ?",
+        a: "5,00 % du prix pour un acheteur ordinaire et 4,50 % pour un primo-accédant. Villeurbanne relève de la Métropole de Lyon, qui vote son propre taux — distinct de celui du département du Rhône. En ajoutant la taxe communale de 1,20 % et le prélèvement de l'État de 2,37 % du droit départemental, la part fiscale totale est de 6,32 % du prix, ou 5,81 % pour un primo-accédant.",
+      },
+      {
+        q: "Combien faut-il prévoir de frais de notaire pour un appartement à Villeurbanne ?",
+        a: "Sur le prix médian d'un appartement villeurbannais signé en 2025, 195 000 €, comptez 12 321 € de taxes et 2 391 € d'émoluments TTC, soit 14 712 € — auxquels s'ajoutent les débours et la contribution de sécurité immobilière, quelques centaines d'euros. Pour un 62 m² au prix médian de son quartier, le total taxes + émoluments va de 12 871 € à Cyprian – Les Brosses à 18 231 € à Ferrandière – Maisons-Neuves.",
+      },
+      {
+        q: "Un primo-accédant paie-t-il moins de frais de notaire à Villeurbanne ?",
+        a: "Oui. La majoration d'un demi-point votée par la Métropole de Lyon ne s'applique pas lorsque le bien constitue une première propriété destinée à la résidence principale de l'acquéreur, au sens de l'article L. 31-10-3 du code de la construction et de l'habitation. L'économie est de 869 € à 1 245 € sur un 62 m² villeurbannais, et de 998 € au prix médian de la commune. C'est le notaire qui vérifie les conditions et les fait déclarer dans l'acte.",
+      },
+      {
+        q: "Les frais de notaire sont-ils les mêmes à Lyon et à Villeurbanne ?",
+        a: "Oui, car les deux communes relèvent de la même collectivité : la Métropole de Lyon, qui a voté 5,00 %. En revanche, une commune du département du Rhône située hors métropole relève d'un taux voté séparément — la DGFiP les liste comme deux collectivités distinctes. Les émoluments du notaire, eux, sont un tarif national et ne varient nulle part.",
+      },
+      {
+        q: "Jusqu'à quand le taux de 5,00 % s'applique-t-il ?",
+        a: "La loi de finances pour 2025 a ouvert la faculté de relever le taux au-delà de 4,50 % et dans la limite de 5 % pour une durée de trois ans, du 1ᵉʳ avril 2025 au 31 mars 2028. Au-delà de cette date, et sauf nouvelle disposition législative, le plafond redescend à 4,50 %. La date qui compte est celle de la signature de l'acte authentique, pas celle du compromis.",
+      },
+      {
+        q: "Les honoraires d'agence sont-ils inclus dans les frais de notaire ?",
+        a: "Non, ce sont deux choses distinctes. Les frais de notaire sont majoritairement composés de taxes revenant à la Métropole, à la commune et à l'État ; les honoraires d'agence rémunèrent l'agence selon un barème affiché propre à chaque enseigne. Chez Markus Immobilier, les honoraires de transaction sont à la charge du vendeur : le prix affiché est celui que règle l'acheteur, frais d'acquisition en plus.",
+      },
     ],
   },
   {
