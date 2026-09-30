@@ -467,3 +467,99 @@ a:focus-visible,
     fill-opacity: 1 !important;
   }
 }
+
+/* ============================================
+   ÉDITEUR DE PAGES (sections) — voir components/page-builder/
+   ============================================ */
+
+/* Texte riche des sections (paragraphes, listes, gras, liens, intertitres). */
+.pb-prose {
+  color: #5a6166;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.pb-prose > * + * { margin-top: 1em; }
+.pb-prose h3 { color: var(--color-anthracite); font-weight: 600; font-size: 21px; line-height: 1.3; margin-top: 1.6em; }
+.pb-prose strong { color: var(--color-anthracite); font-weight: 600; }
+.pb-prose a { color: var(--color-anthracite); text-decoration: underline; text-decoration-color: var(--color-sauge); text-underline-offset: 3px; }
+.pb-prose a:hover { color: var(--color-sauge-hover); }
+.pb-prose ul, .pb-prose ol { padding-left: 1.2em; }
+.pb-prose ul { list-style: none; padding-left: 0; }
+.pb-prose ul li { position: relative; padding-left: 1.4em; }
+.pb-prose ul li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 7px; height: 7px; border-radius: 99px; background: var(--color-sauge); }
+.pb-prose ol { list-style: decimal; }
+.pb-prose li + li { margin-top: 0.4em; }
+.pb-prose-dark { color: rgba(255, 255, 255, 0.82); }
+.pb-prose-dark h3, .pb-prose-dark strong, .pb-prose-dark a { color: #fff; }
+@media (max-width: 767px) { .pb-prose { font-size: 16px; } }
+
+/* Boutons-icônes de la liste des pages (admin). */
+.icon-btn {
+  display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 8px;
+  color: #7a817f; transition: background 0.2s, color 0.2s;
+}
+.icon-btn:hover { background: var(--color-gris); color: var(--color-anthracite); }
+.icon-btn:disabled { opacity: 0.4; }
+
+/* Éditeur : charte Markus appliquée à l'interface Puck (bleu → anthracite / sauge).
+   Sur :root et hors @layer : les jetons Puck sont déclarés dans
+   `@layer puck-tokens { :root {…} }`, un style non « layeré » passe devant.
+   Ces variables ne servent qu'à Puck, chargé uniquement sur l'éditeur. */
+:root {
+  --puck-font-family: var(--font-montserrat), system-ui, sans-serif;
+  --puck-color-azure-01: #1f2326;
+  --puck-color-azure-02: #2b3033;
+  --puck-color-azure-03: #32383c;
+  --puck-color-azure-04: #383e42;
+  --puck-color-azure-05: #5a6166;
+  --puck-color-azure-06: #7a817f;
+  --puck-color-azure-07: #8a9281;
+  --puck-color-azure-08: #9ea596;
+  --puck-color-azure-09: #bcc1b6;
+  --puck-color-azure-10: #dfe2dd;
+  --puck-color-azure-11: #eceee9;
+  --puck-color-azure-12: #f4f5f3;
+}
+.markus-editor { font-family: var(--font-montserrat), system-ui, sans-serif; }
+.me-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.me-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 8px;
+  font-size: 13px; font-weight: 600; color: #383e42; background: #fff; border: 1px solid rgba(56, 62, 66, 0.14);
+  white-space: nowrap; transition: background 0.2s, border-color 0.2s;
+}
+.me-btn:hover { background: #f4f5f3; border-color: rgba(56, 62, 66, 0.28); }
+.me-btn:disabled { opacity: 0.5; }
+.me-btn-primary { background: #383e42; color: #fff; border-color: #383e42; }
+.me-btn-primary:hover { background: #1f2326; border-color: #1f2326; }
+.me-status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #7a817f; padding: 0 6px; white-space: nowrap; }
+.me-status.is-ok { color: #5d6656; }
+.me-status.is-error { color: #c0392b; }
+@media (max-width: 900px) { .me-status { display: none; } }
+
+.me-modal { position: fixed; inset: 0; z-index: 1100; background: rgba(31, 35, 38, 0.45); display: grid; place-items: center; padding: 16px; }
+.me-modal-card { width: min(460px, 100%); max-height: 80vh; overflow: auto; background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.4); }
+.me-modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 17px; }
+.me-modal-hint { font-size: 13px; color: #7a817f; margin-bottom: 14px; }
+.me-modal-card ul { display: grid; gap: 8px; }
+.me-modal-card li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; padding: 10px 12px; border-radius: 10px; background: #f4f5f3; }
+.me-modal-card li em { color: #5d6656; font-style: normal; font-weight: 600; }
+
+/* Champ image (panneau de droite de l'éditeur). */
+.pbf { display: grid; gap: 10px; }
+.pbf-preview { position: relative; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; background: #f4f5f3; border: 1px solid rgba(56, 62, 66, 0.12); display: grid; place-items: center; color: #9aa09d; }
+.pbf-preview img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pbf-busy { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.7); display: grid; place-items: center; color: #383e42; }
+.pbf-remove { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 99px; background: rgba(31, 35, 38, 0.75); color: #fff; display: grid; place-items: center; }
+.pbf-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.pbf-btn { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; font-size: 12px; font-weight: 600; border: 1px solid rgba(56, 62, 66, 0.16); background: #fff; color: #383e42; }
+.pbf-btn:hover { background: #f4f5f3; }
+.pbf-btn-main { background: #383e42; color: #fff; border-color: #383e42; }
+.pbf-btn-main:hover { background: #1f2326; }
+.pbf-url { width: 100%; height: 34px; padding: 0 10px; border-radius: 8px; border: 1px solid rgba(56, 62, 66, 0.16); font-size: 13px; }
+.pbf-lib { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 240px; overflow: auto; padding: 2px; }
+.pbf-thumb { position: relative; aspect-ratio: 1; border-radius: 6px; overflow: hidden; outline: 2px solid transparent; }
+.pbf-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pbf-thumb.is-active, .pbf-thumb:hover { outline-color: #9ea596; }
+.pbf-hint { font-size: 11px; color: #9aa09d; font-style: italic; }
+.pbf-info { font-size: 13px; line-height: 1.5; color: #5a6166; background: #f4f5f3; border-radius: 10px; padding: 12px 14px; }
+.pbf-info a { display: inline-block; margin-top: 8px; font-weight: 600; color: #383e42; text-decoration: underline; text-decoration-color: #9ea596; }

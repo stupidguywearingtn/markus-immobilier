@@ -8,6 +8,7 @@ import { AdminGuard } from "@/components/admin/admin-guard";
 
 /** Onglets du back-office : une entrée par contenu géré en liste. */
 const TABS = [
+  { href: "/admin/pages", label: "Pages" },
   { href: "/admin/annonces", label: "Annonces" },
   { href: "/admin/equipe", label: "Équipe" },
   { href: "/admin/avis", label: "Avis clients" },

@@ -101,6 +101,7 @@ export function EditModeToolbar() {
 
           <nav className="hidden md:flex items-center gap-3 flex-none" aria-label="Gérer">
             {[
+              ["/admin/pages", "Pages & sections"],
               ["/admin/annonces", "Annonces"],
               ["/admin/equipe", "Équipe"],
               ["/admin/avis", "Avis"],

@@ -11,13 +11,26 @@ import { Reviews } from "@/components/home/reviews";
 import { Faq } from "@/components/home/faq";
 import { Social } from "@/components/home/social";
 import { Agency } from "@/components/home/agency";
+import { PageRender } from "@/components/page-builder/page-render";
+import { getPublishedPage, rootSeo } from "@/lib/page-builder/db";
 
-export const metadata: Metadata = {
-  title: "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon",
-  description:
-    "Agence immobilière indépendante à Villeurbanne. Vente, location et gestion à Lyon et Villeurbanne. Estimez votre bien gratuitement en moins de 2 minutes.",
-  alternates: { canonical: "/" },
-};
+const DEFAULT_TITLE = "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon";
+const DEFAULT_DESCRIPTION =
+  "Agence immobilière indépendante à Villeurbanne. Vente, location et gestion à Lyon et Villeurbanne. Estimez votre bien gratuitement en moins de 2 minutes.";
+
+/**
+ * Titre / description Google : ceux saisis dans l'éditeur de pages s'ils
+ * existent, sinon les valeurs historiques ci-dessus.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPublishedPage("");
+  const seo = page ? rootSeo(page.data) : null;
+  return {
+    title: { absolute: seo?.title ?? DEFAULT_TITLE },
+    description: seo?.description ?? DEFAULT_DESCRIPTION,
+    alternates: { canonical: "/" },
+  };
+}
 
 /**
  * Markus Immobilier — Page d'accueil
@@ -36,6 +49,12 @@ export const metadata: Metadata = {
  *   → Footer (dans le layout)
  */
 export default async function HomePage() {
+  // Accueil publié depuis l'éditeur de pages (/admin/pages) → il prend la main.
+  // Sinon (jamais publié, ou Supabase indisponible) : l'accueil codé ci-dessous,
+  // strictement identique à ce qui était en ligne avant l'éditeur.
+  const built = await getPublishedPage("");
+  if (built) return <PageRender data={built.data} />;
+
   const [listings, reviews, sold] = await Promise.all([
     getAllAvailableListings(),
     getReviews(),

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { ARTICLES } from "@/lib/blog";
 import { getAllListings } from "@/lib/listings-all";
 import { PAGE_LASTMOD } from "@/lib/seo/lastmod";
+import { getPublishedPage, getPublishedPagesForSitemap } from "@/lib/page-builder/db";
 
 const BASE = "https://www.markusimmobilier.fr";
 
@@ -40,7 +41,14 @@ const STATIC_PAGES: { path: string; priority: number; changeFrequency: Freq }[] 
 const LISTING_DRIVEN = new Set(["/", "/annonces"]);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const allListings = await getAllListings(); // statiques + annonces publiées
+  const [allListings, builtPages, builtHome] = await Promise.all([
+    getAllListings(), // statiques + annonces publiées
+    getPublishedPagesForSitemap(), // pages créées dans l'éditeur (/admin/pages)
+    getPublishedPage(""),
+  ]);
+  // Accueil republié depuis l'éditeur → sa date de publication compte comme
+  // une vraie modification de contenu.
+  const homePublished = builtHome?.publishedAt ? new Date(builtHome.publishedAt).getTime() : 0;
 
   const listingTimes = allListings
     .map((l) => new Date(l.publishedAt).getTime())
@@ -49,7 +57,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = STATIC_PAGES.map((p) => {
     const own = new Date(PAGE_LASTMOD[p.path]).getTime();
-    const stamp = LISTING_DRIVEN.has(p.path) ? Math.max(own, latestListing) : own;
+    let stamp = LISTING_DRIVEN.has(p.path) ? Math.max(own, latestListing) : own;
+    if (p.path === "/") stamp = Math.max(stamp, homePublished);
     return {
       url: p.path === "/" ? BASE : `${BASE}${p.path}`,
       lastModified: new Date(stamp),
@@ -78,5 +87,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
     changeFrequency: "monthly",
   }));
-  return [...staticPages, ...listingPages, ...blogPages];
+  const builderPages: MetadataRoute.Sitemap = builtPages.map((p) => ({
+    url: `${BASE}/${p.slug}`,
+    lastModified: p.publishedAt ? new Date(p.publishedAt) : undefined,
+    priority: 0.7,
+    changeFrequency: "monthly",
+  }));
+  return [...staticPages, ...listingPages, ...blogPages, ...builderPages];
 }

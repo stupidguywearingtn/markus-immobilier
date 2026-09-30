@@ -46,6 +46,7 @@
   - **Sous-projet A — édition inline** : un admin connecté (Supabase Auth, `/signin`, bouton clé dans le header) active un « mode édition » et clique les textes/images de la home pour les modifier → brouillons → « Sauvegarder » publie en base (`site_content_fields`, clé `site_id/section/field`). Lecture publiée **server-side** (SEO). Champs câblés sur la home : eyebrows + titres plains + 1 paragraphe « Qui sommes-nous » + photo agence. Composants : `hooks/useAuth|useEditMode|useV`, `components/backoffice/*`. Tokens `--bo-*` dans `globals.css`. `SITE_ID` figé dans `lib/backoffice/config.ts`.
   - **Sous-projet B — annonces** : `/admin/annonces` (liste + `/new` + `/[id]/edit`), formulaire 4 étapes (`components/admin/listing-form.tsx`), photos → bucket `listings`, workflow brouillon → publier. `lib/listings-all.ts` fusionne les biens statiques (`lib/listings.ts`, inchangés, prioritaires) + les annonces publiées Supabase, pour `/annonces`, `/annonces/[id]`, la home et le `sitemap`.
   - Migrations SQL versionnées : `supabase/migrations/0001_backoffice.sql`, `0002_listings.sql`.
+  - **Sous-projet D — éditeur de pages (Puck)** (2026-09-30, branche `feat/page-builder`) : `/admin/pages` — sections glisser-déposer façon Wix, 10 sections maison + 15 sections libres dans la charte, nouvelles pages `/<adresse>`, brouillon auto, Publier, Historique, aperçu mobile. Rendu public serveur. Voir `docs/EDITEUR-PAGES.md`. **À faire** : exécuter `0004_pages.sql` dans Supabase + `npm install`.
 
 ## ⏳ À FAIRE — actions utilisateur (Vercel / externe)
 
