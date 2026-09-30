@@ -2,7 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { Loader2, Pencil, X, LogOut, Save } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { RESERVED_SLUGS } from "@/lib/page-builder/slugs";
+import { Loader2, Pencil, X, LogOut, Save, LayoutTemplate } from "lucide-react";
 import { toast } from "sonner";
 import { useEditMode } from "@/hooks/useEditMode";
 import { useAuth } from "@/hooks/useAuth";
@@ -19,6 +21,11 @@ export function EditModeToolbar() {
     publishing,
   } = useEditMode();
   const { user, signOut } = useAuth();
+  const pathname = usePathname() ?? "/";
+  // Page modifiable dans l'éditeur de sections : l'accueil, ou une page créée
+  // dans l'éditeur (une seule partie d'adresse, pas une page codée du site).
+  const seg = pathname.replace(/^\/+|\/+$/g, "");
+  const builderSlug = seg === "" || (!seg.includes("/") && !RESERVED_SLUGS.has(seg)) ? seg : null;
   const barRef = useRef<HTMLDivElement>(null);
 
   // La barre peut passer sur 2 lignes : on mesure sa hauteur réelle et on
@@ -98,6 +105,17 @@ export function EditModeToolbar() {
           )}
 
           <div className="flex-1" />
+
+          {builderSlug !== null && (
+            <Link
+              href={`/admin/pages/ouvrir?slug=${encodeURIComponent(builderSlug)}`}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-semibold flex-none"
+              style={{ background: "var(--bo-dirty)", color: "var(--bo-dark)" }}
+              title="Ajouter, déplacer ou supprimer des sections sur cette page"
+            >
+              <LayoutTemplate className="w-3.5 h-3.5" /> Modifier les sections
+            </Link>
+          )}
 
           <nav className="hidden md:flex items-center gap-3 flex-none" aria-label="Gérer">
             {[
