@@ -977,7 +977,7 @@ export const ARTICLES: Article[] = [
       "La plus-value est la différence entre prix de vente et prix d'achat. Qui est exonéré, à quel taux, et les abattements pour durée de détention.",
     date: "2026-06-11",
     internalHref: "/vendre",
-    internalLabel: "Estimer la valeur de mon bien",
+    internalLabel: "Savoir ce qu'il reste après la vente",
     blocks: [
       { type: "p", text: "**La plus-value, c'est la différence entre votre prix de vente et votre prix d'achat** (majoré des frais et des travaux). Elle est imposée… sauf dans le cas le plus courant : la résidence principale." },
       { type: "h2", text: "Qui est exonéré ?" },
@@ -1187,9 +1187,9 @@ export const ARTICLES: Article[] = [
       "Rendement locatif brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : 4,47 % à Ferrandière, 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune. Frais de notaire, passage au net et loyer plafonné.",
     h1: "Rentabilité locative à Villeurbanne : le rendement réel, quartier par quartier",
     excerpt:
-      "Le rendement brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : de 4,47 % à Ferrandière – Maisons-Neuves à 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune entière. Frais de notaire compris, il faut retirer 0,31 à 0,45 point.",
+      "Le rendement brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : de 4,47 % à Ferrandière – Maisons-Neuves à 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune entière. Frais de notaire compris, il faut retirer au moins 0,31 à 0,45 point.",
     date: "2026-02-05",
-    updated: "2026-09-23",
+    updated: "2026-09-30",
     internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
@@ -1232,7 +1232,7 @@ export const ARTICLES: Article[] = [
       ] },
 
       { type: "h2", text: "Faut-il inclure les frais de notaire dans le calcul de rentabilité ?" },
-      { type: "p", text: "**Oui, et cela retire entre 0,31 et 0,45 point de rendement brut selon le quartier.** Ce qui est immobilisé dans une opération, c'est le prix plus les frais : c'est donc ce total qui doit figurer au dénominateur. En appliquant 7,5 %, milieu de la fourchette de l'ancien, le rendement communal passe de 4,91 % à 4,57 %." },
+      { type: "p", text: "**Oui, et cela retire au moins 0,31 à 0,45 point de rendement brut selon le quartier.** Ce qui est immobilisé dans une opération, c'est le prix plus les frais : c'est donc ce total qui doit figurer au dénominateur. Les calculs ci-dessous appliquent 7,5 %, une hypothèse volontairement basse : le [calcul poste par poste des frais de notaire à Villeurbanne](/blog/frais-de-notaire-lyon-2026) montre que les deux seuls postes exactement calculables — taxes départementales et émoluments du notaire — atteignent déjà 7,49 % à 7,72 % du prix aux niveaux villeurbannais, débours non compris. À 7,5 %, le rendement communal passe de 4,91 % à 4,57 % ; avec les frais réellement dus, il descend légèrement en dessous." },
       { type: "p", text: "L'effet est mécaniquement plus fort là où le rendement de départ est élevé : Cyprian – Les Brosses perd 0,45 point (6,40 % → 5,95 %), Ferrandière – Maisons-Neuves 0,31 point (4,47 % → 4,15 %). Le classement des quartiers, lui, ne bouge pas : des frais proportionnels n'inversent aucun ordre." },
 
       { type: "h2", text: "Comment passer du rendement brut au rendement net ?" },
@@ -1269,7 +1269,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Il a monté, mais par le bas : ce sont les prix qui ont reculé.** La médiane communale est passée de 3 981 €/m² en 2022 à 3 567 €/m² en 2025, soit −10,4 %. À loyer inchangé, cette seule baisse a ajouté 0,51 point de rendement brut, de 4,40 % à 4,91 %." },
       { type: "p", text: "La nuance compte pour un acheteur : le rendement d'aujourd'hui est meilleur qu'en 2022 parce que le bien coûte moins cher, pas parce qu'il rapporte davantage. Elle compte tout autant pour un propriétaire qui veut savoir [ce que vaut réellement son bien aujourd'hui](/estimation-immobiliere-villeurbanne)." },
 
-      { type: "p", text: "**Méthode.** Prix : médianes des ventes d'appartements enregistrées à Villeurbanne (commune 69266) en 2025 dans la base DVF publiée par Etalab sur data.gouv.fr, rattachées aux contours de quartiers officiels de la Métropole de Lyon — une seule ligne bâtie par mutation, surfaces d'au moins 10 m², médiane et jamais moyenne. Loyer : médiane communale hors charges de la carte des loyers publiée sur data.gouv.fr, 14,60 €/m² pour un appartement. Frais de notaire : 7,5 %, milieu de la fourchette de l'ancien. Rendements calculés par Markus Immobilier et arrondis au centième de point." },
+      { type: "p", text: "**Méthode.** Prix : médianes des ventes d'appartements enregistrées à Villeurbanne (commune 69266) en 2025 dans la base DVF publiée par Etalab sur data.gouv.fr, rattachées aux contours de quartiers officiels de la Métropole de Lyon — une seule ligne bâtie par mutation, surfaces d'au moins 10 m², médiane et jamais moyenne. Loyer : médiane communale hors charges de la carte des loyers publiée sur data.gouv.fr, 14,60 €/m² pour un appartement. Frais de notaire : 7,5 % du prix, hypothèse volontairement basse et non un milieu de fourchette — à Villeurbanne, taxes et émoluments seuls pèsent 7,49 % à 7,72 % du prix, débours non compris (calcul détaillé dans l'article consacré aux frais de notaire). Rendements calculés par Markus Immobilier et arrondis au centième de point." },
     ],
     faq: [
       {
