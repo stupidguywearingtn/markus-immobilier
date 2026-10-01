@@ -4,7 +4,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — Markus Immobilier",
+  title: "Mentions légales",
   description:
     "Mentions légales du site markusimmobilier.fr : éditeur, carte professionnelle, garantie financière, assurance RCP, médiation, hébergement.",
   alternates: { canonical: "/mentions-legales" },

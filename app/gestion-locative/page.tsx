@@ -415,6 +415,14 @@ export default function GestionLocativePage() {
                 <Link href="/honoraires" className={A}>
                   barème public
                 </Link>
+                . Pour savoir ce que couvre exactement chacune des deux, tâche
+                par tâche, voir{" "}
+                <Link
+                  href="/blog/gestion-locative-villeurbanne-deleguer-ou-non"
+                  className={A}
+                >
+                  ce que fait une agence quand vous lui confiez la gestion
+                </Link>
                 .
               </p>
             ),

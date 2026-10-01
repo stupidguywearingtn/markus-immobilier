@@ -67,6 +67,9 @@
  * app/honoraires/page.tsx (gestion 6 %, GLI 2,5 %, frais fixes 20 €/45 €,
  * transaction 9 000 € / 6 % / 5 %) : « cout-gestion-locative »,
  * « gestion-locative-villeurbanne-deleguer-ou-non » et « vendre-sans-agence ».
+ * Depuis le 01/10/2026, « gestion-locative-villeurbanne-deleguer-ou-non » cite
+ * en plus la MISE EN LOCATION côté propriétaire (9 % du loyer annuel HC,
+ * constante LOCATION_PROPRIETAIRE de app/honoraires/page.tsx).
  * Si le client change son barème, ces textes doivent bouger avec lui.
  */
 
@@ -491,32 +494,52 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "gestion-locative-villeurbanne-deleguer-ou-non",
-    title: "Gestion locative à Villeurbanne : déléguer ou gérer soi-même ?",
+    title: "Que fait une agence de gestion locative, concrètement ?",
     metaDescription:
-      "Faut-il confier la gestion locative de votre bien à une agence à Villeurbanne ? Avantages, coûts et critères pour décider.",
-    h1: "Gestion locative à Villeurbanne : déléguer ou gérer soi-même ?",
+      "Un mandat de gestion couvre la recherche du locataire, le bail, les états des lieux, l'encaissement des loyers, les impayés et les sinistres. Ce qui reste au propriétaire, et ce qui est facturé à part.",
+    h1: "Que fait une agence quand vous lui confiez la gestion locative ?",
     excerpt:
-      "Gérer un bien en location prend du temps et demande de la rigueur juridique. Comment trancher entre délégation et gestion directe.",
+      "Un mandat de gestion couvre six familles de tâches : trouver le locataire, rédiger le bail, les états des lieux, encaisser les loyers, traiter impayés et sinistres, suivre les obligations légales. Trois choses restent au propriétaire.",
     date: "2026-05-19",
-    updated: "2026-09-16",
+    updated: "2026-10-01",
     internalHref: "/gestion-locative",
-    internalLabel: "Découvrir notre gestion locative",
+    internalLabel: "Déléguer ou gérer seul : le calcul chiffré",
     blocks: [
-      { type: "p", text: "Gérer un bien en location prend du temps et demande de la rigueur juridique. Voici comment trancher. Pour l'arbitrage chiffré — ce que la délégation coûte réellement après impôt sur un appartement villeurbannais, et ce que le bailleur assume seul — la page [déléguer ou gérer seul : le calcul](/gestion-locative) le détaille." },
-      { type: "h2", text: "Ce que fait une agence à votre place" },
+      { type: "p", text: "**Un mandat de gestion locative couvre six familles de tâches : trouver et sélectionner le locataire, rédiger le bail, établir les états des lieux, encaisser les loyers et émettre les quittances, traiter les impayés et les sinistres, suivre les obligations légales du bailleur.** Trois décisions restent au propriétaire, quoi qu'il arrive : les travaux, les votes en assemblée de copropriété et la déclaration fiscale des revenus fonciers. Cet article décrit le partage des tâches ; si votre question est plutôt **faut-il déléguer ou gérer seul**, l'arbitrage chiffré au loyer médian villeurbannais est sur [déléguer ou gérer seul : le calcul](/gestion-locative)." },
+      { type: "h2", text: "Que fait l'agence à votre place, précisément ?" },
+      { type: "p", text: "Elle prend en charge la vie courante du logement loué, du candidat locataire à la quittance mensuelle. Concrètement, six blocs de tâches :" },
       { type: "ul", items: [
-        "Recherche et sélection du locataire (solvabilité, dossier).",
-        "Rédaction du bail et états des lieux.",
-        "Encaissement des loyers, quittances, révisions.",
-        "Gestion des impayés et des sinistres.",
-        "Suivi des travaux et des obligations légales (DPE, décence…).",
+        "**Recherche et sélection du locataire** : diffusion, visites, constitution des dossiers et vérification des pièces justificatives.",
+        "**Rédaction du bail** et de ses annexes (diagnostics, règlement de copropriété, notice d'information).",
+        "**États des lieux** d'entrée et de sortie, et comparaison des deux.",
+        "**Encaissement des loyers**, quittances, décompte annuel des charges, révision du loyer selon l'indice de référence.",
+        "**Impayés et sinistres** : relances, mise en œuvre de la garantie si elle a été souscrite, déclaration et suivi du sinistre.",
+        "**Obligations légales du bailleur** : renouvellement des diagnostics, décence du logement, calendrier énergétique du DPE.",
       ] },
-      { type: "h2", text: "Combien ça coûte" },
-      { type: "p", text: "En général **6 à 8 %** des loyers encaissés — souvent en partie déductible des revenus fonciers. À Villeurbanne, notre gestion courante est à **6 % des encaissements**, avec une garantie loyers impayés en option à **2,5 %** : [le barème détaillé est publié sur le site](/honoraires), frais fixes compris." },
-      { type: "h2", text: "Gérer soi-même : pour qui ?" },
-      { type: "p", text: "Pertinent si vous avez du temps, un seul bien proche de chez vous, et que vous maîtrisez les obligations légales (qui se durcissent, notamment sur le DPE)." },
-      { type: "h2", text: "Le bon choix" },
-      { type: "p", text: "Déléguer devient vite rentable dès que vous valorisez votre temps et votre tranquillité." },
+      { type: "h2", text: "Qu'est-ce qui reste au propriétaire, même en gestion déléguée ?" },
+      { type: "p", text: "Trois choses, et elles ne se délèguent pas. **Les travaux** : l'agence obtient les devis, suit le chantier et le réceptionne, mais c'est vous qui décidez de les engager. **Les votes en assemblée générale de copropriété** : la voix appartient au propriétaire du lot, pas au gestionnaire. **La déclaration fiscale** : les revenus fonciers se déclarent à votre nom, l'agence ne fournit qu'un état comptable et, en option, un document d'aide." },
+      { type: "p", text: "À cela s'ajoute l'assurance propriétaire non occupant, obligatoire en copropriété : elle reste souscrite par vous, à votre nom." },
+      { type: "h2", text: "Qui choisit le locataire, l'agence ou le propriétaire ?" },
+      { type: "p", text: "**Le choix final appartient au propriétaire.** L'agence diffuse l'annonce, fait visiter, réunit les dossiers et vérifie les pièces — dans la limite de la liste fixée par décret, qui interdit de réclamer autre chose — puis vous présente les candidatures recevables. Un refus ne peut en aucun cas reposer sur un critère discriminatoire : c'est la raison pour laquelle le tri se fait sur des éléments vérifiables, essentiellement la stabilité et le niveau des ressources." },
+      { type: "h2", text: "La mise en location est-elle comprise dans les honoraires de gestion ?" },
+      { type: "p", text: "**Non : ce sont deux prestations distinctes, facturées séparément.** La mise en location — trouver le locataire et signer le bail — est facturée une fois, à l'entrée : chez Markus Immobilier, **9 % du loyer annuel hors charges** côté propriétaire. La gestion courante, elle, est un pourcentage mensuel des encaissements : **6 % du total des encaissements par lot**, minimum 25 €, auxquels s'ajoutent 20 € par an de frais et débours et 45 € par lot et par an si vous souhaitez recevoir les courriers par voie postale. [Le barème complet est public, ligne par ligne](/honoraires), y compris les interventions occasionnelles." },
+      { type: "p", text: "La garantie loyers impayés est une option distincte, à **2,5 %**. Pour le détail de ce que le pourcentage couvre et de ce qui se facture à l'unité, voir [combien coûte vraiment une gestion locative](/blog/cout-gestion-locative)." },
+      { type: "h2", text: "Alors, faut-il déléguer ou gérer soi-même ?" },
+      { type: "p", text: "**Cette question ne se tranche pas sur le taux, mais sur la vacance et le risque d'impayé** : au loyer médian villeurbannais, une année de gestion déléguée coûte moins qu'un seul mois de logement vide. Le calcul complet — coût net après impôt selon votre régime fiscal, ce que le bailleur qui gère seul doit faire et ce qu'il risque en euros — est développé sur [déléguer sa gestion locative ou gérer seul : le calcul à Villeurbanne](/gestion-locative). C'est cette page qui porte la comparaison ; celle-ci se limite au contenu du mandat." },
+    ],
+    faq: [
+      {
+        q: "Peut-on confier la mise en location à une agence sans lui confier la gestion ?",
+        a: "Oui. Ce sont deux mandats différents : la mise en location est facturée une fois, à l'entrée du locataire (9 % du loyer annuel hors charges côté propriétaire dans notre barème), et vous pouvez en rester là et gérer ensuite le bien vous-même. La gestion courante, facturée 6 % des encaissements mensuels par lot (minimum 25 €), est une prestation continue qui se souscrit à part.",
+      },
+      {
+        q: "Le propriétaire choisit-il lui-même le locataire ?",
+        a: "Oui, la décision finale lui revient. L'agence réunit les candidatures, vérifie les pièces justificatives dans la limite de la liste fixée par décret, puis présente les dossiers recevables. Le refus d'un candidat ne peut pas reposer sur un critère discriminatoire : la sélection se fonde sur des éléments vérifiables, essentiellement la stabilité et le niveau des ressources.",
+      },
+      {
+        q: "Qui s'occupe de l'état des lieux de sortie et de la restitution du dépôt de garantie ?",
+        a: "L'agence réalise l'état des lieux de sortie, le compare à celui d'entrée, chiffre les éventuelles retenues et restitue le dépôt de garantie dans le délai légal — un mois si l'état des lieux de sortie est conforme à celui d'entrée, deux mois sinon. Le retard de restitution est sanctionné par une majoration de 10 % du loyer mensuel hors charges par mois de retard entamé (article 22 de la loi du 6 juillet 1989).",
+      },
     ],
   },
   {

@@ -10,7 +10,7 @@ import { AdminManageLink } from "@/components/backoffice/AdminManageLink";
 import { JsonLd, breadcrumbLd, teamLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "Notre équipe — Markus Immobilier Villeurbanne",
+  title: "Notre équipe — agence immobilière à Villeurbanne",
   description:
     "Les visages derrière Markus Immobilier. Tony et David Pistilli, à votre service à Lyon et Villeurbanne.",
   alternates: { canonical: "/equipe" },

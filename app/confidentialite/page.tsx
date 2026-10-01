@@ -8,7 +8,7 @@ import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section"
 const UPDATED = lastmodOf("/confidentialite");
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — Markus Immobilier",
+  title: "Politique de confidentialité",
   description:
     "Comment Markus Immobilier collecte, traite et protège vos données personnelles, conformément au RGPD.",
   alternates: { canonical: "/confidentialite" },

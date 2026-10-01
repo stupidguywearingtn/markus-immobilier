@@ -39,7 +39,7 @@ export default function AcheterPage() {
       />
       <SeoLanding
         eyebrow="Acheter"
-        title={<>Trouvez votre <span className="grad-light">prochain chez-vous.</span></>}
+        title={<>Acheter à Villeurbanne, <span className="grad-light">sans surpayer.</span></>}
         lead="Acheter un appartement à Lyon ou Villeurbanne, c'est un projet de vie. On vous aide à cibler le bon bien, au bon prix, et à sécuriser chaque étape."
         illustration={
           <DrawOnScroll>

@@ -8,7 +8,7 @@ import { LegalFooterNav, LegalSection } from "@/components/layout/legal-section"
 const UPDATED = lastmodOf("/cookies");
 
 export const metadata: Metadata = {
-  title: "Politique de cookies — Markus Immobilier",
+  title: "Politique de cookies",
   description:
     "Cookies utilisés par markusimmobilier.fr et comment les gérer dans votre navigateur.",
   alternates: { canonical: "/cookies" },

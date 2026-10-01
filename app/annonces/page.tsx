@@ -48,8 +48,8 @@ export default async function AnnoncesPage({
         eyebrow="Catalogue"
         title={
           <>
-            Trouvez votre{" "}
-            <span className="grad-light">prochain chez-vous.</span>
+            Nos biens à vendre et à louer{" "}
+            <span className="grad-light">à Villeurbanne et à Lyon.</span>
           </>
         }
         lead="Une sélection de biens à la vente et à la location à Lyon & Villeurbanne, soigneusement choisis par notre équipe."
