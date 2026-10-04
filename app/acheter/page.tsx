@@ -228,7 +228,8 @@ export default function AcheterPage() {
             Un acheteur ne compare pas des pourcentages, il réunit une somme. Le
             prix médian réellement signé pour un appartement à Villeurbanne en{" "}
             {DVF_ANNEE} est de {fmtEur(COMMUNE.prixMedian)} (
-            {COMMUNE.n.toLocaleString("fr-FR")} ventes, base DVF) ; frais
+            {COMMUNE.n.toLocaleString("fr-FR")}{" "}
+            ventes, base DVF) ; frais
             d&apos;acquisition compris, le budget à prévoir est de{" "}
             {fmtEur(BUDGET_MEDIAN)}. Les chiffres ci-dessous partent tous des
             ventes enregistrées chez le notaire, jamais des prix d&apos;annonce.
@@ -245,7 +246,8 @@ export default function AcheterPage() {
                     Au prix médian villeurbannais de {fmtEur(COMMUNE.prixMedian)}
                     , le budget total est de {fmtEur(BUDGET_MEDIAN)}
                   </strong>{" "}
-                  — le prix, plus {fmtEur(FRAIS_MEDIAN)} de taxes et
+                  — le prix, plus {fmtEur(FRAIS_MEDIAN)}{" "}
+                    de taxes et
                   d&apos;émoluments de notaire. Selon la taille du bien, ce
                   supplément va de {fmtEur(LIGNES[0].frais)} à{" "}
                   {fmtEur(LIGNES[LIGNES.length - 1].frais)}, soit{" "}
@@ -310,10 +312,12 @@ export default function AcheterPage() {
                   son secteur,{" "}
                   <strong>
                     le budget va de {fmtEur(BUDGET_62_MIN)} à{" "}
-                    {fmtEur(BUDGET_62_MAX)} d&apos;un bout à l&apos;autre de la
+                    {fmtEur(BUDGET_62_MAX)}{" "}
+                    d&apos;un bout à l&apos;autre de la
                     commune
                   </strong>
-                  , soit {fmtEur(BUDGET_62_MAX - BUDGET_62_MIN)} d&apos;écart à
+                  , soit {fmtEur(BUDGET_62_MAX - BUDGET_62_MIN)}{" "}
+                  d&apos;écart à
                   surface égale. Le détail des frais quartier par quartier est
                   publié dans notre{" "}
                   <Link href="/blog/frais-de-notaire-lyon-2026" className={A}>
@@ -323,6 +327,20 @@ export default function AcheterPage() {
                   accessibles dans{" "}
                   <Link href="/blog/ou-acheter-villeurbanne-quartiers" className={A}>
                     où acheter selon votre budget
+                  </Link>
+                  . Trois quartiers ont leur propre page de marché, avec le
+                  nombre de ventes de l&apos;année et l&apos;évolution des prix
+                  depuis 2022 :{" "}
+                  <Link href="/agence-immobiliere-gratte-ciel" className={A}>
+                    Gratte-Ciel
+                  </Link>
+                  ,{" "}
+                  <Link href="/agence-immobiliere-charpennes" className={A}>
+                    Charpennes
+                  </Link>{" "}
+                  et{" "}
+                  <Link href="/agence-immobiliere-cusset" className={A}>
+                    Cusset
                   </Link>
                   .
                 </p>
@@ -353,7 +371,8 @@ export default function AcheterPage() {
                   </strong>{" "}
                   Sur la commune entière, un site spécialisé annonçait{" "}
                   {fmtM2(AFFICHE_COMMUNE)} quand les{" "}
-                  {COMMUNE.n.toLocaleString("fr-FR")} ventes d&apos;appartements
+                  {COMMUNE.n.toLocaleString("fr-FR")}{" "}
+                  ventes d&apos;appartements
                   enregistrées en {DVF_ANNEE} donnent {fmtM2(COMMUNE.median)}.
                   Nous avons comparé{" "}
                   <Link href="/blog/investir-locatif-lyon" className={A}>
@@ -401,7 +420,8 @@ export default function AcheterPage() {
                   du notaire sont réglés en trésorerie le jour de l&apos;acte
                   authentique. À Villeurbanne, cela représente entre{" "}
                   {fmtEur(FRAIS_62_MIN)} et {fmtEur(FRAIS_62_MAX)} pour un{" "}
-                  {COMMUNE.surfaceMediane} m² selon le quartier — une somme à
+                  {COMMUNE.surfaceMediane}{" "}
+                  m² selon le quartier — une somme à
                   réunir en plus de l&apos;apport que la banque demande sur le
                   prix lui-même.
                 </p>

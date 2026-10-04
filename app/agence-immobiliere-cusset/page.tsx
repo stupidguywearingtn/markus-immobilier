@@ -131,10 +131,12 @@ export default function CussetPage() {
           <>
             À Cusset – Bonnevay, le prix médian d&apos;un appartement est de{" "}
             <strong>{fmtM2(Q.median)}</strong>, calculé sur les {Q.n} ventes
-            réellement signées en 2025 — soit {fmtPct(ECART)} par rapport à la
+            réellement signées en 2025 — soit {fmtPct(ECART)}{" "}
+                  par rapport à la
             médiane de Villeurbanne. Concrètement, c&apos;est le quartier
             desservi par le métro A où un même budget achète le plus de mètres
-            carrés : {GAIN_M2_250K} m² de plus qu&apos;à Gratte-Ciel pour
+            carrés : {GAIN_M2_250K}{" "}
+            m² de plus qu&apos;à Gratte-Ciel pour
             250 000 €. Voici les chiffres, et ce qu&apos;ils changent pour
             acheter ou vendre ici.
           </>
@@ -186,6 +188,19 @@ export default function CussetPage() {
                   </Link>{" "}
                   — pour la même ligne de métro.
                 </p>
+                <p className="mb-3">
+                  Attention à ce que « budget » veut dire : ces repères partent
+                  du <strong>prix du bien</strong>, pas de la somme à réunir.
+                  Les frais d&apos;acquisition — de 7,49 % à 7,72 % du prix
+                  selon la typologie — s&apos;y ajoutent et ne sont généralement
+                  pas financés par le prêt. C&apos;est structurant pour un
+                  premier achat, qui est précisément le profil du quartier : le
+                  calcul complet est sur{" "}
+                  <Link href="/acheter" className={A}>
+                    le budget total d&apos;un achat villeurbannais
+                  </Link>
+                  .
+                </p>
                 <p>
                   C&apos;est ce qui fait de Cusset un secteur de familles et de
                   premiers achats : à l&apos;échelle de la commune, le prix
@@ -208,7 +223,8 @@ export default function CussetPage() {
                 Le quartier est traversé par la{" "}
                 <strong>ligne A du métro</strong>, avec les stations Cusset et
                 Flachet sur le cours Émile Zola, et le terminus{" "}
-                <strong>Laurent Bonnevay – Astroballe</strong> en limite est,
+                <strong>Laurent Bonnevay – Astroballe</strong>{" "}
+                en limite est,
                 d&apos;où partent de nombreuses lignes de bus vers l&apos;est de
                 la métropole. La Part-Dieu est à une dizaine de minutes. Le
                 secteur est résidentiel, avec les commerces de proximité du cours
@@ -232,9 +248,19 @@ export default function CussetPage() {
                     . À ce niveau de prix, nos honoraires de vente relèvent de la
                     tranche <strong>{HONO.label}</strong> du barème, soit environ{" "}
                     <strong>{fmtEur(Math.round(HONO.montant / 100) * 100)} TTC</strong>,
-                    à la charge du vendeur
+                    à la charge du vendeur. Sur le prix non arrondi, le vendeur
+                    perçoit donc{" "}
+                    <strong>{fmtEur(PRIX_MEDIAN_QUARTIER - HONO.montant)}</strong>
                   </>
                 )}
+                . C&apos;est ce montant, et non le prix affiché, qui sert à
+                préparer l&apos;achat suivant : le décompte des sept quartiers
+                et ce qui se retranche encore du prix (diagnostics, mainlevée
+                d&apos;hypothèque, impôt sur la plus-value) sont détaillés sur
+                notre page{" "}
+                <Link href="/vendre" className={A}>
+                  ce qu&apos;il reste au vendeur
+                </Link>
                 . Le barème complet est public et identique pour tous les
                 mandants :{" "}
                 <Link href="/honoraires" className={A}>

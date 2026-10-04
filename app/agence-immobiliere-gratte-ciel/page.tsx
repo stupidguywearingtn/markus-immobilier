@@ -124,7 +124,8 @@ export default function GratteCielPage() {
           <>
             À Gratte-Ciel, le prix médian d&apos;un appartement est de{" "}
             <strong>{fmtM2(Q.median)}</strong>, calculé sur les {Q.n} ventes
-            réellement signées en 2025 — soit {fmtPct(ECART)} par rapport à la
+            réellement signées en 2025 — soit {fmtPct(ECART)}{" "}
+                  par rapport à la
             médiane de Villeurbanne. C&apos;est le quartier le plus cher et le
             plus actif de la ville après Ferrandière : environ {PART_VENTES} %
             des appartements villeurbannais vendus l&apos;an dernier
@@ -180,6 +181,19 @@ export default function GratteCielPage() {
                   </Link>{" "}
                   — c&apos;est le prix de la centralité.
                 </p>
+                <p className="mb-3">
+                  Attention à ce que « budget » veut dire : ces repères partent
+                  du <strong>prix du bien</strong>, pas de la somme à réunir.
+                  Les frais d&apos;acquisition — de 7,49 % à 7,72 % du prix
+                  selon la typologie — s&apos;y ajoutent et ne sont généralement
+                  pas financés par le prêt. Un acheteur qui dispose de 250 000 €
+                  en tout ne vise donc pas 250 000 € de prix d&apos;achat. Le
+                  calcul complet est sur{" "}
+                  <Link href="/acheter" className={A}>
+                    le budget total d&apos;un achat villeurbannais
+                  </Link>
+                  .
+                </p>
                 <p>
                   Ces repères valent pour un bien au prix médian. Dans un quartier
                   à fort cachet comme celui-ci, l&apos;étage, la présence
@@ -212,9 +226,23 @@ export default function GratteCielPage() {
                       tranche <strong>{HONO.label}</strong> du barème, soit
                       environ{" "}
                       <strong>{fmtEur(Math.round(HONO.montant / 100) * 100)} TTC</strong>,
-                      à la charge du vendeur.
+                      à la charge du vendeur. Sur le prix non arrondi, le
+                      vendeur perçoit donc{" "}
+                      <strong>{fmtEur(PRIX_MEDIAN_QUARTIER - HONO.montant)}</strong>{" "}
+                      — le repère qui compte pour financer l&apos;achat suivant,
+                      avant remboursement du crédit en cours.
                     </>
                   )}
+                </p>
+                <p className="mb-3">
+                  Les sept quartiers de Villeurbanne sont décomptés de la même
+                  façon, et ce qui se retranche encore du prix (diagnostics,
+                  mainlevée d&apos;hypothèque, impôt sur la plus-value) est
+                  détaillé sur notre page{" "}
+                  <Link href="/vendre" className={A}>
+                    ce qu&apos;il reste au vendeur
+                  </Link>
+                  .
                 </p>
                 <p>
                   Le barème est public et identique pour tous les mandants : il

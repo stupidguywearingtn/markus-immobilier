@@ -5,7 +5,13 @@ import { Reveal } from "@/components/reveal";
 import { Button, ArrowRight } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Page introuvable — Markus Immobilier",
+  // La marque est déjà ajoutée par le gabarit `%s · Markus Immobilier` de
+  // app/layout.tsx : l'écrire ici aussi la doublait dans le <title> servi
+  // (« Page introuvable — Markus Immobilier · Markus Immobilier »). Même
+  // défaut que celui corrigé le 2026-10-01 sur cinq pages ; cette page-ci
+  // y avait échappé parce qu'elle n'est pas dans le sitemap, donc absente
+  // de l'audit des 53 pages.
+  title: "Page introuvable",
   robots: { index: false, follow: true },
 };
 

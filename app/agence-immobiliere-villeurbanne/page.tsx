@@ -130,7 +130,17 @@ export default function AgenceVilleurbannePage() {
                   <strong>195 000 €</strong>{" "}
                   d&apos;après les ventes enregistrées chez le notaire — cela
                   représente{" "}
-                  <strong>environ 11 700 € TTC</strong>.
+                  <strong>environ 11 700 € TTC</strong>. Honoraires déduits, le
+                  vendeur perçoit <strong>183 300 €</strong>{" "}
+                  — c&apos;est ce
+                  montant, et non le prix affiché, qui sert à préparer un projet
+                  de revente. Le décompte quartier par quartier, et ce qui se
+                  retranche encore (diagnostics, mainlevée d&apos;hypothèque,
+                  impôt sur la plus-value), est détaillé sur notre page{" "}
+                  <Link href="/vendre" className={A}>
+                    ce qu&apos;il reste au vendeur
+                  </Link>
+                  .
                 </p>
                 <p>
                   Le barème complet, y compris la location et la gestion, est
@@ -168,6 +178,14 @@ export default function AgenceVilleurbannePage() {
                   notre analyse des{" "}
                   <Link href="/blog/prix-immobilier-villeurbanne-2026" className={A}>
                     prix au m² réels par quartier de Villeurbanne
+                  </Link>
+                  . Côté acheteur, ce prix n&apos;est pas le budget : au prix
+                  médian de 195 000 €, il faut réunir{" "}
+                  <strong>209 712 €</strong>, parce que 14 712 € de taxes et
+                  d&apos;émoluments s&apos;ajoutent au prix et ne sont
+                  généralement pas financés par le prêt — le détail est sur{" "}
+                  <Link href="/acheter" className={A}>
+                    le budget total d&apos;un achat villeurbannais
                   </Link>
                   . Nous intervenons notamment à{" "}
                   <Link href="/agence-immobiliere-gratte-ciel" className={A}>Gratte-Ciel</Link>,{" "}

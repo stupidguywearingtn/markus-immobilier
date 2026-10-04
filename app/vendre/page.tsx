@@ -214,7 +214,8 @@ export default function VendrePage() {
             Un vendeur ne compare pas des pourcentages, il compare des montants
             au bout du compte. Le prix médian réellement signé pour un
             appartement à Villeurbanne en {DVF_ANNEE} est de{" "}
-            {fmtEur(PRIX_OBSERVE)} ({COMMUNE.n.toLocaleString("fr-FR")} ventes,
+            {fmtEur(PRIX_OBSERVE)} ({COMMUNE.n.toLocaleString("fr-FR")}{" "}
+                  ventes,
             base DVF) : c&apos;est le point de départ de toutes les lignes qui
             suivent. Le cas de référence des tableaux est un appartement de{" "}
             {SURFACE} m², la surface médiane des appartements vendus à
@@ -242,7 +243,8 @@ export default function VendrePage() {
                 </p>
                 <p>
                   Quartier par quartier, voici ce que donne un appartement de{" "}
-                  {SURFACE} m² vendu au prix médian de son secteur. Le prix de
+                  {SURFACE}{" "}
+                  m² vendu au prix médian de son secteur. Le prix de
                   chaque ligne est une référence de marché, pas une estimation :
                   à surface égale, l&apos;étage, l&apos;ascenseur,
                   l&apos;extérieur et le DPE déplacent le prix réel à
@@ -325,11 +327,26 @@ export default function VendrePage() {
                   <Link href="/honoraires" className={A}>
                     nos honoraires
                   </Link>
+                  . Trois de ces quartiers ont leur propre page de marché, avec
+                  le nombre de ventes, l&apos;évolution depuis 2022 et la
+                  surface accessible par budget :{" "}
+                  <Link href="/agence-immobiliere-gratte-ciel" className={A}>
+                    Gratte-Ciel
+                  </Link>
+                  ,{" "}
+                  <Link href="/agence-immobiliere-charpennes" className={A}>
+                    Charpennes
+                  </Link>{" "}
+                  et{" "}
+                  <Link href="/agence-immobiliere-cusset" className={A}>
+                    Cusset
+                  </Link>
                   .
                 </p>
                 <p className="text-[13px] text-[#6b7276]">
                   Prix : médianes des ventes d&apos;appartements enregistrées à
-                  Villeurbanne (commune 69266) en {DVF_ANNEE} dans la base DVF
+                  Villeurbanne (commune 69266) en {DVF_ANNEE}{" "}
+                  dans la base DVF
                   publiée par Etalab sur data.gouv.fr, rattachées aux contours
                   de quartiers officiels de la Métropole de Lyon. Honoraires :
                   barème public de l&apos;agence, montants TTC à la charge du
@@ -357,7 +374,8 @@ export default function VendrePage() {
                 </p>
                 <ul className="mt-3 space-y-2.5 list-disc pl-5 text-[15.5px] leading-relaxed text-[#3d4347]">
                   <li>
-                    <strong>À la charge du vendeur</strong> — honoraires de
+                    <strong>À la charge du vendeur</strong>{" "}
+                    — honoraires de
                     transaction ; dossier de diagnostics techniques ; mainlevée
                     d&apos;hypothèque s&apos;il y en a une ; impôt sur la
                     plus-value si le bien n&apos;est pas la résidence
@@ -374,7 +392,8 @@ export default function VendrePage() {
                     , taxes et émoluments compris.
                   </li>
                   <li>
-                    <strong>Partagé par convention</strong> — la taxe foncière
+                    <strong>Partagé par convention</strong>{" "}
+                    — la taxe foncière
                     de l&apos;année en cours, dont le{" "}
                     <Link href="/blog/taxe-fonciere-vente-qui-paie" className={A}>
                       prorata entre vendeur et acheteur
@@ -428,7 +447,8 @@ export default function VendrePage() {
                   n&apos;y a pas de plus-value, et donc rien à imposer. Le recul
                   va de {fmtPourcent(Math.abs(QUARTIERS.ferrandiere.vs2022))} à
                   Ferrandière – Maisons-Neuves à{" "}
-                  {fmtPourcent(Math.abs(QUARTIERS.charpennes.vs2022))} à
+                  {fmtPourcent(Math.abs(QUARTIERS.charpennes.vs2022))}{" "}
+                  à
                   Charpennes – Tonkin. Ce n&apos;est pas une bonne nouvelle pour
                   le vendeur — il vend moins cher — mais c&apos;est une ligne
                   d&apos;impôt en moins, et personne ne la lui dit.
@@ -436,7 +456,8 @@ export default function VendrePage() {
                 <p>
                   Quand la plus-value existe, deux mécanismes la réduisent avant
                   imposition. Le prix d&apos;achat peut être majoré
-                  forfaitairement de {fmtPourcent(PV_FORFAIT_ACQUISITION)} au titre des
+                  forfaitairement de {fmtPourcent(PV_FORFAIT_ACQUISITION)}{" "}
+                    au titre des
                   frais d&apos;acquisition et de {PV_FORFAIT_TRAVAUX} % au titre
                   des travaux si le bien est détenu depuis plus de cinq ans,
                   sans avoir à produire de justificatif. Et la durée de
@@ -461,7 +482,8 @@ export default function VendrePage() {
                 <p>
                   <strong>
                     Souvent rien, et jamais plus que le plus faible de deux
-                    plafonds : {IRA_MOIS} mois d&apos;intérêts sur le capital
+                    plafonds : {IRA_MOIS}{" "}
+                    mois d&apos;intérêts sur le capital
                     remboursé au taux moyen du prêt, ou {IRA_PCT} % du capital
                     restant dû avant le remboursement.
                   </strong>{" "}

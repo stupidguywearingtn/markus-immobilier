@@ -82,6 +82,7 @@ ${disponibles.map(listingLine).join("\n")}
 - [Agence immobilière Cusset](${BASE}/agence-immobiliere-cusset): quartier Cusset – Bonnevay — médiane 3 171 €/m² sur 213 ventes en 2025, soit 11 % sous la médiane communale, surface accessible par budget, FAQ
 
 ## Blog (conseils immobiliers Lyon / Villeurbanne)
+- [Index du blog](${BASE}/blog): les ${ARTICLES.length} articles, du plus récent au plus ancien
 ${articlesByDate.map(articleLine).join("\n")}
 
 ## Informations

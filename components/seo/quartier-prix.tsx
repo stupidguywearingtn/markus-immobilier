@@ -115,7 +115,8 @@ export function QuartierPrixTable({
         </table>
       </div>
       <figcaption className="text-[12.5px] leading-relaxed text-[#6b7276] mt-2.5">
-        Source : {DVF_SOURCE} Médianes, jamais des moyennes. Le quartier
+        Source : {DVF_SOURCE}{" "}
+        Médianes, jamais des moyennes. Le quartier
         Saint-Jean n&apos;est pas publié : 153 ventes sur quatre ans, échantillon
         trop mince pour une médiane annuelle honnête. Prix médian communal toutes
         surfaces : {fmtEur(COMMUNE.prixMedian)} pour {COMMUNE.surfaceMediane} m².

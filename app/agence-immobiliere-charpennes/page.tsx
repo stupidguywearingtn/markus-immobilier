@@ -138,7 +138,8 @@ export default function CharpennesPage() {
           <>
             À Charpennes – Tonkin, le prix médian d&apos;un appartement est de{" "}
             <strong>{fmtM2(Q.median)}</strong>, calculé sur les {Q.n} ventes
-            réellement signées en 2025 — soit {fmtPct(ECART)} par rapport à la
+            réellement signées en 2025 — soit {fmtPct(ECART)}{" "}
+                  par rapport à la
             médiane de Villeurbanne. C&apos;est aussi le quartier qui a le plus
             reculé depuis 2022 ({fmtPct(Q.vs2022)}), ce qui en fait aujourd&apos;hui
             le secteur central le plus négociable de la ville. Voici les chiffres,
@@ -266,9 +267,25 @@ export default function CharpennesPage() {
                     <Link href="/honoraires" className={A}>
                       barème public
                     </Link>
-                    , soit environ {fmtEur(Math.round(HONO.montant / 100) * 100)} TTC
+                    , soit environ {fmtEur(Math.round(HONO.montant / 100) * 100)} TTC.
+                    Sur le prix non arrondi, le vendeur perçoit donc{" "}
+                    <strong>{fmtEur(PRIX_MEDIAN_QUARTIER - HONO.montant)}</strong> —
+                    le décompte des sept quartiers et ce qui se retranche encore
+                    du prix sont sur notre page{" "}
+                    <Link href="/vendre" className={A}>
+                      ce qu&apos;il reste au vendeur
+                    </Link>
                   </>
                 )}
+                . Côté acheteur, attention à ce que « budget » veut dire : les
+                repères ci-dessus partent du <strong>prix du bien</strong>, pas
+                de la somme à réunir. Les frais d&apos;acquisition — de 7,49 % à
+                7,72 % du prix selon la typologie — s&apos;y ajoutent et ne sont
+                généralement pas financés par le prêt ; le calcul complet est
+                sur{" "}
+                <Link href="/acheter" className={A}>
+                  le budget total d&apos;un achat villeurbannais
+                </Link>
                 . Pour une fourchette sur votre bien précis, l&apos;
                 <Link href="/estimation" className={A}>
                   estimation en ligne
