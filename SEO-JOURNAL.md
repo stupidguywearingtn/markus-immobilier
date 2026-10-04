@@ -96,6 +96,9 @@
   rendu. **Ce défaut n'avait jamais été cherché en 20 runs** parce que tous les
   contrôles portaient sur la structure (titres, liens, JSON-LD, dates) et jamais
   sur le **texte visible**.
+- ✅ **CHANTIER VÉRIFIÉ SERVI EN PRODUCTION LE JOUR MÊME** (déployé ~90 s après le
+  push) — détail en « Chantiers faits ». Pour une fois la vérification ne tombe
+  pas au run suivant : **le run du 05/10 n'a donc rien à revérifier ici.**
 - ✅ **Signaux mesurés SAINS aujourd'hui — ne pas les réauditer** : les 6 pages
   touchées rendent leur FAQ visible **strictement identique** à leur `FAQPage`
   (6 Q/R sur `/vendre`, `/acheter`, `/agence-immobiliere-villeurbanne` ; 5 sur
@@ -1594,6 +1597,25 @@ depuis le back-office vivent en base Supabase, inaccessible depuis ce conteneur.
 Diff fait avec le sitemap de production — **les deux manquantes sont exactement
 ces deux annonces, aucune autre différence**. Ce n'est donc pas une régression,
 et il faut le savoir pour ne pas s'en alarmer au prochain run.
+
+#### ✅ Vérifié SERVI EN PRODUCTION le 04/10 (déployé ~90 s après le push)
+
+Contrairement à l'usage (la vérification tombait d'habitude au run suivant), le
+chantier a été relu **sur les pages servies**, après déploiement :
+
+- **4 montants nets exacts** : 183 300 € (commune), 224 145 € (Gratte-Ciel),
+  205 379 € (Charpennes), 184 806 € (Cusset) — **égaux à l'euro** au tableau
+  de `/vendre`.
+- **10 liens éditoriaux bien dans le `<main>`** des 6 pages, dans les deux sens.
+- **0 mot collé restant** sur les 9 pages concernées (ne subsistent que les deux
+  `0M€`, état initial des compteurs animés de la home et de `/recrutement`).
+- **FAQ visible strictement identique au `FAQPage`** sur les 6 pages touchées
+  (6 + 6 + 6 + 5 + 5 + 5 Q/R).
+- **404** : code 404, `noindex`, titre « Page introuvable · Markus Immobilier » —
+  la marque n'est plus doublée.
+- **`llms.txt`** : l'index `/blog` est publié ; 49 URLs (47 avant).
+- **`sitemap.xml` : 53 URLs**, et **exactement 4 `lastmod` au 2026-10-04** — les
+  4 pages locales. `/vendre` reste au 30/09 et `/acheter` au 02/10, comme voulu.
 
 **Décidé de NE PAS faire, et pourquoi :**
 
