@@ -4642,11 +4642,15 @@ candidats non-contenu sont, dans cet ordre : la **grappe blog** (maillage, voir
 l'**arbitrage « qui porte COMBIEN COÛTE LA GESTION LOCATIVE ? »**.
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
 
-🔴 **À VÉRIFIER EN PREMIER LE 06/10 — la mise en production du chantier du 05/10.**
-`plus-value-immobiliere-calcul` doit servir en production **2 571 mots**, le
-tableau des seuils (7 quartiers + commune), la FAQ de 6 questions avec son
-`FAQPage`, et `dateModified` 2026-10-05. Le push n'a pas été revérifié en ligne
-après le commit.
+✅ **CHANTIER DU 05/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — rien à revérifier le
+06/10.** Déploiement constaté ~2 min après le push. La page sert **2 571 mots**,
+**6 H2**, `dateModified` **2026-10-05**, `metaDescription` **147 caractères**,
+**parité FAQ visible ↔ `FAQPage` 6/6 mot pour mot**, **0 mot collé** (contrôle
+strict), et **toute la chaîne de calcul aux valeurs corrigées** (246 822 /
+265 334 / 221 154 / −44 180 / 37 023 ; écarts 23 574 et 52 111 ; seuils 4 365 et
+3 618 ; +23,9 %) — **aucun des chiffres de la première rédaction ne subsiste**.
+JSON-LD servi : `BlogPosting`, `FAQPage`, `BreadcrumbList`, `Organization`,
+`RealEstateAgent`, `ImageObject`.
 
 🟢 **MICRO-CHANTIER PRÊT À FAIRE, REPÉRÉ LE 05/10 (15 minutes) — le domaine de la
 source `service-public` est périmé en production.** `service-public.fr` répond
