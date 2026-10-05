@@ -63,6 +63,29 @@
  * sur blanc dans l'article et dans la FAQ de « ou-acheter-villeurbanne-
  * quartiers », comme elle l'est déjà sur /agence-immobiliere-charpennes.
  *
+ * Depuis le 05/10/2026, « plus-value-immobiliere-calcul » DÉRIVE de lib/quartiers.ts
+ * le seuil d'imposition de la plus-value par quartier : il reconstitue la médiane
+ * 2022 de chaque quartier à partir de la médiane 2025 et de `vs2022`
+ * (med2022 = med2025 / (1 + vs2022/100) — contrôle : la médiane communale ainsi
+ * reconstituée donne 3 981 €/m², valeur DÉJÀ publiée par
+ * « rentabilite-locative-lyon »), puis la majore du forfait de 7,5 % de frais
+ * d'acquisition pour obtenir le seuil. Il cite les 7 médianes de quartier, la
+ * médiane communale, la surface médiane (62 m²) et en dérive des montants à
+ * l'euro près. Si les médianes bougent, son tableau, son calcul en 6 étapes et
+ * sa FAQ doivent être RECALCULÉS (script consigné dans SEO-JOURNAL.md, entrée du
+ * 05/10/2026), jamais patchés à la main. ⚠️ Convention d'arrondi à conserver :
+ * toute la chaîne est dérivée des médianes 2022 ARRONDIES à l'euro/m² telles
+ * qu'elles sont AFFICHÉES dans le tableau (3 981 × 62 = 246 822, × 1,075 =
+ * 265 334, etc.), afin qu'un lecteur qui refait le calcul sur les chiffres
+ * publiés retrouve exactement les montants publiés. Ne pas « réarrondir »
+ * depuis les valeurs non arrondies : cela réintroduit des écarts de 1 à 6 €.
+ * ⚠️ Ses taux fiscaux ont leur propre péremption, indépendante de DVF : forfaits
+ * 7,5 % / 15 %, seuil des 5 ans, barème 19 % + 17,2 %, abattements 22/30 ans
+ * viennent de service-public.gouv.fr F10864 « mise à jour du 15 avril 2026 », et
+ * la non-imputabilité de la moins-value de BOFiP BOI-RFPI-PVI-20-20. À revérifier
+ * à chaque loi de finances. ⚠️ Noter aussi que service-public.fr REDIRIGE
+ * désormais (301) vers service-public.gouv.fr : c'est le domaine à citer.
+ *
  * Trois articles citent par ailleurs le BARÈME d'honoraires de
  * app/honoraires/page.tsx (gestion 6 %, GLI 2,5 %, frais fixes 20 €/45 €,
  * transaction 9 000 € / 6 % / 5 %) : « cout-gestion-locative »,
@@ -992,28 +1015,97 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "plus-value-immobiliere-calcul",
-    title: "Plus-value immobilière : calcul et exonérations (2026)",
+    title: "Plus-value immobilière à Villeurbanne : le calcul et le seuil d'imposition (2026)",
     metaDescription:
-      "Comment se calcule la plus-value immobilière, qui est exonéré et comment réduire l'impôt ? Le guide clair pour les vendeurs.",
-    h1: "Plus-value immobilière : calcul et exonérations",
+      "À partir de quel prix de revente la plus-value devient-elle imposable à Villeurbanne ? Le seuil quartier par quartier, calculé sur les prix signés, et le calcul étape par étape.",
+    h1: "Plus-value immobilière : le calcul et le seuil d'imposition à Villeurbanne",
     excerpt:
-      "La plus-value est la différence entre prix de vente et prix d'achat. Qui est exonéré, à quel taux, et les abattements pour durée de détention.",
+      "Un appartement acheté au prix médian de son quartier en 2022 et revendu au prix médian en 2025 ne dégage aucune plus-value imposable : il faudrait revendre 9,7 % à 23,9 % au-dessus du marché actuel. Le calcul, quartier par quartier.",
     date: "2026-06-11",
+    updated: "2026-10-05",
     internalHref: "/vendre",
     internalLabel: "Savoir ce qu'il reste après la vente",
     blocks: [
-      { type: "p", text: "**La plus-value, c'est la différence entre votre prix de vente et votre prix d'achat** (majoré des frais et des travaux). Elle est imposée… sauf dans le cas le plus courant : la résidence principale." },
-      { type: "h2", text: "Qui est exonéré ?" },
-      { type: "p", text: "La vente de votre **résidence principale est totalement exonérée** de plus-value. L'impôt ne concerne que les **résidences secondaires** et les **biens locatifs**." },
-      { type: "h2", text: "Le taux" },
-      { type: "p", text: "Sur un bien imposable : **19 % d'impôt sur le revenu + 17,2 % de prélèvements sociaux**, soit 36,2 % de la plus-value." },
-      { type: "h2", text: "Les abattements pour durée de détention" },
-      { type: "p", text: "Plus vous gardez le bien longtemps, moins vous payez :" },
-      { type: "ul", items: [
-        "**Exonération totale d'impôt sur le revenu à partir de 22 ans** de détention.",
-        "**Exonération des prélèvements sociaux à partir de 30 ans.**",
+      { type: "p", text: "**Un appartement acheté au prix médian de son quartier villeurbannais en 2022 et revendu au prix médian en 2025 ne dégage aucune plus-value imposable.** Il en dégage même l'inverse : sur la médiane communale, le prix de revente ressort environ 44 200 € en dessous du prix d'acquisition majoré des frais. La raison n'est pas fiscale, elle est locale — le prix médian au m² d'un appartement villeurbannais a reculé de 10,4 % depuis 2022, alors que le prix d'achat retenu par le fisc est, lui, majoré forfaitairement. Cette page publie le seuil de revente à partir duquel l'impôt commence, quartier par quartier, et le calcul qui y conduit." },
+
+      { type: "h2", text: "Ai-je une plus-value à déclarer si j'ai acheté à Villeurbanne en 2022 ?" },
+      { type: "p", text: "**Si vous avez acheté au prix médian de votre quartier en 2022 et que vous revendez au prix médian de ce même quartier aujourd'hui, non : il n'y a pas de plus-value, donc rien à déclarer ni à payer.** Le calcul aboutit à une moins-value dans les sept quartiers de Villeurbanne pour lesquels nous disposons d'un échantillon de ventes suffisant. L'écart va de 23 574 € à Ferrandière – Maisons-Neuves à 52 111 € à Charpennes – Tonkin, sur la surface médiane de 62 m²." },
+      { type: "p", text: "Deux mouvements se combinent, et ils vont dans le même sens. D'un côté, le marché villeurbannais a reculé : la médiane est passée de 3 981 €/m² en 2022 à 3 567 €/m² en 2025, soit −10,4 %, et [le recul touche tous les quartiers](/blog/prix-immobilier-villeurbanne-2026). De l'autre, le prix d'achat que le fisc retient n'est pas le prix payé : il est majoré de 7,5 % au titre des frais d'acquisition, sans justificatif à produire. Le prix de référence monte donc pendant que le marché descend." },
+      { type: "p", text: "⚠️ Ce raisonnement porte sur des **médianes de marché**, pas sur votre bien. Votre plus-value se calcule sur votre prix d'achat réel et votre prix de vente réel, pas sur une médiane de quartier. Un bien acheté sous le marché en 2022, ou rénové depuis, peut très bien dégager une plus-value quand la médiane de son quartier a baissé. Les chiffres ci-dessous donnent l'ordre de grandeur et le seuil à surveiller — ils ne remplacent pas le calcul du notaire, qui est seul à faire foi le jour de l'acte." },
+
+      { type: "h2", text: "À partir de quel prix de revente la plus-value devient-elle imposable ?" },
+      { type: "p", text: "**Pour un achat réalisé en 2022 au prix médian du quartier, l'impôt sur la plus-value ne commence qu'au-delà du seuil de la dernière colonne — soit un prix de revente supérieur de 9,7 % à 23,9 % au prix médian constaté en 2025.** Tant que la revente se fait sous ce seuil, l'assiette imposable est nulle. Ce seuil est le prix d'achat 2022 majoré du forfait de 7,5 %, ramené au mètre carré." },
+      {
+        type: "table",
+        caption: "Seuil d'imposition de la plus-value — appartement acheté en 2022 au prix médian du quartier, revendu en 2025 (durée de détention : 3 ans)",
+        source: "Calcul Markus Immobilier. Médianes 2025 et variations depuis 2022 : base DVF (Etalab / data.gouv.fr), ventes d'appartements enregistrées en 2025 à Villeurbanne (69266), découpées selon les contours de quartiers de la Métropole de Lyon. Médiane 2022 reconstituée à partir de la médiane 2025 et de la variation. Forfait de 7,5 % pour frais d'acquisition : service-public.gouv.fr, fiche F10864, mise à jour du 15 avril 2026.",
+        headers: ["Quartier", "Médiane 2022", "Médiane 2025", "Seuil d'imposition", "Hausse nécessaire"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "4 003 €/m²", "3 923 €/m²", "4 303 €/m²", "+9,7 %"],
+          ["Cusset – Bonnevay", "3 366 €/m²", "3 171 €/m²", "3 618 €/m²", "+14,1 %"],
+          ["Cyprian – Les Brosses", "3 042 €/m²", "2 738 €/m²", "3 270 €/m²", "+19,4 %"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "4 302 €/m²", "3 846 €/m²", "4 625 €/m²", "+20,3 %"],
+          ["Perralière – Grandclément", "3 809 €/m²", "3 375 €/m²", "4 095 €/m²", "+21,3 %"],
+          ["Buers – Croix-Luizet", "3 696 €/m²", "3 271 €/m²", "3 973 €/m²", "+21,5 %"],
+          ["Charpennes – Tonkin", "4 060 €/m²", "3 524 €/m²", "4 365 €/m²", "+23,9 %"],
+          ["Villeurbanne (commune)", "3 981 €/m²", "3 567 €/m²", "4 280 €/m²", "+20,0 %"],
+        ],
+      },
+      { type: "p", text: "Ferrandière – Maisons-Neuves est le quartier le plus proche du seuil, parce que c'est celui qui a le moins reculé depuis 2022 (−2,0 %). Charpennes – Tonkin en est le plus loin, parce que c'est celui qui a le plus reculé (−13,2 %). Autrement dit : **plus un quartier a baissé, plus l'impôt sur la plus-value y est hors de portée** — ce qui n'a rien de réjouissant pour le vendeur, mais change le calcul de ce qu'il encaisse." },
+
+      { type: "h2", text: "Comment se calcule la plus-value immobilière, étape par étape ?" },
+      { type: "p", text: "**La plus-value imposable est la différence entre le prix de cession et le prix d'acquisition majoré.** Trois étapes : on majore le prix d'achat, on soustrait, puis on applique les abattements de durée de détention s'il reste quelque chose à imposer. Voici le calcul déroulé sur le cas communal villeurbannais, en 62 m², la surface médiane des appartements vendus." },
+      { type: "ol", items: [
+        "**Prix d'achat 2022** — 3 981 €/m² × 62 m² = **246 822 €**.",
+        "**Majoration des frais d'acquisition** — forfait de 7,5 % du prix d'achat, sans justificatif : 246 822 € × 1,075 = **265 334 €**. C'est le prix d'acquisition majoré.",
+        "**Majoration des travaux** — forfait de 15 % du prix d'achat, mais **réservé aux biens détenus depuis plus de 5 ans**. Sur une détention de 3 ans, il ne s'applique pas. Les travaux réels restent déductibles sur facture.",
+        "**Prix de cession 2025** — 3 567 €/m² × 62 m² = **221 154 €**.",
+        "**Résultat** — 221 154 € − 265 334 € = **−44 180 €**. Le résultat est négatif : c'est une moins-value, l'assiette imposable est nulle.",
+        "**Abattements de durée de détention** — sans objet ici, et pour deux raisons : il n'y a rien à abattre, et les abattements ne commencent de toute façon qu'à la 6ᵉ année.",
       ] },
-      { type: "p", text: "Les travaux et les [frais d'acquisition](/blog/frais-de-notaire-lyon-2026) viennent réduire la plus-value imposable." },
+      { type: "p", text: "Si le résultat de l'étape 5 avait été positif, le taux à appliquer aurait été de **19 % d'impôt sur le revenu et 17,2 % de prélèvements sociaux**, soit 36,2 %, plus une surtaxe de 2 % à 6 % au-delà de 50 000 € de plus-value imposable. Le [détail de ce que le vendeur encaisse réellement, honoraires et taxe foncière comprises, est publié sur notre page vendre](/vendre)." },
+      { type: "p", text: "Un point de calendrier qui compte sur une détention courte : la durée se compte **de date à date**, du jour de l'acte d'achat au jour de l'acte de vente, pas en années civiles. Un achat de novembre 2022 revendu en octobre 2026 fait 3 ans et 11 mois, pas 4 ans — et reste donc en dessous des 5 ans qui ouvrent le forfait travaux de 15 %." },
+
+      { type: "h2", text: "Peut-on déduire une moins-value immobilière de ses impôts ?" },
+      { type: "p", text: "**Non. Une moins-value immobilière n'est ni déductible ni imputable : elle ne s'impute ni sur une plus-value de même nature, ni sur le revenu global.** Les 44 180 € de perte du calcul ci-dessus ne produisent donc aucune économie d'impôt, ni l'année de la vente, ni les suivantes. C'est une asymétrie que beaucoup de vendeurs découvrent après coup : le gain est taxé, la perte n'est pas reconnue." },
+      { type: "p", text: "Une seule exception existe, et elle est étroite : la vente d'un bien **acquis par fractions successives constatées par le même acte**, entre les mêmes parties. Dans ce cas seulement, les moins-values peuvent s'imputer sur les plus-values de l'opération. Si le solde reste négatif, il n'est pas pris en compte." },
+      { type: "p", text: "Source : BOFiP-Impôts, BOI-RFPI-PVI-20-20, « Plus-values immobilières — Détermination de la plus-value imposable », bofip.impots.gouv.fr." },
+
+      { type: "h2", text: "Qui n'a aucune plus-value à déclarer, quel que soit le prix de vente ?" },
+      { type: "p", text: "**Le vendeur de sa résidence principale : l'exonération est totale, impôt sur le revenu comme prélèvements sociaux, sans condition de durée de détention ni de montant.** Elle couvre le logement et ses dépendances immédiates — cave, garage, place de stationnement — à condition qu'il s'agisse de l'habitation habituelle et effective au moment de la vente. C'est le cas de la majorité des vendeurs, et il rend tout le calcul ci-dessus sans objet." },
+      { type: "p", text: "L'impôt sur la plus-value ne concerne donc que les **résidences secondaires** et les **biens locatifs**. Si votre bien est locatif, l'ordre de grandeur de ce qu'il rapporte avant revente est détaillé dans notre analyse de [la rentabilité locative à Lyon et Villeurbanne](/blog/rentabilite-locative-lyon)." },
+      { type: "p", text: "Source : service-public.gouv.fr, fiche F10864 « Impôt sur le revenu — Plus-value immobilière », mise à jour du 15 avril 2026. La plus-value est calculée et prélevée par le notaire le jour de l'acte : le vendeur n'a pas de démarche séparée à faire." },
+
+      { type: "h2", text: "Combien d'années faut-il garder un bien pour ne plus payer d'impôt sur la plus-value ?" },
+      { type: "p", text: "**Vingt-deux ans pour être exonéré d'impôt sur le revenu, trente ans pour être exonéré de prélèvements sociaux.** L'abattement démarre à la 6ᵉ année : avant cela, aucune réduction pour durée de détention, l'assiette est pleine. C'est 6 % par an de la 6ᵉ à la 21ᵉ année puis 4 % la 22ᵉ pour l'impôt sur le revenu, et 1,65 % par an de la 6ᵉ à la 21ᵉ, 1,60 % la 22ᵉ puis 9 % par an de la 23ᵉ à la 30ᵉ pour les prélèvements sociaux." },
+      { type: "p", text: "Le franchissement de la **5ᵉ année** est celui qui change le plus le calcul à court terme, et il est peu connu : ce n'est pas un abattement, c'est l'ouverture du forfait travaux de 15 %. Sur l'exemple communal, ce forfait aurait ajouté 37 023 € au prix d'acquisition majoré — davantage que n'importe quel abattement des trois premières années suivantes." },
+      { type: "p", text: "Au-delà du barème, ce qui détermine votre résultat reste le prix : les [frais d'acquisition payés à l'achat](/blog/frais-de-notaire-lyon-2026) viennent majorer le prix de revient, et une estimation juste au départ évite de découvrir l'écart le jour de l'acte." },
+    ],
+    faq: [
+      {
+        q: "Ai-je une plus-value imposable si j'ai acheté un appartement à Villeurbanne en 2022 et que je revends en 2026 ?",
+        a: "Si vous avez acheté au prix médian de votre quartier et que vous revendez au prix médian actuel, non : le calcul aboutit à une moins-value dans les sept quartiers de Villeurbanne mesurés, de 23 574 € à Ferrandière – Maisons-Neuves à 52 111 € à Charpennes – Tonkin sur 62 m². La médiane communale est passée de 3 981 €/m² en 2022 à 3 567 €/m² en 2025, soit −10,4 %, tandis que le prix d'achat retenu par le fisc est majoré de 7,5 % au titre des frais d'acquisition. Attention : ce raisonnement porte sur des médianes de marché et non sur votre bien, dont la plus-value se calcule sur votre prix d'achat et votre prix de vente réels.",
+      },
+      {
+        q: "À partir de quel prix de revente la plus-value devient-elle imposable à Villeurbanne ?",
+        a: "Pour un achat réalisé en 2022 au prix médian du quartier, le seuil est le prix d'achat majoré du forfait de 7,5 %, soit 4 280 €/m² en médiane communale. Par quartier : 4 303 €/m² à Ferrandière – Maisons-Neuves, 4 625 €/m² à Gratte-Ciel – Dedieu – Charmettes, 4 365 €/m² à Charpennes – Tonkin, 4 095 €/m² à Perralière – Grandclément, 3 973 €/m² à Buers – Croix-Luizet, 3 618 €/m² à Cusset – Bonnevay et 3 270 €/m² à Cyprian – Les Brosses. Cela suppose de revendre 9,7 % à 23,9 % au-dessus du prix médian constaté en 2025.",
+      },
+      {
+        q: "Peut-on déduire une moins-value immobilière de ses impôts ?",
+        a: "Non. Une moins-value immobilière ne s'impute ni sur une plus-value de même nature, ni sur le revenu global : elle ne produit aucune économie d'impôt, ni l'année de la vente, ni les suivantes. La seule exception concerne la vente d'un bien acquis par fractions successives constatées par le même acte et entre les mêmes parties, où les moins-values peuvent s'imputer sur les plus-values de l'opération ; si le solde reste négatif, il n'est pas pris en compte. Source : BOFiP-Impôts, BOI-RFPI-PVI-20-20.",
+      },
+      {
+        q: "Comment se calcule la plus-value immobilière, étape par étape ?",
+        a: "On majore d'abord le prix d'achat des frais d'acquisition (forfait de 7,5 % du prix d'achat, sans justificatif) et, si le bien est détenu depuis plus de 5 ans, des travaux (forfait de 15 %). On soustrait ce prix d'acquisition majoré du prix de cession. Si le résultat est positif, on applique les abattements de durée de détention, qui ne commencent qu'à la 6ᵉ année, puis le taux de 19 % d'impôt sur le revenu et 17,2 % de prélèvements sociaux, soit 36,2 %, plus une surtaxe de 2 % à 6 % au-delà de 50 000 € de plus-value imposable. Sur le cas médian villeurbannais en 62 m² : 246 822 € d'achat en 2022, soit 265 334 € majorés, contre 221 154 € de revente en 2025, donc un résultat de −44 180 € et une assiette nulle.",
+      },
+      {
+        q: "La vente de ma résidence principale est-elle imposée à la plus-value ?",
+        a: "Non, l'exonération est totale — impôt sur le revenu comme prélèvements sociaux — sans condition de durée de détention ni de montant. Elle couvre le logement et ses dépendances immédiates, cave, garage et place de stationnement, à condition qu'il s'agisse de votre habitation habituelle et effective au moment de la vente. L'impôt sur la plus-value ne concerne que les résidences secondaires et les biens locatifs. Source : service-public.gouv.fr, fiche F10864, mise à jour du 15 avril 2026.",
+      },
+      {
+        q: "Pourquoi la 5ᵉ année de détention compte-t-elle plus que les autres ?",
+        a: "Parce qu'au-delà de 5 ans de détention, le prix d'achat peut être majoré d'un forfait de 15 % au titre des travaux, sans avoir à produire de facture. Ce n'est pas un abattement mais une majoration du prix de revient, et sur le cas médian villeurbannais elle ajouterait 37 023 € au prix d'acquisition majoré — davantage que les abattements des trois premières années qui suivent. La durée se compte de date à date, du jour de l'acte d'achat au jour de l'acte de vente, et non en années civiles.",
+      },
     ],
   },
   {
