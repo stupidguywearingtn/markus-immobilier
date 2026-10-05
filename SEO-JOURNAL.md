@@ -14,6 +14,89 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-05**
+
+- `git fetch origin` **en tout premier** (règle du 16/09) : **le piège était là pour
+  la huitième fois sur dix-sept runs.** Avant le fetch, `origin/main` pointait sur
+  `ffde5fa` alors que `HEAD` portait `aa9c05a` — de quoi croire que le run du 04/10
+  n'avait pas été publié. **Après le fetch : `HEAD` == `origin/main` == `aa9c05a`.**
+  Le conteneur démarre sur `claude/dazzling-feynman-f41jg9` ; `git checkout main` +
+  `git merge --ff-only origin/main` d'abord, comme toujours.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  Treizième constat identique (21/09 → 05/10).
+- ⚠️ Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** : l'hôte sans
+  `www` répond 308.
+- ✅ **AUCUN RUN MANQUÉ** : le dernier commit du dépôt est bien celui du 04/10.
+- ✅ **VEILLE HEBDOMADAIRE FAITE** (lundi, après six reports — elle avait une
+  semaine de retard). Détail en « Techniques apprises ». **Elle a produit la
+  trouvaille la plus structurante depuis longtemps**, et elle contredit une
+  consigne du brief : voir « Erreurs commises et corrigées ».
+- **Trois SERP mesurées, toutes absentes.** « Agence immobilière Villeurbanne »
+  **absente pour la 24ᵉ fois sur 24**, rapport **7 franchises / 2 annuaires /
+  0 indépendante locale** (Human, Laforêt, Nestenn ×2, Orpi, ERA, Immo de France
+  + Mappy, Superimmo). « Estimation immobilière Villeurbanne » absente : 9
+  résultats = franchises et portails de prix (Nestenn ×2, Liberkeys, Orpi, Novea,
+  Solvimo ×2, SeLoger, Galyo).
+- 🔴 **CINQUIÈME CIBLE DU BRIEF RETIRÉE, ET L'HYPOTHÈSE DU 04/10 EST CONFIRMÉE :
+  « agence immobilière Gratte-Ciel Villeurbanne » EST UNE REQUÊTE DE MARQUE.**
+  Les 9 résultats sont, sans exception, des agences dont la **raison commerciale
+  contient littéralement « Villeurbanne Gratte Ciel »** (Human Immobilier
+  Villeurbanne Gratte Ciel, Guy Hoquet – Villeurbanne Gratte Ciel, ERA
+  Villeurbanne Gratte-Ciel, Orpi Cité Immo) ou des annuaires qui listent ces
+  mêmes agences nommées (bellesdemeures, logic-immo, meilleursagents, mappy,
+  superimmo ×2, facebook). **Aucun contenu ne prendra cette SERP** : c'est une
+  recherche d'entité, et Markus ne porte pas ce nom. **Ne plus la mesurer.**
+  Avec « agence immobilière Charpennes Villeurbanne » (01/10), « vendre
+  appartement Villeurbanne » (04/10) et les deux formulations de l'angle
+  « apport » (01 et 02/10), cela fait **cinq cibles du brief d'origine dont la
+  mesure a établi qu'aucun contenu ne les prendra**.
+- 🟢 **NOUVEAU SIGNAL AUDITÉ ET SAIN — L'ACCÈS DES CRAWLERS D'IA, jamais vérifié
+  en 24 runs.** La documentation OpenAI (developers.openai.com/api/docs/bots)
+  précise qu'un site **doit laisser passer `OAI-SearchBot`** pour pouvoir être
+  cité dans les réponses de ChatGPT search, et qu'un site exclu n'y apparaît plus
+  qu'en lien de navigation. Le `robots.txt` de production sert
+  `User-Agent: *` + `Allow: /` (seuls `/api/`, `/espace-client`, `/radar`,
+  `/admin` sont fermés) : **tous les crawlers d'IA sont donc autorisés, aucun
+  correctif nécessaire.** ✅ **Ne pas réauditer** — sauf si `robots.txt` change.
+- 🔴 **L'ANGLE QUE LE BACKLOG RÉSERVAIT À AUJOURD'HUI A ÉTÉ MESURÉ PUIS REJETÉ —
+  CINQUIÈME ANGLE INVALIDÉ PAR LA MESURE.** Le backlog prescrivait, pour
+  `plus-value-immobiliere-calcul`, « le tableau des abattements année par
+  année ». Mesure sur « abattement plus-value immobilière par année de détention
+  tableau 2026 calcul » : **neuf résultats sur neuf publient déjà les deux mêmes
+  tableaux** (IR 6 %/an de la 6ᵉ à la 21ᵉ, 4 % la 22ᵉ ; PS 1,65 %, 1,60 %, 9 %),
+  à l'euro et au pourcent près — procivis, kohenavocats, fiscusia, renta-immo,
+  berenfus, finalib, guidedesnotaires, koliving, calcunet. **Contenu de
+  commodité, saturé.** C'est le motif « règle de droit générique » invalidé le
+  29/09 et trois fois depuis. **Le tableau d'abattements n'a donc PAS été publié ;
+  il est resté réduit à deux phrases avec renvoi.**
+- 🆕 **DÉFAUT DE SOURCE DÉCOUVERT AU PASSAGE, ET IL EST SERVI EN PRODUCTION :
+  `service-public.fr` RÉPOND 301 VERS `service-public.gouv.fr`.** Le site cite la
+  fiche F10864 sous l'ancien domaine à **deux endroits au moins** (`app/vendre/
+  page.tsx`, bloc source de la section plus-value, et `app/llms.txt/route.ts`,
+  ligne de `/vendre`). La citation « fonctionne » encore par redirection, donc ce
+  n'est pas cassé — mais citer un domaine périmé affaiblit une source, et les
+  sources sont le levier GEO. **Non corrigé aujourd'hui, volontairement** (hors
+  chantier, et la règle « en cas de doute sur le contenu existant, ne touche
+  pas » s'applique) → inscrit en « Chantiers en attente » comme micro-chantier
+  prêt à faire, avec ses emplacements. L'article écrit aujourd'hui cite, lui,
+  le **bon** domaine.
+- ✅ **Contrôle de cohérence chiffrée réussi, et il valide une méthode** : la
+  médiane 2022 reconstituée par `med2025 / (1 + vs2022/100)` donne **3 981 €/m²**
+  pour la commune — exactement la valeur **déjà publiée** par
+  `rentabilite-locative-lyon` et par un tableau d'article. La reconstitution des
+  médianes 2022 à partir de `lib/quartiers.ts` est donc fiable et réutilisable.
+- ✅ **Signaux mesurés SAINS aujourd'hui — ne pas les réauditer** : `robots.txt`
+  et l'accès des crawlers d'IA (ci-dessus) ; sur l'article touché, parité FAQ
+  visible ↔ `FAQPage` **6/6 mot pour mot sur le HTML rendu**, **0 mot collé**
+  (contrôle strict du défaut du 04/10), `dateModified` = 2026-10-05, sitemap
+  **inerte sauf la seule ligne attendue** (1 `lastmod` déplacé sur 51).
+  `/estimation`, `lib/dvf.ts` et `lib/estimation.ts` **non touchés** — le diff du
+  jour ne contient **qu'un seul fichier**, `lib/blog.ts`.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
+  dépassent 70 caractères (01/10).
+
 **Au 2026-10-04**
 
 - `git fetch origin` **en tout premier** (règle du 16/09) : **le piège était là, et
@@ -1441,6 +1524,110 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-05 — `plus-value-immobiliere-calcul` : l'article publiait le barème que tout le monde publie, il publie le seuil d'imposition par quartier (212 → 2 571 mots)
+
+**Chantier choisi, et pourquoi.** Lundi, donc veille d'abord (voir « Techniques
+apprises »), puis un run de CONTENU — l'angle du 04/10 était « audit + maillage »,
+celui du 02/10 « page de service ». Le backlog désignait
+`plus-value-immobiliere-calcul` (212 mots) comme candidat n°1 : le plus mince des
+articles « argent » restants, 3 H2 qui sont des chaînes de mots-clés
+(« Le taux », « Qui est exonéré ? », « Les abattements pour durée de détention »),
+aucune FAQ, aucun chiffre local, aucune date de mise à jour.
+
+**L'angle prescrit a été mesuré AVANT d'écrire, et rejeté.** Le backlog
+prescrivait « le calcul pas à pas et les abattements année par année, le tableau
+que /vendre ne publie pas ». Mesure : **neuf résultats sur neuf publient déjà ces
+deux tableaux**, identiques au pourcent près. C'est du contenu de commodité et
+c'est le motif « règle de droit générique + nom de ville » invalidé le 29/09.
+**Cinquième angle invalidé par la mesure.** Le tableau n'a donc pas été publié :
+le dernier H2 le résume en deux phrases et renvoie.
+
+**L'angle retenu — le SEUIL d'imposition, que personne ne publie.** Il se déduit
+de deux faits déjà publiés sur le site mais **jamais mis ensemble** :
+1. le prix d'achat retenu par le fisc est **majoré forfaitairement de 7,5 %** au
+   titre des frais d'acquisition, sans justificatif (le forfait travaux de 15 %,
+   lui, exige plus de 5 ans de détention) ;
+2. la médiane villeurbannaise a **reculé de 10,4 %** depuis 2022, et elle a
+   reculé dans les 7 quartiers.
+Le prix de référence monte donc pendant que le marché descend. **Conséquence
+chiffrée, publiée quartier par quartier : il faudrait revendre 9,7 % à 23,9 %
+au-dessus du prix médian 2025 pour devoir le premier euro d'impôt.**
+
+**Ce qui a été écrit précisément** (un seul fichier touché, `lib/blog.ts`) :
+- `title`, `metaDescription`, `h1` et `excerpt` réécrits sur le seuil (l'ancien
+  titre était « Plus-value immobilière : calcul et exonérations (2026) », un
+  intitulé de commodité sans marqueur local) ;
+- **6 H2 reformulés en questions réellement posées**, chacun ouvert par une
+  **réponse autonome de 2-3 phrases** (« Ai-je une plus-value à déclarer si j'ai
+  acheté à Villeurbanne en 2022 ? », « À partir de quel prix de revente la
+  plus-value devient-elle imposable ? », « Peut-on déduire une moins-value
+  immobilière de ses impôts ? », …) ;
+- un **tableau du seuil d'imposition pour les 7 quartiers + la commune**
+  (médiane 2022, médiane 2025, seuil €/m², hausse nécessaire), avec légende de
+  méthode et sources ;
+- le **calcul en 6 étapes** déroulé sur le cas communal en 62 m² ;
+- deux manques comblés que ni `/vendre` ni les concurrents ne traitent :
+  **la non-imputabilité de la moins-value** (ni sur une plus-value de même
+  nature, ni sur le revenu global ; exception étroite des fractions successives
+  constatées par le même acte) — source **BOFiP BOI-RFPI-PVI-20-20** — et
+  **le franchissement de la 5ᵉ année**, qui ouvre le forfait travaux de 15 % et
+  pèse **37 023 €** sur le cas médian, davantage que les abattements des trois
+  années suivantes ;
+- une **FAQ de 6 questions**, visible et reprise en `FAQPage` depuis le même
+  tableau source (parité par construction, vérifiée 6/6 sur le HTML rendu) ;
+- `updated: "2026-10-05"` → `dateModified` et « Mis à jour le » visibles ;
+- liens internes sortants : `/vendre`, `/blog/prix-immobilier-villeurbanne-2026`,
+  `/blog/frais-de-notaire-lyon-2026`, `/blog/rentabilite-locative-lyon`.
+
+**Disjonction avec `/vendre`, vérifiée avant d'écrire** (c'était la réserve du
+backlog). `/vendre` répond « faut-il payer un impôt » au niveau **communal** et
+cite déjà le recul de 10,4 %, les taux, les forfaits et les 22/30 ans. L'article,
+lui, fait **l'arithmétique**, publie le **seuil par quartier** et traite la
+**moins-value** — trois choses absentes de `/vendre`. Renvoi explicite à `/vendre`
+pour le net vendeur.
+
+**Convention d'arrondi, et pourquoi elle compte.** Première rédaction : la chaîne
+était calculée sur les médianes 2022 **non arrondies**, si bien qu'un lecteur
+refaisant « 3 981 × 62 × 1,075 » sur les chiffres **publiés** tombait 1 à 6 € à
+côté des montants publiés. Corrigé avant le commit : **toute la chaîne est
+maintenant dérivée des valeurs affichées** (3 981 × 62 = 246 822 ; × 1,075 =
+265 334 ; − 221 154 = **−44 180**). Les montants par quartier ont bougé en
+conséquence (Ferrandière −23 574, Charpennes −52 111, seuils Charpennes 4 365 et
+Cusset 3 618, hausses 20,3 % et 23,9 %). **Règle à conserver : un article qui
+publie à la fois des entrées et un résultat doit être calculable sur ses propres
+chiffres affichés.** Documenté dans l'en-tête de `lib/blog.ts`.
+
+**Contrôle de cohérence qui valide la méthode.** La médiane 2022 reconstituée par
+`med2025 / (1 + vs2022/100)` donne **3 981 €/m²** pour la commune — exactement la
+valeur **déjà publiée** par `rentabilite-locative-lyon`. La reconstitution est
+donc fiable, et c'est un premier point de la piste (f) du backlog (cohérence des
+chiffres d'une page à l'autre).
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+- **Ne pas publier le tableau des abattements année par année** : mesuré saturé
+  (9/9), contenu de commodité. Deux phrases + renvoi à la place.
+- **Ne pas corriger `service-public.fr` → `service-public.gouv.fr`** dans
+  `app/vendre/page.tsx` et `app/llms.txt/route.ts` : hors chantier du jour, et la
+  règle « en cas de doute sur le contenu existant, ne touche pas » s'applique.
+  Inscrit en « Chantiers en attente » comme micro-chantier prêt à faire.
+- **Ne pas poser le lien `/acheter` manquant sur
+  `/estimation-immobiliere-villeurbanne`** (oubli du 04/10) : c'est du maillage,
+  l'angle du 04/10 ; ne pas mélanger deux chantiers dans un diff.
+- **Ne pas toucher `llms.txt`** : il est **généré depuis `ARTICLES`**, donc la
+  ligne de l'article s'est mise à jour seule. Rien à maintenir à la main (et voir
+  « Erreurs commises et corrigées » sur ce que vaut `llms.txt`).
+
+**Vérifications passées sur le HTML rendu** (build local, avant push) :
+`tsc --noEmit` et `eslint` propres, `npm run build` exit 0, **0 mot collé**
+(contrôle strict du défaut du 04/10), **parité FAQ ↔ FAQPage 6/6 mot pour mot**,
+`datePublished` 2026-06-11 / `dateModified` 2026-10-05, sitemap **inerte sauf la
+seule ligne attendue** (1 `lastmod` sur 51), **un seul fichier au diff**.
+
+**Reste ouvert.** La vérification **en production** (le déploiement suit le push
+de ~90 s) n'a pas été refaite après le commit : **à contrôler au prochain run**
+— que la page serve bien 2 571 mots, le tableau, la FAQ et `dateModified`
+2026-10-05.
 
 ### 2026-10-04 — La profondeur éditoriale mesurée pour la première fois : `/vendre` et `/acheter` étaient les pages les plus profondes du site, et 20 mots collés étaient servis en production
 
@@ -4445,6 +4632,133 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : contenu blog** (05/10, `plus-value-immobiliere-calcul`).
+**Angles précédents : audit non-contenu + maillage** (04/10), **contenu — page de
+service** (02/10), **audit non-contenu** (01/10), **contenu — page de service**
+(30/09).
+→ **Le run du mardi 06/10 ne doit donc PAS être un run de contenu blog.** Les
+candidats non-contenu sont, dans cet ordre : la **grappe blog** (maillage, voir
+📌 ci-dessous), les **pistes (f) / (g) / (h)** de la liste de signaux, et
+l'**arbitrage « qui porte COMBIEN COÛTE LA GESTION LOCATIVE ? »**.
+✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
+
+🔴 **À VÉRIFIER EN PREMIER LE 06/10 — la mise en production du chantier du 05/10.**
+`plus-value-immobiliere-calcul` doit servir en production **2 571 mots**, le
+tableau des seuils (7 quartiers + commune), la FAQ de 6 questions avec son
+`FAQPage`, et `dateModified` 2026-10-05. Le push n'a pas été revérifié en ligne
+après le commit.
+
+🟢 **MICRO-CHANTIER PRÊT À FAIRE, REPÉRÉ LE 05/10 (15 minutes) — le domaine de la
+source `service-public` est périmé en production.** `service-public.fr` répond
+**301** vers `service-public.gouv.fr`. Le site cite encore l'ancien domaine à
+**deux endroits identifiés** :
+- `app/vendre/page.tsx`, bloc source de la section « Plus-value » :
+  « Source : service-public.fr, fiche F10864 … consultée le 30 septembre 2026 » ;
+- `app/llms.txt/route.ts`, ligne de `/vendre` : « source service-public.fr F10864 ».
+⚠️ **Faire un `grep` complet avant de corriger** : il peut y en avoir d'autres
+(`grep -rn "service-public\.fr" app/ lib/`). Changement de texte pur, aucun
+risque de rendu. Les sources sont le levier GEO n°1 : citer un domaine qui
+redirige les affaiblit pour rien.
+
+📌 **DEMANDE À FORMULER AU CLIENT (rien à coder) — l'accès Search Console.**
+Google a livré en juin 2026 un **« Generative AI performance report »** dans
+Search Console, qui isole impressions et clics venus des AI Overviews / AI Mode.
+Ce journal ne mesure que des SERP à la main : un proxy pauvre, qui dit « absent »
+sans dire combien d'impressions le site obtient. **Un accès Search Console
+changerait la qualité de l'étape 2 pour tous les runs suivants.** C'est la
+demande au client la plus rentable à ce stade.
+
+📌 **CANDIDAT NON-CONTENU N°1 — la grappe blog, seule grappe restée à la
+profondeur éditoriale 3-4** (inchangé depuis le 04/10, non traité). Le 04/10 a
+relié la grappe locale et la grappe commerciale ; **la grappe blog porte encore
+les 22 pages de profondeur 4**. Levier propre, sans toucher la home : faire
+pointer les pages de service déjà en profondeur 1-2 vers les articles de fond qui
+les documentent. ⚠️ `/estimation` **hors périmètre** (consigne client). Restent
+`/faire-gerer` (2 liens sortants), `/gestion-locative` (4) et `/honoraires` (4) —
+les trois pages les plus avares du site.
+📌 **Et deux liens précis à poser, repérés et toujours non faits** :
+`/estimation-immobiliere-villeurbanne` (priorité 0.9) lie `/vendre` mais **pas
+`/acheter`** (repéré le 04/10) ; et **l'article réécrit le 05/10 n'est lié depuis
+aucune page de service** alors qu'il porte désormais une donnée propre
+(`/vendre` est le candidat naturel, section « Plus-value »).
+
+🔴 **CANDIDAT CONTENU N°1 POUR PLUS TARD — `vendre-sans-agence` (349 mots).**
+Dernier article « argent » mince. ⚠️ **Mesurer l'angle avant d'écrire** (cinq
+angles invalidés par la mesure : 29/09, 01/10, 02/10, 04/10, 05/10) et vérifier
+qu'il ne recopie ni `/vendre` ni `/honoraires` — il cite déjà leur barème.
+⚠️ **Et appliquer la règle confirmée par la veille du 05/10** : un angle qui ne
+publie pas de donnée propre est faible, quel que soit le volume écrit. Le motif
+qui marche est celui du 05/10 — **croiser deux faits déjà publiés que personne
+n'a mis ensemble**.
+
+🔴 **CANDIDAT N°2 — l'arbitrage « qui porte COMBIEN COÛTE LA GESTION LOCATIVE ? »,
+laissé ouvert le 01/10 et toujours non traité.** Trois URLs y répondent :
+`/faire-gerer` (1 772 mots), `/blog/cout-gestion-locative` (276 mots) et
+`/honoraires`. Recouvrement mesuré **sous le seuil**, mais même motif.
+`cout-gestion-locative` détient la seule mention des deux frais fixes (20 €/an,
+45 €/lot/an) : **ne pas le vider.** Décision à prendre : quelle URL revendique la
+requête, et les deux autres la lui donnent-elles explicitement ?
+
+🆕 **LISTE DE SIGNAUX — état au 05/10.** Les deux premières listes sont épuisées
+((a)+(d) le 01/10 → 3 défauts ; (b) saine et (c) → 1 défaut majeur le 04/10). La
+troisième liste porte sur le **texte visible rendu** et sur les **chiffres**, et
+le 05/10 en a entamé une partie :
+- **(f) cohérence des chiffres d'une page à l'autre** — **entamée, non épuisée.**
+  Un premier point validé le 05/10 : la médiane 2022 reconstituée (3 981 €/m²)
+  coïncide avec celle déjà publiée. **Mais l'audit systématique reste à faire**, et
+  l'en-tête de `lib/blog.ts` donne la liste exacte des articles qui dérivent de
+  `lib/quartiers.ts` — c'est le plan de contrôle tout prêt.
+- **(g) typographie française du rendu** — espaces insécables avant `%`, `€`, `:`,
+  dans les milliers, guillemets, tirets. ⚠️ **Noter que `lib/blog.ts` utilise des
+  espaces ASCII ordinaires** dans les milliers (vérifié à l'octet le 05/10) : c'est
+  la convention du fichier, un chantier (g) devra trancher globalement et **jamais
+  au cas par cas**, sous peine d'incohérence pire que le défaut.
+- **(h) lisibilité des H2 comme réponses autonomes**, page par page. ⚠️ **À
+  reformuler après la veille du 05/10** : Google dit qu'il n'est **pas nécessaire**
+  d'écrire pour l'IA ni de hacher le contenu. L'audit (h) garde son sens pour le
+  **lecteur** et les extraits enrichis, mais ne doit **pas** conduire à hacher le
+  texte. Priorité abaissée.
+- 🆕 **(i) justesse des calculs publiés, et non seulement leur présence.** Piste
+  ouverte par l'erreur du 05/10 (voir « Erreurs commises et corrigées ») : les
+  contrôles du journal vérifient que les nombres sont **là** et que la FAQ est en
+  **parité**, jamais qu'un calcul publié **tombe juste sur ses propres chiffres
+  affichés**. Le site publie beaucoup de montants dérivés (frais de notaire,
+  honoraires, rendements, nets vendeur) : **à auditer en refaisant les calculs.**
+  Candidat sérieux pour un run non-contenu.
+
+✅ **Signaux mesurés SAINS, ne pas les réauditer** — 05/10 : `robots.txt` et
+l'accès des crawlers d'IA (`OAI-SearchBot` autorisé par le `User-Agent: *` /
+`Allow: /`). — 04/10 : chaîne de redirection et cohérence d'hôte, 404, slash
+final, 8 routes `/api/`, `/admin` · `/admin/pages` · `/radar`, le `[slug]`
+attrape-tout, profondeur tous-liens (2 clics max, 0 orpheline). — 01/10 : aucune
+`<meta description>` manquante ni dupliquée, 53 `<h1>` distincts. — 30/09 : 53
+canonicals, aucune image sans `alt` dans le `<main>`, aucun lien interne mort.
+
+🔴 **CIBLES DU BRIEF RETIRÉES PAR LA MESURE — cinq, et ne plus les remesurer.**
+« Agence immobilière Charpennes Villeurbanne » (01/10, requête de marque) ·
+les deux formulations de l'angle « apport » (01 et 02/10, intention
+transactionnelle) · « vendre appartement Villeurbanne » (04/10, 9 listings, zéro
+éditorial — à mesurer deux fois par mois au plus) · 🆕 **« agence immobilière
+Gratte-Ciel Villeurbanne » (05/10, requête de marque confirmée** : les 9 résultats
+sont des agences dont la raison commerciale contient « Villeurbanne Gratte Ciel »,
+ou des annuaires qui les listent**).**
+→ **Les requêtes qui restent réellement jouables** sont les deux mesurées chaque
+run (« agence immobilière Villeurbanne », « estimation immobilière Villeurbanne »,
+absentes depuis le début) et « prix m2 Villeurbanne », **la seule où le site a une
+donnée propre que les concurrents n'ont pas**. ⚠️ **Elle n'a pas été mesurée
+aujourd'hui** (deux mesures sur trois ont servi à clore une hypothèse) : **à
+mesurer le 06/10.**
+
+⚠️ **Défauts mineurs relevés et TOUJOURS NON corrigés, volontairement** :
+`/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+`<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
+dépassent 70 caractères (01/10) — ⚠️ **et le titre réécrit le 05/10 est long
+(81 caractères, mesuré)** : il entre dans ce lot, assumé, parce qu'il place
+« Villeurbanne » et « seuil d'imposition » devant. Sa `metaDescription`, elle, a
+été **ramenée de 177 à 147 caractères** avant le push (au-delà de ~160 Google
+tronque) — contrôle à ajouter au réflexe : **mesurer la longueur du `title` ET de
+la `metaDescription` de toute page qu'on réécrit**, c'est deux `len()`.
+
 **Angle du dernier run : audit non-contenu + maillage interne** (04/10, pistes
 (b) et (c), puis les 10 liens grappe locale ↔ grappe commerciale).
 **Angles précédents : contenu — page de service** (02/10), **audit non-contenu**
@@ -5777,6 +6091,68 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 ## Erreurs commises et corrigées
 
+### 2026-10-05 — `llms.txt` : une consigne du brief que Google déclare sans effet (et ce qu'il faut en faire exactement)
+
+**Le fait, sourcé.** La doctrine écrite de Google (page du 2026-07-10, citée en
+« Techniques apprises ») dit **verbatim** : « You don't need to create new machine
+readable files, **AI text files**, markup, or Markdown to appear in Google Search
+(including its generative AI capabilities), **as Google Search itself doesn't use
+them**. » C'est `llms.txt` qui est visé, nommément dans son genre.
+
+**Ce que cela contredit.** L'étape 4 du brief demande : « LLMS.TXT : tiens-le à
+jour quand tu ajoutes des pages, il dérive vite. » Cette consigne a été suivie
+sans jamais être questionnée. **Aucune mesure de ce journal n'a jamais montré un
+effet de `llms.txt`**, et aucun moteur ne documente l'utiliser — ni Google (qui
+dit l'inverse explicitement), ni OpenAI, dont la documentation ne parle que de
+`robots.txt` et de l'accès de `OAI-SearchBot`.
+
+**Ce qui est corrigé — et ce qui ne l'est PAS.**
+- ❌ **`llms.txt` n'est PAS supprimé.** Trois raisons : le brief client le demande
+  explicitement ; il ne coûte rien ; et l'absence de preuve d'effet n'est pas une
+  preuve d'absence d'effet pour les moteurs qui ne documentent pas leurs entrées.
+  **Supprimer un fichier demandé par le client sur la foi d'une page de doc
+  Google serait excessif.** À soumettre au client plutôt qu'à décider seul.
+- ✅ **Ce qui change : `llms.txt` cesse de compter comme un levier GEO.** Il ne
+  doit plus justifier un chantier, ni figurer dans un bilan comme un gain. Le
+  temps qu'il prenait va aux données propres (§ point 2 de la veille).
+- ✅ **Et un constat qui vide la consigne de sa charge** : `app/llms.txt/route.ts`
+  **génère le fichier depuis `ARTICLES` et `LISTINGS`**. Il ne « dérive » donc
+  pas quand on ajoute ou réécrit un article — il s'est mis à jour tout seul
+  aujourd'hui. **La consigne « tiens-le à jour, il dérive vite » décrit un risque
+  qui n'existe pas dans ce dépôt.** Vérifier la génération, pas le contenu.
+
+**Leçon transférable.** Une consigne du brief peut être périmée ; la veille sert
+aussi à ça. Mais la bonne réponse à une consigne périmée est de **cesser d'y
+investir et de le documenter**, pas de défaire unilatéralement ce que le client a
+demandé.
+
+### 2026-10-05 — Un article qui publie ses entrées ET son résultat doit être calculable sur ses chiffres affichés (défaut introduit et corrigé avant le push)
+
+**L'erreur.** La première rédaction de `plus-value-immobiliere-calcul` calculait
+toute la chaîne sur les médianes 2022 **non arrondies** (3 980,9… €/m²) tout en
+**affichant** les médianes arrondies (3 981 €/m²). Résultat : un lecteur refaisant
+« 3 981 × 62 × 1,075 » sur les chiffres publiés obtenait **265 336 €** là où
+l'article affichait **265 335 €**, et des écarts de 1 à 6 € sur sept quartiers.
+Rien de faux au fond, mais un article dont **la démonstration ne se vérifie pas
+sur ses propres chiffres** — ce qui est exactement ce qu'un lecteur méfiant, ou
+un moteur qui cite, va contrôler en premier.
+
+**Comment il a été attrapé.** En refaisant à la main l'arithmétique publiée
+pendant le contrôle qualité, au lieu de se contenter de vérifier que les nombres
+étaient *présents* dans le HTML. **Les contrôles automatiques du journal
+vérifient la présence et la parité, jamais la justesse d'un calcul publié.**
+
+**Corrigé avant le commit** : toute la chaîne est dérivée des **valeurs
+affichées** (3 981 × 62 = 246 822 ; × 1,075 = 265 334 ; − 221 154 = −44 180), les
+montants des sept quartiers recalculés en conséquence, et la convention écrite
+dans l'en-tête de `lib/blog.ts` pour que personne ne « réarrondisse » depuis les
+valeurs non arrondies.
+
+**Règle à appliquer désormais à tout contenu chiffré** : si une page publie à la
+fois des **entrées** et un **résultat**, le résultat doit être obtenu **en
+partant des entrées telles qu'elles sont affichées**. Et le contrôle qualité doit
+**refaire le calcul**, pas seulement vérifier que les nombres sont là.
+
 ### 2026-10-04 — L'audit des 53 pages du 01/10 ne pouvait pas voir la page 404, et le défaut qu'il corrigeait y était resté
 
 **Ce qui a été corrigé le 01/10.** Cinq `<title>` servaient « Markus Immobilier »
@@ -6124,6 +6500,89 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-05 — Veille hebdomadaire : Google documente enfin le GEO, et il démolit trois « techniques » au passage
+
+**Source primaire, et elle est nouvelle pour ce journal.** Google publie
+désormais une page dédiée : « Optimizing for Generative AI Features on Google
+Search », `developers.google.com/search/docs/fundamentals/ai-optimization-guide`,
+**page mise à jour le 2026-07-10**. C'est la première doctrine écrite de Google
+sur le sujet ; jusqu'ici le journal travaillait sur des inférences. Les citations
+ci-dessous sont **verbatim**.
+
+**1. Ce qui est explicitement déclaré INUTILE.**
+> « You don't need to create new machine readable files, AI text files, markup,
+> or Markdown to appear in Google Search (including its generative AI
+> capabilities), as Google Search itself doesn't use them. »
+
+→ **`llms.txt` est nommément visé.** Conséquence traitée en « Erreurs commises
+et corrigées ».
+
+> « There's no requirement to break your content into tiny pieces for AI to
+> better understand it. Google systems are able to understand the nuance of
+> multiple topics on a page and show the relevant piece to users. »
+
+> « You don't need to write in a specific way just for generative AI search.
+> AI systems can understand synonyms and general meanings of what someone is
+> seeking. »
+
+> « Structured data isn't required for generative AI search, and there's no
+> special schema.org markup you need to add. »
+
+**Lecture honnête, à ne pas sur-interpréter.** Google dit « pas NÉCESSAIRE », il
+ne dit pas « nuisible ». La consigne du brief — réponse autonome en tête de
+chaque H2 — **reste bonne**, mais pour une autre raison que celle annoncée : elle
+sert le lecteur humain et les extraits enrichis, pas un mécanisme d'extraction
+propre aux LLM. **À conserver donc, mais sans jamais hacher le texte ni
+sacrifier la lisibilité pour « faire du passage extractible »** — c'est
+exactement ce que Google décrit comme inutile. De même, le `FAQPage` et
+l'`Article` du site se justifient par les rich results, **pas** par le GEO : ne
+plus compter une donnée structurée comme un chantier GEO.
+
+**2. Ce que Google déclare déterminant — et c'est la thèse du journal, mot pour
+mot.**
+> « Providing a unique point of view […] a first-hand review provides a unique
+> perspective based on personal experience, whereas a summary of existing
+> content simply restates information already available elsewhere. »
+
+→ **Convergence totale avec la règle que ce journal a tirée de ses propres
+mesures** depuis le 29/09 : « règle de droit générique + nom de ville » ne marche
+pas, ce qui marche est **publier ce que personne d'autre ne publie ». La doctrine
+Google et la mesure locale disent la même chose. **C'est la règle de priorité des
+chantiers : un chantier qui ne publie pas de donnée propre est un chantier
+faible, quel que soit son volume.** Le run du jour s'y est tenu (le tableau
+d'abattements saturé a été rejeté ; le seuil par quartier a été publié).
+
+**3. Nouvelle surface de MESURE, et elle manque à ce journal.**
+Google a livré en juin 2026 un **« Generative AI performance report »** dans
+Search Console (`developers.google.com/search/blog/2026/06/gen-ai-performance-reports`),
+qui isole les impressions et clics venus des features génératives.
+⚠️ **Ce journal ne mesure que des SERP à la main, ce qui est un proxy pauvre** :
+il dit « absent » sans dire combien d'impressions le site obtient. **Un accès
+Search Console changerait la qualité de la mesure de l'étape 2.** → Inscrit en
+« Chantiers en attente » comme demande à formuler au client (rien à coder).
+
+**4. Côté ChatGPT — une condition technique vérifiable, et elle est remplie.**
+`developers.openai.com/api/docs/bots` : pour être cité dans les réponses de
+ChatGPT search, un site doit **laisser passer `OAI-SearchBot`** ; un site exclu
+« will not be shown in ChatGPT search answers, though can still appear as
+navigational links ». Le `robots.txt` de production ouvre tout sauf `/api/`,
+`/espace-client`, `/radar` et `/admin` : **condition remplie, rien à faire.**
+C'est le premier audit de ce signal en 24 runs. ✅ Ne pas réauditer sauf
+changement de `robots.txt`.
+
+**5. Deux sources fiscales mises à jour, utilisées le jour même.**
+- `service-public.gouv.fr` fiche **F10864**, « mise à jour du 15 avril 2026 » :
+  forfait frais d'acquisition **7,5 % sans condition de durée**, forfait travaux
+  **15 % réservé aux détentions de plus de 5 ans**, abattements IR 6 %/an (6ᵉ→21ᵉ)
+  puis 4 % (22ᵉ), PS 1,65 %/an (6ᵉ→21ᵉ), 1,60 % (22ᵉ), 9 %/an (23ᵉ→30ᵉ).
+- **BOFiP BOI-RFPI-PVI-20-20** : la **moins-value immobilière n'est ni déductible
+  ni imputable** — ni sur une plus-value de même nature, ni sur le revenu global.
+  Exception étroite : bien acquis par **fractions successives constatées par le
+  même acte**, entre les mêmes parties.
+- ⚠️ **`service-public.fr` répond 301 vers `service-public.gouv.fr`** : c'est
+  `service-public.gouv.fr` qu'il faut citer désormais. Le site cite encore
+  l'ancien domaine à deux endroits (voir « Chantiers en attente »).
 
 ### 2026-10-04 — Un nœud de texte JSX qui commence par une espace et se poursuit à la ligne suivante perd cette espace au rendu
 

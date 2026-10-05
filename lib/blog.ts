@@ -1017,7 +1017,7 @@ export const ARTICLES: Article[] = [
     slug: "plus-value-immobiliere-calcul",
     title: "Plus-value immobilière à Villeurbanne : le calcul et le seuil d'imposition (2026)",
     metaDescription:
-      "À partir de quel prix de revente la plus-value devient-elle imposable à Villeurbanne ? Le seuil quartier par quartier, calculé sur les prix signés, et le calcul étape par étape.",
+      "À partir de quel prix de revente la plus-value devient-elle imposable à Villeurbanne ? Le seuil quartier par quartier, calculé sur les prix signés.",
     h1: "Plus-value immobilière : le calcul et le seuil d'imposition à Villeurbanne",
     excerpt:
       "Un appartement acheté au prix médian de son quartier en 2022 et revendu au prix médian en 2025 ne dégage aucune plus-value imposable : il faudrait revendre 9,7 % à 23,9 % au-dessus du marché actuel. Le calcul, quartier par quartier.",
