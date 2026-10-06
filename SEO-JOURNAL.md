@@ -93,6 +93,11 @@
   dépôt sont pré-existantes et dans `scripts/` et `studio/`).
 - ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** (vérifié
   sur `git diff --name-only`). Consigne client respectée.
+- ✅ **CHANTIER VÉRIFIÉ SERVI EN PRODUCTION LE JOUR MÊME** (déploiement constaté
+  ~10 min après le push, plus lent que les ~2 min habituels). Les 7 liens, les
+  rendements au centième, la source corrigée et l'inertie totale du sitemap
+  (53 URLs, 0 `lastmod` déplacé) sont contrôlés en ligne — détail en « Chantiers
+  en attente ». **Le run du 07/10 n'a donc rien à revérifier.**
 - 🟢 **COHÉRENCE CHIFFRÉE — la piste (f) avance d'un cran, et par construction.**
   Les trois taux de rendement publiés aujourd'hui (`/faire-gerer`,
   `/gestion-locative`) ne sont **pas saisis** : ils sont calculés depuis
@@ -4838,26 +4843,29 @@ sur les trois derniers, et le maillage vient d'être fait deux fois en trois run
 Le candidat désigné est **`vendre-sans-agence`** (399 mots) — voir ci-dessous.
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
 
-⚠️ **CHANTIER DU 06/10 À VÉRIFIER EN PRODUCTION AU PROCHAIN RUN** (le push est
-parti après la mesure du jour ; le déploiement Vercel prend ~2 min mais n'a pas
-été reconstaté). À contrôler sur `https://www.markusimmobilier.fr/…`, c'est
-rapide :
-- les **7 liens** servis dans le `<main>` : `/faire-gerer` → `rentabilite-locative-lyon`
-  et → `gestion-locative-villeurbanne-deleguer-ou-non` ; `/gestion-locative` →
+✅ **CHANTIER DU 06/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
+07/10.** Déploiement constaté ~10 min après le push (plus lent que les ~2 min des
+runs précédents : prévoir l'attente, ne pas conclure à un échec de build trop
+vite). Contrôlé sur `https://www.markusimmobilier.fr/…` :
+- **les 7 liens servis dans le `<main>`**, avec l'ancre attendue : `/faire-gerer`
+  → `rentabilite-locative-lyon` (« le détail quartier par quartier ») et →
+  `gestion-locative-villeurbanne-deleguer-ou-non` ; `/gestion-locative` →
   `rentabilite-locative-lyon` ; `/honoraires` → `frais-de-notaire-lyon-2026` ;
   `/vendre` → `plus-value-immobiliere-calcul` ;
   `/estimation-immobiliere-villeurbanne` → `/acheter` ;
   `/blog/cout-gestion-locative` → `/faire-gerer` ;
-- les **rendements** affichés : **4,91 %** et **4,62 %** (écart **0,29 point**) sur
-  `/faire-gerer`, **4,47 %–6,40 %** (écart **1,93 point**) sur `/gestion-locative`,
-  et qu'ils **égalent au centième** ceux de `rentabilite-locative-lyon` ;
-- « **1,93 point** » au singulier sur `/gestion-locative` (pas « points ») ;
-- **0 mot collé** sur les 6 pages touchées ;
-- **`service-public.gouv.fr`** partout sur `/vendre` et dans `/llms.txt`, et
-  **plus aucun `service-public.fr`** (hors le commentaire de `lib/blog.ts`) ;
-- les **`lastmod` INCHANGÉS** sur les 5 pages touchées — c'est une décision du
-  06/10, pas un oubli : si le sitemap de production a bougé sur ces lignes, c'est
-  un bug à comprendre.
+- **rendements exacts** : `/faire-gerer` sert « 4,91 % […] 4,62 % […] 0,29 point
+  d'écart », `/gestion-locative` sert « 4,47 % à 6,40 % […] 1,93 point » —
+  **identiques au centième** à `rentabilite-locative-lyon` ;
+- « **1,93 point** » bien **au singulier** (la faute d'accord corrigée avant le
+  push ne s'est pas glissée en production) ;
+- **0 mot collé** sur les 6 pages (5 motifs, 9 288 mots de texte rendu) ;
+- **parité FAQ visible ↔ `FAQPage` 6/6** sur les 5 pages à FAQ ;
+- **`service-public.gouv.fr` 12 fois sur `/vendre` et 2 fois dans `/llms.txt`, et
+  plus aucun `service-public.fr`** ;
+- 🟢 **sitemap RIGOUREUSEMENT INERTE : 53 URLs avant et après, ZÉRO `lastmod`
+  déplacé.** La décision de ne pas avancer les dates est donc bien appliquée de
+  bout en bout (et non pas « oubliée quelque part »).
 
 🔴 **CANDIDAT CONTENU N°1 POUR LE 07/10 — `vendre-sans-agence` (399 mots).**
 Dernier article « argent » mince qui reste, et **orphelin éditorial** (0 lien
