@@ -389,7 +389,12 @@ export default function EstimationVilleurbannePage() {
                 vend en dessous de son prix réel après plusieurs baisses. Une
                 fois la fourchette connue, notre page{" "}
                 <Link href="/vendre" className={A}>vendre son bien</Link> détaille
-                l&apos;accompagnement jusqu&apos;à la signature.
+                l&apos;accompagnement jusqu&apos;à la signature, et{" "}
+                <Link href="/acheter" className={A}>acheter à Villeurbanne</Link>{" "}
+                donne la lecture inverse de ces mêmes médianes : le budget total
+                qu&apos;un acquéreur doit réunir, frais d&apos;acquisition
+                compris. C&apos;est le chiffre que votre acheteur a en tête
+                quand il compare votre bien à un autre.
               </p>
             ),
           },

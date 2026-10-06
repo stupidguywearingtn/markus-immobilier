@@ -14,6 +14,103 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-06**
+
+- `git fetch origin` **en tout premier** (règle du 16/09) : **aucun piège cette
+  fois, mais le fetch reste indispensable.** Avant fetch comme après, `HEAD` ==
+  `origin/main` == `86be209`. ✅ **AUCUN RUN MANQUÉ** : le dernier commit du dépôt
+  est bien celui du 05/10 (la vérification de production du 05/10 incluse).
+  Le conteneur démarre sur `claude/dazzling-feynman-fczdvj` ; `git checkout main`
+  d'abord, comme toujours. Le dépôt porte maintenant **une quinzaine** de branches
+  `claude/…` plus `feat/backoffice-supabase` : ne s'en servir d'aucune.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  Quatorzième constat identique (21/09 → 06/10).
+- ⚠️ Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** : l'hôte sans
+  `www` répond 308.
+- **Mardi : pas de veille** (faite le 05/10). ⚠️ **Prochaine échéance : lundi
+  12/10.**
+- **Trois SERP mesurées, toutes absentes**, dont la troisième cible qui restait
+  non mesurée depuis le 04/10 :
+  - « agence immobilière Villeurbanne » — **absente pour la 25ᵉ fois sur 25.**
+    Rapport **7 franchises ou annuaires / 2 indépendantes locales** (Nestenn ×2,
+    pagesjaunes, Laforêt, Orpi Cité Immo, ERA, Immo de France ×2 + **Salengro
+    Immo**, indépendante villeurbannaise). La 2ᵉ indépendante locale confirme la
+    lecture du 04/10 : la SERP n'est pas verrouillée par les seules franchises.
+  - « estimation immobilière Villeurbanne » — absente. 9 résultats = franchises
+    et portails de prix (Nestenn, Square Habitat, Liberkeys, SeLoger, Safti,
+    Novea, Netvendeur, Solvimo ×2).
+  - 🆕 **« prix m2 Villeurbanne » — ABSENTE, et c'est la mesure la plus
+    instructive du run.** Les **9 résultats sur 9 sont des portails nationaux de
+    données de prix** : pap, journaldunet, realadvisor, meilleursagents, fonciris,
+    safti, netvendeur, immosudest, solvimo. **Zéro agence, zéro contenu
+    éditorial.** C'était « la seule requête où le site a une donnée propre que
+    les concurrents n'ont pas » (note du 05/10) : la mesure dit que la donnée
+    propre ne suffit pas à y entrer, parce que la SERP ne récompense pas un
+    contenu mais un **type de page** (une page de données nationale, mise à jour
+    mensuellement, avec un maillage ville par ville). ⚠️ **Et une alerte nouvelle :
+    `fonciris.fr` titre « Prix m2 Villeurbanne : 3 571 €/m² (69100) 2026 » et dit
+    s'appuyer sur la base DVF.** Notre médiane communale est **3 567 €/m²** — à
+    4 € près la même. **L'avantage « nous partons des prix signés » n'est donc plus
+    exclusif sur cette requête.** À inscrire comme hypothèse : voir ci-dessous.
+- 🔴 **LE DÉFAUT DU JOUR, MESURÉ ET CHIFFRÉ : 14 ARTICLES SUR 26 NE RECEVAIENT
+  AUCUN LIEN ÉDITORIAL.** Premier comptage, par article, des liens entrants
+  venant d'une page hors `/blog` (donc hors listing et hors sitemap). Le 04/10
+  avait établi que la grappe blog restait à la profondeur éditoriale 3-4 ; le
+  comptage dit **pourquoi**, et c'est plus net que « profondeur » : **la moitié du
+  blog n'est liée de nulle part.** Et le défaut touchait les deux articles les plus
+  lourds du site après `frais-de-notaire` : `rentabilite-locative-lyon`
+  (2 713 mots, rendement par quartier sur prix signés) et
+  `plus-value-immobiliere-calcul` (2 598 mots, écrit **la veille**) recevaient
+  **zéro** lien. Corrigé aujourd'hui (détail en « Chantiers faits »).
+- ✅ **L'arbitrage « qui porte COMBIEN COÛTE LA GESTION LOCATIVE ? », ouvert le
+  01/10 et reporté cinq fois, EST TRANCHÉ.** `/faire-gerer` (1 772 mots) publie le
+  calcul en euros sur un cas villeurbannais réel ; `cout-gestion-locative`
+  (340 mots) ne détient que la fourchette de marché et les deux frais fixes.
+  **`/faire-gerer` revendique la requête, et l'article le dit désormais
+  explicitement** par un lien de clôture. L'article n'a **pas** été vidé (consigne
+  du 01/10 respectée : il garde ses deux frais fixes).
+- 🟢 **MICRO-CHANTIER DU 05/10 FAIT, et le `grep` prescrit a payé : 8 occurrences,
+  pas 2.** `service-public.fr` → `service-public.gouv.fr` (301 vérifié au `curl`
+  ce jour, et les deux fiches F10864 et F1669 répondent **200** sur le nouveau
+  domaine). Le journal du 05/10 n'en annonçait que deux ; il y en avait **six dans
+  `app/vendre/page.tsx`** (2 commentaires de provenance, 2 réponses de FAQ, 2 blocs
+  « Source » visibles) **et deux dans `app/llms.txt/route.ts`**. La 9ᵉ occurrence,
+  dans `lib/blog.ts`, est un commentaire qui **documente** la redirection : laissée
+  volontairement sur l'ancien domaine, elle n'aurait plus de sens autrement.
+- ✅ **llms.txt AUDITÉ ET SAIN — ne pas le réécrire.** La consigne du brief
+  (« tiens-le à jour quand tu ajoutes des pages, il dérive vite ») **ne s'applique
+  pas ici** : `app/llms.txt/route.ts` liste les 26 articles par
+  `articlesByDate.map(articleLine)`, dérivés de `ARTICLES`, donc avec leur titre et
+  leur `excerpt` à jour **sans intervention**. Il ne peut pas dériver. Seule la
+  prose des lignes de pages principales est écrite à la main — c'est là qu'était la
+  source périmée, corrigée ci-dessus. ✅ **Ne pas réauditer** sauf ajout de page.
+- ✅ **Signaux mesurés SAINS aujourd'hui — ne pas les réauditer** : sur les
+  6 pages touchées, **0 mot collé** sur le texte rendu (contrôle strict du défaut
+  du 04/10, 5 motifs, 9 288 mots balayés) ; **parité FAQ visible ↔ `FAQPage` 6/6
+  mot pour mot sur les 5 pages à FAQ** ; les 7 nouveaux liens sont tous servis
+  **dans le `<main>`** avec l'ancre attendue ; `npx tsc --noEmit` muet ;
+  `npm run build` vert ; **aucune nouvelle erreur de lint** (les 24 erreurs du
+  dépôt sont pré-existantes et dans `scripts/` et `studio/`).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** (vérifié
+  sur `git diff --name-only`). Consigne client respectée.
+- 🟢 **COHÉRENCE CHIFFRÉE — la piste (f) avance d'un cran, et par construction.**
+  Les trois taux de rendement publiés aujourd'hui (`/faire-gerer`,
+  `/gestion-locative`) ne sont **pas saisis** : ils sont calculés depuis
+  `LOYER_MEDIAN_HC` et les médianes de `lib/quartiers.ts`, **les mêmes sources que
+  `rentabilite-locative-lyon`**. Vérifié : 4,91 % commune, 4,47 %–6,40 % par
+  quartier, écart 1,93 point — **identiques au centième** à ce que l'article
+  publie. Les trois pages ne peuvent plus diverger.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
+  dépassent 70 caractères (01/10). 🆕 **Et un quatrième, découvert par le lint** :
+  `app/estimation-immobiliere-lyon/page.tsx:94` lie
+  `/estimation-immobiliere-villeurbanne` par un `<a>` brut au lieu de `<Link>`
+  (5 autres cas dans `mentions-legales`, `cookies`, `confidentialite`, `annonces`).
+  **Non corrigé, et pas par paresse : l'impact SEO est nul** — un `<a href="/…">`
+  est un lien crawlable normal, le défaut est côté UX (rechargement complet).
+  La règle « ne corrige rien qui fonctionne » s'applique.
+
 **Au 2026-10-05**
 
 - `git fetch origin` **en tout premier** (règle du 16/09) : **le piège était là pour
@@ -1524,6 +1621,106 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-06 — La moitié du blog n'était liée de nulle part : les deux articles les plus lourds du site sortent de l'orphelinat éditorial (14 → 12 orphelins), et la source `service-public` cesse de rediriger
+
+**Chantier choisi, et pourquoi.** Le backlog interdisait un run de contenu blog
+(angle du 05/10) et désignait la **grappe blog** comme candidat non-contenu n°1.
+Avant d'y toucher, le signal a été **mesuré autrement que le 04/10** : plutôt que
+la profondeur de clic, un comptage des **liens éditoriaux entrants par article**
+(liens venant d'une page hors `/blog`, donc ni le listing ni le sitemap).
+
+**Le résultat a redéfini le chantier.** La mesure du 04/10 disait « la grappe blog
+reste à la profondeur 3-4 ». Le comptage dit la cause : **14 articles sur 26 ne
+recevaient aucun lien éditorial**, et tous les liens existants partaient des mêmes
+7 pages (`/vendre`, `/acheter`, `/estimation-immobiliere-villeurbanne`,
+`/estimation`, les 4 pages locales). Les trois pages de la grappe gestion
+portaient **1 lien blog à elles trois** : `/faire-gerer` (1 772 mots) **0**,
+`/honoraires` **0**, `/gestion-locative` **1**.
+
+**Et le défaut touchait précisément les pages où il coûte le plus cher.** Classés
+par poids, les articles orphelins étaient menés par **`rentabilite-locative-lyon`
+(2 713 mots)** — le rendement par quartier calculé sur les prix signés, donnée que
+personne d'autre ne publie — et **`plus-value-immobiliere-calcul` (2 598 mots)**,
+écrit **la veille** avec le seuil d'imposition par quartier. Les deux plus gros
+investissements de contenu du site, invisibles dans son propre graphe.
+
+**Ce qui a été fait — 7 liens, aucun bloc « voir aussi ».** Chaque lien est inséré
+dans une phrase qui répond à une question, pas dans une liste de renvois :
+
+| Depuis | Vers | Prétexte éditorial |
+|---|---|---|
+| `/faire-gerer` | `rentabilite-locative-lyon` | ce que les 6 % retirent au rendement : **4,91 % → 4,62 %, 0,29 point** |
+| `/faire-gerer` | `gestion-locative-…-deleguer-ou-non` | le partage des tâches (6 familles / 3 décisions au propriétaire) |
+| `/gestion-locative` | `rentabilite-locative-lyon` | l'arbitrage remis à l'échelle du rendement (**4,47 %–6,40 %**, écart 1,93 point) |
+| `/honoraires` | `frais-de-notaire-lyon-2026` | la confusion honoraires d'agence ≠ frais de notaire |
+| `/vendre` | `plus-value-immobiliere-calcul` | le seuil d'imposition par quartier (**+9,7 % à +23,9 %**) |
+| `/estimation-immobiliere-villeurbanne` | `/acheter` | la paire incomplète repérée le 04/10, refermée |
+| `cout-gestion-locative` | `/faire-gerer` | l'arbitrage de cannibalisation tranché |
+
+**Les chiffres publiés aujourd'hui ne sont pas saisis, ils sont dérivés.** Les
+rendements viennent de `LOYER_MEDIAN_HC` et des médianes de `lib/quartiers.ts`,
+**les mêmes sources que l'article** : `(LOYER_MEDIAN_HC × 12) / median`, puis
+`× (1 − TAUX_GESTION)` pour le net de gestion — les honoraires portant sur les
+loyers encaissés, ils amputent le rendement brut de leur propre taux. Trois pages,
+une seule source : elles ne peuvent plus afficher trois fourchettes du même fait.
+**Vérifié au centième contre l'article** : 4,91 % / 4,47 %–6,40 % / 1,93 point.
+
+**La seule exception est documentée dans le code.** Les deux bornes du seuil
+d'imposition sur `/vendre` (9,7 % et 23,9 %) sont **recopiées** du tableau de
+l'article et non recalculées : l'article les dérive de médianes **déjà arrondies**
+(4 365 / 3 524), et refaire le calcul depuis `vs2022` donnerait 23,8 % — **0,1 point
+de divergence entre deux pages du même site**, exactement le défaut que la piste (f)
+cherche. Un commentaire JSX le dit et indique quoi changer si le tableau bouge.
+
+**Micro-chantier du 05/10 fait au passage, et le `grep` prescrit a payé.**
+`service-public.fr` répond **301** vers `service-public.gouv.fr` (vérifié au `curl`
+ce jour ; F10864 et F1669 répondent **200** sur le nouveau domaine). Le journal
+annonçait 2 emplacements : il y en avait **8** — six dans `app/vendre/page.tsx`
+(2 commentaires de provenance, 2 réponses de FAQ, 2 blocs « Source » visibles) et
+deux dans `app/llms.txt/route.ts`. Les 8 sont corrigées ; **12 occurrences du
+nouveau domaine vérifiées sur le HTML rendu de `/vendre`**. La 9ᵉ, dans
+`lib/blog.ts`, est le commentaire qui **documente** la redirection : laissée sur
+l'ancien domaine à dessein.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+1. **Ne pas lier les 12 autres orphelins.** Ils pèsent **200 à 500 mots**. Les
+   lier depuis une page de service enverrait l'autorité vers des pages faibles et
+   signalerait leur importance au moment où elle n'existe pas. L'orphelinat est
+   ici le **symptôme** d'un contenu trop mince, pas la maladie : le remède est de
+   les réécrire ou de les fusionner, pas de les lier. **14 → 12, et c'est le bon
+   chiffre** — les 12 restants sont un backlog de contenu, pas de maillage.
+2. **Ne pas toucher les dates de « Dernière mise à jour » ni les `lastmod`.**
+   Ajouter un lien et une phrase de contexte n'est pas une mise à jour du contenu
+   pour le lecteur : avancer la date serait de l'inflation de fraîcheur, que le
+   brief interdit explicitement (« actualise-le seulement quand tu modifies
+   vraiment le contenu »). **Vérifié : le sitemap local est inerte sur les
+   5 pages touchées** (les 2 seuls écarts avec la production, `/` et `/annonces`,
+   viennent de l'absence de base de données en local, pas du diff).
+3. **Ne pas réécrire `llms.txt`.** Audité : il dérive les 26 articles de
+   `ARTICLES`, il ne peut pas se désynchroniser. Rien à faire.
+4. **Ne pas corriger les 6 `<a>` bruts** repérés par le lint (dont
+   `estimation-immobiliere-lyon:94` → `/estimation-immobiliere-villeurbanne`).
+   Un `<a href="/…">` est un lien crawlable normal : **impact SEO nul**, défaut
+   côté UX seulement. « Ne corrige rien qui fonctionne. »
+5. **Ne pas vider `cout-gestion-locative`** en le fusionnant dans `/faire-gerer`.
+   Consigne du 01/10 : il détient la seule mention du site pour les deux frais
+   fixes (20 €/an, 45 €/lot/an). Il garde son contenu et **cède la requête** par
+   un lien, ce qui règle l'arbitrage sans perte.
+
+**Contrôles avant push.** `npx tsc --noEmit` muet · `npm run build` vert · aucune
+nouvelle erreur de lint (les 24 du dépôt sont pré-existantes, dans `scripts/` et
+`studio/`) · **0 mot collé** sur les 6 pages rendues (5 motifs, 9 288 mots) ·
+**parité FAQ 6/6 sur les 5 pages à FAQ** · les 7 liens servis dans le `<main>`
+avec l'ancre attendue · 8 pages en **HTTP 200** sur le serveur de production local
+· `/estimation`, `lib/dvf.ts`, `lib/estimation.ts` **non touchés**.
+
+**Un défaut de ma propre rédaction, trouvé et corrigé avant le push.** La première
+version écrivait `{points(…)}s` pour obtenir « 1,93 points ». En français le
+pluriel ne commence qu'à 2 : « **1,93 point** » est la forme correcte. Corrigé,
+rebuild, revérifié sur le HTML rendu. C'est le genre de faute qu'aucun contrôle
+structurel n'attrape — seule la relecture du **texte rendu** la voit (leçon du
+04/10, qui se confirme).
 
 ### 2026-10-05 — `plus-value-immobiliere-calcul` : l'article publiait le barème que tout le monde publie, il publie le seuil d'imposition par quartier (212 → 2 571 mots)
 
@@ -4632,985 +4829,184 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : contenu blog** (05/10, `plus-value-immobiliere-calcul`).
-**Angles précédents : audit non-contenu + maillage** (04/10), **contenu — page de
-service** (02/10), **audit non-contenu** (01/10), **contenu — page de service**
-(30/09).
-→ **Le run du mardi 06/10 ne doit donc PAS être un run de contenu blog.** Les
-candidats non-contenu sont, dans cet ordre : la **grappe blog** (maillage, voir
-📌 ci-dessous), les **pistes (f) / (g) / (h)** de la liste de signaux, et
-l'**arbitrage « qui porte COMBIEN COÛTE LA GESTION LOCATIVE ? »**.
+**Angle du dernier run : maillage interne + micro-chantier source** (06/10, la
+grappe blog). **Angles précédents : contenu blog** (05/10), **audit non-contenu +
+maillage** (04/10), **contenu — page de service** (02/10), **audit non-contenu**
+(01/10).
+→ **Le run du mercredi 07/10 doit être un run de CONTENU** (deux runs non-contenu
+sur les trois derniers, et le maillage vient d'être fait deux fois en trois runs).
+Le candidat désigné est **`vendre-sans-agence`** (399 mots) — voir ci-dessous.
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
 
-✅ **CHANTIER DU 05/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — rien à revérifier le
-06/10.** Déploiement constaté ~2 min après le push. La page sert **2 571 mots**,
-**6 H2**, `dateModified` **2026-10-05**, `metaDescription` **147 caractères**,
-**parité FAQ visible ↔ `FAQPage` 6/6 mot pour mot**, **0 mot collé** (contrôle
-strict), et **toute la chaîne de calcul aux valeurs corrigées** (246 822 /
-265 334 / 221 154 / −44 180 / 37 023 ; écarts 23 574 et 52 111 ; seuils 4 365 et
-3 618 ; +23,9 %) — **aucun des chiffres de la première rédaction ne subsiste**.
-JSON-LD servi : `BlogPosting`, `FAQPage`, `BreadcrumbList`, `Organization`,
-`RealEstateAgent`, `ImageObject`.
+⚠️ **CHANTIER DU 06/10 À VÉRIFIER EN PRODUCTION AU PROCHAIN RUN** (le push est
+parti après la mesure du jour ; le déploiement Vercel prend ~2 min mais n'a pas
+été reconstaté). À contrôler sur `https://www.markusimmobilier.fr/…`, c'est
+rapide :
+- les **7 liens** servis dans le `<main>` : `/faire-gerer` → `rentabilite-locative-lyon`
+  et → `gestion-locative-villeurbanne-deleguer-ou-non` ; `/gestion-locative` →
+  `rentabilite-locative-lyon` ; `/honoraires` → `frais-de-notaire-lyon-2026` ;
+  `/vendre` → `plus-value-immobiliere-calcul` ;
+  `/estimation-immobiliere-villeurbanne` → `/acheter` ;
+  `/blog/cout-gestion-locative` → `/faire-gerer` ;
+- les **rendements** affichés : **4,91 %** et **4,62 %** (écart **0,29 point**) sur
+  `/faire-gerer`, **4,47 %–6,40 %** (écart **1,93 point**) sur `/gestion-locative`,
+  et qu'ils **égalent au centième** ceux de `rentabilite-locative-lyon` ;
+- « **1,93 point** » au singulier sur `/gestion-locative` (pas « points ») ;
+- **0 mot collé** sur les 6 pages touchées ;
+- **`service-public.gouv.fr`** partout sur `/vendre` et dans `/llms.txt`, et
+  **plus aucun `service-public.fr`** (hors le commentaire de `lib/blog.ts`) ;
+- les **`lastmod` INCHANGÉS** sur les 5 pages touchées — c'est une décision du
+  06/10, pas un oubli : si le sitemap de production a bougé sur ces lignes, c'est
+  un bug à comprendre.
 
-🟢 **MICRO-CHANTIER PRÊT À FAIRE, REPÉRÉ LE 05/10 (15 minutes) — le domaine de la
-source `service-public` est périmé en production.** `service-public.fr` répond
-**301** vers `service-public.gouv.fr`. Le site cite encore l'ancien domaine à
-**deux endroits identifiés** :
-- `app/vendre/page.tsx`, bloc source de la section « Plus-value » :
-  « Source : service-public.fr, fiche F10864 … consultée le 30 septembre 2026 » ;
-- `app/llms.txt/route.ts`, ligne de `/vendre` : « source service-public.fr F10864 ».
-⚠️ **Faire un `grep` complet avant de corriger** : il peut y en avoir d'autres
-(`grep -rn "service-public\.fr" app/ lib/`). Changement de texte pur, aucun
-risque de rendu. Les sources sont le levier GEO n°1 : citer un domaine qui
-redirige les affaiblit pour rien.
+🔴 **CANDIDAT CONTENU N°1 POUR LE 07/10 — `vendre-sans-agence` (399 mots).**
+Dernier article « argent » mince qui reste, et **orphelin éditorial** (0 lien
+entrant, constaté le 06/10). ⚠️ **Mesurer l'angle AVANT d'écrire** — **cinq angles
+invalidés par la mesure** (29/09, 01/10, 02/10, 04/10, 05/10) — et vérifier qu'il
+ne recopie ni `/vendre` ni `/honoraires`, dont il cite déjà le barème.
+⚠️ **Le motif qui marche est celui du 05/10** : croiser deux faits déjà publiés que
+personne n'a mis ensemble, et publier une donnée propre. Piste à tester, pas à
+tenir pour acquise : le site publie le **net vendeur avec agence** par quartier
+(`/vendre`, 06/10) ; l'article pourrait publier **l'écart réel entre vendre seul et
+vendre avec agence** une fois retirés les frais que le particulier porte quand même
+(diagnostics, mainlevée, diffusion) — mais **rien ne doit être inventé** : s'il n'y
+a pas de source pour ces coûts, l'angle tombe et il faut en mesurer un autre.
+
+🔴 **CANDIDAT CONTENU N°2 — LES 12 ORPHELINS ÉDITORIAUX SONT UN BACKLOG DE
+CONTENU, ET LA LISTE EST ÉTABLIE.** Comptage du 06/10, tous à **0 lien entrant** et
+tous **sous 500 mots** — c'est pour ça que personne ne les lie :
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne` (500),
+`vendre-sans-agence` (399), `lmnp-location-meublee` (495),
+`cout-gestion-locative` (340, **désormais lié vers `/faire-gerer`, à ne pas vider**),
+`dpe-2026-ce-qui-change` (337), `mandat-simple-ou-exclusif` (277),
+`achat-immobilier-lyon-checklist` (241), `vendre-vite-lyon` (233),
+`vendre-appartement-lyon-etapes` (258), `loi-carrez-surface` (222),
+`charges-copropriete` (212), `home-staging-vendre-plus-cher` (207).
+→ **Ne pas les lier pour les lier** (décision motivée du 06/10) : le remède est de
+réécrire ou fusionner. **Un par run de contenu, en mesurant l'angle à chaque fois.**
+📌 **Et une décision de fond à prendre un jour, pas aujourd'hui** : 12 pages de
+200-500 mots indexées et dans le sitemap diluent le signal de qualité du site.
+**La fusion de certaines est à envisager** — mais c'est un changement destructif
+(URLs qui disparaissent, redirections à poser), donc à instruire sérieusement avant
+de toucher quoi que ce soit. Inscrit en « Hypothèses à vérifier ».
+
+🔴 **CANDIDAT N°3 — piste (i), la JUSTESSE des calculs publiés.** Ouverte le 05/10,
+non traitée. Les contrôles du journal vérifient que les nombres sont **là** et que
+la FAQ est en **parité**, jamais qu'un calcul publié **tombe juste sur ses propres
+chiffres affichés**. Le site publie beaucoup de montants dérivés (frais de notaire,
+honoraires, rendements, nets vendeur). 🆕 **Le 06/10 montre que la piste est la
+bonne** : c'est en refaisant un calcul que la divergence d'arrondi de 0,1 point
+entre `/vendre` et l'article plus-value a été vue **avant** d'être publiée. Bon
+candidat pour le prochain run non-contenu (**08/10 au plus tôt**).
+
+🆕 **CANDIDAT N°4 — l'angle « type de page » sur « prix m2 Villeurbanne », et il
+sort de la mesure du 06/10.** Les 9 résultats sont des **portails de données
+nationaux**, zéro agence, zéro éditorial. Deux choses en découlent, et la seconde
+est une mauvaise nouvelle :
+- ce que la SERP récompense n'est pas un contenu mais un **format** : une page de
+  données, à jour, maillée ville par ville ou quartier par quartier ;
+- ⚠️ **`fonciris.fr` publie « 3 571 €/m² » en se disant basé sur la base DVF**,
+  contre **3 567 €/m²** chez nous. **À 4 € près, notre donnée propre n'est plus
+  propre sur cette requête.** L'avantage subsiste sur ce que les portails ne font
+  pas (découpage par **contours de quartiers de la Métropole**, net vendeur, seuil
+  de plus-value, rendement), pas sur la médiane communale.
+→ **À instruire avant d'écrire** : vérifier si `fonciris` publie aussi du **par
+quartier** et sur quels contours. Si oui, l'angle « médiane communale » est mort et
+il faut se replier sur ce que seul le site croise.
+
+📌 **CANDIDAT NON-CONTENU — pistes (g) et (h), priorité basse.**
+- **(g) typographie française du rendu** — espaces insécables avant `%`, `€`, `:`,
+  dans les milliers. ⚠️ **`lib/blog.ts` et les helpers des pages utilisent des
+  espaces ASCII ordinaires** (vérifié à l'octet le 05/10, et les `pct2`/`points`
+  ajoutés le 06/10 suivent la même convention **à dessein**). Un chantier (g) devra
+  trancher **globalement**, jamais au cas par cas, sous peine d'incohérence pire
+  que le défaut.
+- **(h) H2 comme réponses autonomes** — priorité **abaissée** depuis la veille du
+  05/10 (Google dit qu'il n'est pas nécessaire d'écrire pour l'IA ni de hacher le
+  contenu). Garde son sens pour le lecteur, ne doit pas conduire à hacher.
+- **(f) cohérence des chiffres d'une page à l'autre** — **avancée le 06/10 par
+  construction** (les 3 pages de rendement lisent la même source), **pas épuisée**.
+  L'en-tête de `lib/blog.ts` donne la liste des articles qui dérivent de
+  `lib/quartiers.ts` : plan de contrôle tout prêt.
 
 📌 **DEMANDE À FORMULER AU CLIENT (rien à coder) — l'accès Search Console.**
-Google a livré en juin 2026 un **« Generative AI performance report »** dans
-Search Console, qui isole impressions et clics venus des AI Overviews / AI Mode.
-Ce journal ne mesure que des SERP à la main : un proxy pauvre, qui dit « absent »
-sans dire combien d'impressions le site obtient. **Un accès Search Console
-changerait la qualité de l'étape 2 pour tous les runs suivants.** C'est la
-demande au client la plus rentable à ce stade.
+Inchangé et toujours la demande la plus rentable. Google a livré en juin 2026 un
+**« Generative AI performance report »** qui isole impressions et clics venus des
+AI Overviews / AI Mode. Ce journal ne mesure que des SERP à la main : un proxy
+pauvre, qui dit « absent » sans dire combien d'impressions le site obtient.
+🆕 **Le 06/10 en donne l'illustration la plus nette** : 25 runs disent « absent »
+sur « agence immobilière Villeurbanne » sans qu'on sache si le site est 11ᵉ ou
+80ᵉ, ni s'il gagne des impressions. **On pilote à l'aveugle sur la seule métrique
+qui compte.**
 
-📌 **CANDIDAT NON-CONTENU N°1 — la grappe blog, seule grappe restée à la
-profondeur éditoriale 3-4** (inchangé depuis le 04/10, non traité). Le 04/10 a
-relié la grappe locale et la grappe commerciale ; **la grappe blog porte encore
-les 22 pages de profondeur 4**. Levier propre, sans toucher la home : faire
-pointer les pages de service déjà en profondeur 1-2 vers les articles de fond qui
-les documentent. ⚠️ `/estimation` **hors périmètre** (consigne client). Restent
-`/faire-gerer` (2 liens sortants), `/gestion-locative` (4) et `/honoraires` (4) —
-les trois pages les plus avares du site.
-📌 **Et deux liens précis à poser, repérés et toujours non faits** :
-`/estimation-immobiliere-villeurbanne` (priorité 0.9) lie `/vendre` mais **pas
-`/acheter`** (repéré le 04/10) ; et **l'article réécrit le 05/10 n'est lié depuis
-aucune page de service** alors qu'il porte désormais une donnée propre
-(`/vendre` est le candidat naturel, section « Plus-value »).
-
-🔴 **CANDIDAT CONTENU N°1 POUR PLUS TARD — `vendre-sans-agence` (349 mots).**
-Dernier article « argent » mince. ⚠️ **Mesurer l'angle avant d'écrire** (cinq
-angles invalidés par la mesure : 29/09, 01/10, 02/10, 04/10, 05/10) et vérifier
-qu'il ne recopie ni `/vendre` ni `/honoraires` — il cite déjà leur barème.
-⚠️ **Et appliquer la règle confirmée par la veille du 05/10** : un angle qui ne
-publie pas de donnée propre est faible, quel que soit le volume écrit. Le motif
-qui marche est celui du 05/10 — **croiser deux faits déjà publiés que personne
-n'a mis ensemble**.
-
-🔴 **CANDIDAT N°2 — l'arbitrage « qui porte COMBIEN COÛTE LA GESTION LOCATIVE ? »,
-laissé ouvert le 01/10 et toujours non traité.** Trois URLs y répondent :
-`/faire-gerer` (1 772 mots), `/blog/cout-gestion-locative` (276 mots) et
-`/honoraires`. Recouvrement mesuré **sous le seuil**, mais même motif.
-`cout-gestion-locative` détient la seule mention des deux frais fixes (20 €/an,
-45 €/lot/an) : **ne pas le vider.** Décision à prendre : quelle URL revendique la
-requête, et les deux autres la lui donnent-elles explicitement ?
-
-🆕 **LISTE DE SIGNAUX — état au 05/10.** Les deux premières listes sont épuisées
-((a)+(d) le 01/10 → 3 défauts ; (b) saine et (c) → 1 défaut majeur le 04/10). La
-troisième liste porte sur le **texte visible rendu** et sur les **chiffres**, et
-le 05/10 en a entamé une partie :
-- **(f) cohérence des chiffres d'une page à l'autre** — **entamée, non épuisée.**
-  Un premier point validé le 05/10 : la médiane 2022 reconstituée (3 981 €/m²)
-  coïncide avec celle déjà publiée. **Mais l'audit systématique reste à faire**, et
-  l'en-tête de `lib/blog.ts` donne la liste exacte des articles qui dérivent de
-  `lib/quartiers.ts` — c'est le plan de contrôle tout prêt.
-- **(g) typographie française du rendu** — espaces insécables avant `%`, `€`, `:`,
-  dans les milliers, guillemets, tirets. ⚠️ **Noter que `lib/blog.ts` utilise des
-  espaces ASCII ordinaires** dans les milliers (vérifié à l'octet le 05/10) : c'est
-  la convention du fichier, un chantier (g) devra trancher globalement et **jamais
-  au cas par cas**, sous peine d'incohérence pire que le défaut.
-- **(h) lisibilité des H2 comme réponses autonomes**, page par page. ⚠️ **À
-  reformuler après la veille du 05/10** : Google dit qu'il n'est **pas nécessaire**
-  d'écrire pour l'IA ni de hacher le contenu. L'audit (h) garde son sens pour le
-  **lecteur** et les extraits enrichis, mais ne doit **pas** conduire à hacher le
-  texte. Priorité abaissée.
-- 🆕 **(i) justesse des calculs publiés, et non seulement leur présence.** Piste
-  ouverte par l'erreur du 05/10 (voir « Erreurs commises et corrigées ») : les
-  contrôles du journal vérifient que les nombres sont **là** et que la FAQ est en
-  **parité**, jamais qu'un calcul publié **tombe juste sur ses propres chiffres
-  affichés**. Le site publie beaucoup de montants dérivés (frais de notaire,
-  honoraires, rendements, nets vendeur) : **à auditer en refaisant les calculs.**
-  Candidat sérieux pour un run non-contenu.
-
-✅ **Signaux mesurés SAINS, ne pas les réauditer** — 05/10 : `robots.txt` et
-l'accès des crawlers d'IA (`OAI-SearchBot` autorisé par le `User-Agent: *` /
-`Allow: /`). — 04/10 : chaîne de redirection et cohérence d'hôte, 404, slash
-final, 8 routes `/api/`, `/admin` · `/admin/pages` · `/radar`, le `[slug]`
-attrape-tout, profondeur tous-liens (2 clics max, 0 orpheline). — 01/10 : aucune
-`<meta description>` manquante ni dupliquée, 53 `<h1>` distincts. — 30/09 : 53
-canonicals, aucune image sans `alt` dans le `<main>`, aucun lien interne mort.
+✅ **Signaux mesurés SAINS, ne pas les réauditer** — 06/10 : `llms.txt` (dérivé de
+`ARTICLES`, ne peut pas se désynchroniser) ; parité FAQ 6/6 sur `/honoraires`,
+`/vendre`, `/faire-gerer`, `/gestion-locative`,
+`/estimation-immobiliere-villeurbanne`. — 05/10 : `robots.txt` et l'accès des
+crawlers d'IA (`OAI-SearchBot` autorisé par `User-Agent: *` / `Allow: /`). —
+04/10 : chaîne de redirection et cohérence d'hôte, 404, slash final, 8 routes
+`/api/`, `/admin` · `/admin/pages` · `/radar`, le `[slug]` attrape-tout,
+profondeur tous-liens (2 clics max, 0 orpheline). — 01/10 : aucune
+`<meta description>` manquante ni dupliquée, 53 `<h1>` distincts. — 30/09 :
+53 canonicals, aucune image sans `alt` dans le `<main>`, aucun lien interne mort.
 
 🔴 **CIBLES DU BRIEF RETIRÉES PAR LA MESURE — cinq, et ne plus les remesurer.**
-« Agence immobilière Charpennes Villeurbanne » (01/10, requête de marque) ·
-les deux formulations de l'angle « apport » (01 et 02/10, intention
-transactionnelle) · « vendre appartement Villeurbanne » (04/10, 9 listings, zéro
-éditorial — à mesurer deux fois par mois au plus) · 🆕 **« agence immobilière
-Gratte-Ciel Villeurbanne » (05/10, requête de marque confirmée** : les 9 résultats
-sont des agences dont la raison commerciale contient « Villeurbanne Gratte Ciel »,
-ou des annuaires qui les listent**).**
-→ **Les requêtes qui restent réellement jouables** sont les deux mesurées chaque
-run (« agence immobilière Villeurbanne », « estimation immobilière Villeurbanne »,
-absentes depuis le début) et « prix m2 Villeurbanne », **la seule où le site a une
-donnée propre que les concurrents n'ont pas**. ⚠️ **Elle n'a pas été mesurée
-aujourd'hui** (deux mesures sur trois ont servi à clore une hypothèse) : **à
-mesurer le 06/10.**
+« Agence immobilière Charpennes Villeurbanne » (01/10, requête de marque) · les
+deux formulations de l'angle « apport » (01 et 02/10, intention transactionnelle) ·
+« vendre appartement Villeurbanne » (04/10, 9 listings, zéro éditorial — deux
+mesures par mois au plus) · « agence immobilière Gratte-Ciel Villeurbanne »
+(05/10, requête de marque confirmée).
+→ **Les requêtes qui restent jouables** sont les deux mesurées chaque run
+(« agence immobilière Villeurbanne » — absente 25/25 — et « estimation immobilière
+Villeurbanne »). ⚠️ 🆕 **« prix m2 Villeurbanne » n'est PLUS la cible privilégiée** :
+mesurée le 06/10, elle sert **9 portails de données nationaux sur 9**, et un
+concurrent y publie déjà une médiane DVF à 4 € de la nôtre. **À ne pas retirer
+pour autant** (c'est la SERP la plus proche de nos données), mais à mesurer **une
+fois par semaine, pas chaque run**, et sans en attendre de position à court terme.
 
 ⚠️ **Défauts mineurs relevés et TOUJOURS NON corrigés, volontairement** :
 `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
-`<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
-dépassent 70 caractères (01/10) — ⚠️ **et le titre réécrit le 05/10 est long
-(81 caractères, mesuré)** : il entre dans ce lot, assumé, parce qu'il place
-« Villeurbanne » et « seuil d'imposition » devant. Sa `metaDescription`, elle, a
-été **ramenée de 177 à 147 caractères** avant le push (au-delà de ~160 Google
-tronque) — contrôle à ajouter au réflexe : **mesurer la longueur du `title` ET de
-la `metaDescription` de toute page qu'on réécrit**, c'est deux `len()`.
-
-**Angle du dernier run : audit non-contenu + maillage interne** (04/10, pistes
-(b) et (c), puis les 10 liens grappe locale ↔ grappe commerciale).
-**Angles précédents : contenu — page de service** (02/10), **audit non-contenu**
-(01/10), **contenu — page de service** (30/09), **contenu blog** (29/09).
-→ **Le run du lundi 05/10 peut donc être un run de CONTENU.**
-
-🔴 **PRIORITÉ ABSOLUE DU 05/10, AVANT DE CHOISIR LE CHANTIER : LA VEILLE
-HEBDOMADAIRE.** La dernière date du 28/09, elle aura **une semaine de retard**.
-Elle est due le lundi et a déjà été repoussée six jours de suite. **Ne pas la
-sauter une septième fois.** Sources primaires uniquement (blog Google Search
-Central, documentation OpenAI/Perplexity, schema.org) — pas de blogs de contenu
-recyclé. Consigner dans « Techniques apprises » avec source et date.
-
-🔴 **CANDIDAT N°1 POUR LE 05/10 — `plus-value-immobiliere-calcul` (212 mots),
-le plus mince des articles « argent » qui restent.** ⚠️ Réserve héritée et
-toujours valable : `/vendre` publie depuis le 30/09 le volet plus-value **avec
-ses sources** (exonération de la résidence principale, 19 % + 17,2 %, surtaxe,
-forfaits 7,5 % et 15 %, exonérations à 22 et 30 ans, service-public.fr F10864).
-Cet article doit donc prendre un angle **strictement disjoint** — le calcul pas à
-pas et les **abattements année par année**, c'est-à-dire le tableau que `/vendre`
-ne publie pas — ou rester court et servir de renvoi. **Ne pas le réécrire en
-recopiant `/vendre`.** Le gabarit propre pour ce cas est celui du 01/10 :
-ré-anguler + renvoyer explicitement, plutôt qu'allonger.
-⚠️ **Et mesurer l'angle avant d'écrire** : trois angles ont été invalidés par la
-mesure (29/09, 01/10, 02/10) et un quatrième aujourd'hui. Le motif à tester est
-celui du 29/09 : « règle de droit générique + nom de ville » ne marche pas ; ce
-qui marche est **publier ce que personne d'autre ne publie**.
-
-🔴 **CANDIDAT N°2 — `vendre-sans-agence` (349 mots).** Deuxième article « argent »
-mince. ⚠️ Même précaution : mesurer l'angle, et vérifier qu'il ne recopie ni
-`/vendre` ni `/honoraires`.
-
-🔴 **CANDIDAT N°3 — l'arbitrage « qui porte COMBIEN COÛTE LA GESTION
-LOCATIVE ? », laissé ouvert le 01/10 et non traité depuis.** Trois URLs y
-répondent : `/faire-gerer` (1 772 mots), `/blog/cout-gestion-locative`
-(276 mots) et `/honoraires`. Recouvrement mesuré **sous le seuil**, donc ce
-n'est pas le cas d'école du 01/10, mais c'est le même motif.
-`cout-gestion-locative` détient la seule mention du site pour les deux frais
-fixes (20 €/an, 45 €/lot/an) : **ne pas le vider**. Décision à prendre : quelle
-URL revendique la requête, et les deux autres la lui donnent-elles explicitement ?
-
-📌 **CANDIDAT NON-CONTENU N°1 POUR PLUS TARD — la grappe blog, seule grappe
-restée à la profondeur éditoriale 3-4.** Le chantier du 04/10 a traité la grappe
-locale ↔ la grappe commerciale ; **la grappe blog n'a pas été touchée** et c'est
-elle qui porte les 22 pages de profondeur 4. Le levier propre, qui ne touche pas
-la home : faire pointer les **pages de service déjà à la profondeur 1-2**
-(`/estimation`, `/faire-gerer`, `/gestion-locative`, `/honoraires`) vers les
-articles de fond qui les documentent. ⚠️ `/estimation` est **hors périmètre**
-(consigne client : ne pas toucher à l'outil). Restent `/faire-gerer`
-(2 liens sortants seulement), `/gestion-locative` (4) et `/honoraires` (4) —
-les trois pages les plus avares du site en liens sortants.
-📌 **Et un oubli à rattraper, repéré le 04/10 et non fait** :
-`/estimation-immobiliere-villeurbanne` (priorité 0.9, profondeur 3) lie `/vendre`
-mais **pas `/acheter`** — la paire est incomplète. Un lien, à poser là où la
-phrase l'appelle.
-
-✅ **PISTES (b) ET (c) : AUDITÉES LE 04/10, LA NOUVELLE LISTE DE SIGNAUX EST
-DONC ÉPUISÉE À SON TOUR.** (a) + (d) le 01/10 → 3 défauts ; (b) le 04/10 →
-**saine** ; (c) le 04/10 → **1 défaut structurel majeur** (profondeur éditoriale).
-Bilan des deux listes : **6 élargissements sur 7 ont produit une trouvaille.**
-🆕 **Nouvelle liste à ouvrir, et le 04/10 indique par où commencer** : tous les
-audits menés jusqu'ici portent sur la **structure** (titres, liens, JSON-LD,
-dates, en-têtes). Le 04/10 est le premier à contrôler le **texte visible rendu**,
-et il a trouvé 20 défauts servis en production que 20 runs n'avaient pas vus.
-Pistes, par ordre d'intérêt estimé : (f) **cohérence des chiffres d'une page à
-l'autre** — le même fait chiffré servi avec deux valeurs différentes (le défaut
-du 27/09, jamais audité systématiquement, et le site publie beaucoup de chiffres
-dérivés) ; (g) **typographie française du texte rendu** — espaces insécables
-avant `%`, `€`, `:` et dans les milliers, guillemets, tirets (le 04/10 montre que
-le rendu diverge du code) ; (h) **lisibilité réelle des H2 en tant que réponses
-autonomes**, page par page, contre l'exigence GEO du brief.
-
-🔴 **REQUÊTES À RECLASSER — mesuré le 04/10.** « Vendre appartement Villeurbanne »
-rend **9 pages de listings, zéro éditorial** : requête **transactionnelle**, même
-motif que `/acheter` le 02/10. **Ne plus en attendre de position** ; la mesurer
-deux fois par mois au plus. Avec « agence immobilière Charpennes Villeurbanne »
-(requête de marque, retirée le 01/10) et les deux formulations de l'angle
-« apport » (closes les 01 et 02/10), cela fait **quatre cibles du brief d'origine
-dont la mesure a établi qu'aucun contenu ne les prendra**. 📌 **Reste non mesuré
-une fois** : « agence immobilière Gratte-Ciel Villeurbanne » peut souffrir du
-même biais de marque (Human Immobilier exploite une agence « Villeurbanne Gratte
-Ciel », en 1ʳᵉ position le 04/10).
-
-✅ **Signaux mesurés SAINS, ne pas les réauditer** — 04/10 : chaîne de
-redirection et cohérence d'hôte (sitemap, canonicals, `og:url`, `robots.txt`,
-`llms.txt` tous en `www`), 404 (vrai code + `noindex`), slash final, 8 routes
-`/api/` (405/401, aucune fuite), `/admin` · `/admin/pages` · `/radar`, le
-`[slug]` attrape-tout et la présence des pages de l'éditeur dans le sitemap,
-profondeur tous-liens (2 clics max, 0 orpheline). — 01/10 : aucune
-`<meta description>` manquante ni dupliquée, 53 `<h1>` distincts d'une page à
-l'autre. — 30/09 : 53 canonicals, aucune image sans `alt` dans le `<main>`,
-aucun lien interne mort, cohérence des ancres.
-
-⚠️ **Défauts mineurs relevés et TOUJOURS NON corrigés, volontairement** :
-`/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
-`<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
-dépassent 70 caractères (01/10).
-
-**Angle du dernier run : contenu — page de service** (02/10, `/acheter`).
-**Angles précédents : audit non-contenu** (01/10), **contenu — page de
-service** (30/09), **contenu blog** (29/09), **technique** (28/09).
-→ **Le run du samedi 03/10 ne doit donc PAS être un run de contenu long.** Les
-deux candidats non-contenu disponibles sont, dans cet ordre : les pistes (b) et
-(c) de la liste de signaux (voir plus bas), et l'arbitrage « qui porte COMBIEN
-COÛTE LA GESTION LOCATIVE ? » (candidat n°2 ci-dessous).
-⚠️ **Et la veille hebdomadaire est due le lundi 05/10** — la dernière date du
-28/09, elle aura une semaine de retard. Ne pas la sauter.
-
-🔴 **CANDIDAT N°1 POUR LE 03/10 — les pistes (b) et (c), seuls signaux jamais
-audités qui restent.** (b) **ce que renvoie le site aux formats non-HTML** :
-404, `/api/`, redirections, `/_next/` exposé. ⚠️ **Et il y a désormais une
-raison concrète de commencer par là** : le 02/10 a découvert que
-`markusimmobilier.fr` **sans `www` répond 308 sur toutes les URLs**, l'hôte
-canonique étant `www.markusimmobilier.fr`. Une redirection de ce genre est
-normale, mais personne n'a jamais audité la **chaîne complète** (combien de
-sauts, quel code, les canonicals pointent-ils bien vers l'hôte `www`, le
-sitemap aussi, `robots.txt` aussi). (c) **profondeur de clic depuis la home**
-pour chacune des 53 pages.
-
-~~🔴 **CANDIDAT N°1 POUR LE 02/10 — `/acheter`, mais PAS sur l'angle prévu
-hier.**~~ — **FAIT le 2026-10-02** (278 → 1 741 mots). ⚠️ **Et la
-reformulation demandée a été mesurée puis REJETÉE elle aussi** : « combien
-d'apport pour un T2 à Gratte-Ciel » rend neuf portails d'annonces, intention
-transactionnelle. **L'angle « apport » est clos dans ses deux formulations : ne
-plus le remesurer.** L'angle retenu à la place — le **budget total**, prix signé
-plus frais, publié parce que le résumé du moteur admet lui-même n'avoir aucune
-source sur ce montant. Consigne d'origine, conservée pour mémoire :
-La page sert **296 mots**, 5 H2 dont un seul pose une question, aucune FAQ,
-aucun chiffre, aucune date (son `<h1>` a été corrigé le 01/10, son contenu non).
-C'est la dernière page commerciale restée au niveau de rédaction d'origine.
-⚠️ **L'angle proposé le 30/09 — « ce que l'acheteur décaisse réellement » — a
-été mesuré le 01/10 et il ne tient pas tel quel** : la requête
-`quel apport faut-il pour acheter un appartement à Villeurbanne…` rend
-**9 résultats nationaux, zéro source locale**, et le moteur y répond en
-fourchettes nationales sans citer Villeurbanne. C'est le **troisième cas** du
-motif invalidé le 29/09. → **Reformulation à tester avant d'écrire** : ne pas
-viser la *règle* (« quel apport ? ») mais le *montant* que seuls les prix signés
-villeurbannais permettent de donner — par exemple « **combien faut-il d'apport
-pour un T2 à Gratte-Ciel / Cusset / Charpennes** », c'est-à-dire l'apport en
-euros par quartier et par typologie, calculé sur les médianes DVF et le taux de
-DMTO voté par la Métropole de Lyon (déjà publié le 29/09). Mesurer **cette**
-formulation-là d'abord. ⚠️ Rappel toujours valable : l'angle acheteur est déjà
-très couvert (`ou-acheter-villeurbanne-quartiers` 2 236 mots,
-`frais-de-notaire-lyon-2026` 2 728 mots, `achat-immobilier-lyon-checklist`,
-`faire-offre-achat`, `compromis-de-vente-delais`, `capacite-emprunt-immobilier`).
-
-🔴 **CANDIDAT N°2 — l'arbitrage « qui porte COMBIEN COÛTE LA GESTION
-LOCATIVE ? », laissé ouvert le 01/10.** Trois URLs répondent à cette question :
-`/faire-gerer` (H2 « Combien coûte la gestion locative d'un appartement à
-Villeurbanne ? », 1 772 mots), `/blog/cout-gestion-locative` (276 mots) et
-`/honoraires` (le barème lui-même). Le recouvrement mesuré reste **sous le
-seuil**, donc ce n'est pas le cas d'école du 01/10 — mais c'est le même motif.
-`cout-gestion-locative` détient la seule mention du site pour les deux frais
-fixes (20 €/an, 45 €/lot/an) : **ne pas le vider**. La décision à prendre est
-« quelle URL revendique la requête, et les deux autres la lui donnent-elles
-explicitement ? », sur le modèle de la résolution du 01/10.
-
-🔴 **CANDIDAT N°3 — les deux articles « argent » minces qui restent** :
-`vendre-sans-agence` (349 mots), `plus-value-immobiliere-calcul` (212).
-⚠️ Réserve héritée et toujours valable : `/vendre` publie depuis le 30/09 le
-volet plus-value avec ses sources, donc `plus-value-immobiliere-calcul` doit
-soit prendre un angle strictement disjoint (le calcul pas à pas, les abattements
-année par année), soit rester court et servir de renvoi. **Ne pas le réécrire en
-recopiant `/vendre`.** Le 01/10 donne le gabarit propre pour ce genre de cas :
-ré-anguler + renvoyer explicitement, plutôt qu'allonger.
-
-🔴 **REQUÊTE À RETIRER DES CIBLES — mesuré le 01/10.**
-« Agence immobilière Charpennes Villeurbanne » (listée dans le brief du client)
-est une **requête de marque** : les 9 résultats portent tous sur l'« AGENCE
-CHARPENNES ROLIN BAINSON », concurrent dont le nom commercial contient
-« Charpennes ». Ne plus la viser, ne plus la remesurer. Sur ce quartier, viser
-prix / estimation / rendement. **À vérifier une fois sur Gratte-Ciel** : si un
-concurrent porte « Gratte-Ciel » dans son nom (Human Immobilier a une agence
-« Villeurbanne Gratte Ciel », vue en page 1 le 30/09 et le 01/10), la requête
-« agence immobilière Gratte-Ciel Villeurbanne » peut souffrir du même biais —
-non mesuré à ce jour.
-
-✅ **LA NOUVELLE LISTE DE SIGNAUX EST OUVERTE, ET SES DEUX PREMIÈRES PISTES
-ONT PAYÉ.** Pistes (a) cohérence `title`/`h1`/intention et (d) cannibalisation :
-**auditées le 01/10, trois défauts trouvés et corrigés** (un `<h1>` servi sur
-deux pages, une collision de titre à 0,78, cinq titres à marque doublée). Restent
-**non auditées** : (b) **ce que renvoie le site aux formats non-HTML** (404,
-`/api/`, redirections, `/_next/` exposé) ; (c) **profondeur de clic depuis la
-home** pour chacune des 53 pages. À elles deux, elles sont le prochain candidat
-non-contenu. 📌 **Et une piste (e) née de l'audit du 01/10** : la cohérence
-`<h1>` ↔ `<title>` reste faible sur **plusieurs pages de service** dont le `<h1>`
-est un slogan sans sujet (`/faire-gerer` « Confiez la gestion à une agence
-locale. », `/gestion-locative` « Déléguer, ou gérer soi-même ? », `/contact`
-« Une question ? Parlons-en. », `/honoraires` « Nos honoraires. »). Ce ne sont
-**pas** des doublons et ce n'est **pas** un défaut mesuré — c'est un choix de DA
-qu'il faudrait arbitrer avec le client avant d'y toucher. Inscrit en
-« Hypothèses à vérifier », pas en chantier.
-
-✅ **Signaux mesurés SAINS le 01/10 sur les 53 pages — ne pas les réauditer** :
-aucune `<meta description>` manquante, aucune dupliquée (53 distinctes), et
-après correction **53 `<h1>` distincts d'une page à l'autre** (le 30/09 n'avait
-testé que l'unicité *par page*, voir « Erreurs commises et corrigées »).
-
-✅ **Signaux mesurés SAINS le 30/09 — ne pas les réauditer** : 53 canonicals
-(un par page), aucune image sans `alt` dans le `<main>`, aucun lien interne mort,
-cohérence des ancres (zéro ancre générique, zéro ancre vide). Seul défaut mineur
-relevé et **toujours non corrigé** : `/equipe` enchaîne `h1` sur `h3`.
-
-~~🔴 **CANDIDAT N°1 POUR LE 01/10 — `/acheter`, le jumeau non traité de la page
-d'aujourd'hui.**~~ — **périmé le 01/10 : l'angle proposé a été mesuré et invalidé, voir le candidat n°1 ci-dessus. Conservé pour mémoire :** Mesuré ce matin sur la page servie : **310 mots**, 5 H2 dont un
-seul pose une question, **aucune FAQ**, **aucun chiffre**, **aucune date**, un
-seul JSON-LD utile. C'est exactement le profil qu'avait `/vendre` avant
-aujourd'hui, et c'est **la dernière page commerciale du site restée au niveau
-de rédaction d'origine**. ⚠️ **Piège à éviter, et il est sérieux** : l'angle
-acheteur est **déjà très couvert** — `ou-acheter-villeurbanne-quartiers`
-(2 236 mots, budget → surface par quartier), `frais-de-notaire-lyon-2026`
-(2 728 mots, la facture d'acquisition), `achat-immobilier-lyon-checklist`,
-`faire-offre-achat`, `compromis-de-vente-delais`, `capacite-emprunt-immobilier`.
-**Ne pas ouvrir ce chantier sans avoir d'abord trouvé l'angle qui reste** ; la
-symétrie avec aujourd'hui en suggère un, à vérifier : **ce que l'acheteur
-décaisse réellement le jour de l'acte** (prix + frais de notaire + garantie du
-prêt + frais de dossier), c'est-à-dire l'apport minimum réel par quartier — le
-miroir exact du « net vendeur ». À mesurer avant d'écrire.
-
-🔴 **CANDIDAT N°2 — les trois articles « argent » minces qui restent**, dans
-cet ordre : `vendre-sans-agence` (349 mots), `cout-gestion-locative` (294),
-`plus-value-immobiliere-calcul` (212). ⚠️ Deux réserves héritées et toujours
-valables : `cout-gestion-locative` est **le plus risqué** (l'angle « coût de la
-gestion » a déjà été pris les 18 et 21/09), et **`plus-value-immobiliere-calcul`
-vient de changer de statut** : `/vendre` publie désormais le volet plus-value
-avec ses sources, donc cet article doit soit prendre un angle strictement
-disjoint (le calcul pas à pas, les abattements année par année), soit être
-laissé court et servir de renvoi. **Ne pas le réécrire en recopiant `/vendre`.**
-
-✅ **LE DERNIER SIGNAL DE LA LISTE DU 20/09 EST AUDITÉ, ET LA LISTE EST CLOSE.**
-La cohérence des ancres de liens internes a été mesurée le 30/09 sur les 421
-liens du `<main>` des 53 pages de production : **zéro ancre générique, zéro
-ancre vide, une seule ancre contradictoire** (corrigée le jour même). **Ne pas
-rouvrir ce chantier.** C'est aussi le premier des cinq élargissements de la
-liste des signaux qui ne produit **pas** de trouvaille substantielle (og:image
-20/09, maillage 22/09, fraîcheur 24/09, page experience 28/09, ancres 30/09 →
-4 sur 5). **La règle « élargir la liste des signaux audités » reste rentable,
-mais sa liste d'origine est épuisée : il faut en construire une nouvelle.**
-Pistes non encore auditées, par ordre d'intérêt estimé : (a) **cohérence
-`<title>` ↔ `<h1>` ↔ intention de la requête** page par page ; (b) **ce que
-renvoie le site aux formats non-HTML** (404, `/api/`, redirections) ; (c)
-**profondeur de clic depuis la home** pour chacune des 53 pages ; (d)
-**cannibalisation** : deux pages qui visent la même requête.
-
-✅ **Quatre signaux mesurés SAINS le 30/09 — ne pas les réauditer** : 53 `<h1>`
-uniques, 53 canonicals (un par page), aucune image sans `alt` dans le `<main>`,
-aucun lien interne mort. Seul défaut mineur relevé et **non corrigé** :
-`/equipe` enchaîne `h1` sur `h3`.
-
-~~**Candidat n°1 du 29/09 — le passif des articles minces, volet « argent »**~~
-— **FAIT le 2026-09-29 sur `frais-de-notaire-lyon-2026`** (349 → 2 519 mots).
-Le choix parmi les quatre candidats « argent » a été tranché par la SERP, pas par
-le backlog : une agence villeurbannaise classe déjà sur cette requête avec un
-simulateur, et notre page **esquivait** la question (« vérifiez le taux du Rhône »
-— or Villeurbanne relève de la **Métropole de Lyon**, pas du département). Publié :
-le taux voté (**5,00 % / 4,50 % primo-accédant**, source DGFiP téléchargée), et
-les frais **calculés à l'euro près pour les 7 quartiers** sur les médianes DVF.
-→ **Les trois autres candidats « argent » restent ouverts** et dans cet ordre :
-`vendre-sans-agence` (336 mots), `cout-gestion-locative` (284),
-`plus-value-immobiliere-calcul` (203). ⚠️ `cout-gestion-locative` est **le plus
-risqué des trois** : l'angle « coût de la gestion » a déjà été pris les 18 et
-21/09, il faudra lui en trouver un autre ou le laisser.
-
-~~🔴 **PETIT CHANTIER DÉSIGNÉ POUR LE 30/09**~~ — **FAIT le 2026-09-30, par l'option sûre des deux** (requalification en « hypothèse volontairement basse » + renvoi au calcul du 29/09 + « au moins » dans l'annonce de tête ; aucun autre chiffre touché, `updated` au 30/09). Consigne d'origine, conservée pour mémoire :
-aligner `rentabilite-locative-lyon` sur le calcul exact du 29/09. Il applique
-**7,5 %** de frais de notaire en le présentant comme « **milieu** de la fourchette
-de l'ancien » ; le calcul sourcé du 29/09 montre que taxes + émoluments seuls
-pèsent déjà **7,49 % à 7,72 %** aux prix villeurbannais, débours non compris.
-Ce n'est pas un faux (l'article annonce 7,5 % comme hypothèse), mais la
-qualification « milieu de la fourchette » est à corriger. **Attention : ce n'est
-PAS un simple remplacement de mot.** Changer le taux oblige à recalculer la
-colonne « frais de notaire inclus » des 7 quartiers, le rendement communal
-(4,57 %), le cas T2 (4,22 %, 182 750 €, 12 750 €), la ligne « −0,32 point » et
-les deux mentions de l'en-tête/excerpt. **Soit on recalcule tout proprement, soit
-on se contente de requalifier 7,5 % en « hypothèse basse, volontairement
-prudente » et on le dit** — la seconde option est sûre et tient en trois phrases.
-Ne pas laisser l'article dans un état mi-recalculé.
-
-🟢 **HYPOTHÈSE DU 28/09 : TRANCHÉE le 29/09, Vercel n'écrase rien.** Les en-têtes
-`Cache-Control` posés dans `next.config.ts` sont bien servis en production
-(`public, max-age=604800, stale-while-revalidate=86400` sur la vidéo du hero et
-sur le logo SVG), la photo d'équipe sort en `image/webp` à **53 404 octets**, et
-la carte s'affiche. **Le passage par `vercel.json` est inutile : ne pas ouvrir ce
-chantier.**
-
-🔴 **ÉCHÉANCE DU 15/09 : TOMBÉE le 29/09, et la thèse est INVALIDÉE.** Sur
-`qui paie les honoraires d'agence immobilière vente Villeurbanne` : 9 liens,
-**aucun de `markusimmobilier.fr`**, et un résumé de moteur qui ne cite **aucune
-source locale** et conclut « Ces informations s'appliquent à l'ensemble de la
-France, y compris à Villeurbanne ». **Ne pas rouvrir de chantier visant ce type
-de requête** (« règle de droit générique + nom de ville ») : le moteur n'y
-cherche pas de source locale. Le 29/09 montre l'alternative qui marche —
-publier ce que personne d'autre ne publie (un taux voté localement, un prix
-signé par quartier).
-
-~~**Angle du dernier run : contenu blog** (29/09).~~ — **périmé, remplacé
-ci-dessous.**
-
-~~**Angle du dernier run : audit non-contenu — métadonnées et cannibalisation**
-(01/10). → le run du 02/10 peut être un run de CONTENU, candidat n°1 `/acheter`
-après mesure de la reformulation.~~ — **suivi le 02/10 : la reformulation a été
-mesurée et rejetée, le chantier `/acheter` a quand même été fait, sur un angle
-décidé par un critère GEO (le moteur admet n'avoir aucune source sur le
-montant) et non par un espoir de position. L'alternance à jour est inscrite en
-tête de section.**
-
-~~**Angle du dernier run : contenu — page de service** (30/09, `/vendre`).
-**Angles précédents : contenu blog** (29/09), **technique** (28/09).
-→ **Le run du jeudi 01/10 devrait donc être non-contenu**, et le candidat
-non-contenu de la liste du 20/09 est épuisé (voir plus haut). **Deux issues
-honnêtes** : ouvrir un signal de la nouvelle liste (a → d ci-dessus) et
-n'écrire que s'il révèle un défaut ; ou, s'il ne révèle rien, prendre le
-candidat n°1 contenu (`/acheter`) **après avoir mesuré son angle libre**.
-Ne pas fabriquer un chantier technique pour respecter l'alternance : le 30/09
-a montré que l'audit peut revenir sain, et c'est un résultat, pas un échec.~~ — **suivi le 01/10 : la première issue a été prise (piste (a)+(d) de la nouvelle liste), et l'audit a trouvé trois défauts.**
-→ **Le run du mercredi 30/09 ne doit donc PAS être un run de contenu long.** Le
-petit chantier ci-dessus (`rentabilite-locative-lyon`) est du contenu mais tient
-en quelques phrases : il peut être fait **en plus**, pas **à la place**.
-~~→ **Candidat non-contenu n°1 pour le 30/09** : **la cohérence des ancres de liens
-internes** — c'est le **dernier** signal jamais audité de la liste du 20/09
-(même page atteinte par des ancres contradictoires, ancres génériques du type
-« cliquez ici », ancre qui promet autre chose que la cible). Les veilles du 15/09
-et du 28/09 mettent toutes deux le maillage interne dans ce qui corrèle
-réellement avec la citation. **Quatrième fois sur cinq qu'élargir la liste des
-signaux audités produit une trouvaille** — après aujourd'hui, la liste sera
-épuisée et il faudra en inventer une nouvelle.~~ — **FAIT le 30/09 : audit sain, un seul défaut d'une ligne, liste close.**
-
-~~1. `<h1>` sur la home~~ — **fait au run n°2 du 2026-09-07.**
-~~2. `logo` + `geo` dans `RealEstateAgent`~~ — **fait au run n°2 du 2026-09-07.**
-~~3. Page dédiée « estimation immobilière Villeurbanne »~~ — **faite le 2026-09-08.**
-~~4. Article `ou-acheter-villeurbanne-quartiers`~~ — **réécrit le 2026-09-09.**
-~~5. Canonicals des pages légales + `/signin` noindex~~ — **fait le 2026-09-10**
-(le canonical n'était pas manquant mais **faux** : il pointait vers la home).
-~~6. Liens dans le corps des articles de blog~~ — **fait le 2026-09-10**
-(syntaxe `[texte](href)` + 11 liens posés).
-~~7. Réécrire `estimation-en-ligne-ou-agence`~~ — **fait le 2026-09-11**
-(216 → 2 055 mots, dispersion DVF mesurée, FAQ, 2 liens entrants).
-~~8. Renforcer `/agence-immobiliere-villeurbanne`~~ — **fait le 2026-09-12**
-(404 → 1 261 mots, barème d'honoraires publié sur la page, FAQ de 6 Q/R,
-2 liens entrants, `llms.txt` complété).
-~~9. Données structurées `Person` sur `/equipe` + `employee`~~ — **fait le
-2026-09-13**, avec trois compléments que la mesure a fait apparaître :
-`OfferCatalog` du barème sur `/honoraires` (27 offres), `Blog` + `ItemList` des
-26 articles sur `/blog`, et surtout **un `@id` unique pour l'agence** sur tout
-le site. `/blog` avait bien le manque `Blog`/`ItemList` annoncé.
-
-~~7. FAQ visible sur `/honoraires`~~ — **fait le 2026-09-15** (6 Q/R disjointes
-de celles de `/agence-immobiliere-villeurbanne`, droit cité et daté, cas
-locataire villeurbannais chiffré, `FAQPage`, `llms.txt` étendu).
-
-~~10. Contenu des trois pages quartiers + maillage `/estimation` → quartiers~~
-— **fait le 2026-09-15 (run n°2, session interactive)** : 350-650 mots → 1 295
-à 1 443 mots par page, médianes DVF par quartier via la nouvelle source unique
-`lib/quartiers.ts`, FAQ de 5 Q/R + `FAQPage` sur chacune, un angle distinct par
-page, et les 6 liens sortants de `/estimation` qui manquaient. Un trou ouvert
-depuis l'audit du 07/09.
-
-~~5 (volet blog). Maillage interne depuis les articles~~ — **entamé le
-2026-09-16, à moitié fait.** 9 articles ouverts, 14 liens posés, 6 → 14 articles
-émetteurs sur 26. **Il reste 12 articles muets**, et c'est volontaire (règle des
-petits lots). Les pages qui manquaient le plus de liens entrants contextuels
-— `/honoraires` et les 3 pages quartiers — en ont désormais.
-
-~~Sortir les 10 fiches fictives de l'index + `lastmod` véridique~~ — **fait le
-2026-09-17** (sitemap 63 → 53 URLs, `noindex` sur les fiches de démo,
-`data-nosnippet` sur le bloc placeholders de `/annonces`, table `PAGE_LASTMOD`).
-Trouvé à l'étape 2, absent de tous les backlogs.
-
-~~**NOUVEAU candidat — remettre `/gestion-locative` au niveau de `/faire-gerer`**~~
-*(ouvert le 18/09)* — **FAIT le 2026-09-21** : 257 → 1 780 mots, 6 H2 en
-questions réelles disjoints de ceux de `/faire-gerer`, angle « déléguer ou
-gérer seul » traité par la **fiscalité** (micro-foncier / régime réel) et par
-le **risque chiffré**, pas en refaisant le calcul du coût. FAQ de 6 Q/R,
-`Service` + `FAQPage` + `BreadcrumbList`, `llms.txt` réécrit, `lastmod` au
-21/09. La consigne « ne pas dupliquer les 6 H2 ni la FAQ de `/faire-gerer` »
-a été tenue et le partage de rôles est désormais écrit en en-tête des deux
-fichiers.
-
-~~**Point 2 (a) — réécriture de `rentabilite-locative-lyon`**~~ — **FAIT le
-2026-09-23** : 231 → 2 379 mots, rendement brut des 7 quartiers calculé sur les
-prix DVF signés, colonne « frais de notaire inclus », second tableau qui
-convertit chaque charge en points de rendement, volet encadrement des loyers
-sourcé sur le TA de Lyon et deux `.gouv.fr`, FAQ de 6 Q/R. **La moitié `b` du
-point 2 reste ouverte** : `investir-locatif-lyon` sert toujours **225 mots** et
-4 H2 sans chiffre, mesurés en production ce matin. Il reçoit désormais un lien
-de corps vers son frère réécrit, mais il n'a été ni réécrit ni daté.
-**C'est le meilleur candidat contenu du backlog après aujourd'hui** — angle
-libre, à ne surtout PAS reprendre celui du 23/09 : l'article de rendement a
-pris le calcul, les frais d'acquisition, l'encadrement et la taxe foncière.
-L'angle qui reste et que le site possède : **ce que Villeurbanne offre qu'un
-investisseur ne trouve pas dans les arrondissements lyonnais**, en croisant nos
-médianes DVF avec la liquidité par quartier (nombre de ventes 2025, de 53 à
-655) et la résistance des prix depuis 2022 — deux séries que nous avons déjà
-et que personne ne publie en regard l'une de l'autre.
-
-~~**Candidat du 24/09 — maillage vers `/blog/rentabilite-locative-lyon`**~~ —
-**ABANDONNÉ APRÈS MESURE le 24/09, et c'est le bon résultat.** Le backlog le
-justifiait par « un seul lien de corps entrant » ; le graphe reconstruit sur le
-HTML rendu des 53 pages en montre **4 entrants** (`/blog`,
-`prix-immobilier-villeurbanne-2026`, `investir-locatif-lyon`,
-`comment-estimer-son-bien-immobilier-lyon-villeurbanne`), l'algorithme réparé
-le 22/09 lui en apportant trois. **Aucune page du site n'est à zéro lien
-entrant.** Le maillage n'est plus un chantier ; ne pas le rouvrir sans une
-mesure qui montre un trou. Voir « Techniques apprises » du 24/09.
-
-~~**Candidat du 25/09 (reporté) — réécriture de `investir-locatif-lyon`, angle
-« écart entre prix affichés et prix réellement payés »**~~ — **FAIT le
-2026-09-27** : 260 → **2 544 mots**, 6 H2 tous en questions réelles, tableau des
-cinq chiffres publiés par quatre sources (toutes téléchargées le jour même),
-tableau des écarts par quartier traduits en euros sur un T2 de 45 m² (+16,1 % à
-+45,3 %), réfutation de l'explication « moyenne contre médiane », procédure DVF en
-5 étapes, FAQ de 6 Q/R en `FAQPage` conforme au visible. **La moitié `b` du
-point 2 du backlog est donc close** : les deux articles « investissement » sont
-désormais réécrits. Réserves de périmètre publiées sur la page. **Aucune reprise
-de l'angle du 23/09** (rendement, frais d'acquisition, encadrement, taxe
-foncière), **et aucune reprise de la liquidité / résistance depuis 2022** — la
-lecture du code a montré que `ou-acheter-villeurbanne-quartiers` les publie déjà,
-donc le « second volet » que ce backlog réservait à cet article **était un
-doublon** : il est lié par un lien, pas recopié. *(Le backlog se trompait sur ce
-point ; la mesure a tranché, comme le 24/09.)*
-
-🔴 **DEUX RUNS MANQUÉS : les 25 et 26/09 n'ont pas eu lieu** (vérifié : aucun
-commit, aucune entrée, aucun `lastmod` postérieur au 23/09 en production). Ce sont
-les 3ᵉ et 4ᵉ manqués depuis l'ouverture, et **les premiers deux d'affilée**.
-Conséquence pour la lecture de ce backlog : **les phrases écrites « pour le run du
-25/09 » ont été honorées le 27/09**, pas oubliées.
-
-~~**Candidat du 28/09 — un signal jamais audité : poids des images, temps de
-réponse, en-têtes de cache**~~ — **FAIT le 2026-09-28**, et il a trouvé deux
-défauts dont aucun n'était dans un backlog : **1,29 Mo de PNG brut servis par la
-home et par `/equipe`** (corrigé, −96,5 % via `next/image`, garde-fou pour ne pas
-casser l'URL collée à la main du back-office), et **tous les médias de `public/`
-en `cache-control: max-age=0, must-revalidate`** quand `/_next/static/*` est en
-`immutable` (corrigé à 7 jours, sans `immutable`, volontairement). **Troisième
-fois sur quatre qu'élargir la liste des signaux audités produit une trouvaille**
-(og:image le 20/09, maillage le 22/09, fraîcheur le 24/09, page experience
-aujourd'hui) : c'est désormais la règle la plus rentable de ce journal.
-→ **Signaux de performance mesurés SAINS ce jour — ne pas les réauditer** : TTFB
-0,29–0,67 s sur 9 pages, compression `br`, `/_next/static/*` en `immutable`,
-aucune autre image hors `next/image` sur les 53 pages.
-→ **Il reste UN signal de la liste du 20/09 jamais audité** : la **cohérence des
-ancres de liens internes** (même page atteinte par des ancres contradictoires,
-ancres génériques du type « cliquez ici », ancre qui promet autre chose que la
-cible). C'est le dernier de la liste, et c'est un bon candidat non-contenu — la
-veille du 15/09 **et** celle du 28/09 mettent toutes deux le maillage interne dans
-ce qui corrèle réellement avec la citation.
-→ 🔴 **Le candidat « ajouter du schema » SORT du backlog** (point 8 : `ItemList` /
-`BreadcrumbList` sur `/annonces`, balisage des 4 pages légales + `/recrutement`).
-Motif : la documentation de Google sur les fonctionnalités d'IA, lue de première
-main le 28/09, dit qu'il n'y a « no special schema.org structured data that you
-need to add ». La re-priorisation du 15/09 l'avait descendu sur la foi d'une étude
-tierce ; **l'éditeur dit désormais la même chose**. Ne pas le rouvrir sans un motif
-neuf (par exemple un `ItemList` qui accompagnerait une vraie refonte d'`/annonces`).
-→ 🔴 **`llms.txt` cesse d'être un volet GEO** (veille du 28/09 : zéro requête
-vérifiée des robots des grands laboratoires sur 900 domaines et 7 mois, aucune
-corrélation avec la citation sur ~300 000 domaines, et Google écrit ne pas avoir
-besoin d'« AI text files »). **On continue de le tenir exact** — c'est une consigne
-de mission et un fichier faux serait pire qu'un fichier inutile — mais en deux
-minutes de contrôle, jamais en temps de chantier.
-
-🟢 **HYPOTHÈSE À CONTRÔLER DEMAIN EN PREMIER, avant tout chantier** : que Vercel
-n'écrase pas à l'edge les en-têtes `Cache-Control` posés aujourd'hui dans
-`next.config.ts`. Le contrôle fait ce jour est **local** — il prouve la config, pas
-le comportement de l'hébergeur. Commande : relire `cache-control` sur
-`https://www.markusimmobilier.fr/videos/hero-desktop.mp4`,
-`/brand/logo-markus.svg` et une réponse `/_next/image?url=%2Fvendus%2F…`.
-Attendu : `public, max-age=604800, stale-while-revalidate=86400`. **Si c'est
-encore `max-age=0, must-revalidate`, c'est Vercel qui décide** et il faut passer
-par `vercel.json` (`headers`) au lieu de `next.config.ts` — à noter, pas à
-bricoler au hasard. À contrôler aussi : que la photo d'équipe sort bien en
-`image/webp` via `/_next/image` sur la home et `/equipe`, et que **la carte est
-toujours visible** (le garde-fou `isOptimizable` pourrait, si l'URL en base
-changeait d'hôte, renvoyer sur la balise `<img>` — ce qui est le comportement
-voulu, mais à vérifier au moins une fois).
-
-**Angle du dernier run : technique / page experience** (28/09, poids d'images +
-en-têtes de cache). **Angle précédent : contenu blog** (27/09,
-`investir-locatif-lyon`).
-→ **Le run du mardi 29/09 DOIT donc être un run de contenu** (règle : pas deux
-runs techniques d'affilée non plus, et le passif des articles minces est le
-premier passif en volume du site).
-→ **Candidat n°1 pour le 29/09** : le **passif des 22 articles minces**, dont le
-classement mesuré est conservé plus bas. Les plus courts (`charges-copropriete`
-165 mots, `loi-carrez-surface` 173, `lmnp-location-meublee` 175) sont aussi les
-plus génériques ; **le meilleur rapport enjeu/effort est plutôt dans les articles
-« argent » du milieu de classement** — `frais-de-notaire-lyon-2026` (349 mots),
-`vendre-sans-agence` (336), `cout-gestion-locative` (284),
-`plus-value-immobiliere-calcul` (203) — parce que le site possède déjà des données
-propres à y verser (barème d'honoraires réel, médianes DVF par quartier, prix
-signés) et que la veille du 28/09 confirme que **ce qui corrèle, c'est le lien
-interne et la citation de sources officielles**, pas la longueur.
-⚠️ **Ne pas reprendre** les angles déjà pris : rendement / frais d'acquisition /
-encadrement / taxe foncière (23/09), écart affiché-signé (27/09), coût de la
-gestion (18 et 21/09), dispersion et fiabilité de l'estimation (11/09).
-→ **Échéance du jour à honorer demain** : la requête `qui paie les honoraires
-d'agence immobilière vente Villeurbanne` (chantier du 15/09) devient jugeable
-**le ~29/09** — c'est le test de la thèse « on peut être cité sans classer ». **À
-mesurer demain**, et à écrire quel qu'en soit le résultat.
-→ **Les deux actions client restent les deux premiers leviers du site**, et c'est
-la **19ᵉ** fois que ce journal l'écrit : **la propriété Search Console** (point 1)
-et **la fiche Google Business Profile** (point 3). La SERP « agence immobilière
-Villeurbanne » en est à **18 mesures, 18 absences**. Fait nouveau du 28/09 qui
-**renforce** le point 1 : Google écrit qu'une page doit être « indexed and
-eligible to be shown in Google Search with a snippet » pour apparaître dans ses
-réponses d'IA, et **aucun outil disponible ici ne sait dire si nos pages
-profondes sont indexées**. Seule GSC le dira.
-→ ⚠️ **Trois domaines inaccessibles depuis ce conteneur** (HTTP 403, même avec un
-user-agent de navigateur) : `meilleursagents.com`, `seloger.com` et — nouveau le
-28/09 — `searchengineland.com`. Ne pas en conclure « la page n'existe pas », et ne
-jamais citer leurs chiffres de seconde main.
-
-**Angle du dernier run : contenu blog** (27/09, `investir-locatif-lyon`).
-→ **Le run du lundi 28/09 ne doit donc PAS être un run de contenu**, et il a de
-toute façon une obligation qui passe avant le choix du chantier : **la veille
-hebdomadaire, en retard de sept jours** (la dernière date du 21/09). À faire en
-premier, avant de choisir.
-→ **Candidats pour le 28/09, dans l'ordre**, tous non-contenu :
-  1. **Un signal jamais audité** — et la liste du 20/09 en tient encore quatre :
-     **poids et format des images**, **temps de réponse / Core Web Vitals**,
-     **en-têtes HTTP de cache**, **cohérence des ancres de liens internes**.
-     C'est là que les trois derniers vrais défauts ont été trouvés (og:image le
-     20/09, maillage le 22/09, fraîcheur le 24/09) : **élargir la liste des
-     signaux audités est ce qui produit les trouvailles**, pas réauditer les
-     mêmes champs.
-  2. **Un run technique côté données** — les deux petits candidats restants sont
-     toujours ouverts et sont à **grouper**, pas à faire seuls : `/annonces` n'a
-     **aucun `BreadcrumbList`** ni `ItemList`, et les 4 pages légales +
-     `/recrutement` n'ont **que le `RealEstateAgent` du gabarit**. ⚠️ Rappel de la
-     re-priorisation du 15/09 : **ne pas ouvrir un chantier dont la seule
-     justification est « ajouter du schema »** — il faut qu'il accompagne autre
-     chose.
-  3. Le **passif des articles minces** reste le premier passif en volume (voir le
-     classement ci-dessous, désormais à **22** : `investir-locatif-lyon` en sort
-     aujourd'hui). Mais c'est du contenu, donc **pas le 28/09**.
-→ **Signaux audités et déclarés SAINS — ne pas les réauditer** : statut HTTP des
-53 URLs (24/09), `<title>` uniques et bien dimensionnés (24/09), `meta
-description` présentes et uniques (24/09), `canonical` (20/09), `alt` des images
-(20/09), en-têtes `X-Robots-Tag` / `robots.txt` / cohérence `www` / réponse servie
-à Googlebot, GPTBot et PerplexityBot (22/09), liens entrants — **zéro page à zéro
-lien entrant** (24/09).
-→ 🟢 **Fait nouveau du 27/09 qui doit changer un réflexe d'argumentation** :
-l'argument « nous seuls publions du DVF recalculé » **est mort**.
-`moninvestimmo.com` publie des médianes DVF par quartier et **tombe à 0,7–2,5 %
-des nôtres**. Ce n'est pas une mauvaise nouvelle — c'est la **première
-vérification externe** que nos médianes reçoivent (voir « Techniques apprises »,
-27/09) — mais le différenciateur à plaider est désormais la **mise en regard
-affiché / signé**, la **finesse du découpage** (contours officiels) et la **méthode
-écrite**, plus la source.
-→ ⚠️ **Deux domaines inaccessibles depuis ce conteneur** : `meilleursagents.com` et
-`seloger.com` rendent **HTTP 403** même avec un user-agent de navigateur. Ne pas en
-conclure « la page n'existe pas », et ne pas citer leurs chiffres de seconde main.
-→ ✅ **Le protocole du test d'indexation profonde reste SUSPENDU**, et son échéance
-(27/09) est passée **sans le déclencher**, conformément à ce que le 22/09 avait
-écrit pour ce jour précis. Ne pas le rouvrir : l'instrument, pas le site, est en
-cause. **Seule GSC peut trancher (point 1).**
-→ **Les deux actions client restent les deux premiers leviers du site**, et c'est
-la 18ᵉ fois que ce journal l'écrit : **la propriété Search Console** (point 1) et
-**la fiche Google Business Profile** (point 3). La SERP « agence immobilière
-Villeurbanne » en est à **17 mesures, 17 absences**, sans une seule rotation en
-trois jours. Aucun chantier de contenu ne les remplacera.
-
-**Angle du run précédent : technique / données** (24/09, la fraîcheur déclarée —
-source unique `lib/seo/lastmod.ts`, espace réservé retiré de 2 pages légales,
-9 pages de fond datées). Angle précédent : contenu blog (23/09,
-`rentabilite-locative-lyon`).
-Angle précédent : maillage interne (22/09, algorithme des articles
-liés + 11 liens de corps). Puis : contenu sur une page de fond
-(21/09, `/gestion-locative`). Puis : technique (20/09, balises d'aperçu),
-contenu (18/09, `/faire-gerer`), technique (17/09), maillage (16/09), contenu
-(15/09, deux fois), données structurées (13/09), page « argent » (12/09),
-contenu blog (11/09).
-→ ~~**Le run du vendredi 25/09 DOIT être un run de contenu**~~ — **ce run n'a pas eu lieu ; le candidat a été exécuté le 27/09 (voir « Chantiers faits »). Bloc conservé pour son diagnostic, ce n'est PLUS un candidat.** Texte d'origine : le 24/09 était
-technique, et deux runs techniques d'affilée laisseraient dormir le passif des
-23 articles minces. **Candidat n°1, et il est désormais solidement sourcé :**
-l'angle **« écart entre les prix affichés par les sites d'investissement et les
-prix réellement payés »**, sur `investir-locatif-lyon` (qui sert toujours
-**225 mots** et 4 H2 sans un chiffre). L'hypothèse qui le fragilisait a été
-**tranchée le 24/09 en téléchargeant la page** : CPIM publie bien Charpennes à
-**5 120 €/m²** (page datée du 11/08/2026) quand notre médiane DVF sur
-Charpennes – Tonkin est de **3 524 €/m²**, soit **+45 %**. C'est une donnée que
-personne ne publie en regard, elle est vérifiée de première main, et elle vise
-un créneau mesuré vide. ⚠️ **Ne pas reprendre l'angle du 23/09** (calcul de
-rendement, frais d'acquisition, encadrement, taxe foncière : déjà pris).
-→ **Deux candidats techniques restants, tous deux petits**, à grouper avec autre
-chose plutôt qu'à faire seuls : `/annonces` n'a **aucun `BreadcrumbList`** ni
-`ItemList` (point 8 du backlog, confirmé par l'audit JSON-LD du 24/09), et les
-4 pages légales + `/recrutement` n'ont **que le `RealEstateAgent` du gabarit**.
-→ **Deux signaux audités le 24/09 et déclarés sains — ne pas les réauditer** :
-les 53 `<title>` sont uniques et bien dimensionnés (54–123 caractères), les 53
-`<meta name="description">` sont présentes, uniques et non tronquées.
-→ ~~**Le prochain run (mercredi 23/09) peut être un run de contenu**~~ —
-**fait, c'en était un.** Le run du **jeudi 24/09 ne doit donc PAS être un run
-de contenu** (règle : pas deux d'affilée). Candidats pour le 24/09, dans
-l'ordre : **(c) un run technique côté données**, ou **le maillage** vers
-`/blog/rentabilite-locative-lyon`, qui vient d'être publié et n'a pour l'instant
-qu'**un seul lien de corps entrant**. Candidats d'origine conservés ci-dessous :
-(a) ~~**la réécriture de `investir-locatif-lyon` / `rentabilite-locative-lyon`**
-    (point 2)~~ — **moitié faite le 23/09**, voir ci-dessus. ⚠️ **La
-    justification écrite ici le 22/09 s'appuyait sur une attribution non
-    vérifiée** (« CPIM publiait Charpennes 5 120 €/m² ») : voir « Techniques
-    apprises » du 23/09 et « Hypothèses à vérifier ». L'angle retenu le 23/09
-    ne repose pas dessus ;
-(b) **un article mince réécrit** parmi les 23 (voir le classement ci-dessous) ;
-(c) **un run technique** : il n'y a plus de blocage de crawl à chercher —
-    l'audit du 22/09 a vérifié en-têtes `X-Robots-Tag`, `robots.txt`, cohérence
-    `www` du sitemap, statut des 53 URLs et **réponse servie à Googlebot,
-    GPTBot et PerplexityBot** (identique à l'octet près à celle d'un
-    navigateur). Tout est sain. Le seul angle technique restant qui vaille un
-    run est côté **données**, pas côté crawl.
-→ **Le protocole du test d'indexation profonde est suspendu** (voir
-« Techniques apprises », 22/09) : l'outil de recherche de ce runner n'honore ni
-`site:` ni les guillemets d'exactitude, donc ses huit « absences » ne
-démontrent aucun blocage. **Ne pas déclencher la consigne du 13/09 le 27/09.**
-→ **Point 1 (Search Console) remonté encore d'un cran le 22/09** : ce n'est
-plus seulement « de meilleures mesures », c'est désormais **la seule façon de
-répondre à la question que ce journal traîne depuis neuf jours** — les pages
-profondes sont-elles indexées ? Aucun outil disponible ici ne sait le dire.
-→ **Remonté d'un cran par la veille du 21/09** : le point 3 (fiche Google
-Business Profile) n'est plus « un levier parmi d'autres ». Sur les requêtes
-locales, c'est la fiche GBP que l'IA cite, avant le site (Profound : google.com
-2ᵉ domaine le plus cité d'AI Mode ; Sterling Sky : les AI local packs font
-apparaître 32 % seulement des entreprises des map packs). **Aucun chantier de
-contenu ne compensera son absence.** À remonter au client avec le point 1.
-→ ⚠️ **Nuance apportée le 22/09 à ce qui précède** : ce journal a écrit six
-runs de suite que la SERP « agence immobilière Villeurbanne » était « 9 sur 9
-des annuaires ou des franchises » et qu'« aucune agence indépendante n'y entre ».
-**C'est faux.** Le compte exact du 22/09 est 6 (PagesJaunes + 5 franchises)
-contre **3 indépendantes locales** : Salengro, Immo de France et Decultieux,
-fondée en 1962. Des indépendantes classent donc très bien — elles sont
-anciennes et ancrées. Ce qui nous sépare d'elles n'est pas un statut mais de
-l'ancienneté de domaine et de la notoriété locale. La fiche GBP reste le
-levier ; l'argument « la SERP est fermée aux indépendantes » doit disparaître.
-→ **Mesure du 20/09 qui pèse sur ce choix, et qui n'avait jamais été faite en
-une fois** : sur les 26 articles téléchargés en production, **23 font entre 165
-et 433 mots rendus**, sans FAQ, sans date de mise à jour visible, sans chiffre
-local ; les 3 réécrits (07, 09 et 11/09) font 1 758 à 2 230 mots. **23 des 53
-URLs du site sont donc du contenu mince** — c'est, en volume, le premier passif
-du site, et au rythme d'un article par run il faut cinq mois pour le résorber.
-**Classement complet, mesuré sur le HTML rendu en production le 20/09** (mots
-dans `<main>`, hors en-tête et pied de page) — le scratchpad d'un run ne
-survit pas, donc il est recopié ici :
-`charges-copropriete` 165 · `loi-carrez-surface` 173 · `lmnp-location-meublee`
-175 · `faire-offre-achat` 181 · `diagnostics-obligatoires-vente` 185 ·
-`home-staging-vendre-plus-cher` 190 · `achat-immobilier-lyon-checklist` 191 ·
-`compromis-de-vente-delais` 191 · `vendre-vite-lyon` 197 ·
-`questions-a-poser-visite` 200 · `plus-value-immobiliere-calcul` 203 ·
-`taxe-fonciere-vente-qui-paie` 211 ·
-`gestion-locative-villeurbanne-deleguer-ou-non` 227 · `investir-locatif-lyon`
-229 *(réécrit le 27/09 : 2 544 mots)* · `rentabilite-locative-lyon` 229 *(réécrit le 23/09 : 2 379 mots)* · `vendre-appartement-lyon-etapes` 233 ·
-`mandat-simple-ou-exclusif` 234 · `capacite-emprunt-immobilier` 262 ·
-`dpe-2026-ce-qui-change` 269 · `cout-gestion-locative` 284 ·
-`vendre-sans-agence` 336 · `frais-de-notaire-lyon-2026` 349 ·
-`comment-estimer-son-bien-immobilier-lyon-villeurbanne` 433.
-Puis les trois réécrits : `prix-immobilier-villeurbanne-2026` 1 758 ·
-`ou-acheter-villeurbanne-quartiers` 2 099 · `estimation-en-ligne-ou-agence`
-2 230. **Seuls ces trois-là portent un `FAQPage`** ; les 23 autres n'ont que
-`BlogPosting` + `BreadcrumbList`.
-→ **Règle d'origine conservée** : pas deux runs de contenu d'affilée.
-
-~~**Candidat n°1 — renforcer `/faire-gerer`**~~ *(ouvert le 17/09)* — **FAIT le 2026-09-18** : 290 → 1 919 mots, 6 H2 en questions, chiffrage complet de la gestion sur un cas villeurbannais, volet syndic traité **sans inventer de tarif** (contrat type, forfait voté en AG, article 21), FAQ de 6 Q/R, `Service` + `FAQPage` + `HowTo` + `BreadcrumbList`, entrée `llms.txt` créée. Le point 8 (baliser la page en `Service`) est absorbé au passage. *(Texte d'origine conservé ci-dessous : son diagnostic de SERP reste la référence.)*
-
-**Diagnostic d'origine du 17/09.**
-Mesuré aujourd'hui : la page fait **290 mots, 2 H2, aucun JSON-LD propre**
-(seulement le `RealEstateAgent` du gabarit) — c'est, rapportée à son enjeu, la
-page stratégique la plus faible du site depuis que
-`/agence-immobiliere-villeurbanne` a été reprise le 12/09. Et sa SERP, mesurée
-le même jour, est **ouverte pour la même raison que celles du 15/09 et du
-16/09** : les 9 résultats (Orpi Key Solutions, Laforêt, PagesJaunes ×2, Square
-Habitat, Manda, C&F Gestion, Immo de France, mairie.com) **ne publient aucun
-tarif**. Le site, lui, a le barème complet à un clic — et il a déjà écrit les
-bonnes phrases dans deux articles le 16/09. Angle : ce que coûte la gestion
-(6 % des encaissements, min. 25 €/lot, GLI 2,5 %, débours 20 €/an, 45 €/lot/an
-si courrier postal), ce que le mandat couvre, et le cas syndic. Ce chantier
-peut absorber le point 8 (baliser la page en `Service`) au passage.
-
-**NOUVEAU candidat — remettre `/gestion-locative` au niveau de `/faire-gerer`**
-*(ouvert le 18/09)*. Constat fait en écrivant le chantier du jour : la page
-`/gestion-locative` (gabarit `SeoLanding`, 3 sections) répond à la question du
-prix par *« nos honoraires sont calculés sur les loyers réellement encaissés et
-sont en partie déductibles »* — **aucun taux, aucun euro, aucune FAQ, pas de
-date de mise à jour**, alors que la page sœur chiffre désormais tout. Elle
-reçoit pourtant un **lien sitewide depuis le footer**, ce que `/faire-gerer`
-n'a pas. Chantier de contenu, à ne pas enchaîner tout de suite (deux runs de
-contenu d'affilée), mais c'est le meilleur candidat « contenu » du backlog
-après aujourd'hui. Attention en le traitant : **ne pas dupliquer** les 6 H2 de
-`/faire-gerer` ni sa FAQ — l'angle libre est « déléguer ou gérer soi-même »,
-chiffré (coût de la gestion vs temps passé), pas « combien ça coûte » à
-nouveau.
-
-Les deux candidats posés le 16/09, qui restent valables ensuite :
-- **un run technique** — le point 8 (baliser `/faire-gerer`, `/recrutement`,
-  `/annonces`) est petit mais c'est du confort ; plus utile serait de chercher
-  **un blocage technique d'indexation** si le test profond est encore négatif
-  après le ~27/09 (voir ci-dessous) ;
-- **la réécriture de `investir-locatif-lyon` / `rentabilite-locative-lyon`**
-  (point 2), dont l'angle est déjà arrêté et documenté — mais c'est du contenu
-  blog, donc **pas avant un run d'un autre type**.
-
-**⚠️ Re-priorisation du 15/09, motivée par la veille, pas par une intuition.**
-L'étude Seer (mai 2026) trouve que le **schema FAQ/HowTo ne corrèle pas** avec
-la citation en AI Overview, alors que **les liens internes** et **les citations
-de sources officielles (.gov/.edu)** corrèlent positivement. Conséquences :
-- le point **5 (maillage : 6 articles sur 26 seulement émettent un lien)** monte
-  au rang de chantier prioritaire, il n'est plus un « complément » ;
-- le point **8 (baliser les 3 dernières pages)** descend : c'est du confort, pas
-  un levier de citation ;
-- **ne plus ouvrir de chantier dont la justification principale est « ajouter du
-  schema »**. Le balisage reste bienvenu quand il accompagne du contenu ; il ne
-  vaut plus un run à lui seul.
-
-**À faire en premier au prochain run** : remesurer le **nouveau** test
-d'indexation profonde (`Villeurbanne estimation "erreur médiane" 15,5 % prix au
-m² quartier ventes DVF 2025`). Posé le 13/09, **2 mesures, 2 absences** (la
-seconde le 15/09, à J+2 — rien à en conclure encore).
-**Échéance du protocole : ~27/09.** Négatif après cette date ⇒ arrêter d'écrire
-et chercher un blocage technique d'indexation.
-
-**Nouveau, à mesurer à partir du prochain run** : `qui paie les honoraires
-d'agence immobilière vente Villeurbanne` — c'est la requête du chantier du
-15/09, mesurée absente le jour même (SERP 100 % nationale et générique). C'est
-aussi **le meilleur test de la thèse « on peut être cité sans classer »** que la
-veille du 15/09 vient d'établir : la page ne vise pas la 1ʳᵉ page Google, elle
-vise la citation. **Ne pas la juger avant deux semaines** (~29/09).
-
-1. **Créer la propriété Google Search Console** + poser
-   `GOOGLE_SITE_VERIFICATION` dans Vercel + soumettre le sitemap. **Action
-   client**, mais c'est ce qui débloquera de vraies mesures de position à la
-   place des recherches web approximatives. À rappeler. **Priorité montée d'un
-   cran le 10/09** : le test d'indexation profonde pose une question (les pages
-   profondes sont-elles indexées ?) que **seule GSC peut trancher**. On tourne
-   à l'aveugle sur ce point précis.
-
-2. **Réécrire un article faible** — il en reste deux, aucun n'a de FAQ ni de
-   champ `updated` :
-   - `investir-locatif-lyon` — ~227 mots, **aucun chiffre** ;
-   - `rentabilite-locative-lyon` — ~194 mots ; il n'a qu'un **exemple fictif**
-     (150 000 € / 650 € / 5,2 %), pas de donnée de marché. On dispose pourtant
-     du loyer médian communal (14,6 €/m² HC) et des prix par typologie.
-
-   **Ne pas les enchaîner** : un par semaine au plus, en alternance avec des
-   chantiers techniques. **Pas avant un run technique**, le 11/09 était déjà un
-   run de contenu.
-
-   > Piste pour ces deux-là, sortie du chantier du 11/09 : la méthode
-   > « dispersion » se transpose au locatif. On ne peut pas publier un
-   > rendement par quartier (un seul loyer de référence, communal — voir
-   > 09/09), mais on peut publier **la dispersion des prix d'achat par
-   > typologie**, déjà calculée, et en déduire honnêtement **une fourchette de
-   > rendement** au lieu d'un chiffre unique faussement précis.
-   >
-   > ⚠️ **Corrigé le 12/09 par la mesure de SERP** : la piste ci-dessus reste
-   > vraie mais elle est **insuffisante**. La SERP « investir locatif
-   > Villeurbanne » est **fermée** — les six résultats publient déjà prix et
-   > rendements par quartier. Publier « encore des chiffres » n'y suffira pas.
-   > **Le seul angle libre trouvé** : ces sites annoncent des prix nettement
-   > au-dessus des ventes réelles (CPIM : « Charpennes 5 120 €/m² » contre
-   > 3 524 €/m² en DVF sur Charpennes – Tonkin, soit 45 % d'écart). Mesurer et
-   > publier **l'écart entre prix affichés par les sites d'investissement et
-   > prix réellement payés** est faisable avec nos données et n'existe nulle
-   > part. C'est ça, le sujet de ces deux articles.
-
-6. **Afficher une fourchette de dispersion dans le résultat de l'outil
-   d'estimation.** Les données existent désormais (P25–P75 par quartier et par
-   typologie, ventes 2025). Dire « votre quartier affiche X à Y €/m² sur les
-   ventes réelles » rendrait le rapport nettement plus crédible et réutiliserait
-   le travail du 11/09. **Mais c'est le bloc de résultat de l'outil** : la
-   consigne client est « il faut juste rien casser ». → **à soumettre au client
-   avant de coder quoi que ce soit.**
-
-3. **Fiche Google Business Profile** — constat de SERP reconfirmé le 10/09 : les
-   requêtes « agence immobilière Villeurbanne / Gratte-Ciel » sont tenues par
-   des annuaires et des franchises (sur Gratte-Ciel, **Superimmo apparaît deux
-   fois** dans le top 8). Sur celles-là, le contenu du site ne suffira pas ; le
-   levier est la fiche GBP + les citations d'annuaires (PagesJaunes, Superimmo,
-   MeilleursAgents…). **Action client**, à remonter avec le point 1.
-
-7. **FAQ visible sur `/honoraires`** *(ouvert le 13/09)* — la page porte
-   désormais son barème en `OfferCatalog`, mais elle ne répond toujours pas aux
-   questions que les gens posent autour du prix : « qui paie les honoraires
-   d'agence ? », « sont-ils négociables ? », « sont-ils dus si la vente ne se
-   fait pas ? », « que couvre exactement le pourcentage ? ». Réponses factuelles
-   possibles sans rien inventer (barème + mandat + usage), FAQ visible + `faqLd()`
-   sur le même tableau. **Bon candidat pour un prochain run de contenu**, et il
-   complète le chantier du 13/09 au lieu de le répéter.
-
-8. **Baliser `/faire-gerer`, `/recrutement`, `/annonces`** *(ouvert le 13/09)* —
-   les trois dernières pages sans JSON-LD spécifique. Candidats naturels :
-   `Service` sur `/faire-gerer`, `JobPosting` sur `/recrutement` **seulement si
-   une offre réelle et datée y est affichée** (sinon s'abstenir : un `JobPosting`
-   sans poste ouvert est trompeur), `ItemList` des annonces sur `/annonces`.
-   Petit chantier, à grouper avec autre chose.
-
-~~4. **Données structurées `Person` sur `/equipe` + `employee` sur l'agence**~~ —
-**FAIT le 2026-09-13.** *(Texte d'origine conservé ci-dessous : il explique
-pourquoi cet item a remplacé « auteur humain », et cette raison reste valable.)*
-—
-   **remplace l'ancien item « bloc auteur + `author` humain sur les articles »,
-   qui est écarté** (voir « Erreurs commises », 12/09 : attribuer la rédaction
-   des articles à Tony Pistilli serait une affirmation fausse, et le client a
-   interdit d'inventer). Ce qui est en revanche **entièrement factuel et
-   toujours pas balisé** : `/equipe` affiche déjà Tony PISTILLI (fondateur,
-   CEO – agent immobilier) et David PISTILLI (conseiller), avec e-mail et
-   téléphone directs. Les baliser en `Person` et les rattacher en `employee`
-   du `RealEstateAgent` ne fait que **structurer ce qui est déjà visible** —
-   aucun risque factuel. Vérifié le 12/09 : `/equipe` ne sert **aucun** JSON-LD
-   spécifique, seulement le `RealEstateAgent` du layout. **Meilleur candidat
-   pour le prochain run** (petit, sûr, angle « données structurées » jamais
-   servi). Même famille : `/blog` ne sert ni `Blog` ni `ItemList`.
-
-~~5bis. **Finir le maillage : 12 articles n'émettent toujours aucun lien**~~
-   — **à moitié fait le 2026-09-22** : 6 des 12 traités, 11 liens posés,
-   28 → 40 liens de corps sur le blog. **Restent 6 articles muets**
-   (`home-staging-vendre-plus-cher`, `compromis-de-vente-delais`,
-   `charges-copropriete`, `questions-a-poser-visite`, `loi-carrez-surface`,
-   `lmnp-location-meublee`) et c'est volontaire : **aucune phrase n'y appelle
-   un lien aujourd'hui**. Les rouvrir n'a de sens que le jour où l'un d'eux est
-   réécrit — un article de 165 mots n'a pas la matière pour porter un lien
-   contextuel honnête. ⚠️ **Et ce point regardait dans le mauvais sens** : le
-   vrai trou du maillage n'était pas l'émission mais la **réception** (18
-   articles ne recevaient aucun lien d'un frère), corrigé le 22/09 par
-   l'algorithme cyclique. *(Énoncé d'origine conservé ci-dessous.)*
-
-   *(état au 16/09)*. Ce sont les plus courts et les plus génériques
-   (`dpe-2026-ce-qui-change`, `diagnostics-obligatoires-vente`,
-   `achat-immobilier-lyon-checklist`, `taxe-fonciere-vente-qui-paie`,
-   `plus-value-immobiliere-calcul`, `home-staging-vendre-plus-cher`,
-   `compromis-de-vente-delais`, `faire-offre-achat`, `charges-copropriete`,
-   `questions-a-poser-visite`, `loi-carrez-surface`, `lmnp-location-meublee`).
-   **Ne pas les traiter d'un bloc** : un lot de 5-6, en complément d'un autre
-   chantier, et seulement là où la phrase l'appelle. Sur plusieurs d'entre eux
-   (`loi-carrez-surface`, `charges-copropriete`) **aucune phrase ne l'appelle
-   aujourd'hui** — forcer un lien y serait de la sur-optimisation, pas du
-   maillage.
-
-*(Texte d'origine du point 5, conservé : sa règle vaut toujours.)*
-
-5. **Étendre le maillage aux 20 articles non touchés le 10/09.**
-   *(Non avancé le 12/09 : le chantier du jour a posé ses liens sur les pages
-   quartier, pas dans le blog. Toujours 6 articles sur 26 qui émettent un lien.)* La syntaxe
-   existe désormais, mais seuls 6 articles sur 26 émettent un lien. **À faire
-   par petits lots** (5-6 articles par run, en complément d'un autre chantier),
-   jamais d'un coup : poser 40 liens en une fois, sur des ancres proches, est un
-   motif de sur-optimisation. Règle appliquée le 10/09 à conserver : **un lien
-   seulement là où la phrase existante l'appelle déjà**.
-
----
+`<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53 dépassent
+70 caractères (01/10, dont celui du 05/10 à 81 caractères, assumé) ; 🆕 **6 `<a>`
+bruts pour des liens internes** (06/10 : `estimation-immobiliere-lyon:94`,
+`mentions-legales` ×2, `cookies`, `confidentialite`, `annonces`) — **impact SEO
+nul**, défaut UX seulement, non corrigé par application de « ne corrige rien qui
+fonctionne ».
+📌 **Réflexe de contrôle à garder** : mesurer la longueur du `title` ET de la
+`metaDescription` de toute page qu'on réécrit, c'est deux `len()` (au-delà de
+~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-06
+
+🔴 **`fonciris.fr` publie une médiane DVF à 4 € de la nôtre — notre donnée propre
+est-elle encore propre ?** Mesuré sur « prix m2 Villeurbanne » : le site titre
+« Prix m2 Villeurbanne : 3 571 €/m² (69100) 2026 » et se dit basé sur la base DVF ;
+notre médiane communale est **3 567 €/m²**. **À vérifier avant d'écrire quoi que ce
+soit sur cette requête** : publie-t-il aussi du **par quartier**, et sur quels
+contours ? Si oui, tout l'avantage « nous partons des prix signés » se réduit au
+**découpage par contours de la Métropole de Lyon** et aux croisements que lui ne
+fait pas (net vendeur, seuil de plus-value, rendement) — pas à la médiane.
+Conséquence si l'hypothèse se confirme : **arrêter de présenter la médiane
+communale comme une donnée exclusive.**
+
+📌 **Les 12 articles de 200-500 mots doivent-ils être fusionnés ?** Ils sont
+indexés, dans le sitemap, et ne reçoivent aucun lien éditorial parce qu'il n'y a
+rien à lier. L'hypothèse est qu'ils **diluent le signal de qualité** du site.
+⚠️ **Ne rien faire sans instruction sérieuse** : fusionner, c'est faire disparaître
+des URLs et poser des redirections — changement destructif, à l'opposé de « rien
+casser ». À instruire : combien reçoivent du trafic (→ **nécessite Search
+Console**), lesquelles sont citées ailleurs. **Tant que la question n'est pas
+tranchée, la réponse est : réécrire, pas fusionner.**
+
+📌 **Les `lastmod` doivent-ils bouger quand on ajoute un lien ?** Décision du
+06/10 : **non** (avancer la date serait de l'inflation de fraîcheur, que le brief
+interdit). Hypothèse non vérifiée derrière cette décision : un `lastmod` inchangé
+n'empêche pas Google de recrawler la page et de découvrir le nouveau lien.
+**À confirmer au prochain run** en regardant si les pages touchées le 06/10
+apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
+
 
 **Ouvertes au 2026-10-04**
 
@@ -6095,6 +5491,29 @@ pourquoi cet item a remplacé « auteur humain », et cette raison reste valable
 
 ## Erreurs commises et corrigées
 
+### 2026-10-06 — « 1,93 points » : une faute d'accord qu'aucun contrôle structurel n'attrape
+
+**L'erreur.** Pour afficher l'écart de rendement entre quartiers, la première
+rédaction écrivait `{points(RENDEMENT_MAX - RENDEMENT_MIN)}s` afin d'obtenir
+« 1,93 points ». **En français le pluriel ne commence qu'à partir de 2** :
+la forme correcte est « **1,93 point** ». Le `s` ajouté à la main à la sortie d'un
+formateur était à la fois faux et fragile.
+
+**Comment elle a été vue.** Pas par `tsc`, pas par le lint, pas par le build —
+tous les trois verts. Elle a été vue en **relisant le texte rendu** extrait du HTML
+de production locale, le contrôle institué après le défaut des 20 mots collés du
+04/10. **C'est la deuxième fois en trois runs que ce contrôle attrape ce que les
+contrôles de structure laissent passer** : il est maintenant acquis.
+
+**Corrigée avant le push** (le `s` retiré, rebuild, revérification sur le HTML
+rendu : « soit un écart de 1,93 point »). **Rien n'a été publié de faux.**
+
+**Règle à garder.** Ne jamais accoler une marque de pluriel à la sortie d'un
+formateur de nombre : soit le formateur gère l'accord, soit la phrase est tournée
+pour s'en passer. Et **relire le texte rendu, pas le code**, pour toute phrase
+qui mélange une expression `{…}` et de la prose.
+
+
 ### 2026-10-05 — `llms.txt` : une consigne du brief que Google déclare sans effet (et ce qu'il faut en faire exactement)
 
 **Le fait, sourcé.** La doctrine écrite de Google (page du 2026-07-10, citée en
@@ -6504,6 +5923,32 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-06 — Méthode interne (pas de la veille) : compter les liens ENTRANTS par page, pas la profondeur de clic
+
+**Ce que ça remplace.** Le 04/10 mesurait la **profondeur de clic** par BFS et
+concluait « la grappe blog est à la profondeur 3-4 ». C'est vrai mais peu
+actionnable : la profondeur dit *où* est le problème, pas *quoi* corriger.
+
+**La mesure qui, elle, désigne le correctif** — un seul `grep` par article :
+pour chaque `slug` de `lib/blog.ts`, compter les fichiers de `app/` (hors
+`app/blog/[slug]`) qui contiennent `blog/<slug>`. Le résultat se lit directement :
+**14 articles sur 26 à zéro**, et la liste des pages qui n'émettent aucun lien.
+C'est ce comptage, pas la profondeur, qui a montré que `/faire-gerer` (1 772 mots)
+et `/honoraires` n'émettaient **aucun** lien vers le blog.
+
+**Le croisement qui donne la priorité.** Le nombre de liens entrants seul ne
+suffit pas : il faut le croiser avec le **poids de l'article**. Trié par mots, le
+tableau fait apparaître les deux seules lignes qui comptaient —
+`rentabilite-locative-lyon` (2 713 mots, 0 lien) et `plus-value-immobiliere-calcul`
+(2 598 mots, 0 lien) — et montre que les 12 autres orphelins sont **tous sous
+500 mots**, donc un problème de **contenu**, pas de maillage. Sans ce croisement,
+on « corrige » le maillage en liant 14 pages faibles, ce qui aggrave le signal.
+
+**Réutilisable tel quel** sur n'importe quelle grappe du site. ⚠️ Le `grep` compte
+les **fichiers**, pas les occurrences : deux liens dans une même page comptent 1.
+C'est voulu (une page = un vote), mais il faut le savoir en relisant les chiffres.
+
 
 ### 2026-10-05 — Veille hebdomadaire : Google documente enfin le GEO, et il démolit trois « techniques » au passage
 

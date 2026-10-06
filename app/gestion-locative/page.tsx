@@ -12,7 +12,7 @@ import {
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
 import { PlantIllust } from "@/components/illustrations/plant";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
-import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC } from "@/lib/quartiers";
+import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC, QUARTIERS } from "@/lib/quartiers";
 import { lastmodOf } from "@/lib/seo/lastmod";
 
 /**
@@ -81,9 +81,33 @@ const TMI = [0.11, 0.3, 0.41];
 const ecoImpot = (tmi: number) =>
   Math.round(GESTION_AN_TOTAL * (tmi + PRELEV_SOCIAUX));
 
+/* --- Fourchette de rendement brut par quartier ---------------------------
+ * Loyer annuel HC au m² / médiane DVF du quartier. Les deux termes viennent
+ * de `lib/quartiers.ts`, comme dans /blog/rentabilite-locative-lyon et sur
+ * /faire-gerer : les trois pages ne peuvent pas afficher trois fourchettes
+ * différentes du même fait.
+ */
+const RENDEMENTS_QUARTIERS = Object.values(QUARTIERS).map(
+  (q) => (LOYER_MEDIAN_HC * 12) / q.median,
+);
+const RENDEMENT_MIN = Math.min(...RENDEMENTS_QUARTIERS);
+const RENDEMENT_MAX = Math.max(...RENDEMENTS_QUARTIERS);
+
 const eur = (n: number) => `${n.toLocaleString("fr-FR")} €`;
 const pct = (t: number) =>
   `${(t * 100).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} %`;
+/** Taux au centième, pour les rendements (« 4,91 % »). */
+const pct2 = (t: number) =>
+  `${(t * 100).toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })} %`;
+/** Écart de deux taux, exprimé en points (« 1,93 point »). */
+const points = (t: number) =>
+  `${(t * 100).toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })} point`;
 
 export const metadata: Metadata = {
   title: "Déléguer sa gestion locative ou gérer seul : le calcul à Villeurbanne",
@@ -225,6 +249,24 @@ export default function GestionLocativePage() {
                     faire gérer votre bien
                   </Link>
                   .
+                </p>
+                <p>
+                  Un dernier repère remet ces montants à leur échelle : ce que
+                  rapporte le bien. Le rendement locatif brut d&apos;un
+                  appartement villeurbannais ne vaut pas la même chose selon le
+                  secteur — il va de{" "}
+                  <strong>
+                    {pct2(RENDEMENT_MIN)}{" "}à {pct2(RENDEMENT_MAX)}
+                  </strong>{" "}
+                  d&apos;un quartier à l&apos;autre aux prix réellement signés
+                  en {DVF_ANNEE}, soit un écart de{" "}
+                  {points(RENDEMENT_MAX - RENDEMENT_MIN)}. Sur un bien du haut
+                  de cette fourchette, une année d&apos;honoraires pèse
+                  nettement moins qu&apos;un mois de vacance ;{" "}
+                  <Link href="/blog/rentabilite-locative-lyon" className={A}>
+                    le rendement quartier par quartier
+                  </Link>{" "}
+                  permet de situer le vôtre avant de trancher.
                 </p>
               </>
             ),

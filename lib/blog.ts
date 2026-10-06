@@ -1292,6 +1292,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "La **garantie loyers impayés (GLI)** peut s'ajouter pour sécuriser vos revenus en cas de défaut du locataire : elle est facturée **2,5 %** chez Markus Immobilier. Les interventions ponctuelles (aide à la déclaration des revenus fonciers, envoi d'un congé en recommandé, clôture de gestion, suivi de travaux) sont tarifées à part, à l'unité." },
       { type: "h2", text: "Le bon calcul" },
       { type: "p", text: "Le coût se compare au temps et au risque que vous évitez. Pour un propriétaire occupé ou éloigné, déléguer est vite rentable." },
+      { type: "p", text: "Cet article donne la fourchette du marché et nos deux frais fixes. Si votre question est **combien ça coûte en euros sur votre bien**, le calcul complet est fait sur un appartement villeurbannais réel — 62 m² loué au loyer médian communal, coût d'une année de gestion, seuil d'application du minimum, comparaison de deux taux HT et TTC — sur [ce que coûte la gestion locative à Villeurbanne](/faire-gerer)." },
     ],
   },
   {

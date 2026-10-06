@@ -381,6 +381,19 @@ export default function HonorairesPage() {
                 </Link>{" "}
                 détaille ce que recouvre la gestion locative.
               </p>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#3d4347]">
+                Une confusion revient à chaque vente et ne concerne pas ce
+                barème : les <strong>frais de notaire</strong> ne sont pas des
+                honoraires d&apos;agence. Ils sont dus par l&apos;acquéreur, en
+                plus du prix affiché, et reviennent pour l&apos;essentiel à
+                l&apos;État et aux collectivités, pas à l&apos;agence. Leur
+                montant exact pour un achat villeurbannais, ligne par ligne, est
+                calculé dans{" "}
+                <Link href="/blog/frais-de-notaire-lyon-2026" className={A}>
+                  notre décompte des frais de notaire
+                </Link>
+                .
+              </p>
 
               <FaqBlock items={FAQ} />
 

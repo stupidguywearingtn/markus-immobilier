@@ -17,7 +17,7 @@ import {
   webPageLd,
 } from "@/components/seo/json-ld";
 import { FaqBlock, type FaqItem } from "@/components/seo/faq-block";
-import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC } from "@/lib/quartiers";
+import { COMMUNE, DVF_ANNEE, LOYER_MEDIAN_HC, QUARTIERS } from "@/lib/quartiers";
 import { lastmodOf } from "@/lib/seo/lastmod";
 
 /**
@@ -67,9 +67,39 @@ const SEUIL_MIN = Math.round(MIN_GESTION / TAUX_GESTION);
 const SEUIL_SURFACE = Math.ceil(SEUIL_MIN / LOYER_MEDIAN_HC);
 const MISE_EN_LOCATION = Math.round(LOYER_MOIS * 12 * TAUX_MISE_EN_LOCATION);
 
+/* --- Ce que le taux de gestion retire au rendement ----------------------
+ * Rendement locatif brut = loyer annuel HC au m² / prix médian au m². Les
+ * deux termes sortent de `lib/quartiers.ts` (LOYER_MEDIAN_HC et les médianes
+ * DVF), exactement comme dans /blog/rentabilite-locative-lyon : le taux
+ * affiché ici ne PEUT donc pas diverger de celui publié par l'article
+ * (4,91 % sur la commune, 4,47 % à 6,40 % selon le quartier).
+ * Les honoraires portant sur les loyers encaissés, ils amputent le rendement
+ * brut de leur propre taux — d'où la simple multiplication par (1 − taux).
+ */
+const rendementBrut = (median: number) => (LOYER_MEDIAN_HC * 12) / median;
+const RENDEMENT_BRUT = rendementBrut(COMMUNE.median);
+const RENDEMENT_NET_GESTION = RENDEMENT_BRUT * (1 - TAUX_GESTION);
+const RENDEMENTS_QUARTIERS = Object.values(QUARTIERS).map((q) =>
+  rendementBrut(q.median),
+);
+const RENDEMENT_MIN = Math.min(...RENDEMENTS_QUARTIERS);
+const RENDEMENT_MAX = Math.max(...RENDEMENTS_QUARTIERS);
+
 const eur = (n: number) => `${n.toLocaleString("fr-FR")} €`;
 const pct = (t: number) =>
   `${(t * 100).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} %`;
+/** Taux au centième, pour les rendements (« 4,91 % »). */
+const pct2 = (t: number) =>
+  `${(t * 100).toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })} %`;
+/** Écart de deux taux, exprimé en points (« 0,29 point »). */
+const points = (t: number) =>
+  `${(t * 100).toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })} point`;
 
 export const metadata: Metadata = {
   title: "Faire gérer votre bien — Syndic & gestion locative à Villeurbanne",
@@ -347,6 +377,27 @@ export default function FaireGererPage() {
                     </Link>
                     .
                   </p>
+                  <p>
+                    Rapporté au rendement, ce coût se chiffre sans
+                    approximation. Les honoraires portant sur les loyers
+                    encaissés, ils retirent au rendement exactement leur propre
+                    taux : au prix médian des ventes {DVF_ANNEE}{" "}et au loyer
+                    médian communal, le rendement locatif brut d&apos;un
+                    appartement villeurbannais ressort à{" "}
+                    <strong>{pct2(RENDEMENT_BRUT)}</strong>, et{" "}
+                    <strong>{pct2(RENDEMENT_NET_GESTION)}</strong>{" "}une fois la
+                    gestion déduite —{" "}
+                    {points(RENDEMENT_BRUT - RENDEMENT_NET_GESTION)}{" "}d&apos;écart.
+                    C&apos;est le bon ordre de grandeur à mettre en face du
+                    temps que la délégation libère. Le rendement varie en
+                    revanche beaucoup d&apos;un secteur à l&apos;autre, de{" "}
+                    {pct2(RENDEMENT_MIN)}{" "}à {pct2(RENDEMENT_MAX)}{" "}selon le
+                    quartier :{" "}
+                    <Link href="/blog/rentabilite-locative-lyon" className={A}>
+                      le détail quartier par quartier
+                    </Link>{" "}
+                    part des prix réellement signés, pas des prix demandés.
+                  </p>
                 </Body>
               </section>
             </Reveal>
@@ -385,6 +436,15 @@ export default function FaireGererPage() {
                     au quotidien est décrit sur la page{" "}
                     <Link href="/gestion-locative" className={A}>
                       gestion locative
+                    </Link>
+                    , et le partage des tâches — les six familles que le mandat
+                    couvre, les trois décisions qui restent au propriétaire —
+                    dans{" "}
+                    <Link
+                      href="/blog/gestion-locative-villeurbanne-deleguer-ou-non"
+                      className={A}
+                    >
+                      ce que fait une agence de gestion, concrètement
                     </Link>
                     .
                   </p>

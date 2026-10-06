@@ -50,13 +50,13 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *    exonération totale de la résidence principale, exonération d'IR à plus de
  *    22 ans et de prélèvements sociaux à plus de 30 ans, forfaits de 7,5 % de
  *    frais d'acquisition et de 15 % de travaux après 5 ans, surtaxe de 2 % à
- *    6 % au-delà de 50 000 € de plus-value imposable) → service-public.fr,
+ *    6 % au-delà de 50 000 € de plus-value imposable) → service-public.gouv.fr,
  *    fiche F10864, consultée et relue le 2026-09-30.
  *  - indemnités de remboursement anticipé : plafond de 6 mois d'intérêts sur le
  *    capital remboursé ET de 3 % du capital restant dû, et absence d'indemnité
  *    quand le remboursement fait suite à la vente du logement pour changement
  *    de lieu de travail, cessation forcée d'activité ou décès →
- *    service-public.fr, fiche F1669, consultée le 2026-09-30.
+ *    service-public.gouv.fr, fiche F1669, consultée le 2026-09-30.
  *  Aucun délai de vente « observé » n'est avancé : personne ne l'a mesuré ici.
  *  Aucun prix de diagnostic n'est avancé : le coût dépend du diagnostiqueur.
  */
@@ -142,11 +142,11 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Vendre sa résidence principale à Villeurbanne est-il imposable ?",
-    a: `Non, l'exonération est totale. La plus-value réalisée sur la vente de la résidence principale et de ses dépendances — cave, garage, place de stationnement — n'est soumise ni à l'impôt sur le revenu ni aux prélèvements sociaux, à condition que le logement soit bien l'habitation habituelle et effective du vendeur au moment de la vente. C'est le cas le plus fréquent, et il explique pourquoi la majorité des vendeurs villeurbannais ne paient aucun impôt sur leur vente. Source : service-public.fr, fiche F10864.`,
+    a: `Non, l'exonération est totale. La plus-value réalisée sur la vente de la résidence principale et de ses dépendances — cave, garage, place de stationnement — n'est soumise ni à l'impôt sur le revenu ni aux prélèvements sociaux, à condition que le logement soit bien l'habitation habituelle et effective du vendeur au moment de la vente. C'est le cas le plus fréquent, et il explique pourquoi la majorité des vendeurs villeurbannais ne paient aucun impôt sur leur vente. Source : service-public.gouv.fr, fiche F10864.`,
   },
   {
     q: "Peut-on vendre un appartement dont le crédit n'est pas remboursé ?",
-    a: `Oui, et c'est la situation la plus courante. Le notaire rembourse la banque sur le prix de vente le jour de l'acte, puis verse le solde au vendeur. Si le contrat de prêt prévoit une indemnité de remboursement anticipé, elle ne peut dépasser ni ${IRA_MOIS} mois d'intérêts sur le capital remboursé au taux moyen du prêt, ni ${IRA_PCT} % du capital restant dû. Et elle n'est pas due du tout lorsque la vente fait suite à un changement de lieu de travail, à une cessation forcée d'activité professionnelle ou à un décès, pour le vendeur ou son conjoint. Source : service-public.fr, fiche F1669.`,
+    a: `Oui, et c'est la situation la plus courante. Le notaire rembourse la banque sur le prix de vente le jour de l'acte, puis verse le solde au vendeur. Si le contrat de prêt prévoit une indemnité de remboursement anticipé, elle ne peut dépasser ni ${IRA_MOIS} mois d'intérêts sur le capital remboursé au taux moyen du prêt, ni ${IRA_PCT} % du capital restant dû. Et elle n'est pas due du tout lorsque la vente fait suite à un changement de lieu de travail, à une cessation forcée d'activité professionnelle ou à un décès, pour le vendeur ou son conjoint. Source : service-public.gouv.fr, fiche F1669.`,
   },
   {
     q: "Qui paie la taxe foncière l'année de la vente ?",
@@ -465,8 +465,32 @@ export default function VendrePage() {
                   d&apos;impôt sur le revenu au-delà de {PV_ANS_IR} ans, de
                   prélèvements sociaux au-delà de {PV_ANS_PS} ans.
                 </p>
+                {/*
+                 * ⚠️ Les deux bornes « 9,7 % » et « 23,9 % » sont reprises
+                 * TELLES QUELLES de la colonne « Hausse nécessaire » du tableau
+                 * de `/blog/plus-value-immobiliere-calcul` (lib/blog.ts) :
+                 * Ferrandière – Maisons-Neuves pour le minimum, Charpennes –
+                 * Tonkin pour le maximum. Elles ne sont pas recalculées ici,
+                 * parce que l'article les dérive de ses médianes DÉJÀ arrondies
+                 * (4 365 / 3 524) : refaire le calcul depuis `vs2022` donnerait
+                 * 23,8 % et ferait diverger les deux pages de 0,1 point.
+                 * Si le tableau de l'article change, changer ces deux nombres.
+                 */}
+                <p>
+                  Reste la question que personne ne chiffre : à partir de quel
+                  prix de revente l&apos;impôt commence-t-il réellement ? Pour
+                  un achat réalisé en 2022 au prix médian du quartier, il faut
+                  revendre entre 9,7 % et 23,9 % au-dessus du prix médian
+                  constaté aujourd&apos;hui, selon le secteur, avant que la
+                  moindre plus-value soit imposable.{" "}
+                  <Link href="/blog/plus-value-immobiliere-calcul" className={A}>
+                    Le seuil d&apos;imposition quartier par quartier
+                  </Link>{" "}
+                  publie ce chiffre pour les sept quartiers villeurbannais, avec
+                  le calcul déroulé étape par étape.
+                </p>
                 <p className="text-[13px] text-[#6b7276]">
-                  Source : service-public.fr, fiche F10864
+                  Source : service-public.gouv.fr, fiche F10864
                   « Impôt sur le revenu — Plus-value immobilière », consultée le
                   30 septembre 2026. La plus-value est calculée et prélevée par
                   le notaire le jour de l&apos;acte.
@@ -505,7 +529,7 @@ export default function VendrePage() {
                   ne l&apos;applique pas toujours d&apos;office.
                 </p>
                 <p className="text-[13px] text-[#6b7276]">
-                  Source : service-public.fr, fiche F1669 « Peut-on rembourser
+                  Source : service-public.gouv.fr, fiche F1669 « Peut-on rembourser
                   son crédit immobilier par anticipation ? », consultée le
                   30 septembre 2026.
                 </p>
