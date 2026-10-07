@@ -20,7 +20,7 @@
  *
  * Depuis le 16/09/2026, trois articles de plus CITENT (sans les recalculer) des
  * chiffres issus de ces mêmes médianes, et doivent donc suivre le même sort :
- *   - « vendre-sans-agence »        → prix médian 195 000 € et les ≈ 11 700 €
+ *   - « vendre-sans-agence »        → prix médian 195 000 € et les 11 700 €
  *                                     d'honoraires qui en découlent ;
  *   - « frais-de-notaire-lyon-2026 »→ prix médian 195 000 € ;
  *   - « capacite-emprunt-immobilier » → 250 000 € = 65 m² à Gratte-Ciel /
@@ -85,6 +85,32 @@
  * la non-imputabilité de la moins-value de BOFiP BOI-RFPI-PVI-20-20. À revérifier
  * à chaque loi de finances. ⚠️ Noter aussi que service-public.fr REDIRIGE
  * désormais (301) vers service-public.gouv.fr : c'est le domaine à citer.
+ *
+ * Depuis le 07/10/2026, « vendre-sans-agence » est passé de 399 à ~2 450 mots.
+ * ⚠️ Il ne publie VOLONTAIREMENT AUCUN tableau d'honoraires par quartier :
+ * app/vendre/page.tsx en publie déjà un, calculé sur exactement la même base
+ * (médiane de quartier × 62 m², puis `honorairesVente()`), effet de seuil de
+ * Cyprian – Les Brosses compris. L'article s'y RENVOIE au lieu de le recopier —
+ * ne pas réintroduire ce tableau ici, ce serait deux pages sur la même donnée.
+ * Les seuls chiffres dérivés qu'il porte en propre sont les 11 700 € d'honoraires
+ * au prix médian communal (`COMMUNE.prixMedian` = 195 000 €, tranche 6 %) et les
+ * 30 225 € d'erreur médiane (15,5 % de ce même prix) : si les médianes bougent OU
+ * si le client change son barème, ces deux montants, le ratio « 2,6 fois » et les
+ * 19 500 € de la liste 18/36/62 % doivent être RECALCULÉS (détail du calcul dans
+ * SEO-JOURNAL.md, entrée du 07/10/2026), jamais patchés à la main. ⚠️ Il cite en
+ * plus l'étude de dispersion de « estimation-en-ligne-ou-agence » (erreur
+ * médiane 15,5 %, 18/36/62 %, parts par quartier 42 %…25 %) : ces chiffres
+ * doivent rester identiques dans les deux articles. ⚠️ La requête « diagnostics
+ * obligatoires » reste attribuée à « diagnostics-obligatoires-vente » (durées de
+ * validité), vers lequel l'article renvoie : ne pas y ajouter de durées. ⚠️ Ses points de droit
+ * (dossier de diagnostic technique du lot de copropriété, 7 documents dont la
+ * remise déclenche le délai de rétractation, amende de 30 000 € sur l'acompte
+ * anticipé, mentions obligatoires de l'annonce) viennent de service-public.gouv.fr,
+ * fiche F2604 « Vente d'un logement en copropriété », vérifiée le 21 août 2025 :
+ * à revérifier à chaque nouvelle version de la fiche. La fourchette
+ * « 200 à 700 € » de diagnostics est un chiffre TIERS (pap.fr, page du
+ * 15 avril 2025, téléchargée le 07/10/2026) — ne jamais la rafraîchir de
+ * mémoire.
  *
  * Trois articles citent par ailleurs le BARÈME d'honoraires de
  * app/honoraires/page.tsx (gestion 6 %, GLI 2,5 %, frais fixes 20 €/45 €,
@@ -1110,27 +1136,115 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "vendre-sans-agence",
-    title: "Vendre sans agence : bonne ou mauvaise idée ?",
+    title: "Vendre sans agence à Villeurbanne : le calcul en euros",
     metaDescription:
-      "Vendre son bien seul (de particulier à particulier) : les vrais avantages, les risques et quand il vaut mieux passer par une agence.",
-    h1: "Vendre sans agence : bonne ou mauvaise idée ?",
+      "Vendre seul à Villeurbanne économise 11 700 € d'honoraires au prix médian. Mais l'erreur médiane d'une estimation sur données publiques y vaut 30 225 €.",
+    h1: "Vendre sans agence à Villeurbanne : ce que vous économisez, et ce que ça peut coûter",
     excerpt:
-      "Vendre seul économise la commission, mais vous gérez tout — et une erreur de prix coûte souvent plus que les honoraires.",
+      "Au prix médian villeurbannais, vendre seul fait économiser 11 700 € d'honoraires. L'erreur médiane d'une estimation faite sur les seules données publiques y vaut 30 225 €. Le calcul complet, quartier par quartier.",
     date: "2026-05-28",
-    updated: "2026-09-16",
+    updated: "2026-10-07",
     internalHref: "/vendre",
     internalLabel: "Être accompagné pour ma vente",
     blocks: [
-      { type: "p", text: "**Vendre sans agence permet d'économiser la commission, mais vous prenez en charge tout le processus** — et une erreur de prix coûte souvent plus cher que les honoraires économisés." },
-      { type: "h2", text: "L'avantage" },
-      { type: "p", text: "Pas de commission d'agence. Sur le marché, elle représente souvent 4 à 6 % du prix, mais la plupart des agences ne publient pas de barème : il faut le demander. Le nôtre est en ligne — **9 000 € forfaitaires entre 50 001 et 170 000 €**, puis **6 % entre 170 001 et 300 000 €**, 5 % jusqu'à 500 000 €, et il est à la charge du vendeur." },
-      { type: "p", text: "Un ordre de grandeur concret : le prix médian d'un appartement vendu à Villeurbanne était de [195 000 € sur les ventes de 2025](/blog/prix-immobilier-villeurbanne-2026). À ce niveau, nos honoraires représentent environ **11 700 €** — c'est la somme que vendre seul permet d'économiser, et celle à comparer au risque ci-dessous." },
-      { type: "h2", text: "Ce que vous devez gérer seul" },
-      { type: "p", text: "L'estimation juste, les diagnostics, la rédaction de l'annonce, les photos, la diffusion, les visites, le tri des acheteurs, la négociation et toute la partie juridique jusqu'au compromis." },
-      { type: "h2", text: "Le vrai risque" },
-      { type: "p", text: "Un bien **mal estimé** stagne ou se vend en dessous de sa valeur. Une agence apporte le prix juste, un réseau d'acheteurs qualifiés et la sécurité juridique — ce qui compense souvent largement sa commission, dont [le montant est publié tranche par tranche](/honoraires) avant même que vous ne signiez un mandat." },
-      { type: "h2", text: "Pour qui ça marche ?" },
-      { type: "p", text: "Si vous avez du temps, un bien facile à vendre et de bonnes notions juridiques. Sinon, l'accompagnement est vite rentable." },
+      { type: "p", text: "**Vendre sans agence à Villeurbanne fait économiser 11 700 € d'honoraires au prix médian de la commune, et fait porter seul un risque de prix que nous chiffrons à 30 225 €.** Les deux montants sortent de données publiées, pas d'une estimation de principe : le premier est notre barème en ligne appliqué aux 195 000 € de prix médian des appartements vendus à Villeurbanne en 2025 ; le second est l'erreur médiane que produit une estimation faite sur les seules données publiques, mesurée sur les 1 875 ventes de cette même année." },
+      { type: "p", text: "Cette page ne met pas en regard des avantages et des inconvénients. Elle met côte à côte quatre choses chiffrées ou sourcées : ce que vendre seul rapporte, ce qui reste à payer de toute façon, ce que la loi interdit précisément à un particulier de faire, et ce qu'une erreur de prix coûte en euros." },
+
+      { type: "h2", text: "Combien économise-t-on vraiment en vendant sans agence à Villeurbanne ?" },
+      { type: "p", text: "L'économie est égale aux honoraires de l'agence, et à rien d'autre. Au prix médian d'un appartement villeurbannais — **195 000 €** sur les ventes signées en 2025 — notre barème place la vente dans la tranche 170 001 à 300 000 €, soit 6 % : **11 700 €**, à la charge du vendeur. Ce prix médian vient de notre relevé des [prix au m² à Villeurbanne, quartier par quartier](/blog/prix-immobilier-villeurbanne-2026), calculé sur les ventes signées et non sur des annonces. C'est la somme exacte que vendre seul permet de garder." },
+      { type: "p", text: "Sur le marché, la commission représente souvent 4 à 6 % du prix, mais la plupart des agences ne publient pas de barème : il faut le demander. Le nôtre est en ligne, tranche par tranche — 9 000 € forfaitaires de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % jusqu'à 500 000 € — et [le barème complet est consultable avant tout mandat](/honoraires)." },
+      { type: "p", text: "Le détail quartier par quartier existe déjà, et nous ne le redoublons pas ici : notre page [vendre un bien à Villeurbanne](/vendre) publie, pour chacun des sept quartiers, le prix d'un 62 m² au prix médian du secteur, les honoraires correspondants, le taux effectif et le **net vendeur** qui en résulte. Deux chiffres en ressortent pour qui envisage de vendre seul : les honoraires valent 6 % du prix dans six quartiers sur sept, et seul Cyprian – Les Brosses passe sous le seuil de 170 000 €, où le forfait de 9 000 € ramène le taux effectif à 5,30 %." },
+
+      { type: "h2", text: "Quels frais restent à votre charge quand vous vendez seul ?" },
+      { type: "p", text: "Les diagnostics obligatoires, dans tous les cas : ils relèvent de votre obligation d'information de vendeur et restent à votre charge, avec ou sans agence. PAP, premier site français de vente entre particuliers, chiffre ce poste entre **200 et 700 €** selon le type de bien, sa surface et le nombre de diagnostics nécessaires (page « Vendre seul et sans agence : combien ça coûte ? », mise à jour du 15 avril 2025). Les frais d'acte notarié, eux, sont payés par l'acquéreur sauf accord particulier." },
+      { type: "p", text: "Pour un appartement en copropriété — la quasi-totalité du parc villeurbannais vendu —, le dossier de diagnostic technique à remettre comprend, selon le cas, les quatorze pièces ci-dessous. Les **durées de validité** de chacune, elles, sont détaillées dans notre fiche sur [les diagnostics obligatoires pour vendre](/blog/diagnostics-obligatoires-vente) :" },
+      { type: "ul", items: [
+        "le **diagnostic de performance énergétique (DPE)** ;",
+        "le **constat de risque d'exposition au plomb** de la partie privative ;",
+        "l'**état relatif à la présence ou l'absence d'amiante** ;",
+        "l'**état de l'installation intérieure d'électricité**, si l'installation de la partie privative a plus de 15 ans ;",
+        "l'**état de l'installation intérieure de gaz**, même condition de 15 ans ;",
+        "l'**état relatif à la présence de termites** de la partie privative ;",
+        "l'**état relatif au risque de mérule**, si le bâtiment est dans une zone fixée par arrêté préfectoral — à vérifier en mairie ;",
+        "l'**état des risques et pollutions** (naturels, miniers, technologiques, sismiques, radon) ;",
+        "le **diagnostic bruit**, si le bien est en zone d'un plan d'exposition au bruit des aérodromes ;",
+        "le **certificat de conformité d'un appareil de chauffage au bois**, si le bien est dans le périmètre d'un plan de protection de l'atmosphère ;",
+        "un éventuel **arrêté de mise en sécurité ou de traitement de l'insalubrité** portant sur la partie privative ;",
+        "le **carnet d'information du logement** ;",
+        "la **surface privative du lot (loi Carrez)** ;",
+        "l'**état de l'installation d'assainissement non collectif**, si la copropriété n'est pas raccordée au réseau public.",
+      ] },
+      { type: "p", text: "Deux précisions utiles, et rarement écrites. L'**état des risques** ne se paie pas : il se remplit en ligne depuis le service public Géorisques — mais il doit être remis à l'acquéreur dès la **première visite** si le logement est en zone d'exposition, faute de quoi celui-ci pourra demander la résolution de la vente ou une diminution du prix. Et l'**état daté**, qui récapitule ce que vous devez à la copropriété et ce qu'elle vous doit, est établi par le syndic à votre demande : son prix dépend du contrat de syndic, pas de vous." },
+      { type: "p", text: "Si un document du dossier de diagnostic technique manque le jour de l'acte, vous devez garantir le vice caché correspondant : la clause d'exclusion de garantie ne joue plus. Source : service-public.gouv.fr, fiche « Vente d'un logement en copropriété », vérifiée le 21 août 2025. Côté acheteur, le montant des frais d'acquisition est détaillé dans notre calcul des [frais de notaire à Villeurbanne et Lyon](/blog/frais-de-notaire-lyon-2026)." },
+
+      { type: "h2", text: "Qu'est-ce qu'un particulier n'a pas le droit de faire lui-même dans une vente ?" },
+      { type: "p", text: "Encaisser un acompte avant la fin du délai de rétractation de dix jours de l'acheteur. Exiger ou recevoir un versement — ou même un engagement de versement — avant ce terme est puni d'une **amende de 30 000 €**. Deux situations seulement y échappent : que la promesse soit conclue par l'intermédiaire d'un professionnel mandaté pour contribuer à la vente (notaire ou agent immobilier), ou que les fonds soient consignés chez un professionnel disposant d'une garantie financière dédiée au remboursement des sommes déposées." },
+      { type: "p", text: "C'est la différence la plus nette entre vendre seul et vendre accompagné, et elle ne tient pas au confort : sans intermédiaire mandaté ni séquestre, un vendeur particulier ne peut sécuriser sa vente par un acompte qu'à partir du onzième jour. L'acompte se situe en général entre 5 et 10 % du prix. Source : service-public.gouv.fr, fiche « Vente d'un logement en copropriété », vérifiée le 21 août 2025." },
+
+      { type: "h2", text: "Quels documents remettre pour que le délai de rétractation démarre ?" },
+      { type: "p", text: "Sept documents de copropriété, et c'est le point que beaucoup de ventes entre particuliers découvrent trop tard : **le délai de rétractation de dix jours ne commence à courir que le lendemain du jour où l'acheteur les a tous reçus.** Un seul manquant, et l'acheteur reste libre de se retirer, sans que l'horloge ait démarré." },
+      { type: "ul", items: [
+        "la **fiche synthétique** des données financières et techniques de la copropriété ;",
+        "le **règlement de copropriété et l'état descriptif de division**, ainsi que les actes modificatifs publiés ;",
+        "les **procès-verbaux des assemblées générales des trois dernières années** ;",
+        "le **montant des charges** hors budget prévisionnel et des charges courantes que vous avez payées sur les deux exercices précédant la vente ;",
+        "s'il existe, le **montant de la part du fonds de travaux** rattachée au lot et la dernière cotisation versée ;",
+        "les **sommes que l'acquéreur pourrait devoir** au syndicat des copropriétaires ;",
+        "l'**état global des impayés de charges** du syndicat et de sa dette envers les fournisseurs.",
+      ] },
+      { type: "p", text: "L'annonce elle-même est encadrée, y compris entre particuliers : elle doit indiquer le prix, le nombre de lots de la copropriété, la situation géographique, la superficie, la composition et l'état du bien, le **montant annuel des charges du budget prévisionnel** que vous payez, les **dépenses prévisibles énumérées par le DPE**, l'existence éventuelle de procédures liées aux difficultés financières de la copropriété, et orienter l'acquéreur vers Géorisques. Si un professionnel est mandaté, elle précise en plus le montant de ses honoraires et qui les supporte." },
+
+      { type: "h2", text: "Combien coûte une erreur de prix, comparée à la commission économisée ?" },
+      { type: "p", text: "Dans la tranche 170 001 – 300 000 €, nos honoraires valent exactement 6 % du prix. **Une erreur de prix de 6 % annule donc, à l'euro près, l'économie réalisée en vendant seul.** Or l'erreur médiane d'une estimation faite sur les seules données publiques est, à Villeurbanne, de **15,5 %** — soit 30 225 € sur un bien à 195 000 €, c'est-à-dire 2,6 fois les honoraires économisés." },
+      { type: "p", text: "Ce chiffre n'est pas un argument de vente : c'est le résultat d'un test que nous avons fait sur les 1 875 ventes d'appartements de 2025. Pour chacune, nous avons calculé le prix qu'aurait donné la méthode de base de toute estimation automatique — prix médian du quartier × surface — puis comparé au prix réellement signé chez le notaire." },
+      { type: "ul", items: [
+        "**18 % des ventes** tombent à moins de 5 % du prix réel ;",
+        "**36 %** à moins de 10 % — soit moins de 19 500 € d'écart sur un bien à 195 000 € ;",
+        "**62 %** à moins de 20 % ;",
+        "l'erreur médiane est de **15,5 %**.",
+      ] },
+      { type: "p", text: "Deux ventes sur trois s'écartent donc de plus de 10 % — et 10 % du prix médian villeurbannais, 19 500 €, dépasse déjà largement les 11 700 € économisés. La méthode, les quartiles par quartier et l'écart en euros sont détaillés dans notre mesure de la [fiabilité d'une estimation en ligne](/blog/estimation-en-ligne-ou-agence)." },
+
+      { type: "h2", text: "Dans quels quartiers de Villeurbanne vendre seul est-il le moins risqué ?" },
+      { type: "p", text: "À Gratte-Ciel – Dedieu – Charmettes. C'est le quartier où une estimation faite au prix médian du secteur tombe le plus souvent juste : **42 % des ventes de 2025 à moins de 10 % du prix réel**, parce que le bâti y est homogène et le marché très actif (655 ventes sur l'année). À l'inverse, à Buers – Croix-Luizet et à Cyprian – Les Brosses, ce n'est le cas que dans **25 % des ventes** : une vente sur quatre." },
+      { type: "ul", items: [
+        "**Gratte-Ciel – Dedieu – Charmettes** : 42 % des ventes estimées à moins de 10 % près — le secteur le plus prévisible ;",
+        "**Ferrandière – Maisons-Neuves** et **Perralière – Grandclément** : 35 à 37 % ;",
+        "**Cusset – Bonnevay** : 33 % ;",
+        "**Charpennes – Tonkin** : 28 % ;",
+        "**Buers – Croix-Luizet** et **Cyprian – Les Brosses** : 25 %, les plus dispersés.",
+      ] },
+      { type: "p", text: "La lecture est mécanique : un quartier qui mêle petites copropriétés anciennes, immeubles récents et biens à rénover produit des prix au m² plus dispersés, donc une estimation de départ moins sûre. Si votre bien est à Buers ou à Cyprian – Les Brosses, une fourchette prise en ligne ne doit servir que de mise en route." },
+
+      { type: "h2", text: "Faut-il vendre sans agence ? Notre réponse" },
+      { type: "p", text: "Vendre seul est raisonnable quand trois conditions sont réunies en même temps : un bien situé dans un secteur au bâti homogène, du temps à consacrer aux visites et aux documents, et une référence de prix solide — pas une moyenne de portail. Si l'une des trois manque, vous jouez une économie de 11 700 € contre un risque de 30 225 €, et le calcul cesse d'être favorable." },
+      { type: "p", text: "Rien n'oblige d'ailleurs à trancher tout de suite. Vous pouvez partir d'un repère gratuit par quartier sur notre page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne), puis décider. Et si vous préférez être accompagné, [notre façon de mener une vente](/vendre) est décrite étape par étape, honoraires publiés avant tout mandat." },
+    ],
+    faq: [
+      {
+        q: "Un acheteur paie-t-il moins cher un bien vendu de particulier à particulier ?",
+        a: "Pas nécessairement. À Villeurbanne, nos honoraires de transaction sont à la charge du vendeur : le prix affiché par une agence n'est pas majoré d'une commission payée par l'acheteur. Ce qu'un acheteur peut espérer en achetant à un particulier, c'est un prix fixé sans référence professionnelle — ce qui joue dans les deux sens, puisque l'erreur médiane d'une estimation faite sur les seules données publiques est de 15,5 % dans la commune.",
+      },
+      {
+        q: "Les diagnostics sont-ils à la charge du vendeur, même sans agence ?",
+        a: "Oui. Les diagnostics obligatoires relèvent de l'obligation d'information du vendeur et restent à sa charge, qu'il passe ou non par une agence. PAP chiffre ce poste entre 200 et 700 € selon le type de bien, sa surface et le nombre de diagnostics nécessaires (page mise à jour le 15 avril 2025). L'état des risques, lui, est gratuit : il se remplit en ligne depuis le service public Géorisques.",
+      },
+      {
+        q: "Peut-on demander un acompte à l'acheteur quand on vend sans agence ?",
+        a: "Non, pas avant la fin du délai de rétractation de dix jours. Exiger ou recevoir un versement, ou même un engagement de versement, avant ce terme est puni d'une amende de 30 000 €. Deux exceptions seulement : une promesse conclue par l'intermédiaire d'un professionnel mandaté (notaire ou agent immobilier), ou des fonds consignés chez un professionnel disposant d'une garantie financière dédiée. Source : service-public.gouv.fr, fiche « Vente d'un logement en copropriété », vérifiée le 21 août 2025.",
+      },
+      {
+        q: "Que risque-t-on si un document manque le jour de la signature ?",
+        a: "Vous perdez la protection de la clause d'exclusion de garantie : si une pièce du dossier de diagnostic technique n'est pas remise, vous devez garantir le vice caché correspondant. Le cas de l'état des risques est plus lourd encore — s'il n'a pas été remis alors que le logement est en zone concernée, l'acquéreur peut demander l'annulation du contrat ou une diminution du prix. Et le délai de rétractation de dix jours ne démarre qu'une fois les sept documents de copropriété tous reçus. Source : service-public.gouv.fr, fiche « Vente d'un logement en copropriété », vérifiée le 21 août 2025.",
+      },
+      {
+        q: "Combien coûtent les honoraires d'une agence pour vendre à Villeurbanne ?",
+        a: "Chez nous, 9 000 € forfaitaires de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 € et 5 % jusqu'à 500 000 €, à la charge du vendeur. Au prix médian d'un appartement villeurbannais — 195 000 € sur les ventes signées en 2025 — cela représente 11 700 €. Le barème complet est publié en ligne, tranche par tranche, et consultable avant tout mandat ; sur le marché, la commission se situe souvent entre 4 et 6 % du prix.",
+      },
+      {
+        q: "Peut-on commencer à vendre seul, puis confier le bien à une agence ?",
+        a: "Oui, c'est fréquent et ce n'est pas un échec : un bien mis en vente seul pendant quelques semaines donne une information utile, le nombre de contacts obtenus au prix affiché. Le point de vigilance est le prix de départ : un bien resté en ligne plusieurs semaines sans offre envoie un signal aux acheteurs, et le rattraper coûte souvent plus que les honoraires économisés. Mieux vaut donc vérifier le prix avant la mise en ligne qu'après.",
+      },
     ],
   },
   {
@@ -1172,7 +1286,7 @@ export const ARTICLES: Article[] = [
     internalHref: "/vendre",
     internalLabel: "Discuter de la vente de mon bien",
     blocks: [
-      { type: "p", text: "**Le mandat simple vous laisse confier le bien à plusieurs agences (et le vendre vous-même) ; le mandat exclusif le confie à une seule agence.** Chacun a sa logique." },
+      { type: "p", text: "**Le mandat simple vous laisse confier le bien à plusieurs agences (et le vendre vous-même) ; le mandat exclusif le confie à une seule agence.** Chacun a sa logique — et si l'option qui vous tente est de vendre sans mandat du tout, le calcul chiffré est sur [vendre sans agence à Villeurbanne](/blog/vendre-sans-agence)." },
       { type: "h2", text: "Le mandat simple" },
       { type: "p", text: "Vous multipliez les canaux. Mais en pratique, un bien « partout » paraît moins exclusif, les agences s'y investissent moins, et le même bien à des prix différents brouille les acheteurs." },
       { type: "h2", text: "Le mandat exclusif" },

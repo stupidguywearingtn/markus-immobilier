@@ -341,6 +341,13 @@ export default function VendrePage() {
                   <Link href="/agence-immobiliere-cusset" className={A}>
                     Cusset
                   </Link>
+                  . Et si vous hésitez encore à vendre seul, le même décompte
+                  mené sans agence — ce qui reste à votre charge, et ce qu&apos;une
+                  erreur de prix coûte face aux honoraires économisés — est
+                  détaillé dans{" "}
+                  <Link href="/blog/vendre-sans-agence" className={A}>
+                    vendre sans agence à Villeurbanne
+                  </Link>
                   .
                 </p>
                 <p className="text-[13px] text-[#6b7276]">

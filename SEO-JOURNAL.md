@@ -14,6 +14,90 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-07**
+
+- `git fetch origin` **en tout premier (règle du 16/09) : et aujourd'hui le piège
+  était là.** Avant fetch, `origin/main` pointait sur `86be209` (la vérification
+  du 05/10) alors que `HEAD` était sur `0b60dd3` — de quoi croire que le chantier
+  du 06/10 n'avait jamais été poussé. Après `git fetch`, `origin/main` == `HEAD`
+  == `0b60dd3`. ✅ **AUCUN RUN MANQUÉ.** La référence distante du conteneur au
+  démarrage est périmée : **ne jamais rien conclure de `origin/main` avant le
+  fetch.**
+- Le conteneur démarre sur `claude/dazzling-feynman-10fjtr`, **qui pointe déjà sur
+  `main`** (branche créée au démarrage de session). Travail et commit sur `main`,
+  comme tous les runs précédents.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  Quinzième constat identique (21/09 → 07/10).
+- ⚠️ Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308).
+- **Mercredi : pas de veille** (faite le 05/10). ⚠️ **Prochaine échéance : lundi
+  12/10.**
+- **Deux SERP mesurées, les deux absentes — et la composition de la SERP bouge
+  beaucoup plus que l'absence, ce qui est en soi une leçon de méthode :**
+  - « agence immobilière Villeurbanne » — **absente pour la 26ᵉ fois sur 26.**
+    Composition du jour : **10 résultats sur 10 en franchise** (Laforêt
+    Villeurbanne-République + **9 pages Orpi** : Flachet, Cusset, Charpennes,
+    République, Grand-Clément, Tête d'Or–Tonkin, Saint-Jean et deux pages
+    d'annonces). ⚠️ **Zéro indépendante locale**, alors que le 06/10 en comptait
+    **deux** (Salengro Immo, Orpi Cité Immo lue comme locale) et un rapport
+    « 7 franchises / 2 indépendantes ». **Conclusion de méthode : la composition
+    relevée d'un run à l'autre n'est pas stable et ne doit pas servir à conclure
+    que « la SERP s'ouvre » ou « se verrouille ». Seule l'absence/présence du
+    site est une mesure fiable d'ici.**
+  - « estimation immobilière Villeurbanne » — absente. 9 résultats : Laforêt ×2,
+    Orpi ×2, Square Habitat, **Capifrance ×4**. 🔴 **Et cette mesure CONTREDIT la
+    lecture du 02/10** : ce jour-là, « 6 des 10 résultats étaient des pages prix
+    au m² », d'où l'hypothèse que le moteur lisait la requête comme une demande
+    de donnée et non de prestation. Aujourd'hui : **zéro page de prix, 9/9 pages
+    de prestation d'agence.** L'hypothèse du 02/10 (faut-il remonter la donnée de
+    prix avant la promesse de service sur
+    `/estimation-immobiliere-villeurbanne` ?) **ne peut pas être tranchée sur des
+    mesures aussi instables — ne pas toucher au rendu de cette page sur cette
+    base.**
+  - « prix m2 Villeurbanne » **non mesurée** : cadence hebdomadaire décidée le
+    06/10. À remesurer avec la veille du 12/10.
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 06/10 — `vendre-sans-agence`
+  passe de 399 à 2 583 mots rendus**, avec un angle qui n'existait nulle part
+  ailleurs : l'écart en euros entre vendre seul et vendre accompagné. Détail en
+  « Chantiers faits ».
+- 🔴 **L'ERREUR LA PLUS INSTRUCTIVE DU RUN : j'ai écrit, typé et validé un tableau
+  d'honoraires par quartier AVANT de découvrir que `/vendre` publie déjà le même
+  calcul, à la formule près.** Détail en « Erreurs commises et corrigées ». Le
+  tableau a été retiré avant le build final ; l'article renvoie à `/vendre`.
+- ✅ **Signaux mesurés SAINS sur la page réécrite — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` vert ; `npx eslint` sur les deux
+  fichiers touchés **sans aucune erreur** ; **0 mot collé** sur les 2 583 mots du
+  `<main>` (5 motifs du défaut du 04/10) ; **parité FAQ visible ↔ `FAQPage` 6/6
+  pour les questions ET 6/6 pour les réponses, mot pour mot** ; 4 blocs JSON-LD
+  (`RealEstateAgent`, `BlogPosting`, `FAQPage`, `BreadcrumbList`) ;
+  `dateModified` = `2026-10-07` et « Mis à jour le 7 octobre 2026 » visible ;
+  **11 liens internes servis dans le `<main>`** ; `title` 76 caractères avec le
+  suffixe de marque, `metaDescription` **152** caractères (sous les ~160).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés.** Consigne
+  client respectée (seuls `lib/blog.ts` et `app/vendre/page.tsx` sont modifiés).
+- 🔴 **NOUVEAU DOMAINE FERMÉ, et il coûte un angle : `georisques.gouv.fr`.**
+  `SSL_ERROR_SYSCALL` / « connection reset » sur 5 tentatives, avec et sans
+  en-tête de navigateur, sur trois points d'API. **Sixième domaine fermé**
+  (après meilleursagents, seloger, searchengineland, legifrance, economie.gouv).
+  Conséquence directe : impossible de publier **quels risques concernent
+  réellement Villeurbanne** (termites, mérule, radon, plan d'exposition au
+  bruit) — l'article publie la condition légale et renvoie à la mairie, ce qui
+  est honnête mais laisse la donnée locale sur la table. Inscrit en attente.
+- ⚠️ **Sitemap : 51 URLs en local contre 53 mesurées en production le 06/10.**
+  **Ce n'est pas une régression** : `app/sitemap.ts` agrège les annonces
+  Supabase (`getAllListings`) et les pages de l'éditeur, absentes du conteneur.
+  **À confirmer en ligne après déploiement**, pas à « corriger ».
+- ⚠️ **`lastmod` : un seul a bougé, et c'est voulu.**
+  `/blog/vendre-sans-agence` passe au 07/10 (contenu réellement réécrit) ;
+  `/vendre` reste au 30/09 et `/blog/mandat-simple-ou-exclusif` au 16/09, parce
+  qu'ils n'ont reçu **qu'une phrase portant un lien** — application littérale de
+  la décision du 06/10 (ne pas faire d'inflation de fraîcheur).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
+  dépassent 70 caractères (01/10 — celui écrit aujourd'hui en fait 76, assumé) ;
+  6 `<a>` bruts pour des liens internes (06/10, impact SEO nul).
+
 **Au 2026-10-06**
 
 - `git fetch origin` **en tout premier** (règle du 16/09) : **aucun piège cette
@@ -1626,6 +1710,116 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-07 — `vendre-sans-agence` : l'article publiait le barème que tout le monde publie, il publie maintenant l'écart en euros entre vendre seul et vendre accompagné (399 → 2 583 mots)
+
+**Chantier choisi : contenu**, comme prescrit le 06/10 (deux runs non-contenu sur
+les trois précédents). Cible désignée par le backlog : `vendre-sans-agence`,
+399 mots, **orphelin éditorial** (0 lien entrant au comptage du 06/10), et dernier
+article « argent » mince de la grappe vente.
+
+**L'angle, mesuré avant d'être écrit.** La requête est largement couverte au
+niveau national : `pap.fr` publie une page dédiée « Vendre seul et sans agence :
+combien ça coûte ? » (mise à jour du 15 avril 2025, téléchargée aujourd'hui).
+**Mais cette page de référence ne chiffre jamais ce que le vendeur veut savoir** :
+elle donne « diagnostics 200 à 700 € », « frais de notaire ≈ 8 %, à la charge de
+l'acheteur », « commission 0 € », « vendre avec PAP : coût variable » — et **ne
+fait aucune soustraction**. C'est là qu'était la place : personne ne met l'économie
+réalisée en face du risque pris, **en euros et sur des données villeurbannaises.**
+
+**Ce que l'article publie maintenant, et que personne d'autre ne publie :**
+
+1. **Le point de bascule exact.** Dans la tranche 170 001 – 300 000 € du barème,
+   les honoraires valent **exactement 6 %** du prix. Donc **une erreur de prix de
+   6 % annule à l'euro près l'économie d'une vente sans agence.** Or l'erreur
+   médiane d'une estimation faite sur les seules données publiques est, à
+   Villeurbanne, de **15,5 %** — soit **30 225 €** sur un bien à 195 000 €, contre
+   **11 700 €** d'honoraires économisés : **2,6 fois**. C'est le croisement de deux
+   faits déjà publiés sur le site que personne n'avait mis ensemble (le motif qui
+   a marché le 05/10), et il tombe juste par construction.
+2. **Où vendre seul est le moins risqué, quartier par quartier** — repris de
+   l'étude de dispersion de `estimation-en-ligne-ou-agence` : Gratte-Ciel –
+   Dedieu – Charmettes 42 % des ventes estimées à moins de 10 % près (bâti
+   homogène, 655 ventes), contre **25 % à Buers – Croix-Luizet et Cyprian – Les
+   Brosses**. Aucun concurrent ne publie une recommandation « vendez seul ici,
+   pas là » adossée à des prix signés.
+3. **Trois points de droit que les articles « vendre sans agence » omettent**, tous
+   sourcés sur **service-public.gouv.fr, fiche F2604 « Vente d'un logement en
+   copropriété », vérifiée le 21 août 2025** :
+   - **le délai de rétractation de 10 jours ne démarre qu'une fois les 7 documents
+     de copropriété tous reçus** par l'acheteur — un seul manquant et l'acheteur
+     reste libre de se retirer, sans que l'horloge ait commencé ;
+   - **exiger ou recevoir un acompte avant la fin de ce délai est puni de
+     30 000 € d'amende**, sauf promesse conclue via un professionnel mandaté ou
+     fonds consignés chez un professionnel ayant une garantie financière dédiée.
+     **C'est la différence la plus concrète entre vendre seul et vendre
+     accompagné, et elle est juridique, pas commerciale** ;
+   - une pièce manquante du dossier de diagnostic technique le jour de l'acte fait
+     **tomber la clause d'exclusion de garantie** (le vendeur garantit le vice
+     caché correspondant), et l'état des risques non remis en zone concernée ouvre
+     **l'annulation de la vente ou une diminution du prix**.
+4. **Le dossier de diagnostic technique réel d'un lot de copropriété : 14 pièces**
+   avec leurs conditions de déclenchement (15 ans pour gaz et électricité, arrêté
+   préfectoral pour la mérule, plan d'exposition au bruit, plan de protection de
+   l'atmosphère…), et **les mentions obligatoires de l'annonce entre
+   particuliers** (charges annuelles du budget prévisionnel, dépenses prévisibles
+   du DPE, procédures de difficultés financières, renvoi vers Géorisques).
+
+**Structure GEO appliquée** : 7 H2, **tous formulés en questions réelles** et
+**tous ouvrant par une réponse autonome de 2-3 phrases** (« Encaisser un acompte
+avant la fin du délai de rétractation de dix jours de l'acheteur. », « À
+Gratte-Ciel – Dedieu – Charmettes. »). FAQ de **6 questions**, visible et reprise
+à l'identique en `FAQPage` (parité 6/6 questions **et** 6/6 réponses, vérifiée sur
+le HTML rendu). `updated: "2026-10-07"` → « Mis à jour le 7 octobre 2026 » visible
+en eyebrow et `dateModified` dans `BlogPosting`.
+
+**Honnêteté éditoriale assumée** (le client refuse les fausses pratiques, et un
+article de vendeur qui descend la vente directe ne serait pas crédible) :
+la FAQ dit que **vendre seul puis confier à une agence n'est pas un échec**, et
+qu'un acheteur **ne paie pas forcément moins cher** chez un particulier,
+puisque nos honoraires sont à la charge du vendeur — le prix affiché par l'agence
+n'est pas majoré d'une commission acheteur.
+
+**Maillage : l'article sort de la liste des orphelins, avec deux liens entrants**
+placés dans des phrases existantes (motif du 06/10, aucun bloc ajouté) :
+- `app/vendre/page.tsx` — en clôture du paragraphe qui commente le tableau de net
+  vendeur par quartier, vers « vendre sans agence à Villeurbanne » ;
+- `lib/blog.ts`, article `mandat-simple-ou-exclusif` — dans le chapô, qui parlait
+  déjà de « le vendre vous-même ».
+Et **11 liens internes sortants servis dans le `<main>`** : `/honoraires`,
+`/vendre` ×2, `/estimation-immobiliere-villeurbanne`,
+`/blog/prix-immobilier-villeurbanne-2026`, `/blog/estimation-en-ligne-ou-agence`,
+`/blog/frais-de-notaire-lyon-2026`, `/blog/diagnostics-obligatoires-vente`
+(+ fil d'Ariane et articles liés). `diagnostics-obligatoires-vente`, lui aussi
+mince, **gagne ainsi un lien entrant au passage**.
+
+**Script du calcul publié — à rejouer si les médianes ou le barème bougent :**
+
+```js
+// honoraires au prix médian communal (COMMUNE.prixMedian = 195 000 €)
+// barème /honoraires, tranche 170 001–300 000 € = 6 %
+const hono = 195000 * 0.06;            // 11 700 €
+const err  = Math.round(195000*0.155); // 30 225 €  (erreur médiane 15,5 %)
+const ratio = err / hono;              // 2,58 → « 2,6 fois »
+const dix   = 195000 * 0.10;           // 19 500 €  (la liste 18/36/62 %)
+// et le point de bascule : honoraires = 6 % du prix, donc une erreur de 6 %
+// annule l'économie — vrai pour tout prix de la tranche, pas seulement 195 000 €.
+```
+
+**Contrôles passés avant push** : `npx tsc --noEmit` muet · `npm run build` vert ·
+`npx eslint lib/blog.ts app/vendre/page.tsx` sans erreur · HTML rendu servi en
+local (`next start`) : 2 583 mots dans le `<main>`, **0 mot collé** sur les
+5 motifs du 04/10, parité FAQ 6/6 + 6/6, 4 blocs JSON-LD, 14 items dans la liste
+annoncée comme « quatorze pièces », les trois dates de source visibles
+(15 avril 2025, 21 août 2025) et les deux liens entrants servis sur
+`/vendre` et `/blog/mandat-simple-ou-exclusif`.
+
+**L'en-tête de `lib/blog.ts` a été mise à jour en conséquence** : elle dit
+maintenant que cet article **ne doit pas** reprendre de tableau d'honoraires par
+quartier (`/vendre` le porte), que la requête « diagnostics obligatoires » reste
+attribuée à `diagnostics-obligatoires-vente`, quels chiffres recalculer si les
+médianes ou le barème bougent, et que la fourchette 200–700 € est un chiffre
+tiers daté qu'on ne rafraîchit jamais de mémoire.
 
 ### 2026-10-06 — La moitié du blog n'était liée de nulle part : les deux articles les plus lourds du site sortent de l'orphelinat éditorial (14 → 12 orphelins), et la source `service-public` cesse de rediriger
 
@@ -4834,14 +5028,36 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : maillage interne + micro-chantier source** (06/10, la
-grappe blog). **Angles précédents : contenu blog** (05/10), **audit non-contenu +
-maillage** (04/10), **contenu — page de service** (02/10), **audit non-contenu**
-(01/10).
-→ **Le run du mercredi 07/10 doit être un run de CONTENU** (deux runs non-contenu
-sur les trois derniers, et le maillage vient d'être fait deux fois en trois runs).
-Le candidat désigné est **`vendre-sans-agence`** (399 mots) — voir ci-dessous.
+**Angle du dernier run : contenu blog** (07/10, `vendre-sans-agence`).
+**Angles précédents : maillage interne + micro-chantier source** (06/10),
+**contenu blog** (05/10), **audit non-contenu + maillage** (04/10),
+**contenu — page de service** (02/10).
+→ **Le run du jeudi 08/10 doit être un run NON-CONTENU** (deux runs de contenu sur
+les trois derniers). Le candidat désigné est **la piste (i), la justesse des
+calculs publiés** — voir candidat n°3 ci-dessous, ouvert le 05/10 et jamais
+traité, et que le 06/10 comme le 07/10 ont validé comme la bonne piste (c'est en
+refaisant un calcul qu'on voit une divergence, pas en vérifiant qu'un nombre est
+là). 🟢 **Et son périmètre est désormais cadré au fichier près** : les quatre pages
+qui dérivent `honorairesVente()` et le produit `médiane × 62 m²` sont `/vendre`,
+`/agence-immobiliere-gratte-ciel`, `/agence-immobiliere-charpennes` et
+`/agence-immobiliere-cusset` — elles doivent rendre les mêmes montants au centième
+pour un même quartier. Contrôle décrit en « Techniques apprises », 07/10.
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
+
+✅ **CHANTIER DU 07/10 À VÉRIFIER EN PRODUCTION AU PROCHAIN RUN** (le push est
+parti après les contrôles locaux, le déploiement n'a pas été constaté d'ici).
+À contrôler sur `https://www.markusimmobilier.fr/…`, et **rien de plus** :
+- `/blog/vendre-sans-agence` sert bien **2 583 mots** (et non la version à
+  399 mots), avec « Mis à jour le 7 octobre 2026 » visible ;
+- **parité FAQ visible ↔ `FAQPage` 6/6** sur cette page, questions **et** réponses ;
+- **0 mot collé** (5 motifs du 04/10) ;
+- les **deux liens entrants** servis dans le `<main>` de `/vendre` et de
+  `/blog/mandat-simple-ou-exclusif`, ancre « vendre sans agence à Villeurbanne » ;
+- 🆕 **le sitemap de production sert bien 53 URLs** (51 en local, écart expliqué :
+  annonces Supabase + pages de l'éditeur absentes du conteneur) et **un seul
+  `lastmod` déplacé**, celui de `/blog/vendre-sans-agence` au 07/10 ;
+- **`11 700 €`, `30 225 €`, `2,6 fois`, `19 500 €` et `15,5 %`** servis à
+  l'identique, et **aucun tableau d'honoraires par quartier** sur cette page.
 
 ✅ **CHANTIER DU 06/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
 07/10.** Déploiement constaté ~10 min après le push (plus lent que les ~2 min des
@@ -4867,24 +5083,39 @@ vite). Contrôlé sur `https://www.markusimmobilier.fr/…` :
   déplacé.** La décision de ne pas avancer les dates est donc bien appliquée de
   bout en bout (et non pas « oubliée quelque part »).
 
-🔴 **CANDIDAT CONTENU N°1 POUR LE 07/10 — `vendre-sans-agence` (399 mots).**
-Dernier article « argent » mince qui reste, et **orphelin éditorial** (0 lien
-entrant, constaté le 06/10). ⚠️ **Mesurer l'angle AVANT d'écrire** — **cinq angles
-invalidés par la mesure** (29/09, 01/10, 02/10, 04/10, 05/10) — et vérifier qu'il
-ne recopie ni `/vendre` ni `/honoraires`, dont il cite déjà le barème.
-⚠️ **Le motif qui marche est celui du 05/10** : croiser deux faits déjà publiés que
-personne n'a mis ensemble, et publier une donnée propre. Piste à tester, pas à
-tenir pour acquise : le site publie le **net vendeur avec agence** par quartier
-(`/vendre`, 06/10) ; l'article pourrait publier **l'écart réel entre vendre seul et
-vendre avec agence** une fois retirés les frais que le particulier porte quand même
-(diagnostics, mainlevée, diffusion) — mais **rien ne doit être inventé** : s'il n'y
-a pas de source pour ces coûts, l'angle tombe et il faut en mesurer un autre.
+✅ **CANDIDAT CONTENU N°1 — `vendre-sans-agence` : FAIT LE 07/10** (399 → 2 583
+mots, 2 liens entrants, détail en « Chantiers faits »). **Ne pas le reprendre.**
+🟢 **Et l'angle suggéré le 06/10 — « publier l'écart réel entre vendre seul et
+vendre avec agence » — a tenu, mais pas par le chemin prévu.** Le 06/10 proposait
+de retirer du net vendeur les frais que le particulier porte quand même
+(diagnostics, mainlevée, diffusion). **Deux des trois postes ne sont pas
+sourçables d'ici** : la mainlevée (tarif notarial, Legifrance fermé depuis le
+29/09) et la diffusion d'annonce (`pap.fr/vendeur/tarifs` → 403 Cloudflare).
+L'angle a donc été **déplacé** vers ce qui, lui, est chiffrable sur des données
+publiées : **l'économie face au coût d'une erreur de prix** (6 % = point de
+bascule, 15,5 % = erreur médiane mesurée). **Leçon à garder : un angle validé
+peut survivre au fait que sa source tombe, à condition de chercher quel chiffre
+déjà publié dit la même chose autrement.**
 
-🔴 **CANDIDAT CONTENU N°2 — LES 12 ORPHELINS ÉDITORIAUX SONT UN BACKLOG DE
-CONTENU, ET LA LISTE EST ÉTABLIE.** Comptage du 06/10, tous à **0 lien entrant** et
-tous **sous 500 mots** — c'est pour ça que personne ne les lie :
+🆕 **NOUVEAU CANDIDAT CONTENU — l'état des risques réel de Villeurbanne, BLOQUÉ
+PAR L'OUTILLAGE, à rouvrir si `georisques.gouv.fr` redevient joignable.**
+L'article du 07/10 publie les conditions légales (mérule par arrêté préfectoral,
+diagnostic bruit en zone de plan d'exposition, radon, sismicité) **sans pouvoir
+dire lesquelles concernent Villeurbanne**, parce que Géorisques est fermé depuis
+ce conteneur (voir « Techniques apprises », 07/10). **C'est une donnée locale que
+personne ne publie côté agence** et qui nourrirait aussi `/vendre`,
+`diagnostics-obligatoires-vente` et les pages de quartier. **À retester au
+prochain run d'outillage** ; si le domaine reste fermé, chercher une autre
+source primaire (arrêtés préfectoraux du Rhône, open data de la Métropole) —
+**et ne rien publier de mémoire sur ces zonages.**
+
+🔴 **CANDIDAT CONTENU N°2 — LES ORPHELINS ÉDITORIAUX SONT UN BACKLOG DE CONTENU,
+ET IL EN RESTE 11.** Comptage du 06/10, tous à **0 lien entrant** et tous **sous
+500 mots** — c'est pour ça que personne ne les lie. ✅ `vendre-sans-agence`
+(399 mots) **est sorti de la liste le 07/10** : réécrit à 2 583 mots et lié
+depuis `/vendre` et `mandat-simple-ou-exclusif`. Restent :
 `comment-estimer-son-bien-immobilier-lyon-villeurbanne` (500),
-`vendre-sans-agence` (399), `lmnp-location-meublee` (495),
+`lmnp-location-meublee` (495),
 `cout-gestion-locative` (340, **désormais lié vers `/faire-gerer`, à ne pas vider**),
 `dpe-2026-ce-qui-change` (337), `mandat-simple-ou-exclusif` (277),
 `achat-immobilier-lyon-checklist` (241), `vendre-vite-lyon` (233),
@@ -4892,6 +5123,15 @@ tous **sous 500 mots** — c'est pour ça que personne ne les lie :
 `charges-copropriete` (212), `home-staging-vendre-plus-cher` (207).
 → **Ne pas les lier pour les lier** (décision motivée du 06/10) : le remède est de
 réécrire ou fusionner. **Un par run de contenu, en mesurant l'angle à chaque fois.**
+🟢 **Le 07/10 valide la séquence** : réécrire d'abord, lier ensuite. Les deux liens
+entrants n'ont été ajoutés qu'une fois l'article devenu substantiel, et ils
+tombaient alors dans des phrases qui existaient déjà — aucun bloc à inventer.
+⚠️ **Prochain candidat suggéré :
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne` (500 mots, le plus gros
+des 11), mais attention : il empiète frontalement sur `/estimation`,
+`/estimation-immobiliere-villeurbanne` et `estimation-en-ligne-ou-agence`.
+**Trancher qui porte la requête AVANT d'écrire une ligne** — c'est exactement le
+piège dans lequel le run du 07/10 est tombé (voir « Erreurs commises »).
 📌 **Et une décision de fond à prendre un jour, pas aujourd'hui** : 12 pages de
 200-500 mots indexées et dans le sitemap diluent le signal de qualité du site.
 **La fusion de certaines est à envisager** — mais c'est un changement destructif
@@ -4985,6 +5225,44 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-07
+
+🔴 **Le coût de l'état daté est-il plafonné, et à combien ?** L'article du 07/10
+dit que l'état daté est « établi par le syndic à votre demande » et que **son prix
+dépend du contrat de syndic** — volontairement **sans aucun montant**. Un plafond
+réglementaire existe en mémoire (de l'ordre de 380 € TTC), **mais il n'a PAS été
+sourcé** : Legifrance est fermé depuis le 29/09 et la fiche F2604 de
+service-public, pourtant complète, **n'en dit pas un mot** (vérifié au `grep` sur
+« 380 » et « plafon »). **Ne jamais publier ce montant avant de l'avoir
+téléchargé d'une source primaire** (BOFiP, ou un autre `.gouv`). Si la source est
+trouvée, c'est une ligne de coût de plus pour `vendre-sans-agence` et un chiffre
+que les articles concurrents n'ont pas.
+
+🔴 **La lecture du 02/10 sur « estimation immobilière Villeurbanne » est-elle
+seulement mesurable d'ici ?** Le 02/10 : « 6 des 10 résultats sont des pages prix
+au m² », d'où l'idée de remonter la donnée de prix avant la promesse de service.
+Le 07/10 : **0 page de prix, 9/9 pages de prestation d'agence.** Les deux mesures
+sont incompatibles, à cinq jours d'intervalle, sur la même requête. **Hypothèse à
+inscrire : l'outil de recherche disponible ici ne rend pas une SERP stable, et la
+composition relevée ne peut pas fonder une décision de rendu.** Conséquence
+immédiate : **ne pas réordonner `/estimation-immobiliere-villeurbanne`** sur cette
+base (et la règle « en cas de doute sur le rendu, on n'y touche pas » suffisait
+déjà).
+
+📌 **Le sitemap de production sert-il bien 53 URLs ?** En local il en sert **51**,
+et l'explication est établie par lecture de `app/sitemap.ts` (les annonces
+Supabase et les pages de l'éditeur manquent dans le conteneur). **À confirmer en
+ligne au prochain run** avant d'envisager quoi que ce soit : si la production en
+sert 51, c'est alors un vrai défaut à instruire.
+
+📌 **Un `lastmod` inchangé empêche-t-il Google de voir une phrase ajoutée ?**
+Question du 06/10, **toujours ouverte et toujours non vérifiable d'ici** (il
+faudrait Search Console). Le 07/10 applique la même décision : seul
+`/blog/vendre-sans-agence` voit sa date avancer, `/vendre` et
+`mandat-simple-ou-exclusif` gardent la leur bien qu'ils aient reçu une phrase.
+**Trois runs appliquent maintenant cette règle sans pouvoir la valider** — c'est
+le genre de dette de mesure que l'accès Search Console réglerait seul.
 
 ### 2026-10-06
 
@@ -5499,6 +5777,75 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-10-07 — J'ai écrit un tableau entier avant de découvrir que le site le publiait déjà, et le journal m'avait prévenu
+
+**Ce qui s'est passé.** Le chantier du jour devait réécrire `vendre-sans-agence`.
+J'ai calculé, écrit, inséré dans `lib/blog.ts` puis **validé au typecheck** un
+tableau « Honoraires de vente, quartier par quartier — appartement de 62 m² au
+prix médian du quartier » : 8 lignes, prix dérivés des 7 médianes de
+`lib/quartiers.ts`, honoraires par le barème, taux effectif, plus un paragraphe
+entier sur l'effet de seuil de Cyprian – Les Brosses (169 756 €, 244 € sous les
+170 000 €).
+
+**`app/vendre/page.tsx` publie déjà exactement ce tableau.** Même formule
+(`q.median * SURFACE` avec `SURFACE = COMMUNE.surfaceMediane`), même appel
+`honorairesVente()`, mêmes colonnes **plus** le net vendeur, et **la même phrase**
+sur Cyprian – Les Brosses comme « le seul quartier de Villeurbanne où un
+appartement de 62 m² au prix médian passe sous la barre des 170 000 € ». J'allais
+publier deux pages sur la même donnée — le défaut que le run du 06/10 avait
+justement corrigé ailleurs.
+
+**Comment je l'ai vu, et c'est de la chance, pas de la méthode** : je suis allé
+lire `/vendre` **pour y placer un lien entrant**, pas pour vérifier un doublon. Le
+tableau et son paragraphe ont été retirés et remplacés par un renvoi vers
+`/vendre` (qui fait d'ailleurs un bien meilleur lien sortant que le tableau ne
+faisait de contenu).
+
+🔴 **Et l'aggravant : le journal du 06/10 écrivait, noir sur blanc, « vérifier
+qu'il ne recopie ni `/vendre` ni `/honoraires`, dont il cite déjà le barème ».**
+Je l'avais lu. **Lire l'avertissement ne suffit pas : il faut en faire un
+contrôle exécutable avant d'écrire.**
+
+**Règle à appliquer désormais, avant d'écrire tout tableau ou tout calcul :**
+
+```bash
+# ne pas grep le SUJET (« honoraires », « quartier ») — grep la FORMULE
+grep -rn "honorairesVente\|surfaceMediane\|COMMUNE.prixMedian" app lib --include=*.tsx --include=*.ts
+```
+
+Chercher le sujet rend trop de bruit pour conclure ; **chercher la formule rend la
+liste exacte des pages qui dérivent déjà la même donnée.** Le même grep aurait
+économisé la moitié du run.
+
+🟢 **Et il rend plus que ce que je cherchais — voilà le plan de contrôle tout prêt
+pour la piste (i) de demain.** Les pages qui dérivent `honorairesVente()` **et**
+le produit `médiane de quartier × COMMUNE.surfaceMediane` sont **exactement les
+mêmes quatre** :
+
+```
+app/vendre/page.tsx
+app/agence-immobiliere-gratte-ciel/page.tsx
+app/agence-immobiliere-charpennes/page.tsx
+app/agence-immobiliere-cusset/page.tsx
+```
+
+Donc **ce n'étaient pas une mais QUATRE pages** que mon tableau allait doubler, pas
+seulement `/vendre` — les trois pages de quartier publient le même produit et les
+mêmes honoraires sur leur propre quartier. **Ces quatre pages sont le périmètre
+exact du chantier « justesse des calculs » (piste (i))** : elles lisent les mêmes
+constantes et doivent rendre, au centième, les mêmes montants pour un même
+quartier. **C'est le premier contrôle à faire le 08/10, et il est déjà cadré.**
+
+**Deux ratés mineurs du même run, notés pour mémoire :**
+- la `metaDescription` a d'abord été écrite **sans accents** (reste d'un brouillon
+  ASCII) — corrigée avant tout build, mais elle serait partie en production telle
+  quelle sans relecture ciblée. **Relire title et metaDescription séparément du
+  corps** : ce sont les deux chaînes que le rendu ne montre pas.
+- un remplacement de texte a laissé un **littéral de chaîne non terminé** dans
+  `lib/blog.ts` (`TS1002`). `npx tsc --noEmit` l'a attrapé en deux secondes.
+  **Confirmation de la discipline : tsc tourne après CHAQUE édition scriptée, pas
+  seulement à la fin.**
+
 ### 2026-10-06 — « 1,93 points » : une faute d'accord qu'aucun contrôle structurel n'attrape
 
 **L'erreur.** Pour afficher l'écart de rendement entre quartiers, la première
@@ -5931,6 +6278,75 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-07 — Outillage : Géorisques est fermé (6ᵉ domaine), une fiche service-public se trouve par sondage de `<title>`, et un domaine joignable peut avoir des chemins fermés
+
+**1. 🔴 `georisques.gouv.fr` est INJOIGNABLE depuis ce conteneur.**
+`SSL_ERROR_SYSCALL` puis « Recv failure: Connection reset by peer » sur
+**5 tentatives** (`--retry 4 --retry-all-errors`), sur trois points d'API
+(`/api/v1/gaspar/risques`, `/zonage_sismique`, `/radon`), **avec et sans en-tête
+de navigateur**, `--cacert` bien passé. Ce n'est donc pas le `exit 35` transitoire
+du 30/09 (qui passe à la relance) : **c'est un blocage stable.**
+**Sixième domaine fermé**, la liste à jour :
+`meilleursagents.com` · `seloger.com` · `searchengineland.com` ·
+`legifrance.gouv.fr` · `economie.gouv.fr` · **`georisques.gouv.fr`**.
+⚠️ **Ne pas reperdre du temps dessus** : un run qui a besoin des zonages de risques
+(termites, mérule, radon, bruit, sismicité) doit chercher ailleurs dès le départ.
+
+**2. 🟢 Trouver une fiche `service-public` par SONDAGE DE `<title>` — la méthode du
+30/09 marche, et ses pièges se sont reproduits à l'identique.**
+Quatre identifiants téléchargés d'un coup, titre vérifié sur chacun :
+
+```
+N20074 → 200 → « Impôt sur la fortune immobilière (IFI) »        ✗
+F10864 → 200 → « Impôt sur le revenu - Plus-value immobilière »  ✗ (connue)
+F2604  → 200 → « Vente d'un logement en copropriété »            ✓
+F1024  → 200 → « Allocation spécifique annuelle pour étudiant »  ✗
+```
+
+**Deux identifiants sur quatre rendent 200 sur un tout autre sujet** — exactement
+l'avertissement du 30/09, et la preuve qu'on ne peut jamais lire une fiche sans
+avoir vérifié son titre. **Le sondage groupé (une boucle, les titres imprimés) est
+plus rapide que de chercher la bonne page carrefour**, parce que la recherche
+interne du site est en JavaScript et que les libellés de liens n'apparaissent pas
+dans le HTML (vérifié aujourd'hui : `grep` sur les `vosdroits/F…` de F2604 rend
+39 identifiants et **presque aucun libellé**).
+
+📌 **Fiche à retenir, elle vaut pour plusieurs chantiers à venir :
+`service-public.gouv.fr/particuliers/vosdroits/F2604`, « Vente d'un logement en
+copropriété », vérifiée le 21 août 2025.** C'est la source la plus dense trouvée
+jusqu'ici sur la vente : dossier de diagnostic technique complet d'un lot
+(14 pièces avec leurs conditions), les 7 documents de copropriété **et le fait que
+le délai de rétractation ne démarre qu'à leur remise intégrale**, l'amende de
+30 000 € sur l'acompte anticipé, les mentions obligatoires de l'annonce, l'état
+daté, le certificat du syndic, le régime des frais d'acte. **Utile bien au-delà de
+`vendre-sans-agence`** : `/vendre`, `diagnostics-obligatoires-vente`,
+`compromis-de-vente-delais`, `charges-copropriete`, `vendre-appartement-lyon-etapes`.
+
+**3. 🟡 Un domaine joignable n'est pas un domaine ouvert : tester l'URL exacte.**
+Sur `pap.fr`, le même conteneur et le même en-tête de navigateur donnent deux
+résultats opposés :
+
+```
+/vendeur/vendre-sans-agence/vendre-sans-agence-combien-ca-coute/a19842 → 200 (52 ko)
+/vendeur/tarifs                                                        → 403 « Just a moment… »
+```
+
+Les **pages éditoriales passent**, les **pages tarifaires sont derrière
+Cloudflare**. (Et `WebFetch` rend 403 là où `curl` + en-tête navigateur rend 200 :
+**sur un 403 de `WebFetch`, retenter en `curl` avant de déclarer le domaine
+fermé** — c'est comme ça que la page PAP du jour a été lue.) À l'inverse,
+`notaires.fr` rend **403 partout**, en-tête navigateur compris : à ranger comme
+fermé pour les points de droit, service-public le remplace mieux de toute façon.
+
+**4. 🟢 Compter les mots du `<main>` et non de la page.** Le contrôle « combien de
+mots sert vraiment cette page » n'a de sens qu'en isolant `<main>` : la page
+complète embarque header, footer et, surtout, **le payload RSC de Next.js en fin de
+document**, qui recopie tout le texte sous forme échappée. Mesuré sur `<main>` :
+2 583 mots. Le même compte sur le document entier double le chiffre et fait croire
+à un article deux fois plus long qu'il n'est. **Le même piège vaut pour le
+`grep` des mots collés** : les motifs testés sur la page brute remontent du bruit
+venu du JSON (`\",\"7 octobre 2026\"`), zéro sur le `<main>`.
 
 ### 2026-10-06 — Méthode interne (pas de la veille) : compter les liens ENTRANTS par page, pas la profondeur de clic
 
