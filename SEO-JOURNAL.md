@@ -24,8 +24,18 @@
   démarrage est périmée : **ne jamais rien conclure de `origin/main` avant le
   fetch.**
 - Le conteneur démarre sur `claude/dazzling-feynman-10fjtr`, **qui pointe déjà sur
-  `main`** (branche créée au démarrage de session). Travail et commit sur `main`,
-  comme tous les runs précédents.
+  `main`** (branche créée au démarrage de session).
+  🔴 **PIÈGE DE PROCÉDURE, tombé dedans aujourd'hui : j'ai commité SANS avoir fait
+  `git checkout main`.** Le commit est donc parti sur la branche de session, et
+  `git push -u origin main` a poussé le ref `main` LOCAL, resté sur `86be209` —
+  d'où un rejet « a pushed branch tip is behind its remote counterpart » qui n'a
+  rien à voir avec un conflit. Rattrapé proprement : `git checkout main` puis
+  `git merge --ff-only <commit>` (le parent du commit était déjà `origin/main`,
+  donc avance rapide sans rien réécrire), puis push. **Règle à appliquer au
+  démarrage, avant la première édition : `git checkout main` juste après le
+  `git fetch`.** Le journal du 06/10 le disait (« `git checkout main` d'abord,
+  comme toujours ») ; deuxième avertissement du journal lu et non exécuté
+  aujourd'hui.
 - ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
   Quinzième constat identique (21/09 → 07/10).
 - ⚠️ Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
@@ -5044,20 +5054,38 @@ qui dérivent `honorairesVente()` et le produit `médiane × 62 m²` sont `/vend
 pour un même quartier. Contrôle décrit en « Techniques apprises », 07/10.
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
 
-✅ **CHANTIER DU 07/10 À VÉRIFIER EN PRODUCTION AU PROCHAIN RUN** (le push est
-parti après les contrôles locaux, le déploiement n'a pas été constaté d'ici).
-À contrôler sur `https://www.markusimmobilier.fr/…`, et **rien de plus** :
-- `/blog/vendre-sans-agence` sert bien **2 583 mots** (et non la version à
-  399 mots), avec « Mis à jour le 7 octobre 2026 » visible ;
-- **parité FAQ visible ↔ `FAQPage` 6/6** sur cette page, questions **et** réponses ;
-- **0 mot collé** (5 motifs du 04/10) ;
-- les **deux liens entrants** servis dans le `<main>` de `/vendre` et de
-  `/blog/mandat-simple-ou-exclusif`, ancre « vendre sans agence à Villeurbanne » ;
-- 🆕 **le sitemap de production sert bien 53 URLs** (51 en local, écart expliqué :
-  annonces Supabase + pages de l'éditeur absentes du conteneur) et **un seul
-  `lastmod` déplacé**, celui de `/blog/vendre-sans-agence` au 07/10 ;
-- **`11 700 €`, `30 225 €`, `2,6 fois`, `19 500 €` et `15,5 %`** servis à
-  l'identique, et **aucun tableau d'honoraires par quartier** sur cette page.
+✅ **CHANTIER DU 07/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
+08/10.** Déploiement constaté **en moins d'une minute** après le push (contre
+~10 min le 06/10 et ~2 min les jours d'avant : le délai varie beaucoup, ne rien
+conclure d'une première mesure). Contrôlé sur `https://www.markusimmobilier.fr/…` :
+- `/blog/vendre-sans-agence` sert **2 583 mots dans le `<main>`**, chiffre
+  **identique au local** (et la mesure d'avant déploiement donnait 334 mots : la
+  bascule est nette, aucun doute sur la version servie) ;
+- **parité FAQ visible ↔ `FAQPage` 6/6 sur les questions ET 6/6 sur les réponses**,
+  mot pour mot ;
+- **0 mot collé** sur les 5 motifs du 04/10 ;
+- 4 blocs JSON-LD (`RealEstateAgent`, `BlogPosting`, `FAQPage`, `BreadcrumbList`),
+  `datePublished` 2026-05-28 / **`dateModified` 2026-10-07**, et « Mis à jour le
+  7 octobre 2026 » visible en eyebrow ;
+- **tous les chiffres de l'angle servis** : `11 700 €`, `30 225 €`, `2,6 fois`,
+  `19 500 €`, `15,5 %`, « quatorze pièces », `30 000 €`, et les deux dates de
+  source (`21 août 2025`, `15 avril 2025`) ;
+- **aucun tableau d'honoraires par quartier** sur la page (le doublon retiré n'est
+  pas revenu par le build) ;
+- **11 liens internes dans le `<main>`**, et les **deux liens entrants servis**
+  avec l'ancre attendue sur `/vendre` et `/blog/mandat-simple-ou-exclusif` ;
+- 🟢 **sitemap de production : 53 URLs**, ce qui **confirme l'explication de
+  l'écart local** (51 en conteneur = annonces Supabase + pages de l'éditeur
+  absentes). **Ce n'était pas une régression, l'hypothèse est close.**
+- 🟢 **UN SEUL `lastmod` déplacé, et c'est exactement celui voulu** :
+  `/blog/vendre-sans-agence` au 2026-10-07, **seule URL des 53 à cette date** ;
+  `/vendre` reste au 30/09 et `/blog/mandat-simple-ou-exclusif` au 16/09. La
+  décision du 06/10 (pas d'inflation de fraîcheur pour une phrase ajoutée) est
+  appliquée de bout en bout, et pour la première fois **vérifiée sur une page qui,
+  elle, méritait la date**.
+- ⚠️ **Deux `exit 35` isolés** pendant ces contrôles (un sur le sitemap, un sur une
+  page), **200 à la relance les deux fois** : confirmation de la note du 30/09, un
+  `exit 35` au milieu d'une série qui passe n'est pas une page morte.
 
 ✅ **CHANTIER DU 06/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
 07/10.** Déploiement constaté ~10 min après le push (plus lent que les ~2 min des
@@ -5250,11 +5278,11 @@ immédiate : **ne pas réordonner `/estimation-immobiliere-villeurbanne`** sur c
 base (et la règle « en cas de doute sur le rendu, on n'y touche pas » suffisait
 déjà).
 
-📌 **Le sitemap de production sert-il bien 53 URLs ?** En local il en sert **51**,
-et l'explication est établie par lecture de `app/sitemap.ts` (les annonces
-Supabase et les pages de l'éditeur manquent dans le conteneur). **À confirmer en
-ligne au prochain run** avant d'envisager quoi que ce soit : si la production en
-sert 51, c'est alors un vrai défaut à instruire.
+✅ **CLOSE LE JOUR MÊME — le sitemap de production sert bien 53 URLs** (51 en
+local). L'explication tirée de `app/sitemap.ts` était la bonne : les annonces
+Supabase et les pages de l'éditeur manquent dans le conteneur. **Aucun défaut, et
+règle à garder : un compte d'URLs mesuré en local n'est pas comparable à celui de
+la production** — ne jamais ouvrir un chantier sur cet écart.
 
 📌 **Un `lastmod` inchangé empêche-t-il Google de voir une phrase ajoutée ?**
 Question du 06/10, **toujours ouverte et toujours non vérifiable d'ici** (il
@@ -5835,6 +5863,20 @@ mêmes honoraires sur leur propre quartier. **Ces quatre pages sont le périmèt
 exact du chantier « justesse des calculs » (piste (i))** : elles lisent les mêmes
 constantes et doivent rendre, au centième, les mêmes montants pour un même
 quartier. **C'est le premier contrôle à faire le 08/10, et il est déjà cadré.**
+
+**Et le même défaut s'est reproduit une seconde fois dans le run, sur un autre
+sujet : le commit est parti sur la branche de session parce que je n'avais pas
+fait `git checkout main`** — alors que le journal du 06/10 écrit « `git checkout
+main` d'abord, comme toujours ». Deux avertissements du journal lus et non
+exécutés dans la même journée. **Ce n'est pas un problème de mémoire, c'est un
+problème de séquence : les consignes du journal doivent devenir les PREMIÈRES
+commandes du run, pas des choses à se rappeler au bon moment.** Séquence de
+démarrage à appliquer désormais, dans cet ordre et avant toute lecture de code :
+
+```bash
+git fetch origin && git checkout main && git log --oneline -1 origin/main
+npm ci
+```
 
 **Deux ratés mineurs du même run, notés pour mémoire :**
 - la `metaDescription` a d'abord été écrite **sans accents** (reste d'un brouillon
