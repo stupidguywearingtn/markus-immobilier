@@ -5268,6 +5268,38 @@ dont seules quelques-unes ont été recalculées aujourd'hui — celles-là éta
 justes. **Bon candidat non-contenu pour un prochain run.**
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
 
+✅ **CHANTIER DU 08/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
+09/10.** Déploiement constaté **~80 s après le push** (contre <1 min le 07/10,
+~10 min le 06/10 : le délai varie, ne rien conclure d'une mesure). Contrôlé sur
+`https://www.markusimmobilier.fr/…` :
+- 🟢 **les deux affirmations fausses ont DISPARU du rendu** : plus aucune
+  occurrence de « 21,3 % de moins » ni de « plus actif de la ville après
+  Ferrandière », sur **aucune** des trois pages de quartier ;
+- 🟢 **les deux corrections sont servies** : `/agence-immobiliere-cusset` rend
+  « **17,6 % de moins qu'à Gratte-Ciel – Dedieu – Charmettes** » et
+  `/agence-immobiliere-gratte-ciel` rend « **le deuxième quartier le plus cher de
+  la ville, derrière Ferrandière – Maisons-Neuves, et de loin le plus actif** » ;
+- 🟢 **le 17,6 % est servi aux trois endroits** : texte visible, JSON-LD échappé
+  (`&#x27;`) et payload RSC — donc **la réponse de FAQ corrigée part bien aussi
+  vers les moteurs d'IA**, qui était l'enjeu principal de cette correction ;
+- **parité FAQ visible ↔ `FAQPage` 5/5 questions ET 5/5 réponses sur les trois
+  pages** (Charpennes incluse, auditée mais non modifiée) ;
+- **0 mot collé** sur les trois pages (motifs du 04/10) ;
+- `dateModified` = **2026-10-08** sur Gratte-Ciel et Cusset, **2026-10-04** sur
+  Charpennes : la distinction « modifiée » / « seulement auditée » est servie
+  telle quelle ;
+- 🟢 **sitemap de production : 53 URLs, et EXACTEMENT 2 `lastmod` au 2026-10-08**
+  (`/agence-immobiliere-gratte-ciel` et `/agence-immobiliere-cusset`), Charpennes
+  restée au `2026-10-04T00:00:00.000Z`. **Aucune inflation de fraîcheur** : la
+  décision du 06/10 est appliquée de bout en bout pour le troisième run d'affilée.
+- ⚠️ **Taille de `/agence-immobiliere-cusset` identique à l'octet avant et après
+  déploiement (104 632 o), et ce n'est PAS un signe de non-déploiement** :
+  « 21,3 » et « 17,6 » font le même nombre de caractères, comme `2026-10-04` et
+  `2026-10-08`. **Ne jamais conclure d'une taille de page identique** — c'est le
+  contenu qu'il faut grep (Charpennes, elle, est légitimement identique :
+  108 588 o, page non touchée ; Gratte-Ciel passe de 106 510 à 106 594 o, la
+  phrase réécrite étant plus longue).
+
 ✅ **CHANTIER DU 07/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
 08/10.** Déploiement constaté **en moins d'une minute** après le push (contre
 ~10 min le 06/10 et ~2 min les jours d'avant : le délai varie beaucoup, ne rien
