@@ -14,6 +14,121 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-08**
+
+- `git fetch origin` **en tout premier (règle du 16/09) : et le piège s'est
+  reproduit à l'identique.** Avant fetch, `origin/main` pointait sur `86be209`
+  (la vérification du 05/10) alors que `HEAD` était sur `679d981` — soit **deux
+  runs d'écart apparents**. Après `git fetch`, `origin/main` == `HEAD` ==
+  `679d981`. ✅ **AUCUN RUN MANQUÉ.** Dix-septième confirmation : la référence
+  distante du conteneur au démarrage est périmée, **ne jamais rien conclure de
+  `origin/main` avant le fetch**.
+- 🟢 **`git checkout main` FAIT AVANT LA PREMIÈRE ÉDITION**, cette fois. Le
+  conteneur démarre sur `claude/dazzling-feynman-x2l6gc`, local `main` était
+  **4 commits en retard** → `git merge --ff-only origin/main` (avance rapide, rien
+  de réécrit). **La leçon du 07/10 est appliquée** : c'est la procédure de
+  démarrage, pas un rattrapage.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Seizième constat identique** (21/09 → 08/10).
+- ⚠️ Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308).
+- **Jeudi : pas de veille** (faite le 05/10). ⚠️ **Prochaine échéance : lundi
+  12/10.**
+- **Deux SERP mesurées, les deux absentes — et les DEUX compositions sont
+  RIGOUREUSEMENT IDENTIQUES à celles du 07/10 :**
+  - « agence immobilière Villeurbanne » — **absente pour la 27ᵉ fois sur 27.**
+    **10 résultats sur 10 en franchise** : Laforêt Villeurbanne-République +
+    **9 pages Orpi** (Cusset, Charpennes, Flachet, Saint-Jean, Grand-Clément,
+    Gratte-Ciel, République, Croix-Luizet, et une page d'annonces). **Zéro
+    indépendante locale**, comme le 07/10.
+  - « estimation immobilière Villeurbanne » — absente. **9 résultats, même
+    composition qu'hier** : Laforêt ×2, Orpi ×2, Square Habitat, **Capifrance ×4**.
+  - 🟢 **NUANCE DE MÉTHODE, qui corrige à moitié la conclusion du 07/10.** Le
+    07/10 concluait « la composition relevée d'un run à l'autre n'est pas stable ».
+    **Deux mesures consécutives identiques montrent qu'elle PEUT l'être** : ce qui
+    a bougé, c'est le passage 06/10 → 07/10, pas la composition en soi. **Donc ni
+    « la SERP s'ouvre » ni « la SERP est instable » ne se concluent d'un seul
+    delta.** Seule l'absence/présence du site reste une mesure fiable d'ici — et
+    elle, elle n'a jamais bougé.
+  - « prix m2 Villeurbanne » **non mesurée** : cadence hebdomadaire (décidée le
+    06/10). À remesurer avec la veille du 12/10.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 07/10 — candidat n°3,
+  piste (i), la JUSTESSE des calculs publiés.** Ouverte le 05/10, jamais traitée,
+  périmètre cadré au fichier près par le 07/10. **Et elle rapporte : DEUX erreurs
+  de fait réellement publiées, trouvées et corrigées.** Détail en
+  « Chantiers faits » et en « Erreurs commises et corrigées ».
+  1. 🔴 **`/agence-immobiliere-cusset` publiait « 21,3 % de moins qu'à
+     Gratte-Ciel ». Le chiffre juste est 17,6 %** — asymétrie des pourcentages.
+     La réponse était **aussi dans le JSON-LD `FAQPage`**, donc servie telle quelle
+     aux moteurs d'IA.
+  2. 🔴 **`/agence-immobiliere-gratte-ciel` annonçait « le quartier le plus cher et
+     le plus actif de la ville APRÈS FERRANDIÈRE »** — or Gratte-Ciel est **le plus
+     actif de tous, et de loin** (655 ventes, 35 %), et **Ferrandière est 6ᵉ sur 7**
+     (187 ventes, 10,0 %). La page **se contredisait elle-même** : sa propre FAQ
+     disait « de loin le quartier le plus liquide de la ville ».
+- ✅ **CE QUI A ÉTÉ RECALCULÉ ET TOMBE JUSTE — ne pas réauditer.** Tous les
+  montants dérivés des 4 pages du périmètre, recalculés **sans réutiliser les
+  helpers du site** (script indépendant) :
+  - honoraires et net vendeur des 7 quartiers + cas communal : **exacts à l'euro**
+    (Ferrandière 14 594 €, Gratte-Ciel 14 307 €, Charpennes 13 109 €,
+    Perralière 12 555 €, Buers 12 168 €, Cusset 11 796 €, Cyprian **9 000 €
+    forfaitaires**, commune 11 700 €) ;
+  - **l'effet de seuil de Cyprian est réel et bien dans le bon sens** : 169 756 €
+    passe **244 € sous** les 170 000 €, donc forfait, donc **taux effectif 5,30 %,
+    INFÉRIEUR aux 6,00 % des six autres** ;
+  - `surfacePourBudget` : 52/65/78 m² (Gratte-Ciel), 57/71/85 (Charpennes),
+    63/79/95 (Cusset) — justes ; les écarts en m² (14 m², 6 m²) sont des
+    **différences de surfaces, pas des pourcentages** : pas d'asymétrie possible ;
+  - `PART_VENTES` Gratte-Ciel = **35 %** (655/1 875) juste ;
+  - rendement T2 Charpennes **4,97 %** → affiché « 5,0 % » ;
+  - `ECART_INVEST` Charpennes **45 %** (5 120 vs 3 524) : formule **et sens de
+    phrase corrects** (« au-dessus de la médiane ») ;
+  - `ecartCommune()` des 7 quartiers : base = commune dans la formule **et** dans
+    la phrase, donc **pas d'asymétrie** ;
+  - 🟢 **les 7 rendements par quartier de `rentabilite-locative-lyon` recalculés un
+    par un : 4,47 / 4,56 / 4,97 / 5,19 / 5,36 / 5,53 / 6,40 %, et 4,91 % commune —
+    TOUS exacts au centième.** La grappe rendement est saine.
+- 🟡 **FAUSSE PISTE INSTRUCTIVE, à ne pas rouvrir : les arrondis des pages de
+  quartier.** Les 3 pages affichent le prix **arrondi au millier** et les
+  honoraires **arrondis à la centaine**, mais le net vendeur **exact** — de quoi
+  croire à trois nombres qui ne se soustraient pas (écarts de 445 €, 479 € et
+  −394 €). **C'est déjà traité en toutes lettres** : les trois pages écrivent
+  « **Sur le prix non arrondi**, le vendeur perçoit donc X € ». **Vérifié en
+  production sur les trois.** Rien à corriger — et la leçon est en
+  « Techniques apprises ».
+- ✅ **Signaux mesurés SAINS sur les deux pages touchées — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert** ; `npx eslint` sur les
+  3 fichiers touchés **sans erreur** ; **parité FAQ visible ↔ `FAQPage` 5/5
+  questions ET 5/5 réponses, mot pour mot, sur les deux pages** (donc la réponse
+  corrigée à 17,6 % est bien cohérente des deux côtés) ; **0 mot collé** sur les
+  5 motifs du 04/10 (seul `.gouv` remonte, faux positif de `data.gouv.fr`) ;
+  4 types de blocs JSON-LD servis ; `dateModified` = **2026-10-08** sur les deux.
+- ⚠️ **`lastmod` : deux ont bougé, et ce sont exactement les deux voulus.**
+  `/agence-immobiliere-gratte-ciel` et `/agence-immobiliere-cusset` passent au
+  **2026-10-08** (une affirmation de fait corrigée **est** un changement de
+  contenu) ; **`/agence-immobiliere-charpennes` reste au 04/10** parce qu'elle
+  n'a **rien reçu** — elle a seulement été auditée. Diff total : **3 fichiers**.
+- 🟡 **Découverte d'architecture, à connaître avant de toucher une date** : sur
+  les pages de quartier, **la date VISIBLE et le `dateModified` ne viennent pas de
+  la même source, et c'est délibéré.** `updated={MAJ}` (= `lib/quartiers.ts`,
+  **2026-09-15**) dit au lecteur **quand les chiffres DVF ont été calculés** ;
+  `lastmodOf()` dit aux crawlers **quand la page a changé**. Les deux restent donc
+  cohérents aujourd'hui (les chiffres n'ont pas changé, les phrases oui) — **mais
+  l'en-tête de `lib/seo/lastmod.ts` annonce que les pages lisent la table pour leur
+  date visible, ce qui n'est pas le cas ici.** Non tranché, inscrit en
+  « Hypothèses à vérifier » : **ne pas unifier sans décision.**
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés.** Consigne
+  client respectée (`git status` vérifié explicitement sur ces trois chemins).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 32 `<title>` sur 53
+  dépassent 70 caractères (01/10) ; 6 `<a>` bruts pour des liens internes (06/10) ;
+  🆕 **indentation JSX bizarre mais sans effet** dans le chapô de
+  `/agence-immobiliere-gratte-ciel` et `/agence-immobiliere-cusset`
+  (`{fmtPct(ECART)}{" "}` suivi d'un retour à la ligne avant « par rapport à la ») :
+  **le rendu est correct en production, vérifié** — application de « ne corrige
+  rien qui fonctionne ».
+
 **Au 2026-10-07**
 
 - `git fetch origin` **en tout premier (règle du 16/09) : et aujourd'hui le piège
@@ -1720,6 +1835,93 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-08 — Piste (i), la justesse des calculs : les nombres étaient tous bons, ce sont deux PHRASES qui mentaient (Cusset 21,3 % → 17,6 %, et Gratte-Ciel « le plus actif après Ferrandière » alors qu'il est le premier)
+
+**Chantier choisi : non-contenu**, comme prescrit le 07/10 (deux runs de contenu
+sur les trois précédents), et sur **le candidat n°3 désigné** : la piste (i),
+ouverte le 05/10 et jamais traitée. **Périmètre pris tel que le 07/10 l'avait
+cadré** : les quatre pages qui dérivent `honorairesVente()` et le produit
+`médiane de quartier × COMMUNE.surfaceMediane` — `/vendre`,
+`/agence-immobiliere-gratte-ciel`, `/agence-immobiliere-charpennes`,
+`/agence-immobiliere-cusset`. Le `grep` de formule du 07/10 a été rejoué d'abord
+et **rend exactement les mêmes quatre fichiers** : le cadrage était bon.
+
+**Méthode : recalculer sans réutiliser le code du site.** Un script indépendant
+(`scratchpad/calc.mjs`) réimplémente le barème et les produits à partir des seules
+constantes de `lib/quartiers.ts`, puis les montants sont confrontés au **HTML
+réellement servi en production** (les 4 pages téléchargées, texte isolé du
+`<main>`). **C'est la bonne méthode et elle se réutilise** : vérifier qu'un nombre
+est « là » ne dit rien ; le refaire dit tout.
+
+**Résultat n°1 — tous les MONTANTS tombent juste.** Honoraires, net vendeur, taux
+effectif, surfaces achetables, part des ventes, rendements : **exacts, y compris
+l'effet de seuil de Cyprian** (169 756 €, 244 € sous la barre des 170 000 €, donc
+forfait 9 000 €, donc taux effectif 5,30 % **inférieur** aux 6,00 % des six autres
+— le sens de la bascule est bon). Les 7 rendements par quartier de
+`rentabilite-locative-lyon` ont été recalculés un par un : **justes au centième**.
+Détail chiffré en « État des lieux ».
+
+**Résultat n°2 — l'erreur n'était pas dans les nombres, elle était dans les
+phrases. Deux fois.**
+
+🔴 **(a) `/agence-immobiliere-cusset` : « 21,3 % de moins qu'à Gratte-Ciel ».**
+La formule publiée était `(GC.median / Q.median - 1) * 100` = **+21,3 %**, qui
+répond à « de combien Gratte-Ciel est-il PLUS cher que Cusset ? ». La phrase, elle,
+disait « Cusset est X % **de moins** qu'à Gratte-Ciel » — et cette grandeur-là vaut
+`(1 - Q.median / GC.median) * 100` = **17,6 %**. **Les pourcentages ne sont pas
+symétriques** : +21,3 % dans un sens valent −17,6 % dans l'autre. L'écart publié
+était donc **surévalué de 3,7 points**, sur une page dont tout l'argument est « nos
+chiffres viennent des actes ». ⚠️ **Et la phrase vivait dans une réponse de FAQ,
+donc aussi dans le JSON-LD `FAQPage`** : le chiffre faux était servi tel quel aux
+moteurs d'IA, exactement le canal que ce journal cherche à gagner.
+→ Corrigé par une constante dont **le nom dit le sens** (`MOINS_CHER_QUE_GC`) et un
+commentaire qui écrit l'asymétrie noir sur blanc, pour qu'on ne puisse pas
+réintroduire la formule inverse sans la lire.
+
+🔴 **(b) `/agence-immobiliere-gratte-ciel` : « le quartier le plus cher et le plus
+actif de la ville APRÈS FERRANDIÈRE ».** Vrai pour le **prix** (Ferrandière
+3 923 €/m² > Gratte-Ciel 3 846 €/m²), **faux pour l'activité** : Gratte-Ciel est
+**premier des sept avec 655 ventes (35 % de la commune)** et **Ferrandière est
+sixième sur sept avec 187 ventes (10,0 %)**. Le qualificatif « après Ferrandière »
+portait sur les deux superlatifs et rendait le second absurde. **La page se
+contredisait elle-même dans le même écran** : sa FAQ dit « de loin le quartier le
+plus liquide de la ville », et son propre tableau affiche les 655 ventes.
+→ Corrigé en séparant les deux superlatifs : « **le deuxième quartier le plus cher
+de la ville, derrière Ferrandière – Maisons-Neuves, et de loin le plus actif** ».
+La formulation est maintenant **alignée sur le reste de la page** (« arrive
+deuxième des sept quartiers publiables », qui parlait déjà du prix seul).
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+- ⛔ **Ne pas « corriger » les arrondis des pages de quartier.** J'ai d'abord cru
+  tenir un troisième défaut : prix arrondi au millier − honoraires arrondis à la
+  centaine ≠ net vendeur exact (445 €, 479 €, −394 € d'écart si le lecteur
+  soustrait). **Les trois pages l'écrivent déjà** : « Sur le prix non arrondi, le
+  vendeur perçoit donc X € ». Vérifié en production sur les trois. **Toucher à ça
+  aurait cassé une rédaction honnête pour un défaut imaginaire.**
+- ⛔ **Ne pas ajouter de helper d'écart relatif à `lib/quartiers.ts`.** C'était
+  tentant (le fichier est fait pour ça), mais ce module est lu par 4+ pages et le
+  défaut n'existait que sur **une**. Un export partagé pour un cas unique, c'est
+  élargir le rayon de casse sans rien gagner. Correction gardée **locale**.
+- ⛔ **Ne pas unifier la date visible (`MAJ`) et le `dateModified` (`lastmodOf`)**
+  sur les pages de quartier. Divergence **antérieure** à ce run et défendable
+  (date de la donnée vs date de la page). Inscrit en « Hypothèses à vérifier ».
+- ⛔ **Ne pas avancer le `lastmod` de `/agence-immobiliere-charpennes`** : elle a
+  été **auditée** (et déclarée saine), pas modifiée. Auditer n'est pas rafraîchir.
+- ⛔ **Ne pas toucher à l'indentation JSX bizarre** des deux chapôs : rendu correct
+  vérifié en production.
+
+**Volet GEO.** Pas de nouveau contenu, donc pas de nouveau H2 ni de FAQ ajoutée —
+mais **le volet GEO le plus élémentaire est précisément celui-là** : un passage
+cité par une IA doit être **vrai**. Les deux phrases corrigées sont des passages
+courts, autonomes et chiffrés, c'est-à-dire **exactement le genre d'extrait qu'un
+LLM prélève** ; l'une était dans un `FAQPage`. **Parité FAQ visible ↔ JSON-LD
+revérifiée après correction : 5/5 questions et 5/5 réponses sur les deux pages.**
+
+**Contrôle avant push** : `tsc --noEmit` muet, `eslint` sans erreur sur les
+3 fichiers, `npm run build` vert, parité FAQ 5/5+5/5, 0 mot collé, 2 `lastmod`
+déplacés et seulement ceux-là, `/estimation` et les deux `lib/` de l'estimation
+intouchés (vérifié par `git status` sur ces chemins).
 
 ### 2026-10-07 — `vendre-sans-agence` : l'article publiait le barème que tout le monde publie, il publie maintenant l'écart en euros entre vendre seul et vendre accompagné (399 → 2 583 mots)
 
@@ -5038,20 +5240,32 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : contenu blog** (07/10, `vendre-sans-agence`).
-**Angles précédents : maillage interne + micro-chantier source** (06/10),
+**Angle du dernier run : NON-CONTENU — audit de justesse des calculs** (08/10,
+piste (i) : 2 erreurs de fait corrigées sur `/agence-immobiliere-cusset` et
+`/agence-immobiliere-gratte-ciel`).
+**Angles précédents : contenu blog** (07/10, `vendre-sans-agence`),
+**maillage interne + micro-chantier source** (06/10),
 **contenu blog** (05/10), **audit non-contenu + maillage** (04/10),
 **contenu — page de service** (02/10).
-→ **Le run du jeudi 08/10 doit être un run NON-CONTENU** (deux runs de contenu sur
-les trois derniers). Le candidat désigné est **la piste (i), la justesse des
-calculs publiés** — voir candidat n°3 ci-dessous, ouvert le 05/10 et jamais
-traité, et que le 06/10 comme le 07/10 ont validé comme la bonne piste (c'est en
-refaisant un calcul qu'on voit une divergence, pas en vérifiant qu'un nombre est
-là). 🟢 **Et son périmètre est désormais cadré au fichier près** : les quatre pages
-qui dérivent `honorairesVente()` et le produit `médiane × 62 m²` sont `/vendre`,
-`/agence-immobiliere-gratte-ciel`, `/agence-immobiliere-charpennes` et
-`/agence-immobiliere-cusset` — elles doivent rendre les mêmes montants au centième
-pour un même quartier. Contrôle décrit en « Techniques apprises », 07/10.
+→ **Le run du vendredi 09/10 doit être un run de CONTENU** (le 08/10 était
+non-contenu). Le candidat désigné reste **le n°2, les orphelins éditoriaux** :
+prochain sur la liste `comment-estimer-son-bien-immobilier-lyon-villeurbanne`
+(500 mots, le plus gros des 11 restants). ⚠️ **Et l'avertissement du 07/10 tient
+toujours, il est même la condition du chantier** : cet article empiète frontalement
+sur `/estimation`, `/estimation-immobiliere-villeurbanne` et
+`estimation-en-ligne-ou-agence`. **Trancher qui porte la requête AVANT d'écrire une
+ligne, et rejouer d'abord le `grep` de formule du 07/10** (c'est lui qui a évité le
+doublon de tableau, et c'est lui qui a cadré le run du 08/10).
+✅ **PISTE (i) TRAITÉE LE 08/10 — candidat n°3 CLOS sur son périmètre.** Les quatre
+pages du cadrage ont été recalculées sans réutiliser les helpers du site : **tous
+les montants tombent juste**, et les deux défauts trouvés étaient dans des
+**phrases**, pas dans des nombres (détail en « Chantiers faits »). ⚠️ **Ce qui
+reste de la piste (i) : les comparaisons du BLOG.** Le contrôle du 08/10 (voir
+« Techniques apprises ») n'a été passé qu'en croisant les formules de `app/` et
+`lib/` ; `lib/blog.ts` contient beaucoup de comparaisons **rédigées à la main**
+(« 13,2 % en dessous », « 45,3 % d'écart », « 23 % de moins que la médiane »)
+dont seules quelques-unes ont été recalculées aujourd'hui — celles-là étaient
+justes. **Bon candidat non-contenu pour un prochain run.**
 ✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
 
 ✅ **CHANTIER DU 07/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
@@ -5166,8 +5380,10 @@ piège dans lequel le run du 07/10 est tombé (voir « Erreurs commises »).
 (URLs qui disparaissent, redirections à poser), donc à instruire sérieusement avant
 de toucher quoi que ce soit. Inscrit en « Hypothèses à vérifier ».
 
-🔴 **CANDIDAT N°3 — piste (i), la JUSTESSE des calculs publiés.** Ouverte le 05/10,
-non traitée. Les contrôles du journal vérifient que les nombres sont **là** et que
+✅ **CANDIDAT N°3 — piste (i), la JUSTESSE des calculs publiés : TRAITÉ LE 08/10**
+(périmètre des 4 pages clos ; reste les comparaisons rédigées à la main de
+`lib/blog.ts`, voir en tête de section). Historique conservé ci-dessous.
+~~Ouverte le 05/10, non traitée.~~ Les contrôles du journal vérifient que les nombres sont **là** et que
 la FAQ est en **parité**, jamais qu'un calcul publié **tombe juste sur ses propres
 chiffres affichés**. Le site publie beaucoup de montants dérivés (frais de notaire,
 honoraires, rendements, nets vendeur). 🆕 **Le 06/10 montre que la piste est la
@@ -5253,6 +5469,24 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-08
+
+🟡 **Sur les pages de quartier, la date VISIBLE et le `dateModified` ne sortent pas
+de la même source — faut-il les unifier ?** Constaté aujourd'hui : `updated={MAJ}`
+affiche **2026-09-15** (date de calcul des chiffres DVF, depuis `lib/quartiers.ts`)
+tandis que `lastmodOf()` alimente le sitemap et le `dateModified` du JSON-LD
+(**2026-10-08** après ce run). **Les deux lectures sont défendables** — « la donnée
+date du 15/09 » pour le lecteur, « la page a changé le 08/10 » pour le crawler —
+**mais l'en-tête de `lib/seo/lastmod.ts` annonce explicitement que les pages lisent
+la table pour leur « Dernière mise à jour » visible**, ce qui n'est pas le cas de
+ces trois pages. ⚠️ **Divergence ANTÉRIEURE à ce run** (visible 15/09 vs table
+04/10) : elle n'a pas été créée aujourd'hui, seulement élargie de 19 à 23 jours.
+**À trancher explicitement un jour, pas en passant** : soit les pages de quartier
+affichent deux dates distinctes et nommées (« chiffres au 15/09 » / « page mise à
+jour le 08/10 »), soit elles lisent la table comme les autres et `MAJ` ne sert plus
+qu'aux chiffres. **Ne rien unifier sans cette décision** — c'est du rendu, et la
+consigne client est « ne rien casser ».
 
 ### 2026-10-07
 
@@ -5805,6 +6039,46 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-10-08 — Deux erreurs de fait vivaient en production dans des phrases, pas dans des nombres ; et j'ai failli « corriger » un arrondi qui était déjà expliqué
+
+**Les deux erreurs corrigées aujourd'hui ne sont pas des erreurs de ce run** :
+elles étaient publiées depuis des runs antérieurs et **ont survécu à tous les
+contrôles du journal**, parce que tous les contrôles existants vérifient que les
+nombres sont **présents** et que la FAQ est en **parité**. Aucun ne vérifiait
+qu'une phrase dit **la même chose que sa formule**.
+
+1. 🔴 **`/agence-immobiliere-cusset` : « 21,3 % de moins qu'à Gratte-Ciel » au lieu
+   de 17,6 %.** Formule `(GC.median / Q.median - 1)` sous une phrase « de moins ».
+   **Asymétrie des pourcentages.** Erreur **aussi servie dans le JSON-LD
+   `FAQPage`**.
+2. 🔴 **`/agence-immobiliere-gratte-ciel` : « le plus actif de la ville après
+   Ferrandière »** alors que Gratte-Ciel est **premier sur sept (655 ventes, 35 %)**
+   et Ferrandière **sixième sur sept (187 ventes, 10,0 %)**. La page **contredisait
+   sa propre FAQ** (« de loin le quartier le plus liquide »).
+
+**Ce que ça apprend sur les contrôles du journal, et c'est le vrai enseignement du
+run.** La liste « signaux mesurés sains » s'allonge depuis le 30/09 — canonicals,
+`alt`, parité FAQ, mots collés, liens morts, `<h1>` distincts. **Aucun de ces
+contrôles n'aurait jamais trouvé ces deux erreurs**, parce qu'ils vérifient tous la
+**forme**. Une page peut passer dix contrôles verts et affirmer une contre-vérité.
+→ **Règle à garder : un contrôle de forme ne remplace pas une relecture de sens.
+Et la relecture de sens a un point d'entrée efficace, ce n'est pas la lecture
+linéaire : ce sont les COMPARAISONS (« de moins », « de plus », « le plus », « après
+X », « deuxième ») — c'est là que le code et la phrase se désalignent.**
+
+🟡 **Et une erreur de ce run, rattrapée avant de coder : j'ai cru tenir un
+troisième défaut qui n'existait pas.** Les 3 pages de quartier affichent le prix
+arrondi au millier et les honoraires arrondis à la centaine, mais le **net vendeur
+exact** — la soustraction des nombres affichés ne tombe donc pas sur le net publié
+(445 €, 479 €, −394 €). J'allais le traiter comme un défaut d'arithmétique. **Les
+trois pages l'écrivent noir sur blanc : « Sur le prix non arrondi, le vendeur
+perçoit donc X € ».** Je ne l'ai vu qu'en lisant le **texte rendu en production**,
+pas le code.
+→ **Règle : avant de qualifier un calcul de faux, lire la PHRASE qui l'entoure dans
+le rendu, pas seulement la formule dans le source.** Le code dit ce qu'il calcule ;
+seule la phrase dit ce qui est **affirmé**. C'est le pendant exact de l'erreur n°1
+(où, à l'inverse, c'est la phrase qui avait tort).
+
 ### 2026-10-07 — J'ai écrit un tableau entier avant de découvrir que le site le publiait déjà, et le journal m'avait prévenu
 
 **Ce qui s'est passé.** Le chantier du jour devait réécrire `vendre-sans-agence`.
@@ -6320,6 +6594,65 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-08 — Méthode interne : auditer les COMPARAISONS, parce que l'asymétrie des pourcentages est invisible à tous les contrôles de forme
+
+**Le défaut-type, et pourquoi il est indétectable autrement.** « A est X % de moins
+que B » et « B est X % de plus que A » **ne sont pas la même grandeur** : la base
+change. Sur Cusset (3 171 €/m²) et Gratte-Ciel (3 846 €/m²) :
+
+```
+(GC / CU - 1) * 100 = +21,3 %   → « Gratte-Ciel est 21,3 % PLUS cher que Cusset »
+(1 - CU / GC) * 100 =  17,6 %   → « Cusset est 17,6 % MOINS cher que Gratte-Ciel »
+```
+
+**Les deux formules sont justes ; une seule répond à la phrase publiée.** Aucun
+typecheck, aucun lint, aucune parité FAQ, aucun comptage de mots ne peut voir ça :
+le nombre est présent, bien formaté, dérivé d'une source de vérité, et **faux par
+rapport à ce qu'il prétend dire**.
+
+**Le contrôle, réutilisable tel quel.** Deux `grep` à croiser, puis lire chaque
+couple formule/phrase :
+
+```bash
+# 1. les formules de comparaison relative
+grep -rn -- '- 1) \* 100\|- 1) \* 1000\|1 - ' app lib --include='*.tsx' --include='*.ts'
+
+# 2. les phrases qui publient une comparaison
+grep -rn 'de moins qu\|de plus qu\|moins cher\|plus cher\|au-dessus de\|en dessous de\|le plus\|la plus\|deuxième\|après ' app lib --include='*.tsx' --include='*.ts'
+```
+
+Puis, pour chaque résultat de (2) : **quelle est la BASE dans la phrase ?** et
+**est-ce la même que le dénominateur de la formule ?** Si la phrase dit « X de
+moins que B », le dénominateur doit être **B**.
+
+**Rendement du contrôle sur ce site (08/10)** : 2 erreurs réelles sur ~12 couples
+examinés. Les comparaisons **saines** le sont pour une raison repérable :
+- `ecartCommune()` : base = commune dans la formule **et** dans la phrase (« par
+  rapport à la médiane de Villeurbanne ») → **pas d'asymétrie possible** ;
+- `ECART_INVEST` (Charpennes, 45 %) : la phrase dit « **au-dessus de** la médiane »,
+  donc base = notre médiane = le dénominateur → juste ;
+- Cyprian « 23 % sous la médiane communale » → base commune → juste ;
+- les écarts en **m²** (14 m², 6 m²) et en **points** de rendement sont des
+  **différences**, pas des rapports : **aucune asymétrie, rien à vérifier.**
+→ 📌 **Heuristique qui ressort : le danger est concentré sur les comparaisons entre
+DEUX ÉLÉMENTS DE MÊME NATURE (deux quartiers, deux prix au m²), parce que c'est là
+que la base est ambiguë. Les comparaisons à un référentiel unique (la commune) et
+les différences absolues sont structurellement sûres.**
+
+**Deuxième enseignement, sur l'ordre des lectures.** Le même run a produit un
+faux positif (les arrondis, voir « Erreurs commises ») parce que j'ai lu la formule
+avant la phrase. **L'ordre qui marche :**
+1. lire la **phrase rendue** (HTML de production, texte isolé du `<main>`) — elle
+   dit ce qui est **affirmé** ;
+2. puis la **formule** — elle dit ce qui est **calculé** ;
+3. comparer les deux. Un désaccord est soit une erreur (cas Cusset), soit une
+   précaution déjà rédigée (cas des arrondis, « sur le prix non arrondi »).
+
+**Troisième point, outillage, confirmé une fois de plus** : le texte doit être
+isolé du `<main>` (technique du 07/10). Le payload RSC en fin de document recopie
+tout le texte échappé et fait remonter des faux positifs sur n'importe quel `grep`
+de phrase.
 
 ### 2026-10-07 — Outillage : Géorisques est fermé (6ᵉ domaine), une fiche service-public se trouve par sondage de `<title>`, et un domaine joignable peut avoir des chemins fermés
 

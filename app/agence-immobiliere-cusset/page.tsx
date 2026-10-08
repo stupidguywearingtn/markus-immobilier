@@ -44,7 +44,18 @@ import {
 const Q = QUARTIERS.cusset;
 const GC = QUARTIERS["gratte-ciel"];
 const ECART = ecartCommune(Q.median);
-const ECART_GC = Math.round((GC.median / Q.median - 1) * 1000) / 10;
+/**
+ * Écart de prix avec Gratte-Ciel, calculé DANS LE SENS DE LA PHRASE qui le
+ * publie : « Cusset est X % moins cher qu'à Gratte-Ciel » → la base est donc
+ * Gratte-Ciel, pas Cusset.
+ *
+ * ⚠️ Ne jamais écrire `(GC.median / Q.median - 1)` ici : ce calcul-là répond à
+ * une autre question (« de combien Gratte-Ciel est-il PLUS cher que Cusset ? »)
+ * et vaut 21,3 %, parce que les pourcentages ne sont pas symétriques — +21,3 %
+ * dans un sens valent −17,6 % dans l'autre. C'est exactement la formule qui
+ * était en place jusqu'au 2026-10-08 sous une phrase disant « de moins ».
+ */
+const MOINS_CHER_QUE_GC = Math.round((1 - Q.median / GC.median) * 1000) / 10;
 const PRIX_MEDIAN_QUARTIER = Q.median * COMMUNE.surfaceMediane;
 const HONO = honorairesVente(PRIX_MEDIAN_QUARTIER);
 const T4 = TYPOLOGIES.find((t) => t.type === "T4")!;
@@ -66,7 +77,7 @@ export const metadata: Metadata = {
 const FAQ: FaqItem[] = [
   {
     q: "Quel est le prix au m² à Cusset (Villeurbanne) ?",
-    a: `Le prix médian est de ${fmtM2(Q.median)}, calculé sur les ${Q.n} ventes d'appartements réellement signées en 2025 dans le contour officiel « ${Q.contour} » (base DVF publiée par l'État). C'est ${fmtPct(ECART)} par rapport à la médiane de Villeurbanne (${fmtM2(COMMUNE.median)}), et ${ECART_GC.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} % de moins qu'à Gratte-Ciel – Dedieu – Charmettes.`,
+    a: `Le prix médian est de ${fmtM2(Q.median)}, calculé sur les ${Q.n} ventes d'appartements réellement signées en 2025 dans le contour officiel « ${Q.contour} » (base DVF publiée par l'État). C'est ${fmtPct(ECART)} par rapport à la médiane de Villeurbanne (${fmtM2(COMMUNE.median)}), et ${MOINS_CHER_QUE_GC.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} % de moins qu'à Gratte-Ciel – Dedieu – Charmettes.`,
   },
   {
     q: "Quelle surface peut-on acheter à Cusset avec 250 000 € ?",

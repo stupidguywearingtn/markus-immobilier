@@ -126,10 +126,10 @@ export default function GratteCielPage() {
             <strong>{fmtM2(Q.median)}</strong>, calculé sur les {Q.n} ventes
             réellement signées en 2025 — soit {fmtPct(ECART)}{" "}
                   par rapport à la
-            médiane de Villeurbanne. C&apos;est le quartier le plus cher et le
-            plus actif de la ville après Ferrandière : environ {PART_VENTES} %
-            des appartements villeurbannais vendus l&apos;an dernier
-            l&apos;ont été ici. Voici ce que disent les chiffres, et ce que ça
+            médiane de Villeurbanne. C&apos;est le deuxième quartier le plus
+            cher de la ville, derrière Ferrandière – Maisons-Neuves, et de loin
+            le plus actif : environ {PART_VENTES} % des appartements
+            villeurbannais vendus l&apos;an dernier l&apos;ont été ici. Voici ce que disent les chiffres, et ce que ça
             change concrètement pour vendre ou acheter dans le secteur.
           </>
         }
