@@ -5544,6 +5544,44 @@ chantier de repo — **c'est une action client, à chiffrer et à proposer.**
 ⚠️ **À confirmer sur une seconde mesure avant de le présenter comme une
 tendance** (règle du 08/10 : un seul delta ne conclut rien).
 
+✅ **CHANTIER DU 11/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
+12/10.** Déploiement constaté **entre 40 et 60 s après le push** (contre ~80 s le
+08/10, <1 min le 07/10, ~10 min le 06/10 : le délai varie, ne rien conclure d'une
+mesure). Contrôlé sur `https://www.markusimmobilier.fr/…` :
+- `/blog/dpe-2026-ce-qui-change` sert **2 502 mots dans le `<main>`**, chiffre
+  **identique au local** (et 280 avant déploiement : la bascule est nette) ;
+- **parité FAQ visible ↔ `FAQPage` 7/7 sur les questions ET 7/7 sur les
+  réponses**, mot pour mot ;
+- **0 mot collé** sur les 5 motifs du 04/10 (seul `1er` remonte, faux positif) ;
+- 4 blocs JSON-LD (`RealEstateAgent`, `BlogPosting`, `FAQPage`,
+  `BreadcrumbList`), `datePublished` 2026-05-05 / **`dateModified` 2026-10-11** ;
+- 🟢 **tous les chiffres de l'angle sont servis** : `49 717`, `2 454`, `4,94 %`,
+  `7,05 %`, `6,72 %`, `12,37 %`, `7,60 %`, « 25 fois moins souvent », `1 287`,
+  `1 077`, `7 853`, `15,8 %`, `18 134`, `6,26 %`, `4,16 %`, « 50 % de risques en
+  plus », `17,9 %` / `17,2 %`, `96 %`, `51 951`, « 2,3 à 1,9 », « monopropriété »,
+  « E, F ou G », et les deux bornes de la donnée (« 1er juillet 2021 »,
+  « 5 octobre 2026 ») ;
+- 🟢 **les trois formulations retirées ont bien DISPARU du document servi** :
+  plus aucune occurrence de « 850 000 », de « chance et demie » ni de
+  « obligatoire pour les biens classés F ou G » — **vérifié sur le HTML complet,
+  payload RSC compris**, pas seulement sur le `<main>` ;
+- **2 liens entrants servis** avec l'ancre attendue : `4,9 % des appartements
+  diagnostiqués` sur `prix-immobilier-villeurbanne-2026` et `2 454 appartements
+  diagnostiqués sont dans ce cas` sur `estimation-en-ligne-ou-agence` ;
+- **`/llms.txt` sert le nouveau titre et le nouvel `excerpt`** (dérivé de
+  `ARTICLES`, confirmé une fois de plus intenable à désynchroniser) ;
+- 🟢 **sitemap de production : 53 URLs, et EXACTEMENT 1 `lastmod` au 2026-10-11**
+  (`/blog/dpe-2026-ce-qui-change`), `prix-immobilier-villeurbanne-2026` resté au
+  `2026-09-07` et `estimation-en-ligne-ou-agence` au `2026-09-11` **bien que les
+  deux aient reçu un lien sortant**. **Aucune inflation de fraîcheur : la décision
+  du 06/10 est appliquée de bout en bout pour le cinquième run d'affilée**, et
+  pour la première fois sur des pages qui ont été *modifiées* sans *changer de
+  contenu* — c'est exactement le cas que la règle visait.
+- ⚠️ **Rappel après la mésaventure du run (voir « Erreurs commises ») : la
+  vérification de production est la seule qui ne peut pas être trompée par un
+  serveur local périmé.** Elle a été faite ici en grep**ant les phrases
+  nouvelles**, pas seulement les chiffres.
+
 ✅ **CHANTIER DU 08/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
 09/10.** Déploiement constaté **~80 s après le push** (contre <1 min le 07/10,
 ~10 min le 06/10 : le délai varie, ne rien conclure d'une mesure). Contrôlé sur
