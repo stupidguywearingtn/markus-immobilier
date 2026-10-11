@@ -6454,6 +6454,30 @@ de ce run.**
    seulement les chiffres** — un chiffre inchangé entre deux versions ne prouve
    rien (c'est le cousin exact de l'avertissement du 08/10 sur la taille de page
    identique à l'octet).
+
+4. 🟡 **Erreur de ce run, à la toute fin, et elle fait écho au trou de calendrier
+   du jour : `git push origin main` a répondu « Everything up-to-date » alors que
+   le travail n'était PAS sur `main`.** Le conteneur démarre sur
+   `claude/dazzling-feynman-<id>`, et `git checkout main` **échoue** quand des
+   modifications sont en cours (« Please commit your changes or stash them »). Le
+   commit part donc sur la branche de session, et `git branch -f main HEAD`
+   **n'avance `main` qu'au commit du moment où on le tape** : le commit suivant
+   repart sur la branche de session, `main` reste en arrière, et le `push`
+   annonce sereinement qu'il n'y a rien à envoyer. **Le push du chantier est
+   passé, celui de la note de vérification a été silencieusement perdu** jusqu'à
+   ce que `git rev-parse` les compare.
+   → **Procédure à suivre désormais, à chaque commit et pas une fois par run :**
+   ```bash
+   git rev-parse --short HEAD main origin/main   # les trois AVANT de pousser
+   git branch -f main HEAD && git push origin main
+   git push origin HEAD:refs/heads/<branche-de-session>
+   ```
+   → **Et le contrôle qui tranche : « Everything up-to-date » n'est une bonne
+   nouvelle que si `origin/main == HEAD`.** Sinon c'est l'inverse : la preuve
+   qu'on vient de ne rien pousser. **C'est probablement ce genre de silence qui
+   fabrique les runs manquants** (deux aujourd'hui) : rien n'échoue, rien ne
+   prévient, et le journal du lendemain croit à un run sauté.
+
 ### 2026-10-08 — Deux erreurs de fait vivaient en production dans des phrases, pas dans des nombres ; et j'ai failli « corriger » un arrondi qui était déjà expliqué
 
 **Les deux erreurs corrigées aujourd'hui ne sont pas des erreurs de ce run** :
