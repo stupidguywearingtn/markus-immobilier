@@ -287,7 +287,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Les critères qui font bouger le prix par rapport à la médiane de votre quartier :" },
       { type: "ul", items: [
         "**L'étage et l'ascenseur** : un dernier étage avec ascenseur se paie ; un 4ᵉ sans ascenseur se décote.",
-        "**Le DPE** : depuis l'interdiction de louer les logements classés G (janvier 2025) puis F (janvier 2028), les passoires thermiques se négocient nettement en dessous du marché.",
+        "**Le DPE** : depuis l'interdiction de louer les logements classés G (janvier 2025) puis F (janvier 2028), les passoires thermiques se négocient nettement en dessous du marché. Elles sont rares dans la commune — [4,9 % des appartements diagnostiqués](/blog/dpe-2026-ce-qui-change) — et concentrées sur le bâti d'avant 1975.",
         "**L'extérieur** : balcon, terrasse ou jardin — un différenciateur majeur depuis 2020.",
         "**Les charges de copropriété** : élevées, elles réduisent directement le budget de l'acheteur, donc le prix qu'il peut proposer.",
         "**Le stationnement** : un garage ou une place se valorise à part, en plus du prix au m² habitable.",
@@ -488,29 +488,134 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "dpe-2026-ce-qui-change",
-    title: "DPE 2026 : ce qui change pour vendre ou louer",
+    title: "DPE à Villeurbanne : 4,9 % de passoires, et ce qui change en 2026",
     metaDescription:
-      "Réforme du DPE au 1er janvier 2026, calendrier d'interdiction de location, gel des loyers : tout ce que les propriétaires doivent savoir.",
-    h1: "DPE 2026 : ce qui change pour vendre ou louer",
+      "Sur 49 717 appartements diagnostiqués à Villeurbanne, 4,9 % sont classés F ou G, contre 7,1 % en France. Détail par période de construction et règles 2026.",
+    h1: "DPE à Villeurbanne : combien de passoires énergétiques, et ce qui change en 2026",
     excerpt:
-      "Réforme du coefficient électrique, calendrier d'interdiction de location, gel des loyers : l'état des règles DPE en 2026.",
+      "Nous avons compté les étiquettes DPE des 49 717 appartements diagnostiqués à Villeurbanne : 4,9 % sont classés F ou G, contre 7,1 % en France. Le risque dépend d'abord de l'année de construction.",
     date: "2026-05-05",
+    updated: "2026-10-11",
     internalHref: "/vendre",
     internalLabel: "Faire le point sur la valeur de mon bien",
     blocks: [
-      { type: "p", text: "Le diagnostic de performance énergétique (DPE) est devenu un critère décisif. Voici l'état des règles en 2026." },
-      { type: "h2", text: "La réforme du 1er janvier 2026" },
-      { type: "p", text: "Le coefficient de conversion de l'électricité a été abaissé (de 2,3 à 1,9). Conséquence : environ 850 000 logements chauffés à l'électricité sortent du statut de passoire thermique sans aucun travaux. Si votre bien est électrique et classé F ou G, faites recalculer votre DPE — la mise à jour est gratuite via le simulateur de l'ADEME, sans nouvelle visite." },
-      { type: "p", text: "À noter aussi : depuis 2026, le DPE devient obligatoire pour les copropriétés de moins de 50 lots." },
-      { type: "h2", text: "Le calendrier d'interdiction de location" },
+      { type: "p", text: "**Sur les 49 717 appartements villeurbannais qui disposent d'un diagnostic de performance énergétique, 2 454 sont classés F ou G, soit 4,9 %.** C'est moins que la moyenne nationale (7,1 %) et moins qu'à Lyon (6,7 %). Nous avons compté ces étiquettes une par une dans la base publique de l'ADEME, parce que personne ne publie ce chiffre à l'échelle de Villeurbanne — et parce qu'il change ce qu'un propriétaire doit anticiper avant de vendre ou de louer." },
+
+      { type: "h2", text: "Combien d'appartements sont des passoires énergétiques à Villeurbanne ?" },
+      { type: "p", text: "**2 454 appartements sur 49 717, soit 4,9 % du parc diagnostiqué.** Villeurbanne compte donc proportionnellement moins de passoires énergétiques que la France (7,1 %) et que Lyon (6,7 %). L'étiquette la plus fréquente dans la commune est le C : il concerne un appartement diagnostiqué sur deux (51,5 %), contre 41,8 % au niveau national." },
+      {
+        type: "table",
+        caption: "Villeurbanne — étiquettes DPE des appartements diagnostiqués",
+        headers: ["Étiquette", "Appartements", "Part à Villeurbanne", "Part en France"],
+        rows: [
+          ["A", "176", "0,35 %", "0,85 %"],
+          ["B", "1 777", "3,57 %", "4,88 %"],
+          ["C", "25 614", "51,52 %", "41,77 %"],
+          ["D", "14 297", "28,76 %", "30,75 %"],
+          ["E", "5 399", "10,86 %", "14,70 %"],
+          ["F", "1 643", "3,30 %", "4,71 %"],
+          ["G", "811", "1,63 %", "2,34 %"],
+          ["**F + G**", "**2 454**", "**4,94 %**", "**7,05 %**"],
+        ],
+        source:
+          "Source : base « DPE Logements existants (depuis juillet 2021) », ADEME, Licence Ouverte 2.0 — extraction du 11 octobre 2026. Comptage Markus Immobilier sur les appartements de la commune de Villeurbanne (code INSEE 69266) ; référence nationale calculée sur les 10 646 482 appartements diagnostiqués en France.",
+      },
+      { type: "p", text: "Une explication tentante doit être écartée tout de suite : ce n'est pas le chauffage urbain. On pourrait le croire décisif à Villeurbanne, mais **17,9 % des appartements diagnostiqués y sont raccordés à un réseau de chaleur, contre 17,2 % en France** — un écart trop faible pour expliquer quoi que ce soit. La vraie raison est ailleurs, et elle est mesurable : l'âge du bâti." },
+
+      { type: "h2", text: "Mon immeuble date des années 1960 : quel risque d'avoir une étiquette F ou G ?" },
+      { type: "p", text: "**Pour un appartement villeurbannais construit entre 1948 et 1974, le risque mesuré est de 7,60 %. Il monte à 12,37 % avant 1948 et tombe sous 1 % pour tout ce qui a été construit à partir de 1978.** La rupture se situe en 1975, année de la première réglementation thermique : avant cette date, 9,49 % des appartements diagnostiqués sont classés F ou G (2 361 sur 24 881) ; à partir de 1975, 0,38 % (93 sur 24 649). Soit **25 fois moins souvent**." },
+      {
+        type: "table",
+        caption: "Villeurbanne — part des appartements classés F ou G, par période de construction",
+        headers: ["Période de construction", "Appartements diagnostiqués", "Classés F ou G", "Part F + G"],
+        rows: [
+          ["avant 1948", "9 856", "1 219", "**12,37 %**"],
+          ["1948 – 1974", "15 025", "1 142", "**7,60 %**"],
+          ["1975 – 1977", "1 303", "39", "2,99 %"],
+          ["1978 – 1982", "2 221", "16", "0,72 %"],
+          ["1983 – 1988", "1 941", "8", "0,41 %"],
+          ["1989 – 2000", "8 134", "22", "0,27 %"],
+          ["2001 – 2005", "2 034", "1", "0,05 %"],
+          ["2006 – 2012", "5 010", "5", "0,10 %"],
+          ["2013 – 2021", "4 006", "2", "0,05 %"],
+        ],
+        source:
+          "Source : base DPE Logements existants, ADEME — extraction du 11 octobre 2026. Comptage Markus Immobilier. Les 187 appartements déclarés « après 2021 » ne figurent pas dans ce tableau ; 49 530 des 49 717 appartements ont une période de construction renseignée.",
+      },
+      { type: "p", text: "Pratiquement, cela veut dire qu'une étiquette F ou G n'est pas un risque diffus : elle se concentre sur la moitié la plus ancienne du parc villeurbannais. La moitié d'avant 1975 représente à elle seule **2 361 des 2 454 passoires de la commune, soit 96 % d'entre elles**. Si votre appartement a été construit après 1978, une mauvaise étiquette est statistiquement l'exception et mérite d'être vérifiée plutôt que subie." },
+
+      { type: "h2", text: "Qu'est-ce qui change au 1er janvier 2026 pour un logement chauffé à l'électricité ?" },
+      { type: "p", text: "**Depuis le 1er janvier 2026, le facteur de conversion de l'électricité en énergie primaire passe de 2,3 à 1,9.** Un logement chauffé à l'électricité obtient donc une meilleure étiquette qu'avec l'ancien calcul, sans aucun travaux. Les DPE réalisés en 2025 et avant restent valables, et ils peuvent être mis à jour gratuitement, sans nouvelle visite du diagnostiqueur, sur le site de l'ADEME." },
+      { type: "p", text: "**À Villeurbanne, cela concerne un nombre précis de logements : 1 287 appartements classés F ou G y sont chauffés à l'électricité, et 1 077 d'entre eux ont un DPE établi avant le 1er janvier 2026.** Ce sont ces 1 077 là qui ont quelque chose à gagner à demander la mise à jour gratuite. L'électricité est d'ailleurs le premier mode de chauffage des passoires villeurbannaises : 52,4 % des appartements classés F ou G, contre 42,3 % au gaz naturel et 3,1 % raccordés à un réseau de chaleur." },
+
+      { type: "h2", text: "À partir de quand ne peut-on plus louer un logement selon son DPE ?" },
+      { type: "p", text: "**Un logement classé G ne peut plus être mis en location depuis le 1er janvier 2025, et l'interdiction vaut aussi pour le renouvellement du bail et sa reconduction tacite.** La classe F suit à partir de 2028 et la classe E à partir de 2034. Les logements F et G subissent par ailleurs un gel des loyers : pas d'augmentation tant que le bien reste une passoire." },
       { type: "ul", items: [
-        "**Classe G** : interdite à la location depuis le 1er janvier 2025.",
-        "**Classe F** : interdite au 1er janvier 2028.",
-        "**Classe E** : interdite au 1er janvier 2034.",
+        "**Classe G** : interdite à la location depuis le 1er janvier 2025 — **811 appartements** à Villeurbanne.",
+        "**Classe F** : interdite à partir de 2028 — **1 643 appartements** de plus.",
+        "**Classe E** : interdite à partir de 2034 — **5 399 appartements** de plus.",
       ] },
-      { type: "p", text: "Les logements F et G subissent par ailleurs un gel des loyers (pas d'augmentation tant que le bien reste une passoire)." },
-      { type: "h2", text: "Et pour vendre ?" },
-      { type: "p", text: "La vente d'une passoire thermique reste autorisée, mais un audit énergétique est obligatoire pour les biens classés F ou G — il s'ajoute aux [diagnostics déjà exigés avant toute vente](/blog/diagnostics-obligatoires-vente). Dans tous les cas, un mauvais DPE entraîne une décote : les acheteurs anticipent les travaux." },
+      { type: "p", text: "Mis bout à bout, le calendrier concerne donc **7 853 appartements diagnostiqués à Villeurbanne, soit 15,8 % du parc, à l'horizon 2034**. L'échéance la plus lourde n'est pas 2025 ni 2028 : c'est 2034, qui à elle seule vise plus du double des classes F et G réunies." },
+
+      { type: "h2", text: "Faut-il un audit énergétique pour vendre un appartement classé F ou G ?" },
+      { type: "p", text: "**Non, pas s'il s'agit d'un lot de copropriété.** L'audit énergétique obligatoire en cas de vente ne concerne que les maisons individuelles et les immeubles composés de plusieurs logements dont le vendeur est l'unique propriétaire, classés E, F ou G. Un appartement vendu seul au sein d'une copropriété n'y est pas soumis, quelle que soit son étiquette." },
+      { type: "p", text: "La distinction compte particulièrement ici : sur les 51 951 diagnostics enregistrés à Villeurbanne, **49 717 portent sur des appartements, contre 1 159 sur des maisons et 1 075 sur des immeubles entiers**. L'immense majorité des ventes villeurbannaises échappe donc à l'audit énergétique — mais pas au DPE, qui reste obligatoire dans tous les cas et s'ajoute aux [diagnostics déjà exigés avant toute vente](/blog/diagnostics-obligatoires-vente)." },
+      { type: "p", text: "L'obligation vise les ventes dont la promesse ou l'acte de vente est signé depuis le 1er avril 2023, et sera étendue aux bâtiments classés D à partir du 1er janvier 2034. Dans tous les cas, une mauvaise étiquette entraîne une décote : les acheteurs anticipent les travaux, et le prix se négocie en conséquence." },
+
+      { type: "h2", text: "Mon DPE est-il encore valable ?" },
+      { type: "p", text: "**Un DPE réalisé depuis le 1er juillet 2021 est valable 10 ans.** En revanche, les DPE réalisés entre le 1er janvier 2018 et le 30 juin 2021 ne sont plus valables depuis le 1er janvier 2025 : ils doivent être refaits en cas de mise en location. Depuis le 1er juillet 2024, les seuils des étiquettes ont par ailleurs été adaptés pour les logements dont la surface de référence est inférieure ou égale à 40 m², et les propriétaires concernés peuvent télécharger sur le site de l'ADEME une attestation remplaçant l'étiquette initiale." },
+      { type: "p", text: "**Ce dernier point touche beaucoup de monde à Villeurbanne, qui est une ville de petites surfaces : 18 134 appartements diagnostiqués font 40 m² ou moins, soit 36,5 % de ceux dont la surface est renseignée.** Et ce sont justement les plus exposés : **6,26 % d'entre eux sont classés F ou G, contre 4,16 % au-dessus de 40 m²**. Un studio ou un T1 a donc environ 50 % de risques en plus qu'un grand logement d'être une passoire — ce qui, dans une commune qui borde le campus de la Doua, concerne directement le parc locatif étudiant." },
+
+      { type: "h2", text: "Le DPE collectif de ma copropriété est-il obligatoire en 2026 ?" },
+      { type: "p", text: "**Oui, depuis le 1er janvier 2026, pour toutes les copropriétés d'au maximum 50 lots.** Le calendrier s'est appliqué par paliers : le 1er janvier 2024 pour les immeubles en monopropriété et les copropriétés de plus de 200 lots, le 1er janvier 2025 pour celles comprises entre 50 et 200 lots, et le 1er janvier 2026 pour les plus petites. Ce DPE collectif porte sur le bâtiment entier et ne remplace pas le DPE individuel exigé pour vendre ou louer un lot." },
+
+      { type: "h2", text: "Comment ces chiffres ont-ils été calculés ?" },
+      { type: "p", text: "Ils proviennent de la base « DPE Logements existants (depuis juillet 2021) », publiée en open data par l'ADEME sous Licence Ouverte 2.0. Nous avons retenu les diagnostics rattachés à la commune de Villeurbanne (code INSEE 69266) portant sur un appartement, puis compté les étiquettes une par une. Extraction du 11 octobre 2026 : **49 717 diagnostics, établis entre le 1er juillet 2021 et le 5 octobre 2026**." },
+      { type: "p", text: "Trois limites, à connaître pour lire ces chiffres correctement :" },
+      { type: "ul", items: [
+        "**Ce n'est pas un recensement du parc, c'est le stock des DPE réalisés.** Un logement jamais diagnostiqué depuis juillet 2021 n'y figure pas. Ces chiffres décrivent donc les logements qui sont passés sur le marché — vendus, mis en location ou diagnostiqués volontairement — ce qui est précisément la population utile à un vendeur ou à un bailleur.",
+        "**Un même logement peut y figurer plusieurs fois**, s'il a été diagnostiqué deux fois depuis 2021. La base ne permet pas de dédoublonner de façon fiable, et nous ne l'avons pas fait.",
+        "**Les parts sont arrondies au centième**, donc une colonne de pourcentages ne fait pas exactement 100 %. Les effectifs, eux, sont exacts et se somment.",
+      ] },
+      { type: "p", text: "Les comparaisons France et Lyon sont calculées sur la même base et avec le même filtre (appartements), pour que l'écart mesure une différence de parc et non une différence de méthode : **10 646 482 appartements diagnostiqués en France** et **209 444 dans les neuf arrondissements de Lyon**." },
+      { type: "p", text: "Les règles citées, elles, proviennent de sources officielles :" },
+      { type: "ul", items: [
+        "[Diagnostic de performance énergétique (DPE)](https://www.service-public.gouv.fr/particuliers/vosdroits/F16096), Service-Public — fiche vérifiée le 1er janvier 2026 : facteur de conversion, durée de validité, seuils des logements de 40 m² ou moins.",
+        "[Quels sont les diagnostics immobiliers qu'un bailleur doit fournir au locataire ?](https://www.service-public.gouv.fr/particuliers/vosdroits/F33463), Service-Public — fiche vérifiée le 20 février 2026 : calendrier d'interdiction de location.",
+        "[Audit énergétique en cas de vente d'un bien immobilier dit « passoire thermique »](https://www.service-public.gouv.fr/particuliers/vosdroits/F37110), Service-Public — fiche vérifiée le 14 septembre 2026 : périmètre de l'audit.",
+        "[Diagnostic de performance énergétique](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe), ministère chargé de la Transition écologique : calendrier du DPE collectif en copropriété.",
+      ] },
+      { type: "p", text: "Si vous vous demandez ce que votre étiquette change sur le prix, nos [prix au m² réels par quartier](/blog/prix-immobilier-villeurbanne-2026) donnent le point de départ, et notre page [vendre son bien à Villeurbanne](/vendre) le net vendeur une fois les honoraires déduits." },
+    ],
+    faq: [
+      {
+        q: "Combien y a-t-il de passoires énergétiques à Villeurbanne ?",
+        a: "2 454 appartements villeurbannais sont classés F ou G, sur 49 717 appartements disposant d'un DPE, soit 4,94 %. C'est moins que la moyenne française (7,05 %) et que Lyon (6,72 %), sur la même base et le même filtre. Comptage Markus Immobilier dans la base DPE Logements existants de l'ADEME, extraction du 11 octobre 2026.",
+      },
+      {
+        q: "Quelle est l'étiquette DPE la plus fréquente à Villeurbanne ?",
+        a: "C'est l'étiquette C, avec 25 614 appartements sur 49 717, soit 51,52 % du parc diagnostiqué — contre 41,77 % au niveau national. Viennent ensuite le D (28,76 %) et le E (10,86 %). Les étiquettes A et B restent rares : 1 953 appartements à elles deux, soit 3,92 %.",
+      },
+      {
+        q: "Quel est le risque d'avoir un DPE F ou G selon l'année de construction de l'immeuble ?",
+        a: "À Villeurbanne, 12,37 % des appartements construits avant 1948 sont classés F ou G, et 7,60 % de ceux construits entre 1948 et 1974. À partir de 1978, la part tombe sous 1 %. La rupture se situe en 1975, année de la première réglementation thermique : 9,49 % de passoires avant cette date, 0,38 % après, soit 25 fois moins souvent.",
+      },
+      {
+        q: "Mon appartement est chauffé à l'électricité et classé F : que change le 1er janvier 2026 ?",
+        a: "Depuis le 1er janvier 2026, le facteur de conversion de l'électricité en énergie primaire passe de 2,3 à 1,9, ce qui améliore l'étiquette d'un logement électrique sans aucun travaux. Un DPE réalisé en 2025 ou avant reste valable et peut être mis à jour gratuitement, sans nouvelle visite, sur le site de l'ADEME. À Villeurbanne, 1 287 appartements classés F ou G sont chauffés à l'électricité, dont 1 077 avec un DPE établi avant cette date.",
+      },
+      {
+        q: "Faut-il un audit énergétique pour vendre un appartement classé F ou G ?",
+        a: "Non, pas pour un lot de copropriété. L'audit énergétique obligatoire en cas de vente ne concerne que les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire, classés E, F ou G, pour les ventes signées depuis le 1er avril 2023. À Villeurbanne, 49 717 des 51 951 diagnostics enregistrés portent sur des appartements : l'immense majorité des ventes n'est donc pas concernée. Le DPE, lui, reste obligatoire dans tous les cas.",
+      },
+      {
+        q: "À partir de quand un logement classé E ou F ne pourra-t-il plus être loué ?",
+        a: "La classe F est interdite à la location à partir de 2028 et la classe E à partir de 2034 ; la classe G l'est déjà depuis le 1er janvier 2025, renouvellement et reconduction tacite du bail inclus. À Villeurbanne, cela représente 811 appartements classés G, 1 643 classés F et 5 399 classés E, soit 7 853 logements diagnostiqués et 15,8 % du parc à l'horizon 2034.",
+      },
+      {
+        q: "Les petites surfaces sont-elles plus souvent des passoires énergétiques ?",
+        a: "Oui, à Villeurbanne. 6,26 % des appartements de 40 m² ou moins sont classés F ou G, contre 4,16 % au-dessus de 40 m². Ces petits logements représentent 18 134 des appartements diagnostiqués, soit 36,5 % de ceux dont la surface est renseignée. Depuis le 1er juillet 2024, les seuils des étiquettes ont été adaptés pour les logements de 40 m² ou moins, et une attestation corrigée se télécharge gratuitement sur le site de l'ADEME.",
+      },
     ],
   },
   {
@@ -891,7 +996,7 @@ export const ARTICLES: Article[] = [
       { type: "ul", items: [
         "**L'étage et l'ascenseur** : un dernier étage avec ascenseur et un rez-de-chaussée sur rue n'ont pas la même valeur, à surface identique.",
         "**L'état réel** : rénové, à rafraîchir ou à refaire entièrement.",
-        "**Le DPE** : une étiquette F ou G pèse sur le prix et restreint la location.",
+        "**Le DPE** : une étiquette F ou G pèse sur le prix et restreint la location. À Villeurbanne, [2 454 appartements diagnostiqués sont dans ce cas](/blog/dpe-2026-ce-qui-change).",
         "**L'exposition et le calme** : lumière du jour, vis-à-vis, bruit de la rue.",
         "**La copropriété** : montant des charges, travaux votés, état des parties communes.",
         "**Les annexes** : balcon, terrasse, cave, parking ou box.",

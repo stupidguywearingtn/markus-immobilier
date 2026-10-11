@@ -14,6 +14,104 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-11**
+
+- 🔴 **DEUX RUNS MANQUÉS : le 09/10 et le 10/10 n'ont jamais tourné.** Ce n'est
+  pas le piège habituel de la référence distante : `git fetch origin` **a bien été
+  fait en premier** (règle du 16/09), et il a bien avancé `origin/main` de
+  `86be209` à `acea3c9` — mais `acea3c9` **est la vérification du 08/10**, et
+  aucun commit ne porte une date du 09 ou du 10. Le dernier chantier publié a donc
+  **trois jours**. ⚠️ **Dix-huitième confirmation que la référence du conteneur est
+  périmée au démarrage** (avant fetch : `origin/main` sur `86be209`, `HEAD` sur
+  `acea3c9`), mais cette fois le fetch n'a PAS absous le calendrier : **il faut
+  lire les DATES des commits, pas seulement comparer les refs.** C'est le contrôle
+  que ce journal n'avait jamais fait et qui manquait.
+- ⚠️ Le conteneur démarre sur `claude/dazzling-feynman-c25e72`, et cette branche
+  **est au même commit que `origin/main`** après fetch (0 devant, 0 derrière) :
+  rien à rattraper, aucun `merge --ff-only` nécessaire aujourd'hui.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Dix-septième constat identique** (21/09 → 11/10).
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Dimanche : pas de veille** (faite le 05/10). ⚠️ **Prochaine échéance : lundi
+  12/10 — c'est-à-dire DEMAIN, et elle est déjà en retard d'une semaine.**
+- **Deux SERP mesurées, les deux absentes — et la composition de « agence
+  immobilière Villeurbanne » a BASCULÉ :**
+  - « agence immobilière Villeurbanne » — **absente pour la 28ᵉ fois sur 28.**
+    🟢 **Mais la SERP n'est plus tenue par les franchises** : contre 10 résultats
+    sur 10 en franchise les 07 et 08/10 (Laforêt + 9 pages Orpi), on relève
+    aujourd'hui **3 pages de franchise seulement** (Laforêt Villeurbanne-
+    République, Orpi Cusset, Orpi Charpennes) et **5 ANNUAIRES**
+    (`cylex-locale.fr`, `zimo.fr`, `realadvisor.fr`, `lesiteimmo.com`,
+    `fr.mappy.com`), plus une offre d'emploi France Travail. ⚠️ **À ne pas
+    sur-interpréter — la leçon du 08/10 s'applique mot pour mot** : un seul delta
+    ne dit ni que « la SERP s'ouvre » ni qu'elle se referme. **Mais il dit une
+    chose utile** : sur cette requête, le format qui occupe la page n'est plus
+    éditorial du tout, il est **annuaire**. Aucun contenu ne prendra cette place.
+    📌 **Conséquence stratégique à instruire : le levier sur cette requête n'est
+    pas du code, c'est la présence du client dans ces annuaires** (fiches Cylex,
+    Zimo, RealAdvisor, LeSiteImmo, Mappy). **C'est une demande à formuler au
+    client, pas un chantier de repo.**
+  - « estimation immobilière Villeurbanne » — absente. **9 résultats, composition
+    quasi identique au 08/10** : Laforêt ×2, Orpi ×2, Square Habitat ×2,
+    Capifrance ×2, Efficity. **Deux des neuf sont des pages de prix au m²**
+    (`efficity.com/prix-immobilier-m2/…`, `squarehabitat.fr/prix-immobilier/…`) :
+    la frontière entre « estimation » et « prix m2 » se brouille côté SERP.
+  - 🆕 ⚠️ **ET DEUX CONCURRENTS DE PLUS PUBLIENT UNE MÉDIANE PROCHE DE LA NÔTRE,
+    ce qui aggrave le constat du 06/10 sur `fonciris` (3 571 € contre nos
+    3 567 €).** Relevé dans les résultats du jour : **Efficity annonce
+    3 480 €/m² (juillet 2026)** et **Square Habitat 3 443 €/m² (janvier 2026,
+    −3,88 % sur un an)**, les deux en se disant adossés aux transactions DGFiP.
+    **Notre avantage n'est donc plus la médiane communale** — il est sur ce que
+    personne ne croise (contours de quartiers de la Métropole, net vendeur, seuil
+    de plus-value, rendement, **et désormais la répartition des DPE**).
+    🟡 **Nuance de méthode à garder** : ce sont des **moyennes** affichées par ces
+    deux sites, pas des médianes, et sur des fenêtres glissantes — **les chiffres
+    ne sont pas comparables au nôtre terme à terme.** Ne pas « corriger » notre
+    médiane pour s'en rapprocher.
+  - « prix m2 Villeurbanne » **non mesurée** : cadence hebdomadaire (06/10). À
+    remesurer avec la veille du 12/10.
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 08/10** (le 08/10 était
+  non-contenu). **Mais PAS le candidat désigné**, et le refus est motivé par une
+  mesure : voir « Chantiers faits » et « Chantiers en attente ».
+  **Réécriture de `dpe-2026-ce-qui-change` (337 → 2 502 mots servis), adossée à
+  une source de données NEUVE pour ce site : la base DPE de l'ADEME.**
+- 🟢 **NOUVELLE SOURCE DE DONNÉES OUVERTE ET EXPLOITABLE — `data.ademe.fr`.**
+  Base « DPE Logements existants (depuis juillet 2021) », 15 756 542 diagnostics,
+  Licence Ouverte 2.0, API `data-fair` avec agrégats (`/values_agg`) et comptages
+  (`/lines?size=0`). **Joignable, rapide, filtrable par code INSEE.** C'est la
+  première source de données locales nouvelle depuis DVF — détail d'usage en
+  « Techniques apprises ».
+- 🟢 **`ecologie.gouv.fr` EST JOIGNABLE** (HTTP 200, page « Diagnostic de
+  performance énergétique »). **À ajouter à la liste des sources utilisables** —
+  elle porte le calendrier du DPE collectif, introuvable sur service-public.
+- ✅ **Signaux mesurés SAINS sur la page touchée — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert** ; `npx eslint lib/blog.ts`
+  sans erreur ; **2 502 mots dans le `<main>`** (contre 280 avant) ; **parité FAQ
+  visible ↔ `FAQPage` 7/7 questions ET 7/7 réponses**, mot pour mot ; **0 mot
+  collé** sur les 5 motifs du 04/10 (seul `1er` remonte, faux positif d'ordinal) ;
+  **4 blocs JSON-LD** (`RealEstateAgent`, `BlogPosting`, `FAQPage`,
+  `BreadcrumbList`) ; `datePublished` 2026-05-05 / **`dateModified` 2026-10-11** ;
+  « Mis à jour le 11 octobre 2026 » visible ; **8 H2, 8 liens internes, 4 liens
+  externes** tous vers des sources officielles.
+- ⚠️ **`lastmod` : un seul a bougé, et c'est exactement celui voulu.**
+  `/blog/dpe-2026-ce-qui-change` passe au **2026-10-11**, **seule URL des 51 à
+  cette date** ; `prix-immobilier-villeurbanne-2026` reste au 07/09 et
+  `estimation-en-ligne-ou-agence` au 11/09 **bien qu'ils aient reçu un lien
+  sortant** — application de la décision du 06/10 (une phrase ajoutée ne vaut pas
+  une mise à jour de contenu). **Cinquième run d'affilée sans inflation de
+  fraîcheur.** (51 URLs en conteneur = les 53 de production moins les annonces
+  Supabase et les pages de l'éditeur : hypothèse close le 07/10.)
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés.** Consigne
+  client respectée (`git status` vérifié explicitement sur ces trois chemins :
+  vide). **Diff total du run : 1 fichier** (`lib/blog.ts`).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; `<title>` longs (01/10 —
+  celui du jour fait **65 caractères**, dans la cible, et la `metaDescription`
+  **155**, sous les ~160) ; 6 `<a>` bruts pour des liens internes (06/10) ;
+  indentation JSX bizarre mais sans effet sur deux pages de quartier (08/10).
+
 **Au 2026-10-08**
 
 - `git fetch origin` **en tout premier (règle du 16/09) : et le piège s'est
@@ -1835,6 +1933,136 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-11 — Le site ne publiait aucune donnée énergétique locale : `dpe-2026-ce-qui-change` passe de 337 à 2 502 mots et publie la répartition des DPE de Villeurbanne (49 717 appartements comptés dans la base ADEME)
+
+**Chantier choisi : contenu**, comme prescrit le 08/10. **Mais pas le candidat
+désigné, et le refus vient d'une mesure, pas d'une préférence.** Le backlog
+pointait `comment-estimer-son-bien-immobilier-lyon-villeurbanne` (500 mots) en
+avertissant qu'il empiète sur `/estimation`,
+`/estimation-immobiliere-villeurbanne` et `estimation-en-ligne-ou-agence`, et en
+exigeant de **trancher qui porte la requête AVANT d'écrire une ligne**. Le `grep`
+de formule du 07/10 a été rejoué sur les angles que cet article pouvait prendre,
+et il a **tué les deux seuls angles chiffrables qui restaient** :
+
+- l'angle **« corriger la médiane par typologie »** (un T1 à 4 000 €/m² contre
+  2 967 €/m² pour un T5) est **déjà publié quatre fois** —
+  `prix-immobilier-villeurbanne-2026` en publie le tableau complet (5 lignes,
+  prix médian, €/m², surface, effectifs), et `lib/blog.ts:775`, `:1454`, `:1527`
+  plus `app/estimation-immobiliere-villeurbanne/page.tsx:79` en reprennent les
+  chiffres ;
+- l'angle **« dispersion et marge d'erreur »** est **déjà le cœur de
+  `estimation-en-ligne-ou-agence`**, qui publie la fourchette par typologie
+  (`3 464 – 4 724 €/m²` pour le T1, etc.) et l'erreur médiane de 15,5 %.
+
+→ **Décision : cet article reste au backlog, et sa réécriture devra être
+procédurale (la méthode, pas de nouveau tableau de marché), ou être une FUSION.**
+Il n'avait rien de chiffrable à ajouter aujourd'hui. **Le journal du 07/10 avait
+raison de prévenir ; le `grep` a transformé l'avertissement en contrôle, comme
+l'exigeait la leçon du 07/10.**
+
+**Ce qui a été fait à la place, et pourquoi c'est mieux placé.** Le site publie
+beaucoup sur le prix et rien sur l'énergie, alors que le DPE est devenu un
+critère de prix et d'interdiction de louer. `dpe-2026-ce-qui-change` servait
+**280 mots en production**, sans un seul chiffre local, **sans FAQ et donc sans
+`FAQPage`**, et était l'un des 11 orphelins éditoriaux du comptage du 06/10.
+**Et surtout : une source de données entièrement nouvelle pour ce site était
+disponible, la base DPE de l'ADEME** (voir « Techniques apprises »).
+
+**Ce que l'article publie désormais, et que personne d'autre ne publie à la
+maille de Villeurbanne.** Tous les comptages sont des agrégats de la base ADEME
+« DPE Logements existants (depuis juillet 2021) », filtrés sur
+`code_insee_ban:69266` et `type_batiment:"appartement"`, **extraction du
+11 octobre 2026** (diagnostics établis du 01/07/2021 au 05/10/2026), **et chaque
+chiffre de tête a été remesuré une seconde fois** avant d'être écrit :
+
+1. **La répartition des 7 étiquettes** sur **49 717 appartements** : A 176 ·
+   B 1 777 · C 25 614 · D 14 297 · E 5 399 · F 1 643 · G 811. **F + G = 2 454,
+   soit 4,94 %** — contre **7,05 % en France** (10 646 482 appartements) et
+   **6,72 % à Lyon** (209 444, les 9 arrondissements). **Villeurbanne a moins de
+   passoires que la France et que Lyon**, et le C y domine (51,52 % contre
+   41,77 % au national).
+2. 🟢 **Une hypothèse tentante MESURÉE PUIS ÉCARTÉE, et c'est le meilleur passage
+   de l'article.** On attribuerait volontiers ce bon score au chauffage urbain,
+   très présent à Villeurbanne. **Mesuré : 17,95 % des appartements diagnostiqués
+   y sont raccordés à un réseau de chaleur, contre 17,24 % en France.** Écart
+   nul. L'article l'écrit noir sur blanc et renvoie vers la vraie cause.
+3. **La vraie cause, et le tableau qui vaut le chantier : la part de F + G par
+   période de construction.** avant 1948 **12,37 %** (1 219/9 856) · 1948-1974
+   **7,60 %** (1 142/15 025) · 1975-1977 2,99 % · 1978-1982 0,72 % · 1983-1988
+   0,41 % · 1989-2000 0,27 % · 2001-2005 0,05 % · 2006-2012 0,10 % · 2013-2021
+   0,05 %. **La rupture est 1975** (première réglementation thermique) :
+   **9,49 % avant (2 361/24 881) contre 0,38 % après (93/24 649), soit 25 fois
+   moins souvent** — les deux agrégats vérifiés par une requête dédiée, pas par
+   addition. Et **96 % des passoires de la commune sont dans le bâti d'avant
+   1975**.
+4. **Le chiffre local du changement de coefficient au 1ᵉʳ janvier 2026** :
+   **1 287 appartements villeurbannais classés F ou G sont chauffés à
+   l'électricité, dont 1 077 avec un DPE établi avant le 01/01/2026** (somme
+   vérifiée : 1 077 + 210 = 1 287). Ce sont eux, nominativement, qui ont intérêt
+   à demander la mise à jour gratuite. Et 52,4 % des passoires villeurbannaises
+   sont électriques, 42,3 % au gaz, 3,1 % au réseau de chaleur.
+5. **Le calendrier d'interdiction de location converti en effectifs locaux** :
+   811 appartements en G (déjà), 1 643 en F (2028), 5 399 en E (2034) — **7 853
+   logements diagnostiqués, 15,8 % du parc à l'horizon 2034**. Et le constat qui
+   en sort : **l'échéance lourde n'est pas 2025 ni 2028, c'est 2034**, qui vise
+   plus du double des F et G réunis.
+6. **Les petites surfaces**, point très villeurbannais : **18 134 appartements
+   diagnostiqués font ≤ 40 m², soit 36,5 %** de ceux dont la surface est
+   renseignée (49 695), et **6,26 % d'entre eux sont F ou G contre 4,16 %
+   au-dessus de 40 m²** — relié aux seuils adaptés depuis le 01/07/2024.
+
+**Volet GEO appliqué intégralement.** **8 H2, tous formulés comme des questions
+réellement posées** (« Mon immeuble date des années 1960 : quel risque d'avoir
+une étiquette F ou G ? », « Faut-il un audit énergétique pour vendre un
+appartement classé F ou G ? », « Mon DPE est-il encore valable ? »), **chacun
+ouvrant sur une réponse autonome de 2-3 phrases** avant tout développement.
+**FAQ de 7 questions, visible ET en `FAQPage`, parité 7/7 + 7/7 vérifiée mot pour
+mot.** `dateModified` **2026-10-11** et « Mis à jour le 11 octobre 2026 » visible.
+**Un H2 « Comment ces chiffres ont-ils été calculés ? »** qui donne la base, le
+filtre, la date d'extraction **et trois limites assumées** (ce n'est pas un
+recensement du parc mais le stock des DPE réalisés ; un logement peut y figurer
+plusieurs fois et nous ne dédoublonnons pas ; les parts arrondies ne somment pas
+à 100 %).
+
+**Les règles réglementaires ont TOUTES été revérifiées sur source primaire avant
+d'être republiées** — c'est ce qui a fait tomber deux défauts, détaillés en
+« Erreurs commises et corrigées » :
+- fiche **F16096** « Diagnostic de performance énergétique », service-public,
+  **vérifiée le 01/01/2026** : coefficient 2,3 → 1,9, validité 10 ans, DPE de
+  2018–30/06/2021 caducs depuis le 01/01/2025, seuils adaptés ≤ 40 m² depuis le
+  01/07/2024 ;
+- fiche **F33463**, **vérifiée le 20/02/2026** : G interdit depuis le 01/01/2025
+  **renouvellement et reconduction tacite inclus**, F en 2028, E en 2034 ;
+- fiche **F37110** « Audit énergétique … passoire thermique », **vérifiée le
+  14/09/2026** : périmètre **maisons individuelles et immeubles en
+  monopropriété**, classes **E, F ou G**, ventes signées depuis le 01/04/2023,
+  extension aux **D au 01/01/2034** ;
+- page **`ecologie.gouv.fr`** du ministère : calendrier du **DPE collectif**
+  (01/01/2024 monopropriété et copros > 200 lots · 01/01/2025 copros 50–200 lots ·
+  **01/01/2026 copros ≤ 50 lots**) — **introuvable sur service-public**, c'est
+  cette page qui a permis de confirmer une phrase déjà publiée.
+Les 4 liens externes de l'article pointent ces 4 sources, chacune **avec sa date
+de vérification**.
+
+**Maillage : 2 liens entrants ajoutés, et seulement dans des phrases qui
+existaient déjà** (règle du 16/09, séquence validée le 07/10 : réécrire d'abord,
+lier ensuite).
+- `prix-immobilier-villeurbanne-2026` → la puce « Le DPE » de son bloc décote
+  reçoit « elles sont rares dans la commune — **4,9 % des appartements
+  diagnostiqués** — et concentrées sur le bâti d'avant 1975 » ;
+- `estimation-en-ligne-ou-agence` → sa puce « Le DPE » reçoit « à Villeurbanne,
+  **2 454 appartements diagnostiqués sont dans ce cas** ».
+- Le lien de `diagnostics-obligatoires-vente` **existait déjà** : l'article a donc
+  **3 liens entrants** et sort des 11 orphelins éditoriaux. **Il en reste 10.**
+
+**`llms.txt` est à jour sans intervention** (dérivé de `ARTICLES` — il sert déjà
+le nouveau titre et le nouvel `excerpt`, vérifié).
+
+**Contrôles avant push** : `tsc` muet · `build` vert · `eslint lib/blog.ts` muet ·
+2 502 mots servis · parité FAQ 7/7 + 7/7 · 0 mot collé · 4 blocs JSON-LD ·
+**un seul `lastmod` déplacé sur les 51** · `title` 65 caractères ·
+`metaDescription` 155 · **diff = 1 fichier**, `lib/blog.ts`.
 
 ### 2026-10-08 — Piste (i), la justesse des calculs : les nombres étaient tous bons, ce sont deux PHRASES qui mentaient (Cusset 21,3 % → 17,6 %, et Gratte-Ciel « le plus actif après Ferrandière » alors qu'il est le premier)
 
@@ -5240,33 +5468,81 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : NON-CONTENU — audit de justesse des calculs** (08/10,
-piste (i) : 2 erreurs de fait corrigées sur `/agence-immobiliere-cusset` et
-`/agence-immobiliere-gratte-ciel`).
-**Angles précédents : contenu blog** (07/10, `vendre-sans-agence`),
+**Angle du dernier run : CONTENU — réécriture de fond adossée à une source de
+données neuve** (11/10, `dpe-2026-ce-qui-change` : 337 → 2 502 mots, répartition
+des DPE de Villeurbanne, base ADEME).
+**Angles précédents : non-contenu — justesse des calculs** (08/10),
+**contenu blog** (07/10, `vendre-sans-agence`),
 **maillage interne + micro-chantier source** (06/10),
-**contenu blog** (05/10), **audit non-contenu + maillage** (04/10),
-**contenu — page de service** (02/10).
-→ **Le run du vendredi 09/10 doit être un run de CONTENU** (le 08/10 était
-non-contenu). Le candidat désigné reste **le n°2, les orphelins éditoriaux** :
-prochain sur la liste `comment-estimer-son-bien-immobilier-lyon-villeurbanne`
-(500 mots, le plus gros des 11 restants). ⚠️ **Et l'avertissement du 07/10 tient
-toujours, il est même la condition du chantier** : cet article empiète frontalement
-sur `/estimation`, `/estimation-immobiliere-villeurbanne` et
-`estimation-en-ligne-ou-agence`. **Trancher qui porte la requête AVANT d'écrire une
-ligne, et rejouer d'abord le `grep` de formule du 07/10** (c'est lui qui a évité le
-doublon de tableau, et c'est lui qui a cadré le run du 08/10).
-✅ **PISTE (i) TRAITÉE LE 08/10 — candidat n°3 CLOS sur son périmètre.** Les quatre
-pages du cadrage ont été recalculées sans réutiliser les helpers du site : **tous
-les montants tombent juste**, et les deux défauts trouvés étaient dans des
-**phrases**, pas dans des nombres (détail en « Chantiers faits »). ⚠️ **Ce qui
-reste de la piste (i) : les comparaisons du BLOG.** Le contrôle du 08/10 (voir
-« Techniques apprises ») n'a été passé qu'en croisant les formules de `app/` et
-`lib/` ; `lib/blog.ts` contient beaucoup de comparaisons **rédigées à la main**
-(« 13,2 % en dessous », « 45,3 % d'écart », « 23 % de moins que la médiane »)
-dont seules quelques-unes ont été recalculées aujourd'hui — celles-là étaient
-justes. **Bon candidat non-contenu pour un prochain run.**
-✅ **Veille hebdomadaire faite le 05/10** — prochaine échéance **lundi 12/10**.
+**contenu blog** (05/10), **audit non-contenu + maillage** (04/10).
+→ **Le prochain run doit être NON-CONTENU.** Candidat désigné, et il est prêt :
+**les comparaisons rédigées à la main de `lib/blog.ts`** (reste de la piste (i),
+voir ci-dessous) — **auquel il faut maintenant ajouter un second point d'entrée,
+établi le 11/10 : les phrases qui affirment QUI est soumis à une obligation
+légale.** Le run du 11/10 en a trouvé une fausse en production (l'audit
+énergétique annoncé à des propriétaires de lots de copropriété qui n'y sont pas
+soumis, soit 96 % du lectorat de la page). **Le contrôle est le même que celui du
+08/10, avec un `grep` de plus :**
+
+```bash
+# phrases de PÉRIMÈTRE JURIDIQUE — chacune se vérifie sur sa fiche officielle
+grep -rn 'obligatoire pour\|est soumis\|sont soumis\|concerne les\|ne concerne que\|dispensé\|exigé pour' \
+  app lib --include='*.tsx' --include='*.ts'
+```
+
+🆕 🔴 **NOUVEAU CANDIDAT NON-CONTENU, PRIORITÉ HAUTE — auditer les AUTRES
+affirmations réglementaires du site.** Le défaut du 11/10 n'était pas isolé par
+nature : le site publie beaucoup de droit (`diagnostics-obligatoires-vente`,
+`loi-carrez-surface`, `charges-copropriete`, `dpe-2026-ce-qui-change`,
+`plus-value-immobiliere-calcul`, `frais-de-notaire-lyon-2026`, `/vendre`,
+`/faire-gerer`) et **rien ne garantit que ces fiches ont été revérifiées depuis
+leur rédaction.** Le run du 11/10 montre que c'est faisable vite : les fiches
+`service-public.gouv.fr` portent une mention **« Vérifié le … »** qui donne
+l'état du droit à la date, et `ecologie.gouv.fr` couvre les trous.
+**Cadrage pour le prochain run : prendre `diagnostics-obligatoires-vente` en
+premier** (c'est une liste d'obligations entière, jamais vérifiée, et elle est
+liée depuis l'article du 11/10 — donc elle reçoit désormais du trafic interne).
+
+🆕 ⚠️ **CANDIDAT DE CONTENU RETIRÉ DU HAUT DE PILE, avec sa raison — l'ancien
+candidat n°2 `comment-estimer-son-bien-immobilier-lyon-villeurbanne` NE DOIT PAS
+être réécrit comme un article de marché.** Instruit le 11/10, `grep` de formule à
+l'appui : **ses deux seuls angles chiffrables sont déjà publiés ailleurs** — la
+correction par typologie (`prix-immobilier-villeurbanne-2026` en publie le
+tableau complet, et 4 autres endroits en reprennent les chiffres) et la
+dispersion / marge d'erreur (c'est le cœur de `estimation-en-ligne-ou-agence`).
+**Il reste au backlog mais avec un périmètre imposé : soit une réécriture
+PROCÉDURALE (la méthode pas à pas, zéro nouveau tableau de marché, liens sortants
+vers les pages qui portent la donnée), soit une FUSION.** Ne pas rouvrir l'angle
+« chiffres du marché » : il est fermé par la mesure.
+
+✅ **PISTE (i) — périmètre des 4 pages clos le 08/10.** ⚠️ **Ce qui reste : les
+comparaisons du BLOG.** Le contrôle du 08/10 n'a été passé qu'en croisant les
+formules de `app/` et `lib/` ; `lib/blog.ts` contient beaucoup de comparaisons
+**rédigées à la main** (« 13,2 % en dessous », « 45,3 % d'écart », « 23 % de moins
+que la médiane ») dont seules quelques-unes ont été recalculées — celles-là
+étaient justes. **Candidat non-contenu toujours valide.**
+🆕 ⚠️ **Et l'article du 11/10 en ajoute au stock** : il publie des rapports
+(« 25 fois moins souvent », « 50 % de risques en plus », « plus du double »,
+« 96 % des passoires ») **dont les bases ont été vérifiées à l'écriture**, mais
+qui entrent désormais dans le périmètre à relire si un run les reprend ailleurs.
+🟡 **Un piège de formulation attrapé le 11/10, à connaître** : un rapport de 1,50
+se dit « **50 % de plus** », **pas** « une fois et demie de plus ». C'est la même
+famille d'erreur que l'asymétrie des pourcentages du 08/10, mais sur le
+**multiplicateur** au lieu de la base.
+
+⚠️ **VEILLE EN RETARD — faite le 05/10, échéance MANQUÉE le lundi 12/10 si le run
+de demain ne la fait pas.** Deux runs ont sauté (09 et 10/10). **Priorité absolue
+du run du 12/10 : la veille**, avant tout choix de chantier (étape 5 du brief).
+
+🆕 📌 **DEMANDE À FORMULER AU CLIENT, nouvelle et probablement la plus rentable
+du mois — les ANNUAIRES.** Mesure du 11/10 sur « agence immobilière
+Villeurbanne » : **5 des 9 résultats sont des annuaires** (`cylex-locale.fr`,
+`zimo.fr`, `realadvisor.fr`, `lesiteimmo.com`, `fr.mappy.com`), contre 10/10 en
+franchise les 07 et 08/10. **Aucun contenu publié sur le site ne prendra ces 5
+places : elles s'obtiennent en créant/réclamant la fiche.** Ce n'est pas un
+chantier de repo — **c'est une action client, à chiffrer et à proposer.**
+⚠️ **À confirmer sur une seconde mesure avant de le présenter comme une
+tendance** (règle du 08/10 : un seul delta ne conclut rien).
 
 ✅ **CHANTIER DU 08/10 VÉRIFIÉ EN PRODUCTION LE JOUR MÊME — RIEN À REVÉRIFIER LE
 09/10.** Déploiement constaté **~80 s après le push** (contre <1 min le 07/10,
@@ -6071,6 +6347,75 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-10-11 — Un chiffre national jamais sourçable vivait en production depuis cinq mois, l'audit énergétique était annoncé à des propriétaires qui n'y sont pas soumis, et j'ai validé un correctif sur un serveur qui servait l'ancien build
+
+**Trois choses, dont deux publiées depuis des runs antérieurs et une entièrement
+de ce run.**
+
+1. 🔴 **« environ 850 000 logements chauffés à l'électricité sortent du statut de
+   passoire thermique » — chiffre non sourçable, RETIRÉ.** Publié dans
+   `dpe-2026-ce-qui-change` depuis le 05/05/2026. Cherché sur les deux sources
+   primaires du sujet : **absent de la fiche service-public F16096** (vérifiée le
+   01/01/2026) **et absent de la page DPE du ministère** (`ecologie.gouv.fr`, où
+   « 850 », « 1,9 », « 2,3 » et « coefficient » ne figurent nulle part). Le client
+   a explicitement refusé les chiffres de marché non sourcés : **il est retiré, pas
+   réécrit.**
+   🟡 **Et la tentation à laquelle je n'ai PAS cédé, qui est l'enseignement du
+   point.** J'avais de quoi fabriquer un chiffre d'allure comparable : la base
+   ADEME donne **480 336** logements F/G électriques avec un DPE antérieur à 2026.
+   **Le publier « à la place » aurait été une faute**, parce que les deux nombres
+   ne portent pas sur la même population — 850 000 parle du parc de logements
+   (≈ 30 millions), 480 336 du stock de DPE réalisés depuis juillet 2021
+   (15,7 millions). **Règle : remplacer un chiffre douteux par un chiffre juste
+   qui ne mesure pas la même chose, c'est aggraver l'erreur en la rendant
+   crédible.** Ce qui a été publié à la place est **local et de périmètre
+   explicite** : 1 287 appartements villeurbannais F/G électriques, dont 1 077
+   antérieurs au 01/01/2026.
+
+2. 🔴 **« un audit énergétique est obligatoire pour les biens classés F ou G » —
+   FAUX pour la quasi-totalité des lecteurs de ce site.** La fiche **F37110**
+   (vérifiée le 14/09/2026) est explicite : l'obligation vise **les maisons
+   individuelles et les immeubles de plusieurs logements dont le vendeur est
+   l'unique propriétaire**, et porte sur les classes **E, F ou G**. **Un
+   appartement vendu seul en copropriété n'y est PAS soumis, quelle que soit son
+   étiquette.** La phrase publiée était donc fausse **deux fois** : elle omettait
+   le E, et elle annonçait une obligation à des vendeurs qui ne l'ont pas.
+   **Et l'enjeu local est massif** : sur les 51 951 diagnostics de Villeurbanne,
+   **49 717 portent sur des appartements** contre 1 159 maisons et 1 075
+   immeubles. La page annonçait une obligation inexistante à **96 % de son
+   lectorat potentiel**.
+   → 📌 **Ce que ça ajoute à la leçon du 08/10.** Le 08/10 avait établi que les
+   contrôles de forme ne voient pas une phrase fausse, et que le point d'entrée
+   efficace est **les comparaisons**. Celle-ci n'est pas une comparaison : c'est
+   une **affirmation de périmètre juridique** (« obligatoire pour X »). **Nouveau
+   point d'entrée à ajouter au contrôle de sens : toute phrase qui dit QUI est
+   soumis à une obligation. Elle se vérifie sur la fiche officielle, et son
+   périmètre se confronte au parc réel du client.** C'est exactement ce qui a
+   rendu le défaut visible ici.
+
+3. 🟡 **Erreur de ce run, et un piège d'outillage qu'il faut écrire parce qu'il
+   invalide silencieusement toute vérification locale : j'ai contrôlé un correctif
+   sur un serveur qui servait l'ANCIEN build.** Après avoir corrigé une
+   formulation (« une chance et demie de plus » → « environ 50 % de risques en
+   plus », parce que 6,26 / 4,16 = 1,50 : un rapport de 1,5 se dit « 50 % de
+   plus », pas « une fois et demie de plus »), `tsc` était muet, `npm run build`
+   vert — **et la page servie sur `127.0.0.1:3000` contenait toujours l'ancienne
+   phrase.** Cause : un `next start` lancé **avant** la correction tenait encore le
+   port 3000 ; les `npm run start` suivants échouaient en `EADDRINUSE` sans que
+   rien ne le signale dans la sortie utile, et `curl` interrogeait donc le vieux
+   processus. Le second symptôme, trompeur, est un `npm run build` qui **sort en
+   144** quand sa sortie passe dans un `grep | head` (SIGPIPE) : on croit à un
+   build cassé alors que c'est le tube qui se ferme.
+   → **Règle désormais : avant toute vérification locale, tuer les serveurs
+   (`pkill -f next-server; pkill -f "next start"`), vérifier que le port est
+   libre, reconstruire, puis relancer — et ne jamais faire passer la sortie de
+   `npm run build` dans `head`.** Le vrai danger n'est pas le serveur mort, c'est
+   **le serveur vivant qui répond 200 avec du contenu périmé** : tous les
+   contrôles passent au vert sur la version d'avant. Contrôle minimal qui l'aurait
+   attrapé en une seconde : **grep la phrase NOUVELLE dans le rendu, et pas
+   seulement les chiffres** — un chiffre inchangé entre deux versions ne prouve
+   rien (c'est le cousin exact de l'avertissement du 08/10 sur la taille de page
+   identique à l'octet).
 ### 2026-10-08 — Deux erreurs de fait vivaient en production dans des phrases, pas dans des nombres ; et j'ai failli « corriger » un arrondi qui était déjà expliqué
 
 **Les deux erreurs corrigées aujourd'hui ne sont pas des erreurs de ce run** :
@@ -6627,6 +6972,86 @@ reste du diff n'est que de l'ajout.
 
 ## Techniques apprises
 
+### 2026-10-11 — Outillage : la base DPE de l'ADEME est la première source de données locales nouvelle depuis DVF, et elle s'interroge en comptages purs
+
+**1. 🟢 `data.ademe.fr` est joignable, rapide et agrégeable.** Base **« DPE
+Logements existants (depuis juillet 2021) »**, `slug` **`dpe03existant`**,
+**15 756 542 diagnostics**, **Licence Ouverte 2.0**, origine ADEME. Interrogée
+sous l'API `data-fair`, avec `--cacert /root/.ccr/ca-bundle.crt` comme partout
+ici. **Trois points d'entrée suffisent, et aucun ne télécharge de données :**
+
+```bash
+B=https://data.ademe.fr/data-fair/api/v1/datasets/dpe03existant
+# le schéma (noms de champs) — 75 ko
+curl -s --cacert /root/.ccr/ca-bundle.crt "$B/schema"
+# un COMPTAGE pur : size=0 ne rend que `total`
+curl -s --cacert /root/.ccr/ca-bundle.crt "$B/lines?size=0&qs=code_insee_ban%3A69266"
+# une RÉPARTITION : values_agg + size=0 (sans size=0, chaque bucket traîne une ligne entière)
+curl -s --cacert /root/.ccr/ca-bundle.crt \
+  "$B/values_agg?field=etiquette_dpe&qs=code_insee_ban%3A69266&size=0&agg_size=10"
+```
+
+⚠️ **Deux pièges, tous deux rencontrés :**
+- **`q=` fait de la recherche floue, `qs=` fait de la requête structurée.**
+  `?q=Villeurbanne` a rendu « 51 000 » avec un `totalMarginPct: 9` (un total
+  *approché*) ; `?qs=code_insee_ban:69266` rend **51 951**, exact. **Ne jamais
+  publier un chiffre issu de `q=`.**
+- **`values_agg` sans `size=0` recopie une ligne complète par bucket** (des
+  centaines de champs) : la réponse est illisible et coûteuse pour rien.
+
+**Les champs utiles de cette base** (il y en a des centaines) :
+`code_insee_ban` · `type_batiment` (`appartement` / `maison` / `immeuble`) ·
+`etiquette_dpe` · `etiquette_ges` · `periode_construction` (10 tranches) ·
+`type_energie_n1` · `surface_habitable_logement` · `date_etablissement_dpe`.
+Les intervalles marchent : `date_etablissement_dpe:[2021-07-01 TO 2025-12-31]`,
+`surface_habitable_logement:[0 TO 40]`.
+
+**2. 📌 Méthode : fabriquer soi-même le point de comparaison, sur la même base et
+le même filtre.** Publier « 4,94 % de passoires à Villeurbanne » ne dit rien sans
+référence, et la référence nationale la plus citée (le parc de logements) **n'est
+pas comparable** au stock des DPE réalisés. La solution est de **recalculer la
+référence avec exactement la même requête** en retirant le filtre commune :
+7,05 % pour la France, 6,72 % pour Lyon. **L'écart mesure alors une différence de
+parc, pas une différence de méthode** — et c'est défendable ligne à ligne. C'est
+le prolongement direct de la méthode du 27/09 (« contrôler ses chiffres en
+trouvant qui les calcule autrement »), appliquée ici à soi-même.
+
+**3. 🟢 Et la mesure sert aussi à ÉCARTER une explication, ce qui vaut autant que
+d'en confirmer une.** L'hypothèse « Villeurbanne a peu de passoires grâce au
+chauffage urbain » était séduisante et aurait été publiée de bonne foi. **Deux
+requêtes l'ont tuée : 17,95 % de raccordés au réseau de chaleur à Villeurbanne
+contre 17,24 % en France.** → **Règle : toute explication causale qu'on s'apprête
+à écrire doit d'abord passer une requête. Si la base peut la tester, elle doit la
+tester — et le résultat négatif se publie**, il crédibilise le reste du texte
+bien plus qu'une causalité jolie et non vérifiée.
+
+**4. 🟢 `ecologie.gouv.fr` rejoint les sources utilisables, et il couvre un trou
+de service-public.** `https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe`
+répond 200 et porte **le calendrier du DPE collectif en copropriété**, que les
+fiches service-public ne donnent pas : la recherche « DPE collectif copropriété »
+sur service-public rend 50 résultats dont **aucun** ne le contient (F36760 « Plan
+pluriannuel de travaux » parle de lots mais pour le PPT, pas pour le DPE).
+→ **Liste à jour des sources de droit joignables** : `service-public.gouv.fr`
+(le meilleur point d'entrée, fiches datées « Vérifié le … »), **`ecologie.gouv.fr`
+(nouveau)**, `data.gouv.fr` (DVF), **`data.ademe.fr` (nouveau)**.
+**Domaines fermés, inchangés — ne pas y reperdre de temps** :
+`meilleursagents.com` · `seloger.com` · `searchengineland.com` ·
+`legifrance.gouv.fr` · `economie.gouv.fr` · `georisques.gouv.fr`.
+⚠️ **Et `www.data.gouv.fr` a rendu un `HTTP 000` aujourd'hui** (tunnel fermé
+en cours d'échange), **sans que ce soit une fermeture** : `data.ademe.fr`
+répondait dans la même seconde. C'est le `exit 35` transitoire du 30/09, encore
+lui — **une seule mesure ne ferme pas un domaine.**
+
+**5. ⚠️ Rappel de la convention de fiches service-public, qui a coûté trois
+appels.** Les fiches ne répondent **que** sur `service-public.gouv.fr` : sur
+`service-public.fr` elles rendent **301** (constat du 06/10, toujours vrai). Et
+les identifiants ne se devinent pas : `F35671` n'existe pas, `F34669` est une
+fiche de fonction publique. **La méthode du 07/10 reste la bonne et elle est
+rapide** : partir d'une fiche carrefour, extraire ses liens
+(`grep -oE '/particuliers/vosdroits/F[0-9]+'`), puis **sonder les `<title>` en
+lot**. Vingt identifiants sondés en un appel chacun ont donné F37110 (audit
+énergétique) et F33463 (diagnostics du bailleur), les deux fiches dont le run
+avait besoin.
 ### 2026-10-08 — Méthode interne : auditer les COMPARAISONS, parce que l'asymétrie des pourcentages est invisible à tous les contrôles de forme
 
 **Le défaut-type, et pourquoi il est indétectable autrement.** « A est X % de moins
