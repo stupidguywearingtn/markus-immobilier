@@ -14,6 +14,105 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-12**
+
+- ✅ **AUCUN RUN MANQUÉ, et le contrôle des DATES institué le 11/10 a servi.**
+  `git fetch origin` **en tout premier (règle du 16/09)** : avant fetch,
+  `origin/main` pointait sur `86be209` (la vérification du 05/10) alors que
+  `HEAD` était sur `1521cb0` — soit **six runs d'écart apparents**. Après fetch,
+  `origin/main` == `HEAD` == `1521cb0`, et **trois commits portent la date du
+  2026-10-11** : le run d'hier a bien eu lieu. ⚠️ **Dix-neuvième confirmation que
+  la référence distante du conteneur est périmée au démarrage** — ne jamais rien
+  conclure de `origin/main` avant le fetch, et **toujours lire les dates des
+  commits ensuite** (c'est ce contrôle qui a révélé les deux runs sautés du
+  09 et 10/10).
+- ⚠️ Le conteneur démarre sur `claude/dazzling-feynman-q7hty4`, et le `main`
+  local était **9 commits en retard** → `git checkout main` puis
+  `git merge --ff-only origin/main`, **avant la première édition** (leçon du
+  07/10, appliquée comme procédure de démarrage).
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Dix-huitième constat identique** (21/09 → 12/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage, PAS celui qu'impose la consigne client.** Reconfiguré explicitement
+  en `Yanis Ouammou <93429758+stupidguywearingtn@users.noreply.github.com>`
+  **avant le commit** (sinon Vercel Hobby bloque le build). 🆕 **Ce point n'était
+  pas dans le journal : à refaire à chaque run, le conteneur ne le garde pas.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308).
+- 🟢 **LUNDI : VEILLE FAITE** (la précédente datait du 05/10, elle avait donc une
+  semaine de retard). Résultats en « Techniques apprises » — et **elle valide la
+  méthode suivie depuis le 05/10**, elle ne la contredit pas.
+- **Deux SERP mesurées, les deux absentes :**
+  - « agence immobilière Villeurbanne » — **absente pour la 29ᵉ fois sur 29.**
+    🟢 **LE CONSTAT DU 11/10 EST CONFIRMÉ SUR UNE SECONDE MESURE, et la
+    composition est RIGOUREUSEMENT IDENTIQUE à celle d'hier** : **3 pages de
+    franchise** (Laforêt Villeurbanne-République, Orpi Cusset, Orpi Charpennes),
+    **5 ANNUAIRES** (`cylex-locale.fr`, `zimo.fr`, `realadvisor.fr`,
+    `lesiteimmo.com`, `fr.mappy.com`) et une offre France Travail.
+    📌 **La règle du 08/10 est donc satisfaite — deux mesures concordantes, ce
+    n'est plus un delta isolé : sur cette requête, la page est tenue par le
+    format annuaire, et aucun contenu publié sur le site ne prendra ces 5
+    places.** La demande client « créer/réclamer les fiches annuaires » passe du
+    statut d'hypothèse à celui de **recommandation étayée** — à formuler.
+  - « prix m2 Villeurbanne » — absente. **Cadence hebdomadaire respectée** (non
+    mesurée depuis le 06/10), remesurée avec la veille comme prévu.
+    🆕 ⚠️ **Observation NOUVELLE et actionnable sur cette SERP : elle est tenue
+    par des pages d'une granularité PLUS FINE que la commune.** Trois des neuf
+    résultats ciblent une **rue** ou un **quartier** :
+    `efficity.com/prix-immobilier-m2/s_rue-du-progres_villeurbanne_69100/`,
+    `realadvisor.fr/fr/prix-m2-immobilier/69100-villeurbanne/rue-des-muriers`,
+    `blog.qoridor.fr/prix-immobilier/villeurbanne/quartier/charpennes/`.
+    **Notre page de prix est communale + 7 quartiers ; la SERP récompense la
+    rue.** À instruire comme angle de contenu, sans conclure d'une seule mesure.
+  - 🆕 **Un concurrent de plus publie une médiane proche de la nôtre, et il est
+    le plus crédible rencontré jusqu'ici : `blog.qoridor.fr` annonce
+    3 506 €/m² pour les appartements, « données DVF au 1er juillet 2026 »,
+    calculé sur 1 678 transactions notariées** — contre notre 3 567 €/m². S'y
+    ajoutent Orpi 4 267 €/m², Efficity 3 480 € (juillet 2026) et Square Habitat
+    3 443 € (janvier 2026). 🟡 **Nuance de méthode du 11/10 toujours valable et
+    même renforcée : ce sont des MOYENNES sur fenêtres glissantes, pas des
+    médianes — les chiffres ne sont pas comparables terme à terme. Ne pas
+    « corriger » notre médiane pour s'en rapprocher.**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 11/10, et c'est bien LE
+  CANDIDAT DÉSIGNÉ** (audit des affirmations réglementaires, en commençant par
+  `diagnostics-obligatoires-vente`). **Six défauts de droit trouvés en
+  production, dont un qui rendait fausse une promesse de l'architecture du site
+  elle-même.** Détail en « Chantiers faits » et « Erreurs commises ».
+- 🟢 **`georisques.gouv.fr` N'EST PLUS FERMÉ — à retirer de la liste des domaines
+  morts.** HTTP 200 sur la racine, et **son API répond sans clé** (détail en
+  « Techniques apprises »). ⚠️ **Mais ses PAGES HTML sont une coquille JS sans
+  texte** : l'API oui, les pages non.
+- ⚠️ **`ecologie.gouv.fr` a rendu `exit 35` aujourd'hui alors qu'il répondait 200
+  le 11/10, et `www.rhone.gouv.fr` un `exit 92`.** C'est le transitoire connu du
+  30/09 : **une seule mesure ne ferme pas un domaine**, ne pas les reclasser.
+- ✅ **Signaux mesurés SAINS sur la page touchée — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert** ; `npx eslint lib/blog.ts`
+  propre ; **2 765 mots dans le `<main>`** (contre 217 avant) ; **parité FAQ
+  visible ↔ `FAQPage` 6/6 questions ET 6/6 réponses**, mot pour mot ; **0 mot
+  collé** (les 22 remontées par le motif minuscule+Majuscule sont **toutes dans
+  le bloc JSON-LD**, aucune dans la prose — faux positifs) ; **4 blocs JSON-LD**
+  (`RealEstateAgent`, `BlogPosting`, `FAQPage`, `BreadcrumbList`, la `FAQPage`
+  étant **créée par ce run**) ; `datePublished` 2026-05-12 /
+  **`dateModified` 2026-10-12** ; « Mis à jour le 12 octobre 2026 » visible ;
+  **7 H2, tous formulés en questions** ; **tableau de 11 lignes** avec ses
+  9 fiches sources datées en légende ; `<title>` **65 caractères** et
+  `metaDescription` **158** (dans les cibles).
+- ⚠️ **`lastmod` : un seul a bougé, et c'est exactement celui voulu.**
+  `/blog/diagnostics-obligatoires-vente` passe au **2026-10-12**, **seule URL des
+  53 de production à cette date** ; `charges-copropriete` reste au 2026-03-05,
+  `prix-immobilier-villeurbanne-2026` au 2026-09-07 et `dpe-2026-ce-qui-change`
+  au 2026-10-11 **bien que les trois reçoivent un lien entrant de la page
+  réécrite**. **Sixième run d'affilée sans inflation de fraîcheur** (décision du
+  06/10 : un lien reçu ne vaut pas une mise à jour de contenu).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié explicitement sur ces trois chemins : vide. **Diff total
+  du run : 1 fichier** (`lib/blog.ts`), 120 insertions / 15 suppressions.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10).
+
 **Au 2026-10-11**
 
 - 🔴 **DEUX RUNS MANQUÉS : le 09/10 et le 10/10 n'ont jamais tourné.** Ce n'est
@@ -1933,6 +2032,167 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-12 — La page que l'architecture du site désigne pour les durées de validité n'en publiait que 2 sur 8 : `diagnostics-obligatoires-vente` passe de 217 à 2 765 mots, vérifiée fiche par fiche
+
+**Chantier choisi : NON-CONTENU** (audit d'affirmations réglementaires), comme
+prescrit le 11/10, **et c'est le candidat désigné** — pas un report. L'audit a
+produit du contenu parce que les corrections l'exigeaient, mais le point d'entrée
+était un contrôle de droit, pas une réécriture éditoriale.
+
+**Pourquoi cette page et pas une autre.** Le 11/10 l'avait cadrée comme priorité
+haute pour trois raisons, toutes vérifiées sur pièces aujourd'hui : (1) c'est une
+**liste d'obligations entière, jamais revérifiée** depuis sa rédaction du
+12/05/2026 ; (2) elle **reçoit du trafic interne** depuis l'article du 11/10 ;
+(3) — et c'est le fait découvert aujourd'hui — **l'en-tête de `lib/blog.ts` lui
+attribue explicitement les durées de validité depuis le 07/10** (« la requête
+"diagnostics obligatoires" reste attribuée à `diagnostics-obligatoires-vente`
+(durées de validité) […] ne pas y ajouter de durées »), et
+`charges-copropriete` y renvoie en écrivant que « les durées de validité de
+chacune […] sont détaillées dans notre fiche ». **La page n'en publiait que
+deux** (DPE, état des risques) **sur huit items listés. La promesse était
+fausse, et elle était inscrite dans l'architecture.**
+
+**Mesure de départ, en production** : **217 mots** dans le `<main>`, **2 H2**
+(« Les principaux diagnostics », « Le bon réflexe »), **aucune `FAQPage`**,
+aucune date de mise à jour visible, **aucune source**.
+
+**Les six défauts de droit trouvés, et ce qui les remplace.** Chacun vérifié sur
+sa fiche `service-public.gouv.fr`, toutes relevées le 12/10/2026 (détail et dates
+« Vérifié le … » en légende du tableau publié) :
+
+1. 🔴 **La page mélangeait la liste d'un APPARTEMENT et celle d'une MAISON.** La
+   fiche **F10798** (vérifiée le 07/03/2025) les sépare explicitement. Deux
+   différences de fond : pour une maison le **DPE n'est dû qu'à partir de 50 m²
+   de surface de plancher**, et **l'audit énergétique E/F/G s'ajoute**. La page
+   servait une liste unique, donc fausse pour les deux publics.
+2. 🔴 **Quatre obligations manquaient purement et simplement** : **audit
+   énergétique**, **diagnostic Bruit** (zone d'exposition au bruit des
+   aéroports), **carnet d'information du logement** (permis ou déclaration
+   préalable déposé depuis le 01/01/2023, ou travaux de rénovation depuis), et la
+   **mention du risque de mérule** dans la promesse ou l'acte. La
+   `metaDescription` annonçait pourtant « liste complète ».
+3. 🔴 **« Assainissement : pour les installations non collectives » était
+   incomplet** (fiche **F31685**) : l'**assainissement collectif** est aussi
+   concerné **sur certains territoires ou s'il existe un arrêté municipal**, et
+   il a sa **propre durée de validité de 10 ans** là où le non collectif est à
+   3 ans. Un vendeur raccordé au collectif concluait qu'il n'était pas concerné.
+4. 🔴 **« État des risques : risques naturels, miniers, technologiques » ne
+   décrit pas Villeurbanne.** L'API Géorisques (code INSEE 69266) recense six
+   familles : **inondation** (crue à débordement lent, remontées de nappes),
+   **séisme**, **phénomènes liés à l'atmosphère**, **radon**, **rupture de
+   barrage**, **transport de marchandises dangereuses**. **Aucun risque minier.**
+   La page citait un risque absent et omettait séisme, radon et rupture de barrage.
+5. 🔴 **Le DPE était donné « valable 10 ans » sans sa réserve, et c'est le défaut
+   le plus coûteux pour un lecteur.** La fiche **F16096** (vérifiée le
+   01/01/2026) : les DPE réalisés **entre le 01/01/2018 et le 30/06/2021 ne sont
+   plus valables depuis le 01/01/2025**, et la règle des 10 ans ne vaut que pour
+   ceux réalisés **depuis le 01/07/2021**. **Un vendeur détenant un DPE de 2019
+   le croyait bon jusqu'en 2029 alors qu'il est caduc depuis plus d'un an.** Un
+   H2 entier lui est désormais consacré, en question littérale.
+6. 🔴 **Électricité et gaz étaient donnés sans durée — or elles diffèrent entre
+   vente et location** : **3 ans** à la promesse ou à l'acte (fiches **F18692**
+   et **F17337**, vérifiées le 17/09/2026) contre **6 ans** pour un bail. **C'est
+   l'erreur classique du propriétaire qui réutilise un diagnostic fait pour une
+   location** : la page ne lui donnait aucun moyen de la voir. L'écart est écrit
+   explicitement dans le tableau et dans la FAQ.
+
+**Ce qui a été publié.**
+- **Un tableau de 11 lignes** : chaque pièce du dossier, sa **condition de
+  déclenchement** et sa **validité en cas de vente**, avec en légende les
+  **9 fiches sources et leur date « Vérifié le … »**. C'est le travail que
+  l'architecture réservait à cette page depuis le 07/10.
+- **Les deux listes séparées** (appartement / maison), celle de l'appartement en
+  premier parce qu'elle concerne **49 717 des 51 951 diagnostics villeurbannais**.
+- **Deux comptages locaux que personne d'autre ne publie**, tirés de la base DPE
+  de l'ADEME filtrée sur le code INSEE 69266 et sur `type_batiment:appartement` :
+  le **constat plomb** concerne **au moins 9 856 appartements (19,8 %)** et
+  l'**état d'amiante** **entre 61,0 % et 77,4 %**.
+  🟢 **Et c'est là que la leçon du 11/10 a été appliquée en positif** : les deux
+  chiffres sont publiés **avec leurs bornes et la raison des bornes**, pas comme
+  des valeurs exactes. Le seuil légal du plomb est le **1er janvier 1949** alors
+  que la tranche ADEME est « avant 1948 » et que 1948 est fondu dans
+  « 1948-1974 » → le compte est annoncé comme un **minimum**. Le seuil de
+  l'amiante est le **1er juillet 1997** alors que la tranche « 1989-2000 »
+  (8 134 logements) l'enjambe sans pouvoir être départagée → **fourchette**, pas
+  point. **Et la limite de méthode est écrite dans le texte** : la base donne une
+  *période de construction*, le texte retient la *date du permis de construire*,
+  nécessairement antérieure. **Règle du 11/10 respectée : ne jamais publier un
+  chiffre juste qui ne mesure pas ce qu'il prétend mesurer — ici il est publié
+  avec son incertitude au lieu d'être arrondi en certitude.**
+- **La liste réelle des risques de Villeurbanne** (Géorisques), plus le rappel
+  que toute annonce de vente concernée doit porter la mention Géorisques.
+- **Les sanctions, séparées pour la première fois** : la perte de l'exonération
+  des vices cachés (le vrai risque) d'un côté, l'amende de **1 500 €**
+  (**3 000 €** en récidive) pour recours à un diagnostiqueur **non certifié** de
+  l'autre. La page disait seulement « un dossier complet rassure l'acheteur ».
+- **Un ordre de passage des diagnostics**, déduit des durées et non de l'usage :
+  DPE d'abord (il doit figurer dans l'annonce), puis les validités longues, et
+  **on garde l'état des risques et les termites — 6 mois — pour le moment où un
+  acquéreur se présente**, sinon ils périment avant la signature.
+
+**Volet GEO (étape 4), appliqué intégralement et conforté par la veille du jour.**
+- **7 H2, tous reformulés en questions réelles** (« Un DPE réalisé en 2019
+  est-il encore valable pour vendre ? », « Que risque un vendeur qui oublie un
+  diagnostic ? ») contre 2 H2 nominaux avant.
+- **Chaque H2 ouvre par une réponse autonome de 2-3 phrases en gras**, le
+  développement vient après : un passage extrait seul reste compréhensible.
+- **`FAQPage` créée** — la page n'en avait aucune — **6 questions, en parité
+  6/6 questions et 6/6 réponses, mot pour mot, avec le visible.**
+- **Dates et sources partout** : 9 fiches officielles citées par identifiant avec
+  leur date de vérification, date de relevé affichée, « Mis à jour le 12 octobre
+  2026 » visible, `dateModified` au 2026-10-12.
+- **Données propres au client** : les deux comptages ADEME et la liste Géorisques,
+  introuvables ailleurs à l'échelle de Villeurbanne.
+- **`llms.txt`** se met à jour tout seul (dérivé de `ARTICLES`) : nouveau titre et
+  nouvel `excerpt` servis, vérifié en production.
+
+**Maillage.** 4 liens sortants ajoutés vers `dpe-2026-ce-qui-change` (×2),
+`charges-copropriete` et `prix-immobilier-villeurbanne-2026`, plus le lien
+d'argent vers `/vendre`. **Aucun des trois articles liés n'a été modifié** — donc
+aucun `lastmod` déplacé chez eux (décision du 06/10).
+
+**Vérifié en production le jour même, ~100 s après le push** (contre 40-60 s le
+11/10, ~80 s le 08/10 : le délai varie, ne rien conclure d'une mesure) :
+2 765 mots servis, **identiques au local** ; 7 H2 ; 4 blocs JSON-LD ; parité FAQ
+6/6 + 6/6 ; tableau de 11 lignes et ses 9 fiches en légende ; tous les chiffres
+de l'angle servis (`49 717`, `51 951`, `9 856`, `19,8 %`, `30 346`, `61,0 %`,
+`77,4 %`, `8 134`, `16,4 %`, `187`, `1 159`, les cinq dates-seuils, `1 500 €`,
+`3 000 €`, « 6 ans en location », « Aucun risque minier », « unique
+propriétaire ») ; **les cinq formulations fautives ont DISPARU du HTML complet,
+payload RSC compris** (« Les principaux diagnostics », « Le bon réflexe »,
+« risques naturels, miniers, technologiques », « construits avant 1949 »,
+« performance énergétique (valable 10 ans) ») ; **53 URLs au sitemap et
+EXACTEMENT 1 `lastmod` au 2026-10-12**.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+- ❌ **Ne pas affirmer si le diagnostic termites est dû à Villeurbanne.** Il
+  dépend d'un arrêté préfectoral et `www.rhone.gouv.fr` est injoignable
+  (`exit 92`). La page garde la formulation conditionnelle officielle. **Mieux
+  vaut une condition exacte qu'une réponse locale inventée** — noté en
+  « Hypothèses à vérifier ».
+- ❌ **Ne pas publier le sens de la classe radon de Villeurbanne.** L'API
+  Géorisques rend `classe_potentiel: 1` pour le code INSEE 69266, mais **la
+  définition de l'échelle 1/2/3 n'a pas pu être sourcée** (les pages HTML de
+  Géorisques sont une coquille JS sans texte, et la page radon rend 500 via
+  WebFetch). **Un numéro sans son échelle n'informe pas, et l'interpréter de
+  mémoire serait exactement la faute du 11/10.** Seule la *présence* du risque
+  radon est publiée, puisqu'elle vient de l'API.
+- ❌ **Ne pas donner de durée de validité à l'audit énergétique.** Elle ne figure
+  pas sur la fiche F37110 telle que consultée. Le tableau est donc **borné au cas
+  de l'appartement** (où l'audit n'est jamais dû), et l'audit est traité dans le
+  H2 « maison » sans durée inventée.
+- ❌ **Ne pas écrire de durée pour le diagnostic Bruit** : la ligne du tableau dit
+  « Aucune durée fixée par la fiche officielle ». C'est exact et vérifiable,
+  plutôt qu'un blanc ou une invention.
+- ❌ **Ne pas toucher aux autres pages de droit du site** (`loi-carrez-surface`,
+  `charges-copropriete`, `frais-de-notaire-lyon-2026`, `/faire-gerer`) alors que
+  l'audit du jour montre que le risque y est le même. **Un chantier mené à fond
+  vaut mieux que cinq pages survolées** (étape 3 du brief) : elles passent en
+  tête du backlog avec le contrôle qui a marché ici.
+- ❌ **Ne pas ajouter de prix au m² à cette page** bien que la SERP « prix m2 »
+  ait été mesurée le matin : ce n'est pas son sujet, et
+  `prix-immobilier-villeurbanne-2026` porte déjà la donnée — elle y renvoie.
 
 ### 2026-10-11 — Le site ne publiait aucune donnée énergétique locale : `dpe-2026-ce-qui-change` passe de 337 à 2 502 mots et publie la répartition des DPE de Villeurbanne (49 717 appartements comptés dans la base ADEME)
 
@@ -5468,14 +5728,54 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : CONTENU — réécriture de fond adossée à une source de
-données neuve** (11/10, `dpe-2026-ce-qui-change` : 337 → 2 502 mots, répartition
-des DPE de Villeurbanne, base ADEME).
-**Angles précédents : non-contenu — justesse des calculs** (08/10),
+**Angle du dernier run : NON-CONTENU — audit d'affirmations réglementaires**
+(12/10, `diagnostics-obligatoires-vente` : 6 défauts de droit corrigés,
+217 → 2 765 mots, tableau de durées adossé à 9 fiches service-public datées).
+**Angles précédents : contenu** (11/10, `dpe-2026-ce-qui-change`),
+**non-contenu — justesse des calculs** (08/10),
 **contenu blog** (07/10, `vendre-sans-agence`),
 **maillage interne + micro-chantier source** (06/10),
 **contenu blog** (05/10), **audit non-contenu + maillage** (04/10).
-→ **Le prochain run doit être NON-CONTENU.** Candidat désigné, et il est prêt :
+→ **Le prochain run doit être CONTENU.**
+
+🆕 🔴 **CANDIDAT CONTENU N°1, et il est outillé — les AUTRES pages de droit du
+site, avec le contrôle qui a fonctionné le 12/10.** L'audit du jour a trouvé
+**six** défauts sur une seule page jamais revérifiée ; rien ne distingue cette
+page des autres. Dans l'ordre d'exposition : **`loi-carrez-surface`** (une
+obligation de mesurage entière, et la loi Carrez est la mention que F10798 traite
+à part), **`frais-de-notaire-lyon-2026`** (ses taux ont leur propre péremption,
+déjà notée dans l'en-tête de `lib/blog.ts`), **`charges-copropriete`** (c'est
+elle qui porte le renvoi dont la promesse était fausse — à relire côté promesses,
+pas seulement côté droit), **`/faire-gerer`**. **La méthode est écrite** en
+« Techniques apprises » du 12/10 : fiche carrefour → extraction des liens →
+sondage des `<title>` en lot, puis lecture de chaque affirmation contre sa fiche
+datée. Les identifiants déjà vérifiés y sont tabulés : **ne pas les redécouvrir.**
+⚠️ **Et ajouter le contrôle des PROMESSES DE RENVOI** (grep donné dans « Erreurs
+commises » du 12/10) : c'est lui qui a produit le meilleur défaut du jour.
+
+🆕 🟢 **CE QUE LA VEILLE DU 12/10 CHANGE AU CHOIX DES CHANTIERS — à lire avant de
+prendre un angle.** Source primaire Ahrefs : **37,9 % seulement des URLs citées
+en AI Overviews rankent dans le top 10** de la requête (contre 76 % sept mois
+plus tôt), et le mécanisme est le **`query fan-out`** (éclatement de la question
+en sous-requêtes). **Conséquence : l'absence du site sur « agence immobilière
+Villeurbanne » — 29 mesures sur 29, SERP tenue par des annuaires — ne ferme pas
+la citation par une IA.** Le levier est **les sous-questions**, pas la
+requête-tête. **Donc : privilégier les chantiers qui ajoutent des réponses
+autonomes à des questions précises (H2 interrogatifs + FAQPage en parité +
+chiffres datés et sourcés) plutôt que ceux qui visent une requête-tête
+concurrentielle.** C'est une validation de la méthode en place, pas un virage.
+
+🆕 📌 **DEMANDE CLIENT — LES ANNUAIRES : elle n'est plus une hypothèse, elle est
+étayée par DEUX mesures concordantes (11/10 et 12/10).** Sur « agence immobilière
+Villeurbanne », **5 des 9 résultats sont des annuaires** (`cylex-locale.fr`,
+`zimo.fr`, `realadvisor.fr`, `lesiteimmo.com`, `fr.mappy.com`), composition
+**rigoureusement identique** les deux jours, contre 10/10 en franchise les 07 et
+08/10. **La règle du 08/10 (un seul delta ne conclut rien) est satisfaite.**
+**Aucun contenu publié sur le site ne prendra ces 5 places : elles s'obtiennent
+en créant ou en réclamant la fiche.** Ce n'est pas un chantier de repo — **c'est
+une action client, à chiffrer et à proposer, et c'est probablement le levier le
+plus rentable du mois sur cette requête.**
+ Candidat désigné, et il est prêt :
 **les comparaisons rédigées à la main de `lib/blog.ts`** (reste de la piste (i),
 voir ci-dessous) — **auquel il faut maintenant ajouter un second point d'entrée,
 établi le 11/10 : les phrases qui affirment QUI est soumis à une obligation
@@ -5530,9 +5830,9 @@ se dit « **50 % de plus** », **pas** « une fois et demie de plus ». C'est la
 famille d'erreur que l'asymétrie des pourcentages du 08/10, mais sur le
 **multiplicateur** au lieu de la base.
 
-⚠️ **VEILLE EN RETARD — faite le 05/10, échéance MANQUÉE le lundi 12/10 si le run
-de demain ne la fait pas.** Deux runs ont sauté (09 et 10/10). **Priorité absolue
-du run du 12/10 : la veille**, avant tout choix de chantier (étape 5 du brief).
+✅ **VEILLE FAITE LE LUNDI 12/10** (la précédente datait du 05/10 : une semaine de
+retard, rattrapée). Résultats et réserves de méthode en « Techniques apprises »
+du 12/10. **Prochaine échéance : lundi 19/10.**
 
 🆕 📌 **DEMANDE À FORMULER AU CLIENT, nouvelle et probablement la plus rentable
 du mois — les ANNUAIRES.** Mesure du 11/10 sur « agence immobilière
@@ -5815,6 +6115,50 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-12
+
+🟡 **Le diagnostic termites est-il dû à Villeurbanne ?** Il dépend d'un **arrêté
+préfectoral** déclarant la zone infestée ou susceptible de l'être (fiche F3150).
+`www.rhone.gouv.fr` est **injoignable depuis le conteneur** (`exit 92`). La page
+publie donc la condition officielle, sans trancher pour Villeurbanne.
+→ **Si un run trouve une source joignable pour les arrêtés termites du Rhône, la
+page peut devenir l'une des rares à répondre OUI ou NON pour la commune** —
+réponse que ni les franchises ni les annuaires ne donnent. Valeur GEO élevée,
+coût faible dès que la source existe. **Ne pas répondre de mémoire.**
+
+🟡 **Villeurbanne est-elle en zone d'exposition au bruit des aéroports (PEB) ?**
+Lyon-Bron est proche, et le **diagnostic Bruit** est dû dans ces zones (fiche
+F10798). **Non sourcé** : le PEB ne figure pas dans l'API `gaspar/risques`, qui ne
+rend pas le bruit. La ligne du tableau publie la condition, pas la réponse locale.
+→ Même enjeu et même interdiction que les termites.
+
+🟡 **Que signifie la classe de potentiel radon 1 ?** L'API Géorisques rend
+`classe_potentiel: "1"` pour le code INSEE 69266, mais **l'échelle 1/2/3 n'a pas
+pu être sourcée** : `/risques/radon` rend **500** via WebFetch et
+`/consulter-les-dossiers-thematiques/radon` rend 200 **sans texte exploitable**
+(coquille JS). Le zonage vient de l'arrêté du 27 juin 2018, **non vérifié**.
+→ **Volontairement NON publié** : un numéro sans son échelle n'informe pas, et
+l'interpréter de mémoire serait la faute du 11/10. Seule la *présence* du risque
+radon est publiée. À reprendre si une source officielle de l'échelle devient
+joignable.
+
+🟡 **Quelle est la durée de validité de l'audit énergétique ?** Absente de la
+fiche F37110 telle que consultée le 11/10. Le tableau du jour est donc **borné au
+cas de l'appartement** (où l'audit n'est jamais dû) et l'audit est traité sans
+durée dans le H2 « maison ».
+→ À compléter si la fiche la porte ailleurs, ou via `ecologie.gouv.fr` quand il
+répond (il a rendu `exit 35` aujourd'hui, 200 le 11/10).
+
+🟢 **La SERP « prix m2 Villeurbanne » récompense-t-elle la RUE plutôt que la
+commune ?** Trois des neuf résultats du 12/10 ciblent une rue ou un quartier
+(`efficity` rue du Progrès, `realadvisor` rue des Mûriers, `qoridor` quartier
+Charpennes). **Notre page est communale + 7 quartiers.**
+→ ⚠️ **Une seule mesure ne conclut rien (règle du 08/10) : à confirmer sur une
+seconde SERP avant d'en faire un chantier.** Si c'est confirmé, la question
+suivante est **si la base DVF permet une maille infra-quartier défendable** —
+elle ne le permettra pas partout (effectifs trop faibles par rue), et publier une
+médiane de rue calculée sur 3 ventes serait pire que ne rien publier.
 
 ### 2026-10-08
 
@@ -6384,6 +6728,80 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-12 — Six affirmations de droit fausses ou incomplètes vivaient en production depuis cinq mois sur une seule page ; et j'ai moi-même gonflé `<title>` et `metaDescription` en la réécrivant
+
+**Les six premières ne sont pas des erreurs de ce run** : elles étaient publiées
+depuis le 12/05/2026 et **ont survécu à tous les contrôles du journal**, pour la
+même raison que le 08/10 et le 11/10 — les contrôles vérifient que les nombres
+sont *présents* et que la FAQ est en *parité*, jamais qu'une phrase dit le droit
+en vigueur. Le détail des six est en « Chantiers faits » ; ce qui suit est ce
+qu'elles apprennent.
+
+1. 🔴 **Le défaut le plus instructif n'est pas une phrase, c'est une PROMESSE
+   D'ARCHITECTURE non tenue.** L'en-tête de `lib/blog.ts` attribue depuis le
+   07/10 les durées de validité à `diagnostics-obligatoires-vente` et **interdit
+   d'en publier ailleurs** ; `charges-copropriete` y renvoie en écrivant qu'elles
+   « sont détaillées dans notre fiche ». **La page en publiait 2 sur 8.**
+   → 📌 **Nouveau point d'entrée de contrôle, et il est cheap :** quand une note
+   d'architecture ou un lien interne dit « le détail est sur telle page »,
+   **ouvrir cette page et vérifier que le détail y est.** Aucun test ne peut le
+   voir : les deux pages compilent, le lien n'est pas mort, la phrase est bien
+   formée. **Le contrôle est un `grep` des formules de renvoi :**
+   ```bash
+   grep -rn 'sont détaillée\|est détaillé\|le détail est\|détaillées dans\|voir notre fiche\|notre fiche sur' \
+     lib app --include='*.ts' --include='*.tsx'
+   ```
+   Puis, pour chaque renvoi : **la page cible porte-t-elle vraiment ce qui est
+   promis ?** C'est la troisième famille de défauts invisibles trouvée en trois
+   runs — après les **comparaisons** (08/10) et les **périmètres juridiques**
+   (11/10). Celle-ci est une **promesse de contenu**.
+
+2. 🔴 **La leçon du 11/10 s'est reproduite à l'identique sur la même matière, et
+   elle se généralise : une liste d'obligations qui ne distingue pas les
+   POPULATIONS est fausse pour tout le monde.** Le 11/10, l'audit énergétique
+   était annoncé à des copropriétaires qui n'y sont pas soumis. Aujourd'hui, la
+   même page-sœur servait **une liste unique pour les maisons et les
+   appartements** alors que la fiche officielle en donne **deux**, et que les
+   deux diffèrent sur le seuil de 50 m² du DPE et sur l'audit énergétique.
+   → **Règle consolidée : toute liste d'obligations doit nommer la population à
+   laquelle elle s'applique, et le périmètre se confronte au parc réel du
+   client** (ici 49 717 appartements contre 1 159 maisons : la liste
+   « appartement » passe en premier).
+
+3. 🔴 **Une omission peut tromper plus sûrement qu'une affirmation fausse.** « Le
+   DPE est valable 10 ans » est **vrai** — et pourtant un vendeur détenant un DPE
+   de 2019 en concluait qu'il était bon jusqu'en 2029, alors qu'il est caduc
+   depuis le 01/01/2025. **La phrase ne mentait pas, elle laissait conclure
+   faux.**
+   → **Règle : pour toute durée publiée, vérifier s'il existe une population
+   exclue de la règle (régime antérieur, date de bascule de méthode). Si oui,
+   elle doit être écrite à côté de la durée, pas ailleurs.**
+
+4. 🟡 **Erreur de CE run, attrapée avant le push, et elle est mécanique :
+   réécrire un article gonfle ses métadonnées sans qu'on y pense.** Le `<title>`
+   rédigé faisait **86 caractères** une fois le suffixe « · Markus Immobilier »
+   (20 caractères) ajouté par le gabarit, et la `metaDescription` **206** — alors
+   que les runs précédents tenaient 65 et 155. **Les deux ont été mesurés, puis
+   corrigés avant commit** (65 et 158), avec rebuild complet.
+   → **Règle : mesurer `<title>` rendu (suffixe compris, pas la chaîne source) et
+   `metaDescription` AVANT de committer, à chaque fois qu'un article est
+   réécrit.** Le contrôle tient en une ligne sur le HTML servi, et il ne figurait
+   nulle part dans la procédure du journal alors que les `<title>` longs sont
+   notés comme défaut connu depuis le 01/10.
+   ⚠️ **Et le piège dans le piège : le suffixe est ajouté par le gabarit.**
+   Compter les caractères de la chaîne écrite dans `lib/blog.ts` donne 45 et fait
+   croire que tout va bien.
+
+5. 🟡 **Le faux positif de « mots collés » doit être documenté une fois pour
+   toutes, sinon il fait perdre un contrôle.** Le motif
+   *minuscule+Majuscule* a remonté **22 occurrences** sur la page du jour
+   (`bLi`, `dAn`, `eMo`…). **Aucune n'est dans la prose : toutes sont dans le bloc
+   `<script type="application/ld+json">`, qui est à l'intérieur du `<main>`.**
+   → **Règle : extraire le texte en remplaçant CHAQUE balise par un séparateur,
+   et exclure les `<script>` avant de compter.** Sinon le contrôle rend 22 faux
+   positifs et on cesse de le lire. (C'est le cousin du faux positif `1er` noté
+   le 11/10.)
 
 ### 2026-10-11 — Un chiffre national jamais sourçable vivait en production depuis cinq mois, l'audit énergétique était annoncé à des propriétaires qui n'y sont pas soumis, et j'ai validé un correctif sur un serveur qui servait l'ancien build
 
@@ -7033,6 +7451,121 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-12 — VEILLE (lundi, elle avait une semaine de retard) : le découplage entre le classement Google et la citation par les IA est mesuré, et il valide la méthode suivie ici
+
+**⚠️ Avertissement de méthode, à lire avant les chiffres.** La première recherche
+(« AI Overviews ranking changes October 2026 study ») a rendu **presque
+exclusivement des blogs de prestataires qui recyclent les mêmes études en les
+déformant** : on y trouve 38 %, 17 %, 12 %, « CTR −61 % », « −58 % » attribués
+pêle-mêle, parfois à la mauvaise source. **Aucune étude publiée en octobre 2026
+n'a été trouvée.** La seconde recherche, restreinte aux domaines primaires
+(`ahrefs.com`, `developers.google.com`, `blog.google`, `schema.org`,
+`searchengineland.com`, `seroundtable.com`), a donné la source réelle.
+→ **Règle : sur ce sujet, aller droit à la source primaire et ignorer les
+récapitulatifs. Le `allowed_domains` de WebSearch est l'outil qui le permet.**
+
+**1. 🟢 Le fait central, source primaire (Ahrefs, « Update: 38% of AI Overview
+Citations Pull From The Top 10 »).** Sur **863 000 SERP de mots-clés** et
+**4 millions d'URLs citées** en AI Overviews : **37,9 % des URLs citées
+apparaissent aussi dans les 10 premiers blocs** de la SERP classique, contre
+**76 %** dans l'étude précédente **sept mois plus tôt**. En ne comptant que les
+liens bleus : **37,10 % dans le top 10**, et **36,70 % ne sont pas dans le
+top 100 du tout**.
+🟡 **Réserves que la source elle-même donne, à ne pas effacer** : c'est la
+recherche d'Ahrefs sur ses propres données (Brand Radar), **et la comparaison
+avec les 76 % n'est pas à méthode constante** — l'étude initiale ne regardait que
+les 3 citations les plus visibles, et le parsing a été amélioré depuis. **Une
+partie de la chute vient donc de la mesure, pas du comportement de Google.**
+Un autre papier du même éditeur (« AI search overlap ») donne **12 %** de
+recouvrement pour les URLs citées par les assistants sur le prompt d'origine.
+
+**2. 📌 Le mécanisme, et c'est lui qui est actionnable : le `query fan-out`.**
+L'AI Overview éclate la question de l'utilisateur en **sous-requêtes** et puise
+dans les SERP de ces sous-requêtes, pas seulement dans celle de la requête
+d'origine. **Conséquence directe pour ce site, et elle est importante :**
+→ **Être absent de « agence immobilière Villeurbanne » (29 mesures sur 29) ne
+ferme PAS la porte à la citation par une IA.** Cette SERP est tenue par des
+annuaires (mesuré deux jours de suite), et c'est précisément le type de requête
+dont le recouvrement avec les citations est le plus faible.
+→ **Le levier n'est pas la requête-tête, ce sont les sous-questions.** Une page
+qui répond proprement à « combien de temps un diagnostic électricité est-il
+valable pour vendre » peut être citée sans jamais ranker sur « diagnostics
+obligatoires ».
+→ **Cela valide la méthode appliquée depuis le 05/10** (H2 en questions réelles,
+réponse autonome en tête, FAQPage en parité, chiffres datés et sourcés) **au lieu
+de la contredire : rien à corriger, et une raison mesurée de continuer.** C'est
+exactement la forme donnée au chantier du jour.
+
+**3. 🟢 Outillage — `georisques.gouv.fr` sort de la liste des domaines fermés, et
+son API est utilisable sans clé.** Deux points d'entrée vérifiés aujourd'hui :
+```bash
+C="--cacert /root/.ccr/ca-bundle.crt"
+# potentiel radon de la commune
+curl -s $C "https://www.georisques.gouv.fr/api/v1/radon?code_insee=69266"
+# familles de risques recensées pour la commune
+curl -s $C "https://www.georisques.gouv.fr/api/v1/gaspar/risques?code_insee=69266&page=1&page_size=30"
+```
+Réponses JSON immédiates. Pour Villeurbanne : `classe_potentiel: "1"` et
+**six familles de risques** (inondation — crue à débordement lent et remontées de
+nappes —, séisme, phénomènes liés à l'atmosphère, radon, rupture de barrage,
+transport de marchandises dangereuses).
+⚠️ **Deux pièges** : (a) **les PAGES HTML de Géorisques sont une coquille JS** —
+`/risques/radon` rend **500** via WebFetch et `/consulter-les-dossiers-thematiques/radon`
+rend 200 mais **sans un mot de texte exploitable** : l'API oui, les pages non ;
+(b) **l'API rend un numéro de classe radon sans son échelle** — la définition de
+1/2/3 n'est pas sourçable là, donc **ne pas l'interpréter** (voir « Hypothèses »).
+
+**4. 🟢 Méthode service-public réutilisable, et le lot d'identifiants qu'elle a
+produit.** La technique du 07/10 (partir d'une fiche carrefour, extraire ses
+liens, **sonder les `<title>` en lot**) a de nouveau été la plus rapide :
+`F2604` « Vente d'un logement en copropriété » → 44 fiches liées → **23 titres
+sondés en un seul appel** → toutes les fiches de diagnostics trouvées d'un coup.
+**Identifiants vérifiés le 12/10/2026, à réutiliser sans les redécouvrir :**
+
+| Fiche | Sujet | Vérifié le |
+|---|---|---|
+| `F10798` | **Liste des diagnostics à fournir en cas de vente** (sépare maison / appartement) | 07/03/2025 |
+| `F2604` | Vente d'un logement en copropriété (fiche carrefour) | 21/08/2025 |
+| `F16096` | DPE | 01/01/2026 |
+| `F37110` | Audit énergétique (passoire thermique) | 14/09/2026 |
+| `F1142` | Plomb (CREP) | 17/08/2026 |
+| `F742` | Amiante | 06/12/2024 |
+| `F18692` | Électricité | 17/09/2026 |
+| `F17337` | Gaz | 17/09/2026 |
+| `F31685` | Assainissement (collectif **et** non collectif) | 26/02/2025 |
+| `F3150` | Termites et insectes xylophages | 26/02/2026 |
+| `F12239` | État des risques | 28/09/2026 |
+| `F37294` | État daté en copropriété | — |
+| `F17376` | Où trouver un diagnostiqueur certifié | — |
+
+⚠️ **`N320` n'existe pas** (404) : il n'y a pas de page d'index « Diagnostic
+immobilier » atteignable par identifiant `N…`. Passer par les liens d'une fiche.
+⚠️ **Rappel toujours valable** : les fiches ne répondent que sur
+`service-public.gouv.fr` (`service-public.fr` rend 301).
+
+**5. 📌 Les durées de validité diffèrent entre VENTE et LOCATION, et c'est un
+piège de contenu générique.** Relevé aujourd'hui sur F18692 et F17337 :
+électricité et gaz valent **3 ans pour vendre** mais **6 ans pour louer**. La
+plupart des pages concurrentes publient une seule durée. **À vérifier
+systématiquement quand une page du site parle de durée de diagnostic : sur une
+page de vente, écrire la durée de location est une erreur de fait.**
+
+**6. ⚠️ Et le piège d'outillage du conteneur, rencontré TROIS fois aujourd'hui —
+il faut l'écrire parce qu'il simule un échec.** `npx tsc`, `npm run build`,
+`pkill` et même un `nohup … &` suivi d'un `sleep` **sortent en 144** dès que la
+commande composée se termine par un tube vers `tail`/`head`/`grep`, ou parfois
+sans raison visible. **Ce n'est pas un build cassé** (c'est le cousin du SIGPIPE
+noté le 11/10). **Procédure qui marche à coup sûr :**
+```bash
+npx tsc --noEmit > $S/tsc.log 2>&1; echo "exit=$?"; cat $S/tsc.log
+npm run build    > $S/build.log 2>&1; echo "exit=$?"; grep -E "Compiled|Error" $S/build.log > $S/ok.txt; cat $S/ok.txt
+```
+→ **Rediriger vers un fichier, puis lire le fichier. Ne jamais mettre `npm run
+build` ni `tsc` dans un tube.** Et pour le serveur local : **le lancer comme tâche
+de fond suivie par le harness** (`run_in_background`), pas en `nohup … &` — celui
+du harness se tue proprement (`exit 143`) et on sait qu'il est mort, ce qui est
+exactement ce qui manquait le 11/10 pour éviter le serveur périmé.
 
 ### 2026-10-11 — Outillage : la base DPE de l'ADEME est la première source de données locales nouvelle depuis DVF, et elle s'interroge en comptages purs
 
