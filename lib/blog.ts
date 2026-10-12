@@ -120,6 +120,37 @@
  * en plus la MISE EN LOCATION côté propriétaire (9 % du loyer annuel HC,
  * constante LOCATION_PROPRIETAIRE de app/honoraires/page.tsx).
  * Si le client change son barème, ces textes doivent bouger avec lui.
+ *
+ * Depuis le 12/10/2026, « diagnostics-obligatoires-vente » est passé de 217 à
+ * ~1 900 mots et PORTE ENFIN les durées de validité que l'architecture du site
+ * lui réserve depuis le 07/10 (voir la note ci-dessus sur « vendre-sans-agence »,
+ * et le renvoi de « charges-copropriete » : les deux pointent ici POUR les
+ * durées — jusqu'à ce run, la page n'en publiait que 2 sur 8, la promesse était
+ * fausse). ⚠️ Son tableau est ENTIÈREMENT dérivé de fiches service-public datées,
+ * relevées le 12/10/2026 : F10798 (liste, vérifiée le 07/03/2025), F16096 (DPE,
+ * 01/01/2026), F1142 (plomb, 17/08/2026), F742 (amiante, 06/12/2024), F18692
+ * (électricité, 17/09/2026), F17337 (gaz, 17/09/2026), F31685 (assainissement,
+ * 26/02/2025), F3150 (termites, 26/02/2026), F12239 (état des risques,
+ * 28/09/2026). Chaque fiche porte une mention « Vérifié le … » : à REVÉRIFIER
+ * fiche par fiche, jamais de mémoire, et la date du relevé affichée en légende
+ * du tableau doit bouger avec.
+ * ⚠️ Deux pièges de contenu que ce run a corrigés et qu'il ne faut pas
+ * réintroduire : (1) l'électricité et le gaz valent 3 ans en VENTE mais 6 ans en
+ * LOCATION — ne jamais publier la durée de location sur une page de vente ;
+ * (2) la liste d'un APPARTEMENT n'est pas celle d'une MAISON (DPE dû seulement
+ * à partir de 50 m² de surface de plancher pour une maison, et audit énergétique
+ * E/F/G réservé aux maisons et aux immeubles en monopropriété — jamais à un
+ * appartement vendu seul, règle établie le 11/10).
+ * ⚠️ Ses comptages locaux viennent de la base DPE de l'ADEME (dpe03existant,
+ * qs=code_insee_ban:69266 AND type_batiment:appartement, relevé du 12/10/2026) :
+ * 49 717 appartements, dont 9 856 construits « avant 1948 » (plomb, MINIMUM car
+ * 1948 est fondu dans la tranche 1948-1974) et 30 346 jusqu'en 1988 (amiante,
+ * borne basse ; la tranche 1989-2000 de 8 134 enjambe le seuil du 01/07/1997,
+ * d'où la fourchette 61,0 %-77,4 % publiée). Les deux bornes et la limite de
+ * méthode (période de construction ≠ date du permis) doivent rester écrites.
+ * ⚠️ La liste des risques de Villeurbanne vient de l'API Géorisques
+ * (/api/v1/gaspar/risques?code_insee=69266, relevé du 12/10/2026) : six familles,
+ * et AUCUN risque minier — l'ancienne version de la page écrivait « miniers ».
  */
 
 export type Block =
@@ -620,30 +651,104 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "diagnostics-obligatoires-vente",
-    title: "Les diagnostics obligatoires pour vendre à Lyon et Villeurbanne",
+    title: "Diagnostics obligatoires : durées de validité",
     metaDescription:
-      "Quels diagnostics immobiliers sont obligatoires pour vendre ? Liste complète, durées de validité et conseils pour les anticiper.",
+      "Quels diagnostics sont obligatoires pour vendre, et combien de temps chacun reste valable. Durées vérifiées sur les fiches officielles, appartement et maison.",
     h1: "Les diagnostics obligatoires pour vendre",
     excerpt:
-      "Avant toute vente, le vendeur doit fournir un dossier de diagnostics techniques. La liste complète et les durées de validité.",
+      "La liste exacte des diagnostics à remettre à l'acquéreur, leur condition de déclenchement et la durée de validité de chacun en cas de vente — appartement et maison, qui n'ont pas la même liste.",
     date: "2026-05-12",
+    updated: "2026-10-12",
     internalHref: "/vendre",
     internalLabel: "Être accompagné pour ma vente",
     blocks: [
-      { type: "p", text: "Avant toute vente, le vendeur doit fournir un dossier de diagnostics techniques (DDT). Les anticiper évite de retarder la signature." },
-      { type: "h2", text: "Les principaux diagnostics" },
+      { type: "p", text: "**Pour vendre un logement, le vendeur doit remettre à l'acquéreur un dossier de diagnostic technique (DDT), et la liste des pièces qu'il contient n'est pas la même pour un appartement et pour une maison.** Aucune de ces pièces n'est exigée dans tous les cas : chacune a une condition de déclenchement (l'âge du bâtiment, l'âge de l'installation, la zone) et une durée de validité propre, qui va de 6 mois à illimitée. Cette page donne les deux, condition et durée, vérifiées une par une sur les fiches officielles en vigueur." },
+      { type: "p", text: "Le DDT doit être joint à la promesse de vente ou à l'acte de vente. Un dossier incomplet ne bloque pas juridiquement la signature, mais il prive le vendeur de la clause qui l'exonère des vices cachés — c'est le vrai risque, et il est détaillé plus bas." },
+      { type: "h2", text: "Quels diagnostics faut-il pour vendre un appartement ?" },
+      { type: "p", text: "**Pour un appartement, la liste officielle comporte dix pièces possibles, dont une seule est due dans tous les cas : le DPE.** Les neuf autres ne sont exigées que si leur condition est remplie. S'y ajoutent deux mentions qui ne sont pas des diagnostics mais doivent figurer dans la promesse ou l'acte : la surface privative (loi Carrez) et, dans les zones concernées, le risque de mérule." },
       { type: "ul", items: [
-        "**[DPE](/blog/dpe-2026-ce-qui-change)** : performance énergétique (valable 10 ans).",
-        "**Amiante** : pour les biens dont le permis est antérieur à juillet 1997.",
-        "**Plomb (CREP)** : logements construits avant 1949.",
-        "**Électricité et gaz** : si l'installation a plus de 15 ans.",
-        "**État des risques (ERP)** : risques naturels, miniers, technologiques (valable 6 mois).",
-        "**Termites** : dans les zones concernées par arrêté préfectoral.",
-        "**Assainissement** : pour les installations non collectives.",
-        "**[Loi Carrez](/blog/loi-carrez-surface)** : mesurage de la surface en copropriété.",
+        "**[DPE](/blog/dpe-2026-ce-qui-change)** — dû sans condition de surface pour un appartement.",
+        "**Constat de risque d'exposition au plomb (CREP)** — si le logement a été construit avant le 1er janvier 1949.",
+        "**État d'amiante** — si le permis de construire a été délivré avant le 1er juillet 1997.",
+        "**État de l'installation intérieure d'électricité** — si l'installation a plus de 15 ans.",
+        "**État de l'installation intérieure de gaz** — si l'installation a plus de 15 ans.",
+        "**Diagnostic assainissement des eaux usées** — si le logement est équipé d'une installation autonome ; et, pour l'assainissement collectif, uniquement sur certains territoires ou s'il existe un arrêté municipal fixant cette obligation.",
+        "**État relatif à la présence de termites** — si le logement est situé dans une zone déclarée infestée, ou susceptible de l'être à court terme, par arrêté préfectoral.",
+        "**État des risques** — si le logement est situé dans une zone ou un périmètre à risques (notamment naturels, miniers, sismiques, radon).",
+        "**Diagnostic Bruit** — si le logement est situé dans une zone d'exposition au bruit des aéroports.",
+        "**Carnet d'information du logement (CIL)** — si le logement a fait l'objet d'un permis de construire ou d'une déclaration préalable déposé à partir du 1er janvier 2023, ou de travaux de rénovation depuis cette date.",
       ] },
-      { type: "h2", text: "Le bon réflexe" },
-      { type: "p", text: "Faites réaliser les diagnostics avant de mettre en vente : un dossier complet rassure l'acheteur et accélère la transaction." },
+      { type: "p", text: "Les **durées de validité** de chacune de ces pièces sont dans le tableau plus bas. Pour un lot de copropriété, le DDT s'insère dans un dossier plus large — règlement, procès-verbaux, état daté — dont la composition est détaillée dans notre fiche sur [les charges de copropriété](/blog/charges-copropriete)." },
+      { type: "h2", text: "Et pour une maison, la liste est-elle la même ?" },
+      { type: "p", text: "**Non, et elle diffère sur deux points qui comptent.** D'une part le DPE n'est dû que si la surface de plancher de la maison atteint 50 m². D'autre part s'ajoute une pièce qu'un appartement vendu seul ne connaît pas : **l'audit énergétique**, exigé lorsque l'étiquette énergétique de la maison est **E, F ou G**." },
+      { type: "p", text: "Cette seconde différence est la source d'erreur la plus courante sur le sujet. L'audit énergétique ne vise que **les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire** : un appartement vendu seul en copropriété n'y est **pas** soumis, quelle que soit son étiquette. À Villeurbanne, l'écart de population est massif — sur les 51 951 diagnostics enregistrés dans la commune, **49 717 portent sur des appartements, contre 1 159 sur des maisons** et 1 075 sur des immeubles entiers. Le détail du calendrier énergétique et de ce qu'il change pour un vendeur villeurbannais est sur [ce qui change pour le DPE](/blog/dpe-2026-ce-qui-change)." },
+      { type: "h2", text: "Combien de temps chaque diagnostic reste-t-il valable ?" },
+      { type: "p", text: "**Les durées vont de 6 mois à illimitée, et deux d'entre elles sont plus courtes en vente qu'en location** : l'électricité et le gaz valent 3 ans pour vendre, contre 6 ans pour louer. C'est l'erreur classique du propriétaire qui réutilise un diagnostic fait pour un bail. Le tableau ci-dessous donne, pour le cas d'un appartement, la condition de déclenchement et la validité en cas de vente." },
+      {
+        type: "table",
+        caption: "Conditions et durées de validité des diagnostics, en cas de vente d'un appartement",
+        source:
+          "Vérifié pièce par pièce sur service-public.gouv.fr le 12 octobre 2026 : fiche F10798 (liste des diagnostics, vérifiée le 7 mars 2025), F16096 (DPE, 1er janvier 2026), F1142 (plomb, 17 août 2026), F742 (amiante, 6 décembre 2024), F18692 (électricité, 17 septembre 2026), F17337 (gaz, 17 septembre 2026), F31685 (assainissement, 26 février 2025), F3150 (termites, 26 février 2026), F12239 (état des risques, 28 septembre 2026).",
+        headers: ["Diagnostic", "Dû dans quel cas", "Validité en cas de vente"],
+        rows: [
+          ["DPE", "Tout appartement, sans condition de surface", "10 ans, s'il a été réalisé depuis le 1er juillet 2021"],
+          ["Plomb (CREP)", "Construction avant le 1er janvier 1949", "Illimitée si absence de plomb ou concentration inférieure à 1 mg/cm² ; moins de 1 an si la concentration dépasse 1 mg/cm²"],
+          ["Amiante", "Permis de construire délivré avant le 1er juillet 1997", "Illimitée s'il a été réalisé à partir du 1er avril 2013 ; à refaire avant la vente s'il est antérieur"],
+          ["Électricité", "Installation de plus de 15 ans", "Moins de 3 ans à la promesse ou à l'acte (6 ans en location)"],
+          ["Gaz", "Installation de plus de 15 ans", "Moins de 3 ans à la promesse ou à l'acte (6 ans en location)"],
+          ["Assainissement non collectif", "Installation autonome", "Moins de 3 ans à l'acte authentique"],
+          ["Assainissement collectif", "Certains territoires, ou arrêté municipal", "10 ans au maximum à l'acte authentique"],
+          ["Termites", "Zone déclarée par arrêté préfectoral", "6 mois au maximum"],
+          ["État des risques", "Zone ou périmètre à risques", "Moins de 6 mois, et à actualiser si les informations ne sont plus exactes à la signature"],
+          ["Diagnostic Bruit", "Zone d'exposition au bruit des aéroports", "Aucune durée fixée par la fiche officielle"],
+          ["Carnet d'information du logement", "Permis ou déclaration préalable déposé depuis le 1er janvier 2023, ou travaux de rénovation depuis cette date", "Document remis à l'acquéreur, sans durée de validité"],
+        ],
+      },
+      { type: "h2", text: "Un DPE réalisé en 2019 est-il encore valable pour vendre ?" },
+      { type: "p", text: "**Non.** Les DPE réalisés entre le 1er janvier 2018 et le 30 juin 2021 **ne sont plus valables depuis le 1er janvier 2025** et doivent être refaits avant une mise en vente. La règle des 10 ans ne s'applique qu'aux DPE réalisés **depuis le 1er juillet 2021** : c'est à cette date que la méthode de calcul a changé." },
+      { type: "p", text: "La confusion est facile et coûteuse : un vendeur qui détient un DPE de 2019 le croit valable jusqu'en 2029, alors qu'il est caduc depuis plus d'un an. Un DPE sans numéro d'identification délivré par l'ADEME au diagnostiqueur n'est, lui, pas valable du tout." },
+      { type: "h2", text: "Quels diagnostics concernent réellement un appartement à Villeurbanne ?" },
+      { type: "p", text: "**Deux conditions de déclenchement se mesurent sur le parc local, et elles ne concernent pas une minorité de biens : l'âge du bâti rend le constat plomb dû pour au moins un appartement villeurbannais sur cinq, et l'état d'amiante pour au moins trois sur cinq.** Les comptages ci-dessous viennent de la base DPE de l'ADEME, filtrée sur le code INSEE de Villeurbanne (69266) et sur les appartements, soit 49 717 logements diagnostiqués." },
+      { type: "ul", items: [
+        "**Plomb : au moins 9 856 appartements concernés, soit 19,8 % du parc diagnostiqué.** C'est le nombre d'appartements dont la période de construction est antérieure à 1948. Le seuil légal étant le 1er janvier 1949, les logements construits en 1948 sont aussi concernés mais se trouvent fondus dans la tranche « 1948-1974 » de la base : **le compte réel est donc un peu supérieur**, jamais inférieur.",
+        "**Amiante : au moins 30 346 appartements concernés, soit 61,0 % du parc diagnostiqué.** Ce sont les tranches de construction allant jusqu'à 1988. S'y ajoute une partie de la tranche « 1989-2000 » (8 134 logements, 16,4 %), qui enjambe le seuil du 1er juillet 1997 et ne peut pas être départagée : la part réellement concernée est donc comprise **entre 61,0 % et 77,4 %**.",
+        "**Un seul appartement sur 266 relève du carnet d'information du logement** au titre de sa construction : 187 appartements diagnostiqués ont été construits après 2021. Les travaux de rénovation menés depuis le 1er janvier 2023 en ouvrent d'autres, que la base ne permet pas de compter.",
+      ] },
+      { type: "p", text: "⚠️ Une limite de méthode à garder en tête pour l'amiante : la base ADEME renseigne une **période de construction**, alors que le texte retient la date de délivrance du **permis de construire**, nécessairement antérieure. Les deux bornes ci-dessus encadrent la réalité, elles ne la mesurent pas au logement près." },
+      { type: "p", text: "Quant à l'état des risques, les risques recensés pour Villeurbanne sont publics et tiennent en six familles : **inondation** (crue à débordement lent, remontées de nappes naturelles), **séisme**, **phénomènes liés à l'atmosphère** (tempête et vent, foudre, grêle, neige et pluies verglaçantes), **radon**, **rupture de barrage** et **transport de marchandises dangereuses**. Aucun risque minier n'y figure. Toute annonce de vente d'un bien devant faire l'objet d'un état des risques doit par ailleurs porter la mention renvoyant au site Géorisques." },
+      { type: "p", text: "Pour savoir ce que ces diagnostics changent au prix que vous pouvez attendre, le détail par quartier est dans [les prix au m² à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026)." },
+      { type: "h2", text: "Que risque un vendeur qui oublie un diagnostic ?" },
+      { type: "p", text: "**Le risque principal n'est pas une amende, c'est la perte de la protection contre les vices cachés.** Un vendeur qui ne transmet pas une pièce du DDT ne peut pas être exonéré de la garantie des vices cachés : l'acquéreur peut saisir le tribunal judiciaire du lieu du bien pour demander l'annulation de la vente ou des dommages et intérêts, parfois des années après la signature." },
+      { type: "p", text: "S'y ajoute une amende distincte, qui vise le choix du professionnel : faire appel à un diagnostiqueur **non certifié** expose le vendeur à **1 500 €**, portés à **3 000 € en cas de récidive**. La certification du diagnostiqueur se vérifie gratuitement sur l'annuaire officiel des diagnostiqueurs certifiés." },
+      { type: "h2", text: "À quel moment faire réaliser les diagnostics ?" },
+      { type: "p", text: "**Avant la mise en vente pour la plupart, mais pas pour tous : l'état des risques et l'état relatif aux termites ne valent que 6 mois, et les commander trop tôt oblige à les refaire.** La bonne séquence est donc de lancer d'abord le DPE — obligatoire dès l'annonce — puis les diagnostics à validité longue ou illimitée, et de garder les deux pièces à 6 mois pour le moment où un acquéreur se présente." },
+      { type: "p", text: "Le DPE a une raison de plus de passer en premier : son étiquette doit figurer dans l'annonce. Un dossier complet au moment du compromis évite de décaler la signature, et c'est aussi ce qui déclenche proprement le délai de rétractation de l'acquéreur. Si vous préférez déléguer la coordination des diagnostiqueurs, c'est une des choses que nous prenons en charge dans un [accompagnement de vente](/vendre)." },
+    ],
+    faq: [
+      {
+        q: "Combien de temps un diagnostic électricité est-il valable pour vendre ?",
+        a: "Moins de 3 ans à la date de la promesse de vente ou de l'acte authentique. Attention à ne pas le confondre avec la durée applicable en location, qui est de 6 ans : un diagnostic réalisé pour un bail peut donc être périmé pour une vente. La même règle de 3 ans vaut pour le diagnostic gaz.",
+      },
+      {
+        q: "Mon DPE de 2019 est-il encore valable pour mettre mon appartement en vente ?",
+        a: "Non. Les DPE réalisés entre le 1er janvier 2018 et le 30 juin 2021 ne sont plus valables depuis le 1er janvier 2025 et doivent être refaits. Seuls les DPE réalisés depuis le 1er juillet 2021 sont valables 10 ans, parce que la méthode de calcul a changé à cette date.",
+      },
+      {
+        q: "L'audit énergétique est-il obligatoire pour vendre un appartement classé F ou G ?",
+        a: "Non. L'audit énergétique ne concerne que les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire, pour les étiquettes E, F ou G. Un appartement vendu seul en copropriété n'y est pas soumis, quelle que soit son étiquette. À Villeurbanne, 49 717 des 51 951 diagnostics enregistrés portent sur des appartements : l'immense majorité des ventes locales échappe donc à l'audit, mais pas au DPE.",
+      },
+      {
+        q: "Le diagnostic plomb est-il obligatoire à Villeurbanne ?",
+        a: "Il l'est pour les logements construits avant le 1er janvier 1949, ce qui représente au moins 9 856 des 49 717 appartements villeurbannais diagnostiqués, soit 19,8 % du parc. Le chiffre est un minimum : la base de l'ADEME regroupe les constructions de 1948 avec celles de la période 1948-1974, alors qu'elles sont elles aussi concernées.",
+      },
+      {
+        q: "Combien de temps l'état des risques reste-t-il valable ?",
+        a: "Moins de 6 mois, et il doit être actualisé si les informations qu'il contient ne sont plus exactes à la date de signature de la promesse ou de l'acte. C'est la durée la plus courte du dossier, avec le diagnostic termites : mieux vaut donc les commander une fois l'acquéreur trouvé plutôt qu'au moment de la mise en vente.",
+      },
+      {
+        q: "Que risque le vendeur s'il manque un diagnostic au dossier ?",
+        a: "Il perd le bénéfice de la clause qui l'exonère des vices cachés : l'acquéreur peut saisir le tribunal judiciaire pour demander l'annulation de la vente ou des dommages et intérêts. Une amende distincte de 1 500 € s'applique par ailleurs au vendeur qui fait appel à un diagnostiqueur non certifié, portée à 3 000 € en cas de récidive.",
+      },
     ],
   },
   {
