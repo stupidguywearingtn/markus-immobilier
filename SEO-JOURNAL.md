@@ -14,6 +14,97 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-13**
+
+- ✅ **AUCUN RUN MANQUÉ, et le contrôle des DATES du 11/10 a de nouveau servi.**
+  `git fetch origin` **en tout premier** (règle du 16/09) : cette fois
+  `origin/main` **était déjà à jour avant le fetch** (`1cc9814` == `HEAD`), ce qui
+  est la **première fois en vingt runs** que la référence distante n'est pas
+  périmée au démarrage. ⚠️ **Ne pas en tirer de règle** : la bonne conduite reste
+  de fetcher d'abord, puis de **lire les dates des commits** — ici trois commits
+  portent le 2026-10-12, le run d'hier a bien eu lieu.
+- ⚠️ Le conteneur démarre sur `claude/dazzling-feynman-p4o6hz` ; `git checkout
+  main` puis `git merge --ff-only origin/main` (« Already up to date ») **avant la
+  première édition**.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Dix-neuvième constat identique** (21/09 → 13/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Deuxième confirmation que le conteneur
+  ne le garde pas : à refaire à chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Mardi : pas de veille** (faite le lundi 12/10). **Prochaine échéance : lundi
+  19/10.**
+- **Deux SERP mesurées, les deux absentes :**
+  - « agence immobilière Villeurbanne » — **absente pour la 30ᵉ fois sur 30.**
+    🟢 **La bascule annuaire est CONFIRMÉE SUR UNE TROISIÈME MESURE CONSÉCUTIVE,
+    et la composition est quasi identique à celle des 11 et 12/10** : **3 pages de
+    franchise** (Laforêt Villeurbanne-République, Orpi Cusset, Orpi Charpennes) et
+    **6 annuaires** (`cylex-locale.fr`, `zimo.fr` ×2, `realadvisor.fr`,
+    `lesiteimmo.com`, `fr.mappy.com`). Seuls changements : l'offre France Travail
+    sort, une **seconde page `zimo.fr` entre — mais sur Vienne (38), hors cible**,
+    et la page `realadvisor.fr` est désormais une fiche d'agence (Century 21 Villa
+    Urbana) hébergée par l'annuaire. 📌 **Trois mesures concordantes : la
+    recommandation « annuaires » n'est plus une hypothèse, c'est le constat le plus
+    solide du journal sur cette requête.** Aucun contenu publié sur le site ne
+    prendra ces 6 places.
+    🆕 ⚠️ **Et « Aquila Immobilier » apparaît enfin comme un VRAI lien** (via
+    `fr.mappy.com`), après avoir été un faux positif du résumé du moteur pendant
+    4 runs (22→25/09). **La règle du 23/09 — ne compter que les liens — était la
+    bonne, et elle vient de se vérifier à retardement.**
+  - « vendre appartement Villeurbanne » — absente. **Cadence respectée** (2 mesures
+    par mois au plus, précédente le 04/10). 9 résultats : PAP, **Laforêt blog ×2**,
+    **Orpi actualités**, Capifrance, `immo.trovit.fr` ×2, `zimo.fr` ×2.
+    🆕 🟡 **OBSERVATION QUI REMET EN CAUSE LA LECTURE DU 04/10 : la SERP n'est plus
+    composée uniquement de listings.** Le 04/10 le constat était « 9 listings, zéro
+    contenu éditorial » et il avait servi à fermer l'angle (« la réécriture de
+    `/vendre` ne déplacera pas cette SERP »). Aujourd'hui **3 des 9 résultats sont
+    des pages éditoriales** — deux articles de blog Laforêt sur « vendre
+    rapidement votre appartement » et une page « actualités » Orpi.
+    ⚠️ **La règle du 08/10 s'applique : un seul delta ne conclut rien.** À
+    remesurer avant d'en tirer quoi que ce soit — inscrit en « Hypothèses ».
+  - 🆕 **Un concurrent de plus publie un prix communal proche du nôtre : PAP
+    annonce 3 623 €/m²** (et « 192 019 € pour 53 m² »), contre notre médiane de
+    3 567 €/m². 🟡 **Même nuance de méthode que les 11 et 12/10 : c'est une
+    MOYENNE, pas une médiane. Ne pas « corriger » la nôtre pour s'en rapprocher.**
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 12/10, et c'est bien LE
+  CANDIDAT DÉSIGNÉ** (`loi-carrez-surface`, premier de la liste des pages de droit
+  jamais revérifiées). **177 → 2 677 mots servis**, sept défauts de fond corrigés
+  dont une **contradiction interne de la page avec elle-même** sur le seuil de
+  1,80 m. Détail en « Chantiers faits » et « Erreurs commises ».
+- 🟢 **NOUVELLE SOURCE DE DONNÉES OUVERTE, et elle était sous nos yeux depuis le
+  07/09 : DVF porte les champs `lot1_surface_carrez` … `lot5_surface_carrez`.**
+  Le site exploite DVF depuis cinq semaines sans avoir jamais lu ces colonnes.
+  Détail d'usage en « Techniques apprises ».
+- ✅ **Signaux mesurés SAINS en PRODUCTION sur la page touchée — ne pas les
+  réauditer** : `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint lib/blog.ts` propre ; **2 677 mots dans le `<main>`** (contre 177
+  avant) ; **parité FAQ visible ↔ `FAQPage` 8/8 questions ET 8/8 réponses**, mot
+  pour mot ; **0 mot collé** (motif du 04/10 appliqué après exclusion des
+  `<script>`, règle du 12/10) ; **4 blocs JSON-LD** (`RealEstateAgent`,
+  `BlogPosting`, `FAQPage`, `BreadcrumbList`, la `FAQPage` **créée par ce run**) ;
+  `datePublished` 2026-01-15 / **`dateModified` 2026-10-13** ; « Mis à jour le
+  13 octobre 2026 » visible ; **8 H2, tous formulés en questions** ; **3 tableaux**
+  avec leurs sources datées en légende ; `<title>` **62 caractères** rendus
+  (suffixe compris, contrôle du 12/10) et `metaDescription` **158**.
+- ⚠️ **`lastmod` : un seul a bougé, et c'est exactement celui voulu.**
+  `/blog/loi-carrez-surface` passe au **2026-10-13**, **seule URL des 53 de
+  production à cette date** ; les **trois pages qui GAGNENT un lien entrant
+  gardent le leur** — `comment-estimer` au 2026-04-07,
+  `diagnostics-obligatoires-vente` au 2026-10-12, `vendre-sans-agence` au
+  2026-10-07. **Septième run d'affilée sans inflation de fraîcheur** (décision du
+  06/10).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié explicitement sur ces trois chemins : vide. **Diff total du
+  run : 1 fichier** (`lib/blog.ts`), 141 insertions / 14 suppressions.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10).
+
 **Au 2026-10-12**
 
 - ✅ **AUCUN RUN MANQUÉ, et le contrôle des DATES institué le 11/10 a servi.**
@@ -2032,6 +2123,125 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-13 — La fiche que le site désigne pour la surface privative tenait en 177 mots et se contredisait elle-même sur le seuil de 1,80 m : `loi-carrez-surface` passe à 2 677 mots et chiffre le seuil de 5 % en euros par quartier
+
+**Chantier choisi : CONTENU**, comme prescrit le 12/10, **et c'est le candidat
+désigné** (premier de la liste « autres pages de droit du site », par ordre
+d'exposition). La méthode du 12/10 a été appliquée telle quelle — fiche carrefour
+→ extraction des liens → sondage des `<title>` en lot → lecture de chaque
+affirmation contre sa fiche datée — **puis complétée par le contrôle des
+promesses de renvoi**, appliqué cette fois à ma propre page.
+
+**Pourquoi cette page et pas une autre.** Mesurée en production avant toute
+édition : **177 mots servis**. Trois articles du site écrivaient « la surface
+privative (loi Carrez) » **sans lier la fiche dédiée** — elle ne recevait donc
+aucun lien éditorial. Et c'était le dernier gros bloc de droit du site jamais
+revérifié depuis sa rédaction (15/01/2026).
+
+**Les sept défauts de fond trouvés en production.**
+
+1. 🔴 **La page se contredisait avec elle-même, et l'une des deux formulations
+   était fausse.** L'introduction écrivait que la loi ne compte que les surfaces
+   dont la hauteur « **dépasse** 1,80 m » (donc > 1,80) ; le corps de la page
+   écrivait « hauteur sous plafond **≥ 1,80 m** ». L'article 4-1 du décret du
+   17/03/1967 exclut les planchers des parties d'une hauteur **inférieure** à
+   1,80 m : **une hauteur d'exactement 1,80 m compte**, donc l'introduction était
+   fausse. 📌 **Quatrième famille de défaut invisible, après les comparaisons
+   (08/10), les périmètres juridiques (11/10) et les promesses de renvoi (12/10) :
+   la CONTRADICTION INTERNE. Deux phrases de la même page disent deux choses
+   différentes, et aucun test ne peut le voir.**
+2. 🔴 **Le seuil des 8 m² manquait entièrement** — une règle d'exclusion complète
+   absente (lots ou fractions de lots de moins de 8 m²).
+3. 🔴 **LE DÉLAI D'ACTION MANQUAIT**, alors que c'est le fait le plus décisif du
+   sujet pour un vendeur : **un an** à compter de l'acte authentique pour la
+   diminution du prix, et **un mois seulement** pour la nullité si aucune
+   superficie n'est mentionnée. C'est la leçon du 12/10 sur les omissions qui
+   trompent (« le DPE est valable 10 ans ») reproduite à l'identique.
+4. 🔴 **L'effet de seuil n'était pas dit.** La page écrivait « réduction du prix
+   proportionnelle » sans préciser que les 5 % sont une **condition d'ouverture**
+   et non une franchise : au-delà du seuil, la réduction porte sur la **totalité**
+   des m² manquants, dès le premier. Deux sources notariales indépendantes le
+   confirment, l'une par un exemple chiffré (100 m² → 94 m², soit 6 % d'erreur →
+   6 % du prix).
+5. 🟡 **« Caves, garages, parkings, terrasses, balcons » étaient donnés en une
+   seule liste** alors que ces surfaces sortent du mesurage pour **trois raisons
+   juridiquement distinctes** : non clos et couverts / lots exclus par la loi /
+   parties communes même à jouissance privative.
+6. 🔴 **La confusion la plus fréquente du sujet était absente** : surface Carrez
+   (vente d'un lot) ≠ surface habitable loi Boutin (bail) ≠ surface bâtie
+   cadastrale.
+7. 🟡 **Rien ne disait que les maisons individuelles hors copropriété ne sont pas
+   concernées**, ni que le vendeur répond de l'erreur **même s'il a mesuré
+   lui-même** — alors que c'est l'arbitrage pratique du sujet.
+
+**Ce que la page publie maintenant et que personne d'autre ne publie.**
+L'exploitation du champ `lot1_surface_carrez` de DVF (voir « Techniques
+apprises »), sur **1 876 ventes d'appartements villeurbannais de 2025** — une
+population qui **reproduit à l'identique les médianes déjà publiées** par le site
+(3 566,8 €/m² → 3 567 ✓, surface bâtie médiane 62 m² ✓, prix médian 195 000 € ✓,
+contrôle fait exprès avant de rien écrire) :
+
+- **1 727 de ces ventes (92,1 %) portent une surface Carrez renseignée**, de
+  médiane **61,5 m²** (Q1 43,0 / Q3 74,3) ;
+- **aucun des 1 738 lots mesurés n'est sous 8 m²** — la règle d'exclusion **se
+  voit dans les données**, ce qui est une façon de la sourcer que les pages
+  concurrentes n'ont pas ;
+- sur les **1 716 ventes à un seul lot Carrez**, la surface Carrez **ne coïncide
+  avec la surface bâtie cadastrale à moins de 0,5 m² près que dans 38,2 % des
+  cas** (écart médian − 0,31 % ; Carrez inférieure de plus de 5 % dans 7,0 % des
+  cas, supérieure de plus de 5 % dans 5,8 %). ⚠️ **Écrit noir sur blanc en
+  légende : ce sont DEUX DÉFINITIONS, pas des erreurs de mesurage.** C'est la
+  réserve qui rend le chiffre publiable ;
+- **ce que vaut la tolérance de 5 %** : 3,1 m² sur le bien médian de 62 m², soit
+  **11 058 €** au prix médian communal, et de **8 488 €** (Cyprian – Les Brosses)
+  à **12 161 €** (Ferrandière – Maisons-Neuves) selon le quartier ;
+- **un tableau d'effet de seuil** : 0 € à 5,0 % d'erreur, **11 272 € à 5,1 %**.
+  C'est l'illustration la plus parlante du sujet, et elle est locale.
+
+**Volet GEO.** 8 H2 **tous formulés en questions réelles**, chacun ouvert par une
+réponse autonome de 2-3 phrases (règle de l'extraction par passage) ; **FAQPage de
+8 questions créée** — la page n'en avait aucune — en parité **8/8 questions et 8/8
+réponses** avec le visible ; **3 tableaux** avec sources et dates de vérification
+en légende ; **un H2 dédié aux sources** (« Où sont écrites ces règles ? ») qui
+nomme les deux textes et les trois sources consultées avec leurs dates ;
+**3 liens entrants éditoriaux créés** depuis `comment-estimer…`,
+`diagnostics-obligatoires-vente` et `vendre-sans-agence`.
+
+**Sources, toutes vérifiées de première main le 13/10/2026.** Fiches
+`service-public.gouv.fr` **F10798** (vérifiée le 07/03/2025) et **F37190** pour
+l'obligation de mention et la remise du certificat par le notaire ; **Chambre des
+notaires de Paris**, « Vente d'un bien en copropriété et erreur de superficie »
+(publiée le 29/06/2021) pour le mesurage, le seuil du vingtième et les délais ;
+**ANIL** pour l'exclusion des parties communes à jouissance privative (Cass.
+3ᵉ civ., 08/10/2008, n° 07-16.540). ⚠️ **`legifrance.gouv.fr` rend toujours 403**,
+en `curl` **comme** en WebFetch (re-testé aujourd'hui sur l'article 46) : la liste
+des domaines fermés est confirmée, et **le texte de loi se source par ricochet**
+— les fiches service-public le citent en référence sous l'intitulé « Information
+sur la superficie du lot ».
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+
+- ⛔ **Ne pas présenter les écarts bâti ↔ Carrez comme des « erreurs de
+  mesurage ».** La tentation était forte : « 7 % des ventes villeurbannaises
+  dépassent le seuil Carrez » aurait été un titre spectaculaire. **C'est faux** :
+  `surface_reelle_bati` est la surface bâtie cadastrale, pas la surface annoncée
+  dans l'acte, et les deux ne répondent pas à la même définition. Le chiffre est
+  publié avec sa vraie signification, et la réserve est dans la légende du
+  tableau, pas en note de bas de page.
+- ⛔ **Ne pas toucher à la médiane publiée (1 875 ventes) bien que mon extraction
+  en compte 1 876.** Les quatre statistiques dérivées sont identiques au
+  centième : c'est le fichier DVF « latest » qui a bougé d'une vente depuis le
+  07/09, pas la méthode. **Les tableaux Carrez portent donc leur propre `n` et
+  leur date d'extraction** ; rien n'est réécrit ailleurs. Inscrit en
+  « Hypothèses ».
+- ⛔ **Ne pas publier de prix de mesurage.** La page dit « quelques dizaines
+  d'euros » sans tarif : aucun barème de diagnostiqueur n'est sourçable depuis ce
+  conteneur, et le client a refusé les chiffres non sourcés.
+- ⛔ **Ne pas ouvrir les autres pages de droit dans le même run.** `frais-de-
+  notaire-lyon-2026` (2 614 mots, déjà solide) et `charges-copropriete`
+  (164 mots servis, faible) restent au backlog : un chantier mené à fond vaut
+  mieux que trois survolés, et la règle d'alternance impose du non-contenu demain.
 
 ### 2026-10-12 — La page que l'architecture du site désigne pour les durées de validité n'en publiait que 2 sur 8 : `diagnostics-obligatoires-vente` passe de 217 à 2 765 mots, vérifiée fiche par fiche
 
@@ -5728,25 +5938,55 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : NON-CONTENU — audit d'affirmations réglementaires**
-(12/10, `diagnostics-obligatoires-vente` : 6 défauts de droit corrigés,
-217 → 2 765 mots, tableau de durées adossé à 9 fiches service-public datées).
-**Angles précédents : contenu** (11/10, `dpe-2026-ce-qui-change`),
+**Angle du dernier run : CONTENU** (13/10, `loi-carrez-surface` : 7 défauts de
+droit corrigés dont une contradiction interne, 177 → 2 677 mots, seuil de 5 %
+chiffré en euros par quartier à partir du champ Carrez de DVF, jamais exploité
+jusqu'ici).
+**Angles précédents : non-contenu — audit d'affirmations réglementaires** (12/10,
+`diagnostics-obligatoires-vente`), **contenu** (11/10, `dpe-2026-ce-qui-change`),
 **non-contenu — justesse des calculs** (08/10),
 **contenu blog** (07/10, `vendre-sans-agence`),
 **maillage interne + micro-chantier source** (06/10),
 **contenu blog** (05/10), **audit non-contenu + maillage** (04/10).
-→ **Le prochain run doit être CONTENU.**
+→ **Le prochain run doit être NON-CONTENU.**
 
-🆕 🔴 **CANDIDAT CONTENU N°1, et il est outillé — les AUTRES pages de droit du
-site, avec le contrôle qui a fonctionné le 12/10.** L'audit du jour a trouvé
-**six** défauts sur une seule page jamais revérifiée ; rien ne distingue cette
-page des autres. Dans l'ordre d'exposition : **`loi-carrez-surface`** (une
-obligation de mesurage entière, et la loi Carrez est la mention que F10798 traite
-à part), **`frais-de-notaire-lyon-2026`** (ses taux ont leur propre péremption,
-déjà notée dans l'en-tête de `lib/blog.ts`), **`charges-copropriete`** (c'est
-elle qui porte le renvoi dont la promesse était fausse — à relire côté promesses,
-pas seulement côté droit), **`/faire-gerer`**. **La méthode est écrite** en
+🆕 🔴 **CANDIDAT NON-CONTENU N°1 POUR LE 14/10, et il est outillé par le run du
+jour : passer le CONTRÔLE DE CONTRADICTION INTERNE sur les pages de droit.** Le
+défaut n°1 du 13/10 est d'un type neuf — deux phrases de la **même** page
+disaient deux choses différentes sur le seuil de 1,80 m, et aucun test ne peut le
+voir. Le contrôle est cheap et n'a jamais été passé ailleurs : **pour chaque
+seuil numérique publié, grepper TOUTES ses occurrences sur la page et vérifier
+qu'elles disent la même chose.**
+
+```bash
+# les formules de seuil qui peuvent se contredire d'un paragraphe à l'autre
+grep -rn 'dépasse\|supérieur à\|au moins\|à partir de\|inférieur à\|moins de\|≥\|≤' \
+  lib/blog.ts | grep -E '[0-9]'
+```
+Puis, seuil par seuil : **« > » et « ≥ » ne sont pas la même règle**, et c'est
+toujours la source officielle qui tranche. Pages les plus exposées (elles
+publient beaucoup de seuils) : `frais-de-notaire-lyon-2026`,
+`plus-value-immobiliere-calcul`, `dpe-2026-ce-qui-change`, `charges-copropriete`.
+
+🆕 ⚠️ **ET un second contrôle non-contenu, né du même run : la REPRODUCTIBILITÉ
+DES ARRONDIS.** Trois montants publiés ne se recalculaient pas sur les chiffres
+affichés (détail en « Erreurs commises » du 13/10). Le contrôle : **pour chaque
+tableau dérivé, refaire le calcul avec les valeurs AFFICHÉES et comparer.**
+À passer sur `plus-value-immobiliere-calcul`, `frais-de-notaire-lyon-2026`,
+`rentabilite-locative-lyon` et `investir-locatif-lyon`, qui dérivent tous des
+médianes.
+
+✅ **CANDIDAT CONTENU N°1 CONSOMMÉ LE 13/10 — `loi-carrez-surface` est fait**
+(7 défauts, 177 → 2 677 mots). **La liste des pages de droit jamais revérifiées
+continue, et elle a tenu sa promesse deux fois de suite** : 6 défauts le 12/10,
+7 le 13/10, sur les deux premières pages ouvertes. **Reste, dans l'ordre
+d'exposition : `charges-copropriete`** (🔴 **le plus urgent — elle ne sert que
+164 mots en production, mesuré le 13/10**, et c'est elle qui portait le renvoi
+dont la promesse était fausse le 12/10 : à relire côté promesses autant que côté
+droit), **`frais-de-notaire-lyon-2026`** (2 614 mots, déjà solide, mais ses taux
+ont leur propre péremption notée dans l'en-tête de `lib/blog.ts` — à vérifier
+côté justesse, pas côté volume), **`/faire-gerer`**, **`plus-value-immobiliere-
+calcul`**, **`/vendre`**. **La méthode est écrite** en
 « Techniques apprises » du 12/10 : fiche carrefour → extraction des liens →
 sondage des `<title>` en lot, puis lecture de chaque affirmation contre sa fiche
 datée. Les identifiants déjà vérifiés y sont tabulés : **ne pas les redécouvrir.**
@@ -6115,6 +6355,38 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-13
+
+🆕 🟡 **La SERP « vendre appartement Villeurbanne » s'ouvre-t-elle à l'éditorial ?
+C'est la lecture du 04/10 qui est en jeu.** Le 04/10 : « 9 résultats, tous des
+pages de listings, **zéro contenu éditorial** » — constat qui avait servi à fermer
+l'angle (« la réécriture de `/vendre` ne déplacera pas cette SERP »). Le 13/10 :
+**3 des 9 résultats sont éditoriaux** (deux articles de blog Laforêt sur « vendre
+rapidement votre appartement », une page « actualités » Orpi). ⚠️ **Un seul delta
+ne conclut rien (règle du 08/10).** À remesurer **avant le 04/11** (cadence : 2
+mesures par mois au plus). **Si le constat se reproduit, l'angle « contenu
+vendeur » se rouvre et `/vendre` redevient un candidat** — mais pas avant une
+seconde mesure concordante.
+
+🆕 🟡 **Mon extraction DVF compte 1 876 ventes d'appartements 2025 là où le site
+publie 1 875.** Les quatre statistiques dérivées sont **identiques** (médiane
+3 566,8 €/m² → 3 567, surface bâtie médiane 62 m², prix médian 195 000 €), donc
+**la méthode n'est pas en cause** : l'hypothèse de travail est que le fichier DVF
+« latest » a gagné une vente depuis l'extraction du 07/09. ⚠️ **Rien n'a été
+réécrit** : les tableaux Carrez portent leur propre `n` et leur date
+d'extraction. **À trancher quand DVF 2026 sortira** — si le `n` du 07/09 n'est
+pas reproductible, c'est le fichier qui bouge, et il faudra le dire dans la note
+de méthode de `prix-immobilier-villeurbanne-2026`.
+
+🆕 🟡 **Faut-il publier le taux de renseignement de 92,1 % dans le corps de la
+page ?** Il est dans l'en-tête de `lib/blog.ts` et déductible du texte
+(1 727 / 1 876), mais **pas écrit tel quel dans l'article** — choix fait pour ne
+pas alourdir une légende déjà longue. **À reconsidérer si une page de fond sur le
+dossier de vente est créée** : « 8 ventes sur 100 n'ont pas de surface Carrez
+enregistrée dans DVF » est un fait intéressant, mais il mélange deux causes
+(lot non concerné / donnée manquante) que je **ne sais pas départager** — donc
+non publiable en l'état.
 
 ### 2026-10-12
 
@@ -6728,6 +7000,69 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-13 — Une page se contredisait elle-même sur un seuil de droit depuis neuf mois, et j'ai publié trois montants qu'un lecteur ne pouvait pas recalculer
+
+**Les sept premiers défauts ne sont pas de ce run** : ils étaient publiés depuis
+le 15/01/2026 et ont survécu à tous les contrôles du journal. Le détail est en
+« Chantiers faits » ; ce qui suit est ce qu'ils apprennent.
+
+1. 🔴 **QUATRIÈME FAMILLE DE DÉFAUT INVISIBLE : LA CONTRADICTION INTERNE.** Après
+   les comparaisons fausses (08/10), les périmètres juridiques (11/10) et les
+   promesses de renvoi (12/10), voici le cas où **deux phrases de la même page
+   disent deux choses différentes**. L'intro de `loi-carrez-surface` écrivait
+   « hauteur qui **dépasse** 1,80 m » (> 1,80), son corps « **≥ 1,80 m** ». Le
+   décret exclut les hauteurs **inférieures** à 1,80 m : exactement 1,80 m compte,
+   donc l'intro était fausse — et l'`excerpt` de l'article, qui alimente
+   `/llms.txt`, répétait la version correcte, ce qui rendait la page incohérente
+   **avec son propre résumé servi aux moteurs d'IA**.
+   → 📌 **Le contrôle, et il est cheap : pour chaque seuil numérique publié,
+   grepper TOUTES ses occurrences sur la page et vérifier qu'elles disent la même
+   chose. « > » et « ≥ » ne sont pas la même règle.** Aucun test ne peut le voir :
+   les deux phrases sont bien formées, la page compile, le chiffre « 1,80 » est
+   bien présent — un contrôle de *présence* le valide. Grep en backlog.
+
+2. 🔴 **La leçon du 12/10 sur les OMISSIONS QUI TROMPENT s'est reproduite, sur une
+   autre page et une autre matière.** Le 12/10 : « le DPE est valable 10 ans »,
+   vrai mais laissant conclure faux. Aujourd'hui : « l'acheteur peut demander une
+   réduction du prix proportionnelle », **vrai** — et pourtant la page laissait
+   croire deux choses fausses, parce qu'elle taisait le reste : (a) qu'il y a un
+   **délai d'un an**, au-delà duquel le droit est perdu ; (b) que les 5 % sont une
+   **condition d'ouverture** et non une franchise déductible.
+   → **Règle consolidée : pour tout DROIT publié (pas seulement toute durée),
+   vérifier que les trois éléments y sont — la condition, le délai, et l'assiette.
+   Il manquait les deux derniers.**
+
+3. 🟡 **ERREUR DE CE RUN, attrapée avant le push, et elle est mécanique : trois
+   montants publiés ne se recalculaient pas sur les chiffres affichés.** Deux
+   causes distinctes, toutes deux invisibles à la relecture :
+   - **`round()` de Python arrondit au PAIR**, pas au supérieur. `3,1 × 3 375 =
+     10 462,5` a donné **10 462 €** là où un lecteur qui refait le calcul trouve
+     **10 463 €**. Une seule ligne du tableau sur huit était touchée — c'est
+     exactement ce qui échappe à une relecture.
+   - **la colonne des m² était arrondie au dixième, les euros calculés sur la
+     valeur exacte.** « 3,2 m² » × 3 567 donne 11 414 €, j'avais publié 11 279 €
+     (calculé sur 5,1 % × 62). Idem pour « 3,7 m² » et 13 269 €. **Les deux
+     colonnes étaient justes séparément et fausses ensemble.**
+   → **Règle : pour tout tableau dérivé, refaire le calcul avec les valeurs
+   AFFICHÉES et comparer — jamais avec les valeurs intermédiaires.** Corrigé en
+   passant la colonne au centième et en recalculant depuis l'affiché, avec
+   `Decimal` + `ROUND_HALF_UP` (jamais `round()`). La convention est maintenant
+   **écrite en légende du tableau ET dans l'en-tête de `lib/blog.ts`**, comme pour
+   `plus-value-immobiliere-calcul` depuis le 05/10. Contrôle inscrit en backlog
+   pour les quatre autres pages qui dérivent des médianes.
+
+4. 🟢 **Une tentation refusée, et c'est le vrai enjeu du run.** Le champ Carrez de
+   DVF permettait d'écrire « **7 % des ventes villeurbannaises dépassent le seuil
+   Carrez des 5 %** ». C'est spectaculaire, c'est local, c'est chiffré — et **c'est
+   faux** : `surface_reelle_bati` est la surface bâtie **cadastrale**, pas la
+   surface annoncée dans l'acte, et un écart entre deux définitions n'est pas une
+   erreur de mesurage. Le chiffre est publié **avec sa vraie signification** (« les
+   deux surfaces diffèrent dans près de deux ventes sur trois »), et la réserve
+   est **dans la légende du tableau**, pas en note de bas de page.
+   → **Règle : quand une donnée neuve autorise une phrase spectaculaire, la
+   question n'est pas « est-ce que le calcul est juste » mais « est-ce que les
+   deux colonnes mesurent la même chose ».** Ici elles ne la mesuraient pas.
 
 ### 2026-10-12 — Six affirmations de droit fausses ou incomplètes vivaient en production depuis cinq mois sur une seule page ; et j'ai moi-même gonflé `<title>` et `metaDescription` en la réécrivant
 
@@ -7451,6 +7786,94 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-13 — DVF publie la surface Carrez des ventes, et le site l'ignorait depuis cinq semaines
+
+**1. 🟢 Le fait d'outillage du jour : le fichier commune de DVF porte
+`lot1_surface_carrez` … `lot5_surface_carrez`.** Le site exploite DVF depuis le
+07/09 — médianes communales, par quartier, par typologie, dispersion, seuil de
+plus-value — **sans avoir jamais lu l'en-tête complet du fichier.** Il y a
+**5 colonnes de surface Carrez** à côté de `surface_reelle_bati`, et elles
+ouvrent un angle que **personne d'autre ne publie** : la surface qui engage
+juridiquement le prix, telle qu'elle a réellement été déclarée dans les actes.
+
+```bash
+C="--cacert /root/.ccr/ca-bundle.crt"
+# ⚠️ -L OBLIGATOIRE : sans lui, HTTP 302 et un fichier de 138 octets
+curl -sL $C --retry 3 \
+  "https://files.data.gouv.fr/geo-dvf/latest/csv/2025/communes/69/69266.csv" -o 69266.csv
+head -1 69266.csv | tr ',' '\n' | nl | grep -i 'carrez\|surface'
+#   20  lot1_surface_carrez   ...   28  lot5_surface_carrez   32  surface_reelle_bati
+```
+
+⚠️ **Deux pièges, tous deux rencontrés.**
+- **`curl` sans `-L` rend un fichier de 138 octets** (une page nginx « 302
+  Found ») **avec un code HTTP 302, pas une erreur.** Un script qui ne teste que
+  `-o` et pas le contenu croit avoir téléchargé le fichier. Le journal notait
+  l'URL depuis le 07/09 **sans mentionner la redirection**.
+- **La surface Carrez n'est PAS `surface_reelle_bati`, et les comparer comme deux
+  mesures du même objet est une faute de méthode** (voir « Erreurs commises »).
+  L'une est cadastrale, l'autre est la surface privative au sens de la loi de
+  1965. **Un écart entre elles n'est pas une erreur de mesurage.**
+
+**2. 📌 La recette de calcul, à réutiliser telle quelle.** Elle part de la
+population **exactement définie par la méthode du journal** (entrée du 07/09),
+ce qui est ce qui rend les résultats comparables au reste du site :
+
+```python
+# Vente | une seule ligne bâtie par mutation | Appartement | surface >= 10 m²
+# | 800 <= €/m² <= 12 000   -> 1 876 ventes, et les médianes publiées retombent
+#   à l'identique (3 566,8 €/m², 62 m², 195 000 €) : c'est le CONTRÔLE à faire
+#   AVANT d'écrire quoi que ce soit de neuf sur cette population.
+def carrez(r):  # somme des lots renseignés
+    return [float(r[f"lot{i}_surface_carrez"]) for i in range(1,6)
+            if r.get(f"lot{i}_surface_carrez") and float(r[f"lot{i}_surface_carrez"])>0]
+```
+
+→ **Règle générale, et c'est la plus réutilisable du run : avant de publier une
+statistique neuve tirée d'une source déjà utilisée, reproduire d'abord une
+statistique DÉJÀ PUBLIÉE depuis la même extraction.** Si les médianes connues
+retombent au centième, la population est la bonne et le chiffre neuf est
+comparable au reste du site. Sinon, c'est la population qui a changé — et c'est
+exactement ce qui a permis de voir le `n` passé de 1 875 à 1 876 sans rien casser.
+
+**3. 🟢 Résultats obtenus pour Villeurbanne (2025), tous publiés.** 1 727 ventes
+sur 1 876 (**92,1 %**) portent une surface Carrez ; médiane **61,5 m²** (Q1 43,0 /
+Q3 74,3) ; **aucun des 1 738 lots mesurés sous 8 m²** — la règle d'exclusion
+légale **se voit dans les données**, ce qui est une façon de la sourcer que les
+concurrents n'ont pas ; et sur les 1 716 ventes à un seul lot, **38,2 %** de
+coïncidence à 0,5 m² près avec le bâti cadastral (écart médian **− 0,31 %**).
+
+**4. ⚠️ `legifrance.gouv.fr` est fermé en `curl` ET en WebFetch — re-testé
+aujourd'hui, HTTP 403 sur les deux.** La nuance est utile : le domaine n'est pas
+seulement bloqué pour `curl` par user-agent, il l'est aussi pour l'outil de fetch
+du harness. **Donc un texte de loi ne se lit pas de première main depuis ce
+conteneur.** Le contournement qui a marché, et qui est généralisable :
+- **les fiches `service-public.gouv.fr` citent les textes en référence** sous un
+  intitulé explicite (« Loi n° 65-557 du 10 juillet 1965 : article 46 —
+  Information sur la superficie du lot ») : **l'existence et la portée du texte se
+  sourcent ainsi, même sans son libellé** ;
+- **les chambres de notaires et l'ANIL publient le contenu du texte** avec leurs
+  propres dates. Deux sources institutionnelles indépendantes qui concordent, dont
+  **une avec un exemple chiffré** (100 m² → 94 m², 6 % → 6 % du prix), valent
+  mieux qu'une lecture approximative du texte brut : c'est l'exemple chiffré qui a
+  **tranché l'assiette de la réduction**, point sur lequel aucune des deux ne se
+  prononçait explicitement.
+→ **Règle : pour un point de droit, chercher la source qui donne un EXEMPLE
+CHIFFRÉ. Elle lève les ambiguïtés que le texte laisse, et elle est vérifiable.**
+
+**5. ⚠️ Et un piège de `service-public` qui a failli faire publier une définition
+fausse.** En cherchant « 1,80 m » dans la fiche **F10798**, on trouve bien une
+occurrence — mais **c'est la définition de la SURFACE DE PLANCHER, pas de la
+surface Carrez** (« … calculé à partir du nu intérieur des façades. Les surfaces
+des vides et trémies, des garages et des combles non aménageables sont déduites
+… et 10 % des surfaces destinées à l'habitation »). **Le seuil de 1,80 m est le
+même, la définition ne l'est pas du tout.** Reprise telle quelle, elle aurait
+remplacé une erreur par une autre.
+→ **Règle : un chiffre trouvé par `grep` dans une fiche officielle n'est sourcé
+que si on a lu CE QU'IL DÉFINIT.** Même seuil ≠ même règle. C'est le cousin du
+piège du 30/09 (un identifiant de fiche qui rend 200 sur un tout autre sujet) :
+**vérifier le contexte, pas la présence.**
 
 ### 2026-10-12 — VEILLE (lundi, elle avait une semaine de retard) : le découplage entre le classement Google et la citation par les IA est mesuré, et il valide la méthode suivie ici
 
