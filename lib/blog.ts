@@ -63,6 +63,20 @@
  * sur blanc dans l'article et dans la FAQ de « ou-acheter-villeurbanne-
  * quartiers », comme elle l'est déjà sur /agence-immobiliere-charpennes.
  *
+ * Depuis le 13/10/2026, « loi-carrez-surface » DÉRIVE lui aussi de lib/quartiers.ts :
+ * il republie les 7 médianes de quartier et la médiane communale (3 567 €/m²) pour
+ * chiffrer, sur la surface médiane de 62 m², ce que valent les 3,1 m² couverts par la
+ * tolérance légale de 5 % (de 8 488 € à Cyprian – Les Brosses à 12 161 € à Ferrandière
+ * – Maisons-Neuves), ainsi qu'un tableau d'effet de seuil (4 %, 5 %, 5,1 %, 6 %, 10 %).
+ * Si les médianes bougent, ses DEUX tableaux et sa FAQ doivent être RECALCULÉS.
+ * ⚠️ Convention d'arrondi à conserver : les euros se calculent en multipliant les m²
+ * AFFICHÉS (arrondis au centième) par la médiane AFFICHÉE, arrondi au supérieur à la
+ * demi-unité — de sorte qu'un lecteur qui refait le calcul retrouve exactement le
+ * montant publié. C'est ce contrôle qui a rattrapé 3 montants faux le 13/10/2026.
+ * ⚠️ Ses statistiques Carrez (92,1 % de ventes renseignées, médiane 61,5 m², 38,2 % de
+ * coïncidence avec le bâti cadastral) viennent d'une extraction DVF du 13/10/2026 du
+ * fichier commune 69266 — elles ont leur propre péremption, indépendante des médianes.
+ *
  * Depuis le 05/10/2026, « plus-value-immobiliere-calcul » DÉRIVE de lib/quartiers.ts
  * le seuil d'imposition de la plus-value par quartier : il reconstitue la médiane
  * 2022 de chaque quartier à partir de la médiane 2025 et de `vs2022`
@@ -207,7 +221,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Les 8 critères qui déterminent la valeur" },
       { type: "ol", items: [
         "**La localisation** : quartier, rue, proximité métro/tram, commerces, écoles.",
-        "**La surface (loi Carrez)** : la base, mais pas tout.",
+        "**[La surface (loi Carrez)](/blog/loi-carrez-surface)** : la base, mais pas tout.",
         "**L'étage et l'exposition** : lumière et ascenseur pèsent lourd.",
         "**L'état général** : rénové, à rafraîchir ou à refaire.",
         "**Le DPE** : une mauvaise note (F, G) fait baisser la valeur.",
@@ -665,7 +679,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Pour vendre un logement, le vendeur doit remettre à l'acquéreur un dossier de diagnostic technique (DDT), et la liste des pièces qu'il contient n'est pas la même pour un appartement et pour une maison.** Aucune de ces pièces n'est exigée dans tous les cas : chacune a une condition de déclenchement (l'âge du bâtiment, l'âge de l'installation, la zone) et une durée de validité propre, qui va de 6 mois à illimitée. Cette page donne les deux, condition et durée, vérifiées une par une sur les fiches officielles en vigueur." },
       { type: "p", text: "Le DDT doit être joint à la promesse de vente ou à l'acte de vente. Un dossier incomplet ne bloque pas juridiquement la signature, mais il prive le vendeur de la clause qui l'exonère des vices cachés — c'est le vrai risque, et il est détaillé plus bas." },
       { type: "h2", text: "Quels diagnostics faut-il pour vendre un appartement ?" },
-      { type: "p", text: "**Pour un appartement, la liste officielle comporte dix pièces possibles, dont une seule est due dans tous les cas : le DPE.** Les neuf autres ne sont exigées que si leur condition est remplie. S'y ajoutent deux mentions qui ne sont pas des diagnostics mais doivent figurer dans la promesse ou l'acte : la surface privative (loi Carrez) et, dans les zones concernées, le risque de mérule." },
+      { type: "p", text: "**Pour un appartement, la liste officielle comporte dix pièces possibles, dont une seule est due dans tous les cas : le DPE.** Les neuf autres ne sont exigées que si leur condition est remplie. S'y ajoutent deux mentions qui ne sont pas des diagnostics mais doivent figurer dans la promesse ou l'acte : [la surface privative (loi Carrez)](/blog/loi-carrez-surface) et, dans les zones concernées, le risque de mérule." },
       { type: "ul", items: [
         "**[DPE](/blog/dpe-2026-ce-qui-change)** — dû sans condition de surface pour un appartement.",
         "**Constat de risque d'exposition au plomb (CREP)** — si le logement a été construit avant le 1er janvier 1949.",
@@ -1381,7 +1395,7 @@ export const ARTICLES: Article[] = [
         "le **certificat de conformité d'un appareil de chauffage au bois**, si le bien est dans le périmètre d'un plan de protection de l'atmosphère ;",
         "un éventuel **arrêté de mise en sécurité ou de traitement de l'insalubrité** portant sur la partie privative ;",
         "le **carnet d'information du logement** ;",
-        "la **surface privative du lot (loi Carrez)** ;",
+        "la **[surface privative du lot (loi Carrez)](/blog/loi-carrez-surface)** ;",
         "l'**état de l'installation d'assainissement non collectif**, si la copropriété n'est pas raccordée au réseau public.",
       ] },
       { type: "p", text: "Deux précisions utiles, et rarement écrites. L'**état des risques** ne se paie pas : il se remplit en ligne depuis le service public Géorisques — mais il doit être remis à l'acquéreur dès la **première visite** si le logement est en zone d'exposition, faute de quoi celui-ci pourra demander la résolution de la vente ou une diminution du prix. Et l'**état daté**, qui récapitule ce que vous devez à la copropriété et ce qu'elle vous doit, est établi par le syndic à votre demande : son prix dépend du contrat de syndic, pas de vous." },
@@ -1779,23 +1793,136 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "loi-carrez-surface",
-    title: "Loi Carrez : comment se mesure la surface d'un bien",
+    title: "Loi Carrez : la surface et le seuil de 5 %",
     metaDescription:
-      "La loi Carrez explique le calcul de la surface en copropriété : ce qui compte, ce qui est exclu et les sanctions en cas d'erreur.",
-    h1: "Loi Carrez : comment se mesure la surface",
+      "Ce que la surface Carrez compte et exclut, et le seuil de 5 % au-delà duquel l'acheteur obtient une réduction de prix. Chiffré sur les ventes de Villeurbanne.",
+    h1: "Loi Carrez : la surface qui engage le prix de vente",
     excerpt:
-      "La surface privative exacte en copropriété : ce qui compte (≥ 1,80 m), ce qui est exclu, et la sanction en cas d'erreur.",
+      "La surface privative d'un lot de copropriété : ce qui se compte, ce qui est exclu, et le seuil de 5 % au-delà duquel l'acheteur peut faire baisser le prix — chiffré sur les ventes de Villeurbanne.",
     date: "2026-01-15",
+    updated: "2026-10-13",
     internalHref: "/estimation",
     internalLabel: "Estimer la valeur de mon bien",
     blocks: [
-      { type: "p", text: "**La loi Carrez impose d'indiquer la surface privative exacte d'un bien en copropriété lors de la vente.** Elle ne compte que les surfaces dont la hauteur sous plafond dépasse 1,80 m." },
-      { type: "h2", text: "Ce qui est compté" },
-      { type: "p", text: "Les pièces avec une **hauteur sous plafond ≥ 1,80 m**, une fois déduits murs, cloisons, gaines et cages d'escalier." },
-      { type: "h2", text: "Ce qui est exclu" },
-      { type: "p", text: "Caves, garages, parkings, terrasses, balcons, et les surfaces sous 1,80 m." },
-      { type: "h2", text: "En cas d'erreur" },
-      { type: "p", text: "Si la surface réelle est **inférieure de plus de 5 %** à celle annoncée, l'acheteur peut demander une réduction du prix proportionnelle. D'où l'importance d'un mesurage fiable." },
+      { type: "p", text: "**Vendre un lot de copropriété oblige à écrire sa surface privative — dite « surface Carrez » — dans la promesse de vente et dans l'acte. Si la surface réelle se révèle inférieure de plus de 5 % à celle annoncée, l'acquéreur peut obtenir une réduction du prix, à condition d'agir dans l'année qui suit l'acte authentique.** C'est l'article 46 de la loi du 10 juillet 1965 qui l'impose, et le décret du 17 mars 1967 qui dit comment mesurer." },
+      { type: "p", text: "Ce seuil de 5 % est la seule chose que la plupart des vendeurs retiennent, et c'est précisément là que se joue l'argent : en dessous, l'acquéreur n'obtient rien ; au-delà, il récupère la valeur de **tous** les mètres carrés manquants, pas seulement ceux qui dépassent le seuil. Sur un appartement villeurbannais médian, le passage de 5,0 % à 5,1 % d'erreur fait basculer l'enjeu de 0 € à plus de 11 000 €. Cette page explique le mesurage, puis chiffre ce seuil sur les ventes réelles de la commune." },
+
+      { type: "h2", text: "Qu'est-ce que la surface Carrez, exactement ?" },
+      { type: "p", text: "**C'est la surface des planchers des locaux clos et couverts du lot, mesurée après déduction des murs, cloisons, marches et cages d'escalier, gaines, et embrasures de portes et de fenêtres.** Les planchers des parties dont la hauteur est inférieure à 1,80 m ne sont pas comptés. Cette définition est celle de l'article 4-1 du décret du 17 mars 1967 ; elle ne se négocie pas et ne dépend pas de l'agence." },
+      { type: "p", text: "Deux conséquences pratiques en découlent. D'abord, un mètre carré « au sol » n'est pas un mètre carré Carrez : l'épaisseur des murs et des cloisons sort du compte, ce qui explique qu'une surface Carrez soit presque toujours inférieure à la surface qu'un plan de vente affiche. Ensuite, le seuil de 1,80 m se lit par exclusion — ce qui est **sous** 1,80 m ne compte pas, donc une hauteur d'exactement 1,80 m, elle, compte. Sous un comble aménagé, cette nuance déplace souvent plusieurs mètres carrés." },
+
+      { type: "h2", text: "Quelles surfaces ne sont pas comptées ?" },
+      { type: "p", text: "**Trois familles de surfaces sortent du mesurage, et pour trois raisons différentes — c'est ce qui rend la liste difficile à retenir.** Un balcon n'est pas exclu pour la même raison qu'une cave, et une partie commune dont vous avez l'usage exclusif n'est pas exclue pour la même raison qu'un débarras de 6 m²." },
+      { type: "ul", items: [
+        "**Ce qui n'est ni clos ni couvert** : balcons, loggias ouvertes, terrasses, jardins. Ces surfaces existent, elles ont de la valeur à la vente, mais elles ne relèvent pas du mesurage Carrez. Elles se mentionnent à part dans l'annonce et dans l'acte.",
+        "**Les lots exclus par la loi** : caves, garages et emplacements de stationnement, ainsi que **tout lot ou fraction de lot d'une superficie inférieure à 8 m²**. Un débarras de 6 m² vendu comme lot distinct n'entre donc dans aucune surface Carrez.",
+        "**Les parties communes, même à jouissance privative ou exclusive.** Un jardin ou une courette qui reste juridiquement une partie commune ne se mesure pas, quand bien même vous en avez l'usage réservé — la Cour de cassation l'a jugé explicitement.",
+      ] },
+      { type: "p", text: "Le seuil de 8 m² se vérifie dans les données de vente : sur les **1 738 surfaces Carrez** enregistrées pour les appartements vendus à Villeurbanne en 2025, **aucune n'est inférieure à 8 m²**. Ce n'est pas un hasard statistique, c'est la règle qui se voit : en dessous de ce seuil, il n'y a rien à déclarer." },
+
+      { type: "h2", text: "Ma maison est-elle concernée par la loi Carrez ?" },
+      { type: "p", text: "**Non, si c'est une maison individuelle qui ne fait pas partie d'une copropriété : l'obligation ne vise que les lots de copropriété.** Une maison en copropriété horizontale — un lotissement organisé en copropriété — y est en revanche soumise, comme n'importe quel lot. La distinction tient au statut juridique du bien, pas à sa forme." },
+      { type: "p", text: "À Villeurbanne, la question se pose rarement : la quasi-totalité des ventes de logements de la commune porte sur des appartements en copropriété. C'est aussi pourquoi la mention de surface privative figure systématiquement dans les dossiers de vente locaux, aux côtés des [diagnostics obligatoires](/blog/diagnostics-obligatoires-vente) — dont elle ne fait d'ailleurs pas partie : ce n'est pas un diagnostic, c'est une mention obligatoire de l'acte." },
+
+      { type: "h2", text: "Surface Carrez ou surface habitable : quelle différence ?" },
+      { type: "p", text: "**Ce sont deux surfaces différentes, calculées selon deux textes différents, et elles ne donnent pas le même nombre pour le même appartement.** La surface Carrez sert à la vente d'un lot de copropriété ; la surface habitable, dite « loi Boutin », sert au bail d'habitation. La seconde exclut en plus les combles non aménagés, les caves, sous-sols, remises, garages, terrasses, loggias, vérandas et dépendances." },
+      { type: "p", text: "Un vendeur qui compare sa surface Carrez à celle qui figure sur son DPE, sur sa taxe foncière ou sur son ancien bail trouvera donc presque toujours un écart — et cet écart n'est pas une erreur. Les ventes villeurbannaises de 2025 permettent de le quantifier : sur les **1 716 ventes d'appartements** où une seule surface Carrez est enregistrée, elle **ne coïncide avec la surface bâtie cadastrale à moins de 0,5 m² près que dans 38,2 % des cas**. Autrement dit, dans près de deux ventes sur trois, les deux chiffres diffèrent." },
+      {
+        type: "table",
+        caption: "Écart entre surface bâtie cadastrale et surface Carrez — appartements vendus à Villeurbanne en 2025",
+        source:
+          "Calcul Markus Immobilier sur la base DVF (demandes de valeurs foncières), Etalab / data.gouv.fr, fichier de la commune 69266, extraction du 13 octobre 2026. Périmètre : 1 876 ventes d'appartements exploitables, dont 1 727 portent une surface Carrez renseignée et 1 716 une seule. ⚠️ Ces écarts ne sont PAS des erreurs de mesurage : la surface bâtie cadastrale et la surface privative Carrez ne répondent pas à la même définition.",
+        headers: ["Observation", "Part des ventes"],
+        rows: [
+          ["Les deux surfaces coïncident à moins de 0,5 m² près", "38,2 %"],
+          ["Surface Carrez inférieure à la surface bâtie de plus de 5 %", "7,0 %"],
+          ["Surface Carrez supérieure à la surface bâtie de plus de 5 %", "5,8 %"],
+          ["Écart médian (surface bâtie − surface Carrez)", "− 0,31 %"],
+        ],
+      },
+      { type: "p", text: "La surface Carrez médiane de ces ventes ressort à **61,5 m²** (premier quartile 43,0 m², troisième quartile 74,3 m²), très proche de la surface bâtie médiane de 62 m² que nous publions dans [les prix au m² par quartier](/blog/prix-immobilier-villeurbanne-2026). À l'échelle de la commune les deux définitions donnent donc presque le même ordre de grandeur ; c'est appartement par appartement qu'elles s'écartent." },
+
+      { type: "h2", text: "Que se passe-t-il si la surface annoncée est fausse ?" },
+      { type: "p", text: "**Tout dépend du sens de l'erreur et de son ampleur. Si la surface réelle est inférieure de plus de 5 % à celle annoncée, l'acquéreur peut demander une diminution du prix proportionnelle à la surface manquante, dans un délai d'un an à compter de la signature de l'acte authentique.** Si la surface réelle est supérieure, le vendeur n'a droit à aucun supplément : l'erreur favorable à l'acquéreur reste acquise à l'acquéreur." },
+      { type: "p", text: "Le point que presque aucune page n'explique est l'effet de seuil. Le seuil de 5 % n'est pas une franchise qu'on déduirait de l'indemnisation : c'est une condition d'ouverture. En dessous, l'acquéreur n'obtient rien du tout. Au-dessus, la réduction porte sur la **totalité** des mètres carrés manquants, dès le premier. Le passage du seuil ne coûte donc pas un peu d'argent, il en coûte beaucoup d'un coup." },
+      {
+        type: "table",
+        caption: "L'effet de seuil sur un appartement villeurbannais médian de 62 m²",
+        source:
+          "Calcul Markus Immobilier : surface médiane de 62 m² et prix médian de 3 567 €/m² pour les appartements vendus à Villeurbanne en 2025 (base DVF, Etalab / data.gouv.fr). Règle de droit : article 46 de la loi n° 65-557 du 10 juillet 1965. Les montants sont obtenus en multipliant les mètres carrés manquants de la colonne précédente, arrondis au centième, par la médiane de 3 567 €/m² : le calcul se refait à l'identique sur les chiffres publiés.",
+        headers: ["Erreur sur la surface annoncée", "Mètres carrés manquants", "Réduction de prix obtenable"],
+        rows: [
+          ["4,0 %", "2,48 m²", "0 € — sous le seuil, aucun recours"],
+          ["5,0 %", "3,10 m²", "0 € — sous le seuil, aucun recours"],
+          ["5,1 %", "3,16 m²", "11 272 €"],
+          ["6,0 %", "3,72 m²", "13 269 €"],
+          ["10,0 %", "6,20 m²", "22 115 €"],
+        ],
+      },
+      { type: "p", text: "Un cas est plus sévère encore : si **aucune** surface privative n'est mentionnée dans l'acte, ce n'est plus une réduction de prix qui est en jeu mais la **nullité de l'acte**, que l'acquéreur peut demander dans le mois qui suit sa signature. C'est la raison pour laquelle le notaire remet, le jour de l'acte authentique, une copie de l'acte ou un certificat mentionnant la superficie de la partie privative, en informant l'acquéreur de ses voies de recours." },
+
+      { type: "h2", text: "Combien coûte la tolérance de 5 % à Villeurbanne ?" },
+      { type: "p", text: "**Sur l'appartement villeurbannais médian de 62 m², la tolérance de 5 % représente 3,1 m² — soit 11 058 € au prix médian communal de 3 567 €/m², que l'acquéreur ne pourra jamais réclamer.** C'est la mesure concrète de ce que le seuil laisse de côté, et elle varie fortement d'un quartier à l'autre : de 8 488 € à Cyprian – Les Brosses à 12 161 € à Ferrandière – Maisons-Neuves." },
+      {
+        type: "table",
+        caption: "Ce que valent les 3,1 m² de tolérance, par quartier (base : 62 m², surface médiane communale)",
+        source:
+          "Calcul Markus Immobilier sur les médianes €/m² par quartier publiées dans notre analyse des prix 2026 (base DVF, Etalab / data.gouv.fr, ventes d'appartements enregistrées en 2025 sur la commune 69266, découpées selon les contours de quartiers de la Métropole de Lyon).",
+        headers: ["Quartier", "Médiane €/m²", "Valeur des 3,1 m² tolérés"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "3 923 €", "12 161 €"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 846 €", "11 923 €"],
+          ["Charpennes – Tonkin", "3 524 €", "10 924 €"],
+          ["Perralière – Grandclément", "3 375 €", "10 463 €"],
+          ["Buers – Croix-Luizet", "3 271 €", "10 140 €"],
+          ["Cusset – Bonnevay", "3 171 €", "9 830 €"],
+          ["Cyprian – Les Brosses", "2 738 €", "8 488 €"],
+          ["Commune entière (médiane)", "3 567 €", "11 058 €"],
+        ],
+      },
+      { type: "p", text: "Ce tableau se lit dans les deux sens. Pour un acquéreur, c'est le montant qu'un écart de surface peut lui coûter sans aucun recours. Pour un vendeur, c'est l'ordre de grandeur de ce qu'un mesurage approximatif met en jeu — et la raison pour laquelle il vaut mieux le faire faire que l'estimer soi-même." },
+
+      { type: "h2", text: "Qui réalise le mesurage, et qui paie en cas d'erreur ?" },
+      { type: "p", text: "**La loi n'impose pas de faire appel à un professionnel : le vendeur peut mesurer lui-même. Mais c'est lui qui répond de l'erreur devant l'acquéreur, et la réduction de prix sort alors de sa poche.** Faire réaliser le mesurage par un professionnel ne supprime pas cette responsabilité à l'égard de l'acquéreur ; elle ouvre en revanche un recours contre le mesureur, dont l'assurance de responsabilité professionnelle prend le relais." },
+      { type: "p", text: "C'est l'arbitrage réel du sujet : le mesurage par un diagnostiqueur coûte quelques dizaines d'euros, et il se compare aux montants du tableau ci-dessus. Dans un [accompagnement de vente](/vendre), la coordination du mesurage et des diagnostics fait partie de ce que nous prenons en charge ; et si vous voulez d'abord savoir ce que vaut votre bien, l'[estimation](/estimation) part des ventes réelles de votre quartier." },
+
+      { type: "h2", text: "Où sont écrites ces règles ?" },
+      { type: "p", text: "**L'obligation elle-même est à l'article 46 de la loi n° 65-557 du 10 juillet 1965 fixant le statut de la copropriété des immeubles bâtis ; la méthode de mesurage est à l'article 4-1 du décret n° 67-223 du 17 mars 1967.** Les fiches officielles de service-public.gouv.fr renvoient à ces deux textes sous l'intitulé « Information sur la superficie du lot »." },
+      { type: "p", text: "Les éléments de cette page ont été vérifiés le 13 octobre 2026 sur les sources suivantes : fiches service-public.gouv.fr F10798 « Quels sont les diagnostics immobiliers à fournir en cas de vente d'un logement ? » (vérifiée le 7 mars 2025) et F37190 « Achat d'un logement en copropriété », pour l'obligation de mention et la remise du certificat par le notaire ; Chambre des notaires de Paris, « Vente d'un bien en copropriété et erreur de superficie » (publiée le 29 juin 2021), pour le détail du mesurage, le seuil du vingtième et les délais d'action ; Agence nationale pour l'information sur le logement (ANIL), pour l'exclusion des parties communes à jouissance privative, jugée par la Cour de cassation (3ᵉ chambre civile, 8 octobre 2008, pourvoi n° 07-16.540)." },
+    ],
+    faq: [
+      {
+        q: "La surface Carrez compte-t-elle les balcons et les terrasses ?",
+        a: "Non. Le mesurage Carrez ne porte que sur les locaux clos et couverts : balcons, loggias ouvertes, terrasses et jardins en sont exclus. Ces surfaces gardent de la valeur à la vente et se mentionnent séparément dans l'annonce et dans l'acte, mais elles n'entrent pas dans la surface privative du lot.",
+      },
+      {
+        q: "À partir de quel écart de surface l'acheteur peut-il faire baisser le prix ?",
+        a: "Il faut que la surface réelle soit inférieure de plus de 5 % (plus d'un vingtième) à celle annoncée dans l'acte. En dessous de ce seuil, l'acquéreur n'obtient rien. Au-delà, la réduction porte sur la totalité des mètres carrés manquants, dès le premier, et non seulement sur la part qui dépasse les 5 %.",
+      },
+      {
+        q: "Combien de temps l'acheteur a-t-il pour agir après une erreur de surface ?",
+        a: "Un an à compter de la signature de l'acte authentique de vente pour demander la diminution du prix. Le délai est beaucoup plus court dans un autre cas : si aucune surface privative n'est mentionnée dans l'acte, l'acquéreur peut demander la nullité de la vente, mais seulement dans le mois qui suit la signature.",
+      },
+      {
+        q: "Combien vaut la tolérance de 5 % sur un appartement à Villeurbanne ?",
+        a: "Sur l'appartement villeurbannais médian de 62 m², 5 % représentent 3,1 m², soit 11 058 € au prix médian communal de 3 567 €/m² — un montant que l'acquéreur ne peut pas réclamer. Selon le quartier, cette tolérance vaut de 8 488 € à Cyprian – Les Brosses à 12 161 € à Ferrandière – Maisons-Neuves.",
+      },
+      {
+        q: "Pourquoi la surface de mon DPE n'est-elle pas la même que ma surface Carrez ?",
+        a: "Parce que ce sont deux définitions distinctes : la surface Carrez sert à la vente d'un lot de copropriété, la surface habitable dite « loi Boutin » sert au bail d'habitation et exclut en plus les combles non aménagés, caves, sous-sols, remises, garages, terrasses, loggias et vérandas. Sur les ventes d'appartements villeurbannaises de 2025, la surface Carrez ne coïncide avec la surface bâtie cadastrale à moins de 0,5 m² près que dans 38,2 % des cas.",
+      },
+      {
+        q: "Un garage ou une cave entre-t-il dans la surface Carrez ?",
+        a: "Non. Les caves, garages et emplacements de stationnement sont exclus du mesurage par la loi, de même que tout lot ou fraction de lot d'une superficie inférieure à 8 m². Sur les 1 738 surfaces Carrez enregistrées pour les appartements vendus à Villeurbanne en 2025, aucune n'est inférieure à 8 m².",
+      },
+      {
+        q: "La loi Carrez s'applique-t-elle à une maison individuelle ?",
+        a: "Non, sauf si la maison fait partie d'une copropriété — une copropriété horizontale, par exemple un lotissement organisé en copropriété. L'obligation de mentionner la surface privative ne vise que les lots de copropriété, quelle que soit la forme du bien.",
+      },
+      {
+        q: "Qui paie si le mesurage est faux ?",
+        a: "Le vendeur répond de l'erreur devant l'acquéreur : c'est lui qui supporte la réduction du prix. La loi ne l'oblige pas à faire appel à un professionnel, mais s'il en a mandaté un, il dispose d'un recours contre le mesureur, dont l'assurance de responsabilité professionnelle prend alors le relais.",
+      },
     ],
   },
   {
