@@ -1643,7 +1643,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Le rendement brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : de 4,47 % à Ferrandière – Maisons-Neuves à 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune entière. Frais de notaire compris, il faut retirer au moins 0,31 à 0,45 point.",
     date: "2026-02-05",
-    updated: "2026-09-30",
+    updated: "2026-10-14",
     internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
@@ -1675,7 +1675,7 @@ export const ARTICLES: Article[] = [
           "Prix : médianes DVF 2025 (data.gouv.fr / Etalab), calcul Markus Immobilier. Loyer : 14,60 €/m² hors charges, médiane communale de la carte des loyers publiée sur data.gouv.fr. Frais de notaire : 7,5 %.",
       },
       { type: "p", text: "**Ce que ce tableau ne dit pas.** Il applique le même loyer à tous les quartiers, parce qu'il n'existe pas de loyer de référence publié à la maille du quartier. Les écarts que vous lisez ci-dessus sont donc exactement des écarts de prix, à loyer constant : un secteur où les loyers réels dépassent la médiane communale rendra un peu plus, un secteur en dessous un peu moins. Nous préférons l'écrire plutôt que de fabriquer un loyer par quartier que personne ne mesure." },
-      { type: "p", text: "C'est aussi pourquoi nous ne publions pas le même tableau par nombre de pièces : un T1 se loue nettement plus cher au mètre carré qu'un T4, et un loyer unique donnerait un classement faux. Ce que nos données disent sans ambiguïté, en revanche, c'est le prix — le T1 médian s'échange à 4 000 €/m² à Villeurbanne en 2025, le T4 à 3 211 €/m², soit 24,6 % de moins." },
+      { type: "p", text: "C'est aussi pourquoi nous ne publions pas le même tableau par nombre de pièces : un T1 se loue nettement plus cher au mètre carré qu'un T4, et un loyer unique donnerait un classement faux. Ce que nos données disent sans ambiguïté, en revanche, c'est le prix — le T1 médian s'échange à 4 000 €/m² à Villeurbanne en 2025, le T4 à 3 211 €/m² — soit 19,7 % de moins au mètre carré pour le T4, ou 24,6 % de plus pour le T1. Les deux formulations décrivent le même écart : elles ne se rapportent simplement pas à la même base." },
 
       { type: "h2", text: "Pourquoi le rendement que je calcule est-il plus bas que celui qu'on m'annonce ?" },
       { type: "p", text: "**Parce que le calcul annoncé part presque toujours d'un prix trop bas et d'un loyer trop haut.** Trois erreurs reviennent, et toutes les trois poussent le résultat dans le même sens : vers le haut. Les corriger fait perdre entre un demi-point et un point et demi." },
@@ -1691,17 +1691,17 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Comment passer du rendement brut au rendement net ?" },
       { type: "p", text: "**En convertissant chaque charge annuelle en points de rendement, puis en les retranchant du brut.** C'est plus fiable que de chercher un « rendement net moyen » : les charges d'un logement sont propres à ce logement. Sur le cas de référence ci-dessous, chaque tranche de 100 € de charge annuelle retire 0,055 point." },
-      { type: "p", text: "**Le cas de référence.** Un T2 au prix médian villeurbannais de 2025 — 170 000 € pour 44 m², la médiane T2 étant de 3 830 €/m² — loué au loyer médian communal, soit 642 € par mois hors charges et 7 704 € par an. Rendement brut sur le prix : 4,53 %. Sur le coût total de l'opération, frais de notaire à 7,5 % compris (182 750 €) : 4,22 %." },
+      { type: "p", text: "**Le cas de référence.** Un T2 au prix médian villeurbannais de 2025 — **170 000 € pour 45 m²**, les deux médianes des T2 d'appartements vendus en 2025 dans la base DVF — loué au loyer médian communal, soit 657 € par mois hors charges et 7 884 € par an. Rendement brut sur le prix : 4,64 %. Sur le coût total de l'opération, frais de notaire à 7,5 % compris (182 750 €) : 4,31 %. ⚠️ Prix médian et surface médiane sont deux médianes distinctes, calculées chacune sur l'ensemble des T2 : les diviser l'une par l'autre (3 778 €/m²) ne redonne pas le prix médian au m² des T2, qui vaut 3 830 €/m² et qui est lui aussi une médiane. L'écart est normal et il n'est pas une erreur de calcul." },
       {
         type: "table",
         caption:
-          "Ce que chaque poste coûte en points de rendement — T2 de 44 m² acheté 170 000 € et loué 642 €/mois HC",
+          "Ce que chaque poste coûte en points de rendement — T2 de 45 m² acheté 170 000 € et loué 657 €/mois HC",
         headers: ["Poste", "Montant", "Effet sur le rendement"],
         rows: [
           ["Frais de notaire (7,5 %)", "12 750 € à l'achat", "−0,32 point"],
-          ["Un mois de vacance locative", "642 €", "−0,35 point"],
-          ["Gestion locative déléguée (6 % des encaissements + 20 € de débours)", "482 €/an", "−0,26 point"],
-          ["Garantie loyers impayés (2,5 %)", "193 €/an", "−0,11 point"],
+          ["Un mois de vacance locative", "657 €", "−0,36 point"],
+          ["Gestion locative déléguée (6 % des encaissements + 20 € de débours)", "493 €/an", "−0,27 point"],
+          ["Garantie loyers impayés (2,5 %)", "197 €/an", "−0,11 point"],
           ["**Toute autre charge : taxe foncière, charges non récupérables, assurance PNO, entretien**", "**par tranche de 100 €/an**", "**−0,055 point**"],
         ],
         source:
@@ -1728,7 +1728,7 @@ export const ARTICLES: Article[] = [
     faq: [
       {
         q: "Rendement brut ou rendement net : lequel faut-il regarder ?",
-        a: "Le brut sert à comparer des biens entre eux, le net sert à décider. Le rendement brut — loyer annuel hors charges divisé par le prix d'achat — ne dépend que de deux chiffres, ce qui le rend comparable d'un bien à l'autre ; c'est sa seule vertu. Le rendement net retranche les charges réelles du logement (taxe foncière, charges non récupérables, assurance propriétaire non occupant, gestion, vacance) et c'est le seul qui corresponde à ce que vous encaisserez. Sur notre cas de référence villeurbannais, un T2 de 44 m² acheté 170 000 €, chaque tranche de 100 € de charge annuelle retire 0,055 point au brut.",
+        a: "Le brut sert à comparer des biens entre eux, le net sert à décider. Le rendement brut — loyer annuel hors charges divisé par le prix d'achat — ne dépend que de deux chiffres, ce qui le rend comparable d'un bien à l'autre ; c'est sa seule vertu. Le rendement net retranche les charges réelles du logement (taxe foncière, charges non récupérables, assurance propriétaire non occupant, gestion, vacance) et c'est le seul qui corresponde à ce que vous encaisserez. Sur notre cas de référence villeurbannais, un T2 de 45 m² acheté 170 000 €, chaque tranche de 100 € de charge annuelle retire 0,055 point au brut.",
       },
       {
         q: "Où trouver les prix réellement signés à Villeurbanne ?",
@@ -1740,7 +1740,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Faut-il déduire la vacance locative du rendement ?",
-        a: "Oui, et son poids se chiffre simplement : sur notre cas de référence villeurbannais, un mois sans locataire coûte 642 € et retire 0,35 point de rendement. C'est davantage qu'une année entière de gestion déléguée, qui revient à 482 € et 0,26 point. Un rendement annoncé sans hypothèse de vacance suppose implicitement douze mois de loyer sur douze, chaque année, changements de locataire compris.",
+        a: "Oui, et son poids se chiffre simplement : sur notre cas de référence villeurbannais, un mois sans locataire coûte 657 € et retire 0,36 point de rendement. C'est davantage qu'une année entière de gestion déléguée, qui revient à 493 € et 0,27 point. Un rendement annoncé sans hypothèse de vacance suppose implicitement douze mois de loyer sur douze, chaque année, changements de locataire compris.",
       },
       {
         q: "Un rendement brut de 6 % est-il atteignable à Villeurbanne ?",
