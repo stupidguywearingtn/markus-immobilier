@@ -14,6 +14,101 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-14**
+
+- ✅ **AUCUN RUN MANQUÉ, et pour la deuxième fois d'affilée la référence distante
+  était à jour avant le fetch.** `git fetch origin` **en tout premier** (règle du
+  16/09) : avant fetch, `origin/main` pointait sur `1cc9814` alors que la branche
+  de démarrage portait `07c7f5f` ; après fetch, `origin/main` == `07c7f5f`, et
+  **deux commits portent la date du 2026-10-13** — le run d'hier a bien eu lieu.
+  ⚠️ **Le `main` LOCAL, lui, était périmé de deux commits** : `git checkout main`
+  puis `git merge --ff-only origin/main` **avant la première édition** (ici la
+  fusion a réellement avancé, contrairement au 13/10 où elle était un no-op).
+  **Ne jamais présumer que `main` local vaut `origin/main` parce que le fetch
+  vient de passer.**
+- ⚠️ Le conteneur démarre sur `claude/dazzling-feynman-17ty89`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingtième constat identique** (21/09 → 14/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Troisième confirmation que le conteneur
+  ne le garde pas : à refaire à chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Mercredi : pas de veille** (faite le lundi 12/10). **Prochaine échéance :
+  lundi 19/10.**
+- **Deux SERP mesurées, les deux absentes :**
+  - « agence immobilière Villeurbanne » — **absente pour la 31ᵉ fois sur 31.**
+    🟢 **La bascule annuaire est CONFIRMÉE SUR UNE QUATRIÈME MESURE CONSÉCUTIVE,
+    et pour la première fois la composition est RIGOUREUSEMENT IDENTIQUE à celle
+    de la veille, lien pour lien** : **3 pages de franchise** (Laforêt
+    Villeurbanne-République, Orpi Cusset, Orpi Charpennes) et **6 annuaires**
+    (`cylex-locale.fr`, `zimo.fr` Villeurbanne, `realadvisor.fr` — fiche Century 21
+    Villa Urbana, `lesiteimmo.com`, `fr.mappy.com` — fiche Aquila, `zimo.fr`
+    Vienne 38 hors cible). **Zéro rotation en 24 h.** 📌 **Quatre mesures
+    concordantes : c'est le constat le plus solide du journal. Aucun contenu
+    publié sur le site ne prendra ces 6 places — elles s'obtiennent en créant ou
+    en réclamant la fiche. Action client, pas chantier de repo.**
+  - « estimation immobilière Villeurbanne » — absente. **9 résultats, et là aussi
+    composition RIGOUREUSEMENT IDENTIQUE à celle du 11/10** : Laforêt ×2, Orpi ×2
+    (Cetrim + Cité Immo), Square Habitat ×2 (dont une page `prix-immobilier`),
+    Capifrance ×2, Efficity (page `prix-immobilier-m2`). **Zéro indépendante
+    locale, et 2 des 9 sont des pages de prix au m²** — la frontière
+    « estimation » / « prix m2 » reste brouillée côté SERP (constat du 11/10
+    reconduit).
+  - 🆕 ⚠️ **Deux concurrents de plus publient un prix communal proche du nôtre :
+    Efficity annonce 3 480 €/m² (juillet 2026) et Square Habitat 3 443 €/m²
+    (janvier 2026, −3,9 % sur un an)**, contre notre médiane de 3 567 €/m².
+    🟡 **Même nuance de méthode qu'aux 11, 12 et 13/10 : ce sont des MOYENNES de
+    portail, pas des médianes DVF. Ne pas « corriger » la nôtre pour s'en
+    rapprocher.** C'est le quatrième run d'affilée où ce réflexe doit être retenu.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 13/10, et c'est bien LE
+  CANDIDAT DÉSIGNÉ N°1** (contrôle de contradiction interne + reproductibilité
+  des arrondis). **Les deux contrôles ont été passés sur les 27 articles de
+  `lib/blog.ts`, et ils ont trouvé deux défauts, tous deux sur
+  `rentabilite-locative-lyon`** : une comparaison fausse qui contredisait la FAQ
+  de sa propre page (« 24,6 % de moins » contre « 24,6 % de plus » sur le même
+  couple T1/T4) et une **surface médiane fausse** (44 m² au lieu de 45 m²) qui
+  faisait dériver cinq montants. Détail en « Chantiers faits » et « Erreurs
+  commises ».
+- 🟢 **PISTE (i) ENFIN CLOSE — les comparaisons rédigées à la main du BLOG sont
+  toutes vérifiées.** En attente depuis le 08/10. **Vingt comparaisons relatives
+  recalculées une par une dans `lib/blog.ts`, une seule fausse** (celle
+  ci-dessus). Le balayage a aussi été repassé sur `app/` : **2 comparaisons, les
+  deux justes** — la clôture du 08/10 tient.
+- ✅ **Signaux mesurés SAINS en PRODUCTION sur la page touchée — ne pas les
+  réauditer** : `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint lib/blog.ts` propre ; **2 578 mots dans le `<main>`**, chiffre
+  identique au local ; **parité FAQ visible ↔ `FAQPage` 6/6 questions ET 6/6
+  réponses**, mot pour mot ; **0 mot collé** (5 motifs du 04/10, `<script>`
+  exclus — règle du 12/10) ; **4 blocs JSON-LD** (`RealEstateAgent`,
+  `BlogPosting`, `FAQPage`, `BreadcrumbList`) ; `datePublished` 2026-02-05 /
+  **`dateModified` 2026-10-14** ; « Mis à jour le 14 octobre 2026 » visible ;
+  **`/llms.txt` inchangé** (l'`excerpt` ne portait aucun des chiffres corrigés).
+- 🟢 **Les dix formulations retirées ont bien DISPARU du document servi, payload
+  RSC compris** : plus aucune occurrence de `44 m²`, `642 €`, `482 €`, `193 €`,
+  `7 704`, `4,53 %`, `4,22 %`, « 24,6 % de moins », `0,35 point` ni `0,26 point`.
+  Les seize formulations neuves sont servies à la fois dans le `<main>` et dans
+  le document complet.
+- ⚠️ **`lastmod` : un seul a bougé, et c'est exactement celui voulu.**
+  `/blog/rentabilite-locative-lyon` passe au **2026-10-14**, **seule URL des 53 de
+  production à cette date**. **Huitième run d'affilée sans inflation de
+  fraîcheur** (décision du 06/10). ⚠️ Ici la date est MÉRITÉE : le contenu change
+  réellement (dix chiffres publiés corrigés).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié explicitement : vide. **Diff total du run : 1 fichier**
+  (`lib/blog.ts`), 9 insertions / 9 suppressions.
+- ⏱️ **Déploiement constaté ~3 minutes après le push** (06:30 → 06:33 UTC), avec
+  **deux `exit 000` isolés pendant la série de contrôles** et 200 à la relance :
+  confirmation de la note du 30/09, un échec curl isolé au milieu d'une série qui
+  passe n'est pas une page morte.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10).
+
 **Au 2026-10-13**
 
 - ✅ **AUCUN RUN MANQUÉ, et le contrôle des DATES du 11/10 a de nouveau servi.**
@@ -2123,6 +2218,119 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-14 — Une page publiait « 24,6 % de moins » dans son texte et « 24,6 % de plus » dans sa FAQ pour le même écart, et bâtissait tout son cas de référence sur une surface médiane fausse
+
+**Chantier choisi : NON-CONTENU**, comme prescrit le 13/10, **et c'est le
+candidat désigné n°1** — le contrôle de contradiction interne, outillé par le
+run d'hier, auquel a été joint le second contrôle du même run (reproductibilité
+des arrondis). **Les deux ont été passés sur les 27 articles de `lib/blog.ts`,
+pas seulement sur les quatre pages signalées comme les plus exposées.**
+
+**Comment le balayage a été fait (et il est rejouable).** Un index numérique par
+article, construit par script : pour chaque article, toutes les lignes portant
+une formule de seuil ou de comparaison, et dans chacune tous les nombres, groupés
+par valeur. Un nombre qui apparaît **deux fois ou plus dans le même article**
+remonte comme candidat à la contradiction. 27 articles, 14 articles avec au moins
+un nombre répété, **une centaine de couples lus à la main**. Puis, séparément, un
+`grep` de toutes les phrases de comparaison relative (« % de moins », « % de
+plus », « % en dessous », « % au-dessus », « % d'écart », « fois moins », « fois
+plus », « % plus cher ») : **20 occurrences dans `lib/blog.ts`, 2 dans `app/`**,
+chacune recalculée.
+
+**Résultat du balayage : 21 comparaisons sur 22 sont justes.** Les deux de
+`app/` le sont (dont l'une est calculée en code, pas rédigée). Dans
+`lib/blog.ts`, toutes les comparaisons de `prix-immobilier-villeurbanne-2026`,
+`ou-acheter-villeurbanne-quartiers`, `investir-locatif-lyon`,
+`plus-value-immobiliere-calcul`, `dpe-2026-ce-qui-change` et
+`diagnostics-obligatoires-vente` retombent au centième — y compris les pièges
+connus : le « 25 fois moins souvent » du DPE (9,49 / 0,38 = 24,97), le « 50 % de
+risques en plus » (6,26 / 4,16 = 1,505, et c'est bien « 50 % de plus », pas « une
+fois et demie »), le « 43 % d'écart » entre quartiers (3 923 / 2 738), et les
+sept seuils de plus-value (prix 2022 × 1,075, puis hausse nécessaire rapportée à
+la médiane 2025). **La reproductibilité des arrondis a été vérifiée de la même
+façon sur `plus-value-immobiliere-calcul` et `rentabilite-locative-lyon` : les
+22 montants dérivés de ces deux pages se recalculent tous sur les valeurs
+affichées.** Les écarts apparents sont tous des arrondis de valeurs non arrondies
+(0,31 pt chez Ferrandière, 0,32 pt pour les frais de notaire), ce qui est correct.
+
+**Le défaut n°1 : une page qui se contredit elle-même, texte contre FAQ.**
+`rentabilite-locative-lyon` écrivait dans son corps « le T1 médian s'échange à
+4 000 €/m², le T4 à 3 211 €/m², **soit 24,6 % de moins** » et dans sa FAQ, sur
+exactement le même couple de nombres, « **soit 24,6 % de plus** ». **C'est la
+FAQ qui avait raison** : 4 000 / 3 211 = +24,6 % ; le corps appliquait le même
+pourcentage à la mauvaise base, alors que l'écart du T4 au T1 vaut
+789 / 4 000 = **19,7 %**. C'est **l'asymétrie des pourcentages du 08/10 et la
+contradiction interne du 13/10 dans la même phrase** — et les deux versions
+partaient vers les moteurs d'IA, l'une dans le texte visible, l'autre dans le
+JSON-LD `FAQPage`. **Correction : le corps publie désormais les deux
+formulations et dit explicitement à quelle base chacune se rapporte** (plutôt que
+de supprimer l'une des deux, qui laisserait le lecteur sans moyen de rapprocher
+les deux chiffres s'il croise l'autre page).
+
+**Le défaut n°2, plus coûteux : une surface médiane fausse, sous une source qui
+la disait mesurée.** La même page bâtissait tout son cas de référence sur « un
+T2 au prix médian villeurbannais de 2025 — 170 000 € pour **44 m²** », avec en
+légende de tableau « Prix et surface : **médianes DVF 2025 des T2
+villeurbannais** ». **La médiane DVF des surfaces de T2 vaut 45 m², pas 44.**
+Recalculée sur la population exactement définie par la méthode du 07/09
+(fichier commune 69266, millésime 2025, une seule ligne bâtie par mutation,
+appartements, surface ≥ 10 m², 800 ≤ €/m² ≤ 12 000), **avec le contrôle du 13/10
+passé d'abord** : 1 876 ventes et les trois médianes publiées retombant à
+l'identique (3 566,8 €/m², 62 m², 195 000 €). Sur cette population, les T2
+donnent **436 ventes, prix médian 170 000 €, 3 829,8 €/m², surface médiane
+45,0 m²**. La médiane est **robuste** : les six valeurs centrales valent toutes
+45,0, et retirer une vente à l'une ou l'autre extrémité la laisse à 45,0 — donc
+l'écart de `n` entre 435 (publié) et 436 (mesuré) n'y change rien.
+
+**Et le site publiait DÉJÀ la bonne valeur à deux endroits** :
+`prix-immobilier-villeurbanne-2026` (tableau par typologie : T2, 170 000 €,
+3 830 €, **45 m²**) et `investir-locatif-lyon` (« sur un T2 de **45 m²** — la
+cible la plus courante d'un premier investissement locatif »). **La page ne se
+contredisait donc pas seulement elle-même : elle contredisait deux pages
+voisines sur un chiffre qu'elle présentait comme sourcé.**
+
+**Les cinq montants dérivés ont été recalculés, pas rapiécés** (loyer médian
+communal 14,60 €/m² HC, coût total = prix × 1,075) :
+
+| Poste | Avant (44 m²) | Après (45 m²) |
+|---|---|---|
+| Loyer mensuel HC | 642 € | **657 €** |
+| Loyer annuel HC | 7 704 € | **7 884 €** |
+| Rendement brut sur le prix | 4,53 % | **4,64 %** |
+| Rendement sur coût total (182 750 €) | 4,22 % | **4,31 %** |
+| Un mois de vacance | 642 € → −0,35 pt | **657 € → −0,36 pt** |
+| Gestion déléguée (6 % + 20 €) | 482 €/an → −0,26 pt | **493 €/an → −0,27 pt** |
+| GLI (2,5 %) | 193 €/an → −0,11 pt | **197 €/an → −0,11 pt** |
+
+**Trois postes restent inchangés, et c'est vérifié, pas supposé** : les frais de
+notaire (−0,32 pt, parce que le rapport brut/total ne dépend pas de la surface),
+la tranche de 100 €/an (−0,055 pt) et les 1 000 € de taxe foncière (−0,55 pt),
+qui ne dépendent que du coût total, lui-même inchangé.
+
+**Le volet GEO du run.** Une mise en garde a été ajoutée au cas de référence, et
+c'est **exactement le raccourci qui avait produit le 44 m²** : prix médian,
+surface médiane et prix médian au m² sont **trois médianes indépendantes**,
+chacune calculée sur l'ensemble des T2 ; 170 000 / 45 = 3 778 €/m² **ne redonne
+pas** le prix médian au m² des T2 (3 830 €/m²), et ce n'est pas une erreur de
+calcul. **Personne d'autre ne publie cette mise en garde**, et c'est un passage
+autonome de 2 phrases, exactement le format qu'une IA extrait. Le reste du volet
+GEO était déjà en place sur cette page (8 H2 interrogatifs, `FAQPage` en parité
+6/6, sources datées en légende de tableau) : rien à y ajouter.
+
+**Ce qui a été décidé de NE PAS faire.**
+- **Ne pas aligner notre médiane sur celles d'Efficity (3 480 €/m²) et de Square
+  Habitat (3 443 €/m²)** relevées ce matin : ce sont des moyennes de portail, pas
+  des médianes de ventes signées. Quatrième run d'affilée où ce réflexe est
+  écarté.
+- **Ne pas toucher au tableau de rendement par quartier** : ses 16 valeurs se
+  recalculent toutes au centième sur 14,60 €/m² et les médianes publiées. Rien à
+  corriger, donc rien de corrigé.
+- **Ne pas réécrire `charges-copropriete`** (164 mots en production, signalée
+  🔴 le 13/10) : c'est un chantier de CONTENU, et l'alternance imposait du
+  non-contenu aujourd'hui. **Elle reste le candidat contenu n°1 pour le 15/10.**
+- **Ne pas ouvrir le champ Carrez de DVF** (découvert le 13/10) : c'est un
+  chantier de contenu neuf, pas un contrôle.
 
 ### 2026-10-13 — La fiche que le site désigne pour la surface privative tenait en 177 mots et se contredisait elle-même sur le seuil de 1,80 m : `loi-carrez-surface` passe à 2 677 mots et chiffre le seuil de 5 % en euros par quartier
 
@@ -5938,20 +6146,40 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : CONTENU** (13/10, `loi-carrez-surface` : 7 défauts de
+**Angle du dernier run : NON-CONTENU — contrôle de contradiction interne +
+reproductibilité des arrondis** (14/10, balayage des 27 articles de
+`lib/blog.ts` ; 2 défauts trouvés, les deux sur `rentabilite-locative-lyon` :
+une comparaison qui contredisait la FAQ de sa propre page, et une surface
+médiane fausse qui contredisait deux pages voisines et faisait dériver
+5 montants).
+→ 🔴 **LE PROCHAIN RUN (15/10) DOIT ÊTRE CONTENU, et le candidat est désigné
+depuis le 13/10 : `charges-copropriete`, 164 mots servis en production.** C'est
+la page la plus maigre du site, elle porte du droit jamais revérifié, et c'est
+elle qui portait le renvoi dont la promesse était fausse le 12/10 : à relire côté
+promesses autant que côté droit. **Ne pas reprendre le contrôle de contradiction
+interne : il est passé sur l'intégralité de `lib/blog.ts` et la piste (i) est
+close.**
+
+**Angle précédent : CONTENU** (13/10, `loi-carrez-surface` : 7 défauts de
 droit corrigés dont une contradiction interne, 177 → 2 677 mots, seuil de 5 %
 chiffré en euros par quartier à partir du champ Carrez de DVF, jamais exploité
 jusqu'ici).
-**Angles précédents : non-contenu — audit d'affirmations réglementaires** (12/10,
+**Angles plus anciens : non-contenu — audit d'affirmations réglementaires** (12/10,
 `diagnostics-obligatoires-vente`), **contenu** (11/10, `dpe-2026-ce-qui-change`),
 **non-contenu — justesse des calculs** (08/10),
 **contenu blog** (07/10, `vendre-sans-agence`),
 **maillage interne + micro-chantier source** (06/10),
 **contenu blog** (05/10), **audit non-contenu + maillage** (04/10).
-→ **Le prochain run doit être NON-CONTENU.**
+*(La prescription « le prochain run doit être NON-CONTENU » du 13/10 est
+honorée : voir l'angle du 14/10 ci-dessus.)*
 
-🆕 🔴 **CANDIDAT NON-CONTENU N°1 POUR LE 14/10, et il est outillé par le run du
-jour : passer le CONTRÔLE DE CONTRADICTION INTERNE sur les pages de droit.** Le
+✅ **CANDIDAT NON-CONTENU N°1 CONSOMMÉ LE 14/10 — le contrôle de contradiction
+interne est passé sur les 27 articles de `lib/blog.ts`, pas seulement sur les
+quatre pages signalées ici. 2 défauts trouvés et corrigés ; `frais-de-notaire-
+lyon-2026`, `plus-value-immobiliere-calcul`, `dpe-2026-ce-qui-change` et
+`charges-copropriete` sont propres sur ce contrôle. NE PAS LE REPRENDRE.** Le
+détecteur rejouable est en « Techniques apprises » du 14/10. Énoncé d'origine :
+🔴 **passer le CONTRÔLE DE CONTRADICTION INTERNE sur les pages de droit.** Le
 défaut n°1 du 13/10 est d'un type neuf — deux phrases de la **même** page
 disaient deux choses différentes sur le seuil de 1,80 m, et aucun test ne peut le
 voir. Le contrôle est cheap et n'a jamais été passé ailleurs : **pour chaque
@@ -5968,8 +6196,13 @@ toujours la source officielle qui tranche. Pages les plus exposées (elles
 publient beaucoup de seuils) : `frais-de-notaire-lyon-2026`,
 `plus-value-immobiliere-calcul`, `dpe-2026-ce-qui-change`, `charges-copropriete`.
 
-🆕 ⚠️ **ET un second contrôle non-contenu, né du même run : la REPRODUCTIBILITÉ
-DES ARRONDIS.** Trois montants publiés ne se recalculaient pas sur les chiffres
+✅ **SECOND CONTRÔLE NON-CONTENU ÉGALEMENT CONSOMMÉ LE 14/10 — la
+reproductibilité des arrondis est vérifiée sur `plus-value-immobiliere-calcul`
+et `rentabilite-locative-lyon` (22 montants dérivés, tous recalculables sur les
+valeurs affichées). ⚠️ Restent à passer : `frais-de-notaire-lyon-2026`,
+`investir-locatif-lyon` et `rentabilite-locative-lyon` côté tableau par
+quartier — ce dernier a été vérifié au centième ce jour (16 valeurs).** Énoncé
+d'origine : ⚠️ **la REPRODUCTIBILITÉ DES ARRONDIS.** Trois montants publiés ne se recalculaient pas sur les chiffres
 affichés (détail en « Erreurs commises » du 13/10). Le contrôle : **pour chaque
 tableau dérivé, refaire le calcul avec les valeurs AFFICHÉES et comparer.**
 À passer sur `plus-value-immobiliere-calcul`, `frais-de-notaire-lyon-2026`,
@@ -6055,8 +6288,12 @@ PROCÉDURALE (la méthode pas à pas, zéro nouveau tableau de marché, liens so
 vers les pages qui portent la donnée), soit une FUSION.** Ne pas rouvrir l'angle
 « chiffres du marché » : il est fermé par la mesure.
 
-✅ **PISTE (i) — périmètre des 4 pages clos le 08/10.** ⚠️ **Ce qui reste : les
-comparaisons du BLOG.** Le contrôle du 08/10 n'a été passé qu'en croisant les
+✅ **PISTE (i) INTÉGRALEMENT CLOSE LE 14/10 — périmètre des 4 pages clos le
+08/10, comparaisons du BLOG closes le 14/10.** 20 comparaisons relatives
+recalculées dans `lib/blog.ts` + 2 dans `app/` : **une seule fausse** (le
+« 24,6 % de moins » de `rentabilite-locative-lyon`), corrigée. **NE PAS ROUVRIR
+CETTE PISTE.** Énoncé d'origine : ⚠️ **Ce qui reste : les comparaisons du
+BLOG.** Le contrôle du 08/10 n'a été passé qu'en croisant les
 formules de `app/` et `lib/` ; `lib/blog.ts` contient beaucoup de comparaisons
 **rédigées à la main** (« 13,2 % en dessous », « 45,3 % d'écart », « 23 % de moins
 que la médiane ») dont seules quelques-unes ont été recalculées — celles-là
@@ -6355,6 +6592,39 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-14
+
+🆕 🟡 **Les deux SERP du jour sont identiques lien pour lien à une mesure
+antérieure — est-ce la SERP qui se fige, ou le moteur qui sert du cache ?**
+« agence immobilière Villeurbanne » est **rigoureusement identique au 13/10**
+(zéro rotation en 24 h, ce qui n'était jamais arrivé sur quatre runs de bascule
+annuaire) et « estimation immobilière Villeurbanne » est **rigoureusement
+identique au 11/10**. ⚠️ **Les deux lectures sont plausibles et elles ne se
+distinguent pas sur une mesure** : une SERP stabilisée, ou une réponse servie
+depuis un cache. **À départager sur les deux prochains runs** : si les deux
+requêtes rebougent le 15 ou le 16/10, c'était de la stabilité ; si elles restent
+figées au lien près plusieurs jours alors que les SERP précédentes tournaient
+chaque jour, il faudra **cesser de compter ces relevés comme des mesures
+indépendantes** — et donc cesser d'écrire « Nᵉ mesure concordante ». **Rien n'a
+été conclu aujourd'hui au-delà de ce que les 3 mesures antérieures établissaient
+déjà.**
+
+🟡 **Reconduite du 13/10 — la SERP « vendre appartement Villeurbanne » s'ouvre-t-
+elle à l'éditorial ?** Non remesurée aujourd'hui (cadence : 2 mesures par mois au
+plus, précédente le 13/10). **À remesurer avant le 04/11.** La règle du 08/10
+tient : un seul delta ne conclut rien.
+
+🟡 **Reconduite du 13/10 — mon extraction DVF compte 1 876 ventes là où le site
+publie 1 875.** 🆕 **Le run du jour ajoute un cas et il va dans le même sens** :
+les T2 comptent **436** ventes dans mon extraction contre **435** publiés. Les
+médianes dérivées sont identiques (170 000 €, 3 829,8 €/m², 45,0 m²), et la
+médiane de surface a été testée robuste au retrait d'une vente. **La méthode
+n'est donc toujours pas en cause ; l'hypothèse « le fichier DVF latest a gagné
+une vente depuis l'extraction du 07/09 » se renforce.** ⚠️ **Rien n'a été
+réécrit, et surtout pas les `n` publiés** : les corriger à 436 sans recalculer
+toute la page créerait une incohérence pire que celle d'aujourd'hui. **À trancher
+quand DVF 2026 sortira.**
 
 ### 2026-10-13
 
@@ -7000,6 +7270,51 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-14 — La même phrase cumulait les deux familles de défaut déjà identifiées, et une surface médiane fausse a traversé deux pages voisines qui, elles, publiaient la bonne
+
+**Aucun des deux défauts n'est de ce run** : ils étaient en production depuis au
+moins le 30/09 (dernière date de mise à jour de la page) et ont survécu à tous
+les contrôles du journal, y compris au balayage des comparaisons du 08/10 — qui
+n'avait couvert que `app/` et `lib/`, en laissant explicitement `lib/blog.ts` de
+côté. **C'est ce trou-là qui a été comblé aujourd'hui.**
+
+1. 🔴 **LA CONTRADICTION INTERNE SE LOGE ENTRE LE TEXTE ET LA FAQ DE LA MÊME
+   PAGE, et c'est pire que le cas du 13/10.** Le 13/10, les deux phrases
+   contradictoires étaient dans le corps. Ici, **l'une est dans le corps et
+   l'autre dans la FAQ** — donc l'une alimente le texte visible et l'autre le
+   JSON-LD `FAQPage`. **Un moteur d'IA qui extrait la page peut citer l'une ou
+   l'autre, et les deux disent l'inverse l'une de l'autre.** Le contrôle de
+   parité FAQ, passé sur cette page à chaque audit, **ne voit pas ce défaut** :
+   il vérifie que la FAQ visible et le JSON-LD disent la même chose, pas que la
+   FAQ et le corps de l'article soient d'accord.
+   → 📌 **Le contrôle à ajouter : quand un même couple de nombres apparaît dans
+   le corps ET dans la FAQ, lire les deux phrases l'une après l'autre.** Le grep
+   est celui du 13/10, mais il faut le passer **FAQ comprise**, ce que l'index
+   par article fait désormais automatiquement.
+
+2. 🔴 **CINQUIÈME FAMILLE DE DÉFAUT INVISIBLE : LE CHIFFRE SOURCÉ QUI CONTREDIT
+   UNE AUTRE PAGE DU SITE.** Les 44 m² n'étaient pas une coquille : ils étaient
+   présentés sous une légende « médianes DVF 2025 des T2 villeurbannais », donc
+   comme une mesure. **Et deux autres pages du site publiaient 45 m² pour la
+   même mesure.** Aucun test ne peut voir ça : chaque page est cohérente avec
+   elle-même, le JSON-LD est en parité, les mots ne sont pas collés, et le
+   chiffre est plausible. **Seul un recalcul contre la source tranche.**
+   → 📌 **Le contrôle, et il est cheap : toute valeur présentée comme une médiane
+   ou un comptage doit apparaître IDENTIQUE partout où le site la publie.** Le
+   grep est la valeur elle-même, pas le sujet :
+   `grep -rn "44 m²\|45 m²" app lib --include='*.ts*'` aurait suffi.
+
+3. 🟡 **ET LA CAUSE PROBABLE DU 44 m², qui est une faute de méthode, pas de
+   saisie : avoir divisé deux médianes l'une par l'autre.** 170 000 / 3 830 =
+   44,4 → 44 m². Le raccourci est tentant parce qu'il rend la page « cohérente »
+   en apparence. **Il est faux : prix médian, prix médian au m² et surface
+   médiane sont trois médianes indépendantes, calculées chacune sur l'ensemble
+   des ventes, et le quotient de deux d'entre elles n'est pas la troisième.**
+   C'est la même famille d'erreur que l'asymétrie des pourcentages (08/10) et que
+   le multiplicateur (11/10) : **une opération arithmétiquement correcte appliquée
+   à des grandeurs qui ne se composent pas.** La mise en garde est désormais
+   publiée sur la page, ce qui protège aussi le prochain rédacteur.
 
 ### 2026-10-13 — Une page se contredisait elle-même sur un seuil de droit depuis neuf mois, et j'ai publié trois montants qu'un lecteur ne pouvait pas recalculer
 
@@ -7786,6 +8101,84 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-14 — Deux détecteurs de contradiction rejouables, et la règle « les médianes ne se multiplient pas »
+
+**1. 🟢 L'index numérique par article — le détecteur de contradiction interne, en
+30 lignes.** Le 13/10 prescrivait « grepper toutes les occurrences de chaque
+seuil ». À l'échelle de 27 articles, le grep seul rend trop de bruit. Le script
+qui marche découpe `lib/blog.ts` par `slug`, ne retient que les lignes portant
+une formule de seuil ou de comparaison, et **groupe les nombres par valeur à
+l'intérieur de chaque article** : ce qui remonte, ce sont les nombres répétés —
+exactement les candidats à la contradiction.
+
+```python
+# découpe par slug, puis par article : {nombre -> [lignes]} sur les seules
+# lignes portant une formule de seuil. Ne lire à la main que les nombres
+# répétés : 27 articles -> 14 à ouvrir, ~100 couples.
+THRESH = r"dépasse|supérieur|au moins|à partir de|inférieur|moins de|au-delà|≥|≤|>|<"
+NUM    = r"\d+(?:[  ]\d{3})*(?:[,.]\d+)?"   # espace fine insécable comprise
+```
+
+⚠️ **Deux pièges rencontrés.**
+- **Le séparateur de milliers du fichier est une espace fine insécable
+  (U+202F) ou une espace insécable (U+00A0), pas une espace simple.** Un `\d+`
+  naïf coupe « 1 876 » en « 1 » et « 876 » et le détecteur rate tout.
+- **Il faut inclure la FAQ dans le périmètre de l'article**, sinon le défaut n°1
+  du jour reste invisible : la contradiction était précisément entre le corps et
+  la FAQ.
+
+**2. 🟢 Le second détecteur, complémentaire et encore plus simple : le grep des
+phrases de comparaison relative.** Il attrape ce que l'index rate (quand les deux
+nombres ne sont pas répétés) et il est exhaustif en une commande :
+
+```bash
+grep -rno "[^\"]\{110\}\(% de moins\|% de plus\|% en dessous\|% au-dessus\|% d'écart\|fois moins\|fois plus\|% plus cher\)[^\"]\{0,70\}" \
+  app lib --include='*.tsx' --include='*.ts'
+# 20 occurrences dans lib/blog.ts, 2 dans app/ — toutes recalculables à la main
+```
+→ **Le `-o` avec une fenêtre de contexte fixe est ce qui rend le résultat
+lisible** : sans lui, chaque match rend un bloc de texte de 2 000 caractères et
+le contrôle devient illisible. **22 lignes à recalculer, une heure de travail,
+un défaut trouvé.**
+
+**3. 📌 LA RÈGLE DE FOND DU RUN, et c'est la plus réutilisable : LES MÉDIANES NE
+SE COMPOSENT PAS.** Prix médian, surface médiane et prix médian au m² sont trois
+statistiques indépendantes de la même population. **Le quotient de deux d'entre
+elles n'est pas la troisième**, et l'écart n'est pas une erreur :
+
+```
+T2 villeurbannais 2025 (DVF, n = 436)
+  prix médian          170 000 €
+  surface médiane           45,0 m²
+  prix médian au m²      3 829,8 €/m²
+  170 000 / 45 = 3 778 €/m²  ≠  3 830 €/m²     <- NORMAL
+  170 000 / 3 830 = 44,4 m²  ≠  45 m²          <- c'est ce calcul qui a
+                                                  produit le défaut du jour
+```
+→ **Avant de publier un « cas de référence » construit sur plusieurs médianes :
+prendre les médianes telles quelles, ne jamais en dériver une troisième, et dire
+au lecteur qu'elles ne se multiplient pas.** Le dire est un avantage de
+citabilité, pas un aveu : aucune page concurrente relevée ne l'explique.
+
+**4. 📌 Le contrôle de robustesse d'une médiane, en deux lignes, à faire avant de
+corriger un chiffre publié.** Corriger 44 → 45 n'a de sens que si 45 ne dépend
+pas d'une vente :
+
+```python
+t2 = sorted(surfaces)          # n = 436
+t2[n//2-3 : n//2+3]            # [45,45,45,45,45,45]  -> plateau, robuste
+st.median(t2[1:]), st.median(t2[:-1])   # 45.0, 45.0  -> insensible au n
+```
+→ **C'est ce contrôle qui autorise à écrire 45 m² malgré l'écart de `n` connu
+entre 435 publié et 436 mesuré.** Sans lui, la correction aurait été un pari.
+
+**5. ⚠️ Rappel de procédure qui a resservi : `main` LOCAL peut être périmé APRÈS
+un `git fetch` réussi.** Le 13/10 notait « `origin/main` était déjà à jour avant
+le fetch » ; aujourd'hui `origin/main` l'était aussi, **mais `main` local
+retardait de deux commits** et seul le `git merge --ff-only origin/main` l'a
+rattrapé. **Le fetch met à jour `origin/main`, jamais `main`.** Les deux
+vérifications sont distinctes et il faut les faire toutes les deux.
 
 ### 2026-10-13 — DVF publie la surface Carrez des ventes, et le site l'ignorait depuis cinq semaines
 
