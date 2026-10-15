@@ -14,6 +14,116 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-15**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
+  avant fetch `origin/main` pointait sur `1cc9814`, après fetch sur `4ddc73a`, et
+  **deux commits portent la date du 2026-10-14** — le run d'hier a bien eu lieu.
+  ⚠️ 🆕 **Configuration inédite en vingt-deux runs, à connaître** : la branche de
+  démarrage du conteneur (`claude/dazzling-feynman-ukdze7`) portait **déjà
+  `4ddc73a`**, donc elle était **EN AVANCE sur la référence `origin/main` périmée**,
+  tandis que le `main` LOCAL retardait de **quatre commits**. Les trois références
+  (branche de départ, `origin/main`, `main` local) peuvent donc être à trois états
+  différents au démarrage. **Le seul enchaînement sûr reste : `git fetch origin`,
+  puis `git checkout main`, puis `git merge --ff-only origin/main` — et LIRE les
+  dates des commits, pas se fier aux positions.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-et-unième constat identique** (21/09 → 15/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Quatrième confirmation : à refaire à
+  chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Jeudi : pas de veille** (faite le lundi 12/10). **Prochaine échéance :
+  lundi 19/10.**
+- **Trois SERP mesurées, le site absent des trois :**
+  - « agence immobilière Villeurbanne » — **absente pour la 32ᵉ fois sur 32.**
+    🟢 **La bascule annuaire est CONFIRMÉE SUR UNE CINQUIÈME MESURE CONSÉCUTIVE**,
+    et la composition reste identique **par entité** à celle des 13 et 14/10 :
+    **3 pages de franchise** (Laforêt Villeurbanne-République, Orpi Cusset, Orpi
+    Charpennes) et **6 annuaires** (`cylex-locale.fr`, `zimo.fr` Villeurbanne,
+    `realadvisor.fr` — fiche Century 21 Villa Urbana, `lesiteimmo.com`,
+    `fr.mappy.com` — fiche Aquila, `zimo.fr` Vienne 38 hors cible).
+    🆕 ⚠️ **Une nuance à ne pas écraser : le lien Laforêt n'est plus la page
+    d'agence mais un billet de BLOG de recrutement**
+    (`/agence-immobiliere/villeurbanne-republique/blog/actualite/laforet-villeurbanne-recrute`).
+    L'entité est la même, l'URL non. **Le journal des 13 et 14/10 notait
+    « composition rigoureusement identique, lien pour lien » sans relever l'URL :
+    à l'avenir, consigner l'URL et pas seulement l'enseigne**, sinon « identique »
+    n'est pas vérifiable. 📌 **Cinq mesures concordantes : le constat le plus
+    solide du journal. Aucun contenu publié sur le site ne prendra ces 6 places —
+    elles s'obtiennent en créant ou en réclamant la fiche. Action client, pas
+    chantier de repo.**
+  - 🆕 **Deux SERP mesurées AU SERVICE DU CHANTIER, et c'est un choix assumé.**
+    Les trois requêtes cibles encore en cadence n'étaient pas dues (« prix m2
+    Villeurbanne » hebdomadaire, mesurée le 12/10, échéance 19/10 ; « estimation
+    immobilière Villeurbanne » le 14/10 ; « vendre appartement Villeurbanne » le
+    13/10, 2 mesures/mois). Plutôt que de remesurer à vide, les deux SERP du
+    chantier ont été relevées — et elles ont **directement produit la matière de
+    la page** :
+    - « charges de copropriété qui paie quoi vendeur acquéreur » : 9 résultats —
+      `justice.fr` (fiche service-public) en 1ʳᵉ position, **PAP ×3**,
+      `mysweetimmo.com` ×2, `selectra.info`, `kohenavocats.fr`,
+      `soulier-avocats.com`. 🟢 **ZÉRO agence immobilière, ZÉRO contenu local.**
+      La SERP est tenue par des fiches de droit et des cabinets : **c'est un
+      créneau où un contenu juridique vérifié a une place à prendre**, à l'inverse
+      de la requête-tête « agence immobilière Villeurbanne ».
+    - « état daté copropriété prix plafond 2026 » : 9 résultats, dont **6
+      institutionnels** (`questions.assemblee-nationale.fr` ×3,
+      **`conseil-etat.fr`**, `autoritedelaconcurrence.fr` ×2), plus
+      `monimmeuble.com`, `francetransactions.com`, `empruntis.com`. 🟢 **ZÉRO
+      agence.** 📌 **Et c'est cette SERP qui a livré le meilleur fait du run** :
+      la décision du Conseil d'État du 17/03/2026 (voir « Chantiers faits »).
+      **Leçon de méthode : mesurer la SERP du chantier n'est pas qu'une mesure de
+      position, c'est une source.**
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 14/10, et sur LE CANDIDAT
+  DÉSIGNÉ depuis le 13/10 — `charges-copropriete`, 164 mots servis.** Elle passe
+  à **3 725 mots**, porte enfin la composition du dossier de copropriété que
+  l'architecture du site lui réserve, et publie une **source locale jamais
+  exploitée ici : le Registre national d'immatriculation des copropriétés
+  (RNIC)**. Détail en « Chantiers faits ».
+- ✅ **Signaux mesurés SAINS en PRODUCTION — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint lib/blog.ts` propre ; **3 725 mots dans le `<main>`**, chiffre
+  **identique au local** (et 164 avant déploiement : la bascule est nette) ;
+  **parité FAQ visible ↔ `FAQPage` 7/7 questions ET 7/7 réponses**, mot pour
+  mot ; **0 mot collé** (5 motifs du 04/10, `1er` seul faux positif — règle du
+  11/10) ; **4 blocs JSON-LD** (`RealEstateAgent`, `BlogPosting`, `FAQPage`,
+  `BreadcrumbList`) ; `datePublished` 2026-03-05 / **`dateModified` 2026-10-15** ;
+  « Mis à jour le 15 octobre 2026 » visible ; **`/llms.txt` sert le nouveau titre
+  ET le nouvel `excerpt`**, l'ancien titre (« ce qui est compris ») a disparu.
+- 🟢 **Les 32 chiffres et références de l'angle sont TOUS servis dans le document
+  complet, payload RSC compris** : `2 065`, `165 101`, `79 797`, `73 582`,
+  `1 744`, `84,5`, `1 597`, `77,3`, `432`, `20,9`, `11 317`, `37 597`, `30 883`,
+  `429`, `20,8`, `1 480`, `95,5`, `380 € TTC`, `499299`, `17 mars 2026`,
+  `2020-153`, `67-223`, `L721`, `F32920`, `F2604`, `F2590`, `F37294`, `14-2-1`,
+  `69266`, « quinze ans », `1er janvier 2025`, `99,9`.
+- ⚠️ **`lastmod` : DEUX ont bougé, et les deux sont MÉRITÉS.**
+  `/blog/charges-copropriete` et `/blog/vendre-sans-agence` passent au
+  **2026-10-15**, **seules URL des 53 de production à cette date**. Le second
+  parce qu'une affirmation publiée y a été corrigée (voir « Erreurs commises »),
+  pas pour un lien ajouté. **Neuvième run d'affilée sans inflation de fraîcheur**
+  (décision du 06/10).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff total du run = 1 fichier** (`lib/blog.ts`),
+  184 insertions / 13 suppressions.
+- ⏱️ **Déploiement constaté ~2 minutes après le push** (relevé toutes les 30 s :
+  164 mots à t+30, t+60, t+90 ; 3 725 mots à t+120). Avec **deux `exit 000`
+  isolés** pendant la série de contrôles et 200 à la relance : confirmation de la
+  note du 30/09.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10).
+- 🆕 ⚠️ **Un défaut NOUVEAU vu aujourd'hui et NON corrigé, volontairement** :
+  `dpe-2026-ce-qui-change` donne un calendrier de DPE collectif dont les bornes
+  **se chevauchent à 50 lots exactement** (« d'au maximum 50 lots » → 01/01/2026
+  ET « comprises entre 50 et 200 lots » → 01/01/2025). Hors périmètre du jour et
+  demande sa propre vérification de source → inscrit en « Hypothèses à vérifier ».
+
 **Au 2026-10-14**
 
 - ✅ **AUCUN RUN MANQUÉ, et pour la deuxième fois d'affilée la référence distante
@@ -2218,6 +2328,101 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-15 — La fiche que le site désigne pour le dossier de copropriété tenait en 164 mots : `charges-copropriete` passe à 3 725 mots et publie, copropriété par copropriété, depuis quand Villeurbanne doit un plan pluriannuel de travaux
+
+**Le candidat était désigné depuis le 13/10** (page la plus maigre du site,
+164 mots mesurés en production ce jour encore, aucune FAQ, aucune source), et la
+prescription du 14/10 imposait un chantier **de contenu**. Les deux sont honorés.
+
+**1. 🔴 LA PROMESSE D'ARCHITECTURE NON TENUE, deuxième du genre après le 12/10 —
+et cette fois le renvoi pointait VERS la page maigre, pas depuis elle.**
+`diagnostics-obligatoires-vente` écrit depuis le 12/10 que « le DDT s'insère dans
+un dossier plus large — règlement, procès-verbaux, état daté — **dont la
+composition est détaillée dans notre fiche sur les charges de copropriété** ».
+**La fiche ne publiait aucun de ces trois éléments.** Elle est désormais la page
+qui porte le dossier complet : fiche synthétique, règlement + état descriptif de
+division, PV des 3 dernières années, carnet d'entretien, DTG, plan pluriannuel,
+notice d'information, les 4 informations financières, puis l'état daté et le
+certificat du syndic de moins d'un mois. **Promesse tenue — ne pas la revider.**
+
+**2. Le droit, vérifié fiche par fiche le 15/10/2026, jamais de mémoire.** Chaque
+source porte une date de vérification, et ces dates sont publiées en fin
+d'article :
+
+| Point publié | Source | Vérifiée le |
+|---|---|---|
+| Deux clés de répartition (charges générales à la quote-part / services collectifs à l'utilité objective), budget prévisionnel, appels trimestriels, régularisation | service-public **F2590** | 18/02/2026 |
+| Qui paie l'année de la vente (décret 67-223 art. **6-2** et **6-3**) | service-public **F32920** + `justice.fr` | 13/02/2026 |
+| Dossier à remettre à l'acquéreur (**L721-1 à L721-3** CCH), délai de rétractation | service-public **F2604** | 21/08/2025 |
+| État daté : contenu en 3 parties, plafond, à la charge du vendeur (art. **10-1** loi 1965, décret **2020-153**) | service-public **F37294** | 18/02/2026 |
+| Fonds de travaux : 5 % du budget prévisionnel, 2,5 % du PPT, non remboursé au vendeur (art. **14-2-1**) | **INC-conso** | 11/02/2026 |
+| PPT : seuil de 15 ans, contenu, 10 ans, dispense DTG (art. **14-2**) | **INC-conso** | 26/06/2026 |
+
+**3. 🟢 LE MEILLEUR FAIT DU RUN, et il vient de la SERP du chantier : le plafond
+de l'état daté a été attaqué en 2026 et il a tenu.** `conseil-etat.fr` classait
+en 2ᵉ position sur « état daté copropriété prix plafond 2026 ». **Décision
+n° 499299 du 17 mars 2026** : les chambres **FNAIM du Grand Paris et des
+Alpes-Maritimes** attaquaient le silence du Premier ministre sur leur demande
+(reçue le 06/05/2024) de réexaminer les **380 € TTC** du décret 2020-153.
+**Requête rejetée.** Motifs retenus et publiés sur la page : la demande de
+relèvement avait déjà été écartée, donc aucune obligation de réexamen méconnue ;
+la seule hausse générale des coûts ne démontre pas que le plafond ne couvre plus
+la prestation ; et un avis de l'**Autorité de la concurrence** chiffre
+l'établissement d'un état daté à **environ une heure de travail en moyenne** dans
+la plupart des cas. 📌 **Un fait de droit daté de sept mois, chiffré, sourçable,
+qu'aucune agence locale ne publie — exactement le profil de passage que les
+moteurs d'IA citent.** La nuance du « **pré-état daté** », facturé au stade du
+compromis et **hors du champ du décret donc non plafonné**, est publiée avec.
+
+**4. 🟢 UNE SOURCE LOCALE NEUVE, la première depuis la base DPE de l'ADEME
+(11/10) : le REGISTRE NATIONAL D'IMMATRICULATION DES COPROPRIÉTÉS (RNIC).**
+Extraction du **15/10/2026**, `commune=69266`, **2 065 copropriétés**. Ce que la
+page publie, et que personne ne publie à cette échelle :
+- **2 065 copropriétés**, **165 101 lots** au total, **73 582 lots d'habitation**,
+  **médiane 44 lots** ; **429 (20,8 %)** sous dix lots au compteur légal.
+- 🔴 **Le fait qui porte toute la page : le « nombre de lots » qui déclenche les
+  obligations n'est PAS le nombre total de lots.** La loi compte les lots à usage
+  de **logements, bureaux ou commerces** — ni caves, ni parkings, ni celliers. À
+  Villeurbanne ce compteur légal vaut **79 797 lots contre 165 101**, et
+  **1 744 copropriétés sur 2 065 (84,5 %)** ont un compteur inférieur à leur
+  total ; **pour la copropriété médiane il en représente la moitié**. Une
+  résidence de 60 lots « sur le papier » peut n'en compter que 25 au sens de la
+  loi — **et basculer de palier d'obligation**.
+- 🟢 **Le tableau que personne d'autre n'a : la taille réelle croisée avec le
+  calendrier du plan pluriannuel de travaux.** **36 copropriétés (1,7 %, 11 317
+  lots)** concernées depuis le **01/01/2023** ; **432 (20,9 %, 37 597 lots)**
+  depuis le **01/01/2024** ; **1 597 (77,3 %, 30 883 lots)** seulement depuis le
+  **01/01/2025**. → **Pour les trois quarts des copropriétés villeurbannaises
+  l'obligation est RÉCENTE**, ce qui explique qu'autant de petites copropriétés
+  n'aient ni plan voté ni cotisation réévaluée. C'est un angle de conseil, pas
+  seulement une statistique.
+- **Syndics : parmi les 1 480 copropriétés qui déclarent le type de leur syndic,
+  95,5 % professionnel / 4,5 % bénévole.** ⚠️ Publié **avec** le dénominateur
+  réel et la mention que les 585 autres n'ont pas renseigné le champ — **ne jamais
+  écrire « 68,5 % des copropriétés villeurbannaises » (1 414/2 065), ce serait
+  faux : c'est 95,5 % des déclarantes.**
+- ⚠️ **Le caractère DÉCLARATIF du registre est écrit en légende du tableau**, pas
+  en note de bas de page.
+
+**5. Structure GEO.** 10 H2 tous interrogatifs, chacun ouvert par une réponse
+autonome en gras ; 1 H3 ; 2 tableaux légendés et sourcés ; **7 questions de FAQ**
+(contre 0 auparavant), donc un `FAQPage` là où il n'y en avait pas ; liens
+sortants vers `diagnostics-obligatoires-vente` et `loi-carrez-surface`.
+⚠️ **Partage des rôles respecté : les DURÉES DE VALIDITÉ des diagnostics ne sont
+PAS republiées ici** (règle du 07/10, propriété de
+`diagnostics-obligatoires-vente`) — la page les **lie**. Contrôle passé : zéro
+occurrence de « 3 ans » / « 6 ans » / « 10 ans » en durée de diagnostic.
+
+**6. Un défaut corrigé sur une AUTRE page, même sujet.** Voir « Erreurs commises
+et corrigées » : `vendre-sans-agence` écrivait que le prix de l'état daté
+« dépend du contrat de syndic, pas de vous », en taisant le plafond légal.
+
+**7. L'en-tête de `lib/blog.ts` documente désormais** : la promesse de renvoi à ne
+pas revider, le partage des rôles, les 6 fiches et leurs dates de vérification, la
+double péremption (décret 380 € ; calendrier PPT dont la suppression a été
+**proposée par amendement sans être adoptée** — ne jamais l'écrire comme abrogée),
+l'extraction RNIC et **les trois pièges de cette source**.
 
 ### 2026-10-14 — Une page publiait « 24,6 % de moins » dans son texte et « 24,6 % de plus » dans sa FAQ pour le même écart, et bâtissait tout son cas de référence sur une surface médiane fausse
 
@@ -6146,7 +6351,36 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : NON-CONTENU — contrôle de contradiction interne +
+**Angle du dernier run : CONTENU** (15/10, `charges-copropriete` : 164 → 3 725
+mots, promesse d'architecture enfin tenue, 6 fiches de droit datées, décision du
+Conseil d'État du 17/03/2026 sur le plafond de l'état daté, et une source locale
+neuve — le RNIC — qui donne le calendrier du plan pluriannuel de travaux
+copropriété par copropriété).
+→ 🔴 **LE PROCHAIN RUN (16/10) DOIT ÊTRE NON-CONTENU** (alternance : 13/10
+contenu → 14/10 non-contenu → 15/10 contenu). **Trois candidats, par ordre
+d'impact :**
+  1. 🔴 **LE CONTRÔLE DE PÉRIMÈTRE JURIDIQUE sur les affirmations de droit
+     NOUVELLEMENT publiées, et d'abord le défaut DÉJÀ REPÉRÉ aujourd'hui** :
+     `dpe-2026-ce-qui-change` donne un calendrier de DPE collectif dont les bornes
+     **se chevauchent à 50 lots** (voir « Hypothèses à vérifier »). C'est un
+     défaut vu, localisé, non corrigé — **le prendre en premier**, il ne demande
+     qu'une vérification de source.
+     ⚠️ **Et profiter du passage pour vérifier que ce calendrier (DPE collectif :
+     01/01/2024 / 2025 / 2026) n'a pas été contaminé par celui du PPT
+     (01/01/2023 / 2024 / 2025) publié aujourd'hui, ni l'inverse.** Ce sont **deux
+     obligations distinctes aux calendriers décalés d'un an** : c'est exactement
+     la configuration qui produit une contradiction inter-pages (5ᵉ famille de
+     défaut, 14/10).
+  2. ⚠️ **La REPRODUCTIBILITÉ DES ARRONDIS sur les pages qui restent** :
+     `frais-de-notaire-lyon-2026` et `investir-locatif-lyon` (voir plus bas, le
+     contrôle du 14/10 ne les a pas couvertes).
+  3. 🟢 **Le contrôle de PARITÉ DES VALEURS entre pages (5ᵉ famille, 14/10)
+     étendu aux nouvelles valeurs RNIC** : `2 065`, `79 797`, `165 101`, `1 597`
+     ne doivent apparaître qu'avec le même sens partout. Vérifié ce jour : elles
+     n'existent **nulle part ailleurs** dans `app/` et `lib/`. À re-vérifier dès
+     qu'une page les reprend.
+
+**Angle précédent : NON-CONTENU — contrôle de contradiction interne +
 reproductibilité des arrondis** (14/10, balayage des 27 articles de
 `lib/blog.ts` ; 2 défauts trouvés, les deux sur `rentabilite-locative-lyon` :
 une comparaison qui contredisait la FAQ de sa propre page, et une surface
@@ -6208,6 +6442,17 @@ tableau dérivé, refaire le calcul avec les valeurs AFFICHÉES et comparer.**
 À passer sur `plus-value-immobiliere-calcul`, `frais-de-notaire-lyon-2026`,
 `rentabilite-locative-lyon` et `investir-locatif-lyon`, qui dérivent tous des
 médianes.
+
+✅ **CANDIDAT CONTENU CONSOMMÉ LE 15/10 — `charges-copropriete` est fait**
+(164 → 3 725 mots, 1 promesse d'architecture tenue, 1 affirmation corrigée sur
+une page voisine, 1 source locale neuve). **NE PAS LE REPRENDRE.** La liste des
+pages de droit jamais revérifiées **a tenu sa promesse trois fois de suite** :
+6 défauts le 12/10, 7 le 13/10, et aujourd'hui une page qui ne disait presque
+rien là où le site annonçait qu'elle disait tout. **Reste, dans l'ordre
+d'exposition : `frais-de-notaire-lyon-2026`** (2 614 mots, déjà solide, mais ses
+taux ont leur propre péremption notée dans l'en-tête de `lib/blog.ts` — à
+vérifier côté justesse, pas côté volume), **`/faire-gerer`**,
+**`plus-value-immobiliere-calcul`**, **`/vendre`**.
 
 ✅ **CANDIDAT CONTENU N°1 CONSOMMÉ LE 13/10 — `loi-carrez-surface` est fait**
 (7 défauts, 177 → 2 677 mots). **La liste des pages de droit jamais revérifiées
@@ -6475,17 +6720,24 @@ source primaire (arrêtés préfectoraux du Rhône, open data de la Métropole) 
 **et ne rien publier de mémoire sur ces zonages.**
 
 🔴 **CANDIDAT CONTENU N°2 — LES ORPHELINS ÉDITORIAUX SONT UN BACKLOG DE CONTENU,
-ET IL EN RESTE 11.** Comptage du 06/10, tous à **0 lien entrant** et tous **sous
+ET IL EN RESTE 8.** Comptage du 06/10, tous à **0 lien entrant** et tous **sous
 500 mots** — c'est pour ça que personne ne les lie. ✅ `vendre-sans-agence`
 (399 mots) **est sorti de la liste le 07/10** : réécrit à 2 583 mots et lié
-depuis `/vendre` et `mandat-simple-ou-exclusif`. Restent :
+depuis `/vendre` et `mandat-simple-ou-exclusif`. ✅ `dpe-2026-ce-qui-change`
+(337) **est sorti le 11/10** (2 502 mots). ✅ `loi-carrez-surface` (222) **est
+sorti le 13/10** (2 677 mots). ✅ 🆕 **`charges-copropriete` (212) EST SORTI LE
+15/10** : 3 725 mots, et lié depuis `diagnostics-obligatoires-vente` et
+`vendre-sans-agence`. Restent :
 `comment-estimer-son-bien-immobilier-lyon-villeurbanne` (500),
 `lmnp-location-meublee` (495),
 `cout-gestion-locative` (340, **désormais lié vers `/faire-gerer`, à ne pas vider**),
-`dpe-2026-ce-qui-change` (337), `mandat-simple-ou-exclusif` (277),
+`mandat-simple-ou-exclusif` (277),
 `achat-immobilier-lyon-checklist` (241), `vendre-vite-lyon` (233),
-`vendre-appartement-lyon-etapes` (258), `loi-carrez-surface` (222),
-`charges-copropriete` (212), `home-staging-vendre-plus-cher` (207).
+`vendre-appartement-lyon-etapes` (258), `home-staging-vendre-plus-cher` (207).
+🟢 **Quatre sorties en neuf jours, et les trois dernières par le même geste :
+prendre la page la plus maigre QUI PORTE DU DROIT, la vérifier fiche par fiche, y
+publier une donnée locale que personne n'a. La recette est reproductible —
+`frais-de-notaire-lyon-2026` et `/faire-gerer` sont les suivantes sur ce critère.**
 → **Ne pas les lier pour les lier** (décision motivée du 06/10) : le remède est de
 réécrire ou fusionner. **Un par run de contenu, en mesurant l'angle à chaque fois.**
 🟢 **Le 07/10 valide la séquence** : réécrire d'abord, lier ensuite. Les deux liens
@@ -6592,6 +6844,63 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-15
+
+🔴 **DÉFAUT VU, LOCALISÉ, NON CORRIGÉ — les bornes du calendrier de DPE collectif
+de `dpe-2026-ce-qui-change` se chevauchent à 50 lots exactement.** La page écrit
+« **d'au maximum 50 lots** » pour l'échéance du 01/01/2026 **et** « celles
+**comprises entre 50 et 200 lots** » pour celle du 01/01/2025 : **une copropriété
+de 50 lots pile relève des deux phrases**, qui donnent deux dates différentes.
+C'est la 4ᵉ famille de défaut (contradiction interne, 13/10), sur une page qui
+avait pourtant été réécrite le 11/10 et déclarée propre au balayage du 14/10 —
+**parce que ce balayage groupait les nombres RÉPÉTÉS, et que « 50 » n'apparaît ici
+qu'une fois par phrase sous deux formulations différentes.** 📌 **Le détecteur du
+14/10 a donc un angle mort : les bornes d'intervalle énoncées en mots
+(« au maximum », « entre … et »), qui ne se répètent pas numériquement.**
+→ **À corriger au prochain run NON-CONTENU, et c'est le candidat n°1** : vérifier
+la borne sur une fiche datée (`service-public` ou `ecologie.gouv.fr`), puis
+trancher « ≤ 50 » / « 51 à 200 » comme le fait désormais `charges-copropriete`
+pour le PPT. ⚠️ **Ne pas présumer que la borne du DPE collectif est la même que
+celle du PPT** : les deux calendriers sont décalés d'un an (PPT 2023/2024/2025,
+DPE collectif 2024/2025/2026), donc rien ne garantit que les seuils de lots
+coïncident.
+
+🟡 **Le registre national (RNIC) permettrait de chiffrer DEUX angles de plus, et
+les deux demandent une vérification avant publication.**
+1. **Les copropriétés sans mandat de syndic en cours.** Le champ `mandat_en_cours`
+   donne, pour Villeurbanne : « Mandat en cours » **1 479 (71,6 %)**, « Pas de
+   mandat en cours » **525 (25,4 %)**, « Mandat expiré sans successeur déclaré »
+   **58 (2,8 %)**, « expiré avec successeur » 3. 🔴 **RIEN n'a été publié de ce
+   champ, volontairement**, et il ne faut pas le publier en l'état : écrire
+   « 28 % des copropriétés villeurbannaises n'ont pas de syndic » serait
+   **très probablement faux** — le registre est déclaratif et un mandat non
+   renouvelé dans le registre n'est pas un immeuble sans syndic. **À instruire :
+   croiser avec la date de dernière MAJ (`date_derniere_maj`) pour distinguer
+   l'absence réelle du simple défaut d'actualisation.** Sans ce croisement, ne
+   rien publier.
+2. **L'ancienneté du parc.** `periode_construction` donne « avant 1949 » pour
+   **520 copropriétés (25,2 %)** — mais voir « Erreurs commises » : le champ
+   mélange deux encodages aux bornes incohérentes et 20,7 % de valeurs absentes.
+   **Inexploitable en l'état.** À rouvrir seulement si l'Anah homogénéise le champ.
+
+🟡 **Le compteur légal du RNIC est-il assez fiable pour le palier « plus de
+200 lots » ?** Le contrôle de robustesse des bornes montre **une seule copropriété
+par valeur autour de 200** (199, 200, 201, 202, 203 : une chacune), contre 13 à 14
+par valeur autour de 50. **Donc le chiffre de 36 copropriétés au-delà de 200 lots
+bouge d'une unité à chaque déclaration corrigée, alors que le partage 51-200 /
+≤ 50 est, lui, robuste.** Les trois chiffres sont publiés tels quels avec la
+mention « registre déclaratif », ce qui est honnête, **mais si un run veut
+appuyer un argument sur les « 36 », il doit remesurer d'abord** — le fichier est
+réactualisé chaque jour.
+
+🟡 **La SERP du chantier est-elle une source sous-exploitée ?** Les deux SERP
+mesurées aujourd'hui ont livré **du contenu**, pas seulement une position : la
+décision du Conseil d'État du 17/03/2026 vient du 2ᵉ résultat de « état daté
+copropriété prix plafond 2026 ». **Hypothèse à tester sur deux ou trois runs :
+mesurer systématiquement la SERP du chantier AVANT d'écrire, et compter combien
+de fois elle apporte un fait publiable.** Si le taux est bon, cela devient une
+étape de méthode et non une mesure de suivi.
 
 ### 2026-10-14
 
@@ -7270,6 +7579,91 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-15 — Une note de méthode de CE JOURNAL était fausse et rendait un détecteur aveugle ; et une page taisait un plafond légal, laissant croire au vendeur qu'il n'avait aucun recours
+
+**1. 🔴 ERREUR DU JOURNAL LUI-MÊME, et c'est la plus grave des trois parce qu'elle
+se transmet d'un run à l'autre.** L'entrée « Techniques apprises » du **14/10**
+affirme : « **Le séparateur de milliers du fichier est une espace fine insécable
+(U+202F) ou une espace insécable (U+00A0), pas une espace simple.** Un `\d+` naïf
+coupe « 1 876 » en « 1 » et « 876 » et le détecteur rate tout. »
+**C'est FAUX pour `lib/blog.ts`.** Mesuré aujourd'hui sur le fichier entier :
+
+```
+U+202F (fine insécable) : 0 occurrence
+U+00A0 (insécable)      : 0 occurrence
+U+2009 (fine)           : 0 occurrence
+séparateurs de milliers : 610, TOUS en espace simple U+0020
+(idem avant « % » et « € » : 470 et 486 occurrences, toutes en U+0020)
+```
+
+🔴 **Pourquoi c'est dangereux, et pas seulement inexact : un run qui construit le
+détecteur sur cette prémisse écrit un `NUM` qui ne matche RIEN, ne remonte aucun
+couple, et conclut « aucune contradiction trouvée ».** L'erreur ne produit pas un
+faux positif bruyant mais un **faux négatif silencieux** — le pire type pour un
+contrôle de qualité. Le `NUM` correct pour ce fichier est
+`\d+(?: \d{3})*(?:,\d+)?` avec une **espace simple**.
+→ 📌 **Règle générale, et elle vaut pour tout ce journal : une note d'outillage se
+REMESURE avant d'être réutilisée, parce qu'une note fausse est indétectable à la
+lecture.** Le détecteur du 14/10 a tout de même trouvé deux défauts ce jour-là, ce
+qui veut dire qu'il tournait sur une autre classe de caractères que celle décrite,
+ou que les couples trouvés tenaient sur des nombres courts. **Dans les deux cas la
+note publiée ne décrit pas ce qui a marché.** Note corrigée en « Techniques
+apprises » de ce run.
+
+**2. 🔴 UNE OMISSION QUI TROMPE, troisième du genre après le 12/10 et le 13/10 —
+et celle-ci coûtait de l'argent au lecteur.** `vendre-sans-agence` écrivait, à
+propos de l'état daté : « est établi par le syndic à votre demande : **son prix
+dépend du contrat de syndic, pas de vous** ». Chaque mot est défendable
+isolément — le montant figure bien au contrat de syndic — **et la phrase laisse
+conclure exactement le contraire du droit** : elle dit au vendeur qu'il subit le
+tarif, là où **le décret n° 2020-153 du 21 février 2020 le plafonne à 380 € TTC et
+où toute facturation supérieure est contestable.** Le défaut n'est pas de ce run :
+il est publié depuis la réécriture du **07/10**, et il a survécu au balayage des
+périmètres juridiques du 11/10 **parce que ce balayage cherchait des phrases
+d'obligation (« est soumis », « obligatoire pour »), pas des phrases qui NIENT un
+droit.**
+→ 📌 **Le contrôle à ajouter au grep de périmètre juridique : les formules qui
+DÉNIENT une protection au lecteur.** Elles sont le miroir des phrases
+d'obligation et aucun grep existant ne les attrape :
+
+```bash
+grep -rn "pas de vous\|ne dépend pas de\|vous ne pouvez pas\|aucun recours\|c'est au syndic de\|libre\b.*tarif\|dépend du contrat" \
+  app lib --include='*.tsx' --include='*.ts'
+```
+Corrigé : la phrase publie désormais le plafond, le décret, le fait que la somme
+est à la charge du vendeur et le caractère contestable d'un dépassement, avec un
+lien vers `charges-copropriete`. **`updated` de la page déplacé au 15/10 — une
+affirmation corrigée mérite la date, un simple lien ajouté non (règle du 06/10).**
+
+**3. ⚠️ ERREUR ÉVITÉE DE JUSTESSE SUR LA SOURCE NEUVE, et c'est le dictionnaire de
+données officiel qui l'a provoquée.** Le fichier
+`rnic-dictionnaire-donnees.csv` publié par l'Anah a ses **deux colonnes décalées
+d'une ligne** : la ligne 32 porte l'identifiant `nombre_d_unions_de_syndicats…` et
+le libellé « **Nombre total de lots** », la 33 l'identifiant `nombre_total_de_lots`
+et le libellé « Nombre total de lots à usage d'habitation, de bureaux ou de
+commerces », etc. **Et par-dessus, les identifiants du dictionnaire ne sont plus
+ceux de la ressource** (le dictionnaire dit
+`nombre_total_de_lots_a_usage_d_habitation_de_bureaux_ou_de_comm`, la ressource
+sert `nombre_lots_habitation_bureaux_commerces`). **Suivre le dictionnaire aurait
+fait publier le nombre total de lots à la place du compteur légal — soit
+165 101 au lieu de 79 797, et un tableau de paliers entièrement faux.**
+→ 📌 **Règle : pour toute source tabulaire, lire l'EN-TÊTE RÉEL d'une ligne de
+données, jamais le dictionnaire fourni.** Un `page_size=1` sur l'API tabulaire
+rend une ligne complète clé par clé : c'est le contrôle, il coûte un appel.
+(La fiche descriptive de la ressource prévient d'ailleurs que le passage à
+l'actualisation quotidienne, en avril 2026, « a pu entraîner des modifications à
+la marge dans les noms de colonnes » — elle est en dessous de la vérité.)
+
+**4. 🟡 ET UNE TENTATION REFUSÉE, dans la famille du 13/10.** Le champ
+`mandat_en_cours` permettait d'écrire « **28,2 % des copropriétés villeurbannaises
+n'ont pas de syndic en cours de mandat** ». C'est spectaculaire, c'est local,
+c'est calculé sur la donnée — **et ça ne mesure probablement pas ce que la phrase
+dit** : un registre déclaratif enregistre l'absence de DÉCLARATION de mandat, pas
+l'absence de syndic. **Rien n'a été publié de ce champ**, et la question est
+inscrite en « Hypothèses à vérifier » avec le croisement qui permettrait de
+trancher. **Même règle qu'au 13/10 : la question n'est pas « le calcul est-il
+juste » mais « les deux colonnes mesurent-elles la même chose ».**
 
 ### 2026-10-14 — La même phrase cumulait les deux familles de défaut déjà identifiées, et une surface médiane fausse a traversé deux pages voisines qui, elles, publiaient la bonne
 
@@ -8102,6 +8496,118 @@ reste du diff n'est que de l'ajout.
 
 ## Techniques apprises
 
+### 2026-10-15 — Le registre des copropriétés s'interroge sans télécharger 409 Mo, et la jurisprudence récente est la matière la plus citable qu'on puisse publier
+
+**1. 🟢 LA SOURCE NEUVE : le Registre national d'immatriculation des copropriétés
+(RNIC), publié par l'Anah sur data.gouv.fr.** 653 834 copropriétés en France,
+**2 065 à Villeurbanne**. C'est la première source locale nouvelle depuis la base
+DPE de l'ADEME (11/10), et elle couvre un sujet que DVF n'atteint pas : la
+**structure** du parc, pas ses prix.
+
+**2. 🟢 LA RECETTE QUI ÉVITE LES 409 Mo — l'API tabulaire de data.gouv.fr.** Le
+fichier est trop gros pour ce conteneur (409 Mo pour la ressource quotidienne,
+453 Mo pour le trimestriel). **Inutile de le télécharger : data.gouv.fr expose une
+API tabulaire par ressource, qui filtre côté serveur.**
+
+```bash
+C="--cacert /root/.ccr/ca-bundle.crt"
+# 1) l'id de ressource, depuis l'API dataset (⚠️ ne pas tronquer les URL en les
+#    imprimant : une URL coupée donne un 404 qui ressemble à une URL morte)
+curl -sL $C "https://www.data.gouv.fr/api/1/datasets/registre-national-dimmatriculation-des-coproprietes/"
+# 2) UNE ligne complète -> les VRAIS noms de colonnes (cf. « Erreurs commises »)
+curl -sL $C "https://tabular-api.data.gouv.fr/api/resources/<RID>/data/?page_size=1"
+# 3) la commune, paginée
+curl -sL $C "https://tabular-api.data.gouv.fr/api/resources/<RID>/data/?commune__exact=69266&page_size=200&page=1"
+```
+
+⚠️ **Trois pièges, tous rencontrés.**
+- **L'API est AGRESSIVEMENT limitée en débit, et son échec ressemble à une panne :
+  `HTTP 000`, corps vide, pas de 429.** Douze requêtes rapides ont fait tomber la
+  13ᵉ ; la même requête est passée après 10 s de pause. **La boucle qui marche :
+  `page_size=200`, `sleep 12` entre les pages, et 8 tentatives par page avec
+  backoff progressif.** 11 pages → 2 065 lignes, sans perte.
+- **Ne jamais conclure d'un `HTTP 000` que l'offset est plafonné.** J'ai d'abord
+  cru à un plafond à 1 000 lignes ; c'était le débit. Le test qui tranche est de
+  **rejouer la même page après une pause**.
+- **La ressource utile est « RNIC - Actualisation quotidienne », pas le fichier
+  trimestriel.** Elle était datée **du jour même** (15/10/2026, 06:06 UTC) : la
+  donnée est fraîche à la journée, ce qui est un argument de citabilité — mais
+  **implique de remesurer avant de réutiliser un chiffre**, et pas de le recopier
+  depuis ce journal.
+
+**3. 📌 LA RÈGLE DE FOND DU RUN, et elle est réutilisable hors RNIC : UN SEUIL
+LÉGAL EXPRIMÉ EN « NOMBRE DE LOTS » NE SE LIT PAS SUR LE NOMBRE TOTAL DE LOTS.**
+La loi de 1965 compte les lots **à usage de logements, de bureaux ou de
+commerces** ; le registre sert les deux compteurs séparément.
+
+```
+Villeurbanne, RNIC du 15/10/2026 (n = 2 065)
+  nombre_total_lots                        = 165 101   <- PAS le compteur légal
+  nombre_lots_habitation_bureaux_commerces =  79 797   <- le compteur légal
+  nombre_lots_habitation                   =  73 582
+  nombre_lots_stationnement                =  52 232   (c'est l'essentiel de l'écart)
+  1 744 copropriétés sur 2 065 (84,5 %) ont compteur légal < total
+```
+→ **Confondre les deux fait basculer des copropriétés de palier d'obligation.**
+C'est la même famille d'erreur que « les médianes ne se composent pas » (14/10) :
+**deux colonnes plausibles qui ne mesurent pas le même objet.**
+
+**4. 📌 Le contrôle de substitution quand la règle du 13/10 ne s'applique pas.**
+La règle « reproduire d'abord une statistique DÉJÀ publiée depuis la même
+extraction » est inapplicable sur une source **neuve** : rien n'a jamais été
+publié d'elle. Le contrôle employé à la place, et il est généralisable :
+- **plateau et sensibilité au `n` sur chaque médiane publiée** (voisins du centre
+  tous égaux ; médiane inchangée en retirant la première et la dernière valeur) —
+  44 et 22 lots sont tous deux sur un plateau ;
+- **ratio calculé PAR LIGNE, jamais en divisant deux médianes** (la médiane des
+  ratios vaut 0,500 ; elle coïncide ici avec 22/44, mais **c'est une coïncidence
+  et le calcul correct est le ratio par copropriété**) ;
+- **plausibilité par le nom et l'adresse des plus grandes lignes** : « VILLEURBANNE
+  II » (136 rue Dedieu), « LA PERRALIERE », « LE SAINT ANDRE » (115 r Jean Voillot),
+  « 2ème AVENUE », « ATHENA I » — des ensembles villeurbannais réels, à des
+  adresses réelles. **C'est ce contrôle-là qui dit qu'on a bien extrait la bonne
+  commune**, et il coûte trois secondes ;
+- **somme de contrôle sur chaque tableau** : les trois paliers additionnent
+  exactement 2 065 lignes et 79 797 lots.
+
+**5. 🟢 LA JURISPRUDENCE RÉCENTE EST LA MATIÈRE LA PLUS CITABLE QU'ON PUISSE
+PUBLIER, et `conseil-etat.fr` est joignable depuis ce conteneur.** Rappel du
+13/10 : `legifrance.gouv.fr` est fermé en `curl` **et** en WebFetch (403). Mais
+**ArianeWeb, la base de jurisprudence du Conseil d'État, répond** :
+`https://www.conseil-etat.fr/fr/arianeweb/CE/decision/<AAAA-MM-JJ>/<numero>`.
+La décision n° 499299 du 17/03/2026 a été lue de première main : requérants,
+objet, motifs, dispositif.
+→ 📌 **Règle : un texte de loi ne se lit pas d'ici, mais une DÉCISION récente qui
+l'interprète, si — et elle vaut mieux pour la citabilité.** Une page qui écrit
+« le plafond est de 380 € » dit ce que mille pages disent ; une page qui écrit
+« il a été attaqué par deux chambres FNAIM et le Conseil d'État a rejeté leur
+requête le 17 mars 2026 par la décision n° 499299, en relevant un avis de
+l'Autorité de la concurrence qui chiffre la prestation à une heure de travail »
+dit quelque chose que **personne** d'autre n'écrit. **Chercher
+systématiquement si un chiffre réglementaire publié a été contesté
+récemment** : c'est du contenu frais, daté, sourcé et exclusif, sans rien
+inventer.
+
+**6. ⚠️ PIÈGE DE VÉRIFICATION EN PRODUCTION, nouveau et il m'a fait croire à un
+défaut : React insère un commentaire HTML `<!-- -->` entre deux nœuds de texte.**
+Le contrôle « la date de mise à jour est-elle visible ? » a répondu **False** à
+tort, parce que le HTML servi est
+`Mis à jour le <!-- -->15 octobre 2026`, et non `Mis à jour le 15 octobre 2026`.
+→ 📌 **Tout grep d'une chaîne visible CONCATÉNÉE à partir de deux expressions JSX
+doit tolérer `<!-- -->`** (ou mieux : dénuder les balises d'abord, puis chercher
+dans le texte). C'est la même classe de faux positif que les mots collés du
+04/10, dans l'autre sens : **ici le rendu est bon et c'est le contrôle qui
+mentait.**
+
+**7. ⚠️ Et une correction de procédure sur la lecture des SERP.** Les entrées des
+13 et 14/10 écrivent « composition rigoureusement identique, **lien pour lien** ».
+Vérification faite aujourd'hui : **l'enseigne est identique, l'URL non** — le
+résultat Laforêt est aujourd'hui un billet de blog de recrutement, pas la page
+d'agence. **Les runs précédents n'ont pas consigné les URL, donc « lien pour
+lien » n'était pas vérifiable et n'aurait pas dû être écrit.**
+→ **Consigner l'URL, pas seulement l'enseigne**, sinon la stabilité d'une SERP ne
+se mesure pas.
+
 ### 2026-10-14 — Deux détecteurs de contradiction rejouables, et la règle « les médianes ne se multiplient pas »
 
 **1. 🟢 L'index numérique par article — le détecteur de contradiction interne, en
@@ -8121,9 +8627,14 @@ NUM    = r"\d+(?:[  ]\d{3})*(?:[,.]\d+)?"   # espace fine insécable comprise
 ```
 
 ⚠️ **Deux pièges rencontrés.**
-- **Le séparateur de milliers du fichier est une espace fine insécable
-  (U+202F) ou une espace insécable (U+00A0), pas une espace simple.** Un `\d+`
-  naïf coupe « 1 876 » en « 1 » et « 876 » et le détecteur rate tout.
+- ~~**Le séparateur de milliers du fichier est une espace fine insécable
+  (U+202F) ou une espace insécable (U+00A0), pas une espace simple.**~~
+  🔴 **CETTE NOTE EST FAUSSE — corrigée le 15/10 après remesure :
+  `lib/blog.ts` ne contient AUCUN U+202F, U+00A0 ni U+2009, et ses 610
+  séparateurs de milliers sont tous des espaces simples (U+0020).** Le `NUM`
+  correct est donc `\d+(?: \d{3})*(?:,\d+)?` avec une espace SIMPLE. Une note
+  d'outillage fausse rend le détecteur silencieusement aveugle : voir « Erreurs
+  commises et corrigées » du 15/10.
 - **Il faut inclure la FAQ dans le périmètre de l'article**, sinon le défaut n°1
   du jour reste invisible : la contradiction était précisément entre le corps et
   la FAQ.
