@@ -165,6 +165,49 @@
  * ⚠️ La liste des risques de Villeurbanne vient de l'API Géorisques
  * (/api/v1/gaspar/risques?code_insee=69266, relevé du 12/10/2026) : six familles,
  * et AUCUN risque minier — l'ancienne version de la page écrivait « miniers ».
+ *
+ * Depuis le 15/10/2026, « charges-copropriete » est passé de 164 à ~2 500 mots et
+ * PORTE ENFIN la composition du dossier de copropriété que l'architecture du site
+ * lui réserve : le renvoi de « diagnostics-obligatoires-vente » (« règlement,
+ * procès-verbaux, état daté — dont la composition est détaillée dans notre fiche
+ * sur les charges de copropriété ») promettait un détail que la page ne publiait
+ * pas. La promesse est désormais tenue ; ne pas la revider.
+ * ⚠️ Partage des rôles à respecter : les DURÉES DE VALIDITÉ des diagnostics
+ * restent la propriété de « diagnostics-obligatoires-vente » (règle du 07/10) et
+ * la surface privative celle de « loi-carrez-surface » — cette page les LIE, elle
+ * ne les republie pas.
+ * ⚠️ Ses affirmations de droit sont dérivées de fiches datées, relevées le
+ * 15/10/2026 : service-public F2590 (charges, vérifiée le 18/02/2026), F37294
+ * (état daté, 18/02/2026), F32920 (charges l'année de la vente, 13/02/2026),
+ * F2604 (vente d'un lot, 21/08/2025) ; INC-conso fonds de travaux (11/02/2026) et
+ * plan pluriannuel de travaux (26/06/2026). Chaque fiche porte une mention
+ * « Vérifié le … » : à REVÉRIFIER fiche par fiche, jamais de mémoire, et la date
+ * affichée en fin d'article doit bouger avec.
+ * ⚠️ Deux chiffres ont leur propre péremption, indépendante des fiches :
+ * (1) le plafond de 380 € TTC de l'état daté (décret n° 2020-153 du 21/02/2020),
+ * confirmé par la décision n° 499299 du Conseil d'État du 17/03/2026 qui rejette
+ * le recours de deux chambres FNAIM — à revérifier si un nouveau décret paraît ;
+ * (2) le calendrier du plan pluriannuel de travaux (01/01/2023 / 2024 / 2025),
+ * dont la suppression a été PROPOSÉE par amendement sans être adoptée : ne jamais
+ * écrire l'obligation comme abrogée sans un texte publié à l'appui.
+ * ⚠️ Ses données locales viennent du Registre national d'immatriculation des
+ * copropriétés (RNIC, Anah / data.gouv.fr), ressource « actualisation
+ * quotidienne », extraction du 15/10/2026 sur commune=69266 : 2 065 copropriétés,
+ * 165 101 lots au total, 79 797 lots à usage de logement/bureau/commerce (le
+ * COMPTEUR LÉGAL des seuils), 73 582 lots d'habitation, médiane 44 lots.
+ * Le registre est DÉCLARATIF — le dire reste obligatoire à chaque reprise.
+ * ⚠️ Trois pièges de cette source, tous rencontrés : (1) le dictionnaire de
+ * données publié a ses deux colonnes DÉCALÉES d'une ligne et emploie un ancien
+ * jeu de noms — lire l'en-tête réel de la ressource, jamais le dictionnaire ;
+ * (2) `periode_construction` mélange DEUX encodages (« Avant 1949 » et
+ * « AVANT_1949 »), avec des bornes de tranches incohérentes entre les deux et
+ * 20,7 % de valeurs absentes : ce champ N'EST PAS agrégeable, aucune répartition
+ * par époque ne doit en être publiée ; (3) `syndicat_principal_ou_secondaire`
+ * est rendu en booléen sans que la correspondance soit documentée — inexploitable.
+ * ⚠️ Et le compteur légal n'est PAS le nombre total de lots : 1 744 copropriétés
+ * sur 2 065 (84,5 %) ont un compteur légal inférieur à leur total. Ne jamais
+ * substituer `nombre_total_lots` à `nombre_lots_habitation_bureaux_commerces`
+ * pour classer une copropriété dans un palier d'obligation.
  */
 
 export type Block =
@@ -1367,7 +1410,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Au prix médian villeurbannais, vendre seul fait économiser 11 700 € d'honoraires. L'erreur médiane d'une estimation faite sur les seules données publiques y vaut 30 225 €. Le calcul complet, quartier par quartier.",
     date: "2026-05-28",
-    updated: "2026-10-07",
+    updated: "2026-10-15",
     internalHref: "/vendre",
     internalLabel: "Être accompagné pour ma vente",
     blocks: [
@@ -1398,7 +1441,7 @@ export const ARTICLES: Article[] = [
         "la **[surface privative du lot (loi Carrez)](/blog/loi-carrez-surface)** ;",
         "l'**état de l'installation d'assainissement non collectif**, si la copropriété n'est pas raccordée au réseau public.",
       ] },
-      { type: "p", text: "Deux précisions utiles, et rarement écrites. L'**état des risques** ne se paie pas : il se remplit en ligne depuis le service public Géorisques — mais il doit être remis à l'acquéreur dès la **première visite** si le logement est en zone d'exposition, faute de quoi celui-ci pourra demander la résolution de la vente ou une diminution du prix. Et l'**état daté**, qui récapitule ce que vous devez à la copropriété et ce qu'elle vous doit, est établi par le syndic à votre demande : son prix dépend du contrat de syndic, pas de vous." },
+      { type: "p", text: "Deux précisions utiles, et rarement écrites. L'**état des risques** ne se paie pas : il se remplit en ligne depuis le service public Géorisques — mais il doit être remis à l'acquéreur dès la **première visite** si le logement est en zone d'exposition, faute de quoi celui-ci pourra demander la résolution de la vente ou une diminution du prix. Et l'**état daté**, qui récapitule ce que vous devez à la copropriété et ce qu'elle vous doit, est établi par le syndic à votre demande et reste à votre charge : **son prix est plafonné à 380 € TTC** par le décret n° 2020-153 du 21 février 2020, et toute facturation supérieure peut être contestée. Nous détaillons [ce que le syndic peut facturer et ce qui se répartit entre vendeur et acquéreur](/blog/charges-copropriete)." },
       { type: "p", text: "Si un document du dossier de diagnostic technique manque le jour de l'acte, vous devez garantir le vice caché correspondant : la clause d'exclusion de garantie ne joue plus. Source : service-public.gouv.fr, fiche « Vente d'un logement en copropriété », vérifiée le 21 août 2025. Côté acheteur, le montant des frais d'acquisition est détaillé dans notre calcul des [frais de notaire à Villeurbanne et Lyon](/blog/frais-de-notaire-lyon-2026)." },
 
       { type: "h2", text: "Qu'est-ce qu'un particulier n'a pas le droit de faire lui-même dans une vente ?" },
@@ -1590,23 +1633,151 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "charges-copropriete",
-    title: "Charges de copropriété : ce qui est compris (et ce qui ne l'est pas)",
+    title:
+      "Charges de copropriété : la répartition, et qui paie l'année de la vente",
     metaDescription:
-      "Que couvrent les charges de copropriété ? Charges courantes, exceptionnelles, qui paie quoi et comment les vérifier avant d'acheter.",
-    h1: "Charges de copropriété : ce qui est compris",
+      "Comment se répartissent les charges de copropriété, qui les paie l'année de la vente, ce que coûte l'état daté (380 € TTC) et depuis quand votre copropriété doit tenir un plan pluriannuel de travaux.",
+    h1: "Charges de copropriété : la répartition, et qui paie l'année de la vente",
     excerpt:
-      "Les charges couvrent l'entretien des parties communes. Courantes, exceptionnelles, et ce qu'il faut vérifier avant d'acheter.",
+      "Les charges générales se répartissent à la quote-part du lot, celles d'équipement selon l'utilité objective. À la vente, le vendeur doit la provision du trimestre en cours et ne récupère pas son fonds de travaux. L'état daté reste plafonné à 380 € TTC.",
     date: "2026-03-05",
+    updated: "2026-10-15",
     internalHref: "/acheter",
     internalLabel: "Acheter en toute sérénité",
     blocks: [
-      { type: "p", text: "**Les charges de copropriété couvrent l'entretien et le fonctionnement des parties communes ; leur montant varie fortement selon les équipements de l'immeuble.** Avant d'acheter, c'est un poste à examiner de près." },
-      { type: "h2", text: "Les charges courantes" },
-      { type: "p", text: "Entretien des parties communes, ascenseur, chauffage collectif éventuel, gardiennage, espaces verts, honoraires du syndic, assurance de l'immeuble." },
-      { type: "h2", text: "Les charges exceptionnelles" },
-      { type: "p", text: "Les **gros travaux** (ravalement, toiture…) votés en assemblée générale. Demandez les PV des 3 dernières AG pour connaître les travaux prévus." },
-      { type: "h2", text: "Avant d'acheter" },
-      { type: "p", text: "Vérifiez le montant annuel des charges et les travaux votés : un immeuble avec piscine ou gardien coûte bien plus qu'une petite copropriété." },
+      { type: "p", text: "**Les charges de copropriété se répartissent selon deux règles, pas une : les charges générales à la quote-part de parties communes de votre lot, les charges de services collectifs et d'équipements communs selon l'utilité objective qu'ils présentent pour lui.** C'est le règlement de copropriété qui fixe ces clés. Le reste de cette page répond aux questions qui coûtent le plus cher quand on les découvre trop tard : qui paie quoi l'année de la vente, ce que devient le fonds de travaux, et ce que le syndic peut facturer." },
+      { type: "p", text: "À Villeurbanne, **2 065 copropriétés sont immatriculées au registre national**, pour 165 101 lots. Nous avons extrait ce registre le 15 octobre 2026 pour établir ce que personne ne publie à cette échelle : la taille réelle de ces copropriétés et, surtout, **depuis quelle date chacune doit tenir un plan pluriannuel de travaux**. Pour les trois quarts d'entre elles, c'est seulement depuis le 1er janvier 2025." },
+
+      { type: "h2", text: "Comment se répartissent les charges de copropriété ?" },
+      { type: "p", text: "**Il existe deux catégories de charges et deux clés de répartition distinctes.** Les charges générales — administration, conservation et entretien des parties communes — sont dues par tous les copropriétaires, proportionnellement à la valeur relative de leur lot. Les charges de services collectifs et d'éléments d'équipement commun — chauffage, eau chaude, ascenseur, interphone, antenne — se répartissent, elles, selon l'utilité objective que ces services présentent pour chaque lot." },
+      { type: "p", text: "La différence est très concrète. Un parking en sous-sol ne participe ni au chauffage ni à l'antenne collective, parce que ces équipements ne lui sont d'aucune utilité. Pour l'ascenseur, la charge varie selon l'étage desservi et la superficie du lot : un rez-de-chaussée paie moins qu'un cinquième étage. En revanche, un copropriétaire ne peut pas refuser de payer sa part d'ascenseur au motif qu'il ne s'en sert jamais — **le critère est l'utilité objective, pas l'usage réel.**" },
+      { type: "p", text: "Trois dépenses échappent à toute répartition et restent imputables à un seul copropriétaire : les frais de recouvrement engagés contre lui, les prestations personnelles du syndic qu'il a demandées, et les travaux d'intérêt collectif réalisés sur ses parties privatives." },
+
+      { type: "h3", text: "Qu'est-ce qu'un tantième, et où trouver le mien ?" },
+      { type: "p", text: "**Le tantième est la fraction de la copropriété attachée à votre lot, exprimée en millièmes ou en dix-millièmes, et il figure dans l'état descriptif de division annexé au règlement de copropriété.** Il est fixé selon la consistance, la superficie et la situation du lot — jamais selon son usage ni le nombre d'occupants. Il sert à deux choses : votre part de charges générales, et votre poids de vote en assemblée générale." },
+
+      { type: "h2", text: "Quand les charges sont-elles appelées, et que se passe-t-il en fin d'année ?" },
+      { type: "p", text: "**Chaque année, l'assemblée générale vote un budget prévisionnel pour les dépenses courantes, et le syndic appelle des provisions exigibles le premier jour de chaque trimestre**, sauf si l'assemblée a fixé une autre période — mensuelle, par exemple. Ces appels ne sont pas le montant définitif de vos charges : ce sont des avances." },
+      { type: "p", text: "À la clôture de l'exercice, le syndic compare les provisions encaissées aux dépenses réellement engagées. Un moins-perçu donne lieu à un appel complémentaire, qui n'est exigible qu'après l'approbation des comptes par l'assemblée. Un trop-perçu est reversé aux copropriétaires selon leur quote-part. **Cette date d'approbation des comptes compte beaucoup à la vente** : c'est elle, et non la date de l'acte, qui désigne qui encaisse ou qui règle la régularisation." },
+
+      { type: "h2", text: "Qui paie les charges de copropriété l'année de la vente ?" },
+      { type: "p", text: "**La règle légale ne proratise rien : le vendeur doit la provision du budget prévisionnel dès lors qu'elle était exigible avant la vente, et les dépenses hors budget prévisionnel incombent à celui qui est copropriétaire au jour où le paiement est demandé.** Un vendeur qui signe le 5 avril reste donc redevable de tout le trimestre entamé le 1er avril. Vendeur et acquéreur peuvent convenir d'une autre répartition dans l'acte — les notaires le prévoient presque systématiquement, au prorata du temps de détention — mais cet accord ne vaut qu'entre eux." },
+      {
+        type: "table",
+        caption:
+          "Qui doit quoi, l'année de la vente d'un lot de copropriété",
+        headers: ["Somme en jeu", "Qui la doit, à défaut d'accord", "Ce qui déclenche l'obligation"],
+        rows: [
+          ["Provision du budget prévisionnel", "Le vendeur", "L'exigibilité au 1er jour du trimestre, ou de la période votée"],
+          ["Dépense hors budget prévisionnel", "Le copropriétaire du jour de l'appel", "La date à laquelle le paiement est demandé"],
+          ["Appel de fonds pour travaux votés", "Le vendeur si l'appel est émis avant la vente, l'acquéreur s'il est émis après", "Le calendrier d'appel voté, pas la date du vote ni le début du chantier"],
+          ["Régularisation annuelle, en trop ou en moins", "Le copropriétaire en place à l'approbation des comptes", "La date d'approbation des comptes"],
+          ["Cotisation déjà versée au fonds de travaux", "Acquise au syndicat : elle n'est pas remboursée au vendeur", "La vente ne rouvre pas le fonds"],
+        ],
+        source:
+          "Décret n° 67-223 du 17 mars 1967, articles 6-2 (règle générale) et 6-3 (accord entre les parties). Fiche service-public.gouv.fr F32920, vérifiée le 13 février 2026.",
+      },
+      { type: "p", text: "**Ce que la répartition conventionnelle ne change pas : elle n'est pas opposable au syndic.** Le syndic continue d'appeler les charges auprès du propriétaire inscrit, à charge pour celui qui a payé de se retourner contre l'autre. Si l'acquéreur compte sur un remboursement du vendeur, mieux vaut que la somme soit séquestrée chez le notaire que promise dans une clause." },
+      { type: "p", text: "⚠️ **Le cas qui surprend le plus souvent est celui des travaux votés avant la vente mais appelés après.** Ils sont dus par l'acquéreur, même si le vote a eu lieu des mois avant son arrivée dans l'immeuble et même si le chantier n'a pas commencé. C'est précisément pour cela que les procès-verbaux des trois dernières assemblées générales se lisent avant de signer, et non après." },
+
+      { type: "h2", text: "Le fonds de travaux est-il perdu quand on vend ?" },
+      { type: "p", text: "**Oui : les sommes versées au fonds de travaux sont définitivement acquises au syndicat et ne sont pas remboursées au vendeur.** Elles restent attachées au lot, dont elles augmentent la valeur — c'est la logique même du dispositif. Depuis 2023, le texte prévoit expressément que l'acquéreur peut consentir à verser au vendeur un montant équivalent à ces sommes, en sus du prix de vente. Ce n'est pas automatique : cela se négocie et s'écrit." },
+      { type: "p", text: "Le montant en jeu n'est pas symbolique. La cotisation annuelle au fonds ne peut être inférieure à **5 % du budget prévisionnel** et, si l'assemblée a adopté un plan pluriannuel de travaux, elle ne peut non plus être inférieure à **2,5 % du montant des travaux que ce plan prévoit**. L'assemblée peut toujours voter davantage. La part du fonds rattachée au lot et le montant de la dernière cotisation versée font partie des informations financières que le vendeur doit remettre à l'acquéreur avant la signature : c'est là qu'on en lit le montant exact." },
+
+      { type: "h2", text: "Combien coûte l'état daté, et qui le paie ?" },
+      { type: "p", text: "**L'état daté est plafonné à 380 € TTC et il est à la charge du vendeur.** Seul le syndic peut l'établir ; il le transmet au notaire, qui le demande au moment de préparer l'acte. Le plafond est fixé par le décret n° 2020-153 du 21 février 2020, et toute facturation supérieure peut être contestée — y compris lorsque la vente porte sur plusieurs lots." },
+      { type: "p", text: "Le document se lit en trois parties : ce que le vendeur doit au syndicat (provisions exigibles, charges impayées, avances de trésorerie, quote-part d'un emprunt collectif), ce que le syndicat doit au vendeur, et ce qui sera à la charge de l'acquéreur (provisions non encore exigibles, reconstitution des avances). Une annexe récapitule les charges et travaux des deux derniers exercices ainsi que les procédures judiciaires en cours." },
+      { type: "p", text: "**Ce plafond a été attaqué, et il a tenu.** Deux chambres FNAIM — Grand Paris et Alpes-Maritimes — demandaient au Premier ministre de réexaminer les 380 €, qu'elles jugeaient déconnectés des coûts réels. **Le Conseil d'État a rejeté leur requête le 17 mars 2026, par sa décision n° 499299**, retenant notamment que la seule hausse générale des coûts et de l'inflation ne démontre pas que le plafond ne couvre plus la prestation, et relevant un avis de l'Autorité de la concurrence selon lequel l'établissement d'un état daté représente, dans la plupart des cas, environ une heure de travail. Le plafond de 380 € TTC reste donc en vigueur." },
+      { type: "p", text: "⚠️ **Une vigilance subsiste, et elle porte un autre nom.** Le plafond ne couvre que l'état daté lui-même. Certains syndics facturent en plus un « pré-état daté », établi au stade du compromis, qui n'entre pas dans le champ du décret et n'est donc pas plafonné. Si cette ligne apparaît sur un devis, elle se discute — et elle ne remplace pas l'état daté, qui restera dû." },
+
+      { type: "h2", text: "Quels documents de copropriété doit-on recevoir avant d'acheter ?" },
+      { type: "p", text: "**Le vendeur doit remettre à l'acquéreur un dossier de copropriété au plus tard à la signature de la promesse de vente, et le délai de rétractation de dix jours ne commence pas à courir tant que ce dossier n'est pas reçu.** C'est la sanction la plus utile à connaître : un dossier incomplet ne bloque pas la vente, il repousse le point de départ du délai pendant lequel l'acquéreur peut encore renoncer." },
+      { type: "p", text: "Les pièces d'organisation et de fonctionnement sont les suivantes :" },
+      { type: "ul", items: [
+        "**La fiche synthétique de la copropriété** : son organisation et ses données techniques et financières.",
+        "**Le règlement de copropriété et l'état descriptif de division**, avec les actes qui les ont modifiés. C'est là que figurent vos tantièmes et les clés de répartition.",
+        "**Les procès-verbaux des assemblées générales des trois dernières années**, où se lisent les travaux votés et les litiges en cours.",
+        "**Le carnet d'entretien de l'immeuble.**",
+        "**Les conclusions du diagnostic technique global (DTG)**, s'il en existe un.",
+        "**Le plan pluriannuel de travaux**, ou son projet.",
+        "**Une notice d'information** sur les droits et obligations des copropriétaires et le fonctionnement du syndicat.",
+      ] },
+      { type: "p", text: "S'y ajoutent quatre informations financières, et ce sont elles qui engagent votre budget :" },
+      { type: "ul", items: [
+        "**Le montant des charges courantes du budget prévisionnel et des charges hors budget prévisionnel** payées par le vendeur au titre des deux exercices comptables précédant la vente.",
+        "**La part du fonds de travaux rattachée au lot** et le montant de la dernière cotisation versée.",
+        "**Les sommes que l'acquéreur pourrait devoir au syndicat**, une avance de trésorerie par exemple.",
+        "**L'état global des impayés de charges dans la copropriété et de la dette du syndicat envers ses fournisseurs.** C'est l'indicateur de santé le plus direct de l'immeuble, et le plus souvent survolé.",
+      ] },
+      { type: "p", text: "Deux pièces arrivent plus tard, par le notaire : **l'état daté**, et un **certificat du syndic de moins d'un mois** attestant que le vendeur est quitte de toute dette envers le syndicat. Le dossier de diagnostic technique du logement lui-même — DPE, amiante, plomb, électricité, gaz, termites, état des risques — suit une liste distincte, dont nous détaillons [le contenu et les durées de validité pièce par pièce](/blog/diagnostics-obligatoires-vente). La surface privative du lot, elle, relève de [la loi Carrez](/blog/loi-carrez-surface)." },
+
+      { type: "h2", text: "Combien de copropriétés compte Villeurbanne, et de quelle taille sont-elles ?" },
+      { type: "p", text: "**2 065 copropriétés sont immatriculées à Villeurbanne, pour 165 101 lots au total, dont 73 582 lots d'habitation.** La copropriété villeurbannaise médiane compte 44 lots. C'est une ville de copropriétés moyennes et petites : 429 d'entre elles, soit 20,8 %, comptent moins de dix lots à usage de logement, de bureau ou de commerce." },
+      { type: "p", text: "⚠️ **Et voici la distinction qui décide de vos obligations : le « nombre de lots » qui compte juridiquement n'est pas le nombre total de lots.** La loi raisonne sur les seuls lots à usage de logements, de bureaux ou de commerces : elle ne compte ni les caves, ni les parkings, ni les celliers. À Villeurbanne, ce compteur légal totalise **79 797 lots contre 165 101 lots en tout**, et **1 744 copropriétés sur 2 065, soit 84,5 %, ont un compteur légal inférieur à leur nombre total de lots** — pour la copropriété médiane, il en représente la moitié. Une résidence de 60 lots sur le papier peut n'en compter que 25 au sens de la loi, et basculer ainsi dans une autre catégorie d'obligations." },
+      {
+        type: "table",
+        caption:
+          "Les 2 065 copropriétés de Villeurbanne par taille au sens de la loi, et la date depuis laquelle chacune doit tenir un plan pluriannuel de travaux",
+        headers: ["Lots à usage de logement, bureau ou commerce", "Copropriétés", "Part", "Lots concernés", "Obligation depuis le"],
+        rows: [
+          ["Plus de 200", "36", "1,7 %", "11 317", "1er janvier 2023"],
+          ["De 51 à 200", "432", "20,9 %", "37 597", "1er janvier 2024"],
+          ["50 au plus", "1 597", "77,3 %", "30 883", "1er janvier 2025"],
+          ["**Ensemble**", "**2 065**", "**100 %**", "**79 797**", "—"],
+        ],
+        source:
+          "Registre national d'immatriculation des copropriétés (RNIC, Anah / data.gouv.fr), fichier à actualisation quotidienne extrait le 15 octobre 2026, copropriétés de code commune 69266. Le registre est déclaratif : il reflète ce que les syndics et les notaires y ont déclaré. Les parts sont arrondies au dixième et la somme des trois valeurs affichées vaut 99,9 %.",
+      },
+      { type: "p", text: "Ces trois dates ne sont pas un détail de calendrier : elles disent depuis quand votre assemblée générale aurait dû voter un plan pluriannuel de travaux et ajuster la cotisation au fonds. **Pour 1 597 copropriétés villeurbannaises sur 2 065, l'obligation n'est entrée en vigueur que le 1er janvier 2025.** C'est récent, et cela explique qu'autant de petites copropriétés n'aient encore ni plan voté ni cotisation réévaluée. Un acquéreur qui réclame le plan pluriannuel d'une résidence de trente lots à Villeurbanne pose donc une question parfaitement légitime, mais souvent sans réponse écrite à ce jour." },
+
+      { type: "h2", text: "Qu'est-ce que le plan pluriannuel de travaux, et qui doit en avoir un ?" },
+      { type: "p", text: "**Tout immeuble à destination partielle ou totale d'habitation soumis à la loi de 1965 doit faire établir un projet de plan pluriannuel de travaux à l'expiration d'un délai de quinze ans à compter de la réception des travaux de construction.** Le plan programme les travaux sur dix ans et s'actualise tous les dix ans. L'obligation est entrée en vigueur par paliers selon la taille de la copropriété : le 1er janvier 2023 au-delà de 200 lots, le 1er janvier 2024 de 51 à 200 lots, le 1er janvier 2025 pour 50 lots au plus." },
+      { type: "p", text: "Le projet recense les travaux nécessaires à la sauvegarde de l'immeuble, à la santé et à la sécurité des occupants, aux économies d'énergie et à la réduction des émissions de gaz à effet de serre ; il estime le niveau de performance atteignable, chiffre sommairement les coûts, les hiérarchise et propose un échéancier sur dix ans. Les travaux retenus et leur échéancier sont ensuite intégrés au carnet d'entretien de l'immeuble." },
+      { type: "p", text: "**Une dispense existe** : si un diagnostic technique global ne fait apparaître aucun besoin de travaux dans les dix années suivant son élaboration, le syndicat est dispensé d'établir le projet de plan. C'est l'une des raisons de demander le DTG, quand il existe, avant de s'inquiéter de l'absence de plan." },
+
+      { type: "h2", text: "Que vérifier avant d'acheter en copropriété à Villeurbanne ?" },
+      { type: "ol", items: [
+        "**Le montant réel des charges sur deux exercices**, et non celui annoncé dans l'annonce. Le vendeur doit vous le remettre pour les deux exercices précédant la vente, en distinguant charges courantes et charges hors budget prévisionnel.",
+        "**Les procès-verbaux des trois dernières assemblées**, en cherchant précisément les travaux votés dont les appels de fonds n'ont pas encore été émis : ceux-là seront à votre charge.",
+        "**L'état global des impayés et la dette fournisseurs.** Dans une copropriété où les impayés sont élevés, les charges des copropriétaires à jour finissent par absorber la défaillance des autres.",
+        "**Le plan pluriannuel de travaux et la part du fonds rattachée au lot** — et, à défaut de plan, depuis quand l'obligation s'applique à une résidence de cette taille (voir le tableau ci-dessus).",
+        "**Les équipements qui pèsent durablement** : ascenseur, chauffage collectif, gardiennage, espaces verts. Ce sont eux, et non la surface du lot, qui expliquent l'essentiel des écarts de charges d'un immeuble à l'autre.",
+      ] },
+      { type: "p", text: "Un dernier repère villeurbannais, utile pour savoir à qui s'adresser : **parmi les 1 480 copropriétés de la commune qui déclarent au registre le type de leur syndic, 95,5 % ont un syndic professionnel et 4,5 % un syndic bénévole.** Les 585 autres n'ont pas renseigné ce champ, ce qui ne veut pas dire qu'elles sont sans syndic." },
+
+      { type: "h2", text: "Où sont écrites ces règles ?" },
+      { type: "p", text: "**La répartition des charges est à l'article 10 de la loi n° 65-557 du 10 juillet 1965, le fonds de travaux à son article 14-2-1, le plan pluriannuel de travaux à son article 14-2 et les frais d'état daté à son article 10-1.** La répartition entre vendeur et acquéreur relève des articles 6-2 et 6-3 du décret n° 67-223 du 17 mars 1967, et le contenu de l'état daté de son article 5. Le plafond de 380 € TTC est fixé par le décret n° 2020-153 du 21 février 2020. Les documents à remettre à l'acquéreur sont aux articles L721-1 à L721-3 du code de la construction et de l'habitation, les délais de rétractation et de réflexion aux articles L271-1 à L271-3 du même code." },
+      { type: "p", text: "Les éléments de cette page ont été vérifiés le 15 octobre 2026 sur les sources suivantes : les fiches service-public.gouv.fr « Charges de copropriété » (F2590) et « Faut-il un état daté pour vendre un logement dans une copropriété ? » (F37294), toutes deux vérifiées le 18 février 2026 ; « Qui paie les charges de copropriété l'année de la vente du logement ? » (F32920), vérifiée le 13 février 2026 ; « Vente d'un logement en copropriété » (F2604), vérifiée le 21 août 2025 ; les fiches de l'Institut national de la consommation sur le fonds de travaux (vérifiée le 11 février 2026) et sur le plan pluriannuel de travaux (vérifiée le 26 juin 2026) ; et la décision n° 499299 du Conseil d'État du 17 mars 2026 sur le plafonnement de l'état daté. Les données locales proviennent du registre national d'immatriculation des copropriétés, extrait le 15 octobre 2026." },
+    ],
+    faq: [
+      {
+        q: "Qui paie les charges de copropriété l'année de la vente, le vendeur ou l'acheteur ?",
+        a: "Selon la loi, le vendeur doit la provision du budget prévisionnel dès lors qu'elle était exigible avant la vente : un vendeur qui signe le 5 avril reste redevable de tout le trimestre entamé le 1er avril, sans prorata. Les dépenses hors budget prévisionnel incombent en revanche à celui qui est copropriétaire au jour où le paiement est demandé. Vendeur et acquéreur peuvent convenir d'un prorata dans l'acte, mais cet accord n'est pas opposable au syndic : celui-ci continue d'appeler les charges auprès du propriétaire inscrit.",
+      },
+      {
+        q: "Récupère-t-on le fonds de travaux quand on vend son appartement ?",
+        a: "Non. Les sommes versées au fonds de travaux sont définitivement acquises au syndicat et ne sont pas remboursées au vendeur : elles restent attachées au lot. Depuis 2023, l'acquéreur peut toutefois consentir à verser au vendeur un montant équivalent à ces sommes, en sus du prix de vente. Rien ne le rend automatique : cela se négocie et s'écrit dans l'acte.",
+      },
+      {
+        q: "Combien un syndic peut-il facturer pour un état daté ?",
+        a: "380 € TTC au maximum, plafond fixé par le décret n° 2020-153 du 21 février 2020, et la somme est à la charge du vendeur. Toute facturation supérieure peut être contestée, y compris si la vente porte sur plusieurs lots. Le Conseil d'État a rejeté le 17 mars 2026, par sa décision n° 499299, le recours de deux chambres FNAIM qui demandaient le relèvement de ce plafond : il reste en vigueur. Attention en revanche au « pré-état daté » parfois facturé au stade du compromis, qui n'entre pas dans le champ du décret et n'est donc pas plafonné.",
+      },
+      {
+        q: "Les travaux votés avant la vente sont-ils à la charge du vendeur ?",
+        a: "Pas nécessairement. Ce qui compte est la date d'émission de l'appel de fonds, et non la date du vote ni le début du chantier : le vendeur paie les appels émis avant la vente, l'acquéreur ceux émis après. Un acquéreur peut donc devoir financer des travaux votés plusieurs mois avant son arrivée dans l'immeuble, et même non commencés. C'est pourquoi les procès-verbaux des trois dernières assemblées générales se lisent avant de signer.",
+      },
+      {
+        q: "Un copropriétaire du rez-de-chaussée peut-il refuser de payer l'ascenseur ?",
+        a: "Non, mais sa part est plus faible. Les charges d'ascenseur se répartissent selon l'utilité objective de l'équipement pour chaque lot : elles varient avec l'étage desservi et la superficie du lot, de sorte qu'un rez-de-chaussée paie moins qu'un étage élevé. Le critère est l'utilité objective et non l'usage réel : ne jamais prendre l'ascenseur ne dispense pas d'y contribuer. En revanche, un lot qu'un équipement ne peut pas desservir n'en paie pas les charges — un parking en sous-sol ne participe ni au chauffage ni à l'antenne collective.",
+      },
+      {
+        q: "Depuis quand une copropriété doit-elle avoir un plan pluriannuel de travaux ?",
+        a: "Cela dépend de son nombre de lots à usage de logement, de bureau ou de commerce. L'obligation s'applique depuis le 1er janvier 2023 au-delà de 200 lots, depuis le 1er janvier 2024 de 51 à 200 lots, et depuis le 1er janvier 2025 pour 50 lots au plus. L'immeuble doit par ailleurs avoir plus de quinze ans depuis la réception des travaux de construction. À Villeurbanne, 1 597 des 2 065 copropriétés immatriculées relèvent du dernier palier, soit 77,3 % : pour la majorité des copropriétés de la commune, l'obligation est donc récente.",
+      },
+      {
+        q: "Comment connaître ses tantièmes de charges de copropriété ?",
+        a: "Ils figurent dans l'état descriptif de division annexé au règlement de copropriété, que le vendeur doit vous remettre au plus tard à la signature de la promesse de vente. Les tantièmes sont fixés selon la consistance, la superficie et la situation du lot, et non selon son usage ou le nombre d'occupants. Ils déterminent à la fois votre part de charges générales et votre poids de vote en assemblée générale.",
+      },
     ],
   },
   {
