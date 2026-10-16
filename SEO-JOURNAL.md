@@ -14,6 +14,121 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-16**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
+  avant fetch `origin/main` pointait sur `1cc9814`, après fetch sur `faef112`, et
+  **deux commits portent la date du 2026-10-15** — le run d'hier a bien eu lieu.
+  🆕 **Quatrième configuration de départ différente en quatre runs, à savoir** :
+  la branche de démarrage (`claude/dazzling-feynman-jl21y4`) portait **déjà
+  `faef112`**, c'est-à-dire exactement ce que le fetch allait donner, tandis que
+  le `main` LOCAL retardait de **six commits**. **L'enchaînement du 15/10 marche
+  tel quel et reste le seul sûr : `git fetch origin`, `git checkout main`,
+  `git merge --ff-only origin/main`, puis LIRE les dates des commits.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-deuxième constat identique** (21/09 → 16/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Cinquième confirmation : à refaire à
+  chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Vendredi : pas de veille** (faite le lundi 12/10). **Prochaine échéance :
+  lundi 19/10.**
+- 🔴 **DEUX SERP MESURÉES, ET ELLES DÉCLENCHENT LA RÈGLE POSÉE LE 14/10 —
+  à lire avant toute mesure du prochain run.** Le 14/10 avait écrit : *« si elles
+  restent figées au lien près plusieurs jours alors que les SERP précédentes
+  tournaient chaque jour, il faudra cesser de compter ces relevés comme des
+  mesures indépendantes — et donc cesser d'écrire "Nᵉ mesure concordante" »*.
+  **La condition est remplie sur les deux requêtes :**
+  - « agence immobilière Villeurbanne » — **site absent**, et les **9 URL sont
+    identiques à celles du 15/10, à l'URL près** (relevées cette fois, leçon du
+    15/10) : `laforet.com/agence-immobiliere/villeurbanne-republique/blog/actualite/laforet-villeurbanne-recrute`,
+    `orpi.com/agences-immobilieres-villeurbanne-cusset/`,
+    `orpi.com/agences-immobilieres-villeurbanne-charpennes/`,
+    `cylex-locale.fr/villeurbanne/agence-immobilière/`,
+    `zimo.fr/professionnels/villeurbanne-69100`,
+    `realadvisor.fr/fr/agences-immobilieres/agence-century21-vu-villeurbanne-zola`,
+    `lesiteimmo.com/agences-immobilieres/villeurbanne-69100`,
+    `fr.mappy.com/poi/4d6dc5deb9eb2507919ecfc3`,
+    `zimo.fr/professionnels/agence-immobiliere/vienne-38200`. **Quatrième jour
+    consécutif sans la moindre rotation** (13, 14, 15, 16/10).
+  - « estimation immobilière Villeurbanne » — **site absent**. Mêmes **9 entités**
+    qu'au 11/10 et au 14/10 (Laforêt ×2, Orpi ×2, Square Habitat ×2,
+    Capifrance ×2, Efficity), et surtout **le résumé du moteur recite les deux
+    mêmes chiffres aux mêmes dates qu'il y a cinq jours** : Efficity
+    « 3 480 €/m², juillet 2026 » et Square Habitat « 3 443 €/m², janvier 2026,
+    −3,88 % ». URL relevées pour servir de base : `laforet.com/.../estimer/immeuble`,
+    `orpi.com/orpicetrim/estimation-d-un-appartement-a-villeurbanne`,
+    `orpi.com/citeimmo/comment-evaluer-le-bon-prix-de-son-bien-a-villeurbanne`,
+    `laforet.com/.../estimer`, `squarehabitat.fr/estimation-maison-en-ligne/villeurbanne-69100`,
+    `capifrance.fr/.../local-commercial/villeurbanne_69`,
+    `capifrance.fr/.../vente/appartement/villeurbanne_69`,
+    `efficity.com/prix-immobilier-m2/v_villeurbanne_69100/`,
+    `squarehabitat.fr/prix-immobilier/auvergne-rhone-alpes/rhone/villeurbanne-69100`.
+  → 📌 **DÉCISION APPLIQUÉE, et elle change la façon de mesurer** : ces deux
+  relevés **ne comptent plus comme des mesures indépendantes**. Ne plus écrire
+  « 33ᵉ mesure sur 33 » ni « Nᵉ mesure concordante » pour elles. **Ne pas les
+  remesurer avant le 23/10** (une semaine après la dernière rotation observée) :
+  un relevé identique ne prouve plus rien, et il coûte une mesure. Le constat de
+  fond, lui, tient et n'a pas besoin d'être réalimenté : **la SERP est tenue par
+  des annuaires et des franchises, aucun contenu publié ici ne prendra ces
+  places — c'est une action client (créer/réclamer les fiches), pas un chantier
+  de repo.**
+- 🟢 **ET LA SERP DU CHANTIER A ENCORE SERVI DE SOURCE — 2ᵉ test positif sur 2
+  de l'hypothèse du 15/10.** « DPE collectif copropriété obligation calendrier
+  2024 2025 2026 nombre de lots » : 9 résultats, **zéro agence immobilière, zéro
+  contenu local** (`selectra.info`, `opera-energie.com`, `boursorama.com`,
+  `hellowatt.fr`, `kohenavocats.fr`, `actu-juridique.fr`, `edito.seloger.com`,
+  `cpim.fr`). **Mieux que la 1ʳᵉ fois : le moteur a signalé de lui-même que les
+  sources divergent sur le seuil (« moins de 50 » / « au maximum 50 » / « 50 à
+  200 ») et a renvoyé vers `justice.fr`** — c'est ce qui a cadré le chantier et
+  fourni la fiche datée. **L'hypothèse passe au statut de méthode : mesurer la
+  SERP du chantier AVANT d'écrire.**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 15/10, et sur LE
+  CANDIDAT N°1 DÉSIGNÉ — le contrôle de périmètre juridique, à commencer par le
+  défaut déjà repéré sur `dpe-2026-ce-qui-change`.** Le chevauchement des bornes
+  à 50 lots est corrigé, **la condition d'assujettissement que la page taisait
+  (permis de construire déposé avant le 1er janvier 2013) est publiée**, et le
+  balayage a été étendu à tout `lib/blog.ts` et à `app/` avec un détecteur neuf.
+  Détail en « Chantiers faits ».
+- ✅ **Signaux mesurés SAINS en PRODUCTION — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint lib/blog.ts` propre ; **3 027 mots dans le `<main>`** (2 502 avant
+  déploiement) ; **parité FAQ visible ↔ `FAQPage` 8/8 questions ET 8/8 réponses**,
+  mot pour mot ; **0 mot collé** (3 motifs du 04/10, `1er` seul faux positif) ;
+  **4 blocs JSON-LD** (`RealEstateAgent`, `BlogPosting`, `FAQPage`,
+  `BreadcrumbList`) ; `datePublished` 2026-05-05 / **`dateModified` 2026-10-16** ;
+  « Mis à jour le 16 octobre 2026 » visible ; les deux liens de source servis
+  (`justice.fr/fiche/diagnostic-performance-energetique-collectif-dpe-collectif`,
+  `anil.org/aj-dpe/`).
+- 🟢 **LES DEUX FORMULATIONS FAUTIVES ONT DISPARU DU DOCUMENT SERVI, payload RSC
+  compris** : « au maximum 50 lots » et « comprises entre 50 et 200 lots » sont
+  **absentes**, et les valeurs du nouvel angle sont toutes servies (`1er janvier
+  2013`, `de 50 à 200 lots`, `d'au plus 50 lots`, `1 744`, `84,5 %`, `1er janvier
+  2028`).
+- ⚠️ **`lastmod` : UN SEUL a bougé, et il est mérité.**
+  `/blog/dpe-2026-ce-qui-change` passe au **2026-10-16**, **seule URL des 53 de
+  production à cette date**. **Dixième run d'affilée sans inflation de fraîcheur**
+  (décision du 06/10).
+- ✅ **`/llms.txt` n'avait rien à mettre à jour, et c'est un fait de structure à
+  connaître** : le fichier ne sert que `title` + `excerpt` de chaque article
+  (`app/llms.txt/route.ts`, ligne 43), **aucune date**. Une correction qui ne
+  touche ni le titre ni l'`excerpt` ne le fait donc pas dériver — vérifié en
+  production, l'entrée est inchangée. *(Idée non appliquée, voir « Hypothèses » :
+  y ajouter la date de mise à jour.)*
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff total du run = 1 fichier** (`lib/blog.ts`).
+- ⏱️ **Déploiement constaté ~2 min 30 après le push** (push à 06:30:3x UTC,
+  correction servie à 06:33:07 UTC, sondage toutes les 20 s). Cohérent avec la
+  note du 30/09 et avec le ~2 min du 15/10.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10).
+
 **Au 2026-10-15**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
@@ -2328,6 +2443,107 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-16 — Le site donnait deux dates d'obligation pour une copropriété de 50 lots pile, et taisait la condition qui décide de l'assujettissement : contrôle de périmètre juridique sur `dpe-2026-ce-qui-change`, puis balayage de tout le corpus avec un détecteur neuf
+
+**Prescription du 15/10 honorée à la lettre** : angle **NON-CONTENU** (le 15/10
+était du contenu), et **candidat n°1** de la pile — le défaut déjà repéré,
+localisé et volontairement non corrigé la veille.
+
+**1. 🔴 LE DÉFAUT, CONFIRMÉ EN PRODUCTION AVANT TOUTE INTERVENTION.** La page
+servait 2 502 mots et, dans la réponse « Le DPE collectif de ma copropriété
+est-il obligatoire en 2026 ? », deux bornes qui se recouvrent :
+« **d'au maximum 50 lots** » pour l'échéance du 1er janvier 2026 **et**
+« **comprises entre 50 et 200 lots** » pour celle du 1er janvier 2025. Une
+copropriété de **50 lots exactement** relevait des deux phrases, qui donnaient
+deux dates différentes.
+
+**2. 🔴 ET LE CONTRÔLE A TROUVÉ PIRE QUE LE DÉFAUT CHERCHÉ — la page taisait la
+condition qui décide de l'assujettissement.** Elle écrivait « **pour toutes les
+copropriétés d'au maximum 50 lots** ». Or l'obligation ne vise que les
+**bâtiments d'habitation collective dont le permis de construire a été déposé
+avant le 1er janvier 2013**. « Toutes » était donc **trop large** : c'est la
+5ᵉ occurrence de la famille de défaut du 11/10 (une phrase qui dit QUI est soumis
+à une obligation, et qui se trompe de périmètre). 📌 **Leçon : le défaut cherché
+n'est pas toujours le plus grave de la page. Un contrôle de borne doit se
+prolonger en relecture du périmètre — la borne dit "à partir de quand", le
+périmètre dit "pour qui", et c'est le second qui fait écrire des faussetés.**
+
+**3. 🟢 CE QUE LA PAGE PUBLIE MAINTENANT, et ce qui est VÉRIFIÉ.** La réponse
+passe d'un paragraphe à quatre, chacun autonome (GEO) :
+- **l'assujettissement d'abord** : permis de construire déposé avant le
+  1er janvier 2013 ; bâtiments d'habitation collective, en copropriété **ou**
+  détenus par un propriétaire unique ; un permis déposé le 1er janvier 2013 ou
+  après n'y est pas soumis ;
+- **le calendrier**, et le recouvrement **énoncé pour ce qu'il est** : il figure
+  dans les sources officielles elles-mêmes (« de 50 à 200 lots » pour 2025,
+  « d'au plus 50 lots » pour 2026). Les deux dates étant échues, **l'obligation
+  s'applique dans les deux lectures** — la contradiction disparaît sans qu'il
+  faille trancher à la place du législateur ;
+- 🟢 **une précision que personne d'autre ne publie, et elle est chiffrée
+  localement** : les fiches **ne disent pas** si le décompte retient tous les lots
+  ou seulement les lots à usage de logement, de bureau ou de commerce, comme le
+  fait le plan pluriannuel de travaux. À Villeurbanne, **1 744 copropriétés sur
+  2 065 (84,5 %) ont un compteur légal inférieur à leur nombre total de lots**
+  (RNIC, extraction du 15/10) : la réponse **déplace le palier** pour beaucoup
+  d'immeubles. La page le dit et renvoie au syndic pour le décompte retenu ;
+- **validité dix ans**, pas de renouvellement si le bâtiment est classé A, B ou C
+  après le 1er juillet 2021, **outre-mer au 1er janvier 2028**.
+
+**4. ✅ LES SOURCES, LES DEUX DATÉES, ET CE QU'ELLES NE DISENT PAS.** Ajoutées à
+la page :
+- **fiche « Diagnostic de performance énergétique collectif (DPE collectif) » de
+  `justice.fr`** (ministère de la Justice), **mise à jour le 1er janvier 2026** :
+  assujettissement, trois paliers, validité, exception A/B/C, outre-mer ; textes
+  cités : CCH **L126-23 à L126-35-1** et **R126-15 à R126-20**, loi de 1965
+  **art. 24-4** ;
+- **analyse juridique ANIL n° 2021-09**, **à jour au 29 août 2025** : même
+  condition de permis antérieur au 1er janvier 2013, et elle **localise le
+  calendrier** — **article 158 VI** de la loi du 22 août 2021 (outre-mer :
+  **158 IX**), obligation et renouvellement à **CCH L126-31**.
+⚠️ **`legifrance.gouv.fr` reste fermé depuis ce conteneur (403 re-testé ce jour,
+en `curl` avec user-agent de navigateur ET en WebFetch).** Le texte n'a donc
+**pas** été lu de première main : le recouvrement est consigné **tel qu'il
+apparaît dans les sources institutionnelles**, sans trancher à leur place. Deux
+tentatives de contournement ont échoué et sont notées pour ne pas être refaites :
+le « texte adopté » n° 667 de l'Assemblée nationale (`l15t0667`, 8 pages) et la
+« petite loi » `senat.fr/leg/tas20-137` ne sont **pas** la loi Climat et
+Résilience — les deux numéros portent sur d'autres textes.
+
+**5. 🟢 GEO — une 8ᵉ question, et c'était le seul H2 de la page sans FAQ.**
+« Le DPE collectif est-il obligatoire pour une petite copropriété ? » : réponse
+autonome (assujettissement + les trois paliers + le recouvrement + validité +
+la distinction avec le DPE individuel), **en parité exacte avec le JSON-LD
+`FAQPage` — 8/8 questions et 8/8 réponses vérifiées mot pour mot sur le HTML
+servi en production.** Un lien interne de plus vers `charges-copropriete`
+(maillage vers la page refaite hier, qui porte la donnée RNIC).
+
+**6. ✅ LE BALAYAGE ÉTENDU — un détecteur neuf, et il ne trouve aucun autre
+défaut réel.** Le détecteur du 14/10 avait un angle mort démontré (voir
+« Techniques apprises » du jour). Le nouveau a été passé sur **les 27 articles de
+`lib/blog.ts` et sur toutes les pages de `app/`**, sur les quatre unités qui
+portent des seuils (`lots`, `m²`, `ans`, `%`) :
+- **`app/` : 0 groupe** signalé sur les trois premières unités ;
+- **`lib/blog.ts` : 10 groupes** signalés par la première passe et **4 + 3 + 17**
+  par le détecteur affiné — **tous examinés un par un, tous faux positifs**, dont
+  les plus plausibles : le 61,0 % d'amiante de `diagnostics-obligatoires-vente`
+  (borne basse + fourchette, cohérent et documenté aux lignes 161-163 de
+  `lib/blog.ts`), les 40 m² du DPE (« 40 m² ou moins » ≡ « inférieure ou égale à
+  40 m² » — les deux formulations **concordent**), les 5 ans du forfait travaux
+  (« au-delà de » ≡ « détenu depuis plus de »), les 0,5 m² de `loi-carrez-surface`
+  et les 15 ans des installations électricité/gaz.
+- 📌 **Donc : un seul défaut réel de borne dans tout le corpus, et c'était celui
+  déjà repéré. La piste "bornes d'intervalle" est CLOSE sur l'existant** — à ne
+  rejouer que sur du contenu neuf.
+
+**7. ✅ LA CONTAMINATION INTER-CALENDRIERS, vérifiée et NÉGATIVE.** Le 15/10
+craignait que le calendrier du DPE collectif (01/01/2024 / 2025 / 2026) ait
+contaminé celui du plan pluriannuel de travaux (01/01/2023 / 2024 / 2025) publié
+le même jour, ou l'inverse. **`grep` sur `DPE collectif` : un seul fichier
+(`lib/blog.ts`), un seul article.** Le calendrier du PPT n'apparaît que dans
+`charges-copropriete`, et il est **non chevauchant** (« au-delà de 200 lots » /
+« de 51 à 200 lots » / « pour 50 lots au plus »). **Les deux calendriers ne se
+touchent nulle part. Rien à corriger.**
 
 ### 2026-10-15 — La fiche que le site désigne pour le dossier de copropriété tenait en 164 mots : `charges-copropriete` passe à 3 725 mots et publie, copropriété par copropriété, depuis quand Villeurbanne doit un plan pluriannuel de travaux
 
@@ -6351,14 +6567,59 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : CONTENU** (15/10, `charges-copropriete` : 164 → 3 725
+**Angle du dernier run : NON-CONTENU — contrôle de périmètre juridique** (16/10,
+`dpe-2026-ce-qui-change` : chevauchement des bornes à 50 lots corrigé, condition
+d'assujettissement manquante publiée — permis de construire déposé avant le
+1er janvier 2013 —, 8ᵉ FAQ en parité, 2 sources datées ajoutées, puis balayage du
+corpus entier avec un détecteur de bornes neuf : **aucun autre défaut réel**).
+→ 🔴 **LE PROCHAIN RUN (17/10) DOIT ÊTRE DU CONTENU** (alternance : 14/10
+non-contenu → 15/10 contenu → 16/10 non-contenu). **Candidats, par ordre
+d'exposition, dans la liste des pages de droit jamais revérifiées :**
+  1. 🔴 **`frais-de-notaire-lyon-2026`** — 2 614 mots, déjà solide **en volume**,
+     mais **ses taux ont leur propre péremption notée dans l'en-tête de
+     `lib/blog.ts`** : à prendre **côté justesse**, pas côté volume. ⚠️ **Et c'est
+     aussi la page qui reste à passer au contrôle de reproductibilité des
+     arrondis** (candidat non-contenu n°2 ci-dessous) : **les deux travaux
+     tombent sur la même page, les faire ensemble.**
+  2. **`/faire-gerer`**, **`plus-value-immobiliere-calcul`**, **`/vendre`**.
+  3. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** reste au
+     backlog **avec son périmètre imposé du 11/10** : réécriture **procédurale**
+     (méthode pas à pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas
+     rouvrir l'angle « chiffres du marché », il est fermé par la mesure.**
+
+✅ **CANDIDAT NON-CONTENU N°1 CONSOMMÉ LE 16/10 — le contrôle de périmètre
+juridique est passé, et la piste « bornes d'intervalle » est CLOSE sur
+l'existant** (27 articles de `lib/blog.ts` + toutes les pages de `app/`, quatre
+unités : un seul défaut réel, celui qui était déjà repéré). **NE PAS LA
+REPRENDRE** — à rejouer seulement sur du contenu neuf, avec le détecteur décrit
+en « Techniques apprises » du 16/10. ⚠️ **Ce qui RESTE de cette famille, et qui
+n'est pas clos** : les phrases de **périmètre** (« qui est soumis à »), dont le
+run du jour a trouvé la 5ᵉ fausse depuis le 11/10. **Le `grep` est ci-dessous ;
+il se rejoue sur toute page de droit qu'un run touche, systématiquement, avant de
+publier.**
+
+⚠️ **CANDIDAT NON-CONTENU N°2, TOUJOURS OUVERT — la reproductibilité des
+arrondis sur `frais-de-notaire-lyon-2026` et `investir-locatif-lyon`** (le
+contrôle du 14/10 ne les a pas couvertes). **À faire avec le chantier de contenu
+sur `frais-de-notaire-lyon-2026`, voir ci-dessus.**
+
+🟢 **CANDIDAT NON-CONTENU N°3, TOUJOURS OUVERT — la parité des valeurs RNIC entre
+pages** (`2 065`, `79 797`, `165 101`, `1 597`, `1 744`, `84,5 %`). 🆕 **Le run du
+16/10 en a fait migrer deux : `1 744` et `84,5 %` apparaissent désormais AUSSI
+dans `dpe-2026-ce-qui-change`**, avec le même sens que dans
+`charges-copropriete` (vérifié à l'écriture). **C'est le premier cas de reprise
+d'une valeur RNIC sur une seconde page : à partir de maintenant, toute
+modification de ces deux chiffres doit toucher les DEUX pages.**
+
+**Angle précédent : CONTENU** (15/10, `charges-copropriete` : 164 → 3 725
 mots, promesse d'architecture enfin tenue, 6 fiches de droit datées, décision du
 Conseil d'État du 17/03/2026 sur le plafond de l'état daté, et une source locale
 neuve — le RNIC — qui donne le calendrier du plan pluriannuel de travaux
 copropriété par copropriété).
-→ 🔴 **LE PROCHAIN RUN (16/10) DOIT ÊTRE NON-CONTENU** (alternance : 13/10
-contenu → 14/10 non-contenu → 15/10 contenu). **Trois candidats, par ordre
-d'impact :**
+→ ✅ **PRESCRIPTION HONORÉE LE 16/10** (run non-contenu, candidat n°1 pris).
+Énoncé d'origine : 🔴 **LE PROCHAIN RUN (16/10) DOIT ÊTRE NON-CONTENU**
+(alternance : 13/10 contenu → 14/10 non-contenu → 15/10 contenu). **Trois
+candidats, par ordre d'impact :**
   1. 🔴 **LE CONTRÔLE DE PÉRIMÈTRE JURIDIQUE sur les affirmations de droit
      NOUVELLEMENT publiées, et d'abord le défaut DÉJÀ REPÉRÉ aujourd'hui** :
      `dpe-2026-ce-qui-change` donne un calendrier de DPE collectif dont les bornes
@@ -6844,6 +7105,61 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-16
+
+✅ **RÉSOLUE — la borne du DPE collectif à 50 lots** (hypothèse du 15/10). Le
+chevauchement est **réel et il est dans les sources officielles elles-mêmes**,
+pas dans notre rédaction : `justice.fr` (mise à jour du 1er janvier 2026) écrit
+« de 50 à 200 lots » pour 2025 et « d'au plus 50 lots » pour 2026. **La réserve
+du 15/10 était justifiée** : les seuils du DPE collectif et ceux du plan
+pluriannuel de travaux **ne se rédigent pas pareil** (le PPT dit « de 51 à 200 »,
+sans recouvrement). Corrigé en décrivant le recouvrement, pas en l'arbitrant —
+voir « Erreurs commises ». ✅ **Et la contamination inter-calendriers redoutée le
+15/10 est VÉRIFIÉE NÉGATIVE** (voir « Chantiers faits », point 7).
+
+🟡 **Le compteur de lots du DPE collectif est-il le même « compteur légal » que
+celui du plan pluriannuel de travaux ? C'est la question ouverte la plus utile du
+jour, et elle est désormais publiée comme telle.** Un cabinet d'avocats trouvé
+en SERP affirme que ce sont les **lots principaux** (logement, bureau, commerce)
+qui comptent, comme pour le PPT — **mais ni `justice.fr` ni l'ANIL ne le disent**,
+et le run n'a donc **rien affirmé** : la page expose la question et renvoie au
+syndic. **À instruire** : chercher une source institutionnelle qui tranche
+(fiche `service-public.gouv.fr` dédiée au DPE collectif, doctrine ANIL plus
+récente, ou une réponse ministérielle). **Enjeu local chiffré** : 1 744 des
+2 065 copropriétés villeurbannaises (84,5 %) ont un compteur légal inférieur à
+leur nombre total de lots, donc la réponse **déplace le palier** pour la majorité
+du parc. 🔴 **Ne rien publier d'affirmatif sur ce point avant d'avoir la
+source** — et si elle est trouvée, c'est un chantier de contenu à part entière
+(croiser le RNIC avec les trois paliers du DPE collectif donnerait un tableau
+que personne ne publie).
+
+🟡 **Faut-il ajouter la date de mise à jour dans `/llms.txt` ?** Constat du jour :
+le fichier ne sert que `title` + `excerpt` (`app/llms.txt/route.ts`, ligne 43),
+**aucune date**. Les recommandations GEO de la veille du 12/10 insistent sur le
+contenu **daté**. **Hypothèse** : exposer `updated` dans `/llms.txt` aiderait un
+LLM à préférer la version fraîche. ⚠️ **Non appliqué volontairement** — c'est une
+modification d'un fichier qui marche, hors périmètre d'un run de contrôle, et
+l'effet est non mesurable depuis ce conteneur. **À proposer comme micro-chantier
+d'un prochain run non-contenu, pas à improviser.**
+
+🟡 **Reconduite — « prix m2 Villeurbanne » n'a pas été mesurée** (cadence
+hebdomadaire, précédente le 12/10). **Échéance : lundi 19/10, avec la veille.**
+
+🟡 **Reconduite du 13/10 — « vendre appartement Villeurbanne » s'ouvre-t-elle à
+l'éditorial ?** Non remesurée (cadence : 2 mesures par mois, précédente le
+13/10). **À remesurer avant le 04/11.**
+
+🟡 **Reconduite du 13/10 et du 14/10 — l'écart d'une vente dans l'extraction DVF**
+(1 876 contre 1 875 publiés ; 436 T2 contre 435). **Rien réécrit. À trancher
+quand DVF 2026 sortira.**
+
+🟡 **Reconduites du 15/10, inchangées** : les deux angles RNIC qui demandent une
+vérification avant publication (copropriétés sans mandat de syndic en cours —
+**ne rien publier sans croiser `date_derniere_maj`** ; ancienneté du parc —
+champ `periode_construction` inexploitable en l'état), et la fragilité du palier
+« plus de 200 lots » du RNIC (une seule copropriété par valeur autour de 200 :
+**remesurer avant d'appuyer un argument sur les 36**).
 
 ### 2026-10-15
 
@@ -7579,6 +7895,47 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-16 — Une page affirmait « toutes les copropriétés » là où la loi en exclut une partie, et le journal a failli publier une résolution qu'aucune source ne donne
+
+**1. 🔴 L'AFFIRMATION FAUSSE, en production depuis le 11/10 et corrigée ce jour.**
+`dpe-2026-ce-qui-change` écrivait : « Oui, depuis le 1er janvier 2026, **pour
+toutes les copropriétés d'au maximum 50 lots** ». **Faux par excès de
+périmètre** : l'obligation ne vise que les bâtiments d'habitation collective
+**dont le permis de construire a été déposé avant le 1er janvier 2013**. Un
+immeuble villeurbannais récent — et la page en compte le parc, **4 006
+appartements diagnostiqués construits entre 2013 et 2021** — n'y est pas soumis,
+alors que la page lui disait le contraire. 📌 **C'est la 5ᵉ phrase de périmètre
+fausse trouvée depuis le 11/10, et la deuxième sur CETTE page** : une page
+réécrite en profondeur n'est pas une page vérifiée.
+
+**2. 🔴 LE CHEVAUCHEMENT DES BORNES, corrigé — et ce qu'il ne faut PAS en
+faire.** La page disait « au maximum 50 lots » → 2026 **et** « entre 50 et
+200 lots » → 2025. 🔴 **L'erreur que ce run a failli commettre : "trancher" en
+écrivant « 51 à 200 / ≤ 50 », comme le fait `charges-copropriete` pour le plan
+pluriannuel de travaux.** C'eût été **inventer une règle** : la prescription du
+15/10 disait justement de ne pas présumer que les deux calendriers partagent
+leurs seuils, et **la vérification montre que les sources officielles
+elles-mêmes se recouvrent** à 50 lots (`justice.fr`, mise à jour du 1er janvier
+2026 : « de 50 à 200 lots » / « d'au plus 50 lots »), **tandis que le PPT, lui,
+est énoncé sans recouvrement** (« de 51 à 200 » / « 50 lots au plus »). **Les
+deux textes ne se rédigent donc pas pareil, et copier la formulation du PPT
+aurait publié une précision que personne ne garantit.**
+→ ✅ **Ce qui a été publié à la place** : le recouvrement est **décrit**, et la
+conséquence pratique est donnée (les deux dates étant échues, l'obligation
+s'applique dans les deux lectures). 📌 **Règle générale, applicable à tout le
+droit publié ici : quand deux sources officielles se recouvrent, on publie le
+recouvrement, pas un arbitrage maison. Une page qui dit "les textes se
+recouvrent à 50 lots, voici ce que ça change" est plus juste ET plus citable
+qu'une page qui affirme un seuil que sa source n'affirme pas.**
+
+**3. 🟡 Et une imprécision de rédaction attrapée avant le second push, qui
+mérite d'être nommée.** La première version écrivait « les deux derniers paliers
+se recouvrent dans **les textes officiels** eux-mêmes ». **Or les textes n'ont
+pas été lus** (legifrance 403) : ce sont les **fiches** qui se recouvrent.
+Corrigé en « dans les **sources officielles** elles-mêmes ». 📌 **Un mot de trop
+transforme une observation vérifiée en affirmation non vérifiable : "texte",
+"loi", "décret" ne s'écrivent que si on a lu le texte, la loi, le décret.**
 
 ### 2026-10-15 — Une note de méthode de CE JOURNAL était fausse et rendait un détecteur aveugle ; et une page taisait un plafond légal, laissant croire au vendeur qu'il n'avait aucun recours
 
@@ -8495,6 +8852,67 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-16 — Pourquoi un détecteur de seuils rate la borne basse d'un intervalle écrit en mots, et la recette qui la rattrape
+
+**1. 🔴 L'ANGLE MORT, DÉMONTRÉ ET PAS SEULEMENT SUPPOSÉ.** Le 15/10 avait écrit
+que le détecteur du 14/10 manquait « les bornes d'intervalle énoncées en mots ».
+**Mesuré aujourd'hui, la cause est plus précise que ça, et elle est générale** :
+dans « **entre 50 et 200 lots** », le nombre **collé à l'unité** est **200** — la
+borne haute. **La borne basse (50) n'est rattachée à aucune unité**, donc tout
+détecteur bâti sur `nombre + unité` (c'est-à-dire tout `grep` naturel) la rate.
+Vérifié en rejouant le détecteur du 14/10 sur la version pré-correction du
+fichier : **il ne lève rien**, alors que le défaut y est.
+
+**2. 🟢 LA RECETTE QUI MARCHE — rattacher explicitement la borne basse, puis
+grouper par (nombre, unité) et comparer les SENS de borne.** Le détecteur
+rejouable est écrit et conservé :
+`/tmp/.../scratchpad/detect_bornes.py` *(à recréer, le scratchpad ne survit pas
+au run — le code tient en 50 lignes et la logique est ici)* :
+- lister les mots de borne **par sens** : BASSE (`au moins`, `à partir de`,
+  `plus de`, `au-delà de`, `et plus`, `supérieur`, `au minimum`, `depuis`),
+  HAUTE (`au maximum`, `au plus`, `moins de`, `ou moins`, `jusqu'à`,
+  `inférieur`, `en deçà de`) ;
+- capturer `(\d+)\s*(?:et\s+(\d+)\s*)?<unité>` : **le second groupe existe
+  précisément pour « entre X et Y unité »**, et dans ce cas X est marquée
+  BASSE(entre), Y HAUTE(entre) ;
+- grouper par `(nombre normalisé, unité)` **à l'intérieur d'un même article**, et
+  signaler tout nombre qui apparaît avec **plus d'un sens de borne** ;
+- **afficher une fenêtre autour du nombre**, jamais le début de la phrase : dans
+  un `lib/blog.ts` les « phrases » font parfois 600 caractères (les `1er janvier`
+  cassent le découpage sur le point), et un extrait tronqué au début fait croire
+  à un faux positif.
+→ **Commande d'usage** : `python3 detect_bornes.py lib/blog.ts lots` (puis `m²`,
+`ans`, `%`).
+
+**3. ⚠️ LE DÉTECTEUR EST BRUYANT PAR CONSTRUCTION, et c'est voulu.** Sur
+`lib/blog.ts` : 4 groupes en `m²`, 3 en `ans`, **17 en `%`** — tous faux positifs
+après examen. **Le signal utile n'est pas "un groupe est signalé", c'est "un
+nombre-SEUIL est signalé"** : un nombre de référence (62 m² de surface médiane,
+45 m² d'un T2, une durée de validité) apparaît forcément avec des bornes
+différentes sans que rien ne se contredise. 📌 **Règle d'exploitation : passer
+l'unité `lots` d'abord (c'est là que vivent les seuils légaux), `%` en dernier
+et sans attente.**
+
+**4. 🟢 ET UNE SOURCE INSTITUTIONNELLE DE PLUS, utile bien au-delà de ce
+chantier : `justice.fr/fiche/...`.** C'est le pendant « justice » des fiches
+`service-public.gouv.fr` : même facture, **mention de mise à jour datée**, et
+**la liste des textes de référence en bas de fiche** (ici CCH L126-23 à
+L126-35-1, R126-15 à R126-20, loi de 1965 art. 24-4). Elle répond en `WebFetch`
+là où `legifrance` (403) et `ecologie.gouv.fr` (**503 aujourd'hui**) ne
+répondent pas. **À ajouter à la liste des domaines joignables** :
+`service-public.gouv.fr` · **`justice.fr`** · **`anil.org`** ·
+`conseil-etat.fr` (ArianeWeb) · `ademe.fr` · `data.gouv.fr` ·
+`assemblee-nationale.fr` · `senat.fr` · `economie.gouv.fr` ·
+`georisques.gouv.fr`. **Fermés** : `legifrance.gouv.fr` (403),
+`actu-juridique.fr` (403), `ecologie.gouv.fr` (503 ce jour).
+
+**5. 🟡 ET UN RÉSULTAT DE MÉTHODE SUR L'ANIL : elle donne le NUMÉRO D'ALINÉA du
+texte, ce que les fiches grand public ne font pas.** « article 158 **VI** » pour
+le calendrier, « 158 **IX** » pour l'outre-mer, « CCH **L126-31** » pour
+l'obligation. **Quand legifrance est fermé, l'ANIL est ce qui permet de citer un
+texte avec précision sans l'avoir lu** — et de dire honnêtement qu'on ne l'a pas
+lu.
 
 ### 2026-10-15 — Le registre des copropriétés s'interroge sans télécharger 409 Mo, et la jurisprudence récente est la matière la plus citable qu'on puisse publier
 
