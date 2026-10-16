@@ -583,7 +583,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Nous avons compté les étiquettes DPE des 49 717 appartements diagnostiqués à Villeurbanne : 4,9 % sont classés F ou G, contre 7,1 % en France. Le risque dépend d'abord de l'année de construction.",
     date: "2026-05-05",
-    updated: "2026-10-11",
+    updated: "2026-10-16",
     internalHref: "/vendre",
     internalLabel: "Faire le point sur la valeur de mon bien",
     blocks: [
@@ -655,7 +655,10 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Ce dernier point touche beaucoup de monde à Villeurbanne, qui est une ville de petites surfaces : 18 134 appartements diagnostiqués font 40 m² ou moins, soit 36,5 % de ceux dont la surface est renseignée.** Et ce sont justement les plus exposés : **6,26 % d'entre eux sont classés F ou G, contre 4,16 % au-dessus de 40 m²**. Un studio ou un T1 a donc environ 50 % de risques en plus qu'un grand logement d'être une passoire — ce qui, dans une commune qui borde le campus de la Doua, concerne directement le parc locatif étudiant." },
 
       { type: "h2", text: "Le DPE collectif de ma copropriété est-il obligatoire en 2026 ?" },
-      { type: "p", text: "**Oui, depuis le 1er janvier 2026, pour toutes les copropriétés d'au maximum 50 lots.** Le calendrier s'est appliqué par paliers : le 1er janvier 2024 pour les immeubles en monopropriété et les copropriétés de plus de 200 lots, le 1er janvier 2025 pour celles comprises entre 50 et 200 lots, et le 1er janvier 2026 pour les plus petites. Ce DPE collectif porte sur le bâtiment entier et ne remplace pas le DPE individuel exigé pour vendre ou louer un lot." },
+      { type: "p", text: "**Oui, si le permis de construire de l'immeuble a été déposé avant le 1er janvier 2013 — et, en métropole, quelle que soit la taille de la copropriété, puisque les trois échéances du calendrier sont désormais passées.** L'obligation vise les bâtiments d'habitation collective, qu'ils soient en copropriété ou détenus par un propriétaire unique. Un immeuble dont le permis a été déposé le 1er janvier 2013 ou après n'y est pas soumis." },
+      { type: "p", text: "Le calendrier s'est appliqué par paliers, selon le nombre de lots : **le 1er janvier 2024 pour les immeubles en monopropriété et les copropriétés de plus de 200 lots, le 1er janvier 2025 pour celles de 50 à 200 lots, et le 1er janvier 2026 pour les plus petites.** ⚠️ À 50 lots exactement, les deux derniers paliers se recouvrent dans les textes officiels eux-mêmes : les fiches publiques écrivent « de 50 à 200 lots » pour l'échéance de 2025 et « d'au plus 50 lots » pour celle de 2026. La lecture prudente, en 2025, était donc de se rattacher au palier le plus précoce ; aujourd'hui la question n'a plus d'enjeu pratique, les deux dates étant échues." },
+      { type: "p", text: "Deux précisions qui comptent ici, et que les fiches officielles ne tranchent pas. D'abord, **elles ne disent pas si ce décompte retient tous les lots ou seulement les lots à usage de logement, de bureau ou de commerce**, comme le fait le plan pluriannuel de travaux. L'écart n'est pas théorique à Villeurbanne : **1 744 copropriétés sur 2 065, soit 84,5 %, ont un compteur légal inférieur à leur nombre total de lots**, donc la réponse déplace le palier applicable pour beaucoup d'immeubles — c'est au syndic de dire sur quel décompte il s'est appuyé (le détail du registre national figure dans notre page sur [les charges de copropriété et le dossier à fournir](/blog/charges-copropriete)). Ensuite, **ce DPE collectif porte sur le bâtiment entier et ne remplace pas le DPE individuel** exigé pour vendre ou louer un lot." },
+      { type: "p", text: "Il est **valable dix ans**, et n'a pas à être renouvelé si un diagnostic réalisé après le 1er juillet 2021 a classé le bâtiment en A, B ou C. Outre-mer, l'obligation n'entrera en vigueur que le 1er janvier 2028." },
 
       { type: "h2", text: "Comment ces chiffres ont-ils été calculés ?" },
       { type: "p", text: "Ils proviennent de la base « DPE Logements existants (depuis juillet 2021) », publiée en open data par l'ADEME sous Licence Ouverte 2.0. Nous avons retenu les diagnostics rattachés à la commune de Villeurbanne (code INSEE 69266) portant sur un appartement, puis compté les étiquettes une par une. Extraction du 11 octobre 2026 : **49 717 diagnostics, établis entre le 1er juillet 2021 et le 5 octobre 2026**." },
@@ -672,6 +675,8 @@ export const ARTICLES: Article[] = [
         "[Quels sont les diagnostics immobiliers qu'un bailleur doit fournir au locataire ?](https://www.service-public.gouv.fr/particuliers/vosdroits/F33463), Service-Public — fiche vérifiée le 20 février 2026 : calendrier d'interdiction de location.",
         "[Audit énergétique en cas de vente d'un bien immobilier dit « passoire thermique »](https://www.service-public.gouv.fr/particuliers/vosdroits/F37110), Service-Public — fiche vérifiée le 14 septembre 2026 : périmètre de l'audit.",
         "[Diagnostic de performance énergétique](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe), ministère chargé de la Transition écologique : calendrier du DPE collectif en copropriété.",
+        "[Diagnostic de performance énergétique collectif (DPE collectif)](https://www.justice.fr/fiche/diagnostic-performance-energetique-collectif-dpe-collectif), ministère de la Justice — fiche mise à jour le 1er janvier 2026 : bâtiments assujettis, calendrier par nombre de lots, durée de validité et exception des classes A, B ou C.",
+        "[Diagnostic de performance énergétique, analyse juridique n° 2021-09](https://www.anil.org/aj-dpe/), ANIL — à jour au 29 août 2025 : condition du permis de construire déposé avant le 1er janvier 2013, renvoi au calendrier de l'article 158 VI de la loi du 22 août 2021 et à l'article L126-31 du code de la construction et de l'habitation.",
       ] },
       { type: "p", text: "Si vous vous demandez ce que votre étiquette change sur le prix, nos [prix au m² réels par quartier](/blog/prix-immobilier-villeurbanne-2026) donnent le point de départ, et notre page [vendre son bien à Villeurbanne](/vendre) le net vendeur une fois les honoraires déduits." },
     ],
@@ -703,6 +708,10 @@ export const ARTICLES: Article[] = [
       {
         q: "Les petites surfaces sont-elles plus souvent des passoires énergétiques ?",
         a: "Oui, à Villeurbanne. 6,26 % des appartements de 40 m² ou moins sont classés F ou G, contre 4,16 % au-dessus de 40 m². Ces petits logements représentent 18 134 des appartements diagnostiqués, soit 36,5 % de ceux dont la surface est renseignée. Depuis le 1er juillet 2024, les seuils des étiquettes ont été adaptés pour les logements de 40 m² ou moins, et une attestation corrigée se télécharge gratuitement sur le site de l'ADEME.",
+      },
+      {
+        q: "Le DPE collectif est-il obligatoire pour une petite copropriété ?",
+        a: "Oui, en métropole, depuis le 1er janvier 2026 pour les copropriétés d'au plus 50 lots, dès lors que le permis de construire de l'immeuble a été déposé avant le 1er janvier 2013. Les deux paliers précédents sont échus eux aussi : le 1er janvier 2024 pour les immeubles en monopropriété et les copropriétés de plus de 200 lots, le 1er janvier 2025 pour celles de 50 à 200 lots. Les fiches officielles se recouvrent à 50 lots exactement, mais les deux dates étant passées, l'obligation s'applique dans les deux lectures. Ce DPE collectif porte sur le bâtiment entier, reste valable dix ans — sans renouvellement obligatoire si le bâtiment est classé A, B ou C — et ne remplace pas le DPE individuel exigé pour vendre ou louer un lot.",
       },
     ],
   },
