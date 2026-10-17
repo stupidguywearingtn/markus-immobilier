@@ -39,6 +39,15 @@
  * 2026 » (impots.gouv.fr publie une nouvelle version régulièrement), et la
  * fenêtre de majoration se referme le 31/03/2028. À revérifier à chaque
  * nouvelle version du tableau, et impérativement avant avril 2028.
+ * ↳ Revérifié le 17/10/2026 : dmto_2026-06.pdf est TOUJOURS la dernière version
+ *   publiée (dmto_2026-09 et dmto_2026-10 répondent 404), la ligne « 69 Métropole
+ *   de Lyon » porte toujours 5,00 % / 4,50 % sans abattement ni taux réduit, et
+ *   les deux seules communes à réduction restent Lamentin (971) et Tsingoni (976).
+ *   L'article 116 de la LF 2025 a en revanche été RÉÉCRIT par l'article 121 de la
+ *   loi n° 2026-103 du 19/02/2026 (LF 2026) : la date de fin du 31/03/2028 est
+ *   inchangée, seule la prise d'effet des délibérations a été échelonnée. La
+ *   doctrine de référence est désormais BOI-ENR-DMTOI-10-20 § 105 à 109 (17/06/2026).
+ *   Le test d'URL à rejouer : curl -sIL .../notaires/dmto/dmto_AAAA-MM.pdf
  *
  * Depuis le 27/09/2026, « investir-locatif-lyon » met les médianes DVF EN REGARD
  * des prix affichés par trois sites tiers (cpim.fr, moninvestimmo.com,
@@ -440,12 +449,12 @@ export const ARTICLES: Article[] = [
     slug: "frais-de-notaire-lyon-2026",
     title: "Frais de notaire à Villeurbanne et à Lyon en 2026 : le calcul exact",
     metaDescription:
-      "La Métropole de Lyon a voté 5,00 % de droits de mutation, 4,50 % pour un primo-accédant. Frais de notaire calculés quartier par quartier sur les prix signés à Villeurbanne.",
+      "5,00 % de droits de mutation à Villeurbanne, 4,50 % pour un primo-accédant sans condition de ressources. Les frais de notaire calculés quartier par quartier.",
     h1: "Frais de notaire à Villeurbanne et à Lyon en 2026 : le calcul exact",
     excerpt:
       "Le taux voté par la Métropole de Lyon, le barème des émoluments, et la facture réelle calculée sur les prix d'appartements signés en 2025 dans les 7 quartiers de Villeurbanne.",
     date: "2026-04-28",
-    updated: "2026-09-29",
+    updated: "2026-10-17",
     internalHref: "/acheter",
     internalLabel: "Être accompagné pour mon achat",
     blocks: [
@@ -458,7 +467,7 @@ export const ARTICLES: Article[] = [
         type: "table",
         caption: "Les trois taxes dues sur une vente d'appartement ancien à Villeurbanne",
         source:
-          "Taux départemental : tableau « Droits d'enregistrement et taxe de publicité foncière — taux applicables au 1ᵉʳ juin 2026 », DGFiP (impots.gouv.fr), ligne « 69 Métropole de Lyon », téléchargé le 29/09/2026. Taxe communale : article 1584 du CGI ; le même document liste les deux seules communes de France ayant voté une réduction en 2026, et Villeurbanne n'en fait pas partie. Prélèvement de l'État : article 1647, V du CGI (2,37 % du droit départemental).",
+          "Taux départemental : tableau « Droits d'enregistrement et taxe de publicité foncière — taux applicables au 1ᵉʳ juin 2026 », DGFiP (impots.gouv.fr), ligne « 69 Métropole de Lyon », relu le 17/10/2026 — la version « au 1ᵉʳ juin 2026 » reste la plus récente publiée par la DGFiP à cette date. Taxe communale : article 1584 du CGI ; le même document liste les deux seules communes de France ayant voté une réduction en 2026 (Lamentin en Guadeloupe et Tsingoni à Mayotte), et Villeurbanne n'en fait pas partie. Prélèvement de l'État : article 1647, V du CGI (2,37 % du droit départemental).",
         headers: ["Taxe", "Acheteur ordinaire", "Primo-accédant"],
         rows: [
           ["Droit de mutation, part Métropole de Lyon", "5,00 % du prix", "4,50 % du prix"],
@@ -467,23 +476,23 @@ export const ARTICLES: Article[] = [
           ["**Total de la part fiscale**", "**6,32 % du prix**", "**5,81 % du prix**"],
         ],
       },
-      { type: "p", text: "Ce 5,00 % n'est pas le taux historique. Jusqu'en 2025, le plafond légal était de 4,50 % : la loi de finances pour 2025 a autorisé les départements et métropoles à le relever jusqu'à 5 %, **pour les actes signés entre le 1ᵉʳ avril 2025 et le 31 mars 2028** (BOFiP, document mis à jour le 17/06/2026). La Métropole de Lyon a utilisé cette faculté. Autrement dit : ce demi-point est daté, il a une date de fin inscrite dans la loi, et il ne s'applique pas à tout le monde." },
+      { type: "p", text: "Ce 5,00 % n'est pas le taux historique. Jusqu'en 2025, le plafond légal était de 4,50 % : la loi de finances pour 2025 a autorisé les départements et métropoles à le relever jusqu'à 5 %, **pour les actes passés et les conventions conclues entre le 1ᵉʳ avril 2025 et le 31 mars 2028**. Le texte a depuis été réécrit par l'article 121 de la loi n° 2026-103 du 19 février 2026 de finances pour 2026 : cette réécriture n'a pas déplacé la date de fin, elle a échelonné la prise d'effet des délibérations votées en cours de route. La Métropole de Lyon a utilisé la faculté, et l'administration précise que le dispositif prévu pour les conseils départementaux lui est **expressément applicable** (BOFiP, BOI-ENR-DMTOI-10-20 § 105, mis à jour le 17 juin 2026). Autrement dit : ce demi-point est daté, il a une date de fin inscrite dans la loi, et il ne s'applique pas à tout le monde." },
 
       { type: "h2", text: "Combien coûtent vraiment les frais de notaire pour un appartement à Villeurbanne ?" },
-      { type: "p", text: "**Entre 12 900 € et 18 200 € pour un appartement de 62 m² — la surface médiane des ventes villeurbannaises de 2025 — selon le quartier.** L'écart d'un bout à l'autre de la commune atteint 5 360 €, et il ne tient qu'au prix du bien : le taux, lui, est identique dans les 7 quartiers. Le tableau ci-dessous part des prix réellement signés, pas des prix affichés." },
+      { type: "p", text: "**Entre 12 900 € et 18 200 € pour un appartement de 62 m² — la surface médiane des ventes villeurbannaises de 2025 — selon le quartier.** L'écart d'un bout à l'autre de la commune atteint 5 359 €, et il ne tient qu'au prix du bien : le taux, lui, est identique dans les 7 quartiers. Le tableau ci-dessous part des prix réellement signés, pas des prix affichés." },
       {
         type: "table",
         caption:
           "Taxes + émoluments du notaire pour un appartement de 62 m² au prix médian de chaque quartier (acheteur ordinaire)",
         source:
-          "Prix : médianes DVF 2025 des ventes d'appartements à Villeurbanne (data.gouv.fr / Etalab), calcul Markus Immobilier — les mêmes que celles publiées dans nos autres articles. Taxes : taux DGFiP au 1ᵉʳ juin 2026. Émoluments : barème réglementé, tableau 5 n° 54 de l'article A. 444-91 du code de commerce, TVA 20 % comprise. Débours et contribution de sécurité immobilière non compris (voir plus bas).",
+          "Prix : médianes DVF 2025 des ventes d'appartements à Villeurbanne (data.gouv.fr / Etalab), calcul Markus Immobilier — les mêmes que celles publiées dans nos autres articles. Taxes : taux DGFiP au 1ᵉʳ juin 2026. Émoluments : barème réglementé, tableau 5 n° 54 de l'article A. 444-91 du code de commerce, TVA 20 % comprise. Débours et contribution de sécurité immobilière non compris (voir plus bas). Convention d'arrondi : chaque colonne est arrondie à l'euro, et le total est la somme des deux colonnes affichées — un lecteur qui additionne les deux cases retrouve exactement le total publié.",
         headers: ["Quartier", "Prix pour 62 m²", "Taxes", "Émoluments TTC", "Total"],
         rows: [
-          ["Ferrandière – Maisons-Neuves", "243 226 €", "15 368 €", "2 862 €", "18 231 €"],
-          ["Gratte-Ciel – Dedieu – Charmettes", "238 452 €", "15 067 €", "2 816 €", "17 882 €"],
+          ["Ferrandière – Maisons-Neuves", "243 226 €", "15 368 €", "2 862 €", "18 230 €"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "238 452 €", "15 067 €", "2 816 €", "17 883 €"],
           ["Charpennes – Tonkin", "218 488 €", "13 805 €", "2 621 €", "16 426 €"],
-          ["Perralière – Grandclément", "209 250 €", "13 221 €", "2 530 €", "15 752 €"],
-          ["Buers – Croix-Luizet", "202 802 €", "12 814 €", "2 467 €", "15 282 €"],
+          ["Perralière – Grandclément", "209 250 €", "13 221 €", "2 530 €", "15 751 €"],
+          ["Buers – Croix-Luizet", "202 802 €", "12 814 €", "2 467 €", "15 281 €"],
           ["Cusset – Bonnevay", "196 602 €", "12 422 €", "2 407 €", "14 829 €"],
           ["Cyprian – Les Brosses", "169 756 €", "10 726 €", "2 145 €", "12 871 €"],
         ],
@@ -509,7 +518,23 @@ export const ARTICLES: Article[] = [
           ["Cyprian – Les Brosses", "10 726 €", "9 857 €", "869 €"],
         ],
       },
-      { type: "p", text: "Le critère de « première propriété » renvoie à la définition utilisée pour le prêt à taux zéro : **ne pas avoir été propriétaire de sa résidence principale au cours des deux années précédentes**. Un investisseur qui achète pour louer n'y a donc pas droit, puisque la condition de résidence principale n'est pas remplie — un point à intégrer au [calcul de rentabilité](/blog/rentabilite-locative-lyon). C'est le notaire qui vérifie les conditions et les fait déclarer dans l'acte : ne considérez jamais l'avantage comme acquis avant qu'il l'ait confirmé." },
+      { type: "h3", text: "Faut-il un prêt à taux zéro pour payer 4,50 % au lieu de 5,00 % ?" },
+      { type: "p", text: "**Non. Il suffit de n'avoir pas été propriétaire de sa résidence principale au cours des deux années qui précèdent l'acquisition, et de destiner le bien acheté à sa résidence principale. Il n'y a ni condition de ressources, ni condition de financement.** L'administration l'écrit noir sur blanc : la non-application de la hausse « n'est pas conditionnée à un niveau de ressources ou à un moyen de financement de l'acquisition » (BOFiP, BOI-ENR-DMTOI-10-20 § 107, mis à jour le 17 juin 2026). Le renvoi à l'article L. 31-10-3 du code de la construction et de l'habitation est un renvoi de **définition** : il n'oblige pas à souscrire un prêt à taux zéro et ne ferme pas l'avantage à ceux qui n'y auraient pas droit." },
+      { type: "p", text: "Quatre situations courantes tombent du bon côté de la règle, et aucune n'est intuitive :" },
+      { type: "ul", items: [
+        "**Vous n'étiez qu'usufruitier ou nu-propriétaire de votre résidence principale** : vous restez primo-accédant. La « première propriété » s'entend de la **pleine** propriété (BOFiP, § 107, remarque 2).",
+        "**Vous avez vendu votre résidence principale il y a plus de deux ans** et vous êtes locataire depuis : le délai est écoulé, vous redevenez primo-accédant.",
+        "**Vous êtes locataire de votre logement principal mais propriétaire d'une résidence secondaire** : la condition ne porte que sur la résidence principale, l'avantage reste ouvert.",
+        "**Vous êtes un résident étranger** : la condition de première propriété s'apprécie sur le seul territoire national, dès lors que le bien acquis est destiné à votre résidence principale.",
+      ] },
+
+      { type: "h3", text: "Un couple dont un seul membre est primo-accédant paie-t-il 5,00 % ou 4,50 % ?" },
+      { type: "p", text: "**Les deux, chacun sur sa part — sauf en communauté, où il faut que les deux soient primo-accédants.** En indivision, c'est-à-dire pour des concubins, des partenaires de PACS ou des époux mariés sous séparation de biens, la condition s'apprécie acquéreur par acquéreur : celui qui est primo-accédant garde le taux de 4,50 % **à hauteur de sa quote-part**, l'autre paie 5,00 % sur la sienne. Pour des époux mariés sous **communauté réduite aux acquêts ou communauté universelle**, l'exception ne joue que si les deux membres du couple remplissent la condition." },
+      { type: "p", text: "Deux cas limites méritent d'être connus avant de signer. Si un époux marié sous un régime communautaire achète **seul et sur ses fonds propres**, la condition n'est exigée que de lui — à condition que la double déclaration de remploi figure dans l'acte (réponse ministérielle Berger n° 5129, JO AN du 16 septembre 2025, p. 8098). À l'inverse, l'époux en indivision avec son conjoint qui divorce **n'est pas** primo-accédant s'il rachète une résidence principale dans les deux ans suivant son départ du domicile commun." },
+
+      { type: "h3", text: "Faut-il habiter le logement pour y avoir droit ?" },
+      { type: "p", text: "**Oui, et l'administration chiffre l'occupation : le logement doit être occupé au moins huit mois par an** (article 265 de l'annexe III au CGI), la résidence principale relevant par ailleurs d'une appréciation de fait, sous le contrôle du juge de l'impôt. Un investisseur qui achète pour louer n'a donc pas droit à l'exception — un point à intégrer au [calcul de rentabilité](/blog/rentabilite-locative-lyon)." },
+      { type: "p", text: "La condition de première propriété tombe en revanche entièrement lorsque l'acquéreur, ou l'un des occupants du logement à titre principal, est titulaire de la carte « mobilité inclusion » portant la mention « invalidité », perçoit une pension d'invalidité de 2ᵉ ou 3ᵉ catégorie, bénéficie de l'allocation d'éducation de l'enfant handicapé ou de l'allocation aux adultes handicapés, ou a vu sa résidence principale rendue définitivement inhabitable par une catastrophe. C'est le notaire qui vérifie tout cela et le fait déclarer dans l'acte : ne considérez jamais l'avantage comme acquis avant qu'il l'ait confirmé." },
 
       { type: "h2", text: "Comment sont calculés les émoluments du notaire ?" },
       { type: "p", text: "**Les émoluments sont un tarif national réglementé, dégressif, strictement identique à Villeurbanne, à Lyon et partout en France.** Ils ne se négocient pas au coup par coup et ne dépendent ni du notaire choisi ni de la commune. C'est la raison pour laquelle comparer deux études sur le prix de l'acte n'a pas de sens : ce qui change d'un achat à l'autre, c'est la taxe locale, pas la rémunération de l'officier public." },
@@ -529,7 +554,8 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Le barème étant dégressif, les émoluments pèsent proportionnellement moins lourd à mesure que le prix monte : **1,40 % du prix pour un T1 à 115 000 €, 1,23 % au prix médian villeurbannais, 1,17 % pour un T4 à 255 000 €**. Au-delà d'un seuil fixé par le même arrêté, le notaire peut en outre accorder une remise ; elle reste à sa main, et il doit alors l'appliquer à tous ses clients dans les mêmes conditions." },
 
       { type: "h2", text: "Pourquoi la règle des « 7 à 8 % » tombe-t-elle dans le haut de la fourchette à Villeurbanne ?" },
-      { type: "p", text: "**Parce que les deux postes qu'on sait calculer à l'euro près — taxes et émoluments — atteignent déjà 7,49 % à 7,72 % du prix aux niveaux villeurbannais, avant même d'ajouter les débours.** La règle de pouce « 7 à 8 % dans l'ancien » reste juste, mais à Villeurbanne en 2026 elle penche nettement vers 8 % plutôt que vers 7 %, du fait du demi-point de majoration voté par la Métropole." },
+      { type: "p", text: "**Parce que les deux postes qu'on sait calculer à l'euro près — taxes et émoluments — pèsent déjà de 7,49 % à 7,72 % du prix aux niveaux villeurbannais, avant même d'ajouter les débours.** La règle de pouce « 7 à 8 % dans l'ancien » reste juste, mais à Villeurbanne en 2026 elle penche nettement vers 8 % plutôt que vers 7 %, du fait du demi-point de majoration voté par la Métropole." },
+      { type: "p", text: "Ces deux bornes sont celles des prix médians par typologie : **7,49 % pour un T4 à 255 000 €** (19 090 €) et **7,72 % pour un T1 à 115 000 €** (8 876 €). Le barème des émoluments étant dégressif, c'est le petit logement qui supporte le taux le plus élevé. À surface constante — les 62 m² du tableau par quartier — la fourchette est plus resserrée : **de 7,50 % à Ferrandière – Maisons-Neuves à 7,58 % à Cyprian – Les Brosses**." },
       { type: "p", text: "Restent deux postes que cet article ne chiffre volontairement pas, parce qu'ils dépendent du dossier et non d'un taux public : les **débours**, c'est-à-dire les sommes que le notaire avance pour votre compte (documents d'urbanisme, état hypothécaire, syndic, géomètre le cas échéant), et la **contribution de sécurité immobilière** perçue par l'État lors de la publication de l'acte. Ensemble, ils représentent en général quelques centaines d'euros — de quoi porter la facture réelle près du haut de la fourchette. Votre notaire est le seul à pouvoir les arrêter précisément, et il le fait sur devis avant la signature." },
       { type: "p", text: "Dans le neuf, la logique est différente : la vente est soumise à la TVA immobilière et le droit de mutation tombe à un taux réduit, ce qui ramène les frais d'acquisition autour de **2 à 3 %** du prix. Le barème des émoluments, lui, ne change pas." },
 
@@ -539,8 +565,9 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Méthode et sources" },
       { type: "ul", items: [
-        "**Taux de la Métropole de Lyon** : tableau « Droits d'enregistrement et taxe de publicité foncière — taux, abattements de base et réductions de taux applicables au 1ᵉʳ juin 2026 » publié par la DGFiP sur impots.gouv.fr, ligne « 69 Métropole de Lyon ». Document téléchargé et lu le 29/09/2026 ; c'est la version la plus récente publiée à cette date.",
-        "**Dispositif temporaire de majoration** : article 116 de la loi n° 2025-127 du 14 février 2025 de finances pour 2025, commenté au BOFiP (document mis à jour le 17/06/2026). Fenêtre d'application : 1ᵉʳ avril 2025 – 31 mars 2028.",
+        "**Taux de la Métropole de Lyon** : tableau « Droits d'enregistrement et taxe de publicité foncière — taux, abattements de base et réductions de taux applicables au 1ᵉʳ juin 2026 » publié par la DGFiP sur impots.gouv.fr, ligne « 69 Métropole de Lyon » — 5,00 % hors primo-accédant, 4,50 % au titre de l'article 1594 D du CGI, et aucun abattement ni taux réduit voté. Document téléchargé le 29/09/2026 et relu intégralement le 17/10/2026 : c'est toujours la version la plus récente publiée, et la ligne est inchangée.",
+        "**Dispositif temporaire de majoration** : article 116 de la loi n° 2025-127 du 14 février 2025 de finances pour 2025, dans sa rédaction issue de l'article 121 de la loi n° 2026-103 du 19 février 2026 de finances pour 2026, commenté au BOFiP BOI-ENR-DMTOI-10-20 § 105 (document mis à jour le 17 juin 2026). Fenêtre d'application : 1ᵉʳ avril 2025 – 31 mars 2028 ; pour les actes passés à compter du 1ᵉʳ avril 2028, le taux en vigueur le 31 janvier 2025 est rétabli. Le même paragraphe précise que ces dispositions sont applicables aux délibérations de la métropole de Lyon.",
+        "**Conditions du statut de primo-accédant** : I de l'article L. 31-10-3 du code de la construction et de l'habitation, et BOFiP BOI-ENR-DMTOI-10-20 § 106 à 109 (17 juin 2026) pour l'absence de condition de ressources et de financement, la notion de pleine propriété, les règles applicables aux co-acquéreurs et la condition d'occupation de huit mois par an (article 265 de l'annexe III au CGI). Achat par un seul époux marié sous un régime communautaire : réponse ministérielle Berger n° 5129, JO AN du 16 septembre 2025, p. 8098.",
         "**Prélèvement pour frais d'assiette et de recouvrement** : article 1647, V du CGI — 2,37 % du montant du droit départemental.",
         "**Émoluments** : tableau 5, n° 54 de l'article A. 444-91 du code de commerce (arrêté du 26 février 2016).",
         "**Prix** : médianes des ventes d'appartements enregistrées à Villeurbanne (commune 69266) en 2025 dans la base DVF publiée par Etalab sur data.gouv.fr, rattachées aux contours de quartiers officiels de la Métropole de Lyon — une seule ligne bâtie par mutation, surfaces d'au moins 10 m², médiane et jamais moyenne. Surface de référence : 62 m², médiane communale.",
@@ -554,7 +581,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Combien faut-il prévoir de frais de notaire pour un appartement à Villeurbanne ?",
-        a: "Sur le prix médian d'un appartement villeurbannais signé en 2025, 195 000 €, comptez 12 321 € de taxes et 2 391 € d'émoluments TTC, soit 14 712 € — auxquels s'ajoutent les débours et la contribution de sécurité immobilière, quelques centaines d'euros. Pour un 62 m² au prix médian de son quartier, le total taxes + émoluments va de 12 871 € à Cyprian – Les Brosses à 18 231 € à Ferrandière – Maisons-Neuves.",
+        a: "Sur le prix médian d'un appartement villeurbannais signé en 2025, 195 000 €, comptez 12 321 € de taxes et 2 391 € d'émoluments TTC, soit 14 712 € — auxquels s'ajoutent les débours et la contribution de sécurité immobilière, quelques centaines d'euros. Pour un 62 m² au prix médian de son quartier, le total taxes + émoluments va de 12 871 € à Cyprian – Les Brosses à 18 230 € à Ferrandière – Maisons-Neuves.",
       },
       {
         q: "Un primo-accédant paie-t-il moins de frais de notaire à Villeurbanne ?",
@@ -562,11 +589,23 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Les frais de notaire sont-ils les mêmes à Lyon et à Villeurbanne ?",
-        a: "Oui, car les deux communes relèvent de la même collectivité : la Métropole de Lyon, qui a voté 5,00 %. En revanche, une commune du département du Rhône située hors métropole relève d'un taux voté séparément — la DGFiP les liste comme deux collectivités distinctes. Les émoluments du notaire, eux, sont un tarif national et ne varient nulle part.",
+        a: "Oui, car les deux communes relèvent de la même collectivité : la Métropole de Lyon, qui a voté 5,00 %. Une commune du département du Rhône située hors métropole relève, elle, d'un taux voté séparément — la DGFiP les liste comme deux collectivités distinctes. Dans le tableau applicable au 1ᵉʳ juin 2026, les deux affichent le même taux de 5,00 %, mais rien ne garantit qu'elles resteront alignées : ce sont deux votes indépendants. Les émoluments du notaire, eux, sont un tarif national et ne varient nulle part.",
       },
       {
         q: "Jusqu'à quand le taux de 5,00 % s'applique-t-il ?",
-        a: "La loi de finances pour 2025 a ouvert la faculté de relever le taux au-delà de 4,50 % et dans la limite de 5 % pour une durée de trois ans, du 1ᵉʳ avril 2025 au 31 mars 2028. Au-delà de cette date, et sauf nouvelle disposition législative, le plafond redescend à 4,50 %. La date qui compte est celle de la signature de l'acte authentique, pas celle du compromis.",
+        a: "La loi de finances pour 2025 a ouvert la faculté de relever le taux au-delà de 4,50 % et dans la limite de 5 % pour les actes passés et les conventions conclues du 1ᵉʳ avril 2025 au 31 mars 2028. Pour les actes passés à compter du 1ᵉʳ avril 2028, ce n'est pas un plafond théorique qui s'applique mais le taux qui était en vigueur le 31 janvier 2025, soit 4,50 % pour la Métropole de Lyon, sauf nouvelle disposition législative. La date qui compte est celle de l'acte authentique et non celle du compromis ; pour une promesse synallagmatique assortie d'une condition suspensive, c'est la date de réalisation de la condition qui est retenue.",
+      },
+      {
+        q: "Faut-il un prêt à taux zéro pour payer 4,50 % au lieu de 5,00 % à Villeurbanne ?",
+        a: "Non. L'exception de primo-accédant renvoie à la définition de l'article L. 31-10-3 du code de la construction et de l'habitation, mais l'administration précise que la non-application de la hausse n'est conditionnée ni à un niveau de ressources ni à un moyen de financement de l'acquisition. Il suffit de ne pas avoir été propriétaire de sa résidence principale au cours des deux années précédant l'acquisition et de destiner le bien acheté à sa résidence principale, occupée au moins huit mois par an.",
+      },
+      {
+        q: "Un couple dont un seul membre est primo-accédant paie-t-il 5,00 % ou 4,50 % ?",
+        a: "Cela dépend du régime. En indivision — concubins, partenaires de PACS, époux mariés sous séparation de biens — la condition s'apprécie acquéreur par acquéreur : celui qui est primo-accédant garde le taux de 4,50 % à hauteur de sa quote-part, l'autre paie 5,00 % sur la sienne. Pour des époux mariés sous communauté réduite aux acquêts ou communauté universelle, les deux doivent être primo-accédants pour échapper à la majoration. Si un époux marié sous un régime communautaire achète seul sur ses fonds propres, avec la double déclaration de remploi dans l'acte, la condition n'est exigée que de lui.",
+      },
+      {
+        q: "Peut-on être primo-accédant en étant déjà propriétaire d'une résidence secondaire ?",
+        a: "Oui. La condition ne porte que sur la résidence principale : un acquéreur locataire de son logement principal mais propriétaire d'une résidence secondaire est considéré comme primo-accédant. Il en va de même de celui qui n'était qu'usufruitier ou nu-propriétaire de sa résidence principale, car la première propriété s'entend de la pleine propriété.",
       },
       {
         q: "Les honoraires d'agence sont-ils inclus dans les frais de notaire ?",
