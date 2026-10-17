@@ -14,6 +14,111 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-17**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
+  avant fetch `origin/main` pointait sur `1cc9814`, après fetch sur `b224f58`, et
+  **deux commits portent la date du 2026-10-16** — le run d'hier a bien eu lieu.
+  🆕 **Cinquième configuration de départ en cinq runs, et c'est la plus
+  trompeuse** : la branche de démarrage (`claude/dazzling-feynman-png4u6`)
+  portait **déjà `b224f58`**, le `main` LOCAL retardait de **huit commits**, et
+  `git log main` répondait sans erreur — il affichait simplement l'état du 12/10.
+  🔴 **Pendant quelques minutes, la lecture naturelle de ces refs a été "quatre
+  runs de travail ne sont jamais arrivés en production". C'était faux, et seul
+  `git fetch origin` l'a montré.** La règle du 15/10 tient et n'a pas d'exception :
+  `git fetch origin`, PUIS lire les refs, jamais l'inverse.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-troisième constat identique** (21/09 → 17/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Sixième confirmation : à refaire à
+  chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Samedi : pas de veille** (faite le lundi 12/10). **Prochaine échéance :
+  lundi 19/10 — c'est dans deux jours, et c'est la première étape du run.**
+- ✅ **LES DEUX SERP GELÉES N'ONT PAS ÉTÉ REMESURÉES, comme décidé le 16/10.**
+  « Agence immobilière Villeurbanne » et « estimation immobilière Villeurbanne »
+  sont figées au lien près depuis le 13/10 ; la décision du 16/10 interdit de les
+  remesurer **avant le 23/10**. Elle a été respectée : aucune des deux n'a été
+  interrogée aujourd'hui. « Prix m2 Villeurbanne » est hebdomadaire et échoit le
+  **19/10** ; « vendre appartement Villeurbanne » est à deux mesures par mois
+  (dernière le 13/10). **Aucune requête cible n'était donc due.**
+- 🟢 **DEUX SERP DE CHANTIER MESURÉES À LA PLACE, et elles ont de nouveau servi
+  de SOURCE — 3ᵉ test positif sur 3 de la méthode du 15/10.**
+  - « frais de notaire achat appartement ancien Lyon 2026 calcul » — 9 résultats,
+    **zéro agence immobilière, zéro contenu local** : `moicombien.fr`,
+    `cpim.fr`, `lescalculateurs.fr` ×2, `calcunet.fr` ×5 (dont des pages
+    d'arrondissement et une page « Chazelles-sur-Lyon », hors cible). 🔴 **Et le
+    relevé vaut surtout par ce qu'il montre des concurrents : ils se contredisent
+    sur le taux.** `moicombien.fr` applique **5,80 % de DMTO « dans le Rhône »**
+    (taux qui n'existe nulle part dans le tableau DGFiP) et `calcunet.fr` affiche
+    **6,32 % « émoluments et débours inclus »** (6,32 % est la part FISCALE seule).
+    Le moteur l'a relevé de lui-même : « ce taux ne correspond pas au 5,80 % cité
+    par Moicombien, et je n'ai pas pu vérifier lequel est exact ». 📌 **C'est une
+    place à prendre : sur cette requête, la justesse est un différenciateur réel,
+    pas une coquetterie.**
+  - « DGFiP tableau taux droits de mutation départements 2026 Métropole de
+    Lyon » — c'est elle qui a livré **le fait central du run** : l'article 116 de
+    la LF 2025 a été **réécrit par l'article 121 de la loi n° 2026-103 du
+    19/02/2026**. Aucune source grand public ne le mentionnait dans la première
+    SERP ; le moteur l'a signalé avec la mention « à contrôler sur Légifrance
+    avant toute application », ce qui a été fait (sur le BOFiP, Légifrance étant
+    inaccessible — voir « Techniques apprises »).
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 16/10, et sur LE CANDIDAT
+  N°1 DÉSIGNÉ — `frais-de-notaire-lyon-2026`, pris côté JUSTESSE**, avec le
+  candidat non-contenu n°2 (reproductibilité des arrondis) mené dans le même
+  passage puisque le backlog notait que les deux tombaient sur cette page.
+  **2 614 → 3 888 mots.** Détail en « Chantiers faits ».
+- ✅ **LE CANDIDAT NON-CONTENU N°2 EST CONSOMMÉ POUR MOITIÉ.** Les 22 montants de
+  `frais-de-notaire-lyon-2026` sont recalculés et la page est propre.
+  ⚠️ **`investir-locatif-lyon` reste à passer** — il est désormais le dernier de
+  la liste du 14/10.
+- ✅ **Signaux mesurés SAINS en PRODUCTION — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint` propre sur les deux fichiers touchés ; **3 888 mots dans le
+  `<main>`**, chiffre identique au local (2 614 avant déploiement) ;
+  **parité FAQ visible ↔ `FAQPage` 9/9 questions ET 9/9 réponses**, mot pour
+  mot ; **0 mot collé** (les 11 détections sont `DGFiP`/`BOFiP` et les 3 autres
+  des noms de domaine — faux positifs connus) ; **4 blocs JSON-LD**
+  (`RealEstateAgent`, `BlogPosting`, `FAQPage`, `BreadcrumbList`) ;
+  **1 `<h1>`, 7 `<h2>`, 5 `<h3>`** ; `datePublished` 2026-04-28 /
+  **`dateModified` 2026-10-17** ; « Mis à jour le 17 octobre 2026 » visible.
+- 🟢 **Les 18 valeurs neuves sont servies dans le document complet, payload RSC
+  compris** (`18 230`, `17 883`, `15 751`, `15 281`, `5 359`, `7,50 %`, `7,58 %`,
+  `2026-103`, `article 121`, `31 janvier 2025`, « huit mois par an »,
+  « quote-part », `Berger n° 5129`, `Lamentin`, `Tsingoni`, « Quatre situations »,
+  « résident étranger », `17/10/2026`) **et les 7 formulations retirées ont
+  disparu** (`18 231`, `17 882`, `15 752`, `15 282`, `5 360`, « plafond
+  redescend », « Trois situations »).
+- ⚠️ **`lastmod` : UN SEUL a bougé, et il est mérité.**
+  `/blog/frais-de-notaire-lyon-2026` passe au **2026-10-17**, **seule URL des 53
+  de production à cette date**. **Onzième run d'affilée sans inflation de
+  fraîcheur** (décision du 06/10).
+- 🆕 ⚠️ **`/llms.txt` a dérivé — et pas par son mécanisme habituel.** Le fichier
+  dérive `title` + `excerpt` des articles (donc aucune dérive ici, ni l'un ni
+  l'autre n'a changé), **mais son entrée `/acheter` est écrite À LA MAIN dans
+  `app/llms.txt/route.ts` et additionne des montants publiés par l'article du
+  jour.** La correction d'arrondi a rendu `261 457 €` et `78 830 €` faux d'un
+  euro. Corrigé et redéployé dans un second commit. **C'est une sixième famille
+  de défaut invisible — voir « Erreurs commises ».**
+- ⏱️ **Déploiement constaté ~80 s après le push** (sondage toutes les 20 s :
+  2 614 mots à t+20, t+40, t+60 ; 3 888 mots à t+80). Plus rapide que les
+  ~2 min 30 du 16/10 et les ~2 min du 15/10.
+- 🆕 ⚠️ **UN PIÈGE D'OUTIL, pas de repo, et il a failli sauter le push** : la
+  commande recommandée par ce journal le 11/10, `git rev-parse --short HEAD main
+  origin/main`, **échoue dans ce conteneur** avec `fatal: Needed a single
+  revision` alors que les trois refs se résolvent parfaitement une par une.
+  Enchaînée en `&&` avant le `git push`, elle fait **échouer silencieusement tout
+  le reste de la ligne**. Recette corrigée en « Techniques apprises ».
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10) ; `<title>` de la page du jour à 87 caractères (assumé — la
+  `metaDescription`, elle, est passée de 172 à 157).
+
 **Au 2026-10-16**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
@@ -2443,6 +2548,147 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-17 — La loi que la page citait avait été réécrite sept mois plus tôt, quatre totaux sur sept ne se recalculaient pas sur les colonnes affichées, et la question que se pose tout couple n'avait pas de réponse
+
+**Prescription du 16/10 honorée à la lettre** : angle **CONTENU** (le 16/10 était
+du non-contenu), **candidat n°1** de la pile — `frais-de-notaire-lyon-2026`,
+**pris côté justesse et non côté volume**, exactement comme le backlog le
+demandait. Et comme il notait que le candidat non-contenu n°2 (reproductibilité
+des arrondis) tombait sur la même page, les deux ont été menés dans le même
+passage.
+
+**0. LA SERP DU CHANTIER MESURÉE AVANT D'ÉCRIRE — 3ᵉ fois sur 3 qu'elle sert de
+source.** Elle a livré deux choses qu'aucune relecture du code n'aurait données :
+(a) les concurrents se contredisent sur le taux (5,80 % « dans le Rhône » chez
+`moicombien.fr`, 6,32 % présenté comme « émoluments et débours inclus » chez
+`calcunet.fr`), donc la justesse est ici un différenciateur mesurable ; (b) la
+piste de l'article 121 de la LF 2026.
+
+**1. 🟢 LE CONTRÔLE QUI MOTIVAIT LE CHANTIER N'A RIEN TROUVÉ — et c'est un
+résultat, pas un échec.** L'en-tête de `lib/blog.ts` signalait depuis le 29/09
+que les taux fiscaux de cette page ont « leur propre péremption ». Vérification
+faite **à la source primaire** :
+- `dmto_2026-06.pdf` est **toujours la dernière version publiée** par la DGFiP.
+  Testé par URL : `dmto_2026-09.pdf` et `dmto_2026-10.pdf` répondent **404**.
+- Ligne « 69 Métropole de Lyon » : **5,00 %** (colonne « art. 116, hors
+  primo-accédant ») et **4,50 %** (colonne « art. 1594 D du CGI »), **aucun
+  abattement ni taux réduit voté**. Inchangée.
+- Les **deux seules communes de France** à avoir voté une réduction de taxe
+  communale additionnelle sont **Lamentin (971)** et **Tsingoni (976)** — la
+  source de la page l'affirmait sans les nommer, elles sont désormais nommées.
+- 🆕 Fait annexe relevé au passage : **« 69 Rhône (hors métropole de Lyon) »
+  affiche LUI AUSSI 5,00 % / 4,50 %** au 1ᵉʳ juin 2026. La FAQ qui opposait les
+  deux collectivités le dit maintenant — en précisant que l'alignement est
+  factuel, pas structurel (ce sont deux votes indépendants).
+
+**2. 🔴 MAIS LA LOI CITÉE AVAIT ÉTÉ RÉÉCRITE, ET LA PAGE L'IGNORAIT.** L'article
+116 de la loi n° 2025-127 du 14/02/2025 a été **réécrit par l'article 121 de la
+loi n° 2026-103 du 19 février 2026 de finances pour 2026**. Vérifié sur
+**BOI-ENR-DMTOI-10-20 § 105, mis à jour le 17/06/2026**. Conséquences, toutes
+publiées :
+- la **date de fin du 31/03/2028 est inchangée** — la réécriture porte sur
+  l'échelonnement de la prise d'effet des délibérations, pas sur la fenêtre ;
+- 🔴 **la page écrivait « le plafond redescend à 4,50 % » au 1ᵉʳ avril 2028. Faux
+  mécanisme** : ce qui est rétabli, c'est **le taux en vigueur le 31 janvier
+  2025** (4,50 % pour la Métropole de Lyon — même résultat ici, mais la règle
+  publiée était la mauvaise) ;
+- 🔴 **la FAQ écrivait « la date qui compte est celle de l'acte authentique, pas
+  celle du compromis ». Incomplet** : pour une **promesse synallagmatique
+  assortie d'une condition suspensive**, c'est la **date de réalisation de la
+  condition** qui est retenue (CGI art. 676 ; code civil art. 1589) ;
+- le BOFiP précise que le dispositif départemental est **expressément applicable
+  aux délibérations de la métropole de Lyon** — c'est la confirmation officielle
+  de l'affirmation centrale de la page, elle y est maintenant citée.
+
+**3. 🔴 LA PAGE RENVOYAIT AU PTZ SANS DIRE QUE L'EXCEPTION N'A NI CONDITION DE
+RESSOURCES NI CONDITION DE FINANCEMENT.** C'est la 6ᵉ occurrence de la famille
+du 11/10 (une phrase qui dit QUI a droit à quoi, et dont le périmètre est
+faux) — ici le périmètre était **trop étroit** par implicite. Le BOFiP est
+explicite (§ 107, remarque 1) : la non-application de la hausse « n'est pas
+conditionnée à un niveau de ressources ou à un moyen de financement de
+l'acquisition ». Un lecteur qui n'a pas droit au prêt à taux zéro pouvait
+renoncer à un avantage de **869 € à 1 245 €** auquel il a droit.
+
+**4. 🟢 ET LA VRAIE LACUNE ÉTAIT AILLEURS : LA PAGE NE DISAIT RIEN DU CAS LE PLUS
+FRÉQUENT, LE COUPLE.** Un tableau binaire « primo / pas primo » ne répond pas à
+« nous sommes deux, un seul l'est ». Trois `h3` neuves, adossées mot pour mot au
+BOFiP **§ 106 à 109 (17/06/2026)** :
+- **absence de condition de ressources et de financement** (§ 107, rem. 1) ;
+- **pleine propriété** : l'acquéreur qui n'était qu'**usufruitier ou
+  nu-propriétaire** de sa résidence principale **reste primo-accédant**
+  (§ 107, rem. 2) ;
+- **co-acquéreurs** (§ 109) : en **indivision** — concubins, PACS, époux séparés
+  de biens — la condition s'apprécie **par quote-part**, celui qui est
+  primo-accédant garde 4,50 % sur sa part ; en **communauté réduite aux acquêts
+  ou universelle**, **les deux** doivent l'être ;
+- **achat par un seul époux sur fonds propres** avec double déclaration de
+  remploi : condition exigée de lui seul (**RM Berger n° 5129, JO AN du
+  16/09/2025, p. 8098**) ;
+- **divorce** : l'époux en indivision qui rachète dans les **deux ans** suivant
+  son départ du domicile commun **n'est pas** primo-accédant ;
+- **occupation** : le logement doit être occupé **au moins huit mois par an**
+  (article 265 de l'annexe III au CGI), appréciation de fait sous contrôle du
+  juge de l'impôt ;
+- **dispenses totales** de la condition de première propriété : carte « mobilité
+  inclusion » mention « invalidité », pension d'invalidité de 2ᵉ ou 3ᵉ catégorie,
+  AEEH ou AAH, résidence principale rendue définitivement inhabitable par une
+  catastrophe ;
+- **résidents étrangers** : condition appréciée **sur le seul territoire
+  national**.
+
+📌 **C'est la matière la plus citable du run** : ce sont des réponses courtes,
+autonomes, datées et sourcées à des questions que les gens posent littéralement à
+une IA (« mon conjoint a déjà été propriétaire, est-ce que je perds le taux
+primo-accédant ? »), et **aucune des 9 pages de la SERP ne les traite**.
+
+**5. ⚠️ LA REPRODUCTIBILITÉ DES ARRONDIS — 22 montants recalculés, 4 défauts, et
+ils sont tous du même type.** Les colonnes **Taxes** et **Émoluments TTC** sont
+justes partout, à l'euro, au centime près après recalcul du barème par tranches.
+Les **économies de primo-accédant** (7 lignes) se retrouvent toutes par
+soustraction des deux colonnes affichées. Les **4 totaux par typologie**
+(8 876 / 12 889 / 16 992 / 19 090) sont justes. **Mais la colonne `Total` du
+tableau par quartier était arrondie depuis les valeurs EXACTES**, pas depuis les
+colonnes publiées :
+
+| Quartier | Taxes + Émol. affichés | Total publié | Corrigé |
+|---|---|---|---|
+| Ferrandière – Maisons-Neuves | 15 368 + 2 862 = **18 230** | 18 231 | **18 230** |
+| Gratte-Ciel – Dedieu – Charmettes | 15 067 + 2 816 = **17 883** | 17 882 | **17 883** |
+| Perralière – Grandclément | 13 221 + 2 530 = **15 751** | 15 752 | **15 751** |
+| Buers – Croix-Luizet | 12 814 + 2 467 = **15 281** | 15 282 | **15 281** |
+
+Charpennes, Cusset et Cyprian tombaient juste par hasard. **La convention du
+13/10 est appliquée** (un lecteur qui refait le calcul sur les valeurs affichées
+doit retrouver le montant publié) **et elle est désormais ÉCRITE dans la source
+du tableau** — c'est la première page du site où la convention d'arrondi est
+publiée pour le lecteur, pas seulement tenue en interne. Deux montants dérivés
+suivent : l'écart max de la commune **5 360 € → 5 359 €**, et la borne haute de
+la FAQ **18 231 € → 18 230 €**.
+
+**6. 🟢 LES DEUX BORNES « 7,49 % À 7,72 % » ÉTAIENT JUSTES MAIS INVÉRIFIABLES.**
+Le contrôle a d'abord cru à une erreur : la fourchette calculée sur le tableau
+par quartier est **7,50 % – 7,58 %**, pas 7,49 % – 7,72 %. Vérification faite,
+les deux bornes publiées sont celles des **prix médians par TYPOLOGIE** (T4 à
+255 000 € → 7,49 % ; T1 à 115 000 € → 7,72 %) : la phrase était exacte mais
+mélangeait deux tableaux sans le dire, et aucun lecteur ne pouvait la recalculer.
+**Les deux séries sont maintenant publiées séparément, chacune avec le prix
+auquel elle correspond.** 📌 **Leçon : un chiffre juste mais non traçable se
+comporte comme un chiffre faux au contrôle — et il coûte le même temps à
+instruire. Publier la base de calcul à côté de la borne.**
+
+**7. Contrôle de périmètre juridique rejoué sur la page, comme la règle du 16/10
+l'impose à toute page de droit qu'un run touche.** 5 phrases de périmètre
+relevées, toutes vérifiées contre le BOFiP ou le CGI. La phrase sur le neuf
+(« le droit de mutation tombe à un taux réduit ») est confirmée par le BOFiP, qui
+précise que la majoration de l'article 116 **est sans effet sur le taux réduit de
+0,7 %** de l'article 1594 F quinquies.
+
+**Résultat : 2 614 → 3 888 mots**, 6 FAQ → **9**, parité `FAQPage` 9/9 questions
+et 9/9 réponses, `metaDescription` ramenée de 172 à 157 caractères,
+`dateModified` 2026-10-17. **Diff du run : 2 fichiers** (`lib/blog.ts`, puis
+`app/llms.txt/route.ts` pour la conséquence attrapée après déploiement).
+`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` **non touchés**.
 
 ### 2026-10-16 — Le site donnait deux dates d'obligation pour une copropriété de 50 lots pile, et taisait la condition qui décide de l'assujettissement : contrôle de périmètre juridique sur `dpe-2026-ce-qui-change`, puis balayage de tout le corpus avec un détecteur neuf
 
@@ -6567,7 +6813,69 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : NON-CONTENU — contrôle de périmètre juridique** (16/10,
+**Angle du dernier run : CONTENU — justesse juridique + arrondis** (17/10,
+`frais-de-notaire-lyon-2026` : taux DGFiP revérifiés à la source et inchangés,
+mais la loi citée avait été réécrite par l'article 121 de la LF 2026, deux
+règles publiées étaient fausses — le taux rétabli au 01/04/2028 et la date qui
+compte en cas de condition suspensive —, le périmètre primo-accédant était trop
+étroit, la doctrine des co-acquéreurs manquait entièrement, et 4 totaux sur 7 ne
+se recalculaient pas sur les colonnes affichées. 2 614 → 3 888 mots).
+
+→ 🔴 **LE PROCHAIN RUN (19/10) EST UN LUNDI : LA VEILLE PASSE AVANT LE CHOIX DU
+CHANTIER** (dernière veille le 12/10). Et ⚠️ **« prix m2 Villeurbanne » est DUE
+le 19/10** (hebdomadaire, dernière mesure le 12/10) — c'est la seule requête
+cible en échéance. Les deux SERP gelées restent interdites **jusqu'au 23/10**.
+*(Pas de run attendu le dimanche 18/10 ; si un run a lieu, le 18 est du
+non-contenu, voir ci-dessous.)*
+
+→ 🔴 **ET L'ANGLE DU PROCHAIN RUN DOIT ÊTRE NON-CONTENU** (alternance : 15/10
+contenu → 16/10 non-contenu → 17/10 contenu). **Candidats, par ordre d'impact :**
+  1. 🔴 🆕 **LE BALAYAGE DE LA 6ᵉ FAMILLE — les chiffres écrits À LA MAIN dans
+     `app/llms.txt/route.ts`.** C'est le candidat n°1 sans discussion : le
+     défaut du jour a montré que **ce fichier n'est dérivé que pour la section
+     des articles**, et que ses entrées de pages « argent » (`/acheter`,
+     `/vendre`, `/honoraires`, `/gestion-locative`, `/faire-gerer`,
+     `/estimation-immobiliere-villeurbanne`…) recopient et **additionnent** à la
+     main des dizaines de montants publiés ailleurs. **Aucun de ces montants
+     n'a jamais été vérifié contre sa page.** Le travail est cadré : extraire
+     tous les nombres de `route.ts`, et pour chacun vérifier soit qu'il est
+     publié tel quel sur la page décrite, soit qu'il se recalcule sur des valeurs
+     qui le sont. ⚠️ **Et c'est le fichier que les IA lisent en priorité : un
+     chiffre faux y pèse plus lourd qu'ailleurs.**
+  2. ⚠️ **La reproductibilité des arrondis sur `investir-locatif-lyon`** — seule
+     page restante de la liste du 14/10 (`plus-value-immobiliere-calcul` et
+     `rentabilite-locative-lyon` closes le 14/10, `frais-de-notaire-lyon-2026`
+     close le 17/10). **Petit chantier : à faire en complément, pas seul.**
+  3. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`) — inchangé depuis le 16/10 : `1 744` et
+     `84,5 %` vivent désormais sur DEUX pages, toute modification doit toucher
+     les deux.
+
+**Candidats de CONTENU pour le run d'après** (ordre inchangé, le n°1 du 16/10
+ayant été consommé aujourd'hui) :
+  1. **`/faire-gerer`**, **`plus-value-immobiliere-calcul`**, **`/vendre`** —
+     pages de droit jamais revérifiées.
+  2. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** reste au
+     backlog **avec son périmètre imposé du 11/10** : réécriture **procédurale**
+     (méthode pas à pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas
+     rouvrir l'angle « chiffres du marché », il est fermé par la mesure.**
+
+✅ **CANDIDAT NON-CONTENU N°2 CONSOMMÉ AUX DEUX TIERS LE 17/10 — la
+reproductibilité des arrondis est close sur `frais-de-notaire-lyon-2026`**
+(22 montants recalculés, 4 totaux faux d'un euro, corrigés ; la convention
+d'arrondi du 13/10 y est désormais PUBLIÉE pour le lecteur, première page du
+site dans ce cas). **Reste `investir-locatif-lyon`, et lui seul.**
+
+🆕 🟢 **MÉTHODE CONFIRMÉE POUR LA 3ᵉ FOIS SUR 3 — mesurer la SERP du chantier
+AVANT d'écrire.** Les 15, 16 et 17/10, elle a chaque fois fourni la matière :
+la décision du Conseil d'État, la divergence des sources sur le seuil de
+50 lots, et aujourd'hui **la piste de l'article 121 de la LF 2026, que personne
+ne mentionnait**. 📌 **Ce n'est plus une hypothèse, c'est l'étape 1 de tout
+chantier de contenu.** Corollaire vérifié aujourd'hui : **les SERP de chantier
+juridique ne contiennent aucune agence immobilière** (3 fois sur 3) — c'est
+là qu'il y a une place, pas sur les requêtes-tête tenues par les annuaires.
+
+**Angle précédent : NON-CONTENU — contrôle de périmètre juridique** (16/10,
 `dpe-2026-ce-qui-change` : chevauchement des bornes à 50 lots corrigé, condition
 d'assujettissement manquante publiée — permis de construire déposé avant le
 1er janvier 2013 —, 8ᵉ FAQ en parité, 2 sources datées ajoutées, puis balayage du
@@ -7105,6 +7413,55 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-17
+
+**1. 🔴 Combien d'autres chiffres manuscrits de `app/llms.txt/route.ts` sont
+périmés ?** Le défaut du jour en a révélé deux. Le fichier fait 102 lignes et
+ses entrées de pages « argent » contiennent **des dizaines de montants recopiés
+ou additionnés à la main**, dont aucun n'a jamais été confronté à la page qu'il
+décrit. **Ce n'est pas une hypothèse théorique : c'est un défaut avéré dont on
+ne connaît pas l'étendue.** → inscrit comme **candidat non-contenu n°1** du
+prochain run.
+
+**2. ⚠️ Les entrées manuscrites de `llms.txt` publient-elles des chiffres qui
+n'existent sur AUCUNE page ?** Vérifié aujourd'hui sur un cas : `261 457 €`,
+`182 627 €` et `78 830 €` **ne figurent nulle part** sur `/acheter` en
+production — ce sont des sommes calculées pour `llms.txt` seul. Ce n'est pas
+une invention (les composants sont publiés et la somme est juste), mais c'est
+une **asymétrie entre ce que lisent les humains et ce que lisent les IA**, et
+elle n'a jamais été décidée explicitement. **Deux lectures possibles** : (a)
+c'est un plus — `llms.txt` fait le calcul que la page laisse au lecteur ; (b)
+c'est un risque — un chiffre invérifiable sur la page qu'il prétend résumer.
+📌 **À trancher au prochain run, avant le balayage** : si (a), le dire dans le
+journal et garder ; si (b), soit publier ces totaux sur `/acheter`, soit les
+retirer de `llms.txt`. **Ne pas trancher dans l'urgence au milieu d'un
+balayage.**
+
+**3. 🟢 Ajouter la date de mise à jour des articles dans `/llms.txt`** —
+hypothèse du 16/10, **toujours ouverte et renforcée**. `app/llms.txt/route.ts`
+ligne 43 ne sert que `title` + `excerpt`, aucune date, alors que
+`dateModified` existe sur chaque article et que la fraîcheur datée est un
+facteur de citation. ⚠️ **À faire en même temps que le balayage du point 1**,
+c'est le même fichier — mais **après** lui, pas avant : corriger du faux passe
+avant enrichir du juste.
+
+**4. ⚠️ `moicombien.fr` publie 5,80 % de DMTO « dans le Rhône » et `calcunet.fr`
+6,32 % « émoluments et débours inclus ».** Ces deux taux sont faux au regard du
+tableau DGFiP (5,80 % n'existe dans aucune colonne ; 6,32 % est la part fiscale
+seule, hors émoluments et hors débours). **Question ouverte : y a-t-il un angle
+éditorial à "corriger publiquement" les simulateurs concurrents ?** 🔴 **Ne rien
+écrire là-dessus sans y réfléchir à froid** : nommer des concurrents pour dire
+qu'ils se trompent est une décision client, pas une décision SEO. **À soumettre
+à Tony Pistilli avant toute rédaction.** La version sans risque — publier le
+calcul juste et sa source, ce que la page fait déjà — est acquise.
+
+**5. 🟡 La fenêtre de majoration se referme le 31/03/2028, et la page le dit
+trois fois.** L'article 121 de la LF 2026 ne l'a pas déplacée, mais rien ne
+garantit qu'une LF 2027 ou 2028 ne le fera pas. 📌 **Point de contrôle à
+rejouer à chaque loi de finances** (décembre–février) : relire
+BOI-ENR-DMTOI-10-20 § 105 et chercher une nouvelle réécriture de l'article 116.
+**La recette de lecture du BOFiP est en « Techniques apprises » du 17/10.**
 
 ### 2026-10-16
 
@@ -7895,6 +8252,62 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-17 — Une correction d'arrondi a cassé un total écrit à la main dans `llms.txt` (6ᵉ famille de défaut invisible), et deux défauts de rédaction attrapés dans mon propre brouillon
+
+**1. 🔴 LA VRAIE ERREUR DU RUN, ET ELLE EST DE PORTÉE : `/llms.txt` CONTIENT DES
+CHIFFRES ÉCRITS À LA MAIN QUI DÉRIVENT DE PAGES, ET RIEN NE LES RELIE.**
+Le 16/10 notait, à juste titre, que `/llms.txt` « ne sert que `title` +
+`excerpt` de chaque article, aucune date », et en concluait qu'une correction
+qui ne touche ni l'un ni l'autre ne le fait pas dériver. **C'est vrai pour la
+section des articles. C'est FAUX pour le reste du fichier.** Les entrées des
+pages « argent » de `app/llms.txt/route.ts` sont **rédigées à la main**, et celle
+de `/acheter` **additionne** le prix médian d'un quartier et le total « taxes +
+émoluments » publié par `frais-de-notaire-lyon-2026` :
+
+```
+261 457 €  =  243 226 (prix Ferrandière)  +  18 231 (total publié ce matin-là)
+ 78 830 €  =  261 457  -  182 627
+```
+
+La correction d'arrondi du jour (18 231 → 18 230) a donc rendu ces deux montants
+**faux d'un euro au regard de leurs propres composants**, et ce **dans le fichier
+que les IA lisent en priorité**. Détecté en relisant `/llms.txt` en production
+après déploiement, corrigé et redéployé dans un second commit (261 456 / 78 829).
+Les six autres sommes de la même entrée ont été recalculées : justes
+(209 712, 123 876, 182 889, 243 242, 274 090, 182 627).
+
+📌 **C'est une SIXIÈME famille de défaut invisible, et elle est plus dangereuse
+que les cinq autres parce qu'elle franchit la frontière entre deux fichiers que
+rien ne relie** : aucun test, aucun type, aucun `grep` de la page modifiée ne
+pouvait la voir — `18 231` n'apparaissait nulle part dans `llms.txt`, seulement
+sa SOMME. **Règle posée : tout montant publié qui change doit être cherché
+AUSSI sous la forme de ses sommes connues.** Le détecteur est en « Techniques
+apprises ». ⚠️ **Et il faut cesser d'écrire que `llms.txt` est dérivé : il est
+dérivé pour les articles, et manuscrit pour les pages « argent ».**
+
+**2. 🟡 DEUX DÉFAUTS DE MON PROPRE BROUILLON, attrapés à la relecture
+adversariale AVANT le push, et tous deux mécaniques.**
+- La phrase d'introduction annonçait « **Trois** situations courantes » au-dessus
+  d'une liste de **quatre** puces. Écrite à trois puces, enrichie d'une quatrième,
+  le compte n'a pas suivi. **Un `grep` ne voit pas ça ; seule la relecture du
+  rendu le voit.** 📌 **À ajouter au contrôle d'avant-push : toute phrase qui
+  annonce un NOMBRE d'éléments doit être recomptée contre la liste qui suit.**
+- La puce « **Vous résidez à l'étranger** » rendait mal le BOFiP, qui écrit
+  « les **résidents étrangers** bénéficient des dispositions… ». Ce n'est pas le
+  même ensemble de personnes. Reformulée en « Vous êtes un résident étranger »,
+  avec la condition de destination à la résidence principale que la source pose
+  et que j'avais omise. 📌 **Quand la source nomme une catégorie, reprendre SON
+  mot, pas une paraphrase qui a l'air plus claire.**
+
+**3. 🟡 UNE ERREUR DE LECTURE DE REFS, qui n'a rien cassé mais qui aurait pu
+produire une alerte fausse.** Au démarrage, `main` local était à `1cc9814`
+(12/10) et la branche de session à `b224f58`. Lu tel quel, cela se raconte
+comme « quatre runs de travail ne sont jamais arrivés sur `main` ». **C'était
+faux : `origin/main` portait tout, et seul `git fetch origin` l'a révélé.**
+La tentation d'alerter avant de fetch est réelle — elle n'a pas été suivie.
+📌 **Ne jamais tirer de conclusion d'un `main` local : il n'est rafraîchi par
+AUCUNE commande automatique, pas même `git fetch`.**
 
 ### 2026-10-16 — Une page affirmait « toutes les copropriétés » là où la loi en exclut une partie, et le journal a failli publier une résolution qu'aucune source ne donne
 
@@ -8852,6 +9265,122 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-17 — Trouver la dernière version d'un PDF officiel sans page d'index, lire le BOFiP quand Légifrance bloque, et le détecteur de « sommes écrites ailleurs »
+
+**1. 🟢 TESTER L'EXISTENCE D'UNE VERSION PLUS RÉCENTE D'UN PDF OFFICIEL PAR SON
+URL, sans chercher de page d'index.** Le tableau DMTO de la DGFiP suit un gabarit
+d'URL daté. Il suffit de sonder les mois suivants : un **404** prouve qu'il n'y a
+rien de plus récent, un **200** qu'il faut relire.
+
+```bash
+for v in 2026-10 2026-09 2026-06 2026-02; do printf "%s -> " "$v"
+  curl -sIL -o /dev/null -w "HTTP %{http_code}\n" \
+    "https://www.impots.gouv.fr/sites/default/files/media/1_metier/3_partenaire/notaires/dmto/dmto_$v.pdf"
+done
+# 2026-10 -> 404 | 2026-09 -> 404 | 2026-06 -> 200 | 2026-02 -> 200
+```
+
+⚠️ **`-I` seul ne suffit pas pour TÉLÉCHARGER** (règle du 09/10 : `-L` obligatoire,
+sinon 302 et un fichier de 138 octets). Puis `pdftotext -layout` — **le `-layout`
+est indispensable** : sans lui les colonnes « taux art. 116 » et « taux art.
+1594 D » fusionnent et on ne sait plus laquelle vaut 5,00 % et laquelle 4,50 %.
+📌 **Ce test vaut pour toute source officielle datée que le site cite** (DVF,
+barèmes, tableaux DGFiP) : il transforme « à revérifier un jour » en une commande
+de trois secondes.
+
+**2. 🔴 LÉGIFRANCE EST INACCESSIBLE DEPUIS CE CONTENEUR — LE BOFiP EST LA PORTE
+D'ENTRÉE.** `legifrance.gouv.fr` répond **403** avec une page « Just a moment… »
+(Cloudflare), aussi bien via `WebFetch` que via `curl -A "Mozilla/5.0"`. **Ne
+pas y perdre de temps.** `bofip.impots.gouv.fr` répond **200** sans en-tête
+particulier, et c'est mieux qu'un substitut : le BOFiP **cite le texte en vigueur
+avec ses réécritures** (c'est lui qui a donné l'article 121 de la LF 2026), et il
+porte une **date de mise à jour** utilisable comme source datée.
+
+La difficulté est de trouver l'identifiant : les URL en `NNNN-PGP.html` devinées
+répondent 200 avec un titre **« Document non trouvé »** — d'où la règle du 09/10,
+**vérifier le `<title>` avant de lire**. La recette qui marche :
+
+```bash
+# 1. laisser une recherche web restreinte au domaine donner l'identifiant exact
+#    (allowed_domains: bofip.impots.gouv.fr) -> BOI-ENR-DMTOI-10-20-20260617
+# 2. puis fetch direct, et CONTRÔLER le <title>
+curl -sL -A "Mozilla/5.0" -o p.html \
+  "https://bofip.impots.gouv.fr/bofip/3311-PGP.html/identifiant=BOI-ENR-DMTOI-10-20-20260617"
+grep -o "<title>[^<]*</title>" p.html     # doit décrire le sujet, PAS "Document non trouvé"
+# 3. dégraisser en texte : le BOI complet fait 91 ko de HTML pour 23 ko de texte
+python3 -I -c "import re,html;h=open('p.html',encoding='utf-8',errors='replace').read();
+h=re.sub(r'<(script|style).*?</\1>','',h,flags=re.S);
+print(html.unescape(re.sub(r'<[^>]+>',' ',h)))" > p.txt
+```
+
+📌 **Un BOI se lit par ses numéros de paragraphe** (§ 105, § 107…), et ces numéros
+sont citables tels quels dans une source d'article — c'est bien plus précis que
+« BOFiP, document mis à jour le 17/06/2026 », qui est ce que la page disait avant
+aujourd'hui.
+
+**3. 🔴 LE DÉTECTEUR DE LA 6ᵉ FAMILLE — chercher un montant corrigé SOUS FORME DE
+SES SOMMES.** Quand un montant publié change, il ne suffit pas de grepper sa
+valeur : un autre fichier peut n'en porter que **le résultat d'une addition**.
+C'est ce qui s'est passé aujourd'hui avec `llms.txt`.
+
+```bash
+# pour chaque montant corrigé, calculer ses sommes plausibles avec les autres
+# valeurs publiées de la même page, puis les grepper dans TOUT app/ et lib/
+python3 -I - <<'PY'
+import re,subprocess
+corriges = {18231:18230, 17882:17883, 15752:15751, 15282:15281}
+bases    = [243226,238452,218488,209250,202802,196602,169756,195000,115000,170000,226250,255000]
+cibles=set()
+for anc in corriges:
+    for b in bases:
+        cibles.add(anc+b); cibles.add(abs(anc-b))
+for n in sorted(cibles):
+    s=f"{n:,}".replace(","," ")        # format français : 261 457
+    r=subprocess.run(["grep","-rln",s,"app","lib"],capture_output=True,text=True)
+    if r.stdout: print(s, "->", r.stdout.split())
+PY
+```
+
+✅ **Détecteur VALIDÉ, pas supposé** : rejoué sur `app/llms.txt/route.ts` dans
+son état d'avant le correctif, il sort bien `261 457 = 18231 + 243226`. Rejoué
+sur l'état corrigé, il ne sort plus qu'**un faux positif**, `152 118` dans
+`app/opengraph-image.tsx` — ce sont deux coordonnées d'un `path` SVG
+(`… -70 52 -152 118 -182 145 …`). **96 cibles testées, 1 faux positif : le
+rapport signal/bruit est exploitable tel quel.**
+
+⚠️ **Le format compte** : le site écrit `261 457` avec une **espace** comme
+séparateur de milliers. Grepper `261457` ne trouve rien. 📌 **Et la leçon plus
+large : `llms.txt` n'est PAS entièrement dérivé.** Sa section « articles » l'est
+(`title` + `excerpt`), ses entrées de pages « argent » sont **manuscrites** dans
+`app/llms.txt/route.ts` et contiennent des dizaines de montants recopiés. **Toute
+correction chiffrée doit s'y terminer.**
+
+**4. ⚠️ UN PIÈGE D'OUTIL QUI PEUT FAIRE SAUTER LE PUSH — `git rev-parse --short`
+n'accepte pas plusieurs refs dans ce conteneur.** La recette inscrite ici le
+11/10 commençait par :
+
+```bash
+git rev-parse --short HEAD main origin/main   # ⛔ fatal: Needed a single revision
+```
+
+Les trois refs se résolvent pourtant **une par une**. Enchaînée en `&&` devant le
+`git push`, cette ligne **annule tout le reste de la commande** — et comme elle
+est censée être un simple contrôle d'affichage, on cherche le problème du mauvais
+côté. **Recette corrigée, à utiliser désormais :**
+
+```bash
+git fetch origin                                   # TOUJOURS en premier
+for r in HEAD main origin/main; do printf "%-12s " "$r"; git rev-parse --short "$r"; done
+git branch -f main HEAD && git push -u origin main
+git push origin HEAD:refs/heads/<branche-de-session>
+git fetch -q origin main
+[ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] && echo "✅" || echo "🔴"
+```
+
+📌 La règle de fond du 11/10 reste entière : **« Everything up-to-date » ne vaut
+que si `origin/main == HEAD`**, et c'est la dernière ligne qui le prouve, pas le
+message de `git push`.
 
 ### 2026-10-16 — Pourquoi un détecteur de seuils rate la borne basse d'un intervalle écrit en mots, et la recette qui la rattrape
 
