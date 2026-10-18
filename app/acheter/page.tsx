@@ -92,7 +92,13 @@ const FRAIS_MEDIAN = 14712;
 
 /** Frais pour un 62 m² au prix médian du quartier le moins cher / le plus cher. */
 const FRAIS_62_MIN = 12871; // Cyprian – Les Brosses, prix 169 756 €
-const FRAIS_62_MAX = 18231; // Ferrandière – Maisons-Neuves, prix 243 226 €
+const FRAIS_62_MAX = 18230; // Ferrandière – Maisons-Neuves, prix 243 226 €
+// ⚠️ 18 230 = 15 368 € de taxes + 2 862 € d'émoluments TTC, ligne « Ferrandière –
+// Maisons-Neuves » du tableau par quartier de /blog/frais-de-notaire-lyon-2026.
+// Valait 18 231 € jusqu'au 2026-10-18 : l'article a corrigé son arrondi le 17/10 et
+// cette copie ne l'avait pas suivi, d'où 261 457 € et 78 830 € servis ici contre
+// 261 456 € et 78 829 € dans /llms.txt. Toute correction de cette ligne de l'article
+// doit être reportée ICI : la valeur n'est pas dérivée.
 const PRIX_62_MIN = 169756;
 const PRIX_62_MAX = 243226;
 
