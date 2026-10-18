@@ -14,6 +14,131 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-18**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
+  avant fetch `origin/main` pointait sur `1cc9814`, après fetch sur `2444d97`, et
+  **deux commits portent la date du 2026-10-17** — le run d'hier a bien eu lieu.
+  **Sixième configuration de départ en six runs** : la branche de session
+  (`claude/dazzling-feynman-k36jib`) et `origin/main` étaient tous deux sur
+  `2444d97`, le `main` LOCAL retardait de **huit commits** (`1cc9814`).
+- 🔴 🆕 **LE PIÈGE DU RUN, ET IL EST GRAVE : POUSSER SUR LA BRANCHE DE SESSION NE
+  DÉPLOIE RIEN. Vercel ne déploie que `main`.** Le push sur
+  `claude/dazzling-feynman-k36jib` a réussi, `HEAD == origin/<branche>`, tout
+  était vert — et **la production a servi l'ancienne valeur pendant 4 minutes de
+  sondage (12 relevés, aucun changement)**. ⚠️ **Et le message de git est
+  trompeur** : il a répondu **`* [new branch]`** alors que `git branch -a`
+  affichait `remotes/origin/claude/dazzling-feynman-k36jib` au démarrage — ce
+  ref de suivi existait **localement sans exister sur le remote**. 📌 **La
+  recette du 17/10 est la seule qui déploie, et sa 3ᵉ ligne n'est pas
+  optionnelle** : `git branch -f main HEAD && git push -u origin main`. Après ce
+  push, **déploiement constaté à t+60 s**. Détail en « Erreurs commises ».
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-quatrième constat identique** (21/09 → 18/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Septième confirmation : à refaire à
+  chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Dimanche : pas de veille** (faite le lundi 12/10). 🔴 **Prochaine échéance :
+  LUNDI 19/10, c'est-à-dire DEMAIN — la veille est la première étape du run,
+  avant le choix du chantier.**
+- ✅ **AUCUNE REQUÊTE CIBLE N'ÉTAIT DUE, et les interdits ont été respectés.**
+  Les deux SERP gelées (« agence immobilière Villeurbanne », « estimation
+  immobilière Villeurbanne ») **n'ont pas été interrogées** — interdiction du
+  16/10 jusqu'au **23/10**. « Prix m2 Villeurbanne » est hebdomadaire et échoit
+  **demain 19/10** ; « vendre appartement Villeurbanne » est à deux mesures par
+  mois (dernière le 13/10).
+- 🟢 **UNE SERP DE CHANTIER MESURÉE À LA PLACE, ET ELLE SERT ENCORE DE SOURCE —
+  4ᵉ test positif sur 4 de la méthode du 15/10.**
+  « budget total achat appartement Villeurbanne prix signé frais de notaire
+  compris 2026 » — **site absent**, 10 résultats : `orpi.com/prix-immobilier/villeurbanne`,
+  **`pap.fr` ×4** (pages d'annonces), `moneyvox.fr` (article d'**août 2024**),
+  `immo.trovit.fr`, `stop-loyer.fr/combien-emprunter/villeurbanne`,
+  `pap.fr/annonces/…r461000495`, `calcunet.fr/simulateur-credit-immobilier/villeurbanne/`.
+  🟢 **ZÉRO agence immobilière locale, ZÉRO contenu éditorial qui réponde à la
+  question** : la SERP est tenue par des portails d'annonces et des simulateurs.
+  **Le corollaire du 17/10 tient donc pour la 4ᵉ fois sur 4.**
+  📌 **Et la mesure donne trois faits exploitables :**
+  - 🟢 **LA THÈSE « AFFICHÉ ≠ SIGNÉ » EST RECONFIRMÉE PAR TROIS SOURCES NEUVES**,
+    toutes des prix **affichés** : SeLoger/MeilleursAgents **3 703 €/m²**
+    (juillet 2026) = **+3,8 %**, Orpi **4 232,5 €/m²** (moyenne 2024) =
+    **+18,7 %**, **`calcunet.fr` 4 827 €/m² = +35,3 %** au-dessus de notre
+    médiane DVF signée 2025 (3 567 €/m²). `calcunet.fr` est un **acteur neuf
+    dans ce journal** sur ce créneau. L'écart reste dans la fourchette
+    16,1–45,3 % publiée depuis le 27/09.
+  - ⚠️ **L'exemple chiffré d'Orpi est incohérent avec lui-même** : « 3 pièces de
+    70 m², 307 312 € dans le neuf dont 5 957 € de frais » et « 322 892 € dans
+    l'ancien dont 21 537 € de frais » donnent le **même prix hors frais**
+    (301 355 €, soit **4 305 €/m²**) mais des taux de **1,98 %** et **7,15 %** —
+    et ce 4 305 €/m² est **+23,2 %** au-dessus de notre médiane T3 signée
+    (3 494 €/m²). **Même motif que la contradiction interne de `cpim.fr`
+    relevée le 27/09.**
+  - 🟢 **ET LE RÉSUMÉ DU MOTEUR AVOUE L'ABSENCE DE SOURCE FAISANT AUTORITÉ** :
+    « les sources diffèrent sur les prix au m², donc le budget réel dépendra du
+    bien visé », puis il renvoie à « un notaire ou un courtier ». 📌 **C'est
+    exactement la place vide que `/acheter` est écrite pour prendre** — et c'est
+    la page corrigée aujourd'hui. Constat GEO, pas espoir de position.
+  - ✅ **Contrôle incident** : le moteur cite « 7 à 8 % de frais dans l'ancien »,
+    **le même taux que notre phrase corrigée ce jour**. Le défaut du jour portait
+    donc sur l'arithmétique, **pas sur le taux**.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 17/10 pour un run du 18,
+  et sur LE CANDIDAT N°1 DÉSIGNÉ — les chiffres écrits à la main dans
+  `app/llms.txt/route.ts`**, avec **le candidat n°2 mené en complément** comme le
+  backlog le demandait (« à faire en complément, pas seul »). **Les deux sont
+  consommés.** Détail en « Chantiers faits ».
+- 🔴 **LE DÉFAUT CENTRAL EST D'UN TYPE NEUF — ET IL A ÉTÉ CRÉÉ PAR LA CORRECTION
+  DU 17/10.** `app/acheter/page.tsx` figeait `FRAIS_62_MAX = 18 231` en déclarant
+  **en commentaire** reprendre la valeur « telle quelle » de
+  `/blog/frais-de-notaire-lyon-2026`. L'article a corrigé son arrondi hier
+  (18 230 €) ; `/llms.txt` a été corrigé hier ; **cette copie-ci ne l'a pas
+  été.** La production servait donc **deux valeurs pour la même quantité** :
+  18 231 / 261 457 / 78 830 sur `/acheter` contre 18 230 / 261 456 / 78 829 dans
+  `/llms.txt` et dans l'article. **C'est la 7ᵉ famille de défaut invisible —
+  voir « Erreurs commises ».**
+- ✅ **157 MONTANTS SUR 157 SONT DÉSORMAIS PUBLIÉS SUR LA PAGE QU'ILS DÉCRIVENT**,
+  vérifié **en production après déploiement**, les 10 entrées de pages de
+  `/llms.txt` passées une par une. **Deux écarts trouvés sur 157** (le défaut
+  ci-dessus, et l'écart de Cusset arrondi à « 11 % » quand la page en sert
+  « −11,1 % » cinq fois). **Les 13 autres constantes de `/acheter` sont vérifiées
+  à la source et inchangées** — primo-accédant compris : 869 € et 1 245 € se
+  reproduisent bien en **0,5 % × prix × 1,0237** (frais d'assiette et de
+  recouvrement).
+- ✅ **Signaux mesurés SAINS en PRODUCTION — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint` propre sur les trois fichiers touchés ; **53 URL au sitemap** ;
+  `/acheter` sert **18 230 / 261 456 / 78 829** et **plus aucune** des trois
+  anciennes valeurs ; `/blog/investir-locatif-lyon` sert **2 644 mots**,
+  **parité FAQ visible ↔ `FAQPage` 6/6 questions ET 6/6 réponses** mot pour mot,
+  **4 blocs JSON-LD** (`RealEstateAgent`, `BlogPosting`, `FAQPage`,
+  `BreadcrumbList`), `dateModified` **2026-10-18** et « Mis à jour le 18 octobre
+  2026 » visible.
+- ⚠️ **`lastmod` : UN SEUL a bougé, et il est mérité.**
+  `/blog/investir-locatif-lyon` passe au **2026-10-18**, **seule URL des 53 de
+  production à cette date**. **Douzième run d'affilée sans inflation de
+  fraîcheur** (décision du 06/10).
+- 📌 **DÉCISION ASSUMÉE : le `lastmod` de `/acheter` n'a PAS été bougé** alors que
+  la page a changé. La correction vaut **un euro sur trois montants**, n'apporte
+  **aucun contenu neuf** au lecteur, et la décision du 06/10 interdit d'acheter
+  de la fraîcheur à ce prix. *(Le 17/10 avait bougé celui de
+  `frais-de-notaire-lyon-2026` pour une correction comparable, mais ce run-là
+  ajoutait 1 274 mots.)*
+- ✅ **`/llms.txt` : UNE SEULE ligne modifiée**, vérifié par diff production →
+  local. Les deux autres différences du diff **ne viennent pas de ce run** (le
+  poste de David PISTILLI et deux annonces publiées, servis par Supabase et
+  absents en local) — **c'est aussi ce qui explique 51 URL au sitemap local
+  contre 53 en production : ne pas lire cet écart comme une régression.**
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff total du run = 3 fichiers**
+  (`app/acheter/page.tsx`, `app/llms.txt/route.ts`, `lib/blog.ts`).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux pages
+  de quartier (08/10).
+
 **Au 2026-10-17**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
@@ -2548,6 +2673,135 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-18 — Les 157 montants que `/llms.txt` recopie à la main, confrontés un par un à la page qu'ils décrivent : deux écarts, dont un créé la veille par une correction juste
+
+**Prescription du 17/10 honorée** : angle **NON-CONTENU** (le 17/10 était du
+contenu), **candidat n°1** de la pile — les chiffres écrits à la main dans
+`app/llms.txt/route.ts` — **et le candidat n°2 mené dans le même passage**, comme
+le backlog l'exigeait (« petit chantier : à faire en complément, pas seul »).
+
+#### 1. Pourquoi ce fichier, et pourquoi un `grep` du source ne voit rien
+
+`/llms.txt` est **le premier fichier que lisent les moteurs d'IA** : un chiffre
+faux y pèse plus lourd qu'ailleurs. Il est **dérivé** pour sa section d'articles
+(`title` + `excerpt`), mais ses **10 entrées de pages** (`/vendre`, `/acheter`,
+`/gestion-locative`, `/faire-gerer`, `/honoraires`, les 4 pages locales,
+`/estimation-immobiliere-villeurbanne`) **recopient et additionnent à la main
+157 montants publiés ailleurs**. Aucun n'avait jamais été vérifié.
+
+🔴 **Le premier détecteur écrit aujourd'hui a donné 43 faux positifs sur 43 et il
+fallait le jeter** : il greppait les nombres de `route.ts` dans le **source** des
+pages. Or les pages **ne contiennent aucun chiffre en dur** — elles les dérivent
+de `lib/quartiers.ts` via `fmtEur()` (`app/agence-immobiliere-gratte-ciel/page.tsx`
+le dit en en-tête : « aucun chiffre en dur dans ce fichier »). **Un grep du
+source est structurellement aveugle ici.** Le contrôle a été refait sur les
+**pages RENDUES** (`.next/server/app/*.html` en local, puis les pages servies en
+production). Recette en « Techniques apprises ».
+
+#### 2. Le défaut central : une copie que la correction de la veille a laissée sur place
+
+`app/acheter/page.tsx:95` figeait :
+
+```ts
+const FRAIS_62_MAX = 18231; // Ferrandière – Maisons-Neuves, prix 243 226 €
+```
+
+et l'en-tête du même fichier déclare reprendre ces montants **« TELS QUELS des
+calculs publiés dans /blog/frais-de-notaire-lyon-2026 »**. Or **le 17/10 a
+corrigé l'arrondi de cet article** : la ligne « Ferrandière – Maisons-Neuves »
+donne **15 368 € de taxes + 2 862 € d'émoluments TTC = 18 230 €**. Le run du
+17/10 a répercuté la correction dans `/llms.txt` (dans le même souffle que la
+6ᵉ famille) **mais pas dans cette copie-ci.**
+
+**Conséquence servie en production :** `BUDGET_62_MAX` et l'écart étant dérivés
+de cette constante, la page publiait **trois** valeurs fausses d'un euro —
+`18 231 €` (deux fois : corps + FAQ), `261 457 €` et `78 830 €` — **contre
+18 230 / 261 456 / 78 829 dans `/llms.txt` et dans l'article**. Le site se
+contredisait donc lui-même sur la même quantité, exactement le motif de la
+5ᵉ famille (contradiction inter-pages, 14/10).
+
+**Correction : une seule ligne** (`18231` → `18230`), les deux autres montants
+étant calculés. Un commentaire de traçabilité de 6 lignes a été ajouté au-dessus :
+il nomme **la ligne exacte de l'article** dont la valeur vient, rappelle qu'elle
+**n'est pas dérivée** et que toute correction de cette ligne doit être reportée
+ici à la main. ⚠️ **Choix assumé : ne PAS dériver la valeur de l'article** (les
+tableaux y sont des `rows` de chaînes, la dériver serait fragile) — la règle
+« ne refactorise rien » s'applique, et le commentaire est le filet.
+
+**Balayage du reste de la famille, sur tout `app/` + `lib/` + `components/` :**
+les 7 valeurs périmées par le run du 17/10 (`18 231`, `17 882`, `15 752`,
+`15 282`, `5 360`, `261 457`, `78 830`) ont été cherchées dans **toutes** leurs
+écritures (collée, espace normal, insécable, fine insécable). **Une seule copie
+vivante : celle-ci.** *(Les deux hits de `5360` sont `cacheControl: "31536000"`,
+faux positifs.)*
+
+#### 3. Les 13 autres constantes de `/acheter`, vérifiées à la source
+
+Confrontées une par une à l'article isolé : `8 876` (T1), `12 889` (T2),
+`16 992` (T3), `19 090` (T4), `14 712` (médiane), `12 871` (Cyprian),
+`169 756`, `243 226`, `869` et `1 245` (primo-accédant) sont **toutes présentes
+dans l'article et inchangées**. `16,1`, `45,3` et `4 380` viennent, comme leur
+commentaire l'annonce, d'un **autre** article (`investir-locatif-lyon`) — vérifié
+présentes là-bas, ce ne sont pas des absences.
+
+🟢 **Et le primo-accédant se reproduit** : `0,5 % × 169 756 × 1,0237 = 868,9 → 869 €`
+et `0,5 % × 243 226 × 1,0237 = 1 244,6 → 1 245 €` — le **1,0237** étant les frais
+d'assiette et de recouvrement sur la part départementale. **Les deux bornes sont
+donc retraçables**, ce que ni l'article ni la page ne disaient explicitement.
+
+#### 4. Le second écart, de précision : Cusset
+
+L'entrée `/agence-immobiliere-cusset` de `/llms.txt` écrivait **« soit 11 % sous
+la médiane communale »** quand la page sert **« −11,1 % » cinq fois**
+(`ecartCommune(3171) = −11,1`). Ce n'est pas faux, c'est **moins précis que la
+page** — inacceptable dans le fichier que les IA lisent en premier. Aligné sur
+« 11,1 % ». **Une seule ligne de diff dans `/llms.txt`, vérifiée par diff
+production → local.**
+
+#### 5. Le complément : la reproductibilité des arrondis sur `investir-locatif-lyon`
+
+**Dernière page de la liste du 14/10.** La liste est **maintenant épuisée**
+(`plus-value-immobiliere-calcul` et `rentabilite-locative-lyon` closes le 14/10,
+`frais-de-notaire-lyon-2026` le 17/10).
+
+🔴 **Un défaut, et sa cause n'est pas un arrondi mais une BASE.** La page
+écrivait : « comptez 7 à 8 % dans l'ancien, **soit environ 12 000 €** sur un T2
+de 45 m² acheté **au prix médian de Cusset – Bonnevay** ». Sur les valeurs que la
+page publie elle-même (**3 171 €/m² × 45 m² = 142 695 €**), 7 à 8 % donnent
+**9 989 € à 11 416 €** : « environ 12 000 € » **dépasse la borne haute de sa
+propre fourchette**. 12 000 € est l'ordre de grandeur de la médiane
+**COMMUNALE** (3 567 €/m² × 45 m² = 160 515 €, soit 11 236 à 12 841 €) : **la
+base communale a été écrite sous l'étiquette du quartier.**
+
+Corrigé en **« environ 10 000 à 11 400 € »**, et **la base (142 695 €) est
+désormais publiée** pour que le lecteur retrouve le calcul — même parti pris que
+sur `frais-de-notaire` depuis le 17/10.
+
+✅ **Tout le reste de l'article se reproduit exactement**, vérifié à la main :
+les **5 écarts en %** du tableau (45,3 / 19,8 / 17,5 / 16,1 / 22,8 — tous
+`affiché/signé − 1`), les **5 écarts en euros** (71 820 / 29 205 / 30 330 /
+22 905 / 36 585 — tous `(affiché − signé) × 45 m²`), l'**intervalle de 1,3 %**
+entre les quatre sources DVF (3 567/3 520), les **23 %** de contradiction interne
+de `cpim.fr` (4 380/3 548), le **« plus cher que 75 % des acheteurs »** (4 380 >
+4 137 = Q3 publié par `cpim.fr`), le **sixième de rendement** perdu pour 20 % de
+prix en plus (`1 − 1/1,2`), le **« un seul dépasse 3 600 €/m² »** sur les cinq
+sources, et les **1 875 ventes** (= `COMMUNE.n`).
+
+`dateModified` au **2026-10-18** : un **chiffre publié** a été corrigé, pas un
+lien ajouté — même justification que `vendre-sans-agence` le 15/10.
+
+#### 6. Ce qui a été volontairement NON fait
+
+- ❌ **Ne pas dériver les montants de `/llms.txt`** de leurs pages (ce serait le
+  vrai correctif de fond) : c'est un refactor, et la consigne client l'interdit.
+  **Inscrit en « Hypothèses à vérifier ».**
+- ❌ **Ne pas bouger le `lastmod` de `/acheter`** : un euro sur trois montants,
+  aucun contenu neuf, décision anti-inflation du 06/10.
+- ❌ **Ne pas remesurer les deux SERP gelées** (interdites jusqu'au 23/10) ni
+  « prix m2 Villeurbanne » (due demain).
+- ❌ **Ne pas toucher au candidat n°3** (parité des valeurs RNIC) : il reste
+  ouvert, il n'a pas de défaut connu, et le run avait déjà deux chantiers.
 
 ### 2026-10-17 — La loi que la page citait avait été réécrite sept mois plus tôt, quatre totaux sur sept ne se recalculaient pas sur les colonnes affichées, et la question que se pose tout couple n'avait pas de réponse
 
@@ -6813,6 +7067,77 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — audit des chiffres écrits à la main dans
+`/llms.txt`** (18/10, les 157 montants des 10 entrées de pages confrontés un par
+un à la page RENDUE qu'ils décrivent : 2 écarts, dont un défaut réel créé la
+veille par la correction du 17/10 — `app/acheter/page.tsx` figeait
+`FRAIS_62_MAX = 18 231` et servait 261 457 € / 78 830 € quand `/llms.txt` et
+l'article servaient 18 230 / 261 456 / 78 829. Complément mené : la
+reproductibilité des arrondis sur `investir-locatif-lyon`, 1 défaut de BASE
+corrigé. **157/157 vérifiés en production après déploiement.**)
+
+→ 🔴 **LE PROCHAIN RUN (19/10) EST UN LUNDI : LA VEILLE PASSE AVANT LE CHOIX DU
+CHANTIER** (dernière veille le 12/10 — une semaine). ⚠️ **Et « prix m2
+Villeurbanne » est DUE** (hebdomadaire, dernière mesure le 12/10) : c'est la
+**seule** requête cible en échéance. **Les deux SERP gelées restent interdites
+jusqu'au 23/10.**
+
+→ 🔴 **ET L'ANGLE DU PROCHAIN RUN DOIT ÊTRE DU CONTENU** (alternance : 16/10
+non-contenu → 17/10 contenu → 18/10 non-contenu). **Candidats, par ordre
+d'impact :**
+  1. 🔴 **`/faire-gerer`, `plus-value-immobiliere-calcul`, `/vendre`** — pages de
+     droit **jamais revérifiées**, inchangé depuis le 16/10. ⚠️ **Prendre
+     `plus-value-immobiliere-calcul` en premier** : c'est la seule des trois dont
+     `/llms.txt` recopie le droit **en détail** (l'entrée `/vendre` publie les
+     19 %, 17,2 %, la surtaxe de 2 à 6 %, les forfaits 7,5 % et 15 %, les seuils
+     de 22 et 30 ans et la source `F10864`), **et l'audit du 18/10 n'a vérifié
+     que les NOMBRES, pas la justesse juridique de ces règles.**
+  2. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** reste au
+     backlog **avec son périmètre imposé du 11/10** : réécriture **procédurale**
+     (méthode pas à pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas
+     rouvrir l'angle « chiffres du marché », il est fermé par la mesure.**
+  3. 🟢 **Piste GEO ouverte par la SERP du 18/10, à garder pour un run de
+     contenu** : sur « budget total achat … frais de notaire compris », le résumé
+     du moteur **avoue n'avoir aucune source faisant autorité** et renvoie à « un
+     notaire ou un courtier ». `/acheter` est écrite pour cette place. **Ne RIEN
+     réécrire sur la foi de ce seul constat** — mais si un run de contenu cherche
+     où porter l'effort, c'est la place la plus vide mesurée à ce jour.
+
+✅ **CANDIDAT NON-CONTENU N°1 CONSOMMÉ LE 18/10 — l'audit des chiffres manuels de
+`/llms.txt` est passé sur les 157 montants des 10 entrées de pages. NE PAS LE
+REPRENDRE À L'IDENTIQUE.** Le détecteur rejouable est en « Techniques apprises »
+du 18/10 ; il se **rejoue en une commande** et il faut le rejouer **chaque fois
+qu'un run corrige un montant publié** (c'est précisément ce qui a manqué le
+17/10). ⚠️ **Ce qui n'est PAS couvert et reste ouvert** : la **justesse
+juridique** des règles que `/llms.txt` recopie (les dizaines d'articles de loi,
+seuils et références `F…`/`BOI-…` des entrées `/vendre`, `/gestion-locative`,
+`/faire-gerer`, `/honoraires`) — l'audit du 18/10 n'a vérifié **que les
+nombres**. **C'est le candidat non-contenu n°1 pour le prochain run non-contenu.**
+
+✅ **CANDIDAT NON-CONTENU N°2 ENTIÈREMENT CONSOMMÉ LE 18/10 — la liste du 14/10
+sur la reproductibilité des arrondis est ÉPUISÉE** (`plus-value-immobiliere-calcul`
+et `rentabilite-locative-lyon` le 14/10, `frais-de-notaire-lyon-2026` le 17/10,
+`investir-locatif-lyon` le 18/10). **NE PLUS LA ROUVRIR** — à rejouer seulement
+sur du contenu neuf. 🆕 **Leçon à transporter : chercher la BASE autant que
+l'arrondi.** Le défaut du 18/10 n'était pas un arrondi d'un euro mais une
+**médiane communale écrite sous l'étiquette d'un quartier** — un écart de
+~600 €, invisible à tout contrôle d'arrondi.
+
+🟢 **CANDIDAT NON-CONTENU N°3, TOUJOURS OUVERT ET INCHANGÉ — la parité des
+valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`, `1 597`, `1 744`,
+`84,5 %`). `1 744` et `84,5 %` vivent sur **deux** pages (`charges-copropriete`
+et `dpe-2026-ce-qui-change`) : toute modification doit toucher les deux. **Aucun
+défaut connu dessus** — c'est de la prévention, pas une correction en attente.
+
+🆕 🟢 **MÉTHODE CONFIRMÉE POUR LA 4ᵉ FOIS SUR 4 — mesurer la SERP du chantier.**
+Les 15, 16, 17 et 18/10, elle a chaque fois produit de la matière : la décision
+du Conseil d'État, la divergence des sources sur le seuil de 50 lots, l'article
+121 de la LF 2026, et aujourd'hui **trois sources de prix affichés neuves (dont
+`calcunet.fr` à +35,3 %) plus l'aveu du moteur qu'il n'a pas de source locale**.
+📌 **Corollaire confirmé 4 fois sur 4 : ces SERP ne contiennent AUCUNE agence
+immobilière.** C'est là qu'il y a une place, pas sur les requêtes-tête tenues par
+les annuaires.
+
 **Angle du dernier run : CONTENU — justesse juridique + arrondis** (17/10,
 `frais-de-notaire-lyon-2026` : taux DGFiP revérifiés à la source et inchangés,
 mais la loi citée avait été réécrite par l'article 121 de la LF 2026, deux
@@ -7413,6 +7738,52 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-18
+
+**0. ✅ L'HYPOTHÈSE N°1 DU 17/10 EST TRANCHÉE — « combien d'autres chiffres
+manuscrits de `app/llms.txt/route.ts` sont périmés ? » : DEUX sur 157**, et un
+seul était un vrai défaut (`/acheter` figeait 18 231 €, voir « Chantiers faits »
+du 18/10). **Ne pas reprendre la question sous cette forme.** Ce qui reste ouvert
+du même fichier n'est pas numérique : voir le point 2 ci-dessous.
+
+**1. 🔴 Faut-il DÉRIVER les montants de `/llms.txt` au lieu de les copier ?**
+C'est le correctif de fond des 6ᵉ et 7ᵉ familles : tant que `/llms.txt` et
+`/acheter` recopient à la main des valeurs publiées ailleurs, **chaque
+correction future recréera le même défaut**. Le run du 18/10 l'a constaté deux
+fois en deux jours. ⚠️ **NON FAIT, et volontairement** : c'est un refactor, la
+consigne client l'interdit explicitement (« ne refactorise rien, ne corrige rien
+qui fonctionne »). **À poser au client plutôt qu'à décider seul** — la question
+est : accepte-t-il un petit module de constantes partagées (type
+`lib/frais-acquisition.ts`) pour les 8 montants que `/acheter` et l'article
+publient tous les deux ? Le filet posé en attendant est un **commentaire de
+traçabilité** dans `app/acheter/page.tsx`, qui n'a aucune force contraignante.
+
+**2. 🔴 Les RÈGLES DE DROIT que `/llms.txt` recopie sont-elles justes ?** L'audit
+du 18/10 n'a vérifié **que les nombres**. Or les entrées `/vendre`,
+`/gestion-locative`, `/faire-gerer` et `/honoraires` publient, **à la main et
+sans lien avec leur page**, des dizaines de règles : taux de plus-value
+(19 % + 17,2 %, surtaxe 2 à 6 %, forfaits 7,5 % et 15 %, exonérations à 22 et
+30 ans, fiche `F10864`), plafonds d'IRA (`F1669`), seuil du micro-foncier,
+`CGI art. 31 I-1°-a`, `BOI-RFPI-DECLA-10`, articles 21 et 22 de la loi du
+6 juillet 1989, article 9-1 de celle du 10 juillet 1965, décret `2015-342`,
+article 6 de la loi Hoguet, arrêté du 10 janvier 2017 modifié le 26 janvier 2022,
+plafonds locataires au 1er janvier 2026 (10,09 et 3,03 €/m²).
+⚠️ **Le run du 17/10 a montré qu'une loi citée peut avoir été réécrite sans
+que rien ne le signale** (article 116 de la LF 2025 réécrit par l'article 121 de
+la loi 2026-103). **Ces règles-là ont donc une péremption, et elles sont dans le
+fichier que les IA lisent en premier.** → **Candidat non-contenu n°1 du prochain
+run non-contenu.**
+
+**3. ⚠️ Le `lastmod` de `/acheter` aurait-il dû bouger ?** La page a changé
+(trois montants, un euro chacun), son `lastmod` n'a pas bougé — décision
+anti-inflation du 06/10. **À trancher une fois pour de bon** : une correction
+d'un euro sans contenu neuf mérite-t-elle un signal de fraîcheur ? Le 17/10 a
+bougé celui de `frais-de-notaire-lyon-2026` dans un cas comparable, **mais ce
+run ajoutait 1 274 mots**. 📌 **Si le client ou un run futur préfère la
+cohérence stricte (toute modification servie ⇒ `lastmod` à jour), il faut
+l'écrire comme règle et s'y tenir ; en l'état les deux runs ne se contredisent
+pas, mais ils ne suivent pas une règle écrite.**
 
 ### 2026-10-17
 
@@ -8252,6 +8623,87 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-18 — Une correction juste a laissé un défaut derrière elle (7ᵉ famille), et un push techniquement réussi n'a rien déployé pendant 4 minutes
+
+**1. 🔴 LA 7ᵉ FAMILLE DE DÉFAUT INVISIBLE : LA COPIE QUE LA CORRECTION LAISSE
+DERRIÈRE ELLE. Le défaut du jour a été CRÉÉ par le run du 17/10, et par la
+partie JUSTE de son travail.**
+
+Le 17/10 a corrigé un arrondi dans `/blog/frais-de-notaire-lyon-2026`
+(18 231 → **18 230 €**), a vu que `/llms.txt` en dérivait un total à la main, et
+l'a corrigé aussi. **Les deux gestes étaient bons.** Mais une **troisième** copie
+de la même valeur existait, et personne ne la cherchait :
+`app/acheter/page.tsx:95`, `const FRAIS_62_MAX = 18231`.
+
+Résultat servi en production pendant 24 h : **18 231 / 261 457 / 78 830** sur
+`/acheter` contre **18 230 / 261 456 / 78 829** dans `/llms.txt` et dans
+l'article. **Le site se contredisait sur la même quantité.**
+
+🔴 **Ce qui rend cette famille distincte des six précédentes :**
+- Le défaut **n'existait pas avant la correction**. Aucun audit antérieur ne
+  pouvait le trouver : la valeur était juste la veille.
+- **Le seul lien entre la copie et sa source est un COMMENTAIRE** (« repris TELS
+  QUELS des calculs publiés dans `/blog/frais-de-notaire-lyon-2026` »). Rien
+  dans le code, aucun test, aucun type ne le fait respecter. Un commentaire
+  exact **ne protège de rien**.
+- La 6ᵉ famille (17/10) disait « `/llms.txt` additionne des montants publiés
+  ailleurs ». **La 7ᵉ est plus large et plus dangereuse** : *n'importe quel*
+  fichier peut détenir une copie manuelle d'un montant publié ailleurs, et
+  `/llms.txt` n'est qu'un cas particulier.
+
+📌 **RÈGLE À APPLIQUER DÉSORMAIS, SANS EXCEPTION — elle est cheap et elle est le
+vrai enseignement du run :** *dès qu'un run corrige un montant publié, grepper
+l'ANCIENNE valeur dans tout `app/` + `lib/` + `components/`, dans ses quatre
+écritures (collée, espace normal, insécable ` `, fine insécable ` `),
+AVANT de commiter.* La commande est en « Techniques apprises » du 18/10. Le
+17/10 avait fait ce balayage **sur les sommes dérivées** mais **pas sur la valeur
+corrigée elle-même** — c'est l'angle mort exact.
+
+⚠️ **Et la correction ne suffit pas à fermer la famille** : la bonne réponse de
+fond serait de **dériver** la valeur au lieu de la copier. C'est un refactor, la
+consigne client l'interdit (« ne refactorise rien »). Le filet posé à la place
+est un **commentaire de traçabilité** qui nomme la ligne exacte de l'article et
+dit explicitement que la valeur **n'est pas dérivée**. **C'est un filet, pas une
+garantie — noté en « Hypothèses à vérifier ».**
+
+**2. 🔴 LE PUSH A RÉUSSI ET N'A RIEN DÉPLOYÉ. Vercel ne déploie que `main`, et
+pousser la branche de session ne sert à rien.**
+
+Le run a d'abord poussé **uniquement** sur la branche de session
+(`claude/dazzling-feynman-k36jib`). Tous les contrôles étaient verts :
+`git push` a réussi, `HEAD == origin/<branche>`, `2192467` des deux côtés. **Et
+la production a servi l'ANCIENNE valeur pendant 4 minutes de sondage (12
+relevés à 20 s d'intervalle, aucun changement).** Après
+`git branch -f main HEAD && git push -u origin main` : **déploiement constaté à
+t+60 s**.
+
+⚠️ **Deux pièges se sont additionnés, et le second est le plus sournois :**
+- `git branch -a` affichait `remotes/origin/claude/dazzling-feynman-k36jib`
+  **au démarrage**, ce qui donnait à croire que la branche existait sur le
+  remote. **Elle n'existait pas** : le push a répondu **`* [new branch]`**. Ce
+  ref de suivi était **local**. 📌 **Un ref `remotes/origin/…` affiché par
+  `git branch -a` ne prouve PAS que la branche existe sur le remote.**
+- Le `git log origin/claude/dazzling-feynman-k36jib` du début de run répondait
+  donc… **l'état de `main`**, sans erreur, ce qui a conforté la lecture fausse.
+
+📌 **La recette du 17/10 est la seule qui déploie, et sa ligne `main` n'est pas
+décorative.** Inscrit en tête de « Techniques apprises » du 18/10. **Le contrôle
+qui tranche reste celui du 11/10 — `origin/main == HEAD` —, et il faut y ajouter
+le seul contrôle qui compte vraiment : SONDER LA PRODUCTION.** Un push vert sur
+la mauvaise branche est indétectable par git seul.
+
+**3. ⚠️ UN DÉTECTEUR JETÉ APRÈS 43 FAUX POSITIFS SUR 43, et la cause est
+structurelle.** Le premier contrôle écrit aujourd'hui greppait les nombres de
+`app/llms.txt/route.ts` dans le **source** des pages : il a annoncé **43
+montants « absents »** sur 157. **Les 43 étaient faux.** Les pages **ne
+contiennent aucun chiffre en dur** — elles dérivent tout de `lib/quartiers.ts`
+via `fmtEur()`, et les en-têtes des pages de quartier le disent noir sur blanc.
+📌 **Leçon : avant d'écrire un détecteur sur un corpus, lire l'en-tête d'un de
+ses fichiers.** Celui de `agence-immobiliere-gratte-ciel/page.tsx` annonçait
+« aucun chiffre en dur dans ce fichier » — dix secondes de lecture auraient
+économisé le détecteur. **Le contrôle juste se fait sur le RENDU**, jamais sur le
+source, dès que le corpus utilise des helpers de formatage.
 
 ### 2026-10-17 — Une correction d'arrondi a cassé un total écrit à la main dans `llms.txt` (6ᵉ famille de défaut invisible), et deux défauts de rédaction attrapés dans mon propre brouillon
 
@@ -9265,6 +9717,115 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-18 — Le push qui déploie vraiment, le balayage d'une valeur corrigée, et l'audit « llms.txt vs pages rendues »
+
+**1. 🔴 LA RECETTE DE PUSH, CORRIGÉE DU PIÈGE DU JOUR. `main` N'EST PAS
+OPTIONNEL : Vercel ne déploie que lui.**
+
+```bash
+git fetch origin                                   # TOUJOURS en premier
+for r in HEAD main origin/main; do printf "%-12s " "$r"; git rev-parse --short "$r"; done
+git merge-base --is-ancestor origin/main HEAD && echo "ff possible"   # contrôle avant de forcer
+git branch -f main HEAD && git push -u origin main                    # ⬅️ CELUI QUI DÉPLOIE
+git push -u origin claude/<branche-de-session>                        # trace, ne déploie rien
+git fetch -q origin main
+[ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] && echo "✅" || echo "🔴"
+```
+
+⚠️ **Et le contrôle git ne suffit pas** : le 18/10, un push **vert** sur la seule
+branche de session a laissé la production inchangée **4 minutes durant**. **Le
+seul contrôle qui tranche est de SONDER LA PRODUCTION sur une valeur qui doit
+changer** (boucle ci-dessous, point 4). **Déploiement constaté à t+60 s** après
+le push sur `main` (vs ~80 s le 17/10, ~2 min 30 le 16/10).
+
+📌 **Rappel du piège du 17/10, toujours valable** :
+`git rev-parse --short HEAD main origin/main` **échoue** dans ce conteneur
+(`fatal: Needed a single revision`) alors que les trois refs se résolvent une par
+une ; enchaînée en `&&`, elle annule le reste de la ligne. **Utiliser la boucle
+`for`.**
+
+📌 🆕 **Et un piège de lecture de refs** : `git branch -a` peut afficher
+`remotes/origin/claude/<branche>` **alors que la branche n'existe pas sur le
+remote** (ref de suivi local). `git log` sur ce ref répond alors **l'état de
+`main`, sans erreur**. **Un ref `remotes/origin/…` ne prouve pas l'existence
+distante** — seul le `* [new branch]` du push le révèle, après coup.
+
+**2. 🔴 BALAYER UNE VALEUR QUE L'ON VIENT DE CORRIGER (la 7ᵉ famille). À FAIRE
+AVANT CHAQUE COMMIT QUI CORRIGE UN MONTANT PUBLIÉ.**
+
+Les nombres s'écrivent dans ce repo avec **quatre séparateurs de milliers
+possibles** (collé, espace normal, insécable ` `, fine insécable ` ` —
+celle que produit `toLocaleString("fr-FR")`). Un `grep "18 231"` avec un espace
+normal **ne trouve rien** et rassure à tort.
+
+```bash
+# pour chaque ANCIENNE valeur (celle qu'on vient de remplacer) :
+for v in 18231 261457 78830; do
+  pat=$(python3 -I -c "
+v='$v'; outs=[v]
+for sp in [' ',' ',' ']:
+    d=v; g=''
+    while len(d)>3: g=sp+d[-3:]+g; d=d[:-3]
+    outs.append(d+g)
+print('|'.join(outs))")
+  echo \"--- $v\"; grep -rnE \"$pat\" app lib components data 2>/dev/null
+done
+```
+
+⚠️ **Lire les hits, ne pas les compter** : `cacheControl: "31536000"` contient
+`5360`, les bornes de filtre DVF contiennent `12 000`. **Faux positifs normaux.**
+
+**3. 🟢 AUDITER `/llms.txt` CONTRE LES PAGES — ET LE FAIRE SUR LE RENDU, JAMAIS
+SUR LE SOURCE.**
+
+🔴 **Pourquoi le source ne marche pas** : les pages **ne contiennent aucun
+chiffre en dur**, elles dérivent tout de `lib/quartiers.ts` via `fmtEur()`. Un
+grep du source donne **43 faux positifs sur 43**. Les en-têtes des pages de
+quartier l'annoncent (« aucun chiffre en dur dans ce fichier ») — **lire l'en-tête
+d'un fichier du corpus avant d'écrire un détecteur dessus.**
+
+La recette, en trois temps :
+1. récupérer les **pages rendues** — en local `.next/server/app/<slug>.html` après
+   `npm run build`, en production par `curl -sS -L` ;
+2. **dé-baliser** (retirer `<script>` et `<style>` d'abord, sinon le payload RSC
+   fait passer n'importe quoi pour présent), `html.unescape`, puis **coller les
+   chiffres** : `re.sub(r"(?<=\d)[    ]+(?=\d)", "", texte)` ;
+3. extraire les tokens numériques de la ligne `llms.txt` **en bornant à gauche
+   sur un non-chiffre** — sans ça, `T1 115 000 €` se lit `1 115 000` et crée un
+   faux positif ; ignorer les chiffres isolés (trop bruyants).
+
+Le script complet est à
+`/tmp/.../scratchpad/audit2.py` (jetable) ; **l'essentiel est ci-dessus.**
+Résultat du 18/10 : **157 montants, 2 écarts**, et **157/157 après correction**,
+revérifiés en production.
+
+📌 **Et ce qu'il NE couvre pas** : uniquement les **nombres**. Les dizaines de
+règles de droit, références d'articles et fiches `F…`/`BOI-…` que `/llms.txt`
+recopie dans ses entrées `/vendre`, `/gestion-locative`, `/faire-gerer` et
+`/honoraires` **n'ont jamais été vérifiées** — c'est un chantier à part.
+
+**4. 🟢 SONDER LA PRODUCTION SUR UNE VALEUR QUI DOIT CHANGER.** Le seul contrôle
+qui prouve un déploiement :
+
+```bash
+for t in 20 40 60 80 100 120; do sleep 20
+  curl -sS -L -o /tmp/p.html https://www.markusimmobilier.fr/<page>
+  # comparer la NOUVELLE valeur ET l'ANCIENNE : la disparition compte autant
+  python3 -I -c "...print('OK' if '18230' in t else 'ancien')"
+done
+```
+
+**5. 🟢 UN CONTRÔLE D'ARRONDI NE VOIT PAS UNE ERREUR DE BASE — et c'est le défaut
+du jour sur `investir-locatif-lyon`.** « 7 à 8 %, soit environ **12 000 €** sur
+un T2 de 45 m² au prix médian de **Cusset** » : l'écart n'est pas d'un euro mais
+de ~600 €, parce que 12 000 € est calculé sur la médiane **communale**
+(3 567 €/m²) et non sur celle du **quartier nommé** (3 171 €/m²).
+📌 **Recette : pour toute phrase « X % de Y, soit Z », recalculer Z avec la
+valeur de Y que la page publie ELLE-MÊME, et vérifier que Z tombe DANS la
+fourchette que la phrase annonce.** Ici 7–8 % de 142 695 € = 9 989–11 416 €, et
+« environ 12 000 € » **sortait de sa propre fourchette** — le signal le plus net
+possible, et aucun contrôle d'arrondi ne le donne.
 
 ### 2026-10-17 — Trouver la dernière version d'un PDF officiel sans page d'index, lire le BOFiP quand Légifrance bloque, et le détecteur de « sommes écrites ailleurs »
 
