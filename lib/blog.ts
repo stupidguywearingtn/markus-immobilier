@@ -916,7 +916,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Un site spécialisé annonce Villeurbanne à 4 380 €/m² ; les 1 875 ventes d'appartements signées en 2025 donnent 3 567 €/m². Sur un T2 de 45 m², l'écart vaut 36 585 € — et jusqu'à 71 820 € sur Charpennes. Quatre sources comparées ligne à ligne.",
     date: "2026-05-26",
-    updated: "2026-09-27",
+    updated: "2026-10-18",
     internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
@@ -976,7 +976,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Quel prix retenir pour bâtir son plan de financement ?" },
       { type: "p", text: "**La médiane des ventes signées du quartier, jamais le prix moyen affiché en ligne.** C'est le seul des deux chiffres qui décrive des transactions abouties, et c'est celui sur lequel un notaire et une banque travailleront. Le prix affiché garde une utilité, mais elle est autre : il indique ce que les vendeurs espèrent aujourd'hui, donc le point de départ d'une négociation — pas son point d'arrivée." },
       { type: "p", text: "Deux conséquences pratiques. D'abord, **l'écart de prix d'achat se répercute presque intégralement sur le rendement** : un même loyer divisé par un prix 20 % plus élevé fait perdre environ un sixième du rendement brut. C'est pour cette raison que nous calculons le [rendement locatif brut des sept quartiers de Villeurbanne](/blog/rentabilite-locative-lyon) sur les prix signés, et non sur des prix d'annonce. Ensuite, **une médiane de quartier n'est pas le prix de votre bien** : à surface égale, l'étage, l'ascenseur, l'extérieur et le DPE font varier le prix réel à l'intérieur d'un même secteur — nous avons [mesuré cette dispersion quartile par quartile](/blog/estimation-en-ligne-ou-agence)." },
-      { type: "p", text: "Et n'oubliez pas les frais d'acquisition, qui s'ajoutent au prix signé sans jamais figurer dans un prix au m² : comptez 7 à 8 % dans l'ancien, soit environ 12 000 € sur un T2 de 45 m² acheté au prix médian de Cusset – Bonnevay." },
+      { type: "p", text: "Et n'oubliez pas les frais d'acquisition, qui s'ajoutent au prix signé sans jamais figurer dans un prix au m² : comptez 7 à 8 % dans l'ancien, soit environ 10 000 à 11 400 € sur un T2 de 45 m² acheté au prix médian de Cusset – Bonnevay (3 171 €/m², soit 142 695 €)." },
 
       { type: "h2", text: "Comment vérifier soi-même le prix réellement payé pour un appartement à Villeurbanne ?" },
       { type: "p", text: "**En consultant gratuitement la base DVF de l'État, qui publie le prix réel de chaque vente enregistrée par les notaires, adresse par adresse.** Comptez cinq minutes, sans créer de compte. La procédure tient en cinq étapes." },
