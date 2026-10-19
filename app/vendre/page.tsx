@@ -51,7 +51,17 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *    22 ans et de prélèvements sociaux à plus de 30 ans, forfaits de 7,5 % de
  *    frais d'acquisition et de 15 % de travaux après 5 ans, surtaxe de 2 % à
  *    6 % au-delà de 50 000 € de plus-value imposable) → service-public.gouv.fr,
- *    fiche F10864, consultée et relue le 2026-09-30.
+ *    fiche F10864, consultée et relue le 2026-09-30, revérifiée le 2026-10-19
+ *    (fiche « vérifiée le 15 avril 2026 », taux et barèmes inchangés).
+ *  - PÉRIMÈTRE de l'exonération de résidence principale (six assouplissements,
+ *    délai normal de vente après déménagement, condition de cession simultanée
+ *    des dépendances, présomption du kilomètre pour un garage) → BOFiP-Impôts,
+ *    BOI-RFPI-PVI-10-40-10, version en vigueur du 27/06/2023, § 190 et § 330 à
+ *    § 360, lu le 2026-10-19. ⚠️ Cette FAQ disait « à condition que le logement
+ *    soit l'habitation habituelle et effective au moment de la vente » SANS les
+ *    assouplissements : un vendeur déjà déménagé en concluait qu'il perdait
+ *    l'exonération. Le détail vit sur /blog/plus-value-immobiliere-calcul ;
+ *    si le périmètre change là-bas, il change ici aussi.
  *  - indemnités de remboursement anticipé : plafond de 6 mois d'intérêts sur le
  *    capital remboursé ET de 3 % du capital restant dû, et absence d'indemnité
  *    quand le remboursement fait suite à la vente du logement pour changement
@@ -142,7 +152,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Vendre sa résidence principale à Villeurbanne est-il imposable ?",
-    a: `Non, l'exonération est totale. La plus-value réalisée sur la vente de la résidence principale et de ses dépendances — cave, garage, place de stationnement — n'est soumise ni à l'impôt sur le revenu ni aux prélèvements sociaux, à condition que le logement soit bien l'habitation habituelle et effective du vendeur au moment de la vente. C'est le cas le plus fréquent, et il explique pourquoi la majorité des vendeurs villeurbannais ne paient aucun impôt sur leur vente. Source : service-public.gouv.fr, fiche F10864.`,
+    a: `Non, l'exonération est totale : la plus-value réalisée sur la vente de la résidence principale n'est soumise ni à l'impôt sur le revenu ni aux prélèvements sociaux, sans condition de durée de détention ni de montant. Le logement doit être l'habitation habituelle et effective du vendeur au jour de la vente, mais cette condition connaît six assouplissements — dont celui du vendeur qui a déjà déménagé, à condition de vendre dans un délai normal et de n'avoir ni loué ni prêté le logement entre-temps. Les dépendances (cave, garage, place de stationnement) sont exonérées à condition d'être cédées simultanément et de former avec le logement un tout indissociable. C'est le cas le plus fréquent, et il explique pourquoi la majorité des vendeurs villeurbannais ne paient aucun impôt sur leur vente. Sources : service-public.gouv.fr, fiche F10864 ; BOFiP-Impôts, BOI-RFPI-PVI-10-40-10, § 190 et § 330.`,
   },
   {
     q: "Peut-on vendre un appartement dont le crédit n'est pas remboursé ?",
