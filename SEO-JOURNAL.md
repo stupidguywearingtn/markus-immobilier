@@ -14,6 +14,132 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-19**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
+  avant fetch `origin/main` pointait sur `1cc9814`, après fetch sur `261c2ec`, et
+  **trois commits portent la date du 2026-10-18** — le run d'hier a bien eu lieu.
+  🆕 **Septième configuration de départ en sept runs** : la branche de session
+  (`claude/dazzling-feynman-8se0ds`) et `origin/main` étaient tous deux sur
+  `261c2ec`, le `main` LOCAL retardait de **quatorze commits** (`1cc9814`).
+  📌 **Et c'est la deuxième fois que le `main` local retarde de plus de huit
+  commits : ne jamais lire `git log main` sans fetch d'abord.**
+- ✅ **LA RECETTE DE PUSH DU 18/10 FONCTIONNE ET N'A PAS BESOIN D'ÊTRE
+  RETOUCHÉE.** `git branch -f main HEAD && git push -u origin main` →
+  `261c2ec..60f651c main -> main`, puis `origin/main == HEAD` vérifié.
+  **Déploiement constaté à t+60 s** (sondage toutes les 20 s : 2 414 mots à t+20
+  et t+40, 4 364 mots à t+60). Même délai qu'hier.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-cinquième constat identique** (21/09 → 19/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Huitième confirmation : à refaire à
+  chaque run.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- ✅ **LUNDI : LA VEILLE A ÉTÉ FAITE, ET EN PREMIER** (dernière le 12/10).
+  **Prochaine échéance : lundi 26/10.** Résultat résumé en « Techniques
+  apprises » — et **l'essentiel est négatif, ce qui est une information** :
+  la page officielle `developers.google.com/search/updates` ne porte **aucun
+  changement de données structurées** en septembre ni en octobre 2026.
+  **Rien à appliquer, rien à corriger : ne pas refaire cette recherche avant le
+  26/10.**
+- 🟢 **LA SEULE REQUÊTE CIBLE DUE A ÉTÉ MESURÉE, et les interdits respectés.**
+  « Prix m2 Villeurbanne » (hebdomadaire, dernière le 12/10) — **site absent**,
+  9 résultats. Les deux SERP gelées (« agence immobilière Villeurbanne »,
+  « estimation immobilière Villeurbanne ») **n'ont pas été interrogées** :
+  interdiction du 16/10 **jusqu'au 23/10**, toujours en vigueur.
+  « Vendre appartement Villeurbanne » est à deux mesures par mois (dernière le
+  13/10).
+- 🔴 🆕 **ET CETTE MESURE APPORTE UN FAIT NEUF QUI COMPTE : UN CONCURRENT ARRIVE
+  SUR NOTRE ANGLE EXACT.** `blog.qoridor.fr` apparaît deux fois (page commune et
+  **page de quartier Charpennes**) et publie des **prix DVF par quartier** —
+  3 506 €/m² pour Villeurbanne « juillet 2026, 1 678 transactions notariales »,
+  4 096 €/m² pour Charpennes « au 1er juillet 2026 ». **C'est la première fois
+  qu'un acteur de cette SERP publie du DVF par quartier**, c'est-à-dire
+  exactement ce qui fait la valeur de nos pages. 📌 **Et son chiffre communal
+  (3 506 €/m²) est à −1,7 % de notre médiane DVF signée 2025 (3 567 €/m²) : à
+  la différence de toutes les sources relevées depuis le 27/09, celui-là n'est
+  PAS un prix affiché gonflé.** À suivre — voir « Chantiers en attente ».
+  *(Autres résultats : `efficity.com` ×2 dont une page de RUE, `orpi.com`
+  4 267 €/m² sans date, `realadvisor.fr` page de rue, `squarehabitat.fr`
+  3 443 €/m² janvier 2026, `netvendeur.com`, `solvimo.com`.)*
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 18/10, et sur LE CANDIDAT
+  N°1 DÉSIGNÉ — `plus-value-immobiliere-calcul`, pris côté JUSTESSE JURIDIQUE.**
+  **2 414 → 4 364 mots.** Détail en « Chantiers faits ».
+- 🔴 **UNE AFFIRMATION PUBLIÉE ÉTAIT FAUSSE, ET SA PROPRE SOURCE DISAIT LE
+  CONTRAIRE.** La page écrivait « le vendeur n'a pas de démarche séparée à
+  faire » en citant la fiche F10864 — laquelle demande de **reporter la
+  plus-value en case 3VZ de la 2042-C**. **Première fois dans ce journal qu'un
+  défaut se trouve en relisant la source que la page cite elle-même, sans aucun
+  autre indice.** C'est un contrôle à ajouter : voir « Techniques apprises ».
+- 🔴 **TROIS DÉFAUTS DE PÉRIMÈTRE, dont un qui faisait perdre de l'argent au
+  lecteur** : l'exonération de résidence principale était conditionnée à
+  l'occupation « au moment de la vente » sans mentionner les **six
+  assouplissements** du BOFiP (un vendeur déjà déménagé en concluait qu'il
+  l'avait perdue) ; les dépendances étaient données exonérées **sans condition**
+  (il en faut deux) ; et l'**exonération de la première cession d'un logement
+  autre que la RP** était absente du H2 qui pose exactement sa question.
+  **C'est la 6ᵉ, 7ᵉ et 8ᵉ phrase de périmètre fausse depuis le 11/10 — la
+  famille la plus productive de ce journal, et de loin.**
+- ✅ **TOUS LES TAUX PUBLIÉS SONT JUSTES ET INCHANGÉS** (19 %, 17,2 %,
+  abattements 6 % / 1,65 % / 4 % / 1,60 % / 9 %, forfaits 7,5 % et 15 %, surtaxe
+  2–6 %, seuils de 22 et 30 ans), revérifiés sur F10864 « vérifiée le 15 avril
+  2026 ». **Le défaut n'était jamais dans les chiffres** — c'est le troisième
+  run d'affilée où la justesse se joue sur le périmètre, pas sur les valeurs.
+- 🟢 **UNE PLACE GEO VIDE PRISE AVEC UNE SOURCE DE PREMIÈRE MAIN** : « 17,2 % ou
+  18,6 % en 2026 ? ». La hausse de CSG de 9,2 % à 10,6 % **ne touche pas** les
+  plus-values immobilières. Source lue **en PDF** : DGFiP, brochure pratique IR
+  2026, « Principales nouveautés — revenus 2025 », **p. 45** (LFSS 2026, art. 12 ;
+  CSS, art. L136-8). **Les concurrents sur cette question publient des pages de
+  blog ; aucun ne cite la brochure.**
+- ✅ **PARITÉ INTER-PAGES TRAITÉE DANS LE MÊME PASSAGE** — sinon la correction
+  créait la contradiction que ce journal traque. La même affirmation trop large
+  vivait sur **TROIS emplacements** (corps de l'article, sa FAQ, FAQ de
+  `/vendre`) **plus `/llms.txt`**. Les quatre sont alignés et vérifiés en
+  production.
+- 🔴 **DEUX DÉFAUTS DE MA PROPRE RÉDACTION, TROUVÉS AVANT DE POUSSER** : le bloc
+  ajouté à `/llms.txt` avait d'abord été inséré **au milieu de l'énumération**
+  « Répond aussi à : … » (phrase cassée), et il publiait **18,6 % dans l'entrée
+  `/vendre` alors qu'aucune page décrite par cette entrée ne publie ce
+  chiffre** — violation directe de la règle du 18/10. Reposé en fin d'entrée
+  avec renvoi explicite à l'article qui le publie. Détail en « Erreurs
+  commises ».
+- ✅ **Signaux mesurés SAINS en PRODUCTION — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint` propre sur les trois fichiers touchés ; **53 URL au sitemap** ;
+  l'article sert **4 364 mots**, **1 `<h1>`, 9 `<h2>`, 4 `<h3>`**, **4 blocs
+  JSON-LD** (`RealEstateAgent`, `BlogPosting`, `FAQPage`, `BreadcrumbList`),
+  **parité FAQ visible ↔ `FAQPage` 10/10 questions ET 10/10 réponses** mot pour
+  mot, `dateModified` **2026-10-19** et « Mis à jour le 19 octobre 2026 »
+  visible ; **0 mot collé** ; `/vendre` sert **2 376 mots** et **parité FAQ
+  6/6 ET 6/6**.
+- ✅ **Les 19 valeurs neuves sont servies en production** (`3VZ`, `3VW`,
+  `2042-C`, « six assouplissements », « moins d'un kilomètre », « présomption
+  simple », `18,6`, `10,6`, « vingt-quatre mois », `§ 190`, `§ 330`, `§ 360`,
+  `BOI-RFPI-PVI-10-40-10`, `BOI-RFPI-PVI-10-40-30`, `150 U, II-1° bis`,
+  `L136-8`, « 13 juillet 2026 », « tout indissociable », « acquéreurs
+  distincts ») **et les 2 formulations retirées ont disparu** (« pas de démarche
+  séparée à faire », « à condition qu'il s'agisse de l'habitation habituelle et
+  effective au moment de la vente »).
+- ⚠️ **`lastmod` : UN SEUL a bougé, et il est mérité.**
+  `/blog/plus-value-immobiliere-calcul` passe au **2026-10-19**, **seule URL des
+  53 de production à cette date** — 1 950 mots neufs et quatre règles de droit
+  publiées. **Treizième run d'affilée sans inflation de fraîcheur** (décision du
+  06/10).
+- ✅ **AUCUN MONTANT EN EUROS AJOUTÉ** : le run n'a publié que des taux, des
+  délais, des numéros de paragraphe et des numéros de case. **Donc aucun risque
+  d'arrondi, et le détecteur du 18/10 n'avait rien à rejouer** côté euros.
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff total du run = 3 fichiers**
+  (`lib/blog.ts`, `app/vendre/page.tsx`, `app/llms.txt/route.ts`).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre mais sans effet sur deux
+  pages de quartier (08/10).
+
 **Au 2026-10-18**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
@@ -2673,6 +2799,236 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-19 — La page de la plus-value disait au vendeur qu'il n'avait aucune démarche à faire, et faisait perdre l'exonération à qui avait déménagé avant de vendre
+
+**Prescription du 18/10 honorée** : angle **CONTENU** (le 18/10 était du
+non-contenu), **candidat n°1** de la pile — les pages de droit jamais
+revérifiées — et **`plus-value-immobiliere-calcul` pris en premier**, comme le
+backlog l'exigeait, parce que c'est la seule des trois dont `/llms.txt` recopie
+le droit en détail. **2 414 → 4 364 mots.**
+
+#### 0. La veille d'abord (lundi), et son résultat est négatif
+
+Faite avant le choix du chantier, comme prescrit. **Aucun changement de données
+structurées chez Google en septembre ni en octobre 2026** : la page officielle
+`developers.google.com/search/updates` ne liste, pour ces deux mois, que le quota
+de l'Indexing API (16/10), une page « UGC Fresh Data Program » (08/10) et une
+mise à jour du guide sur le contenu génératif (01/10). **Rien à appliquer, rien à
+corriger, et donc rien à faire de ce côté.** Détail et nuances en « Techniques
+apprises ».
+
+📌 **Conséquence pratique : la veille n'a PAS orienté le chantier du jour.** Elle
+a confirmé qu'il n'y avait pas d'urgence technique, ce qui libérait le run pour
+le candidat n°1 du backlog. **C'est le résultat normal d'une veille, et il ne
+faut pas le confondre avec une veille bâclée.**
+
+#### 1. Le point de départ : la page était solide en volume, et fausse en périmètre
+
+La page servait 2 414 mots, 6 `<h2>`, 4 blocs JSON-LD, une parité FAQ propre.
+**Tous ses taux étaient justes** — revérifiés un par un sur la fiche F10864
+(« vérifiée le 15 avril 2026 ») : 19 % d'IR, 17,2 % de prélèvements sociaux,
+abattements de 6 % / 1,65 % par an de la 6ᵉ à la 21ᵉ année, 4 % / 1,60 % la 22ᵉ,
+9 % par an de la 23ᵉ à la 30ᵉ, forfaits de 7,5 % et de 15 %, surtaxe de 2 à 6 %
+au-delà de 50 000 €, exonération à 22 et 30 ans. **Rien à corriger côté
+chiffres.**
+
+🔴 **Les quatre défauts étaient tous dans le PÉRIMÈTRE des règles, et le premier
+était une affirmation franchement fausse.**
+
+#### 2. Défaut n°1 — « le vendeur n'a pas de démarche séparée à faire » : faux, et la source citée par la page disait le contraire
+
+La page terminait sa section « Qui n'a aucune plus-value à déclarer » par :
+
+> Source : service-public.gouv.fr, fiche F10864 […]. La plus-value est calculée
+> et prélevée par le notaire le jour de l'acte : **le vendeur n'a pas de
+> démarche séparée à faire.**
+
+**La première moitié est vraie, la seconde est fausse.** La plus-value imposable
+doit être **reportée en case 3VZ de la déclaration complémentaire 2042-C**
+l'année suivant la vente, parce qu'elle entre dans le **revenu fiscal de
+référence**. Ce report ne crée aucun impôt supplémentaire et n'entre pas dans le
+calcul du taux de prélèvement à la source — mais le RFR commande autre chose que
+l'impôt sur le revenu : exonérations et plafonnements de taxe foncière, accès à
+certaines aides, taux de CSG applicable aux pensions de retraite. **Un vendeur
+qui suivait notre page à la lettre omettait une ligne de sa déclaration.**
+
+📌 **Et le plus instructif : la fiche F10864 que la page citait elle-même
+l'écrit.** Relue ce jour, elle demande de « reporter sur votre déclaration de
+revenus la plus-value déclarée par le notaire ». **Le défaut était donc visible
+sans aucune recherche — il suffisait de relire la source citée.** Première
+occurrence de ce motif dans ce journal ; le contrôle est en « Techniques
+apprises ».
+
+Source de première main pour la correction : impots.gouv.fr, « Pourquoi dois-je
+mentionner sur la déclaration des revenus ma plus-value immobilière alors que
+j'ai déjà payé l'impôt ? », **page modifiée le 13/07/2026**, et « Plus-values
+imposées » (qui donne les deux cases : **3VZ** pour l'imposable, **3VW** pour la
+plus-value exonérée au titre de la première cession).
+
+→ **Nouveau `<h2>` « Faut-il déclarer une plus-value immobilière sur sa
+déclaration de revenus ? »**, 4 paragraphes, et la phrase fausse supprimée.
+
+#### 3. Défaut n°2 — l'exonération de résidence principale était refusée à qui avait déménagé
+
+La page conditionnait l'exonération à ce que le bien soit « l'habitation
+habituelle et effective **au moment de la vente** », point final. **Lu comme ça,
+un vendeur qui a déménagé avant d'avoir vendu conclut qu'il a perdu
+l'exonération.** C'est faux.
+
+Le BOFiP prévoit **six assouplissements** à cette condition, et le premier
+(**§ 190**) couvre exactement ce cas :
+
+> Il est admis, lorsque l'immeuble a été occupé par le cédant jusqu'à sa mise en
+> vente, que l'exonération reste acquise si la cession intervient dans des
+> délais normaux et sous réserve que le logement n'ait pas, pendant cette
+> période, été donné en location ou occupé gratuitement […]. **Dans un contexte
+> économique normal, un délai d'une année constitue en principe le délai
+> maximal.**
+
+🟢 **ET VOICI CE QUI REND CE DÉFAUT PRÉCIEUX POUR CE SITE EN PARTICULIER : le
+BOFiP renvoie explicitement aux conditions LOCALES du marché et au PRIX
+DEMANDÉ.** Les quatre critères d'appréciation du délai normal sont « les
+conditions locales du marché immobilier, le prix demandé, les caractéristiques
+particulières du bien cédé et les diligences effectuées par le contribuable ».
+Et § 190 ajoute que, passé le délai normal, le seul fait d'avoir mis en vente ne
+suffit pas, « notamment s'il apparaît que **le prix demandé ne correspond pas aux
+prix pratiqués sur le marché immobilier local** ».
+
+📌 **C'est la première fois qu'une règle fiscale rend notre propre donnée
+directement utile au lecteur** : un prix de mise en vente trop ambitieux ne coûte
+plus seulement des mois de délai, il peut coûter l'exonération. Les médianes DVF
+par quartier publiées plus haut sur la page **sont** l'ordre de grandeur qui
+protège le vendeur. **Chercher systématiquement ces règles-là : ce sont les
+meilleures passerelles entre contenu de droit et données locales.** *(Le lien
+vers `/estimation` placé à cet endroit est justifié par la règle elle-même, pas
+ajouté pour le maillage.)*
+
+Les cinq autres assouplissements sont désormais cités avec leur numéro de
+paragraphe : logement occupé par le futur acquéreur (§ 200), époux séparés ou
+divorcés, concubins séparés, PACS rompu (§ 210), contribuable incarcéré (§ 290),
+immeuble en cours de construction après mutation professionnelle, invalidité ou
+décès (§ 300), péniches et bateaux (§ 320).
+
+→ **Nouveau `<h3>` « J'ai déménagé avant d'avoir vendu : est-ce que je perds
+l'exonération ? »**, avec les quatre critères en liste.
+
+#### 4. Défaut n°3 — « cave, garage, place de stationnement » étaient donnés exonérés sans condition
+
+Il en faut **deux** (**§ 330**) : la cession doit intervenir **simultanément**
+avec celle du logement (CGI, art. 150 U, II-3°), et les dépendances doivent
+former avec lui un **« tout indissociable »**.
+
+Et il manquait la règle la plus concrète, celle du garage (**§ 360**) :
+l'administration admet de ne pas écarter la qualification de dépendance immédiate
+et nécessaire pour les garages situés **à moins d'un kilomètre** de la résidence
+principale, et pour les chambres de bonne **dans le même immeuble**. ⚠️ **Ce
+kilomètre n'est pas un seuil mécanique : c'est une présomption SIMPLE,
+susceptible de preuve contraire, dans les deux sens.** La page le dit maintenant,
+parce qu'un lecteur qui lirait « 1 km » comme une règle dure se tromperait
+autant que celui qui ne la connaissait pas.
+
+Également publié depuis § 330 : **vendre à des acquéreurs distincts ne fait pas
+obstacle à l'exonération**, et dans ce cas la condition de simultanéité est
+réputée satisfaite si les ventes interviennent dans un délai normal.
+
+⚠️ **Piège évité ici, et il mérite d'être noté** : une recherche avait d'abord
+rapporté cette règle des acquéreurs distincts en l'attribuant à la version
+**2018** du BOFiP. **Elle n'a été publiée qu'après vérification qu'elle figure
+bien dans la version EN VIGUEUR (27/06/2023)** — ce qui est le cas, § 330. Une
+autre formulation de la même recherche, introuvable dans la version en vigueur,
+**n'a pas été publiée.**
+
+→ **Nouveau `<h3>` « La cave, le garage et la place de parking sont-ils exonérés
+eux aussi ? »**, et une ligne de source avec les numéros de paragraphe.
+
+#### 5. Défaut n°4 — une exonération entière manquait, sous le `<h2>` qui pose exactement sa question
+
+Le `<h2>` « Qui n'a aucune plus-value à déclarer, quel que soit le prix de
+vente ? » ne connaissait que la résidence principale. **L'exonération de la
+première cession d'un logement autre que la résidence principale (CGI, art.
+150 U, II-1° bis) était absente**, alors qu'elle répond mot pour mot à cette
+question — et qu'elle vise un profil très villeurbannais : **le locataire qui
+détient un appartement locatif et le vend pour acheter son premier logement.**
+
+Trois conditions, publiées et sourcées :
+
+1. première cession d'un logement depuis le **1er février 2012** ;
+2. ne pas avoir été propriétaire de sa résidence principale, directement ou par
+   personne interposée, au cours des **quatre années** précédant la cession — la
+   détention d'un droit démembré ou indivis suffit à écarter l'exonération ;
+3. **remploi dans les vingt-quatre mois** à l'acquisition ou la construction du
+   logement affecté à son habitation principale.
+
+Et le point que presque aucune source grand public ne précise : **l'exonération
+est proportionnelle à la fraction du prix effectivement remployée.** Remployer la
+moitié du prix n'exonère que la moitié de la plus-value.
+
+Source : BOFiP-Impôts, **BOI-RFPI-PVI-10-40-30, version en vigueur du
+07/07/2021** (vérifiée comme étant bien la version courante, voir « Techniques
+apprises »).
+
+→ **Nouveau `<h2>` « Je vends un bien locatif pour acheter ma première résidence
+principale : suis-je imposé ? »**
+
+#### 6. La place GEO : « 17,2 % ou 18,6 % en 2026 ? », tranchée avec une source de première main
+
+La page publiait 17,2 % — **juste** — mais ne disait rien de la question que le
+marché se pose en ce moment. La LFSS 2026 porte la CSG de 9,2 % à 10,6 % sur les
+revenus du patrimoine, **et les plus-values immobilières en sont exclues.**
+
+Texte officiel, lu **en PDF** (brochure pratique IR 2026 de la DGFiP, fiche
+« Principales nouveautés — revenus 2025 », **p. 45**) :
+
+> Le taux de la CSG est porté de 9,2 % à 10,6 % sur les revenus du patrimoine et
+> les produits de placement. **Les revenus fonciers, les plus-values
+> immobilières, l'assurance-vie, l'épargne logement restent soumis au taux de
+> 9,2 %.** […] (LFSS 2026, art. 12 ; CSS, art. L136-8)
+
+Publié : le total reste **36,2 %** (19 % + 17,2 %) ; les 17,2 % se décomposent en
+9,2 % de CSG, 0,5 % de CRDS et 7,5 % de prélèvement de solidarité ; **passent à
+18,6 %** les dividendes, les plus-values de cession de titres et les revenus de
+**location meublée** — point qui concerne directement un bailleur villeurbannais
+en meublé, dont les loyers sont touchés alors que sa plus-value de revente ne
+l'est pas.
+
+🟢 **Pourquoi c'est une place vide** : les deux premières pages à traiter cette
+question dans la SERP sont des blogs d'acteurs financiers, et **aucune ne cite la
+brochure DGFiP**. La justesse sourcée est ici un différenciateur réel, comme sur
+les frais de notaire le 17/10.
+
+→ **Nouveau `<h2>` « La plus-value immobilière est-elle à 17,2 % ou à 18,6 % de
+prélèvements sociaux en 2026 ? »**
+
+#### 7. La parité inter-pages, traitée dans le même passage (sinon la correction créait la contradiction)
+
+⚠️ **L'affirmation trop large ne vivait pas sur une page mais sur quatre
+emplacements**, trouvés par `grep` avant d'écrire :
+
+| Emplacement | Traitement |
+|---|---|
+| `lib/blog.ts` — corps de l'article | réécrit, 2 `<h3>` ajoutés |
+| `lib/blog.ts` — FAQ de l'article | réponse réécrite + 4 questions ajoutées (6 → 10) |
+| `app/vendre/page.tsx` — FAQ | périmètre resserré, source BOFiP ajoutée |
+| `app/llms.txt/route.ts` — entrée `/vendre` | périmètre resserré + 2 faits 2026 |
+
+**Corriger l'article seul aurait fabriqué la 5ᵉ famille de défaut** (la
+contradiction inter-pages, 14/10). Le commentaire de provenance de
+`app/vendre/page.tsx` porte désormais la note explicite : *« si le périmètre
+change là-bas, il change ici aussi »*.
+
+#### 8. Ce que le run a mesuré après déploiement
+
+- article : **4 364 mots**, 1 `<h1>` / 9 `<h2>` / 4 `<h3>`, **4 blocs JSON-LD**
+  valides, **parité FAQ visible ↔ `FAQPage` 10/10 questions ET 10/10 réponses**
+  mot pour mot, `dateModified` 2026-10-19, « Mis à jour le 19 octobre 2026 »
+  visible, **0 mot collé** ;
+- **19 valeurs neuves servies** et **2 formulations retirées disparues** ;
+- `/vendre` : 2 376 mots, **parité FAQ 6/6 ET 6/6**, ancienne formulation
+  disparue ;
+- `/llms.txt` : les deux faits servis, grammaire de l'énumération intacte,
+  renvoi à l'article présent ;
+- **sitemap : 53 URL, une seule au 2026-10-19.**
 
 ### 2026-10-18 — Les 157 montants que `/llms.txt` recopie à la main, confrontés un par un à la page qu'ils décrivent : deux écarts, dont un créé la veille par une correction juste
 
@@ -7067,6 +7423,92 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — justesse juridique de périmètre** (19/10,
+`plus-value-immobiliere-calcul` : tous les taux justes et inchangés, mais une
+affirmation franchement fausse — « le vendeur n'a pas de démarche séparée à
+faire », quand la case 3VZ de la 2042-C est obligatoire —, l'exonération de
+résidence principale refusée à qui a déménagé alors que le BOFiP prévoit six
+assouplissements, les dépendances données exonérées sans leurs deux conditions,
+et l'exonération de la première cession d'un logement autre que la RP
+entièrement absente du `<h2>` qui pose sa question. Plus la place GEO
+« 17,2 % ou 18,6 % » prise avec la brochure DGFiP. 2 414 → 4 364 mots, et la
+parité traitée sur les 4 emplacements de l'affirmation).
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (20/10) DOIT ÊTRE NON-CONTENU** (alternance :
+17/10 contenu → 18/10 non-contenu → 19/10 contenu). **Candidats, par ordre
+d'impact :**
+  1. 🔴 **LA JUSTESSE JURIDIQUE DE CE QUE `/llms.txt` RECOPIE — et il en reste
+     TROIS entrées sur quatre.** C'était le candidat non-contenu n°1 désigné le
+     18/10 ; **le run du 19/10 en a fait UNE au passage** (l'entrée `/vendre`,
+     dont le droit sur la plus-value est maintenant juste, sourcé au § de BOFiP
+     et aligné sur la page). ⚠️ **Restent `/gestion-locative`, `/faire-gerer` et
+     `/honoraires`** : des dizaines d'articles de loi, seuils et références
+     `F…`/`BOI-…`/`CGI art…` que **l'audit du 18/10 n'a PAS vérifiés** (il n'a
+     vérifié que les nombres). **Le travail est cadré et la méthode est
+     éprouvée** : pour chaque règle citée, ouvrir la source **en vigueur**,
+     vérifier le PÉRIMÈTRE (« qui est soumis à », « à condition que ») autant
+     que le chiffre, et vérifier que la page décrite dit la même chose.
+  2. ⚠️ **Le contrôle « la source citée dit-elle ce que la page affirme ? »,
+     passé sur tout le corpus.** 🆕 **C'est un candidat NEUF, né du défaut n°1
+     du 19/10** : la fiche F10864 citée par la page disait le contraire de ce
+     que la page affirmait. **Aucun contrôle de ce journal ne cherchait ça.** Le
+     détecteur est en « Techniques apprises » du 19/10 ; il se cadre en une
+     commande (lister toutes les lignes « Source : … » et, pour chacune, relire
+     la source et confronter la phrase qu'elle est censée appuyer). **Peu de
+     pages, fort rendement attendu.**
+  3. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`) — inchangé : `1 744` et `84,5 %`
+     vivent sur **deux** pages. **Aucun défaut connu dessus** : prévention.
+
+→ ⚠️ **REQUÊTES CIBLES — ce qui est dû le 20/10 :** « vendre appartement
+Villeurbanne » (deux mesures par mois, dernière le 13/10) est **due**.
+« Prix m2 Villeurbanne » vient d'être mesurée le 19/10, **prochaine échéance le
+26/10**. 🔴 **Les deux SERP gelées restent INTERDITES jusqu'au 23/10**
+(« agence immobilière Villeurbanne », « estimation immobilière Villeurbanne »).
+
+🆕 🔴 **FAIT NEUF À SURVEILLER, ET IL TOUCHE NOTRE AVANTAGE — `blog.qoridor.fr`.**
+Relevé pour la première fois le 19/10 sur « prix m2 Villeurbanne », **deux fois
+dans la SERP** (page commune + **page de quartier Charpennes**). Il publie du
+**DVF par quartier** : 3 506 €/m² pour la commune « juillet 2026, 1 678
+transactions notariales », 4 096 €/m² pour Charpennes « au 1er juillet 2026 ».
+📌 **C'est le premier concurrent mesuré qui publie des prix SIGNÉS par quartier,
+et non des prix affichés** — son chiffre communal est à **−1,7 %** de notre
+médiane DVF 2025 (3 567 €/m²), là où toutes les sources relevées depuis le 27/09
+étaient 16 à 45 % au-dessus. **La thèse « affiché ≠ signé » reste vraie, mais
+elle ne suffira plus à nous distinguer de CELUI-LÀ.**
+→ ⚠️ **À faire un jour de non-contenu, et PAS aujourd'hui** : lire une de ses
+pages de quartier et établir **ce que nous publions qu'il ne publie pas**
+(surface médiane, nombre de ventes par quartier, seuils fiscaux dérivés, écarts
+2022, droit sourcé au paragraphe). **Ne RIEN réécrire sur la foi de ce seul
+relevé** — une mesure n'est pas une tendance, et la règle du 14/10 vaut aussi
+pour les concurrents.
+
+✅ **CANDIDAT CONTENU N°1 CONSOMMÉ POUR UN TIERS LE 19/10 — la liste des pages
+de droit jamais revérifiées avance.** `plus-value-immobiliere-calcul` est faite
+(4 défauts de périmètre, dont une affirmation fausse). **Restent `/faire-gerer`
+et `/vendre`**, dans cet ordre : `/faire-gerer` porte le formulaire syndic et du
+droit de la copropriété jamais relu ; `/vendre` a été **effleurée** aujourd'hui
+(sa FAQ plus-value est juste et sourcée) mais **le reste de sa page de droit n'a
+pas été revérifié** — indemnité de remboursement anticipé, prorata de taxe
+foncière, délai de rétractation, mainlevée d'hypothèque. ⚠️ **Ne pas la
+considérer comme faite.**
+
+⚠️ **TOUJOURS AU BACKLOG, inchangé et avec son périmètre imposé du 11/10** :
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne` — réécriture
+**procédurale** (méthode pas à pas, zéro nouveau tableau de marché) **ou**
+fusion. **Ne pas rouvrir l'angle « chiffres du marché », il est fermé par la
+mesure.**
+
+🟢 **LA PISTE GEO DU 18/10 EST TOUJOURS OUVERTE ET ELLE VIENT D'ÊTRE VALIDÉE UNE
+FOIS DE PLUS.** Le 18/10 notait que, sur « budget total achat … frais de notaire
+compris », le moteur **avouait n'avoir aucune source faisant autorité**. Le 19/10
+a trouvé la même configuration sur « 17,2 % ou 18,6 % » : **les seules sources
+sont des blogs, et aucune ne cite le texte officiel.** 📌 **Le motif se répète
+assez pour devenir une méthode de choix de sujet : chercher les questions 2026
+où les sources se contredisent et où personne ne cite le texte de première
+main.** C'est là que la justesse sourcée paye, et ce sont des SERP sans aucune
+agence immobilière (corollaire confirmé 5 fois sur 5).
+
 **Angle du dernier run : NON-CONTENU — audit des chiffres écrits à la main dans
 `/llms.txt`** (18/10, les 157 montants des 10 entrées de pages confrontés un par
 un à la page RENDUE qu'ils décrivent : 2 écarts, dont un défaut réel créé la
@@ -7738,6 +8180,40 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-19
+
+**1. 🔴 Combien d'autres pages affirment quelque chose que leur propre source
+contredit ?** Le défaut n°1 du jour est d'un type neuf : la page citait F10864
+et affirmait l'inverse de ce que F10864 dit. **Une seule occurrence connue, donc
+une hypothèse, pas un constat.** Le corpus compte des dizaines de lignes
+« Source : … ». **À trancher par le balayage décrit en « Techniques apprises »
+du 19/10** — et c'est le candidat non-contenu n°2.
+
+**2. ⚠️ L'abattement exceptionnel de l'article 150 VE (zones tendues)
+s'applique-t-il encore en 2026, et Villeurbanne est-elle dans son périmètre ?**
+**Question ouverte, volontairement NON tranchée aujourd'hui et donc RIEN n'a été
+publié dessus.** Cet abattement (60 / 75 / 85 % selon le projet) visait les
+cessions de terrains à bâtir et d'immeubles destinés à être démolis en zone
+tendue — Villeurbanne est en zone A. **Si le dispositif est en vigueur, il
+manque à la page ; s'il est éteint, il ne faut surtout pas l'ajouter.** Je n'ai
+pas pu l'établir dans le temps du run, et la règle « en cas de doute, ne pas le
+faire » s'applique. **À vérifier sur le BOFiP (série RFPI-PVI-20-40) avant toute
+publication.**
+
+**3. ⚠️ `blog.qoridor.fr` est-il un concurrent durable ou un passage ?** Relevé
+une seule fois (19/10). **Une mesure n'est pas une tendance** — c'est la règle
+du 14/10. À reconfirmer sur la mesure du 26/10 avant d'en tirer quoi que ce soit
+pour le contenu.
+
+**4. 🟢 La page `/vendre` gagnerait-elle à publier elle-même le point
+« 17,2 % ou 18,6 % » ?** Aujourd'hui, `/llms.txt` renvoie à l'article pour ce
+fait, ce qui est correct et respecte la règle du 18/10. **Mais `/vendre` est la
+page que le site désigne pour « ce qu'il reste au vendeur », et un vendeur en
+meublé s'y pose la question.** ⚠️ **Non fait aujourd'hui, et pour une raison
+assumée** : l'en-tête de `/vendre` pose que la page ne réexplique pas ce qui est
+chiffré ailleurs, et dupliquer un explicatif de CSG y contredirait son
+architecture. **À trancher, pas à trancher en passant.**
 
 ### 2026-10-18
 
@@ -8623,6 +9099,69 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-19 — Mes deux fautes du jour sont dans le texte que J'AI écrit, et l'une violait une règle posée la veille
+
+**1. 🔴 J'AI INSÉRÉ UNE PHRASE AU MILIEU D'UNE ÉNUMÉRATION ET CASSÉ LA LIGNE LA
+PLUS LUE DU SITE PAR LES IA.**
+
+L'entrée `/vendre` de `/llms.txt` est une longue phrase à structure fixe :
+« … *Répond aussi à : A, B, C, le fait local que …, l'indemnité …, et le moment
+où …* ». J'ai glissé mes deux faits 2026 **à l'intérieur** de cette énumération,
+après l'élément « impôt sur la plus-value ». Résultat rendu :
+
+> … impots.gouv.fr, page modifiée le 13/07/2026)**, le fait local que** le prix
+> médian au m² …
+
+**Une phrase complète refermée par un point-virgule, puis l'énumération qui
+reprend par une virgule.** Illisible, et dans le fichier que les IA lisent en
+priorité.
+
+📌 **Ce que j'en retiens, et c'est généralisable** : `/llms.txt` n'est pas une
+liste de puces, **c'est une phrase par page**. Une addition ne s'y insère pas où
+le sujet tombe, **elle s'ajoute à la fin**. ⚠️ **Et ça ne se voit pas dans le
+diff** : le diff montrait un `+` propre sur une ligne de 3 000 caractères. **Seul
+le rendu lu à l'œil l'a montré** — d'où la règle : *rendre `/llms.txt` et relire
+la ligne entière, pas le diff.*
+
+**2. 🔴 J'AI PUBLIÉ UN CHIFFRE DANS `/llms.txt` QUE LA PAGE DÉCRITE NE PUBLIE
+PAS — exactement ce que la règle du 18/10 interdit, un jour après qu'elle a été
+écrite.**
+
+Ma première version mettait **18,6 %** dans l'entrée `/vendre`. Or `/vendre` ne
+publie pas 18,6 % — ce taux vit sur `/blog/plus-value-immobiliere-calcul`. La
+règle du 18/10 est sans ambiguïté : *« pour chaque nombre de `route.ts`,
+vérifier soit qu'il est publié tel quel sur la page décrite, soit qu'il se
+recalcule sur des valeurs qui le sont »*. **Mon ajout créait, de ma main, la
+famille de défaut que le run de la veille avait passé la journée à éliminer sur
+157 montants.**
+
+✅ **Corrigé avant le push** : le bloc est reposé en fin d'entrée, et **la phrase
+nomme explicitement la page qui publie ces chiffres** (« détaillés et sourcés sur
+/blog/plus-value-immobiliere-calcul »). Le lecteur — humain ou machine — peut
+aller vérifier, ce qui est le but de la règle.
+
+📌 **La leçon qui compte : la règle du 18/10 a été écrite pour AUDITER
+l'existant, et elle vaut aussi pour ÉCRIRE du neuf.** Elle n'était formulée que
+comme un détecteur ; elle est désormais aussi une contrainte de rédaction.
+**À appliquer à chaque ajout dans `app/llms.txt/route.ts` : avant d'écrire un
+chiffre, nommer la page qui le publie. Si aucune ne le publie, ne pas l'écrire —
+ou renvoyer à celle qui le fait.**
+
+**3. ⚠️ ET UN FAUX POSITIF DE MON PROPRE DÉTECTEUR, à ne pas reproduire.**
+
+Mon contrôle de production a signalé « **moins d'un kilomètre** » comme
+**ABSENT** de la page — alarmant, puisque c'est une des règles publiées du jour.
+**C'était faux.** J'avais écrit le motif de test avec une apostrophe
+typographique (`U+2019`, `’`) et je le cherchais dans le **HTML brut**, où le
+texte sort avec l'apostrophe droite de la source. La phrase était bien servie,
+trois fois.
+
+📌 **Règle** : tester les chaînes contenant une apostrophe **sur le texte
+dé-balisé et `html.unescape`é**, jamais sur le HTML brut — ou normaliser les
+apostrophes (`’` → `'`) des deux côtés avant comparaison. **Les 18 autres
+valeurs du même contrôle étaient justes : un détecteur qui crie au loup sur une
+valeur sur 19 fait perdre plus de temps qu'il n'en gagne.**
 
 ### 2026-10-18 — Une correction juste a laissé un défaut derrière elle (7ᵉ famille), et un push techniquement réussi n'a rien déployé pendant 4 minutes
 
@@ -9717,6 +10256,134 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-19 — Relire la source que la page cite, trouver la version EN VIGUEUR d'un BOI, et la brochure DGFiP comme source de première main sur les changements de l'année
+
+**1. 🔴 LE CONTRÔLE LE PLUS RENTABLE DU RUN, ET IL COÛTE UNE RELECTURE :
+« LA SOURCE CITÉE DIT-ELLE CE QUE LA PAGE AFFIRME ? »**
+
+Le défaut n°1 du jour — « le vendeur n'a pas de démarche séparée à faire » —
+était **démenti par la fiche F10864 que la page citait à la ligne suivante**.
+Aucun contrôle de ce journal ne cherchait ça : on vérifiait que les **chiffres**
+de la source étaient bien recopiés, jamais que les **affirmations** autour
+d'eux étaient compatibles avec elle.
+
+```bash
+# lister tout ce que le corpus présente comme sourcé
+grep -rnoE "Source[s]? : [^\"]{0,160}" lib/blog.ts app/*/page.tsx app/llms.txt/route.ts \
+  | sed 's/\\n/ /g'
+```
+
+Puis, source par source : **l'ouvrir, et confronter la ou les phrases qu'elle est
+censée appuyer.** ⚠️ **Le défaut ne se trouve pas dans la phrase citée, il se
+trouve dans la phrase VOISINE** — celle que l'auteur a ajoutée « puisque c'est
+évident », et qui n'est pas dans la source. Ici : le notaire paie l'impôt (vrai,
+dans la source) **donc** le vendeur n'a rien à faire (faux, et la source le dit).
+
+📌 **Formulé comme une règle de rédaction** : une ligne « Source : X » ne couvre
+que ce que X dit. **Tout ce qui est déduit à côté doit être soit vérifié dans X,
+soit annoncé comme une déduction.**
+
+**2. 🟢 TROUVER LA VERSION *EN VIGUEUR* D'UN BOI, ET NE JAMAIS CITER UNE AUTRE.**
+
+Le BOFiP sert **toutes** les versions historiques d'un document, avec des URL
+quasi identiques — et une recherche web renvoie volontiers une version périmée
+(ici, la version **2018** de `BOI-RFPI-PVI-10-40-10`, qui contient des règles
+réécrites depuis). La page rendue porte la liste des versions ; **c'est elle qui
+tranche** :
+
+```bash
+curl -sL -A "Mozilla/5.0" -o boi.html \
+  "https://bofip.impots.gouv.fr/bofip/<PREFIXE>-PGP.html/identifiant=<BOI-...-AAAAMMJJ>"
+grep -o "<title>[^<]*</title>" boi.html          # PAS "Document non trouvé"
+python3 -I -c "import re,html;h=open('boi.html',encoding='utf-8',errors='replace').read();
+h=re.sub(r'<(script|style).*?</\1>','',h,flags=re.S);
+t=re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',h)));
+print(re.findall(r'Version en vigueur du [0-9/]+ (?:au [0-9/]+|à aujourd.hui)',t)[:4])"
+# attendu : la 1re entrée doit se terminer par « à aujourd'hui »
+```
+
+⚠️ 🆕 **ET LE PIÈGE DU PRÉFIXE NUMÉRIQUE** : le `<PREFIXE>-PGP.html` n'est **pas
+le même pour deux BOI de la même série**. `BOI-RFPI-PVI-10-40-10` vit sous
+**4307**, `BOI-RFPI-PVI-10-40-30` sous **7284**. Avec le mauvais préfixe, le
+serveur répond **HTTP 200** et un `<title>` « **Document non trouvé** » — d'où la
+règle du 09/10, toujours valable : **vérifier le `<title>` avant de lire.** Le
+bon préfixe se récupère dans l'URL que donne une recherche restreinte à
+`bofip.impots.gouv.fr`.
+
+📌 **Bénéfice concret pour le contenu** : un BOI se cite **par son numéro de
+paragraphe** (§ 190, § 330, § 360) **et par sa date de version**. C'est le
+niveau de précision qu'aucun concurrent de nos SERP n'atteint, et c'est
+exactement ce qu'un LLM reprend tel quel.
+
+**3. 🟢 LA BROCHURE PRATIQUE « IMPÔT SUR LE REVENU » DE LA DGFiP : LA SOURCE DE
+PREMIÈRE MAIN SUR CE QUI A CHANGÉ DANS L'ANNÉE, EN UNE PAGE.**
+
+Pour trancher « 17,2 % ou 18,6 % », ni les blogs ni Légifrance (403 dans ce
+conteneur, règle du 17/10) n'ont servi. **La fiche « Principales nouveautés » de
+la brochure IR le dit en deux phrases, avec la référence légale entre
+parenthèses.**
+
+```bash
+curl -sSL -A "Mozilla/5.0" -o nouv.pdf \
+  "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/nouveautes.pdf"
+pdftotext -layout nouv.pdf nouv.txt      # -layout OBLIGATOIRE (colonnes)
+grep -n -B3 -A6 "10,6" nouv.txt
+```
+
+Ce qui en sort, citable tel quel : *« Le taux de la CSG est porté de 9,2 % à
+10,6 % sur les revenus du patrimoine et les produits de placement. Les revenus
+fonciers, **les plus-values immobilières**, l'assurance-vie, l'épargne logement
+restent soumis au taux de 9,2 % »* — **(LFSS 2026, art. 12 ; CSS, art.
+L136-8)**, p. 45.
+
+📌 **Le gabarit d'URL est annuel** (`ir_2026`, `ir_2027`…) : il se sonde comme le
+tableau DMTO du 17/10. **À rejouer chaque année, et pour toute règle fiscale que
+le site publie** — c'est la façon la plus rapide de savoir si un taux publié a
+bougé, et elle bat la recherche web sur ce terrain.
+
+**4. 🟢 CE QUE LA VEILLE DU 19/10 A DONNÉ — et surtout ce qu'elle N'A PAS donné.**
+
+- ✅ **Rien à appliquer côté données structurées.** La page officielle
+  `developers.google.com/search/updates` ne porte, pour **septembre et octobre
+  2026**, aucune entrée touchant `FAQPage`, `HowTo`, `Article` ou
+  `LocalBusiness`. Les trois entrées d'octobre : quota de l'Indexing API (16/10),
+  page « UGC Fresh Data Program » (08/10), mise à jour du guide
+  « Updated guidance on using generative AI content » (01/10). **Les types que
+  le site utilise ne sont pas concernés.** ⚠️ **Ne pas refaire cette recherche
+  avant le 26/10.**
+- ⚠️ **À lire au prochain lundi, pas aujourd'hui** : la mise à jour du 01/10 du
+  guide Google sur le **contenu génératif** (elle y intègre des éléments des
+  Search Quality Raters guidelines). **Je ne l'ai pas lue** — je l'ai seulement
+  relevée dans le changelog. **C'est le seul élément officiel d'octobre qui peut
+  concerner un site dont le contenu est rédigé avec une IA : à ouvrir en
+  premier le 26/10.**
+- ⚠️ **Chiffres de prestataires, à traiter comme indicatifs et NON comme des
+  faits** (aucune source primaire trouvée) : ~97 % des citations d'AI Overviews
+  viendraient de pages déjà dans le **top 20** organique (étude Semrush citée de
+  seconde main) ; seulement **11 %** des domaines seraient cités **à la fois**
+  par ChatGPT et Perplexity (analyse de 680 M de citations, éditeur GEO).
+  📌 **Si le premier est vrai, il valide la stratégie de ce journal plutôt qu'il
+  ne la contrarie** : le site étant absent des requêtes-tête, viser les SERP de
+  niche où il peut réellement se classer est la seule voie vers une citation.
+  **Mais ce n'est pas une source : ne pas la citer dans du contenu publié.**
+
+**5. 🔴 UNE RÈGLE FISCALE QUI RENVOIE AU « MARCHÉ LOCAL » EST LA MEILLEURE
+PASSERELLE ENTRE DROIT ET DONNÉE — les chercher activement.**
+
+Le § 190 du BOFiP fait dépendre l'exonération de résidence principale, pour un
+vendeur déjà déménagé, des **conditions locales du marché** et du **prix
+demandé**. 📌 **Autrement dit, le droit lui-même rend notre tableau de médianes
+DVF utile au lecteur** : un prix de mise en vente désaligné du marché local peut
+coûter l'exonération, et nos médianes par quartier sont l'ordre de grandeur qui
+l'évite.
+
+**C'est le modèle de contenu le plus défendable de ce site** : ni du droit
+recopié (tout le monde en publie), ni des chiffres secs (les portails en
+publient), mais **une règle de droit dont l'application dépend d'une donnée
+locale que nous sommes seuls à publier**. À chercher dans chaque page de droit :
+les expressions « conditions locales », « marché local », « prix pratiqués »,
+« usages locaux », « délai normal ».
 
 ### 2026-10-18 — Le push qui déploie vraiment, le balayage d'une valeur corrigée, et l'audit « llms.txt vs pages rendues »
 
