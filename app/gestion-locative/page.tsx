@@ -37,7 +37,9 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *    forfaitaire de 30 %, option réel sur 3 ans irrévocable → BOFiP
  *    BOI-RFPI-DECLA-10.
  *  - déductibilité au réel des honoraires versés à un tiers pour la gestion →
- *    CGI art. 31, I-1°-a ; BOFiP BOI-RFPI-BASE-20-10.
+ *    CGI art. 31, I-1°-e ; BOFiP BOI-RFPI-BASE-20-10 § 20 et § 60.
+ *    ⚠️ C'est bien le « e » (frais d'administration et de gestion), pas le
+ *    « a » (dépenses de réparation et d'entretien) : le BOI le dit à son § 20.
  *  - prélèvements sociaux sur revenus fonciers : 17,2 %.
  *  - pénalité de retard sur le dépôt de garantie : 10 % du loyer mensuel en
  *    principal par mois entamé → loi n° 89-462 du 6 juillet 1989, art. 22.
@@ -131,7 +133,7 @@ const A =
 const FAQ: FaqItem[] = [
   {
     q: "L'option pour le régime réel est-elle réversible ?",
-    a: `Non, pas immédiatement : l'option est exercée pour trois ans et elle est irrévocable pendant cette période. Elle se prend sans formalité particulière, par la simple souscription de la déclaration n° 2044 dans le délai de dépôt de la déclaration de revenus. Passés les trois ans, elle reste valable tant que vous demeurez dans le champ du micro-foncier, et vous pouvez alors revenir à l'abattement forfaitaire. Source : BOFiP, BOI-RFPI-DECLA-10.`,
+    a: `Non, pas immédiatement : l'option est exercée pour trois ans et elle est irrévocable pendant cette période. Elle se prend sans formalité particulière, par la simple souscription de la déclaration n° 2044 dans le délai de dépôt de la déclaration de revenus. Au terme des trois ans, en revanche, l'option cesse de produire ses effets : vous retrouvez le choix chaque année. Si vous continuez à déposer une 2044 au-delà de ce terme, l'administration considère que vous exercez une option annuelle, et non plus triennale — autrement dit vous pouvez revenir à l'abattement forfaitaire d'une année sur l'autre, sans attendre un nouveau cycle de trois ans. Source : BOFiP, BOI-RFPI-DECLA-10 § 240 et § 250, version en vigueur depuis le 6 mars 2025.`,
   },
   {
     q: "Faut-il déclarer les loyers sur la 2042 ou sur la 2044 ?",
@@ -155,7 +157,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Le propriétaire doit-il remettre une quittance chaque mois ?",
-    a: "Seulement si le locataire la demande, mais alors gratuitement et sans délai. L'article 21 de la loi du 6 juillet 1989 impose que la quittance ventile les sommes versées en distinguant le loyer et les charges. Le même article oblige le bailleur à communiquer au locataire le décompte des charges par nature un mois avant leur régularisation annuelle — c'est l'une des obligations les plus souvent oubliées en gestion directe.",
+    a: "Seulement si le locataire la demande, mais alors gratuitement et sans délai. L'article 21 de la loi du 6 juillet 1989 impose que la quittance ventile les sommes versées en distinguant le loyer et les charges, et toute clause du bail qui ferait payer au locataire la quittance ou son envoi est réputée non écrite. Le refus de délivrer la quittance demandée est sanctionné : jusqu'à un an de prison et 20 000 € d'amende pour un bailleur personne physique, 100 000 € pour une personne morale. Le décompte des charges par nature, lui, relève d'un autre texte — l'article 23 de la même loi pour un logement vide, l'article 25-10 pour un meublé — et doit parvenir au locataire un mois avant la régularisation annuelle. Source : service-public.fr, fiches F2066 (vérifiée le 1ᵉʳ octobre 2026) et F947.",
   },
   {
     q: "Un propriétaire bailleur en copropriété doit-il souscrire une assurance ?",
@@ -283,7 +285,20 @@ export default function GestionLocativePage() {
                   {eur(LOYER_AN)} de loyers bruts par an, soit moins que le seuil
                   de {eur(SEUIL_MICRO)} en dessous duquel le{" "}
                   <strong>régime micro-foncier</strong>{" "}s&apos;applique de plein
-                  droit. Or au micro-foncier, aucune charge réelle ne se déduit :
+                  droit — à deux conditions que les pages sur le sujet oublient :
+                  ce seuil s&apos;apprécie sur l&apos;ensemble des revenus bruts
+                  fonciers du <strong>foyer fiscal</strong>, quote-part de SCI
+                  comprise, et non sur ce seul logement ; et il faut
+                  qu&apos;aucun membre du foyer ne possède un bien relevant
+                  d&apos;un régime spécial — monument historique, amortissement
+                  « Périssol », « Besson neuf » ou « Robien », conventionnement
+                  ANAH (« Borloo ancien », « Cosse »), « Loc&apos;Avantages » —
+                  qui exclut le micro-foncier quel que soit le montant encaissé.
+                  À l&apos;inverse, et c&apos;est l&apos;erreur symétrique :
+                  bénéficier du « Pinel », du « Denormandie » ou du « Malraux »
+                  ne fait <em>pas</em> obstacle au micro-foncier (BOFiP,
+                  BOI-RFPI-DECLA-10 § 60 et § 90 à 130). Or au micro-foncier,
+                  aucune charge réelle ne se déduit :
                   l&apos;administration applique un abattement forfaitaire de{" "}
                   {pct(ABATTEMENT_MICRO)} censé tout couvrir. Les{" "}
                   {eur(GESTION_AN_TOTAL)}{" "}d&apos;honoraires ne viennent donc en
@@ -294,7 +309,14 @@ export default function GestionLocativePage() {
                   <strong>régime réel</strong>, où les rémunérations et
                   commissions versées à un tiers pour la gestion d&apos;un
                   immeuble sont déductibles pour leur montant réel (article 31,
-                  I-1°-a du code général des impôts). Le gain dépend alors de
+                  I-1°-e du code général des impôts — le « e », frais
+                  d&apos;administration et de gestion, et non le « a » des
+                  dépenses de réparation : c&apos;est le BOFiP
+                  BOI-RFPI-BASE-20-10 qui le dit à son § 20). La commission de
+                  mise en location
+                  entre dans le même poste : le BOFiP y range expressément, à
+                  son § 60, « les commissions versées par un propriétaire à une
+                  agence de location ». Le gain dépend alors de
                   votre tranche marginale, majorée des {pct(PRELEV_SOCIAUX)} de
                   prélèvements sociaux sur les revenus fonciers :
                 </p>
@@ -401,8 +423,8 @@ export default function GestionLocativePage() {
               "Établir un bail conforme au contrat type réglementaire et y annexer le dossier de diagnostic technique complet (DPE, état des risques, et selon l'immeuble plomb, amiante, électricité, gaz).",
               "Dresser un état des lieux d'entrée et un état des lieux de sortie, contradictoires et comparables — c'est la pièce qui décide du sort du dépôt de garantie.",
               "Remettre une quittance gratuite dès que le locataire la demande, en ventilant loyer et charges (article 21 de la loi du 6 juillet 1989).",
-              "Réviser le loyer une fois par an si le bail comporte une clause de révision, en appliquant l'indice de référence des loyers du trimestre prévu au contrat.",
-              "Régulariser les charges annuellement et communiquer au locataire leur décompte par nature un mois avant la régularisation.",
+              "Réviser le loyer une fois par an si le bail comporte une clause de révision, en appliquant l'indice de référence des loyers du trimestre prévu au contrat — SAUF si le logement est classé F ou G au DPE : réviser le loyer y est alors interdit, pour tout bail signé, renouvelé ou tacitement reconduit depuis le 24 août 2022 en métropole (service-public.fr, fiche F1310, vérifiée le 1ᵉʳ août 2026).",
+              "Régulariser les charges annuellement et communiquer au locataire leur décompte par nature un mois avant la régularisation (article 23 de la loi du 6 juillet 1989 ; article 25-10 pour un meublé), puis tenir les justificatifs à sa disposition pendant les six mois qui suivent.",
               "Maintenir le logement décent, ce qui inclut depuis le 1ᵉʳ janvier 2025 un DPE au minimum classé F, puis E au 1ᵉʳ janvier 2028 et D au 1ᵉʳ janvier 2034.",
               "Restituer le dépôt de garantie dans le mois suivant la remise des clés si les deux états des lieux concordent, dans les deux mois s'ils révèlent des dégradations imputables au locataire.",
               "Souscrire au minimum une assurance de responsabilité civile propriétaire non occupant, obligatoire en copropriété (article 9-1 de la loi du 10 juillet 1965).",

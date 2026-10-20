@@ -562,19 +562,40 @@ export default function FaireGererPage() {
                 </H2>
                 <Body>
                   <p>
-                    Tous les trois ans, le conseil syndical met en concurrence
-                    plusieurs projets de contrat de syndic avant l&apos;assemblée
-                    générale appelée à désigner le syndic : c&apos;est
-                    l&apos;article 21 de la loi n° 65-557 du 10 juillet 1965.
-                    Cette mise en concurrence peut être écartée si
+                    À chaque fois que l&apos;assemblée générale est appelée à
+                    désigner un syndic professionnel — pas sur un calendrier
+                    fixe. Le conseil syndical met alors en concurrence plusieurs
+                    projets de contrat, conformes au contrat type et accompagnés
+                    de leur fiche d&apos;information sur le prix et les
+                    prestations, pour l&apos;information de l&apos;assemblée :
+                    c&apos;est l&apos;article 21 de la loi n° 65-557 du 10
+                    juillet 1965. Cette mise en concurrence peut être écartée si
                     l&apos;assemblée générale précédente en décide ainsi à la
                     majorité de l&apos;article 25, question qui doit alors être
-                    inscrite à son ordre du jour. Et lorsque la copropriété
-                    n&apos;a pas institué de conseil syndical, elle n&apos;est
-                    pas obligatoire.
+                    inscrite à son ordre du jour — l&apos;inscription relève
+                    depuis 2020 de l&apos;initiative du conseil syndical. Et
+                    lorsque la copropriété n&apos;a pas institué de conseil
+                    syndical, elle n&apos;est pas obligatoire.
                   </p>
                   <p>
-                    Indépendamment de ce calendrier, tout copropriétaire peut
+                    <strong>
+                      Attention à une règle que beaucoup de pages publient encore
+                      :
+                    </strong>{" "}
+                    la mise en concurrence n&apos;est plus triennale. Elle
+                    l&apos;était jusqu&apos;au 31 mai 2020 ; l&apos;ordonnance
+                    n° 2019-1101 du 30 octobre 2019 a réécrit l&apos;article 21
+                    et supprimé cette périodicité à compter du 1ᵉʳ juin 2020. Ce
+                    qui dure trois ans, c&apos;est le <em>mandat</em> du syndic
+                    (un an possible), et c&apos;est cette durée que
+                    l&apos;habitude a transformée en « mise en concurrence tous
+                    les trois ans ». Les deux sont indépendantes : un mandat
+                    reconduit sans vote de dispense doit être précédé
+                    d&apos;une mise en concurrence, quelle que soit la date de la
+                    précédente.
+                  </p>
+                  <p>
+                    Indépendamment de cette obligation, tout copropriétaire peut
                     demander au syndic d&apos;inscrire à l&apos;ordre du jour
                     l&apos;examen d&apos;un projet de contrat qu&apos;il
                     communique. Autrement dit : il n&apos;est pas nécessaire
