@@ -14,6 +14,161 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-20**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
+  avant fetch `origin/main` pointait sur `906585e`, après fetch **toujours sur
+  `906585e`**, et **deux commits portent la date du 2026-10-19** — le run d'hier
+  a bien eu lieu. 🆕 **Et c'est la PREMIÈRE configuration de départ saine en huit
+  runs** : `HEAD`, `main` local et `origin/main` concordaient tous les trois au
+  démarrage (`906585e`). 📌 **Ne pas en tirer de règle** : les sept runs
+  précédents avaient sept configurations différentes, et le `main` local a
+  retardé de huit puis quatorze commits. **Le `git fetch` d'abord reste
+  obligatoire** — ici il a simplement confirmé au lieu de corriger.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-sixième constat identique** (21/09 → 20/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Neuvième confirmation : à refaire à
+  chaque run.**
+- ✅ **LA RECETTE DE PUSH TIENT POUR LE TROISIÈME RUN D'AFFILÉE.**
+  `git branch -f main HEAD && git push -u origin main` → `906585e..5a1476f
+  main -> main`, puis `origin/main == HEAD` vérifié. **Déploiement constaté
+  entre t+80 s et t+100 s** (sondage toutes les 18–20 s). Même ordre de délai
+  que les 18 et 19/10. ⚠️ **Trois `curl` ont échoué pendant le sondage**
+  (`Recv failure: Connection reset by peer`, `SSL_ERROR_SYSCALL`) : ce sont des
+  incidents de proxy, **pas** une absence de déploiement — relancer, ne pas
+  conclure.
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans `www`
+  répond 308).
+- **Mardi : pas de veille** (faite le lundi 19/10, et son résultat était
+  négatif). **Prochaine échéance : lundi 26/10.**
+- 🟢 **LA SEULE REQUÊTE CIBLE DUE A ÉTÉ MESURÉE, et les interdits respectés.**
+  « Vendre appartement Villeurbanne » (deux mesures par mois, dernière le
+  13/10) — **site absent**, 9 résultats. Les deux SERP gelées
+  (« agence immobilière Villeurbanne », « estimation immobilière Villeurbanne »)
+  **n'ont pas été interrogées** : interdiction du 16/10 **jusqu'au 23/10**,
+  toujours en vigueur. « Prix m2 Villeurbanne » a été mesurée le 19/10,
+  **prochaine échéance le 26/10**.
+  *(Résultats : `pap.fr` (annonce), **`laforet.com` ×2** — deux pages de blog de
+  l'agence Villeurbanne-République —, `orpi.com/actualites/vente-appartement-villeurbanne`,
+  `capifrance.fr`, `immo.trovit.fr` ×2, `zimo.fr` ×2.)*
+  📌 **Deux faits de cette SERP :**
+  - ⚠️ **`laforet.com` est le premier concurrent AGENCE à tenir deux positions
+    sur une requête cible avec du CONTENU éditorial**, et non des annonces.
+    Mais **ses deux pages sont périmées et le disent** : l'une est titrée
+    « Villeurbanne en 2024 », l'autre publie **3 258 €/m² sur des transactions
+    de 2019**. Le résumé du moteur l'a relevé de lui-même (« ses données de
+    transactions datent de 2019, donc elles sont probablement obsolètes »).
+  - 🟢 **`pap.fr` publie 3 623 €/m² (192 019 € pour 53 m²)** : **+1,6 %** au-dessus
+    de notre médiane DVF signée 2025 (3 567 €/m²). **C'est le deuxième écart
+    faible mesuré en deux runs**, après `blog.qoridor.fr` à −1,7 % le 19/10,
+    alors que toutes les sources relevées du 27/09 au 18/10 étaient 16 à 45 %
+    au-dessus. ⚠️ **Deux mesures ne font pas une tendance** (règle du 14/10) :
+    à reconfirmer avant d'en tirer quoi que ce soit sur la thèse « affiché ≠
+    signé ».
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 19/10, et sur LE
+  CANDIDAT N°1 DÉSIGNÉ — la justesse JURIDIQUE des trois dernières entrées de
+  `/llms.txt`** (`/gestion-locative`, `/faire-gerer`, `/honoraires`).
+  **Le candidat est entièrement consommé.** Détail en « Chantiers faits ».
+- 🔴 🆕 **LE DÉFAUT CENTRAL EST UNE RÈGLE ABROGÉE DEPUIS SIX ANS, PUBLIÉE COMME
+  EN VIGUEUR.** `/faire-gerer` écrivait « **Tous les trois ans**, le conseil
+  syndical met en concurrence plusieurs projets de contrat de syndic ». Cette
+  périodicité triennale a été **supprimée au 1ᵉʳ juin 2020** par l'**ordonnance
+  n° 2019-1101 du 30 octobre 2019 (art. 20)**, qui a réécrit l'article 21 de la
+  loi du 10 juillet 1965. 📌 **Et la cause de l'erreur est identifiable** : ce
+  qui dure trois ans, c'est le **mandat** du syndic. **Deuxième fois après le
+  17/10 (article 121 de la LF 2026) qu'une loi citée par une page avait été
+  réécrite** — c'est désormais une famille, pas un accident.
+- 🔴 **SIX DÉFAUTS AU TOTAL, dont trois de référence et un de périmètre qui
+  faisait agir le lecteur ILLÉGALEMENT** : la liste des obligations du bailleur
+  qui gère seul prescrivait « réviser le loyer une fois par an » **sans
+  condition**, alors que réviser le loyer d'un logement **classé F ou G est
+  interdit** depuis le 24/08/2022 ; le décompte de charges était rattaché à
+  l'**article 21** (c'est l'**article 23**, 25-10 en meublé) ; la déductibilité
+  des honoraires de gestion à l'**art. 31, I-1°-a** du CGI (c'est le **e**) ;
+  le terme de l'option pour le régime réel était faux **dans le sens
+  défavorable au lecteur** ; et `/honoraires` citait un « arrêté du 20 novembre
+  2025 » **qui n'existe pas** (c'est la date de publication au JO ; l'arrêté est
+  du **13 novembre 2025**). **C'est la 9ᵉ à 11ᵉ phrase de périmètre ou de
+  référence fausse depuis le 11/10.**
+- 🟢 **LE DÉTECTEUR DU 19/10 A SERVI ET IL A PAYÉ DEUX FOIS.** « La source citée
+  dit-elle ce que la page affirme ? » : la page citait `BOI-RFPI-BASE-20-10`
+  pour un alinéa **que ce BOI contredit à son § 20**, et `BOI-RFPI-DECLA-10`
+  pour un terme d'option **que son § 250 contredit**. **Dans les deux cas, la
+  source était la bonne et l'affirmation à côté était fausse** — exactement le
+  motif décrit hier.
+- 🔴 **UN DÉFAUT DE MA PROPRE RÉDACTION, TROUVÉ AVANT DE POUSSER, ET IL ÉTAIT
+  DU TYPE QUE CE JOURNAL TRAQUE** : j'avais écrit que le « Malraux » exclut le
+  micro-foncier. **Le § 60 du BOI dit l'inverse, noir sur blanc.** Détail en
+  « Erreurs commises ».
+- ✅ **PLUSIEURS RÈGLES VÉRIFIÉES JUSTES ET INCHANGÉES — NE PAS LES RÉAUDITER** :
+  Villeurbanne **est** bien en zone tendue et non en zone très tendue (celle-ci
+  = Paris et certaines communes d'Île-de-France, CCH D.304-1), donc **10,09 et
+  3,03 €/m²** sont les bons plafonds ; **art. 6 de la loi Hoguet** ; **arrêté du
+  10 janvier 2017 modifié le 26 janvier 2022** (et c'est ce modificatif qui a
+  introduit la notion de **prix maximums**, ce que la page dit déjà) ;
+  **art. 22** (dépôt de garantie, 91 €) ; **art. 9-1 de la loi de 1965** (PNO) ;
+  **décret n° 2015-342** ; **calendrier de décence énergétique G 2025 / F 2028 /
+  E 2034**, confirmé en vigueur ; dispense de mise en concurrence à la
+  **majorité de l'art. 25** ; et **toute l'arithmétique des barèmes** (652 + 20
+  = 672 €, 272 €, 417 €, 29 m², 3 258 €, 482/355/281 €, 585 €) **se recalcule**.
+- ⚠️ **LÉGIFRANCE EST TOUJOURS INACCESSIBLE DEPUIS CE CONTENEUR — règle du 17/10
+  confirmée, et avec un symptôme neuf à connaître.** `WebFetch` répond **403**,
+  et `curl` **403 avec un `<title>Just a moment…</title>`** : c'est un mur
+  Cloudflare, pas un problème d'URL. 🟢 **Et le substitut qui a tranché TOUT le
+  run est l'ANIL** (agence publique) : c'est elle qui a donné le tableau complet
+  des plafonds par zone avec leurs textes, et la date d'abrogation de la
+  périodicité triennale. **Voir « Techniques apprises ».**
+- ⚠️ **`lastmod` : TROIS ont bougé, et c'est une rupture assumée avec les treize
+  runs précédents.** `/gestion-locative`, `/faire-gerer` et `/honoraires`
+  passent au **2026-10-20** — seules URL des 53 de production à cette date.
+  📌 **Motif, à opposer à la décision du 18/10 de NE PAS bouger `/acheter`** : le
+  18/10 corrigeait **un euro sur trois montants**, sans rien apporter au
+  lecteur. Ici, chacune des trois pages voit **une règle de droit changer de
+  contenu** — une périodicité abrogée retirée, une interdiction ajoutée, un
+  terme d'option corrigé. **La décision du 06/10 interdit d'acheter de la
+  fraîcheur, pas de la déclarer quand elle est réelle.**
+- ✅ **Signaux mesurés SAINS en PRODUCTION — ne pas les réauditer** :
+  `npx tsc --noEmit` muet ; `npm run build` **vert (88/88 pages)** ;
+  `npx eslint` propre sur les cinq fichiers touchés ; **53 URL au sitemap** ;
+  les trois pages servent **2 236 / 2 099 / 1 197 mots** (contre 1 891 / 1 965 /
+  1 127 avant le run), **1 `<h1>` chacune**, **5 / 6 / 5 blocs JSON-LD**, et
+  **parité FAQ visible ↔ `FAQPage` 6/6 questions ET 6/6 réponses sur les
+  trois** ; `dateModified` **2026-10-20** sur les trois ; **0 mot collé** ;
+  « Dernière mise à jour : 20 octobre 2026 » visible sur `/gestion-locative` et
+  `/faire-gerer`.
+- ⚠️ 🆕 **PIÈGE DE MESURE À CONNAÎTRE — `wc -w` et `len(t.split())` ne donnent
+  PAS le même nombre de mots** sur ces pages (2 099 contre 2 200 pour
+  `/faire-gerer`, à contenu identique) : les espaces insécables du rendu.
+  **Pendant quelques minutes, l'écart local ↔ production a ressemblé à un
+  déploiement partiel.** 📌 **Comparer deux mesures faites avec le MÊME
+  compteur, ou vérifier des CHAÎNES plutôt que des totaux** — c'est la
+  vérification par chaînes qui a tranché.
+- ✅ **Les 24 valeurs et références neuves sont servies en production** et **les
+  4 formulations retirées ont disparu**, vérifié page par page et dans
+  `/llms.txt` après déploiement (`31, I-1°-e`, `§ 20`, `§ 60`, `§ 240`, `§ 250`,
+  `§ 90 à 130`, `article 23`, `25-10`, `2019-1101`, `30 octobre 2019`,
+  `31 mai 2020`, `1ᵉʳ juin 2020`, `13 novembre 2025`, `20 novembre 2025`,
+  `article 5 de la loi du 6 juillet 1989`, `F1310`, `F2066`, `F947`,
+  `24 août 2022`, `foyer fiscal`, `Périssol`, `Loc'Avantages`, `20 000`,
+  `100 000` — retirées : `I-1°-a`, « Le même article oblige », « Tous les trois
+  ans, le conseil syndical », « arrêtés des 17 juillet et 20 novembre »).
+- ✅ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff du chantier = 5 fichiers**
+  (`app/gestion-locative/page.tsx`, `app/faire-gerer/page.tsx`,
+  `app/honoraires/page.tsx`, `app/llms.txt/route.ts`, `lib/seo/lastmod.ts`).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** : `/equipe` enchaîne
+  `h1` sur `h3` (30/09) ; la page 404 sert deux `<meta name="robots">` non
+  contradictoires (04/10) ; 6 `<a>` bruts pour des liens internes (06/10) ;
+  indentation JSX bizarre mais sans effet sur deux pages de quartier (08/10).
+  🆕 **Et un constat neuf : `/honoraires` ne sert AUCUN « Dernière mise à jour »
+  visible**, là où `/gestion-locative` et `/faire-gerer` en ont un. **Non ajouté
+  aujourd'hui** : cette page n'utilise ni `seo-landing` ni le bloc inline des
+  deux autres, donc l'ajout touche au rendu d'une mise en page que je n'ai pas
+  lue — voir « Chantiers en attente ».
+
 **Au 2026-10-19**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
@@ -2799,6 +2954,167 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-20 — `/faire-gerer` publiait depuis des mois une règle abrogée en 2020, et la liste des obligations du bailleur lui prescrivait une augmentation de loyer illégale
+
+**Prescription du 19/10 honorée** : angle **NON-CONTENU** (le 19/10 était du
+contenu), **candidat n°1** de la pile — la justesse **juridique** de ce que
+`/llms.txt` recopie — et les **trois entrées restantes** traitées
+(`/gestion-locative`, `/faire-gerer`, `/honoraires`). **Le candidat est
+entièrement consommé.**
+
+**Rappel du cadrage** : l'audit du 18/10 avait passé les **157 montants** des
+10 entrées de pages de `/llms.txt`, mais **seulement les nombres**. Les dizaines
+d'articles de loi, seuils et références `F…` / `BOI-…` / `CGI art…` n'avaient
+**jamais** été vérifiés. Méthode appliquée, celle du 17 et du 19/10 : pour chaque
+règle citée, **ouvrir la source EN VIGUEUR**, vérifier le **PÉRIMÈTRE**
+(« qui est soumis à », « à condition que ») autant que le chiffre, **et**
+vérifier que la page décrite dit la même chose.
+
+#### 1. 🔴 Le défaut central : une règle abrogée depuis six ans, publiée comme en vigueur
+
+`/faire-gerer` répondait à son `<h2>` « Quand une copropriété peut-elle remettre
+son syndic en concurrence ? » par :
+
+> « **Tous les trois ans**, le conseil syndical met en concurrence plusieurs
+> projets de contrat de syndic avant l'assemblée générale appelée à désigner le
+> syndic : c'est l'article 21 de la loi n° 65-557 du 10 juillet 1965. »
+
+**La périodicité triennale a été supprimée au 1ᵉʳ juin 2020** par l'**ordonnance
+n° 2019-1101 du 30 octobre 2019 (art. 20)**, qui a réécrit l'article 21. Règle
+en vigueur : la mise en concurrence est due **à chaque assemblée générale
+appelée à désigner un syndic PROFESSIONNEL** (un syndic bénévole est hors
+champ), les projets devant être conformes au contrat type et accompagnés de leur
+**fiche d'information sur le prix et les prestations**.
+
+📌 **Et la cause de l'erreur se nomme** : ce qui dure trois ans, c'est le
+**mandat** du syndic (un an possible). La page a été réécrite pour **dire les
+deux et les séparer** — c'est la confusion que font encore la plupart des pages
+sur le sujet, donc un différenciateur réel et vérifiable.
+
+**Sources** : ANIL, « Réforme du droit de la copropriété des immeubles bâtis »
+(ancienne règle « tous les trois ans **jusqu'au 31 mai 2020** », entrée en
+vigueur au 1ᵉʳ juin 2020 par l'art. 41 de l'ordonnance) ; service-public.fr
+**F2608**, qui décrit la mise en concurrence **sans aucune périodicité** et donne
+les deux cas de dispense.
+
+#### 2. 🔴 Une règle juste donnée sans son périmètre, et le lecteur en sortait hors la loi
+
+`/gestion-locative` liste les obligations du bailleur qui gère seul. L'une
+disait, **sans condition** :
+
+> « Réviser le loyer une fois par an si le bail comporte une clause de révision,
+> en appliquant l'indice de référence des loyers du trimestre prévu au contrat. »
+
+**Réviser le loyer d'un logement classé F ou G est INTERDIT**, pour tout bail
+**signé, renouvelé ou tacitement reconduit depuis le 24 août 2022** en métropole
+(1ᵉʳ juillet 2024 en Guadeloupe, Guyane, Martinique, La Réunion et Mayotte).
+Un bailleur qui suivait la liste appliquait **une augmentation illégale**.
+
+⚠️ **Et le motif est celui que ce journal a nommé le 19/10 — « la phrase
+voisine »** : **trois lignes plus bas**, la même liste annonce que le F devient
+indécent en 2028. **La page savait que la classe du DPE compte, et donnait quand
+même la consigne sans condition.**
+
+**Source** : service-public.fr **F1310**, « vérifié le 1ᵉʳ août 2026 » :
+« *Réviser le loyer est interdit dans les cas suivants : en métropole, lorsque
+le bail est signé, renouvelé ou tacitement reconduit depuis le 24 août 2022, et
+qu'il concerne un logement classé F ou G.* »
+
+📌 **Précision utile relevée, et NON publiée comme un fait** : un bail vide
+durant trois ans au plus, toute location en cours en 2026 a été reconduite
+depuis le 24/08/2022 — donc l'interdiction vise en pratique tous les F et G.
+**C'est une déduction, pas une citation** : la page publie la condition légale
+telle que la fiche l'énonce, et rien de plus (règle de rédaction du 19/10).
+
+#### 3. 🔴 Trois références de texte fausses, trouvées avec le détecteur du 19/10
+
+| Ce que la page publiait | Ce que dit la source | Source |
+|---|---|---|
+| « **Le même article** [21] oblige le bailleur à communiquer le décompte des charges » | L'art. 21 ne porte que la **quittance**. Le décompte par nature un mois avant la régularisation est l'**article 23** (**25-10** en meublé) | service-public.fr **F947** (« Textes de référence ») et **F2066** |
+| Déductibilité au réel des honoraires de gestion : « **article 31, I-1°-a** du CGI » | C'est le « **e** » : « *Le **e** du 1° du I de l'article 31 du CGI* distingue quatre types de frais d'administration et de gestion » | **BOI-RFPI-BASE-20-10 § 20**, version en vigueur du 06/07/2016 à aujourd'hui |
+| « les arrêtés des 17 juillet et **20 novembre 2025** » | Le 20 novembre 2025 est la date de **publication au JO**. L'arrêté est du **13 novembre 2025** | ANIL (tableau des plafonds) ; Légifrance (titre du texte) |
+
+🟢 **Les deux premiers ont été trouvés par le détecteur posé hier** — « la source
+citée dit-elle ce que la page affirme ? ». **Dans les deux cas la source était la
+bonne**, correctement nommée, et **l'affirmation posée à côté était fausse**.
+C'est le deuxième run d'affilée où ce contrôle est le plus rentable du run.
+
+#### 4. 🔴 Le terme de l'option pour le régime réel, faux dans le sens défavorable au lecteur
+
+La FAQ disait : « Passés les trois ans, **elle reste valable tant que vous
+demeurez dans le champ du micro-foncier**, et vous pouvez alors revenir à
+l'abattement forfaitaire. » **Deux règles distinctes y étaient fondues en une.**
+
+**BOI-RFPI-DECLA-10**, version en vigueur **depuis le 6 mars 2025** :
+- **§ 240** : « *L'option est exercée pour une durée de trois ans.* »
+- **§ 250** : « *L'option **cesse de produire ses effets** au terme de la période
+  de trois ans.* […] « *Lorsque le contribuable continue de souscrire une
+  déclaration n° 2044 au-delà du terme de cette période, il doit être considéré
+  comme exerçant une **option annuelle**, et non plus triennale.* »
+
+📌 **L'erreur coûtait au lecteur** : elle laissait croire à un verrou durable,
+quand la règle réelle lui rend **le choix chaque année** passé le terme.
+
+#### 5. 🟢 Deux places GEO vides prises avec des sources de première main
+
+- **Le second plafond des honoraires de location, que presque personne ne
+  publie.** L'**article 5 de la loi du 6 juillet 1989** interdit que la part
+  facturée au locataire **dépasse celle facturée au bailleur** pour les mêmes
+  prestations — un plafond indépendant des 10,09 €/m². Et la **rémunération de
+  l'entremise et de la négociation** reste à la **charge exclusive du bailleur**.
+  *(Contrôle incident : notre barème respecte les deux — 450 € côté locataire
+  pour un T2 de 45 m² contre ≈ 709 € côté propriétaire à 9 % du loyer annuel.)*
+- **La sanction du refus de quittance, chiffrée.** Jusqu'à **un an de prison et
+  20 000 € d'amende** pour un bailleur personne physique, **100 000 €** pour une
+  personne morale ; et toute clause faisant payer la quittance ou son envoi est
+  **réputée non écrite**. Source : service-public.fr **F2066**, **« vérifié le
+  1ᵉʳ octobre 2026 »** — la fiche la plus fraîche rencontrée dans ce journal.
+  **C'est pile l'angle « ce qu'il risque en euros » que cette page porte déjà.**
+
+#### 6. 🟢 Périmètre du micro-foncier précisé, et une erreur symétrique publiée exprès
+
+Le seuil de 15 000 € s'apprécie sur **l'ensemble des revenus bruts fonciers du
+FOYER FISCAL**, quote-part de SCI comprise (**BOI-RFPI-DECLA-10 § 90 à 130**) —
+la page le disait, mais **dans un autre `<h2>`, pas au point où l'affirmation est
+posée**. Ajouté sur place. Et le **§ 60** ajoute une condition que la page
+ignorait : certains régimes spéciaux **excluent** le micro-foncier quel que soit
+le montant encaissé (monument historique, amortissements *Périssol* / *Besson
+neuf* / *Robien*, conventionnement ANAH — *Borloo ancien*, *Cosse* —,
+*Loc'Avantages*).
+
+🟢 **Et l'erreur symétrique est publiée volontairement**, parce que c'est elle
+qui se fait citer : **le *Pinel*, le *Denormandie* et le *Malraux* ne font PAS
+obstacle au micro-foncier** (§ 60, *in fine*). ⚠️ **C'est exactement ce que
+j'avais écrit à l'envers** — voir « Erreurs commises ».
+
+#### 7. ✅ Parité traitée dans le même passage, sinon la correction créait la contradiction
+
+Les six défauts vivaient chacun sur **la page ET dans `/llms.txt`**. Les deux
+ont été corrigés **dans le même commit**, et le contrôle du 18/10 a été rejoué
+après déploiement : **chaque valeur et chaque référence neuve de `/llms.txt` est
+publiée sur la page qu'elle décrit.** Un écart a été trouvé **avant le push** —
+`/llms.txt` citait `§ 20` que le corps de la page ne servait pas ; `§ 20` a été
+ajouté à la page plutôt que retiré de `/llms.txt`, parce que c'est **le
+paragraphe qui établit la lettre « e »**.
+
+#### 8. ✅ Ce qui a été vérifié JUSTE et laissé tel quel
+
+**Ne pas réauditer** : Villeurbanne est bien en **zone tendue** (la zone très
+tendue = Paris et certaines communes d'Île-de-France, CCH D.304-1), donc
+**10,09 et 3,03 €/m²** sont les bons plafonds ; **art. 6 de la loi Hoguet** ;
+**arrêté du 10 janvier 2017 modifié le 26 janvier 2022** — et le modificatif de
+2022 est précisément celui qui a introduit la notion de **prix maximums**, ce que
+la page affirmait déjà ; **art. 22** (dépôt de garantie, 91 €) ; **art. 9-1 de la
+loi de 1965** (PNO) ; **décret n° 2015-342** et sa liste limitative ;
+**calendrier de décence énergétique G 2025 / F 2028 / E 2034**, confirmé en
+vigueur, dans ses **deux** formulations servies par la page (classe minimale F
+puis E puis D / classes interdites G puis F puis E) qui sont bien équivalentes ;
+**dispense de mise en concurrence à la majorité de l'art. 25** et absence
+d'obligation faute de conseil syndical ; et **toute l'arithmétique des barèmes**
+(652 + 20 = 672 €, GLI 272 €, minimum à 417 € d'encaissements soit < 29 m²,
+abattement 3 258 €, coûts nets 482 / 355 / 281 €, 585 € pour un T2 de 45 m²)
+**se recalcule sur les valeurs publiées**.
 
 ### 2026-10-19 — La page de la plus-value disait au vendeur qu'il n'avait aucune démarche à faire, et faisait perdre l'exonération à qui avait déménagé avant de vendre
 
@@ -7423,6 +7739,97 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — justesse juridique des trois dernières
+entrées de `/llms.txt`** (20/10, `/gestion-locative`, `/faire-gerer`,
+`/honoraires` : **six défauts**, dont une **règle abrogée au 1ᵉʳ juin 2020**
+publiée comme en vigueur — la mise en concurrence du syndic « tous les trois
+ans » —, une consigne qui faisait **réviser illégalement** le loyer d'un F ou G,
+trois **références de texte fausses** (art. 21 au lieu de 23, CGI 31 I-1°-a au
+lieu de e, « arrêté du 20 novembre 2025 » qui n'existe pas) et un **terme
+d'option** faux. Plus deux places GEO prises : le second plafond de l'art. 5 de
+la loi de 1989 et la sanction chiffrée du refus de quittance. **Candidat n°1
+entièrement consommé.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (21/10) DOIT ÊTRE DU CONTENU** (alternance :
+18/10 non-contenu → 19/10 contenu → 20/10 non-contenu). **Candidats, par ordre
+d'impact :**
+  1. 🔴 **`/faire-gerer` et `/vendre`, les deux dernières pages de droit jamais
+     revérifiées côté CONTENU.** ⚠️ **Attention au périmètre : le run du 20/10 a
+     traité le DROIT DU SYNDIC de `/faire-gerer` (art. 21, décret 2015-342,
+     dispense art. 25) — il n'a PAS touché au reste de la page**, ni au
+     formulaire syndic multi-étapes, ni au droit de la copropriété au-delà de la
+     mise en concurrence. Et `/vendre` reste **effleurée** : sa FAQ plus-value
+     est juste et sourcée depuis le 19/10, mais **l'indemnité de remboursement
+     anticipé, le prorata de taxe foncière, le délai de rétractation et la
+     mainlevée d'hypothèque n'ont jamais été revérifiés**. **Prendre `/vendre`
+     en premier** : c'est la page la plus commerciale des deux.
+  2. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** — toujours au
+     backlog **avec son périmètre imposé du 11/10** : réécriture **procédurale**
+     (méthode pas à pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas
+     rouvrir l'angle « chiffres du marché », il est fermé par la mesure.**
+  3. 🟢 **La place GEO la plus vide mesurée à ce jour, à garder pour un run de
+     contenu** : sur « budget total achat … frais de notaire compris » (18/10),
+     le résumé du moteur **avoue n'avoir aucune source faisant autorité**.
+     `/acheter` est écrite pour cette place.
+
+→ ⚠️ **REQUÊTES CIBLES — ce qui est dû le 21/10 : RIEN.** « Vendre appartement
+Villeurbanne » vient d'être mesurée le 20/10 (deux par mois → **vers le 27/10**).
+« Prix m2 Villeurbanne » est hebdomadaire, **échéance le 26/10**. 🔴 **Les deux
+SERP gelées restent INTERDITES jusqu'au 23/10** (« agence immobilière
+Villeurbanne », « estimation immobilière Villeurbanne »). **Mesurer une SERP de
+chantier à la place** — la méthode du 15/10 est à **5 tests positifs sur 5**.
+
+🆕 ⚠️ **PETIT CHANTIER NEUF, IDENTIFIÉ ET VOLONTAIREMENT NON FAIT LE 20/10 :
+`/honoraires` ne sert AUCUN « Dernière mise à jour » visible.** Les deux autres
+pages de fond du même triptyque en ont un (`/gestion-locative` via
+`components/layout/seo-landing.tsx`, `/faire-gerer` en inline à sa ligne ~325).
+**Non ajouté parce que `/honoraires` n'utilise ni l'un ni l'autre** : l'ajout
+touche au rendu d'une mise en page que je n'avais pas lue, et la règle « en cas
+de doute sur le rendu, ne le fais pas » s'applique. **À faire un jour de
+non-contenu, en lisant d'abord la structure de la page.** *(Son `dateModified`
+JSON-LD, lui, est bien au 2026-10-20.)*
+
+🆕 🟢 **FAIT NEUF SUR LES CONCURRENTS, ET IL VA DANS LES DEUX SENS.**
+Sur « vendre appartement Villeurbanne » (20/10), **`laforet.com` tient DEUX
+positions avec du contenu éditorial** — premier concurrent agence à y parvenir
+sur une requête cible. 🟢 **Mais ses deux pages sont périmées et le moteur le
+dit lui-même** (« Villeurbanne en 2024 », transactions de **2019**). 📌 **C'est
+la confirmation de la thèse de ce journal : sur ces SERP, la fraîcheur datée et
+sourcée est le différenciateur, et elle n'est pas prise.**
+→ ⚠️ **Et un signal à SURVEILLER, pas à exploiter** : `pap.fr` publie
+**3 623 €/m² (+1,6 %)** et `blog.qoridor.fr` **3 506 €/m² (−1,7 %)** le 19/10,
+alors que tout ce qui a été relevé du 27/09 au 18/10 était **16 à 45 %**
+au-dessus de notre médiane DVF signée. **Deux mesures ne font pas une tendance**
+(règle du 14/10) : **ne RIEN réécrire sur la thèse « affiché ≠ signé » avant une
+troisième mesure concordante.**
+
+🆕 🔴 **FAIT NEUF À SURVEILLER, ET IL TOUCHE NOTRE AVANTAGE — `blog.qoridor.fr`.**
+*(Inchangé depuis le 19/10, et toujours à faire.)* Relevé deux fois sur « prix m2
+Villeurbanne », il publie du **DVF par quartier** (3 506 €/m² commune,
+4 096 €/m² Charpennes). **C'est le premier concurrent mesuré qui publie des prix
+SIGNÉS par quartier.** → ⚠️ **À faire un jour de non-contenu** : lire une de ses
+pages de quartier et établir **ce que nous publions qu'il ne publie pas**
+(surface médiane, nombre de ventes, seuils fiscaux dérivés, écarts 2022, droit
+sourcé au paragraphe). **Ne RIEN réécrire sur la foi d'un seul relevé.**
+
+🟢 **CANDIDAT NON-CONTENU ENCORE OUVERT POUR PLUS TARD — la parité des valeurs
+RNIC entre pages** (`2 065`, `79 797`, `165 101`, `1 597`, `1 744`, `84,5 %`).
+`1 744` et `84,5 %` vivent sur **deux** pages (`charges-copropriete` et
+`dpe-2026-ce-qui-change`) : toute modification doit toucher les deux. **Aucun
+défaut connu dessus** — prévention, pas correction en attente.
+
+🆕 🔴 **CANDIDAT NON-CONTENU N°1 POUR LE PROCHAIN RUN NON-CONTENU (22/10) — LE
+CONTRÔLE « RÈGLE ABROGÉE », PASSÉ SUR TOUT LE CORPUS.** Le 17/10 a trouvé une
+loi réécrite (art. 121 de la LF 2026), le 20/10 une périodicité abrogée depuis
+six ans. **Deux fois en quatre runs : ce n'est plus un accident, et aucun
+contrôle de ce journal ne cherche ça systématiquement.** Le détecteur est en
+« Techniques apprises » du 20/10. ⚠️ **Et il ne se confond pas avec le contrôle
+du 19/10** : celui-ci demande « la source dit-elle ce que la page affirme ? »,
+celui-là demande « **la source citée est-elle encore en vigueur, et dans la
+version que la page décrit ?** ». **Les dates de « vérifié le » des fiches
+service-public et les « Version en vigueur du … à aujourd'hui » du BOFiP sont
+les deux marqueurs à lire en premier.**
+
 **Angle du dernier run : CONTENU — justesse juridique de périmètre** (19/10,
 `plus-value-immobiliere-calcul` : tous les taux justes et inchangés, mais une
 affirmation franchement fausse — « le vendeur n'a pas de démarche séparée à
@@ -8180,6 +8587,49 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-20
+
+**1. 🔴 La thèse « affiché ≠ signé » est-elle en train de s'éroder, ou est-ce
+du bruit ?** Du 27/09 au 18/10, **toutes** les sources de prix relevées étaient
+**16 à 45 %** au-dessus de notre médiane DVF signée 2025 (3 567 €/m²) — c'est
+sur cet écart que `/acheter`, `/vendre` et les pages de quartier sont écrites.
+**Deux mesures consécutives le contredisent** : `blog.qoridor.fr` **−1,7 %** le
+19/10 (et il publie du DVF, donc du signé, ce qui explique l'écart faible) et
+`pap.fr` **+1,6 %** le 20/10 (prix **affiché**, et c'est lui qui surprend).
+⚠️ **Deux mesures ne font pas une tendance** (règle du 14/10) : il faut une
+**troisième mesure concordante sur un prix AFFICHÉ** avant d'y toucher.
+📌 **Ce qu'il NE faut pas faire en attendant** : réécrire les fourchettes
+publiées, ou retirer l'argument. **Ce qu'il faut faire** : à la prochaine mesure
+de « prix m2 Villeurbanne » (26/10), **relever le chiffre de `pap.fr` et de
+SeLoger/MeilleursAgents** et le comparer à leurs valeurs antérieures
+(SeLoger 3 703 €/m² au 18/10). Si l'écart affiché/signé se resserre vraiment,
+c'est un changement de marché, pas une erreur de nos pages — et il se traite par
+une mise à jour de la fourchette, sourcée et datée, pas par une suppression.
+
+**2. ⚠️ Combien de périodicités publiées ailleurs dans le corpus sont abrogées ?**
+Le 20/10 a trouvé « tous les trois ans » (mise en concurrence du syndic) abrogé
+depuis six ans. **Une seule occurrence trouvée, donc une hypothèse.** Mais le
+corpus publie d'autres règles périodiques — révision IRL, régularisation
+annuelle des charges, états des lieux, 3 ans d'option fiscale, échéances DPE
+2028/2034, renouvellement de mandat — et **aucune n'a été vérifiée sous l'angle
+« cette périodicité existe-t-elle encore ? »**. Le détecteur est en « Techniques
+apprises » du 20/10 ; c'est le candidat non-contenu n°1 pour le 22/10.
+⚠️ **Ne pas supposer qu'elles sont fausses** : le run du 20/10 a aussi vérifié
+**six** règles de ce type qui se sont révélées **justes et inchangées**.
+
+**3. 🟢 La fraîcheur datée est-elle vraiment le différenciateur sur ces SERP ?**
+Trois indices convergents, mais aucun n'est une position gagnée :
+`laforet.com` tient deux positions sur « vendre appartement Villeurbanne » avec
+des pages dont le moteur **dit lui-même** qu'elles sont périmées (2024, données
+2019) ; le 18/10, le moteur avouait n'avoir **aucune source faisant autorité**
+sur le budget d'achat ; le 19/10, aucune source ne citait le texte officiel sur
+les 17,2 %. 📌 **Hypothèse** : sur ces requêtes, un contenu **daté, sourcé au
+paragraphe et à jour** se fait citer même sans backlinks. **Ce qui la
+falsifierait** : rester absent de ces SERP après plusieurs semaines de pages
+fraîches et sourcées. **La mesure qui tranche n'est pas la position** — elle
+est de **chercher si un moteur nous cite** sur une de ces questions sans que la
+marque soit nommée. **Jamais testé à ce jour.**
 
 ### 2026-10-19
 
@@ -9099,6 +9549,81 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-20 — J'ai failli publier l'exclusion exactement à l'envers, et c'est le § de la source qui m'a arrêté
+
+**1. 🔴 J'AI ÉCRIT QUE LE « MALRAUX » EXCLUT LE MICRO-FONCIER. LE BOFiP DIT
+L'INVERSE, NOIR SUR BLANC.**
+
+En précisant le périmètre du micro-foncier sur `/gestion-locative`, j'ai rédigé
+d'abord :
+
+> « il faut qu'aucun des biens loués ne relève d'un régime spécial (monument
+> historique, **Malraux**, certains dispositifs d'amortissement), qui exclut le
+> micro-foncier »
+
+**Faux.** `BOI-RFPI-DECLA-10 § 60`, *in fine* : « *la circonstance que le
+contribuable bénéficie de la réduction d'impôt « Malraux » prévue à l'article
+199 tervicies du CGI **ne fait pas obstacle** à l'application du régime
+d'imposition micro-foncier* ». Le même paragraphe dit la même chose du
+**Scellier**, du **Duflot**, du **Pinel** et du **Denormandie**.
+
+📌 **Ce que j'ai fait de travers, précisément** : j'ai écrit la liste **de
+mémoire**, avec le mot « certains » pour couvrir mon approximation, **puis** je
+suis allé lire le § 60. L'ordre inverse aurait évité la faute. ⚠️ **Et « certains
+dispositifs d'amortissement » est le vrai aveu** : une énumération vague dans un
+texte de droit est le symptôme d'une liste non lue.
+
+**Correction appliquée, et elle va plus loin que le défaut** : la page publie
+maintenant **la liste exacte** des régimes qui excluent (monument historique,
+*Périssol*, *Besson neuf*, *Robien*, conventionnement ANAH — *Borloo ancien*,
+*Cosse* —, *Loc'Avantages*) **et, volontairement, l'erreur symétrique** : Pinel,
+Denormandie et Malraux **ne** l'écartent **pas**. 🟢 **C'est le passage le plus
+citable du run** : il répond à une question que les lecteurs se posent dans les
+deux sens, et aucune des pages concurrentes rencontrées ne tranche le second.
+
+**Règle à retenir, qui prolonge celle du 19/10** : la règle d'hier disait « une
+ligne *Source : X* ne couvre que ce que X dit ». Celle d'aujourd'hui en est le
+pendant à la rédaction : **ne jamais écrire une énumération juridique avant
+d'avoir lu le paragraphe qui la porte** — et **si le brouillon contient
+« certains », « notamment » ou « etc. » dans une liste de régimes ou de
+conditions, c'est le signal que la source n'a pas été ouverte.**
+
+**2. ⚠️ MON DÉTECTEUR DE « MOTS COLLÉS » A RENDU 180 FAUX POSITIFS, ET J'AI
+FAILLI LES PRENDRE POUR DES DÉFAUTS.**
+
+```bash
+# FAUX — grep travaille en octets : [A-ZÉÈÀ] attrape les octets de
+# continuation de é/è/à, donc « accès » et « année » matchent
+grep -oE "[a-zéèêàçûô]{3,}[A-ZÉÈÀ][a-zéèêà]{2,}" page.txt
+```
+
+Résultat : `accès année après barème bénéficier …` — 180 « mots collés » dont
+**aucun** n'en était un. **La version juste passe par Python**, qui travaille en
+points de code :
+
+```bash
+python3 -I -c "
+import re
+t=open('page.txt',encoding='utf-8').read()
+print(sorted(set(re.findall(r'[a-zà-öø-ÿ]{3,}[A-ZÀ-ÖØ-Þ][a-zà-öø-ÿ]{2,}',t))) or 'aucun ✓')"
+```
+
+📌 **Portée générale** : **tout contrôle de casse ou d'accents sur ce corpus doit
+passer par Python, jamais par une classe de caractères `grep`.** Le corpus est
+intégralement en français accentué — un `grep -E` avec `[A-Z…]` y est inutilisable.
+
+**3. ⚠️ ET UN PIÈGE DE MESURE QUI A RESSEMBLÉ À UN DÉPLOIEMENT PARTIEL.**
+
+Après déploiement, production servait **2 099 mots** pour `/faire-gerer` quand le
+local en annonçait **2 200** — à contenu rigoureusement identique. **Ce n'est pas
+un déploiement partiel : `wc -w` et `len(t.split())` ne comptent pas pareil** les
+espaces insécables du rendu. J'avais mesuré l'un en shell et l'autre en Python.
+
+📌 **Règle** : comparer deux mesures faites avec **le même compteur**, et pour
+vérifier un déploiement, **tester des CHAÎNES** (« cette référence est-elle
+servie ? ») plutôt que des **totaux**. C'est la vérification par chaînes qui a
+tranché en dix secondes.
 
 ### 2026-10-19 — Mes deux fautes du jour sont dans le texte que J'AI écrit, et l'une violait une règle posée la veille
 
@@ -10256,6 +10781,122 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-20 — Le contrôle « cette règle est-elle encore en vigueur ? », et l'ANIL comme substitut à Légifrance (403 dans ce conteneur)
+
+**1. 🔴 LE CONTRÔLE LE PLUS RENTABLE DU RUN, ET IL EST NEUF : « LA RÈGLE CITÉE
+EST-ELLE ENCORE EN VIGUEUR ? »**
+
+Le 17/10, la loi citée par une page avait été **réécrite** (art. 121 de la LF
+2026). Le 20/10, une périodicité citée avait été **abrogée six ans plus tôt**
+(ordonnance n° 2019-1101, en vigueur au 1ᵉʳ juin 2020). **Deux fois en quatre
+runs.** Aucun contrôle de ce journal ne cherchait ça : le 19/10 demande « *la
+source dit-elle ce que la page affirme ?* », celui-ci demande « *la source est-elle
+encore en vigueur, dans la version que la page décrit ?* ». **Ce sont deux
+questions différentes, et la seconde attrape ce que la première laisse passer :
+une page peut citer correctement un texte périmé.**
+
+```bash
+# cadrage : toutes les règles DATÉES ou NUMÉROTÉES du corpus
+grep -rnoE "(tous les (trois|deux|cinq) ans|chaque année|depuis (le )?[0-9]{4}|\
+(loi|décret|ordonnance|arrêté) n° [0-9-]+|article [0-9][0-9A-Za-z-]*)" \
+  lib/blog.ts app/*/page.tsx app/llms.txt/route.ts | sort -u
+```
+
+**Les deux marqueurs à lire EN PREMIER, avant la règle elle-même :**
+- fiche **service-public.fr** → la mention « **Vérifié le …** » en tête. *(Dans
+  ce run : F2066 « vérifié le 1ᵉʳ octobre 2026 », F1310 « le 1ᵉʳ août 2026 » —
+  des fiches plus fraîches que tout ce qu'un concurrent cite.)*
+- page **BOFiP** → la liste « **Version en vigueur du … à aujourd'hui** »
+  (recette du 19/10, toujours valable).
+
+⚠️ **Et le symptôme à reconnaître dans NOTRE texte** : une **périodicité** (« tous
+les trois ans ») est le type de règle le plus souvent abrogé sans que personne ne
+s'en aperçoive, parce qu'elle **survit dans les habitudes de langage**. 📌 **Quand
+une périodicité publiée coïncide avec une DURÉE DE CONTRAT voisine, c'est le
+signal** : ici, « mise en concurrence tous les trois ans » n'était que la durée
+du **mandat** du syndic, recyclée en obligation. **Chercher la confusion
+périodicité ↔ durée.**
+
+**2. 🟢 L'ANIL EST LE SUBSTITUT À LÉGIFRANCE DANS CE CONTENEUR, ET ELLE SERT DES
+TABLEAUX QUE LÉGIFRANCE NE SERT PAS.**
+
+**Légifrance reste inaccessible** (règle du 17/10), avec un symptôme à connaître :
+`WebFetch` → **403**, et `curl` → **403 + `<title>Just a moment…</title>`**,
+c'est-à-dire un mur **Cloudflare**. Inutile d'essayer `/download/pdf`, de changer
+l'`User-Agent` ou de viser `jorf/article_jo/…` : tout est muré.
+
+**L'ANIL (`anil.org`, agence publique) a tranché tout le run**, et mieux qu'un
+texte brut :
+- elle sert les **tableaux de plafonds par zone, avec la définition juridique de
+  chaque zone et son texte de référence** (c'est ce qui a confirmé que
+  Villeurbanne relève des 10,09 €/m² et non des 12,10 €/m²) ;
+- elle sert **l'historique des règles** : « tous les trois ans **jusqu'au 31 mai
+  2020** », avec l'ordonnance et son article. **C'est précisément ce qu'un texte
+  consolidé ne dit PAS** — il montre l'état actuel, pas ce qui a été supprimé.
+
+```bash
+# 1. laisser une recherche restreinte au domaine donner l'URL exacte
+#    (allowed_domains: anil.org) — les URL d'analyses juridiques sont longues
+# 2. puis WebFetch sur cette URL, en demandant de REPRODUIRE le tableau
+#    et les RÉFÉRENCES DE TEXTES, pas de résumer
+```
+
+⚠️ **Limite mesurée, à ne pas oublier** : l'ANIL publie aussi des pages anciennes
+non datées en évidence (sa page « logement énergivore et loyer » est « à jour au
+20 septembre 2022 » et **ne cite aucun article**). **Croiser avec une fiche
+service-public dont le « Vérifié le » est récent** : c'est F1310 (01/08/2026),
+pas l'ANIL, qui a donné la règle F/G exploitable.
+
+**3. 🟢 LES « TEXTES DE RÉFÉRENCE » D'UNE FICHE SERVICE-PUBLIC DONNENT LE NUMÉRO
+D'ARTICLE, ET C'EST LE SEUL ENDROIT OÙ ILS SONT FIABLES.**
+
+Le corps d'une fiche service-public **ne cite presque jamais** le numéro
+d'article : il paraphrase la règle. Le numéro vit dans le bloc « Textes de
+référence » du bas de page, sous la forme « *article 23 — Logement vide :
+paiement des charges — Loi n° 89-462 du 6 juillet 1989* ». C'est ce bloc qui a
+démenti l'« article 21 » de notre page :
+
+```bash
+curl -sSL -A "Mozilla/5.0" -o f.html "https://www.service-public.fr/particuliers/vosdroits/F947"
+python3 -I h2t.py f.html > f.txt            # html -> texte (cf. recette ci-dessous)
+grep -oE "Vérifié le [^-]*" f.txt | head -1 # la FRAÎCHEUR d'abord
+grep -oE "article[s]? [0-9][0-9A-Za-z-]*[^.]{0,80}" f.txt | sort -u
+#   -> article 23 Logement vide : paiement des charges  |  article 25-10 (meublé)
+```
+
+📌 **Et le bloc donne le périmètre gratuitement** : ici, il a livré du même coup
+le **25-10** pour le meublé — une distinction que notre page ne faisait pas.
+
+**4. 🟢 LA RECETTE `html -> texte` RÉUTILISABLE, à garder dans le scratchpad du
+run** (elle a servi 9 fois aujourd'hui : 3 pages locales, 3 en production, 3
+fiches officielles) :
+
+```python
+# h2t.py — enlève script/style AVANT les balises, sinon le JS pollue le texte
+import re,html,sys
+h=open(sys.argv[1],encoding='utf-8',errors='replace').read()
+h=re.sub(r'<(script|style)\b.*?</\1>',' ',h,flags=re.S|re.I)
+t=html.unescape(re.sub(r'<[^>]+>',' ',h))
+print(re.sub(r'[ \t\u00a0]+',' ',t))
+```
+
+⚠️ **L'ordre compte** : retirer les balises avant les blocs `<script>` laisse
+passer tout le JSON-LD et tout le bundle Next dans le « texte », et fausse
+n'importe quel comptage de mots.
+
+**5. 🟢 LE CONTRÔLE DE PARITÉ FAQ ↔ `FAQPage` SE REJOUE EN UNE COMMANDE, et il
+doit être rejoué sur la PAGE RENDUE, pas sur le source.**
+
+Les trois pages du run génèrent leur `FAQPage` **depuis le même tableau** que la
+FAQ visible, donc la parité est structurelle — **mais c'est précisément ce qui
+rend un écart invisible** si un jour quelqu'un découple les deux. Le script
+`parity.py` du run extrait les blocs `application/ld+json`, charge le JSON, et
+vérifie que **chaque `name` ET chaque `acceptedAnswer.text`** se retrouve mot
+pour mot dans le texte rendu. **Résultat du run : 6/6 et 6/6 sur les trois
+pages, mesuré en production après déploiement.** 📌 **Vérifier les RÉPONSES
+autant que les questions** : c'est côté réponse que le mismatch sanctionnable
+apparaît.
 
 ### 2026-10-19 — Relire la source que la page cite, trouver la version EN VIGUEUR d'un BOI, et la brochure DGFiP comme source de première main sur les changements de l'année
 
