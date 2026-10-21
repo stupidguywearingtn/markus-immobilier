@@ -14,6 +14,146 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-21**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du
+  16/09) : avant fetch `origin/main` pointait sur `8fe05fc`, après fetch
+  **toujours sur `8fe05fc`**, et **deux commits portent la date du 2026-10-20**
+  — le run d'hier a bien eu lieu. 🆕 **Deuxième configuration de départ saine
+  d'affilée** : `HEAD`, `main` local et `origin/main` concordaient tous les
+  trois (`8fe05fc`). 📌 **Toujours ne pas en tirer de règle** : deux runs sains
+  après sept configurations différentes ne font pas une garantie. **Le
+  `git fetch` d'abord reste obligatoire.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-septième constat identique** (21/09 → 21/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Dixième confirmation : à refaire à
+  chaque run.**
+- ✅ **LA RECETTE DE PUSH TIENT POUR LE QUATRIÈME RUN D'AFFILÉE.**
+  `git branch -f main HEAD && git push -u origin main` → `8fe05fc..08b017f
+  main -> main`, puis `origin/main == HEAD` vérifié. **Déploiement constaté à
+  t+54 s du sondage**, soit ~t+90 s du push — même ordre de délai que les 18,
+  19 et 20/10.
+- 🔴 🆕 **ET UN PIÈGE DE SONDAGE NEUF, QUI M'A FAIT ANNONCER UN DÉPLOIEMENT
+  INEXISTANT.** `grep -c` **renvoie le code de sortie 1 quand le compte est
+  0**. Mon `R=$(... | grep -c "…" || echo "ERR")` produisait donc la chaîne
+  `"0\nERR"`, qui n'est ni `0` ni `ERR` : la condition est passée et la boucle
+  a affiché « ✅ DÉPLOYÉ » **à t+18 s, alors que rien n'était déployé**.
+  📌 **Détecté parce que la TAILLE de la page n'avait pas bougé** (123 986
+  octets avant et après). **Règle : dans un sondage de déploiement, compter
+  avec `grep -o … | wc -l` (qui sort toujours en 0) et afficher la TAILLE à
+  chaque tour comme témoin indépendant.** Le vrai déploiement s'est vu au
+  passage de 123 986 à 136 838 octets.
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308).
+- **Mercredi : pas de veille** (faite le lundi 19/10, résultat négatif).
+  **Prochaine échéance : lundi 26/10.**
+- 🟢 **REQUÊTES CIBLES : RIEN N'ÉTAIT DÛ, ET LES INTERDITS SONT RESPECTÉS.**
+  « Prix m2 Villeurbanne » → 26/10 ; « vendre appartement Villeurbanne » →
+  vers le 27/10. Les deux SERP gelées (« agence immobilière Villeurbanne »,
+  « estimation immobilière Villeurbanne ») **n'ont pas été interrogées** :
+  interdiction du 16/10 **jusqu'au 23/10**, toujours en vigueur.
+  **Deux SERP DE CHANTIER mesurées à la place** (méthode du 15/10, **6ᵉ et 7ᵉ
+  tests positifs**) : **site absent des deux**, ce qui était attendu — le
+  contenu est déployé aujourd'hui.
+  📌 **Et la première des deux apporte le fait le plus utile du run :**
+  sur « délai de rétractation compromis de vente quand commence-t-il à
+  courir », la SERP est tenue par des **portails et réseaux d'agences**
+  (`seloger` ×3, `orpi`, `optimhome`, `iadfrance`, `homeselect`), plus
+  `moneyvox` et une note de doctrine `labase-lextenso`. **Aucune agence
+  indépendante locale.** Et **le titre de `seloger`, trois fois dans la SERP,
+  est « Rétractation d'un compromis de vente : quel délai APRÈS LA
+  SIGNATURE ? »** — le leader de la SERP cadre la question par la signature,
+  c'est-à-dire exactement l'erreur que nos propres pages faisaient ce matin.
+  *(Seconde SERP, « dépôt de garantie compromis que devient-il si l'acheteur
+  renonce » : `seloger` ×4, `pap.fr`, `metlife.fr`, `assurly.com` et **deux
+  fils de forum `quechoisir`** — une SERP où deux résultats sur neuf sont des
+  forums est une SERP faible.)*
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 20/10, et sur LE CANDIDAT
+  N°1 DÉSIGNÉ — `/vendre`, son droit jamais revérifié** (indemnité de
+  remboursement anticipé, prorata de taxe foncière, délai de rétractation,
+  mainlevée d'hypothèque). **Les quatre points de la prescription ont été
+  traités.** Détail en « Chantiers faits ».
+- 🔴 🆕 **LE DÉFAUT CENTRAL EST UNE CONTRADICTION INTERNE AU CORPUS, ET LA
+  VERSION FAUSSE ÉTAIT SUR LES PAGES COMMERCIALES.** `/vendre` (×2),
+  `/acheter` (×2) et `/blog/compromis-de-vente-delais` écrivaient que le délai
+  de rétractation de 10 jours « suit la signature du compromis ». Il court en
+  réalité **à compter du lendemain de la première présentation de la lettre
+  recommandée** qui notifie l'acte à l'acquéreur. **Or
+  `/blog/vendre-sans-agence` publiait DÉJÀ le bon point de départ** (« ne
+  commence à courir que le lendemain du jour où l'acheteur les a tous
+  reçus »). **Deux pages du même site affirmaient deux règles différentes.**
+  📌 **C'est une famille de défaut que ce journal n'avait jamais cherchée** :
+  non pas « la source dit-elle ce que la page affirme ? » (19/10) ni « la
+  règle est-elle encore en vigueur ? » (20/10), mais **« une AUTRE de nos
+  pages dit-elle déjà le contraire, et laquelle a raison ? »**. Détecteur en
+  « Techniques apprises ».
+- 🔴 **LE CINQUIÈME EMPLACEMENT N'A ÉTÉ TROUVÉ QU'EN GREPPANT LA FORMULE.** Un
+  premier `grep` sur la phrase (« qui suit le compromis ») avait donné quatre
+  emplacements et semblait complet. Le `grep` sur la **formule**
+  (`délai de rétractation[^.]{0,90}`) en a sorti un **cinquième** : une FAQ de
+  `/acheter` qui disait « dix jours **après la signature** du compromis ».
+  **La règle du 13/10 — grepper la FORMULE, pas le SUJET — vient de payer une
+  fois de plus, et c'est elle qui a évité de pousser une correction
+  incomplète.**
+- 🔴 **DEUX AUTRES DÉFAUTS DE DROIT, dont un qui sous-estimait ce que le
+  vendeur peut devoir** : `/vendre` affirmait que l'indemnité de remboursement
+  anticipé n'excède « **jamais** » le plus faible de deux plafonds (6 mois
+  d'intérêts, 3 % du capital restant dû), alors que la fiche **F1669** prévoit
+  que **sur un prêt à TAUX VARIABLE elle « peut être majorée par des intérêts
+  compensateurs »** ; et la FAQ répondait « **Non.** » tout court à « le
+  vendeur peut-il se rétracter ? », quand la fiche écrit « ne peut pas, **en
+  principe** », l'exception étant une **clause de faculté de rétractation ou
+  de dédit** à son profit — **qui se négocie AVANT de signer, donc
+  actionnable**. **C'est la 12ᵉ à 14ᵉ phrase de périmètre fausse depuis le
+  11/10.**
+- 🔴 **TROIS DÉFAUTS DE MA PROPRE RÉDACTION, TROUVÉS EN RELISANT LE RENDU
+  AVANT DE POUSSER — et l'un était une contradiction interne à la page que je
+  venais d'écrire** : « l'acheteur **y verse** un dépôt de garantie »
+  contredisait la règle des **30 000 €** que la même page publie trois
+  paragraphes plus bas. Détail en « Erreurs commises ».
+- ✅ **DEUX RÈGLES VÉRIFIÉES JUSTES ET INCHANGÉES — NE PAS LES RÉAUDITER** :
+  le **prorata de taxe foncière** (le propriétaire au 1ᵉʳ janvier est bien le
+  redevable **unique** de l'année entière, et le prorata est bien une **pure
+  convention d'acte**, pas une règle fiscale) — l'affirmation était juste mais
+  **non sourcée**, la source est ajoutée (**article 1415 du CGI**,
+  impots.gouv.fr) ; et la **mainlevée d'hypothèque à la charge du vendeur**.
+- ⚠️ **AUCUN COÛT DE MAINLEVÉE N'EST PUBLIÉ, ET C'EST UNE DÉCISION.** Les
+  seuls montants trouvés sont des estimations d'études notariales (« 0,32 % du
+  montant du prêt majoré de 20 % ») et des chiffres ANIL **de 2006**. Pas un
+  barème : rien n'est écrit.
+- ✅ **Signaux mesurés SAINS en PRODUCTION après déploiement — ne pas les
+  réauditer** : `npx tsc --noEmit` muet ; `npm run build` **vert (88/88
+  pages)** ; `npx eslint` propre sur les cinq fichiers touchés ; **53 URL au
+  sitemap** (inchangé) dont **exactement 3 au `lastmod` 2026-10-21**
+  (`/vendre`, `/acheter`, `/blog/compromis-de-vente-delais`) ; **parité FAQ
+  visible ↔ `FAQPage` 6/6 questions ET 6/6 réponses** sur `/vendre` et
+  `/acheter` ; `dateModified` **2026-10-21** sur les trois ; **1 `<h1>` par
+  page** ; **0 mot collé** ; « Dernière mise à jour : 21 octobre 2026 »
+  visible sur `/vendre` ; **23 chaînes neuves présentes et 6 formulations
+  fautives disparues**, vérifiées une à une sur les pages servies.
+- ⚠️ 🆕 **ET J'AI MÉLANGÉ DEUX COMPTEURS DE MOTS DANS LE MESSAGE DE COMMIT —
+  exactement le piège consigné le 20/10.** Le commit annonce « 3 176 mots
+  contre 2 302 avant » : **3 176 est un `split()` et 2 302 un `wc -w`.** Les
+  paires honnêtes sont **2 302 → 2 989 (`wc -w`, +29,8 %)** et **2 462 →
+  3 176 (`split()`, +29,0 %)**. **La croissance est réelle et les deux
+  compteurs s'accordent à ~+700 mots**, mais le chiffre du commit surestime à
+  +37 %. 📌 **Le piège du 20/10 était consigné et je suis tombé dedans quand
+  même** : il ne suffit pas de connaître la règle, il faut **mesurer l'avant
+  et l'après dans la même commande**. Voir « Erreurs commises ».
+- ⚠️ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff du chantier = 5 fichiers**
+  (`app/vendre/page.tsx`, `app/acheter/page.tsx`, `lib/blog.ts`,
+  `lib/seo/lastmod.ts`, `app/llms.txt/route.ts`).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre sans effet sur deux pages
+  de quartier (08/10) ; **`/honoraires` ne sert aucun « Dernière mise à
+  jour » visible** (20/10, toujours au backlog).
+
 **Au 2026-10-20**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du 16/09) :
@@ -2954,6 +3094,194 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-21 — Le délai de rétractation ne court pas depuis la signature, et notre propre corpus se contredisait là-dessus depuis le 11 octobre
+
+**Prescription du 20/10 honorée** : angle **CONTENU** (le 20/10 était du
+non-contenu), **candidat n°1** de la pile — `/vendre`, « à prendre en premier,
+c'est la page la plus commerciale des deux » — et **les quatre points du
+périmètre imposé** traités : indemnité de remboursement anticipé, prorata de
+taxe foncière, délai de rétractation, mainlevée d'hypothèque.
+
+**Méthode appliquée**, celle du 17, 19 et 20/10 : pour chaque règle, **ouvrir
+la fiche officielle EN VIGUEUR**, vérifier le **PÉRIMÈTRE** autant que le
+chiffre, **et** vérifier que la page dit la même chose. 🆕 **Plus un contrôle
+neuf, né du défaut n°1 : vérifier si une AUTRE de nos pages publie déjà la
+même règle, et laquelle a raison.**
+
+#### 1. 🔴 Le défaut central : un point de départ de délai légal faux, sur CINQ emplacements, et le corpus se contredisait
+
+Cinq emplacements écrivaient, en substance, que le délai de rétractation de
+l'acquéreur « suit la signature du compromis » :
+
+| Emplacement | Formulation servie |
+|---|---|
+| `/vendre`, section Calendrier | « le délai de rétractation de 10 jours ne bénéficie qu'à l'acheteur » |
+| `/vendre`, FAQ | « Le délai de rétractation de 10 jours **qui suit la signature du compromis** » |
+| `/acheter`, corps | « le délai de rétractation de dix jours **qui suit le compromis** » |
+| `/acheter`, FAQ | « un délai de rétractation de dix jours **après la signature du compromis** » |
+| `/blog/compromis-de-vente-delais` | « **Après la signature**, l'acheteur a 10 jours » |
+
+**La règle en vigueur** (service-public.gouv.fr **F2965**, « Promesse de vente
+d'un logement existant : promesse unilatérale ou compromis », **vérifiée le
+10 avril 2026**) :
+
+> « L'acquéreur non professionnel d'un bien à usage d'habitation bénéficie d'un
+> droit de rétractation dans un délai de **10 jours calendaires**. Le délai
+> commence **le lendemain de la 1ᵉʳᵉ présentation de la lettre recommandée
+> notifiant l'acte (compromis) à l'acquéreur**. »
+
+Et trois précisions que la fiche **F37190** (« Achat d'un logement en
+copropriété », **vérifiée le 19 septembre 2025**) ajoute : le délai est
+prolongé **au premier jour ouvrable suivant** s'il s'achève un samedi, un
+dimanche ou un jour férié ; pour un **lot de copropriété** il **ne démarre pas
+tant que les sept documents de copropriété n'ont pas tous été remis** ; et une
+remise **en main propre** fait partir le délai du lendemain de cette remise.
+
+📌 **MAIS LE FAIT QUI COMPTE EST AILLEURS : notre propre corpus publiait DÉJÀ
+la bonne règle.** `/blog/vendre-sans-agence`, écrite le 11/10, dit noir sur
+blanc : « **le délai de rétractation de dix jours ne commence à courir que le
+lendemain du jour où l'acheteur les a tous reçus** ». Et
+`/blog/vendre-sans-agence` dit juste **une seconde fois** à sa FAQ, et
+`/blog/vendre-logement-copropriete` une troisième (« ne commence pas à courir
+tant que ce dossier n'est pas reçu »). **Trois occurrences justes sur les
+pages de blog, cinq fausses sur les pages commerciales.** C'est la version
+fausse qui était servie là où le trafic commercial arrive.
+
+**Ce que ça change pour un vendeur, et c'est le vrai enjeu** : il n'est libéré
+du risque de retrait de l'acheteur **qu'à une date qui dépend d'une
+notification, pas de sa propre signature**. Un vendeur qui compte dix jours
+depuis sa signature peut se croire à l'abri alors que l'horloge n'a pas
+démarré — et pour un lot de copropriété, un seul document manquant et elle ne
+démarre jamais.
+
+**Les cinq emplacements sont alignés**, et le cinquième n'a été trouvé qu'en
+greppant la **formule** et non la phrase (voir « Techniques apprises »).
+
+#### 2. 🔴 Un plafond présenté comme absolu, qui ne borne pas un prêt à taux variable
+
+`/vendre` répondait à son `<h2>` « Rembourser son crédit par anticipation
+coûte-t-il quelque chose au vendeur ? » par :
+
+> « Souvent rien, et **jamais** plus que le plus faible de deux plafonds :
+> 6 mois d'intérêts sur le capital remboursé au taux moyen du prêt, ou 3 % du
+> capital restant dû avant le remboursement. »
+
+**Les deux plafonds sont justes et inchangés** (F1669, **vérifiée le
+16 septembre 2026** — les trois cas d'exonération et les deux plafonds se
+relisent à l'identique). **Mais la même fiche porte une réserve que la page
+ignorait :**
+
+> « Dans le cas d'un **prêt à taux variable**, ces indemnités **peuvent être
+> majorées par des intérêts compensateurs**. »
+
+Donc le « jamais » était faux, **et dans le sens qui sous-estime ce que le
+vendeur doit**. Corrigé : les deux plafonds sont désormais explicitement
+rattachés au **taux fixe**, et la réserve du taux variable est écrite ET
+expliquée (les intérêts compensateurs = la somme qui permet à la banque de
+percevoir, sur la durée déjà courue, le taux moyen prévu à l'origine). Ajout
+utile au passage : **la banque doit communiquer gratuitement le montant exact
+sur demande écrite** de remboursement anticipé.
+
+#### 3. 🔴 Un « Non. » tout court là où la fiche écrit « pas, en principe »
+
+FAQ de `/vendre` : « Le vendeur peut-il se rétracter après avoir signé le
+compromis ? » → « **Non.** » La fiche F2965 :
+
+> « Le vendeur est définitivement engagé à vendre dès la signature du
+> compromis de vente. Il ne peut donc pas, **en principe**, se rétracter. **La
+> seule exception** à ce principe concerne le cas où l'acte prévoit, dans une
+> clause, une **faculté de rétractation ou de dédit** du vendeur. »
+
+📌 **Et c'est un périmètre ACTIONNABLE, pas une nuance d'école** : la clause
+se négocie **avant** de signer, jamais après. Un vendeur qui lisait « Non. »
+n'avait aucune raison de la demander. Ajouté sur `/vendre` (section ET FAQ) et
+sur l'article compromis.
+
+#### 4. ✅ Deux règles vérifiées justes — et une source qui manquait
+
+**Prorata de taxe foncière : juste, et confirmé mot pour mot.**
+impots.gouv.fr : « La taxe foncière est due pour l'**année entière** par le
+propriétaire **au 1ᵉʳ janvier** de l'année », « le vendeur demeure le **seul
+redevable** de la totalité », « cet accord est **privé** et ne concerne pas
+l'administration fiscale », **selon l'article 1415 du CGI**. Notre phrase
+disait exactement cela — **mais sans source**. La source est ajoutée, **le
+texte n'a pas changé**.
+
+**Mainlevée d'hypothèque à la charge du vendeur : juste.** ⚠️ **Et aucun coût
+n'est publié** : les seuls montants trouvés sont des estimations d'études
+notariales (0,32 % du prêt majoré de 20 %) et des chiffres **ANIL de 2006**
+(415 € / 243 € pour 50 000 €), explicitement périmés. **Pas un barème : rien
+n'est écrit.** La règle « aucun chiffre non sourcé » s'applique.
+
+#### 5. 🟢 La place GEO prise, et pourquoi elle était libre
+
+**Nouvelle section sur `/vendre` : « Que devient le dépôt de garantie si
+l'acheteur renonce à acheter ? »** — une question que les vendeurs posent et
+que la SERP traite mal (quatre `seloger`, un `pap`, un assureur et **deux fils
+de forum `quechoisir`** sur neuf résultats).
+
+Elle sépare les **trois sorts du dépôt**, qu'aucune des pages relevées ne
+distingue proprement : **restitué intégralement** si une condition suspensive
+ne se réalise pas ; **restitué sous 21 jours au plus** à compter du lendemain
+de la rétractation si l'acheteur exerce son droit de retrait, par le
+professionnel qui le détient ; **acquis au vendeur** s'il renonce en dehors de
+ces deux cas. Plus deux faits que les vendeurs découvrent tard : **aucun dépôt
+n'est obligatoire** (ce n'est pas une condition de validité du compromis, en
+général 5 à 10 % du prix, bloqué sur le **compte séquestre** du notaire) et il
+**n'est pas encaissable avant la fin du délai de rétractation** sous peine
+d'une **amende de 30 000 €**, sauf intermédiaire mandaté ou garantie
+financière dédiée.
+
+#### 6. 🟢 L'article le plus court du blog devient utile
+
+`/blog/compromis-de-vente-delais` servait **deux H2 génériques** (« Le délai de
+rétractation », « Les conditions suspensives ») et une règle fausse en tête.
+Il sert maintenant **quatre H2 formulés en questions** — dont « Quand le délai
+de rétractation de 10 jours commence-t-il ? » et « Le vendeur peut-il se
+rétracter, lui ? » — avec la **réponse directe et sourcée en tête de
+passage**, comme l'exige la règle GEO. **495 mots rendus**, `updated`
+2026-10-21.
+
+#### 7. ⚠️ Ce que j'ai décidé de NE PAS faire, et pourquoi
+
+- **Aucun coût de mainlevée** (ci-dessus) : pas de barème trouvé.
+- **Rien sur l'arrêt de la Cour de cassation 2025 relevé par
+  `labase-lextenso`** sur la question de savoir si le premier jour compte dans
+  la computation du délai : **je n'ai pas pu lire la solution retenue**.
+  Hypothèse, pas publication → « Hypothèses à vérifier ».
+- **Rien sur les affirmations de `seloger`** (« le notaire ne peut rendre la
+  somme qu'avec l'accord écrit des deux parties », « avec intérêts si le
+  remboursement tarde plus de 15 jours ») : **éditorial de portail, pas
+  source officielle**, et la première s'accorde mal avec l'obligation de
+  restitution sous 21 jours de la fiche. Non publié → hypothèse.
+- **Pas de condition de date sur les trois cas d'exonération d'IRA.** L'ANIL
+  la mentionne (prêts conclus **à compter du 1ᵉʳ juillet 1999**, loi du 25 juin
+  1999) mais **F1669 ne la porte pas**, et un prêt immobilier antérieur à 1999
+  aurait 27 ans : du bruit pour un lecteur de 2026. Noté en hypothèse.
+- **`/faire-gerer` non rouverte** : c'était le second nom du candidat n°1,
+  mais la prescription disait « prendre `/vendre` en premier » et un chantier
+  mené à fond vaut mieux que deux effleurés. **Reste au backlog.**
+- **`/honoraires` toujours sans « Dernière mise à jour » visible** : c'est un
+  chantier de **non-contenu** (il touche au rendu d'une mise en page non lue).
+
+#### 8. 🔴 Trois défauts de ma propre rédaction, trouvés avant de pousser
+
+Détail en « Erreurs commises et corrigées ». Le plus net : j'avais laissé
+« l'acheteur **y verse** un dépôt de garantie » dans le paragraphe d'ouverture,
+**ce qui contredisait la règle des 30 000 € que la même page publie trois
+paragraphes plus bas**.
+
+#### 9. ✅ Contrôles
+
+`tsc` muet · `eslint` propre sur les 5 fichiers · `build` **vert 88/88** ·
+**53 URL** au sitemap dont **exactement 3** au `lastmod` 2026-10-21 · parité
+FAQ ↔ `FAQPage` **6/6 questions et 6/6 réponses** sur `/vendre` et `/acheter` ·
+`dateModified` 2026-10-21 sur les trois · **1 `<h1>`** par page · **0 mot
+collé** · **23 chaînes neuves présentes, 6 formulations fautives disparues**,
+vérifiées une à une **sur les pages servies en production** ·
+`/vendre` **2 302 → 2 989 mots** (`wc -w`, même compteur avant/après) ·
+`/estimation`, `lib/dvf.ts`, `lib/estimation.ts` **non touchés**.
 
 ### 2026-10-20 — `/faire-gerer` publiait depuis des mois une règle abrogée en 2020, et la liste des obligations du bailleur lui prescrivait une augmentation de loyer illégale
 
@@ -7739,6 +8067,97 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — le droit jamais revérifié de `/vendre`**
+(21/10 : **trois défauts**, dont un **point de départ de délai légal faux sur
+CINQ emplacements** avec, pour la première fois, **une contradiction interne au
+corpus** — `/blog/vendre-sans-agence` publiait déjà la bonne règle depuis le
+11/10 ; plus un plafond d'IRA présenté comme absolu qui **ne borne pas un prêt
+à taux variable**, et un « Non. » tout court là où la fiche écrit « pas, en
+principe ». Deux règles vérifiées justes — prorata de taxe foncière, source
+art. 1415 du CGI ajoutée ; mainlevée au vendeur. Une place GEO prise : le sort
+du dépôt de garantie. `/vendre` 2 302 → 2 989 mots. **Candidat n°1 consommé
+pour `/vendre` ; `/faire-gerer` reste à faire.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (22/10) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 19/10 contenu → 20/10 non-contenu → 21/10 contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 **LE CONTRÔLE « RÈGLE ABROGÉE », PASSÉ SUR TOUT LE CORPUS** — désigné
+     candidat non-contenu n°1 le 20/10, **toujours pas fait**. Le 17/10 a
+     trouvé une loi réécrite (art. 121 de la LF 2026), le 20/10 une
+     périodicité abrogée depuis six ans. Le détecteur est en « Techniques
+     apprises » du 20/10. ⚠️ **Il ne se confond ni avec le contrôle du 19/10**
+     (« la source dit-elle ce que la page affirme ? ») **ni avec celui du
+     21/10** (« une autre de nos pages dit-elle le contraire ? »). **Les dates
+     de « Vérifié le » des fiches service-public et les « Version en vigueur
+     du … à aujourd'hui » du BOFiP sont les deux marqueurs à lire en premier.**
+  2. 🔴 🆕 **LA PARITÉ DES RÈGLES DE DROIT ENTRE PAGES, passée sur tout le
+     corpus.** **Candidat NEUF et chaud, né du défaut n°1 du 21/10** : cinq
+     emplacements publiaient une règle fausse pendant que trois autres de nos
+     propres pages publiaient la bonne. **Aucun contrôle de ce journal ne
+     cherchait ça** — ils comparaient tous la page à une source EXTERNE, jamais
+     nos pages ENTRE ELLES. Le détecteur est en « Techniques apprises » du
+     21/10, et il se cadre en une commande. **Fort rendement attendu : le
+     corpus publie des dizaines de règles de droit sur plusieurs pages à la
+     fois** (DPE, charges, plus-value, préavis, diagnostics).
+  3. ⚠️ **`/honoraires` ne sert AUCUN « Dernière mise à jour » visible**
+     (identifié le 20/10, non fait le 20 ni le 21). Les deux autres pages du
+     triptyque en ont un (`/gestion-locative` via `seo-landing.tsx`,
+     `/faire-gerer` en inline ~l. 325). **À faire en lisant d'abord la
+     structure de la page** : elle n'utilise ni l'un ni l'autre. *(Son
+     `dateModified` JSON-LD est bien au 2026-10-20.)*
+  4. 🟢 **`blog.qoridor.fr`** — inchangé depuis le 19/10, toujours à faire :
+     lire une de ses pages de quartier et établir **ce que nous publions
+     qu'il ne publie pas**. **Ne RIEN réécrire sur la foi d'un seul relevé.**
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`) — `1 744` et `84,5 %` vivent sur
+     **deux** pages. **Aucun défaut connu : prévention.**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (23/10), par ordre d'impact :**
+  1. 🔴 **`/faire-gerer`, la dernière page de droit jamais revérifiée côté
+     CONTENU.** ⚠️ **Périmètre** : le 20/10 a traité **le DROIT DU SYNDIC** de
+     cette page (art. 21, décret 2015-342, dispense art. 25) — **pas le reste**,
+     ni le formulaire syndic multi-étapes, ni le droit de la copropriété
+     au-delà de la mise en concurrence. **C'était le second nom du candidat n°1
+     du 21/10, laissé de côté pour mener `/vendre` à fond.**
+  2. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** — avec son
+     **périmètre imposé du 11/10** : réécriture **procédurale** (méthode pas à
+     pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas rouvrir
+     l'angle « chiffres du marché », fermé par la mesure.**
+  3. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour
+     cette place.
+
+→ ⚠️ **REQUÊTES CIBLES — ce qui est dû le 22/10 : RIEN.** « Prix m2
+Villeurbanne » est hebdomadaire, **échéance le 26/10**. « Vendre appartement
+Villeurbanne » (deux par mois, dernière le 20/10) → **vers le 27/10**.
+🔴 **Les deux SERP gelées restent INTERDITES jusqu'au 23/10** (« agence
+immobilière Villeurbanne », « estimation immobilière Villeurbanne »).
+**Mesurer une SERP de chantier à la place** — la méthode du 15/10 est à
+**7 tests positifs sur 7**. 📌 **Et le 23/10, le gel tombe : les deux SERP
+gelées redeviennent mesurables. Ne pas l'oublier.**
+
+🆕 🟢 **FAIT NEUF SUR LES CONCURRENTS, ET IL CONFIRME LA THÈSE DU JOURNAL.**
+Sur « délai de rétractation compromis de vente quand commence-t-il à courir »
+(21/10), la SERP est tenue par des **portails et réseaux** (`seloger` ×3,
+`orpi`, `optimhome`, `iadfrance`, `homeselect`), **sans aucune agence
+indépendante locale**. 🔴 **Et le leader de la SERP cadre la question par la
+MAUVAISE règle** : le titre de `seloger`, servi trois fois, est
+« Rétractation d'un compromis de vente : **quel délai après la signature ?** ».
+📌 **Nous publions désormais le point de départ exact, daté et sourcé, là où
+la SERP publie l'approximation. C'est le différenciateur le plus net relevé
+depuis l'ouverture du journal — et il est vérifiable par quiconque ouvre
+F2965.** ⚠️ **À REMESURER** : cette SERP est la mesure de progrès du chantier
+du 21/10. **Prochaine échéance proposée : vers le 04/11** (deux semaines, le
+temps d'un recrawl).
+
+🆕 ⚠️ **ET UN SIGNAL À SURVEILLER, PAS À EXPLOITER** (inchangé) : `pap.fr`
+publie **3 623 €/m² (+1,6 %)** et `blog.qoridor.fr` **3 506 €/m² (−1,7 %)**,
+alors que tout ce qui a été relevé du 27/09 au 18/10 était **16 à 45 %**
+au-dessus de notre médiane DVF signée. **Deux mesures ne font pas une
+tendance** (règle du 14/10) : **ne RIEN réécrire sur la thèse « affiché ≠
+signé » avant une troisième mesure concordante.**
+
 **Angle du dernier run : NON-CONTENU — justesse juridique des trois dernières
 entrées de `/llms.txt`** (20/10, `/gestion-locative`, `/faire-gerer`,
 `/honoraires` : **six défauts**, dont une **règle abrogée au 1ᵉʳ juin 2020**
@@ -8587,6 +9006,55 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-21
+
+**1. ⚠️ Le PREMIER JOUR compte-t-il dans la computation du délai de
+rétractation ?** `labase-lextenso` publie une note de doctrine **de 2025**
+intitulée « Point de départ du délai de rétractation dans les promesses de
+vente », qui rapporte **un arrêt de la Cour de cassation** sur exactement cette
+question. **Je n'ai pas pu lire la solution retenue** (la recherche ne l'a pas
+rendue, et le site est payant). 🔴 **RIEN n'a été publié là-dessus** : nos pages
+disent « le lendemain de la première présentation », ce qui est la formulation
+**de la fiche officielle** et reste donc juste quelle que soit la solution de
+l'arrêt. **À vérifier** sur une source accessible (ANIL « Compromis / Promesse
+/ Délai de rétractation », qui existe et est gratuite) : si la Cour a précisé
+la computation, c'est une place GEO évidente et personne dans la SERP ne
+l'occupe. ⚠️ **Ne rien écrire avant d'avoir lu la solution elle-même.**
+
+**2. ⚠️ Deux affirmations de `seloger` sur le dépôt de garantie, non
+reprises.** Relevées dans la SERP du chantier, **elles ne viennent d'aucune
+source officielle** et la première s'accorde mal avec la fiche : (a) « si
+l'agent immobilier ou le notaire détient la somme, **il ne peut la rendre
+qu'avec l'accord écrit des deux parties** » — or **F37190 impose au
+professionnel de restituer sous 21 jours** à compter du lendemain de la
+rétractation, sans mentionner d'accord du vendeur ; (b) « le vendeur doit
+rendre les sommes versées, **avec intérêts si le remboursement tarde plus de
+15 jours** ». 🔴 **Non publiées.** **À trancher sur l'article L271-2 du CCH
+lui-même** — inaccessible aujourd'hui (Légifrance = 403 Cloudflare depuis ce
+conteneur, règle du 17/10 confirmée), donc **passer par l'ANIL**, qui a tranché
+tout le run du 20/10.
+
+**3. ⚠️ Les trois cas d'exonération d'IRA sont-ils réservés aux prêts conclus à
+compter du 1ᵉʳ juillet 1999 ?** L'**ANIL** le dit (loi du 25 juin 1999), la
+fiche **F1669 ne porte aucune condition de date**. 🟢 **Décision assumée de ne
+PAS l'écrire** : un prêt immobilier antérieur à juillet 1999 aurait **27 ans**,
+c'est du bruit pour un lecteur de 2026, et la fiche officielle ne le mentionne
+pas. ⚠️ **Mais si un jour la page traite les prêts anciens, la condition
+existe.** *(Vu au passage : une page de l'ANIL cite « 31 juin 1999 », une date
+qui n'existe pas — ne pas la recopier.)*
+
+**4. ⚠️ Deux fiches officielles du MÊME site donnent deux montants de dépôt de
+garantie.** **F2965** : « Il constitue un acompte, correspondant à **10 %** du
+prix de vente. » **F37190** : « Le montant de l'acompte est fixé en général
+entre **5 % et 10 %** du prix de vente. » 🟢 **Nous publions « en général entre
+5 et 10 % »** — c'est la fourchette, c'est la formulation la plus prudente, et
+**c'est ce que `/blog/vendre-sans-agence` publie déjà** (parité du corpus
+respectée). 📌 **À savoir pour la suite : une contradiction entre deux fiches
+service-public sur le même chiffre est possible. Préférer la fourchette, et
+celle qui s'accorde avec le reste du corpus.**
+
+### 2026-10-20## Hypothèses à vérifier
 
 ### 2026-10-20
 
@@ -9549,6 +10017,71 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-21 — J'ai écrit une contradiction interne à la page que je venais d'écrire, et j'ai mélangé deux compteurs de mots alors que le piège était consigné la veille
+
+**1. 🔴 J'AI PUBLIÉ (EN LOCAL) UNE PHRASE QUE LA MÊME PAGE DÉMENTAIT TROIS
+PARAGRAPHES PLUS BAS.** Mon paragraphe d'ouverture de la section Calendrier
+gardait la formulation d'origine : « l'acheteur **y verse** un dépôt de
+garantie ». Or la section que je venais d'ajouter juste en dessous publie que
+**exiger ou recevoir un versement avant la fin du délai de rétractation est
+puni d'une amende de 30 000 €**, et que **le dépôt n'est pas obligatoire**.
+**La page affirmait donc à la fois que l'acheteur verse à la signature et que
+le vendeur ne peut rien encaisser à ce moment-là.**
+→ Corrigé : « il **prévoit généralement** un dépôt de garantie, consigné sur le
+compte séquestre du notaire …, **mais il n'est ni obligatoire ni encaissable à
+la signature, comme détaillé plus bas** ».
+📌 **La leçon, et elle est générale** : **quand on AJOUTE une règle à une page,
+relire ce que la page disait DÉJÀ sur le même objet.** Mon ajout était juste,
+c'est l'ancien texte devenu faux par contraste qui a failli passer. **Trouvé
+en relisant le RENDU en entier, pas le diff** — le diff ne montrait que mon
+ajout.
+
+**2. 🔴 J'AI MÉLANGÉ DEUX COMPTEURS DE MOTS DANS LE MESSAGE DE COMMIT, ALORS
+QUE LE PIÈGE EST CONSIGNÉ DANS CE JOURNAL DEPUIS LA VEILLE.** Le commit
+annonce « **3 176 mots rendus contre 2 302 avant** ». **3 176 est un
+`len(t.split())` et 2 302 un `wc -w`** : les deux comptent la même page
+différemment à cause des espaces insécables (c'est exactement le constat du
+20/10, qui avait fait croire pendant quelques minutes à un déploiement
+partiel). **Les paires honnêtes** : `wc -w` **2 302 → 2 989 (+29,8 %)** ;
+`split()` **2 462 → 3 176 (+29,0 %)**. La croissance est réelle et les deux
+compteurs s'accordent à **~+700 mots**, mais **le chiffre du commit surestime
+(+37 %)**. 📌 **Connaître la règle n'a pas suffi** : il faut **mesurer l'avant
+et l'après dans la même commande**, pas réutiliser une mesure du matin faite
+avec l'autre outil. Le commit est poussé, **la correction vit ici** — c'est le
+journal qui est la mémoire.
+
+**3. 🔴 MON SONDAGE DE DÉPLOIEMENT A ANNONCÉ « ✅ DÉPLOYÉ » ALORS QUE RIEN NE
+L'ÉTAIT.** `grep -c` **sort en code 1 quand le compte vaut 0**, donc mon
+`R=$(curl … | grep -c "…" || echo "ERR")` a produit la chaîne littérale
+`"0\nERR"` — qui n'est égale ni à `0` ni à `ERR`, si bien que le test
+« déployé » est passé **au premier tour, à t+18 s**. 📌 **Rattrapé parce que
+j'affichais autre chose que le seul booléen** : la taille de la page était
+restée à 123 986 octets. **Règle : compter avec `grep -o … | wc -l` (qui sort
+toujours en 0) et garder un témoin indépendant — la TAILLE — à chaque tour.**
+Le vrai déploiement s'est vu au passage à 136 838 octets.
+
+**4. ⚠️ DEUX AUTRES DÉFAUTS DE MA RÉDACTION, moins graves mais du même
+genre.** (a) J'avais écrit « **Lui** est engagé dès qu'il signe » juste après
+une phrase qui parlait de l'acheteur : **l'antécédent était ambigu** et un
+lecteur pouvait comprendre l'inverse. → « **Le vendeur, lui,** est engagé… ».
+(b) J'avais annoncé « une seule des **trois** situations laisse la somme au
+vendeur » dans un paragraphe qui en **énumérait quatre**. → « **un seul cas de
+renoncement** laisse la somme au vendeur ». 📌 **Ne pas annoncer un décompte
+qu'on n'a pas recompté sur le texte final.**
+
+**5. ⚠️ MON PROPRE TEST DE VÉRIFICATION A LEVÉ UN FAUX POSITIF, ET C'EST
+INSTRUCTIF.** J'avais mis « jamais plus que le plus faible de deux plafonds :
+6 mois » dans la liste des formulations **devant avoir disparu** — alors que
+j'avais **délibérément gardé** cette phrase en la qualifiant (« et, **sur un
+prêt à taux fixe**, jamais plus que… »). Le test a donc crié `!!` sur du
+contenu correct. 📌 **Un test de non-régression doit encoder ce qu'on a
+VOULU faire, pas ce qu'on croyait avoir fait** : la bonne chaîne « disparue »
+était `jamais plus que le plus faible de deux plafonds : 6 mois` **non précédé
+de** « taux fixe ». **Vérifié à la main sur le rendu avant de conclure** — ne
+jamais lever une alerte de son propre harnais sans aller lire la phrase.
+
+### 2026-10-20 —## Erreurs commises et corrigées
 
 ### 2026-10-20 — J'ai failli publier l'exclusion exactement à l'envers, et c'est le § de la source qui m'a arrêté
 
@@ -10781,6 +11314,99 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-21 — Le contrôle « une AUTRE de nos pages dit-elle déjà le contraire ? », et pourquoi il faut grepper la formule plutôt que la phrase
+
+**1. 🔴 LE CONTRÔLE NEUF DU RUN, ET C'EST LE PREMIER QUI REGARDE LE CORPUS AU
+LIEU DES SOURCES : « UNE AUTRE DE NOS PAGES PUBLIE-T-ELLE DÉJÀ CETTE RÈGLE, ET
+LAQUELLE A RAISON ? »**
+
+Les trois contrôles accumulés jusqu'ici comparaient tous **une page à une
+source EXTERNE** :
+- 17/10 : « la règle citée est-elle encore en vigueur ? »
+- 19/10 : « la source citée dit-elle ce que la page affirme ? »
+- 20/10 : « le périmètre est-il celui de la source ? »
+
+**Aucun ne comparait nos pages ENTRE ELLES.** Le défaut du 21/10 est passé
+sous les trois : la règle était **en vigueur**, la **source était la bonne**, le
+périmètre cité était juste — mais **cinq emplacements publiaient une version
+fausse pendant que trois autres de nos pages publiaient la bonne**, depuis dix
+jours.
+
+**Le détecteur, en une commande** — pour chaque règle de droit publiée sur une
+page commerciale, grepper la **formule** dans tout le corpus et **lire les
+variantes côte à côte** :
+
+```bash
+# toutes les formulations d'une même règle, avec leur contexte
+grep -rno "délai de rétractation[^.]\{0,90\}" app/ lib/ --include=*.ts --include=*.tsx
+# -> 22 occurrences, 5 fausses (pages commerciales), 3 justes (blog)
+```
+
+⚠️ **La lecture compte autant que la commande** : il a fallu **mettre les 22
+lignes côte à côte** pour voir que les variantes divergeaient. Un grep qui
+renvoie 22 lignes « qui parlent toutes de la même chose » n'est pas un
+contrôle — **c'est la comparaison deux à deux qui l'est.**
+
+📌 **Et la leçon qui va avec, contre-intuitive** : **la version juste était sur
+la page la MOINS commerciale.** `/blog/vendre-sans-agence` et
+`/blog/vendre-logement-copropriete` avaient la bonne règle ; `/vendre` et
+`/acheter`, les deux pages qui portent les requêtes cibles, avaient la
+fausse. **Donc : ne pas présumer que la page la plus soignée est la plus
+juste.** Les pages de fond écrites en une fois, sourcées fiche en main,
+vieillissent mieux que les pages commerciales retouchées par morceaux.
+
+**2. 🔴 GREPPER LA FORMULE, PAS LA PHRASE — ET CETTE FOIS ÇA A ÉVITÉ DE POUSSER
+UNE CORRECTION INCOMPLÈTE.** La règle du 13/10 disait « ne pas grepper le
+SUJET, grepper la FORMULE ». **Le 21/10 ajoute un cran** : ne pas grepper la
+**phrase exacte** non plus.
+
+```bash
+# INSUFFISANT — ne trouve que 4 des 5 emplacements
+grep -rn "qui suit la signature du compromis\|qui suit le compromis" app/ lib/
+
+# SUFFISANT — la formule, qui attrape toutes les variantes de tournure
+grep -rno "délai de rétractation[^.]\{0,90\}" app/ lib/
+# -> révèle le 5e : « dix jours APRÈS LA SIGNATURE du compromis » (FAQ /acheter)
+```
+
+📌 **Pourquoi la phrase ne suffit pas** : une même règle fausse se réécrit à
+chaque rédaction (« qui suit la signature », « qui suit le compromis », « après
+la signature »). **Ce qui est stable, c'est le NOM de l'objet de droit**
+(« délai de rétractation »), pas la tournure autour. **Grepper le nom de
+l'objet + 90 caractères, puis lire.**
+
+**3. 🟢 LE BLOC « TEXTES DE RÉFÉRENCE » N'EST PAS LE SEUL ENDROIT UTILE D'UNE
+FICHE SERVICE-PUBLIC : L'ENCADRÉ « À SAVOIR » PORTE LES RÉSERVES.**
+
+C'est un encadré **« À savoir »** de F1669 qui a livré le défaut n°2 du run :
+
+> « **À savoir** — Dans le cas d'un prêt à taux variable, ces indemnités
+> peuvent être majorées par des **intérêts compensateurs**. »
+
+Le corps de la fiche énonce les deux plafonds ; **c'est l'encadré qui dit
+qu'ils ne bornent pas tout.** 📌 **Méthode : après avoir lu la règle, chercher
+`À savoir` et `Attention` dans le texte de la fiche** — ce sont les réserves,
+et **ce sont elles qui font les périmètres faux** quand on ne les lit pas.
+
+```bash
+python3 -I h2t.py F1669.html | grep -oE "À savoir.{0,400}"
+```
+
+**4. 🟢 UNE QUESTION DE SERP PEUT ÊTRE UNE MESURE DE PROGRÈS, pas seulement un
+relevé de position.** La SERP « délai de rétractation compromis quand commence
+à courir » n'est pas une requête commerciale : **c'est le thermomètre du
+chantier du 21/10**, et son relevé du jour (site absent, `seloger` ×3 avec un
+titre qui cadre la question par la mauvaise règle) **est le point de
+comparaison pour le 04/11**. 📌 **Mesurer la SERP de son propre chantier le
+jour où on le pousse** donne un avant/après exploitable, là où une requête
+commerciale générique bouge trop lentement pour attribuer quoi que ce soit.
+
+**5. ⚠️ `grep -c` SORT EN CODE 1 QUAND LE COMPTE EST 0 — piège de sondage, voir
+« Erreurs commises ».** Dans un `$(… || echo ERR)`, cela fabrique une chaîne
+`"0\nERR"` qui fait passer n'importe quel test d'égalité. **Compter avec
+`grep -o … | wc -l`, et garder la TAILLE de la page comme témoin indépendant à
+chaque tour de sondage.**
 
 ### 2026-10-20 — Le contrôle « cette règle est-elle encore en vigueur ? », et l'ANIL comme substitut à Légifrance (403 dans ce conteneur)
 
