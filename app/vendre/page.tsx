@@ -66,7 +66,37 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *    capital remboursé ET de 3 % du capital restant dû, et absence d'indemnité
  *    quand le remboursement fait suite à la vente du logement pour changement
  *    de lieu de travail, cessation forcée d'activité ou décès →
- *    service-public.gouv.fr, fiche F1669, consultée le 2026-09-30.
+ *    service-public.gouv.fr, fiche F1669, consultée le 2026-09-30, revérifiée
+ *    le 2026-10-21 (fiche « vérifiée le 16 septembre 2026 », trois cas
+ *    d'exonération et deux plafonds inchangés).
+ *    ⚠️ Mais les deux plafonds NE BORNENT PAS un prêt à taux VARIABLE : la
+ *    même fiche prévoit que l'indemnité « peut être majorée par des intérêts
+ *    compensateurs ». La page affirmait « jamais plus que le plus faible de
+ *    deux plafonds » sans réserve — elle sous-estimait ce que le vendeur peut
+ *    devoir. Corrigé le 2026-10-21, section et FAQ.
+ *  - délai de rétractation de l'acquéreur, sort du dépôt de garantie et
+ *    engagement du vendeur → service-public.gouv.fr, fiche F2965 « Promesse de
+ *    vente d'un logement existant », vérifiée le 10 avril 2026, et fiche
+ *    F37190 « Achat d'un logement en copropriété », vérifiée le 19 septembre
+ *    2025, lues le 2026-10-21.
+ *    ⚠️ DEUX DÉFAUTS CORRIGÉS CE JOUR-LÀ. (1) La page écrivait que le délai
+ *    de 10 jours « suit la signature du compromis » : il court en réalité à
+ *    compter du LENDEMAIN DE LA PREMIÈRE PRÉSENTATION de la lettre recommandée
+ *    qui le notifie à l'acquéreur (ou de sa remise en main propre), et ne
+ *    démarre pas tant que les sept documents de copropriété n'ont pas tous été
+ *    remis. Le corpus se CONTREDISAIT : /blog/vendre-sans-agence publiait déjà
+ *    le bon point de départ. Les quatre emplacements fautifs (/vendre ×2,
+ *    /acheter, /blog/compromis-de-vente-delais) ont été alignés.
+ *    (2) La FAQ répondait « Non » tout court à « le vendeur peut-il se
+ *    rétracter ? » : la fiche dit « ne peut pas, EN PRINCIPE », l'exception
+ *    étant une clause de faculté de rétractation ou de dédit à son profit —
+ *    et elle se négocie AVANT de signer. Si ce périmètre change, il change
+ *    aussi sur /acheter et /blog/compromis-de-vente-delais.
+ *  - taxe foncière de l'année de la vente : redevable unique au 1er janvier,
+ *    prorata purement conventionnel → article 1415 du CGI et impots.gouv.fr,
+ *    « J'ai acheté / vendu un bien immobilier cette année », lus le
+ *    2026-10-21. L'affirmation était juste mais NON SOURCÉE ; la source a été
+ *    ajoutée, le texte n'a pas changé.
  *  Aucun délai de vente « observé » n'est avancé : personne ne l'a mesuré ici.
  *  Aucun prix de diagnostic n'est avancé : le coût dépend du diagnostiqueur.
  */
@@ -156,15 +186,15 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Peut-on vendre un appartement dont le crédit n'est pas remboursé ?",
-    a: `Oui, et c'est la situation la plus courante. Le notaire rembourse la banque sur le prix de vente le jour de l'acte, puis verse le solde au vendeur. Si le contrat de prêt prévoit une indemnité de remboursement anticipé, elle ne peut dépasser ni ${IRA_MOIS} mois d'intérêts sur le capital remboursé au taux moyen du prêt, ni ${IRA_PCT} % du capital restant dû. Et elle n'est pas due du tout lorsque la vente fait suite à un changement de lieu de travail, à une cessation forcée d'activité professionnelle ou à un décès, pour le vendeur ou son conjoint. Source : service-public.gouv.fr, fiche F1669.`,
+    a: `Oui, et c'est la situation la plus courante. Le notaire rembourse la banque sur le prix de vente le jour de l'acte, puis verse le solde au vendeur. Si le contrat de prêt prévoit une indemnité de remboursement anticipé, elle ne peut dépasser ni ${IRA_MOIS} mois d'intérêts sur le capital remboursé au taux moyen du prêt, ni ${IRA_PCT} % du capital restant dû. Sur un prêt à taux variable, en revanche, cette indemnité peut être majorée d'intérêts compensateurs — la somme qui permet à la banque de percevoir, sur la durée déjà courue, le taux moyen prévu à l'origine : les deux plafonds ne suffisent donc pas à borner ce que coûte un remboursement anticipé sur un taux variable. Et l'indemnité n'est pas due du tout lorsque la vente fait suite à un changement de lieu de travail, à une cessation forcée d'activité professionnelle ou à un décès, pour le vendeur ou son conjoint. Source : service-public.gouv.fr, fiche F1669, vérifiée le 16 septembre 2026.`,
   },
   {
     q: "Qui paie la taxe foncière l'année de la vente ?",
-    a: "Le propriétaire au 1er janvier reste le redevable légal pour l'année entière : c'est lui que l'administration fiscale appelle, même s'il a vendu en février. En pratique, l'acte de vente prévoit presque toujours un prorata, l'acheteur remboursant au vendeur la part correspondant aux jours où il est propriétaire. Ce prorata est une convention entre les parties, pas une règle fiscale : il n'existe que s'il est écrit dans l'acte.",
+    a: "Le propriétaire au 1er janvier reste le redevable légal pour l'année entière : c'est lui que l'administration fiscale appelle, même s'il a vendu en février. En pratique, l'acte de vente prévoit presque toujours un prorata, l'acheteur remboursant au vendeur la part correspondant aux jours où il est propriétaire. Ce prorata est une convention entre les parties, pas une règle fiscale : il n'existe que s'il est écrit dans l'acte. Sources : article 1415 du code général des impôts, qui établit la taxe pour l'année entière d'après les faits existants au 1er janvier ; impots.gouv.fr, « J'ai acheté / vendu un bien immobilier cette année ».",
   },
   {
     q: "Le vendeur peut-il se rétracter après avoir signé le compromis ?",
-    a: "Non. Le délai de rétractation de 10 jours qui suit la signature du compromis ne bénéficie qu'à l'acheteur non professionnel. Le vendeur, lui, est engagé dès sa signature et ne dispose d'aucun délai équivalent. C'est la raison pour laquelle un vendeur ne devrait signer un compromis qu'une fois son propre projet arrêté : relogement, calendrier, montant attendu au terme de la vente.",
+    a: "En principe non : le vendeur est définitivement engagé à vendre dès sa signature du compromis, et le délai de rétractation de 10 jours calendaires ne bénéficie qu'à l'acquéreur non professionnel. Une seule exception existe de son côté : que le compromis contienne lui-même une clause de faculté de rétractation ou de dédit à son profit — elle se négocie avant de signer, jamais après. Et le délai de l'acquéreur ne part pas de la signature : il commence le lendemain de la première présentation de la lettre recommandée qui lui notifie le compromis, ou de sa remise en main propre. C'est la raison pour laquelle un vendeur ne devrait signer un compromis qu'une fois son propre projet arrêté : relogement, calendrier, montant attendu au terme de la vente. Source : service-public.gouv.fr, fiche F2965, vérifiée le 10 avril 2026.",
   },
 ];
 
@@ -522,8 +552,8 @@ export default function VendrePage() {
               <>
                 <p>
                   <strong>
-                    Souvent rien, et jamais plus que le plus faible de deux
-                    plafonds : {IRA_MOIS}{" "}
+                    Souvent rien, et, sur un prêt à taux fixe, jamais plus que
+                    le plus faible de deux plafonds : {IRA_MOIS}{" "}
                     mois d&apos;intérêts sur le capital
                     remboursé au taux moyen du prêt, ou {IRA_PCT} % du capital
                     restant dû avant le remboursement.
@@ -533,6 +563,18 @@ export default function VendrePage() {
                   strictement. Le notaire la règle sur le prix de vente en même
                   temps que le solde du capital, avant de verser le reste au
                   vendeur.
+                </p>
+                <p>
+                  Une réserve que presque personne n&apos;écrit, et elle joue
+                  contre le vendeur : <strong>sur un prêt à taux variable,
+                  cette indemnité peut être majorée d&apos;intérêts
+                  compensateurs</strong> — la somme qui permet à la banque de
+                  percevoir, sur la durée déjà courue, le taux moyen prévu à
+                  l&apos;origine. Les deux plafonds ci-dessus ne suffisent donc
+                  pas à borner ce que coûte un remboursement anticipé sur un
+                  taux variable : c&apos;est le contrat de prêt qu&apos;il faut
+                  lire, et la banque doit communiquer gratuitement le montant
+                  exact sur demande écrite de remboursement anticipé.
                 </p>
                 <p>
                   Trois situations l&apos;annulent complètement lorsque le
@@ -563,25 +605,96 @@ export default function VendrePage() {
                     À la signature de l&apos;acte authentique, pas au compromis.
                   </strong>{" "}
                   Le compromis engage les deux parties mais ne transfère aucun
-                  prix : l&apos;acheteur y verse un dépôt de garantie, conservé
-                  par le notaire et déduit du prix le jour de l&apos;acte.
-                  Entre les deux, comptez généralement deux à trois mois — le
-                  temps des vérifications du notaire et du financement de
-                  l&apos;acheteur.
+                  prix : il prévoit généralement un dépôt de garantie, consigné
+                  sur le compte séquestre du notaire et déduit du prix le jour
+                  de l&apos;acte — mais il n&apos;est ni obligatoire ni
+                  encaissable à la signature, comme détaillé plus bas. Entre les
+                  deux, comptez généralement deux à trois mois — le temps des vérifications du notaire et du
+                  financement de l&apos;acheteur.
                 </p>
                 <p>
                   Une asymétrie mérite d&apos;être connue avant de signer :{" "}
                   <strong>
-                    le délai de rétractation de 10 jours ne bénéficie
-                    qu&apos;à l&apos;acheteur
+                    le délai de rétractation de 10 jours calendaires ne
+                    bénéficie qu&apos;à l&apos;acquéreur non professionnel, et
+                    il ne part pas de la signature
                   </strong>
-                  . Le vendeur, lui, est engagé dès sa signature du{" "}
+                  . Il commence le lendemain de la première présentation de la
+                  lettre recommandée qui notifie le{" "}
                   <Link href="/blog/compromis-de-vente-delais" className={A}>
                     compromis
+                  </Link>{" "}
+                  à l&apos;acheteur, ou de sa remise en main propre ; s&apos;il
+                  s&apos;achève un samedi, un dimanche ou un jour férié, il est
+                  prolongé jusqu&apos;au premier jour ouvrable suivant. Pour un
+                  lot de copropriété, il ne démarre même pas tant que les sept
+                  documents de copropriété n&apos;ont pas tous été remis. Le
+                  vendeur n&apos;est donc libéré du risque de retrait qu&apos;à
+                  une date qui dépend d&apos;une notification, pas de sa propre
+                  signature.
+                </p>
+                <p>
+                  Le vendeur, lui, est engagé dès qu&apos;il signe, et il ne
+                  peut en principe pas se rétracter. La seule exception est une clause de faculté
+                  de rétractation ou de dédit inscrite à son profit dans
+                  l&apos;acte : elle se négocie avant la signature, jamais
+                  après. C&apos;est pourquoi il vaut mieux avoir arrêté son
+                  propre calendrier — relogement, achat suivant, montant
+                  attendu — avant de signer plutôt qu&apos;après.
+                </p>
+                <p className="text-[13px] text-[#6b7276]">
+                  Source : service-public.gouv.fr, fiche F2965 « Promesse de
+                  vente d&apos;un logement existant : promesse unilatérale ou
+                  compromis », vérifiée le 10 avril 2026.
+                </p>
+              </>
+            ),
+          },
+          {
+            eyebrow: "Dépôt de garantie",
+            h2: "Que devient le dépôt de garantie si l'acheteur renonce à acheter ?",
+            body: (
+              <>
+                <p>
+                  <strong>
+                    Cela dépend entièrement du motif, et un seul cas de
+                    renoncement laisse la somme au vendeur.
+                  </strong>{" "}
+                  Le dépôt est restitué intégralement à l&apos;acheteur si une
+                  condition suspensive du compromis ne se réalise pas — un refus
+                  de prêt, le cas le plus fréquent. Il lui est également
+                  restitué s&apos;il exerce son droit de rétractation : le
+                  professionnel qui le détient doit alors le lui rendre dans un
+                  délai maximum de 21 jours à compter du lendemain de la
+                  rétractation. Il reste en revanche acquis au vendeur si
+                  l&apos;acheteur renonce en dehors de ces deux cas. Et si la
+                  vente se fait, il est simplement déduit du prix le jour de
+                  l&apos;acte.
+                </p>
+                <p>
+                  Deux précisions que les vendeurs découvrent souvent trop tard.
+                  D&apos;abord, aucun dépôt n&apos;est obligatoire : ce
+                  n&apos;est pas une condition de validité du compromis, même
+                  s&apos;il est d&apos;usage d&apos;en prévoir un, en général
+                  entre 5 et 10 % du prix de vente. Ensuite, un vendeur ne peut
+                  pas l&apos;encaisser quand il veut — exiger ou recevoir un
+                  versement avant la fin du délai de rétractation est puni
+                  d&apos;une amende de 30 000 €, sauf si la promesse est conclue
+                  par l&apos;intermédiaire d&apos;un professionnel mandaté
+                  (notaire ou agent immobilier) ou si les fonds sont consignés
+                  chez un professionnel disposant d&apos;une garantie
+                  financière. C&apos;est l&apos;une des contraintes les plus
+                  concrètes de la{" "}
+                  <Link href="/blog/vendre-sans-agence" className={A}>
+                    vente sans agence
                   </Link>
-                  , sans délai équivalent. C&apos;est pourquoi il vaut mieux
-                  avoir arrêté son propre calendrier — relogement, achat
-                  suivant, montant attendu — avant de signer plutôt qu&apos;après.
+                  .
+                </p>
+                <p className="text-[13px] text-[#6b7276]">
+                  Sources : service-public.gouv.fr, fiche F2965 « Promesse de
+                  vente d&apos;un logement existant », vérifiée le 10 avril
+                  2026 ; fiche F37190 « Achat d&apos;un logement en
+                  copropriété », vérifiée le 19 septembre 2025.
                 </p>
               </>
             ),

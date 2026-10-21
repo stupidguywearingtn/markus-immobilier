@@ -57,9 +57,16 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *    prix + frais est faite ici, elle ne peut pas diverger.
  *  - écarts prix affichés / prix signés (16,1 % à 45,3 %) → relevés source par
  *    source le 2026-09-27, publiés dans /blog/investir-locatif-lyon.
- *  - délai de rétractation de 10 jours au seul bénéfice de l'acquéreur, délai
- *    usuel de deux à trois mois entre compromis et acte → déjà publiés sur
- *    /vendre et /blog/compromis-de-vente-delais, repris à l'identique.
+ *  - délai de rétractation de 10 jours CALENDAIRES au seul bénéfice de
+ *    l'acquéreur non professionnel, courant à compter du LENDEMAIN DE LA
+ *    PREMIÈRE PRÉSENTATION de la lettre recommandée notifiant le compromis
+ *    (ou de sa remise en main propre), et ne démarrant pas tant que les sept
+ *    documents de copropriété n'ont pas tous été remis ; délai usuel de deux à
+ *    trois mois entre compromis et acte → déjà publiés sur /vendre et
+ *    /blog/compromis-de-vente-delais, repris à l'identique.
+ *    ⚠️ Cette page écrivait « qui suit le compromis » jusqu'au 2026-10-21 :
+ *    faux point de départ, corrigé sur les quatre emplacements du corpus
+ *    (service-public.gouv.fr F2965, vérifiée le 10 avril 2026).
  *  AUCUN taux d'apport bancaire n'est avancé : personne ne l'a mesuré ici, et
  *  c'est une politique d'établissement, pas une règle. La page le dit.
  */
@@ -170,7 +177,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Combien de temps s'écoule entre l'offre acceptée et la remise des clés ?",
-    a: "Comptez généralement deux à trois mois entre la signature du compromis et celle de l'acte authentique : c'est le temps des vérifications du notaire, des purges de droits de préemption et de l'obtention du prêt. L'acheteur non professionnel dispose en outre d'un délai de rétractation de dix jours après la signature du compromis, délai dont le vendeur, lui, ne bénéficie pas. Les clés sont remises à l'acte authentique, pas au compromis.",
+    a: "Comptez généralement deux à trois mois entre la signature du compromis et celle de l'acte authentique : c'est le temps des vérifications du notaire, des purges de droits de préemption et de l'obtention du prêt. L'acheteur non professionnel dispose en outre d'un délai de rétractation de dix jours calendaires, qui ne court pas depuis la signature mais depuis le lendemain de la première présentation de la lettre recommandée lui notifiant le compromis, ou de sa remise en main propre ; le vendeur, lui, n'en bénéficie pas. Les clés sont remises à l'acte authentique, pas au compromis.",
   },
   {
     q: "L'acheteur paie-t-il des honoraires d'agence chez Markus Immobilier ?",
@@ -483,10 +490,16 @@ export default function AcheterPage() {
                 <p>
                   Une asymétrie joue en faveur de l&apos;acheteur :{" "}
                   <strong>
-                    le délai de rétractation de dix jours qui suit le compromis ne
+                    le délai de rétractation de dix jours calendaires ne
                     bénéficie qu&apos;à l&apos;acquéreur non professionnel
                   </strong>
-                  . Le vendeur, lui, est engagé dès sa signature. La condition
+                  , et il ne court pas depuis la signature : il commence le
+                  lendemain de la première présentation de la lettre
+                  recommandée qui notifie le compromis à l&apos;acquéreur, ou
+                  de sa remise en main propre. Pour un lot de copropriété, il
+                  ne démarre pas tant que les sept documents de copropriété
+                  n&apos;ont pas tous été remis. Le vendeur, lui, est engagé
+                  dès sa signature. La condition
                   suspensive d&apos;obtention de prêt protège ensuite
                   l&apos;acheteur jusqu&apos;à la réponse de la banque : son délai
                   et son montant se négocient au moment de rédiger{" "}

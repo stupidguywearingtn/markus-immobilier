@@ -1672,12 +1672,16 @@ export const ARTICLES: Article[] = [
     excerpt:
       "L'avant-contrat qui engage vendeur et acheteur. Délai de rétractation, conditions suspensives et délai jusqu'à l'acte.",
     date: "2026-04-16",
+    updated: "2026-10-21",
     internalHref: "/acheter",
     internalLabel: "Acheter avec un accompagnement",
     blocks: [
       { type: "p", text: "**Le compromis de vente est l'avant-contrat qui engage vendeur et acheteur ; l'acheteur dispose ensuite d'un délai de rétractation de 10 jours.** C'est une étape clé, à comprendre avant de signer." },
-      { type: "h2", text: "Le délai de rétractation" },
-      { type: "p", text: "Après la signature, l'**acheteur a 10 jours** pour se rétracter sans justification ni pénalité. Le vendeur, lui, est engagé dès la signature." },
+      { type: "h2", text: "Quand le délai de rétractation de 10 jours commence-t-il ?" },
+      { type: "p", text: "**Pas à la signature du compromis, contrairement à ce qu'on lit presque partout : le délai de 10 jours calendaires commence le lendemain de la première présentation de la lettre recommandée qui notifie le compromis à l'acquéreur**, ou de sa remise en main propre. S'il s'achève un samedi, un dimanche ou un jour férié, il est prolongé jusqu'au premier jour ouvrable suivant. L'acheteur peut alors se rétracter sans justification ni pénalité, en notifiant son renoncement au vendeur par lettre recommandée avec accusé de réception." },
+      { type: "p", text: "Deux conséquences pratiques en découlent. Pour la vente d'un lot de copropriété, le délai **ne démarre pas tant que les sept documents de copropriété n'ont pas tous été remis** à l'acquéreur : un seul manquant, et l'horloge n'a jamais commencé à tourner. Et le vendeur n'est donc libéré du risque de retrait qu'à une date qui dépend d'une notification, pas de sa propre signature — nous détaillons ce décompte côté vendeur sur [ce qu'il reste vraiment au vendeur](/vendre)." },
+      { type: "h2", text: "Le vendeur peut-il se rétracter, lui ?" },
+      { type: "p", text: "**En principe non : il est définitivement engagé à vendre dès qu'il signe le compromis.** La seule exception est une clause de faculté de rétractation ou de dédit inscrite à son profit dans l'acte lui-même — elle se négocie avant la signature, jamais après. Source : service-public.gouv.fr, fiche F2965 « Promesse de vente d'un logement existant : promesse unilatérale ou compromis », vérifiée le 10 avril 2026." },
       { type: "h2", text: "Les conditions suspensives" },
       { type: "p", text: "Le compromis prévoit des conditions qui annulent la vente si elles ne se réalisent pas — la principale étant l'**obtention du prêt** par l'acheteur. Si la banque refuse, la vente est annulée et le dépôt restitué." },
       { type: "h2", text: "Le délai jusqu'à l'acte" },
