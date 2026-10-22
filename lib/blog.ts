@@ -622,7 +622,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Nous avons compté les étiquettes DPE des 49 717 appartements diagnostiqués à Villeurbanne : 4,9 % sont classés F ou G, contre 7,1 % en France. Le risque dépend d'abord de l'année de construction.",
     date: "2026-05-05",
-    updated: "2026-10-16",
+    updated: "2026-10-22",
     internalHref: "/vendre",
     internalLabel: "Faire le point sur la valeur de mon bien",
     blocks: [
@@ -687,7 +687,11 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Faut-il un audit énergétique pour vendre un appartement classé F ou G ?" },
       { type: "p", text: "**Non, pas s'il s'agit d'un lot de copropriété.** L'audit énergétique obligatoire en cas de vente ne concerne que les maisons individuelles et les immeubles composés de plusieurs logements dont le vendeur est l'unique propriétaire, classés E, F ou G. Un appartement vendu seul au sein d'une copropriété n'y est pas soumis, quelle que soit son étiquette." },
       { type: "p", text: "La distinction compte particulièrement ici : sur les 51 951 diagnostics enregistrés à Villeurbanne, **49 717 portent sur des appartements, contre 1 159 sur des maisons et 1 075 sur des immeubles entiers**. L'immense majorité des ventes villeurbannaises échappe donc à l'audit énergétique — mais pas au DPE, qui reste obligatoire dans tous les cas et s'ajoute aux [diagnostics déjà exigés avant toute vente](/blog/diagnostics-obligatoires-vente)." },
-      { type: "p", text: "L'obligation vise les ventes dont la promesse ou l'acte de vente est signé depuis le 1er avril 2023, et sera étendue aux bâtiments classés D à partir du 1er janvier 2034. Dans tous les cas, une mauvaise étiquette entraîne une décote : les acheteurs anticipent les travaux, et le prix se négocie en conséquence." },
+      { type: "p", text: "Dans tous les cas, une mauvaise étiquette entraîne une décote : les acheteurs anticipent les travaux, et le prix se négocie en conséquence." },
+      { type: "h2", text: "Depuis quelle date l'audit énergétique est-il obligatoire, et pour quelles étiquettes ?" },
+      { type: "p", text: "**En France métropolitaine, l'audit énergétique est exigé depuis le 1er avril 2023 pour les bâtiments classés F ou G, et depuis le 1er janvier 2025 seulement pour ceux classés E.** Les bâtiments classés D suivront au 1er janvier 2034. La date qui déclenche l'obligation est celle de la signature de la promesse de vente ou, à défaut, de l'acte de vente." },
+      { type: "p", text: "Ce détail de calendrier a une conséquence concrète pour un vendeur : **une maison classée E vendue en 2023 ou en 2024 n'avait pas à fournir d'audit énergétique**, alors que la même vente l'exige aujourd'hui. La confusion est fréquente, parce que l'obligation est souvent résumée comme applicable « depuis le 1er avril 2023 » sans distinguer les étiquettes : c'est la date du seul palier F-G. Le calendrier par étiquette est fixé par le décret n° 2022-780 du 4 mai 2022 (article 3), pris pour l'application de l'article L126-28-1 du code de la construction et de l'habitation ; le palier F-G, d'abord prévu au 1er janvier 2022 puis au 1er septembre 2022, a été repoussé au 1er avril 2023 par le décret du 9 août 2022." },
+      { type: "p", text: "Outre-mer, le calendrier est différent : l'audit n'y vise pour l'instant que les classes F et G, et il sera étendu à la classe E au 1er janvier 2028." },
 
       { type: "h2", text: "Mon DPE est-il encore valable ?" },
       { type: "p", text: "**Un DPE réalisé depuis le 1er juillet 2021 est valable 10 ans.** En revanche, les DPE réalisés entre le 1er janvier 2018 et le 30 juin 2021 ne sont plus valables depuis le 1er janvier 2025 : ils doivent être refaits en cas de mise en location. Depuis le 1er juillet 2024, les seuils des étiquettes ont par ailleurs été adaptés pour les logements dont la surface de référence est inférieure ou égale à 40 m², et les propriétaires concernés peuvent télécharger sur le site de l'ADEME une attestation remplaçant l'étiquette initiale." },
@@ -715,6 +719,7 @@ export const ARTICLES: Article[] = [
         "[Audit énergétique en cas de vente d'un bien immobilier dit « passoire thermique »](https://www.service-public.gouv.fr/particuliers/vosdroits/F37110), Service-Public — fiche vérifiée le 14 septembre 2026 : périmètre de l'audit.",
         "[Diagnostic de performance énergétique](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe), ministère chargé de la Transition écologique : calendrier du DPE collectif en copropriété.",
         "[Diagnostic de performance énergétique collectif (DPE collectif)](https://www.justice.fr/fiche/diagnostic-performance-energetique-collectif-dpe-collectif), ministère de la Justice — fiche mise à jour le 1er janvier 2026 : bâtiments assujettis, calendrier par nombre de lots, durée de validité et exception des classes A, B ou C.",
+        "[Rénovation énergétique : audit énergétique, analyse juridique n° 2022-07](https://www.anil.org/aj-audit-energetique/), ANIL — à jour au 12 mars 2025 : calendrier par étiquette du décret n° 2022-780 du 4 mai 2022 (1er avril 2023 pour F et G, 1er janvier 2025 pour E, 1er janvier 2034 pour D) et report du palier F-G par le décret du 9 août 2022.",
         "[Diagnostic de performance énergétique, analyse juridique n° 2021-09](https://www.anil.org/aj-dpe/), ANIL — à jour au 29 août 2025 : condition du permis de construire déposé avant le 1er janvier 2013, renvoi au calendrier de l'article 158 VI de la loi du 22 août 2021 et à l'article L126-31 du code de la construction et de l'habitation.",
       ] },
       { type: "p", text: "Si vous vous demandez ce que votre étiquette change sur le prix, nos [prix au m² réels par quartier](/blog/prix-immobilier-villeurbanne-2026) donnent le point de départ, et notre page [vendre son bien à Villeurbanne](/vendre) le net vendeur une fois les honoraires déduits." },
@@ -738,7 +743,11 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Faut-il un audit énergétique pour vendre un appartement classé F ou G ?",
-        a: "Non, pas pour un lot de copropriété. L'audit énergétique obligatoire en cas de vente ne concerne que les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire, classés E, F ou G, pour les ventes signées depuis le 1er avril 2023. À Villeurbanne, 49 717 des 51 951 diagnostics enregistrés portent sur des appartements : l'immense majorité des ventes n'est donc pas concernée. Le DPE, lui, reste obligatoire dans tous les cas.",
+        a: "Non, pas pour un lot de copropriété. L'audit énergétique obligatoire en cas de vente ne concerne que les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire, classés E, F ou G. L'audit est exigé depuis le 1er avril 2023 pour les classes F et G, et depuis le 1er janvier 2025 seulement pour la classe E, la date retenue étant celle de la signature de la promesse ou, à défaut, de l'acte. À Villeurbanne, 49 717 des 51 951 diagnostics enregistrés portent sur des appartements : l'immense majorité des ventes n'est donc pas concernée. Le DPE, lui, reste obligatoire dans tous les cas.",
+      },
+      {
+        q: "Depuis quelle date l'audit énergétique est-il obligatoire pour une maison classée E ?",
+        a: "Depuis le 1er janvier 2025 en France métropolitaine. Les classes F et G y sont soumises depuis le 1er avril 2023, et les bâtiments classés D le seront au 1er janvier 2034. La date qui compte est celle de la signature de la promesse de vente ou, à défaut, de l'acte : une maison classée E vendue en 2023 ou 2024 n'avait pas à fournir d'audit. Ce calendrier par étiquette est fixé par le décret n° 2022-780 du 4 mai 2022, le palier F-G ayant été repoussé au 1er avril 2023 par le décret du 9 août 2022.",
       },
       {
         q: "À partir de quand un logement classé E ou F ne pourra-t-il plus être loué ?",
@@ -763,7 +772,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "La liste exacte des diagnostics à remettre à l'acquéreur, leur condition de déclenchement et la durée de validité de chacun en cas de vente — appartement et maison, qui n'ont pas la même liste.",
     date: "2026-05-12",
-    updated: "2026-10-12",
+    updated: "2026-10-22",
     internalHref: "/vendre",
     internalLabel: "Être accompagné pour ma vente",
     blocks: [
@@ -785,7 +794,7 @@ export const ARTICLES: Article[] = [
       ] },
       { type: "p", text: "Les **durées de validité** de chacune de ces pièces sont dans le tableau plus bas. Pour un lot de copropriété, le DDT s'insère dans un dossier plus large — règlement, procès-verbaux, état daté — dont la composition est détaillée dans notre fiche sur [les charges de copropriété](/blog/charges-copropriete)." },
       { type: "h2", text: "Et pour une maison, la liste est-elle la même ?" },
-      { type: "p", text: "**Non, et elle diffère sur deux points qui comptent.** D'une part le DPE n'est dû que si la surface de plancher de la maison atteint 50 m². D'autre part s'ajoute une pièce qu'un appartement vendu seul ne connaît pas : **l'audit énergétique**, exigé lorsque l'étiquette énergétique de la maison est **E, F ou G**." },
+      { type: "p", text: "**Non, et elle diffère sur deux points qui comptent.** D'une part le DPE n'est dû que si la surface de plancher de la maison atteint 50 m². D'autre part s'ajoute une pièce qu'un appartement vendu seul ne connaît pas : **l'audit énergétique**, exigé lorsque l'étiquette énergétique de la maison est **E, F ou G** — depuis le 1er avril 2023 pour les classes F et G, et depuis le 1er janvier 2025 seulement pour la classe E." },
       { type: "p", text: "Cette seconde différence est la source d'erreur la plus courante sur le sujet. L'audit énergétique ne vise que **les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire** : un appartement vendu seul en copropriété n'y est **pas** soumis, quelle que soit son étiquette. À Villeurbanne, l'écart de population est massif — sur les 51 951 diagnostics enregistrés dans la commune, **49 717 portent sur des appartements, contre 1 159 sur des maisons** et 1 075 sur des immeubles entiers. Le détail du calendrier énergétique et de ce qu'il change pour un vendeur villeurbannais est sur [ce qui change pour le DPE](/blog/dpe-2026-ce-qui-change)." },
       { type: "h2", text: "Combien de temps chaque diagnostic reste-t-il valable ?" },
       { type: "p", text: "**Les durées vont de 6 mois à illimitée, et deux d'entre elles sont plus courtes en vente qu'en location** : l'électricité et le gaz valent 3 ans pour vendre, contre 6 ans pour louer. C'est l'erreur classique du propriétaire qui réutilise un diagnostic fait pour un bail. Le tableau ci-dessous donne, pour le cas d'un appartement, la condition de déclenchement et la validité en cas de vente." },
@@ -840,7 +849,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "L'audit énergétique est-il obligatoire pour vendre un appartement classé F ou G ?",
-        a: "Non. L'audit énergétique ne concerne que les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire, pour les étiquettes E, F ou G. Un appartement vendu seul en copropriété n'y est pas soumis, quelle que soit son étiquette. À Villeurbanne, 49 717 des 51 951 diagnostics enregistrés portent sur des appartements : l'immense majorité des ventes locales échappe donc à l'audit, mais pas au DPE.",
+        a: "Non. L'audit énergétique ne concerne que les maisons individuelles et les immeubles de plusieurs logements dont le vendeur est l'unique propriétaire, pour les étiquettes E, F ou G — depuis le 1er avril 2023 pour F et G, et depuis le 1er janvier 2025 seulement pour E. Un appartement vendu seul en copropriété n'y est pas soumis, quelle que soit son étiquette. À Villeurbanne, 49 717 des 51 951 diagnostics enregistrés portent sur des appartements : l'immense majorité des ventes locales échappe donc à l'audit, mais pas au DPE.",
       },
       {
         q: "Le diagnostic plomb est-il obligatoire à Villeurbanne ?",
