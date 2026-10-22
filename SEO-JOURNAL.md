@@ -112,8 +112,22 @@
   deux nuances de l'exonération de première cession (le « une seule fois par
   contribuable » et le cas du **prêt relais**) sont restées non lues à la
   source. **Voir « Hypothèses à vérifier ».**
-- ✅ **Signaux mesurés SAINS sur le rendu LOCAL avant push — à revérifier en
-  production après déploiement** : `npx tsc --noEmit` muet ; `npm run build`
+- ✅ **DÉPLOIEMENT CONSTATÉ À t+80 s DU SONDAGE**, et **les deux témoins se sont
+  accordés cette fois** (chaîne neuve servie ×2 **et** taille passée de
+  **166 925 à 177 620 octets**) — la recette du 21/10 (`grep -o … | wc -l`,
+  jamais `grep -c`, et la TAILLE comme témoin indépendant à chaque tour) a
+  fonctionné. Même ordre de délai que les 18, 19, 20 et 21/10. **Cinquième run
+  d'affilée où `git branch -f main HEAD && git push -u origin main` tient** :
+  `0ee1c2f..9a9111e main -> main`, puis `origin/main == HEAD` vérifié.
+- ✅ **Signaux REVÉRIFIÉS EN PRODUCTION après déploiement — ne pas les
+  réauditer** : sur les deux articles servis, **1 `<h1>`** (9 et 7 `<h2>`),
+  **parité FAQ visible ↔ `FAQPage` 9/9 et 6/6, questions ET réponses**,
+  `dateModified` **2026-10-22**, **0 mot collé**, **les 10 chaînes neuves
+  présentes** et **les 2 formulations fautives disparues**. **Sitemap de
+  production : 53 URL** (l'écart local était bien les 2 annonces) dont
+  **exactement 2 au `lastmod` 2026-10-22**, et ce sont les deux articles
+  touchés.
+- ✅ **Signaux mesurés SAINS sur le rendu LOCAL avant push** : `npx tsc --noEmit` muet ; `npm run build`
   **vert (88/88 pages)** ; `npx eslint lib/blog.ts` propre ; **parité FAQ
   visible ↔ `FAQPage` 9/9 questions ET 9/9 réponses** sur
   `/blog/dpe-2026-ce-qui-change` et **6/6 ET 6/6** sur
