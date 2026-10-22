@@ -14,6 +14,130 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-22**
+
+- ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du
+  16/09) : avant fetch `origin/main` pointait sur `8fe05fc`, après fetch sur
+  **`0ee1c2f`**, et **deux commits portent la date du 2026-10-21** — le run
+  d'hier a bien eu lieu. 🆕 **Troisième configuration de départ saine
+  d'affilée** : `HEAD`, `main` local et `origin/main` concordaient tous les
+  trois sur `0ee1c2f` **après** fetch. ⚠️ **Et le fetch a de nouveau servi à
+  quelque chose** : avant lui, `origin/main` retardait de **deux commits**.
+  **Le `git fetch` d'abord reste obligatoire** — trois runs sains ne font
+  toujours pas une garantie.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-huitième constat identique** (21/09 → 22/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage.** Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Onzième confirmation : à refaire à
+  chaque run.**
+- ✅ **LE TRAVAIL DU 21/10 EST BIEN SERVI EN PRODUCTION — vérifié avant d'agir,
+  pas supposé.** `/vendre` répond 200 à **136 838 octets**, soit exactement la
+  taille relevée après déploiement hier ; `première présentation` ×6,
+  `intérêts compensateurs` ×6, `1415` ×4 et `en principe` ×2 sur `/vendre`,
+  `première présentation` ×6 sur `/acheter`, et **les deux formulations
+  fautives (« qui suit la signature du compromis », « qui suit le compromis »)
+  sont à 0 sur les trois pages**. **Ne pas réauditer.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308).
+- **Jeudi : pas de veille** (faite le lundi 19/10, résultat négatif).
+  **Prochaine échéance : lundi 26/10.**
+- 🟢 **REQUÊTES CIBLES : RIEN N'ÉTAIT DÛ, ET LES INTERDITS SONT RESPECTÉS.**
+  « Prix m2 Villeurbanne » → 26/10 ; « vendre appartement Villeurbanne » →
+  vers le 27/10. Les deux SERP gelées (« agence immobilière Villeurbanne »,
+  « estimation immobilière Villeurbanne ») **n'ont pas été interrogées** :
+  interdiction du 16/10 **jusqu'au 23/10**, encore en vigueur aujourd'hui.
+  🔴 **ELLE TOMBE DEMAIN : le 23/10, les deux SERP gelées redeviennent
+  mesurables. Ne pas l'oublier.**
+  **Une SERP DE CHANTIER mesurée à la place** (méthode du 15/10, **8ᵉ test
+  positif**) : « depuis quand l'audit énergétique est-il obligatoire pour une
+  maison classée E à la vente » — **site absent**, attendu, le contenu est
+  déployé aujourd'hui.
+  📌 **Et elle a servi deux fois : elle a CONFIRMÉ la correction du jour**
+  (les résultats s'accordent sur le 1ᵉʳ janvier 2025 pour la classe E,
+  troisième source concordante) **et elle a reproduit le motif du 21/10.**
+  La SERP est tenue par des vendeurs d'énergie et des comparateurs
+  (`hellio`, `ekwateur`, `selectra` ×2), un cabinet d'audit (`crowe`), deux
+  sites de presse juridique (`weblex`, `lemondedudroit`), `seloger` ×2 — et
+  **une seule page d'agence, `orpi` (franchise `daveauconseil`), dont l'URL
+  est `l-audit-energetique-obligatoire-depuis-le-1er-avril-2023`.** **Soit
+  exactement l'imprécision que nos pages faisaient ce matin.** **Aucune agence
+  indépendante locale.** ⚠️ **Et le résumé du moteur avoue n'avoir trouvé
+  aucune source officielle** (« je n'ai pas trouvé de source officielle
+  (Légifrance ou ministère) dans ces résultats ») : **place GEO ouverte, et
+  nous publions désormais le décret.**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 21/10, et sur LE
+  CANDIDAT N°1 DÉSIGNÉ — le contrôle « cette règle est-elle encore en
+  vigueur ? » passé sur TOUT le corpus** (désigné n°1 le 20/10, reporté deux
+  fois). **Le candidat est consommé.** Détail en « Chantiers faits ».
+- 🔴 🆕 **LE DÉFAUT CENTRAL EST D'UNE FAMILLE QUE CE JOURNAL N'AVAIT JAMAIS
+  CHERCHÉE, ET LA SOURCE OFFICIELLE EN EST LA CAUSE.** `/blog/dpe-2026-ce-qui-change`
+  publiait « classés **E, F ou G**, pour les ventes signées **depuis le 1ᵉʳ
+  avril 2023** ». En métropole, l'audit énergétique vise **F et G depuis le
+  1ᵉʳ avril 2023**, mais la classe **E seulement depuis le 1ᵉʳ janvier 2025**.
+  📌 **Or notre page recopiait fidèlement la fiche officielle** : **F37110**
+  (vérifiée le 14/09/2026) énonce le périmètre « E, F ou G » dans une phrase,
+  puis « les bâtiments concernés sont ceux dont la promesse … est signée
+  depuis le 1ᵉʳ avril 2023 » dans la suivante, **sans jamais dire que E est
+  entrée deux ans plus tard**. 🔴 **C'est donc un défaut où la source dit ce
+  que la page affirme (contrôle du 19/10 : passé), où la règle est en vigueur
+  (17/10 : passé), où le périmètre cité est juste (20/10 : passé) et où aucune
+  autre de nos pages ne dit le contraire (21/10 : passé).** **La question
+  neuve est : « la fiche officielle COMPRIME-t-elle un calendrier par paliers
+  en une seule date ? »** Détecteur en « Techniques apprises ».
+- 🟢 **LE RESTE DU CORPUS EST SAIN, ET C'EST UN RÉSULTAT : SIX FAMILLES DE
+  RÈGLES DATÉES VÉRIFIÉES EN VIGUEUR — NE PAS LES RÉAUDITER.** (1) **380 € TTC
+  de l'état daté**, décret n° 2020-153 du 21/02/2020, **toujours le plafond**
+  (DGCCRF et ANIL ; aucune revalorisation 2026 — celles de 2026 portent sur les
+  honoraires de location et l'état des lieux, pas sur l'état daté) ;
+  (2) **exonération de la première cession** (CGI 150 U, II-1° bis) : la
+  **version 20210707 du BOI-RFPI-PVI-10-40-30 est bien la plus récente**, nos
+  pages citent la bonne ; (3) **paliers du plan pluriannuel de travaux**
+  (2023 > 200 lots / 2024 de 51 à 200 / 2025 pour 50 au plus) confirmés ;
+  (4) **validité des DPE** : ceux de 2018 au 30/06/2021 ne sont plus valables
+  depuis le 01/01/2025, ceux depuis le 01/07/2021 valent 10 ans — **confirmé
+  mot pour mot par F16096, vérifiée le 1ᵉʳ janvier 2026** ; (5) **coefficient
+  d'énergie primaire de l'électricité 2,3 → 1,9 au 01/01/2026** : **nous le
+  publions déjà, et correctement** (deux emplacements) ; (6) **calendrier de
+  décence énergétique G 2025 / F 2028 / E 2034**, reconfirmé par F16096.
+- ⚠️ 🆕 **BOFIP EST INACCESSIBLE DEPUIS CE CONTENEUR AUJOURD'HUI, ALORS QU'IL
+  RÉPONDAIT LES 19 ET 20/10.** `curl` → **HTTP 000** (quatre essais, deux URL
+  différentes, dont l'export PDF), `WebFetch` → **503**. **Ce n'est pas un
+  problème d'URL** : c'est l'hôte. 🟢 **Et le substitut a suffi pour ce que le
+  run demandait** : une recherche restreinte au domaine **liste les versions
+  datées d'un BOI**, ce qui établit laquelle est la dernière sans ouvrir la
+  page. **Voir « Techniques apprises ».**
+- ⚠️ **CE QUE LE BOFIP INACCESSIBLE A EMPÊCHÉ, ET RIEN N'A ÉTÉ PUBLIÉ DESSUS** :
+  deux nuances de l'exonération de première cession (le « une seule fois par
+  contribuable » et le cas du **prêt relais**) sont restées non lues à la
+  source. **Voir « Hypothèses à vérifier ».**
+- ✅ **Signaux mesurés SAINS sur le rendu LOCAL avant push — à revérifier en
+  production après déploiement** : `npx tsc --noEmit` muet ; `npm run build`
+  **vert (88/88 pages)** ; `npx eslint lib/blog.ts` propre ; **parité FAQ
+  visible ↔ `FAQPage` 9/9 questions ET 9/9 réponses** sur
+  `/blog/dpe-2026-ce-qui-change` et **6/6 ET 6/6** sur
+  `/blog/diagnostics-obligatoires-vente` ; `dateModified` **2026-10-22** sur
+  les deux ; **1 `<h1>` par page** (9 et 7 `<h2>`) ; **0 mot collé** ;
+  **exactement 2 URL du sitemap au `lastmod` 2026-10-22**, les deux articles
+  touchés ; **8 chaînes neuves présentes et les 2 formulations fautives
+  disparues** du rendu.
+- ⚠️ **51 URL au sitemap en LOCAL contre 53 en production — ce n'est PAS une
+  régression.** L'écart est de **2 annonces** (5 en local, 7 en production) :
+  les annonces viennent de la base au build, et le conteneur n'a pas les
+  identifiants. **Le diff ne touche aucune route.** 📌 **À connaître pour ne
+  pas conclure à une perte d'URL** la prochaine fois qu'un sitemap est compté
+  en local.
+- ⚠️ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff du chantier = 1 seul fichier**
+  (`lib/blog.ts`, 15 insertions / 6 suppressions).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre sans effet sur deux pages
+  de quartier (08/10) ; **`/honoraires` ne sert aucun « Dernière mise à
+  jour » visible** (20/10, **troisième report** — toujours au backlog).
+
 **Au 2026-10-21**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du
@@ -3094,6 +3218,118 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-22 — Le contrôle « règle abrogée » passé sur tout le corpus : six familles saines, et un calendrier par paliers que la fiche officielle comprime en une seule date
+
+**Prescription du 21/10 honorée** : angle **NON-CONTENU** (le 21/10 était du
+contenu), **candidat n°1** de la pile — le contrôle « cette règle est-elle
+encore en vigueur ? » **passé sur tout le corpus**, désigné n°1 le 20/10 et
+**reporté les 20 et 21/10**. **Le candidat est consommé.**
+
+**Méthode appliquée**, celle du 20/10 : cadrer d'abord par un `grep` de toutes
+les règles **DATÉES ou NUMÉROTÉES** du corpus, puis, pour chacune, lire **en
+premier** le marqueur de fraîcheur de la source (« Vérifié le … » d'une fiche
+service-public, « Version en vigueur du … » d'un BOI), **avant** la règle
+elle-même.
+
+**Le cadrage a sorti 22 règles datées et une cinquantaine de références
+numérotées**, regroupées en sept familles. 🟢 **Six sont saines** (détail en
+« État des lieux », à ne pas réauditer). **Une était fausse.**
+
+#### 1. 🔴 Le défaut : la classe E de l'audit énergétique datée de deux ans trop tôt, sur deux emplacements, et deux autres muets
+
+`/blog/dpe-2026-ce-qui-change` écrivait, dans son corps et dans sa FAQ :
+
+> « L'obligation vise les ventes dont la promesse ou l'acte de vente est signé
+> **depuis le 1ᵉʳ avril 2023** » · « classés **E, F ou G**, pour les ventes
+> signées **depuis le 1ᵉʳ avril 2023** »
+
+**En France métropolitaine, le calendrier est par paliers :**
+
+| Étiquette | Audit exigé depuis |
+|---|---|
+| F et G | **1ᵉʳ avril 2023** (d'abord prévu au 1ᵉʳ janvier 2022, puis au 1ᵉʳ septembre 2022) |
+| E | **1ᵉʳ janvier 2025** |
+| D | 1ᵉʳ janvier 2034 (à venir) |
+
+**Ce que cela changeait pour un lecteur** : une maison classée E vendue en 2023
+ou en 2024 **n'avait pas à fournir d'audit énergétique**, et notre page lui
+disait l'inverse. La date qui déclenche l'obligation est celle de la
+**signature de la promesse** ou, à défaut, de l'acte.
+
+**Références publiées** (elles ne l'étaient pas) : **décret n° 2022-780 du
+4 mai 2022, article 3**, pris pour l'application de l'**article L126-28-1 du
+code de la construction et de l'habitation** ; report du palier F-G au
+1ᵉʳ avril 2023 par le **décret du 9 août 2022**. Source de rattachement :
+**analyse juridique ANIL n° 2022-07**, à jour au 12 mars 2025 — **ajoutée au
+bloc de sources de l'article**.
+
+**Trois sources concordantes avant d'écrire quoi que ce soit** : (1) l'ANIL,
+explicite — « depuis le 1ᵉʳ janvier 2025, sont concernés les bâtiments
+appartenant aux classes énergétiques E, F et G » ; (2) **F37110** (14/09/2026)
+et **F16096** (01/01/2026), qui donnent toutes deux le périmètre actuel
+« E, F ou G », cohérent avec une entrée de E au 1ᵉʳ janvier 2025 ; (3) la SERP
+de chantier du jour, dont les résultats s'accordent sur cette date.
+
+**Les quatre emplacements du corpus sont alignés** (`grep` sur la formule
+`audit`, pas sur la phrase — règle du 21/10) :
+- `dpe-2026-ce-qui-change` corps : **nouveau H2** « Depuis quelle date l'audit
+  énergétique est-il obligatoire, et pour quelles étiquettes ? », réponse
+  directe en tête, les trois paliers, la conséquence concrète pour un vendeur,
+  les décrets, **et le calendrier outre-mer** (F et G seulement, E au
+  1ᵉʳ janvier 2028 — F37110) ;
+- `dpe-2026-ce-qui-change` FAQ : réponse corrigée **+ une FAQ neuve** « Depuis
+  quelle date l'audit énergétique est-il obligatoire pour une maison classée
+  E ? » (8 → 9 entrées, parité `FAQPage` tenue par construction) ;
+- `diagnostics-obligatoires-vente` corps et FAQ : les deux étaient **muets sur
+  les dates** (pas faux, mais silencieux) — la précision par étiquette y est
+  ajoutée, **pour que les deux articles ne divergent pas** (règle du 21/10).
+
+#### 2. 🟢 La place GEO prise, et elle est documentée par la SERP du jour
+
+La SERP « depuis quand l'audit énergétique est-il obligatoire pour une maison
+classée E à la vente » ne contient **aucune agence indépendante locale**,
+**aucune source officielle** (le résumé du moteur le dit lui-même), et sa
+**seule page d'agence est une franchise `orpi` dont l'URL affirme
+« obligatoire depuis le 1ᵉʳ avril 2023 »** — l'imprécision même que nous
+venons de corriger. **Nous publions désormais le calendrier par paliers avec
+son décret et son article ; la SERP publie une date unique.** C'est le même
+différenciateur que le 21/10, sur un deuxième sujet.
+
+#### 3. ⚠️ Ce que j'ai décidé de NE PAS faire, et pourquoi
+
+- **`/llms.txt` n'a pas été touché.** Il **ne mentionne pas** l'audit
+  énergétique, donc il **ne contredit rien** ; et les faits datés qu'il porte
+  sur le DPE (décence G 2025 / F 2028 / E 2034) sont justes. **Aucune page n'a
+  été ajoutée aujourd'hui**, donc la règle d'entretien de l'ÉTAPE 4 ne se
+  déclenche pas. **Ajouter le calendrier dans `llms.txt` aurait créé un
+  cinquième emplacement à tenir à jour sans lecteur supplémentaire.**
+- **Les `excerpt` des deux articles n'ont pas été touchés** : ils ne portent
+  aucune affirmation datée sur l'audit (vérifié), et ils alimentent aussi
+  l'index du blog et `llms.txt` — les modifier déplaçait du rendu pour rien.
+- **`/honoraires` n'a toujours pas de « Dernière mise à jour » visible.**
+  **Troisième report assumé** : un chantier mené à fond vaut mieux que deux à
+  moitié, et celui-ci demande de lire la mise en page de la page.
+
+#### 4. ✅ Contrôle qualité avant push
+
+`npx tsc --noEmit` muet · `npm run build` vert **88/88 pages** (inchangé) ·
+`npx eslint lib/blog.ts` propre · **parité FAQ visible ↔ `FAQPage` 9/9 et
+6/6, questions ET réponses** · **1 `<h1>`** par page · **0 mot collé** ·
+`dateModified` **2026-10-22** sur les deux articles · **2 URL du sitemap** au
+`lastmod` du jour, et ce sont les bonnes · les **2 formulations fautives
+absentes du rendu**, les **8 chaînes neuves présentes**.
+
+**Mesure de croissance, même compteur avant et après dans la même commande**
+(leçon des 20 et 21/10) : texte source de `dpe-2026-ce-qui-change`
+**3 274 → 3 696 mots (+422, +12,9 %)**, `diagnostics-obligatoires-vente`
+**2 500 → 2 542 (+42, +1,7 %)**. *(Ce sont des mots de TEXTE SOURCE, pas de
+rendu : les deux pages rendues font 3 381 et 2 361 mots `wc -w` aujourd'hui,
+et je n'ai pas de mesure « avant » du rendu à leur opposer — je ne publie donc
+pas de delta de rendu.)*
+
+**Diff = 1 fichier** (`lib/blog.ts`, +15/−6). `/estimation`, `lib/dvf.ts` et
+`lib/estimation.ts` non touchés.
 
 ### 2026-10-21 — Le délai de rétractation ne court pas depuis la signature, et notre propre corpus se contredisait là-dessus depuis le 11 octobre
 
@@ -8067,6 +8303,94 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le contrôle « règle abrogée » passé sur
+tout le corpus** (22/10 : **22 règles datées et une cinquantaine de références
+numérotées cadrées en sept familles**. **Six familles saines**, listées en
+« État des lieux » et **à ne pas réauditer** : plafond de 380 € de l'état daté,
+exonération de première cession (BOI 20210707 = dernière version), paliers du
+plan pluriannuel de travaux, validité des DPE, coefficient 2,3 → 1,9 déjà
+publié, calendrier de décence. **Un défaut** : la classe **E** de l'audit
+énergétique datée du **1ᵉʳ avril 2023** au lieu du **1ᵉʳ janvier 2025**, sur
+deux emplacements, deux autres muets — **et la fiche officielle F37110 est la
+cause**, elle comprime trois paliers en une date. Place GEO prise : le
+calendrier par étiquette avec son décret. **Candidat n°1 consommé.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (23/10) DOIT ÊTRE DU CONTENU**
+(alternance : 20/10 non-contenu → 21/10 contenu → 22/10 non-contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 **`/faire-gerer`, la dernière page de droit jamais revérifiée côté
+     CONTENU.** ⚠️ **Périmètre** : le 20/10 a traité **le DROIT DU SYNDIC** de
+     cette page (art. 21, décret 2015-342, dispense art. 25) — **pas le
+     reste**, ni le formulaire syndic multi-étapes, ni le droit de la
+     copropriété au-delà de la mise en concurrence. **C'était déjà le candidat
+     contenu n°1 pour le 23/10 dans la pile du 21/10 : il est dû.**
+  2. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** — avec son
+     **périmètre imposé du 11/10** : réécriture **procédurale** (méthode pas à
+     pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas rouvrir
+     l'angle « chiffres du marché », fermé par la mesure.**
+  3. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour
+     cette place.
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (24/10), par ordre
+d'impact :**
+  1. 🔴 **LA PARITÉ DES RÈGLES DE DROIT ENTRE PAGES, passée sur tout le
+     corpus** — **candidat n°2 du 22/10, non fait, toujours chaud.** Né du
+     défaut n°1 du 21/10 : cinq emplacements publiaient une règle fausse
+     pendant que trois autres de nos pages publiaient la bonne. Le détecteur
+     est en « Techniques apprises » du 21/10. **Fort rendement attendu.**
+     🆕 **Et le 22/10 lui ajoute un second usage** : le défaut du jour a été
+     trouvé parce que **deux de nos articles traitaient le même objet avec
+     deux niveaux de précision** (l'un daté et faux, l'autre muet). **Chercher
+     aussi les SILENCES, pas seulement les contradictions.**
+  2. 🔴 🆕 **LE CONTRÔLE « LA FICHE COMPRIME-T-ELLE UN CALENDRIER ? », passé
+     sur les autres calendriers du corpus.** **Candidat NEUF, né du défaut du
+     22/10.** Le corpus publie encore plusieurs calendriers à paliers :
+     **décence énergétique** (G/F/E), **DPE collectif** (par nombre de lots),
+     **plan pluriannuel de travaux** (par nombre de lots), **validité des
+     DPE**. Les quatre ont été vérifiés **en vigueur**, mais **aucun n'a été
+     vérifié PALIER PAR PALIER contre le décret** — seulement contre les
+     fiches, qui sont précisément ce qui comprime. Détecteur en « Techniques
+     apprises » du 22/10.
+  3. ⚠️ **`/honoraires` ne sert AUCUN « Dernière mise à jour » visible**
+     (identifié le 20/10, **non fait les 20, 21 et 22/10**). Les deux autres
+     pages du triptyque en ont un (`/gestion-locative` via `seo-landing.tsx`,
+     `/faire-gerer` en inline ~l. 325). **À faire en lisant d'abord la
+     structure de la page** : elle n'utilise ni l'un ni l'autre. *(Son
+     `dateModified` JSON-LD est bien à jour.)*
+  4. 🟢 **`blog.qoridor.fr`** — inchangé depuis le 19/10, toujours à faire :
+     lire une de ses pages de quartier et établir **ce que nous publions
+     qu'il ne publie pas**. **Ne RIEN réécrire sur la foi d'un seul relevé.**
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`). **Aucun défaut connu :
+     prévention.**
+
+→ 🔴 **REQUÊTES CIBLES — ce qui est dû le 23/10 : LE GEL TOMBE.** Les deux SERP
+gelées depuis le 16/10 — **« agence immobilière Villeurbanne »** et
+**« estimation immobilière Villeurbanne »** — **redeviennent mesurables le
+23/10**. **C'est la première mesure de ces deux requêtes depuis une semaine :
+la faire.** « Prix m2 Villeurbanne » → **26/10** (hebdomadaire) ; « vendre
+appartement Villeurbanne » → **vers le 27/10** (deux par mois, dernière le
+20/10).
+
+🆕 ⚠️ **SERP DE CHANTIER À REMESURER — deux échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à
+  courir »** (chantier du 21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (chantier du 22/10, site absent au relevé du jour)
+  → **vers le 05/11**. 📌 **Repère utile pour l'après** : la seule page
+  d'agence de cette SERP est une franchise `orpi` dont l'URL date
+  l'obligation du 1ᵉʳ avril 2023, et **aucune source officielle n'y
+  figure** — de l'aveu du moteur lui-même.
+
+🆕 ⚠️ **ET UN SIGNAL À SURVEILLER, PAS À EXPLOITER** (inchangé) : `pap.fr`
+publie **3 623 €/m² (+1,6 %)** et `blog.qoridor.fr` **3 506 €/m² (−1,7 %)**,
+alors que tout ce qui a été relevé du 27/09 au 18/10 était **16 à 45 %**
+au-dessus de notre médiane DVF signée. **Deux mesures ne font pas une
+tendance** (règle du 14/10) : **ne RIEN réécrire sur la thèse « affiché ≠
+signé » avant une troisième mesure concordante.**
+
 **Angle du dernier run : CONTENU — le droit jamais revérifié de `/vendre`**
 (21/10 : **trois défauts**, dont un **point de départ de délai légal faux sur
 CINQ emplacements** avec, pour la première fois, **une contradiction interne au
@@ -9006,6 +9330,56 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-22
+
+**1. ⚠️ L'exonération de première cession est-elle utilisable « UNE SEULE FOIS
+PAR CONTRIBUABLE », et notre condition n°1 est-elle bien formulée ?** Nos deux
+emplacements (`/blog/plus-value-immobiliere-villeurbanne`, corps et FAQ)
+énoncent la condition comme « **il s'agit de la première cession** d'un
+logement intervenue depuis le 1ᵉʳ février 2012 ». **Une recherche restreinte au
+domaine BOFiP a rendu une formulation différente** : l'exonération
+s'appliquerait **une seule fois par contribuable, pour la cession de son
+choix**. 🔴 **Ce sont deux règles qui peuvent diverger** : « la première
+cession » (chronologique) n'est pas « la cession de son choix » (élective).
+⚠️ **RIEN n'a été publié ni modifié** : je n'ai **pas pu lire le BOI
+lui-même** (BOFiP injoignable, voir « État des lieux »), et un résumé de
+moteur n'est pas une source. **À rouvrir dès que BOFiP répond**, sur
+`BOI-RFPI-PVI-10-40-30` **version 20210707** (confirmée la plus récente).
+📌 **Si la version élective est la bonne, c'est une place GEO** : la
+formulation chronologique est celle que tout le monde publie.
+
+**2. ⚠️ Le cas du PRÊT RELAIS est-il dans le BOI, et faut-il le publier ?** Le
+même résumé mentionne, dans ce BOI, un aménagement pour l'acquéreur **qui
+achète sa future résidence principale AVANT de vendre**. Nos pages ne décrivent
+que le remploi **dans les vingt-quatre mois après** la cession. **Rien publié**,
+même motif. **À lire à la source en même temps que le point 1.**
+
+**3. ⚠️ L'exemption de DPE sous 50 m² porte-t-elle sur les « BÂTIMENTS
+indépendants » ou sur les « LOGEMENTS indépendants » ?** **F16096** (vérifiée
+le 01/01/2026) écrit deux fois « les **logements** indépendants dont la surface
+de plancher est inférieure à 50 m² ne sont pas concernés par le DPE ». Notre
+corpus publie, lui, « **tout appartement, sans condition de surface** » et
+« le DPE n'est dû que si la surface de plancher **de la maison** atteint
+50 m² ». 🟢 **Notre version correspond à la règle réglementaire telle que je la
+comprends** (l'exemption vise un bâtiment indépendant, pas un lot dans un
+immeuble) **et elle est cohérente sur nos quatre emplacements**, donc **rien
+n'a été modifié**. ⚠️ **Mais l'écart de mot avec la fiche n'est pas vérifié à
+la source** (R.126-15 du CCH, inaccessible : Légifrance est muré, règle du
+17/10). **À trancher sur une source accessible avant de toucher quoi que ce
+soit** — et **surtout ne pas « corriger » nos pages sur la foi du mot de la
+fiche** : un petit appartement passerait à tort pour dispensé de DPE, ce qui
+serait un défaut plus grave que l'imprécision actuelle.
+
+**4. ⚠️ Le calendrier par paliers de l'audit énergétique repose sur une page
+ANIL « à jour au 12 mars 2025 ».** Les deux dates publiées aujourd'hui
+(1ᵉʳ avril 2023 pour F-G, 1ᵉʳ janvier 2025 pour E) viennent de là, du décret
+n° 2022-780 qu'elle cite, et de la concordance de **F37110 (14/09/2026)** et
+**F16096 (01/01/2026)** sur le périmètre actuel « E, F ou G ». 🟢 **Le risque
+est faible** : une fiche de septembre 2026 confirme que E est bien dans le
+champ. ⚠️ **Mais rien ne couvre la période mars 2025 → aujourd'hui pour les
+DATES elles-mêmes.** **À reconfirmer** si un run futur touche de nouveau à ce
+calendrier.
 
 ### 2026-10-21
 
@@ -10017,6 +10391,65 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-22 — Mon `grep` de vérification a matché mes propres corrections, et j'ai failli déclarer une contradiction entre deux formulations équivalentes
+
+**1. 🔴 LE PIÈGE LE PLUS COÛTEUX DU RUN : UN `grep` DE VÉRIFICATION ÉCRIT POUR
+TROUVER L'ANCIENNE FORMULATION A MATCHÉ LA NOUVELLE.** Après correction, j'ai
+voulu prouver qu'aucun emplacement ne datait plus la classe E du 1ᵉʳ avril
+2023 :
+
+```bash
+grep -rnoE "E, F (ou|et) G[^.]{0,120}1er avril 2023" app/ lib/
+# -> 2 résultats. J'ai lu « il reste deux emplacements fautifs ».
+```
+
+**Les deux résultats étaient MES PROPRES phrases corrigées** : « étiquettes
+E, F ou G — **depuis le 1ᵉʳ avril 2023 pour les classes F et G, et depuis le
+1ᵉʳ janvier 2025 seulement pour la classe E** ». Le motif matche parce que le
+texte corrigé **conserve les mêmes mots** que le fautif, dans le même ordre, en
+y ajoutant la distinction.
+📌 **La règle, et elle vaut pour tous les contrôles d'après-correction** : **un
+`grep` qui cherche l'ANCIENNE formule ne prouve rien quand la NOUVELLE la
+contient.** Il faut **vérifier en lisant la ligne entière** (c'est ce qui m'a
+rattrapé : le premier `grep`, plus large, affichait les phrases complètes et
+elles étaient justes), **ou** chercher une chaîne que seul le texte fautif
+possède — ici `pour les ventes signées depuis le 1er avril 2023.` avec son
+point final. ⚠️ **Le risque symétrique est pire que la fausse alerte** : le
+même piège peut faire croire qu'une correction a été appliquée alors qu'elle ne
+l'a pas été.
+
+**2. ⚠️ J'AI FAILLI DÉCLARER UNE CONTRADICTION ENTRE DEUX FORMULATIONS QUI
+DISENT LA MÊME RÈGLE.** En cadrant le contrôle, j'ai mis côte à côte :
+
+| Emplacement | Formulation |
+|---|---|
+| `/llms.txt` | « **G interdit** depuis le 1ᵉʳ janvier 2025, F en 2028, E en 2034 » |
+| `/gestion-locative` l. 428 | « depuis le 1ᵉʳ janvier 2025 un DPE **au minimum classé F**, puis **E** au 1ᵉʳ janvier 2028 et **D** au 1ᵉʳ janvier 2034 » |
+
+**Les étiquettes citées sont toutes différentes, et j'ai d'abord lu une
+divergence.** Elles sont **équivalentes** : « au minimum classé F » exclut
+exactement G ; « minimum E » exclut F ; « minimum D » exclut E. **Une
+convention dit l'étiquette INTERDITE, l'autre l'étiquette PLANCHER.**
+→ **Rien n'a été modifié : les deux sont justes.**
+📌 **La leçon pour le contrôle de parité entre pages** (candidat non-contenu
+n°1 du 24/10) : **avant de compter une divergence, normaliser la convention
+d'énoncé.** Deux formulations d'une règle de seuil peuvent être inverses l'une
+de l'autre **et dire la même chose**. ⚠️ **Et un corollaire GEO à garder** :
+un LLM qui extrait **un seul** de ces deux passages peut en tirer « F est
+interdit depuis 2025 », qui est faux. **Le passage « minimum F » n'est pas
+auto-suffisant au sens de l'ÉTAPE 4** — **non corrigé aujourd'hui** (c'est du
+rendu de page commerciale, hors périmètre du chantier), **consigné pour le
+run de parité.**
+
+**3. ⚠️ J'AI CONCLU TROP VITE À UNE URL FAUTIVE LÀ OÙ L'HÔTE ÉTAIT MUET.** Mon
+premier `curl` vers BOFiP a répondu **HTTP 000** sur une URL dont le `=` était
+encodé en `%3D` ; j'ai supposé un problème de forme d'URL et réessayé avec le
+`=` littéral. **Trois essais plus loin, `WebFetch` a répondu 503 : c'est
+l'hôte.** 📌 **`HTTP 000` de `curl` = aucune réponse reçue, donc réseau ou
+hôte — jamais une URL mal formée** (une URL fautive donne un **404**, et un mur
+Cloudflare un **403**, cf. 17/10 et 20/10). **Lire le code avant de réécrire
+l'URL.**
 
 ### 2026-10-21 — J'ai écrit une contradiction interne à la page que je venais d'écrire, et j'ai mélangé deux compteurs de mots alors que le piège était consigné la veille
 
@@ -11314,6 +11747,125 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-22 — Le contrôle « la fiche officielle comprime-t-elle un calendrier ? », et comment établir la version d'un BOI quand BOFiP ne répond pas
+
+**1. 🔴 LE CONTRÔLE NEUF DU RUN, ET IL VISE LA SOURCE ELLE-MÊME :
+« LA FICHE OFFICIELLE COMPRIME-T-ELLE UN CALENDRIER PAR PALIERS EN UNE SEULE
+DATE ? »**
+
+Les quatre contrôles accumulés cherchent tous un écart **entre notre page et
+la source** :
+- 17/10 : « la règle citée est-elle encore en vigueur ? »
+- 19/10 : « la source citée dit-elle ce que la page affirme ? »
+- 20/10 : « le périmètre est-il celui de la source ? »
+- 21/10 : « une autre de nos pages dit-elle déjà le contraire ? »
+
+**Le défaut du 22/10 passe sous les quatre, parce que la page était FIDÈLE à sa
+source et que c'est la SOURCE qui est imprécise.** La fiche **F37110**
+(vérifiée le 14/09/2026) énonce, en deux phrases consécutives :
+
+> « L'obligation de réaliser un audit énergétique concerne les bâtiments mis en
+> vente … classés **E, F ou G** sur le DPE. »
+> « Les bâtiments concernés sont ceux dont la promesse de vente ou l'acte de
+> vente est signé **depuis le 1ᵉʳ avril 2023**. »
+
+**Lues ensemble, elles disent que E est concernée depuis le 1ᵉʳ avril 2023.**
+C'est faux : E l'est **depuis le 1ᵉʳ janvier 2025**. La fiche donne le
+**périmètre d'aujourd'hui** et la **date d'ouverture du dispositif**, et laisse
+le lecteur les additionner.
+
+**Le symptôme à reconnaître dans NOTRE texte** : une phrase qui énumère
+**plusieurs classes, seuils ou tailles** et leur applique **une seule date**.
+
+```bash
+# les énumérations de classes/seuils suivies d'une date unique
+grep -rnoE "(classés?|étiquettes?|classes?) [A-G](,| ou| et)[^.]{0,60}depuis le [0-9]" \
+  lib/blog.ts app/*/page.tsx app/llms.txt/route.ts
+# puis, pour chaque résultat : chercher le PALIER de chaque classe
+```
+
+📌 **Et la contre-mesure, qui est la vraie leçon : pour un calendrier, la
+fiche service-public ne suffit pas — il faut le DÉCRET, ou une analyse
+juridique qui le cite palier par palier.** Une fiche est écrite pour
+l'usager d'aujourd'hui ; **un calendrier est une information historique**, et
+c'est exactement ce qu'une fiche élague. **Deuxième confirmation après le
+20/10** (« l'ANIL sert l'historique des règles, ce qu'un texte consolidé ne dit
+PAS »).
+
+**2. 🟢 LE BLOC DE RÉFÉRENCES D'UNE ANALYSE ANIL DONNE LES NUMÉROS DE DÉCRET
+ET LEUR DERNIER MODIFICATIF — ET C'EST LE SEUL ENDROIT OÙ JE LES AI TROUVÉS.**
+
+L'analyse ANIL se termine par une ligne de références compacte, du type :
+
+```
+N° 2022-07 / À jour au 12 mars 2025
+Loi du 22.8.21 : JO du 24.8.21 / CCH : L.126-28-1 et R.126-30 et R.126-31 /
+décret n° 2022-780 du 4.5.22 : JO du 5.5.22 (modifié en dernier lieu par le
+décret n° 2024-820 du 15.7.24 : JO du 16.7.24) / arrêté … du 4.5.22 (modifié
+en dernier lieu par l'arrêté … du 29.12.23)
+```
+
+**Trois choses s'y lisent d'un coup** : le **numéro** du décret (que la fiche
+service-public ne donne jamais), son **dernier modificatif** (donc jusqu'où
+l'analyse est fiable), et la **date d'à-jour** de l'analyse elle-même.
+
+```bash
+# extraire le bloc de références d'une analyse ANIL déjà téléchargée
+grep -noE "décret n° ?20[0-9]{2}-[0-9]+[^)]{0,80}" anil-xxx.txt
+grep -noE "À jour au [^/]{0,30}" anil-xxx.txt
+```
+
+⚠️ **Limite à ne pas oublier** : « à jour au 12 mars 2025 » **borne la
+fiabilité de l'analyse**, pas celle du décret. **Croiser la date d'à-jour de
+l'ANIL avec le « Vérifié le » d'une fiche service-public récente** : ici, c'est
+la concordance ANIL (03/2025) ↔ F37110 (09/2026) ↔ F16096 (01/2026) sur le
+périmètre « E, F ou G » qui a permis de conclure que **rien n'avait bougé
+depuis**.
+
+**3. 🟢 ÉTABLIR QU'UN BOI EST À SA DERNIÈRE VERSION SANS OUVRIR BOFIP : LA
+LISTE DES VERSIONS SORT D'UNE RECHERCHE RESTREINTE AU DOMAINE.**
+
+**BOFiP était injoignable aujourd'hui** (`curl` → **HTTP 000** quatre fois,
+`WebFetch` → **503**), alors qu'il répondait les 19 et 20/10. **Le substitut
+suffit pour la question « quelle est la dernière version ? »** : les URL de
+BOFiP **portent la date de version dans leur identifiant**
+(`…-10-40-30-20210707`), et une recherche restreinte au domaine les **liste
+toutes**.
+
+```
+# recherche web avec allowed_domains: bofip.impots.gouv.fr
+# requête = l'identifiant du BOI
+# -> …-20210707 · …-20130923 · …-20121001 · …-20120912
+# la plus grande date = la version en vigueur. Ici : 20210707,
+# soit exactement celle que nos pages citent déjà.
+```
+
+⚠️ **Ce que ce substitut NE donne PAS** : le **texte** des paragraphes. Les
+deux nuances qui m'intéressaient (exonération « une seule fois par
+contribuable », cas du prêt relais) **sont restées non vérifiées et rien n'a
+été publié dessus** — voir « Hypothèses à vérifier ». 📌 **Un résumé de moteur
+de recherche n'est pas une lecture de source** : c'est la règle qui a empêché
+une modification hasardeuse aujourd'hui.
+
+**4. 🟢 COMPTER UN SITEMAP EN LOCAL : L'ÉCART AVEC LA PRODUCTION PEUT ÊTRE
+NORMAL, ET IL FAUT SAVOIR D'OÙ IL VIENT.** Le build local a sorti **51 URL**
+quand la production en sert **53**. **Ce n'est pas une régression** : les
+annonces viennent de la base au moment du build, et le conteneur n'a pas les
+identifiants (**5 annonces en local, 7 en production**). **La répartition par
+section le prouve en une commande**, et c'est elle qu'il faut regarder, pas le
+total :
+
+```bash
+grep -o "<loc>[^<]*" .next/server/app/sitemap.xml.body \
+  | sed 's|<loc>https://www.markusimmobilier.fr||' \
+  | awk -F/ '{print ($2==""?"/":"/"$2)}' | sort | uniq -c | sort -rn
+# -> 27 /blog · 5 /annonces · 19 pages statiques
+```
+
+📌 **Et le contrôle qui compte vraiment n'est pas le total mais QUELLES URL
+portent le `lastmod` du jour** : ici **exactement 2**, et ce sont les deux
+articles touchés.
 
 ### 2026-10-21 — Le contrôle « une AUTRE de nos pages dit-elle déjà le contraire ? », et pourquoi il faut grepper la formule plutôt que la phrase
 
