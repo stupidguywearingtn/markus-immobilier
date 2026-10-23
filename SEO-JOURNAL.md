@@ -14,6 +14,142 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-23**
+
+- ✅ **AUCUN RUN MANQUÉ, mais la configuration de départ N'ÉTAIT PAS saine — la
+  série de trois s'arrête ici.** `git fetch origin` **en tout premier** (règle
+  du 16/09) : avant fetch `origin/main` pointait sur **`8fe05fc`**, après fetch
+  sur **`cc877c3`**, et **deux commits portent la date du 2026-10-22** — le run
+  d'hier a bien eu lieu. ⚠️ **Et le `main` LOCAL retardait de trois commits**
+  (`8fe05fc`) pendant que `HEAD` était déjà sur `cc877c3`. **Quatre
+  configurations différentes en quatre runs : le `git fetch` d'abord reste
+  obligatoire, et la série saine des 20–22/10 ne valait bien rien.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Vingt-neuvième constat identique** (21/09 → 23/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage** (vérifié : c'est la config **globale** du conteneur).
+  Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Douzième confirmation : à refaire à
+  chaque run.**
+- ✅ **LE TRAVAIL DU 22/10 EST BIEN SERVI EN PRODUCTION — vérifié avant
+  d'agir.** `/faire-gerer` répondait 200 à **134 943 octets** au démarrage, et
+  c'est cette taille qui a servi de témoin au sondage de déploiement du jour.
+  **Ne pas réauditer les deux articles DPE du 22/10.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308).
+- **Vendredi : pas de veille** (faite le lundi 19/10, résultat négatif).
+  **Prochaine échéance : lundi 26/10 — et elle tombe avec « prix m2
+  Villeurbanne ».**
+- 🔴 **LE GEL EST TOMBÉ ET LES DEUX SERP ONT ÉTÉ MESURÉES. SITE ABSENT DES
+  DEUX.** Première mesure depuis le 16/10 (interdiction d'une semaine, échue
+  aujourd'hui).
+  - **« agence immobilière Villeurbanne »** → **site absent**, 9 résultats :
+    `laforet.com` (une page *recrutement*, pas une page de service), `orpi.com`
+    ×2 (agences Cusset et Charpennes), `cylex-locale.fr`, `zimo.fr` ×2 (dont un
+    hors sujet, Vienne 38), `realadvisor.fr` (fiche Century 21),
+    `lesiteimmo.com`, `mappy.com`. 📌 **La SERP est tenue par des ANNUAIRES et
+    des pages d'agence de FRANCHISE ; aucune agence indépendante locale n'y
+    figure avec son propre site.** Le résumé du moteur prévient lui-même que
+    « certaines informations (horaires, nombre d'annonces) peuvent être
+    anciennes ».
+  - **« estimation immobilière Villeurbanne »** → **site absent**, 9 résultats :
+    `laforet.com` ×2, `orpi.com` ×2, `squarehabitat.fr` ×2, `capifrance.fr` ×2,
+    `efficity.com`. 📌 **Neuf résultats sur neuf sont des FORMULAIRES
+    d'estimation de franchise ou de portail.** Et `laforet.com` sert toujours
+    sa page « Vendre sa maison à Villeurbanne **en 2024** » — **le même contenu
+    périmé que le 20/10, trois jours plus tard et toujours en page 1.**
+- 🔴 🆕 **ET LA MESURE DU JOUR APPORTE LE FAIT LE PLUS IMPORTANT DU RUN, QUI
+  N'EST PAS LE CHANTIER : LA THÈSE « AFFICHÉ ≠ SIGNÉ » A MAINTENANT QUATRE
+  MESURES CONTRE ELLE.** La SERP « estimation immobilière Villeurbanne » publie
+  **`efficity` à 3 480 €/m² (juillet 2026)** et **`squarehabitat` à
+  3 443 €/m² (janvier 2026)**, soit **−2,4 %** et **−3,5 %** par rapport à
+  notre médiane DVF 2025 (**3 567 €/m²**). Avec `pap.fr` (**+1,6 %**, 20/10) et
+  `blog.qoridor.fr` (**−1,7 %**, 19/10), **quatre sources relevées en cinq
+  runs tiennent dans une bande de ±4 % autour de notre médiane**, alors que
+  **tout** ce qui avait été relevé du 27/09 au 18/10 était **16 à 45 %
+  au-dessus**. 🔴 **La règle du 14/10 (« deux mesures ne font pas une
+  tendance ») est désormais SATISFAITE : quatre le font.**
+  ⚠️ **MAIS RIEN N'A ÉTÉ RÉÉCRIT AUJOURD'HUI, ET C'EST DÉLIBÉRÉ** : ces quatre
+  chiffres sont des **moyennes** à des **dates différentes** (janvier et
+  juillet 2026), la nôtre est une **médiane de ventes signées 2025**. Comparer
+  une moyenne 2026 à une médiane 2025 ne prouve pas que l'écart a disparu : il
+  peut n'être que le marché qui a baissé. **Le réexamen est inscrit comme
+  candidat de chantier, pas exécuté à la va-vite.**
+- 🟢 **CHANTIER DU JOUR : CONTENU, comme prescrit le 22/10, et sur LE CANDIDAT
+  N°1 DÉSIGNÉ — `/faire-gerer`, la dernière page de droit jamais revérifiée
+  côté contenu** (le 20/10 n'avait traité que le **droit du syndic** :
+  article 21, décret 2015-342, dispense de l'article 25). **Candidat consommé.**
+  Détail en « Chantiers faits ».
+- 🔴 🆕 **LE DÉFAUT CENTRAL EST D'UNE FAMILLE QUE CE JOURNAL N'AVAIT JAMAIS
+  CHERCHÉE : UN SILENCE QUI FERME UN DROIT AU LECTEUR.** La page chiffrait la
+  garantie loyers impayés, invitait le bailleur à la mettre en face du risque
+  (« un seul mois d'impayé représente déjà plus de trois fois cette somme ») et
+  **ne disait pas qu'en la souscrivant il perd le droit d'exiger un garant** —
+  article 22-1 de la loi du 6 juillet 1989, sauf logement loué à un étudiant ou
+  à un apprenti. 📌 **Aucun des cinq contrôles accumulés ne l'aurait trouvé** :
+  la page n'affirme rien de faux (19/10 : passé), la règle qu'elle cite est en
+  vigueur (17/10 : passé), son périmètre est juste (20/10 : passé), aucune
+  autre page ne la contredit (21/10 : passé — et pour cause, **« caution »,
+  « cautionnement », « garant » et « Visale » étaient absents des 100 % du
+  corpus**), et aucun calendrier n'est comprimé (22/10 : passé). **La question
+  neuve est : « la page vend-elle une prestation sans dire ce que la souscrire
+  FERME au client ? »** Détecteur en « Techniques apprises ».
+- 🟢 **TOUT LE RESTE DU DROIT DE LA PAGE EST VÉRIFIÉ JUSTE — NE PAS LE
+  RÉAUDITER.** La mise en concurrence de l'article 21 **et** les trois détails
+  que la page en publie (dispense votée **à la majorité de l'article 25**,
+  **inscription à l'ordre du jour de l'AG précédente à l'initiative du conseil
+  syndical**, **obligation inexistante faute de conseil syndical**) sont
+  confirmés par **deux sources concordantes** : fiche **F2608** (vérifiée le
+  **8 juillet 2026**, qui dit « majorité absolue » — le synonyme de l'art. 25)
+  et le **guide copropriété d'une ADIL**, qui écrit mot pour mot que la demande
+  de dispense « doit être inscrite à l'ordre du jour de l'AG précédente, à
+  l'initiative du conseil syndical ». **L'arithmétique du barème se recalcule
+  intégralement** (652 + 20 = 672 €, 717 €, 54 €/mois, 272 €/an ≈ 9 jours de
+  loyer, 417 €, 29 m², 977 €, 4,91 % → 4,62 % soit 0,29 point, 6 % TTC = 5 % HT,
+  8 % HT = 9,6 % TTC = +60 %, 45 × 10 = 450 et 45 × 3 = 135 → 585 €).
+- ⚠️ 🆕 **FAIT TECHNIQUE NEUF SUR NOTRE SOURCE LA PLUS CITÉE :
+  `service-public.fr` RÉPOND 301 VERS `service-public.gouv.fr`.** Et
+  **`WebFetch` ne suit pas la redirection** : il rend l'URL de destination et
+  attend un second appel. 🟢 **Les 4 liens réels du corpus pointent DÉJÀ sur
+  `service-public.gouv.fr`** (tous dans `lib/blog.ts`) : **rien n'est cassé.**
+  Restent **4 mentions en prose** qui écrivent « service-public.fr » comme nom
+  d'éditeur (pas comme URL) — **volontairement non touchées** : zéro valeur
+  SEO, et les modifier avancerait à tort le `lastmod` de trois pages.
+- ✅ **DÉPLOIEMENT CONSTATÉ au 5ᵉ tour de sondage (~t+80 s du sondage, ~t+110 s
+  du push), et les deux témoins se sont accordés** : taille **134 943 →
+  152 345 octets** *et* chaîne neuve servie ×2. La recette du 21/10
+  (`grep -o … | wc -l`, jamais `grep -c`, et la TAILLE comme témoin
+  indépendant à chaque tour) a encore fonctionné. **Sixième run d'affilée où
+  `git branch -f main HEAD && git push -u origin main` tient** :
+  `cc877c3..de0f8be main -> main`, puis `origin/main == HEAD` vérifié.
+- ✅ **Signaux REVÉRIFIÉS EN PRODUCTION après déploiement — ne pas les
+  réauditer** : **6 blocs JSON-LD** (`RealEstateAgent`, `WebPage`, `Service`,
+  `FAQPage`, `HowTo`, `BreadcrumbList`), **parité FAQ visible ↔ `FAQPage` 8/8
+  questions ET 8/8 réponses**, **1 `<h1>`** (8 `<h2>`), `dateModified`
+  **2026-10-23**, **0 mot collé** et **0 chiffre collé**, **les 20 chaînes
+  neuves présentes** et **les 3 formulations retirées absentes**. **Sitemap de
+  production : 53 URL** dont **exactement 1 au `lastmod` 2026-10-23**, et c'est
+  `/faire-gerer`. **`/llms.txt` de production sert bien la règle de
+  l'article 22-1.**
+- ⚠️ **51 URL au sitemap en LOCAL contre 53 en production — ce n'est PAS une
+  régression** (constat inchangé, 2 annonces en base Supabase inaccessible
+  depuis ce conteneur).
+- ⚠️ **Texte servi par `/faire-gerer` : 2 099 → 2 828 mots (`wc -w`, +34,7 %)
+  et 2 200 → 2 964 (`split()`, +34,7 %).** 📌 **Les deux compteurs mesurés dans
+  LA MÊME commande**, comme le piège des 20 et 21/10 l'exige : ils s'accordent
+  au pourcentage près.
+- ⚠️ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff du chantier = 3 fichiers**
+  (`app/faire-gerer/page.tsx`, `app/llms.txt/route.ts`, `lib/seo/lastmod.ts`,
+  70 insertions / 13 suppressions).
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre sans effet sur deux pages de
+  quartier (08/10) ; **`/honoraires` ne sert aucun « Dernière mise à jour »
+  visible** (20/10, **quatrième report** — toujours au backlog).
+
 **Au 2026-10-22**
 
 - ✅ **AUCUN RUN MANQUÉ.** `git fetch origin` **en tout premier** (règle du
@@ -3232,6 +3368,166 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-23 — La page vendait la garantie loyers impayés sans dire qu'elle ferme le droit d'exiger un garant, et le mot « caution » était absent de tout le corpus
+
+**Prescription du 22/10 honorée** : angle **CONTENU** (le 22/10 était du
+non-contenu), **candidat n°1** de la pile — **`/faire-gerer`, la dernière page
+de droit jamais revérifiée côté CONTENU**, désignée n°1 dès le 21/10 et
+reportée une fois. **Le candidat est consommé**, dans son périmètre exact : le
+run du 20/10 n'avait traité que le **droit du syndic** de cette page
+(article 21, décret 2015-342, dispense de l'article 25).
+
+**Méthode** : reprendre **chaque affirmation de droit** de la page, et pour
+chacune ouvrir la source **en vigueur** — en lisant d'abord son marqueur de
+fraîcheur (« Vérifié le … »). Puis, parce que les cinq contrôles accumulés
+revenaient tous « passé », poser la question que personne n'avait posée :
+**qu'est-ce que la page ne dit PAS ?**
+
+#### 1. 🔴 Le défaut : un silence commercial qui coûte un droit au lecteur
+
+La section « Faut-il prendre la garantie loyers impayés ? » ouvrait ainsi :
+
+> « La garantie loyers impayés (GLI) est optionnelle et facturée **2,5 % du
+> loyer**. […] un seul mois d'impayé représente déjà plus de trois fois cette
+> somme. » · « La GLI ne remplace pas la sélection du locataire, elle la
+> **complète** ».
+
+**Tout y est vrai, et il manque la seule information qui change la décision :**
+
+> **Un bailleur particulier qui souscrit une assurance couvrant les loyers
+> impayés ne peut plus exiger le cautionnement d'un tiers** — sauf si le
+> logement est loué à **un étudiant ou à un apprenti.**
+
+**Ce que cela changeait pour un propriétaire** : il lisait « elle la complète »
+et pouvait croire acheter une **sécurité de plus**, en gardant le garant qu'il
+comptait demander. Il achetait en réalité une sécurité **à la place** du
+garant. Et l'arbitrage ne se rattrape pas après coup : il se fait **avant de
+publier l'annonce**, parce qu'un cautionnement demandé malgré l'assurance est
+un cautionnement fragile.
+
+**Sources — deux, concordantes, et l'une est l'éditeur officiel :**
+
+| Point | Source |
+|---|---|
+| L'interdiction et son exception | **fiche F31267**, service-public.gouv.fr, **vérifiée le 10 avril 2025** : le propriétaire déjà assuré « peut demander une caution **seulement si son locataire est étudiant ou apprenti** » |
+| Le texte | **article 22-1 de la loi du 6 juillet 1989** |
+| L'origine de l'interdiction | **loi du 25 mars 2009** (ANIL) |
+| L'ouverture de l'exception | **article 39 de la loi du 24 novembre 2009**, JO du 25/11/2009 (ANIL, analyse n° 2009-19) |
+| Visale | ANIL : la garantie Visale **est elle-même un cautionnement**, « exclusive de toute autre garantie » |
+| Dépôt de garantie | ANIL : il **n'est pas** un cautionnement — « ne pas confondre » |
+
+#### 2. 🔴 Et le corpus entier était muet : zéro occurrence, pas une seule
+
+```bash
+grep -rnoi "cautionnement\|un garant\|le garant\|caution solidaire\|visale" \
+  --include=*.tsx --include=*.ts app lib components
+# -> AUCUN résultat
+```
+
+**Quatre fichiers parlent de la GLI** (`/faire-gerer`,
+`/agence-immobiliere-villeurbanne`, `/agence-immobiliere-gratte-ciel`,
+`lib/blog.ts`) **et aucun ne nomme la contrepartie.** 📌 **Ce n'était donc pas
+une contradiction entre pages (contrôle du 21/10) : c'était un trou commun à
+toutes.** Les trois autres emplacements se bornent à publier le **prix** de la
+GLI, sans conseil — **ils n'ont pas été touchés**, aucune parité n'est rompue :
+`/faire-gerer` est la page canonique de l'arbitrage, c'est là que la règle
+vit.
+
+#### 3. 🟢 La place GEO : une SERP tenue par des vendeurs d'assurance, sans un seul texte
+
+**SERP de chantier mesurée AVANT d'écrire** (méthode du 15/10, **9ᵉ test
+positif sur 9**) : « peut-on demander un garant si le propriétaire a déjà une
+assurance loyers impayés » → **site absent** (attendu, le contenu est déployé
+aujourd'hui).
+
+**Ce que la SERP sert à la place** : `selectra.info` **×5**, `luko.eu` **×2**,
+`bailfacile.fr`, `gererseul.com`. 🔴 **Neuf résultats sur neuf sont des
+assureurs, des comparateurs d'assurance ou des éditeurs de bail — aucune
+agence immobilière, aucune source officielle.** Et le résumé du moteur
+**l'avoue de lui-même** : « Ces sources sont des sites commerciaux (assureur,
+comparateur, site immobilier) et **non des textes juridiques**. Je n'ai pas
+consulté le texte officiel. »
+
+🔴 **Mieux : le leader de la SERP se trompe sur le texte.** `luko.eu` attribue
+toute la règle à « **la loi Boutin** promulguée en 2009 […] sauf si le
+locataire est **un étudiant** ». Deux approximations dans une phrase : la loi
+du 25 mars 2009 a posé **l'interdiction**, mais c'est **l'article 39 de la loi
+du 24 novembre 2009** qui a ouvert l'exception, **et elle couvre l'apprenti
+autant que l'étudiant**. 📌 **Nous publions l'article, les deux textes, la
+fiche officielle et sa date de vérification, là où la SERP publie un
+raccourci.** C'est le même motif qu'au 21/10 (`seloger` cadrant la
+rétractation par la signature) : **la question est populaire, la réponse de
+premier rang est imprécise, et personne ne cite le texte.**
+
+#### 4. 🟢 Trois autres apports, tous sourcés et tous nés d'une vérification
+
+**(a) La durée du mandat de syndic, qui n'était qu'une parenthèse vague.** La
+page écrivait « ce qui dure trois ans, c'est le *mandat* du syndic **(un an
+possible)** ». Exact mais inexploitable. Désormais : **trois ans au plus**,
+l'AG restant libre d'en voter moins, **sans reconduction tacite** — le
+renouvellement se vote (**article 28 du décret n° 67-223 du 17 mars 1967**) ;
+et **un an au plus dans deux cas** : le syndic ayant participé à la
+construction de l'immeuble **comme promoteur ou architecte** (directement, ou
+par son conjoint ou un proche), et le **syndic provisoire d'une copropriété
+neuve**, dont le contrat **prend fin automatiquement** à l'échéance
+(**F2608**, vérifiée le **8 juillet 2026**). 📌 **Le second cas est
+localement utile** : Villeurbanne livre beaucoup de neuf.
+
+**(b) La parité avec `/gestion-locative`, dans le sens du silence.** La page
+listait, dans ce que le taux de gestion couvre, « **révision annuelle du
+loyer** » — sans condition. `/gestion-locative` publie pourtant, depuis le
+20/10, la règle complète. Aligné ici : la révision suppose **une clause de
+révision au bail**, et elle est **interdite pour un logement classé F ou G**,
+pour tout bail signé, renouvelé ou tacitement reconduit **depuis le 24 août
+2022** en métropole (**F1310**). 📌 **C'est le second usage du détecteur du
+22/10 — « chercher les SILENCES, pas seulement les contradictions » — et il a
+payé.**
+
+**(c) La part locataire de la mise en location, chiffrée au lieu d'être
+renvoyée au vague.** La FAQ disait « une part, **plafonnée par la loi** et qui
+ne peut jamais dépasser celle du propriétaire ». Elle publie maintenant les
+deux plafonds : **10 €/m²** de surface habitable (visite, dossier, bail) **+
+3 €/m²** d'état des lieux d'entrée en zone tendue, **585 € pour un T2 de
+45 m²**, et le **second plafond de l'article 5 de la loi du 6 juillet 1989**
+(la part locataire ne peut dépasser la part bailleur pour les mêmes
+prestations), l'entremise et la négociation restant à la charge exclusive du
+bailleur. ⚠️ **Mêmes valeurs que `/honoraires`, au centime** — pas une
+nouvelle série de chiffres, la même, recalculée (45 × 10 = 450, 45 × 3 = 135,
+total 585 €).
+
+#### 5. 🟢 Deux questions de FAQ neuves, formulées comme on les pose à voix haute
+
+- « **Si je prends la garantie loyers impayés, puis-je quand même demander un
+  garant à mon locataire ?** »
+- « **Combien de temps dure le mandat d'un syndic de copropriété ?** »
+
+**Le `FAQPage` reste généré depuis le même tableau que la FAQ visible**
+(`faqLd(FAQ)`), donc la parité est structurelle — **et vérifiée quand même sur
+le HTML rendu, en production : 8/8 questions ET 8/8 réponses, mot pour mot.**
+
+#### 6. Ce qui a été vérifié JUSTE et laissé tel quel
+
+**Ne pas réauditer** : mise en concurrence de l'article 21 et ses trois détails
+(dispense à la majorité de l'art. 25, inscription à l'initiative du conseil
+syndical à l'AG précédente, obligation inexistante faute de conseil syndical) —
+**deux sources concordantes, F2608 et le guide copropriété d'une ADIL** ; la
+liste limitative du **décret n° 2015-342** ; l'**arrêté du 10 janvier 2017
+modifié le 26 janvier 2022** ; la déductibilité au réel / non-déductibilité au
+micro-foncier ; **toute l'arithmétique du barème** (détail en « État des
+lieux »).
+
+#### 7. Contrôles avant push
+
+`npx tsc --noEmit` muet · `npx eslint` propre sur les 3 fichiers ·
+`npm run build` **vert (88/88 pages)** · parité FAQ **8/8 + 8/8** sur le HTML
+rendu · **1 `<h1>`**, 8 `<h2>` · `dateModified` **2026-10-23** · **0 mot collé
+et 0 chiffre collé** (détecteur en Python, **jamais en `grep`** — règle de
+« Erreurs commises ») · **exactement 1 URL du sitemap au `lastmod`
+2026-10-23**, `/faire-gerer` · **20 chaînes neuves présentes, 3 formulations
+retirées absentes** · `/llms.txt` servi par un `next start` local et relu ·
+**2 099 → 2 828 mots (`wc -w`) et 2 200 → 2 964 (`split()`), les deux dans la
+même commande.**
 
 ### 2026-10-22 — Le contrôle « règle abrogée » passé sur tout le corpus : six familles saines, et un calendrier par paliers que la fiche officielle comprime en une seule date
 
@@ -8317,6 +8613,107 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — `/faire-gerer`, le droit jamais revérifié
+côté contenu** (23/10 : **un défaut d'une famille neuve — un SILENCE qui ferme
+un droit au lecteur.** La page vendait la GLI sans dire qu'un bailleur
+particulier qui la souscrit **perd le droit d'exiger un garant** (art. 22-1 de
+la loi du 6 juillet 1989, sauf étudiant ou apprenti) — et **« caution »,
+« cautionnement », « garant », « Visale » étaient absents de TOUT le corpus.**
+Plus trois apports sourcés : durée du mandat de syndic (art. 28 du décret
+n° 67-223 : 3 ans au plus, 1 an pour le promoteur-architecte et le syndic
+provisoire d'un immeuble neuf), parité de la révision du loyer F/G avec
+`/gestion-locative`, part locataire de la mise en location chiffrée. Deux FAQ
+neuves, parité 8/8 + 8/8. `/faire-gerer` 2 099 → 2 828 mots (`wc -w`).
+**Candidat n°1 consommé : plus aucune page de droit du site n'est « jamais
+revérifiée ».**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (24/10) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 21/10 contenu → 22/10 non-contenu → 23/10 contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 **LA PARITÉ DES RÈGLES DE DROIT ENTRE PAGES, passée sur tout le
+     corpus** — **candidat n°1 depuis le 22/10, non fait deux fois, et le run
+     du 23/10 vient de lui ajouter un TROISIÈME usage.** Né du défaut du 21/10
+     (cinq emplacements faux pendant que trois pages publiaient le bon). Usages
+     accumulés du même balayage : **(a)** les **contradictions** entre pages ;
+     **(b)** les **silences** — deux pages traitant le même objet, l'une datée
+     et précise, l'autre muette (22/10, et confirmé le 23/10 sur la révision du
+     loyer F/G) ; **(c)** 🆕 **les silences qui FERMENT UN DROIT** — une page
+     qui vend une prestation sans dire ce que la souscrire retire au client
+     (23/10 : la GLI et le garant). Détecteurs en « Techniques apprises » des
+     21, 22 et 23/10. **Fort rendement attendu.**
+  2. 🔴 🆕 **RÉEXAMINER LA THÈSE « AFFICHÉ ≠ SIGNÉ » — LA RÈGLE DU 14/10 EST
+     SATISFAITE, QUATRE MESURES CONCORDANTES.** `pap.fr` **+1,6 %**,
+     `blog.qoridor.fr` **−1,7 %**, `efficity` **−2,4 %**, `squarehabitat`
+     **−3,5 %** autour de notre médiane DVF 2025 (3 567 €/m²), contre **16 à
+     45 % au-dessus** pour tout ce qui a été relevé du 27/09 au 18/10.
+     ⚠️ **Travail de MESURE d'abord, pas de réécriture** : ces quatre chiffres
+     sont des **moyennes 2026**, la nôtre une **médiane de ventes signées
+     2025**. **La question à trancher est : l'écart a-t-il disparu, ou est-ce
+     le marché qui a baissé entre 2025 et 2026 ?** Elle se tranche avec DVF
+     2026 sur la commune (recette DVF en « Techniques apprises » du 14/10), pas
+     avec les SERP. 🔴 **Ne RIEN réécrire sur cette thèse avant d'avoir répondu
+     à cette question** : plusieurs pages la publient.
+  3. 🔴 **LE CONTRÔLE « LA FICHE COMPRIME-T-ELLE UN CALENDRIER ? », passé sur
+     les autres calendriers du corpus** (candidat du 22/10, non fait).
+     Calendriers restants, vérifiés **en vigueur** mais **jamais palier par
+     palier contre le décret** : **décence énergétique** (G/F/E), **DPE
+     collectif** (par nombre de lots), **plan pluriannuel de travaux** (par
+     nombre de lots), **validité des DPE**. Détecteur en « Techniques
+     apprises » du 22/10.
+  4. ⚠️ **`/honoraires` ne sert AUCUN « Dernière mise à jour » visible**
+     (identifié le 20/10, **non fait les 20, 21, 22 et 23/10 — quatrième
+     report**). Les deux autres pages du triptyque en ont un
+     (`/gestion-locative` via `seo-landing.tsx`, `/faire-gerer` en inline
+     ~l. 325). **À faire en lisant d'abord la structure de la page** : elle
+     n'utilise ni l'un ni l'autre. *(Son `dateModified` JSON-LD est bien à
+     jour.)*
+  5. 🟢 **`blog.qoridor.fr`** — inchangé depuis le 19/10 : lire une de ses pages
+     de quartier et établir **ce que nous publions qu'il ne publie pas**.
+     📌 **À fusionner avec le candidat n°2** : c'est la même famille de
+     question.
+  6. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`). **Aucun défaut connu :
+     prévention.**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (25/10), par ordre d'impact :**
+  1. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** — avec son
+     **périmètre imposé du 11/10** : réécriture **procédurale** (méthode pas à
+     pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas rouvrir
+     l'angle « chiffres du marché », fermé par la mesure.** 📌 **Il devient le
+     candidat contenu n°1 par défaut : les pages de droit sont toutes faites.**
+  2. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place.
+  3. 🟢 🆕 **LA FAMILLE DE SERP QUE LE 23/10 VIENT D'IDENTIFIER, ET ELLE EST
+     RICHE** : les questions de droit locatif dont la SERP est tenue par des
+     **assureurs et des comparateurs**, jamais par une agence ni par un texte.
+     Celle du jour en était une (9 résultats sur 9, l'aveu du moteur compris).
+     **Autres questions de la même famille, à mesurer avant d'écrire** : ce que
+     couvre exactement une GLI et ce qu'elle exclut, Visale vs GLI pour un
+     bailleur, le dépôt de garantie (montant, délai de restitution, retenues),
+     la caution solidaire vs simple. **Toutes relèvent de `/gestion-locative`
+     ou de `/faire-gerer`, qui sont déjà écrites pour ça.**
+
+→ 🔴 **REQUÊTES CIBLES — ce qui est dû le 24/10 : RIEN.** Les deux SERP
+anciennement gelées **viennent d'être mesurées le 23/10** (site absent des
+deux) → **prochaine échéance le 30/10** (hebdomadaire, comme « prix m2 »).
+« Prix m2 Villeurbanne » → **26/10** (et c'est aussi le jour de la **veille
+hebdomadaire**). « Vendre appartement Villeurbanne » → **vers le 27/10** (deux
+par mois, dernière le 20/10).
+
+🆕 ⚠️ **SERP DE CHANTIER À REMESURER — trois échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à
+  courir »** (chantier du 21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (chantier du 22/10) → **vers le 05/11**.
+- 🆕 **« peut-on demander un garant si le propriétaire a déjà une assurance
+  loyers impayés »** (chantier du 23/10, site absent au relevé du jour) →
+  **vers le 06/11**. 📌 **Repère pour l'après** : la SERP est à **9 résultats
+  sur 9 commerciaux** (`selectra` ×5, `luko` ×2, `bailfacile`, `gererseul`),
+  **sans une seule source officielle de l'aveu du moteur**, et le leader
+  attribue la règle à « la loi Boutin » en oubliant l'apprenti.
+
 **Angle du dernier run : NON-CONTENU — le contrôle « règle abrogée » passé sur
 tout le corpus** (22/10 : **22 règles datées et une cinquantaine de références
 numérotées cadrées en sept familles**. **Six familles saines**, listées en
@@ -9344,6 +9741,44 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-23
+
+**1. ⚠️ L'interdiction de cumul de l'article 22-1 s'applique-t-elle de la même
+façon à un bailleur PERSONNE MORALE autre qu'une SCI familiale ?** La fiche
+**F31267** (vérifiée le 10 avril 2025) traite les deux cas **séparément** :
+pour le bailleur **personne physique**, elle énonce l'interdiction liée à
+l'assurance ; pour le bailleur **personne morale**, elle n'évoque **aucune
+assurance** et énonce une autre règle (pas de caution si le locataire est
+**étudiant boursier**). L'ANIL, de son côté, formule la règle pour « le
+bailleur **personne physique ou SCI familiale** ». 🔴 **Je n'ai pas pu lire
+l'article 22-1 lui-même** (Légifrance reste inaccessible depuis ce conteneur,
+règle du 17/10 — non retestée aujourd'hui, contournée par
+service-public.gouv.fr + ANIL). ✅ **Ce que j'ai fait à la place, et qui est la
+bonne réponse à un doute** : **restreindre explicitement l'affirmation à son
+périmètre certain** — la page et la FAQ disent « un bailleur particulier —
+personne physique ou SCI familiale — ». **Rien de faux n'est publié, et rien
+n'est publié sur les autres personnes morales.** → **À trancher sur le texte
+consolidé quand Légifrance redeviendra joignable.** ⚠️ **Ne pas élargir
+l'affirmation sans ça.**
+
+**2. ⚠️ La sanction d'un cautionnement demandé malgré l'assurance.** L'ANIL
+écrit, dans une analyse de **2009**, que le cautionnement sollicité à tort est
+« nul, au profit de l'assurance […] **sous réserve de l'interprétation des
+tribunaux** ». 🔴 **Rien n'a été publié dessus** : la source est vieille de
+dix-sept ans, elle-même prudente, et la nullité n'est confirmée ni par F31267
+(qui ne la mentionne pas) ni par la fiche ANIL générale. **La page se borne à
+dire que le droit d'exiger le cautionnement est fermé** — ce qui est établi par
+deux sources — **et ne qualifie pas la sanction.** → **À reprendre avec le
+texte et, si possible, de la jurisprudence.**
+
+**3. ⚠️ L'écart entre prix affichés et prix signés a-t-il réellement disparu,
+ou le marché a-t-il baissé ?** Quatre sources relevées en cinq runs tiennent
+dans **±4 %** de notre médiane DVF **2025** (3 567 €/m²), contre **+16 à
++45 %** pour tout le reste relevé du 27/09 au 18/10. **Mais ce sont des
+moyennes 2026 comparées à une médiane 2025.** → **Inscrit comme candidat de
+chantier n°2 pour le 24/10 ; se tranche avec DVF 2026, pas avec les SERP.
+Plusieurs pages publient cette thèse : ne RIEN réécrire avant.**
 
 ### 2026-10-22
 
@@ -10405,6 +10840,76 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-23 — Deux inférences de ma propre plume, attrapées à la relecture adversariale avant le push, et un détecteur de mots collés qui remonte 20 faux positifs si on l'écrit en grep
+
+**1. 🔴 J'AI ÉCRIT UNE CAUSALITÉ QUE MES SOURCES NE DISENT PAS.** Mon premier
+jet du paragraphe GLI finissait ainsi :
+
+> « les assureurs conditionnent d'ailleurs leur garantie à un niveau de
+> solvabilité du dossier, **et c'est précisément parce qu'ils l'exigent que le
+> garant devient inutile.** »
+
+**C'est faux dans son mécanisme, et la nuance n'est pas cosmétique** : le
+garant ne devient pas *inutile* parce que l'assureur filtre les dossiers, il
+devient **juridiquement indisponible** parce que l'article 22-1 interdit de
+l'exiger. **J'avais substitué une explication commerciale plausible à la règle
+de droit que je venais d'établir.** → **Supprimée avant le push**, la phrase
+revient à l'original.
+
+**2. 🔴 ET J'AVAIS ANCRÉ UNE AFFIRMATION SUR UNE DATE RELATIVE, CE QUI LA REND
+FAUSSE AVEC LE TEMPS.** Mon paragraphe sur le syndic provisoire finissait par :
+
+> « **Une copropriété livrée l'an dernier** est donc déjà en droit de faire
+> chiffrer une alternative. »
+
+**Deux défauts en une phrase** : c'est une **inférence** (la fiche dit que le
+contrat prend fin automatiquement, pas que la copropriété « est en droit de
+faire chiffrer »), et « **l'an dernier** » est un **point de référence
+glissant** — vrai en 2026, faux relu en 2028, et illisible pour un LLM qui
+extrait le passage sans sa date. → **Remplacée** par la conséquence que la
+source autorise vraiment : « une copropriété neuve est appelée à désigner son
+syndic — et à le mettre en concurrence — **dès la première assemblée générale
+qui suit cette échéance** ». 📌 **Règle à garder : ne jamais dater une
+affirmation par « l'an dernier », « récemment » ou « cette année ».** Le
+corpus écrit des dates absolues partout ailleurs ; une seule date relative
+suffit à périmer un passage.
+
+**3. ⚠️ LE PÉRIMÈTRE DE MON AFFIRMATION ÉTAIT PLUS LARGE QUE MA SOURCE, ET JE
+L'AI RESSERRÉ APRÈS COUP.** Mon premier jet écrivait « **un bailleur** qui
+souscrit une assurance […] ne peut plus exiger le cautionnement ». **Or F31267
+traite le bailleur personne morale dans une section séparée, où l'assurance
+n'apparaît pas**, et l'ANIL formule la règle pour « le bailleur personne
+physique **ou SCI familiale** ». → **Resserré en « un bailleur particulier —
+personne physique ou SCI familiale — »**, dans le corps **et** dans la FAQ, et
+le doute consigné en « Hypothèses à vérifier ». 📌 **C'est exactement la faute
+de PÉRIMÈTRE que ce journal traque depuis le 11/10, à ceci
+près que cette fois l'auteur était moi** — et qu'elle a été vue **avant** le
+push, parce que la relecture adversariale du diff est devenue une étape et pas
+une intention.
+
+**4. 🟡 LE DÉTECTEUR DE MOTS COLLÉS EN `grep` REMONTE 20 FAUX POSITIFS — le
+piège du 20/10 (« grep travaille en octets ») s'est rejoué à
+l'identique.**
+
+```bash
+grep -oE "[a-zéèàç][A-ZÉÈÀ][a-zéèàç]{2,}" fg.txt | sort -u | head -20
+# -> débours décide décisions déclaration décret … 20 "mots collés"
+```
+
+**Aucun n'en est un**, et c'est le même mécanisme qu'au 20/10 (180 faux
+positifs ce jour-là) : `[A-ZÉÈÀ]` en classe de caractères **matche les octets
+de continuation** de `é`/`è`/`à`, donc chaque mot commençant par `dé…` ressort.
+**Le contrôle n'a de sens qu'en Python**, où les classes sont des caractères :
+
+```python
+re.findall(r"[a-zéèàçûôîê][A-ZÉÈÀÇ][a-zéèàçûôîê]{2,}", t)   # -> 0
+```
+
+📌 **Et le premier détecteur, lui, marche en `grep`** (`[0-9](€|m²|%|[a-zA-Z]{2,})`) :
+il ne porte que sur des chiffres ASCII. **Règle : tout détecteur de texte qui
+contient une classe de caractères ACCENTUÉS s'écrit en Python, jamais en
+grep.**
 
 ### 2026-10-22 — Mon `grep` de vérification a matché mes propres corrections, et j'ai failli déclarer une contradiction entre deux formulations équivalentes
 
@@ -11761,6 +12266,116 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-23 — Le contrôle « que la page ne dit PAS », la redirection de service-public.fr, et l'ANIL comme source d'histoire législative quand Légifrance est muré
+
+**1. 🔴 LE CONTRÔLE NEUF DU RUN, ET IL NE REGARDE PLUS CE QUE LA PAGE AFFIRME :
+« LA PAGE VEND-ELLE UNE PRESTATION SANS DIRE CE QUE LA SOUSCRIRE FERME AU
+CLIENT ? »**
+
+Les cinq contrôles accumulés cherchent tous un **écart** :
+- 17/10 : « la règle citée est-elle encore en vigueur ? »
+- 19/10 : « la source citée dit-elle ce que la page affirme ? »
+- 20/10 : « le périmètre est-il celui de la source ? »
+- 21/10 : « une autre de nos pages dit-elle déjà le contraire ? »
+- 22/10 : « la fiche officielle comprime-t-elle un calendrier par paliers ? »
+
+**Les cinq sont revenus « passé » sur `/faire-gerer`, et la page était pourtant
+trompeuse.** Parce qu'aucun ne regarde **l'absence**. Le contrôle du jour part
+de la page **commerciale** et non de la source :
+
+> **Pour chaque prestation que le site vend, lister ce que la souscrire
+> RETIRE au client** — un droit qu'il ne pourra plus exercer, une option qu'il
+> s'interdit, un cumul que la loi ferme. **Si la page ne le dit pas, elle
+> vend une décision incomplète.**
+
+**Le cadrage se fait en une commande** : grepper le **nom de la prestation**
+dans tout le corpus, puis grepper **le nom de sa contrepartie juridique**. Si
+le second compte **zéro**, le trou est là.
+
+```bash
+# la prestation : 4 fichiers en parlent
+grep -rlo "loyers impayés" --include=*.tsx --include=*.ts app lib components
+# sa contrepartie : ZÉRO occurrence dans tout le corpus
+grep -rnoi "cautionnement\|un garant\|le garant\|caution solidaire\|visale" \
+  --include=*.tsx --include=*.ts app lib components
+```
+
+📌 **Le « zéro » est le signal** : un site qui vend une assurance locative et
+n'écrit jamais le mot « garant » n'a pas choisi de se taire, il n'y a pas
+pensé. **Prestations du site à passer au même crible** : le mandat de gestion
+(ce qu'il retire au propriétaire qui gérait seul), le mandat exclusif de vente,
+la mise en location, le syndic.
+
+**2. ⚠️ `service-public.fr` RÉPOND 301 VERS `service-public.gouv.fr`, ET
+`WebFetch` NE SUIT PAS LA REDIRECTION.**
+
+```
+WebFetch https://www.service-public.fr/particuliers/vosdroits/F31267
+# -> REDIRECT DETECTED: 301 vers https://www.service-public.gouv.fr/…
+#    (il faut rappeler WebFetch sur l'URL de destination)
+```
+
+**Conséquence pratique : toute fiche `F…` se fetch directement en
+`service-public.gouv.fr`** — un appel au lieu de deux. 🟢 **Les 4 liens réels
+du corpus y pointent déjà** (`lib/blog.ts`) ; **4 mentions en prose** écrivent
+encore « service-public.fr » comme **nom d'éditeur** et sont **sans effet** :
+ce n'est pas une URL. ⚠️ **Ne pas les corriger en masse** — zéro valeur SEO, et
+cela avancerait à tort le `lastmod` de trois pages (ce que `lib/seo/lastmod.ts`
+appelle lui-même « le défaut coûteux »).
+
+**3. 🟢 L'ANIL EST LA SOURCE D'HISTOIRE LÉGISLATIVE QUAND LÉGIFRANCE EST MURÉ —
+ET SES ARCHIVES D'ANALYSES JURIDIQUES DONNENT LA LOI, L'ARTICLE ET LE JO.**
+
+Le besoin du jour : savoir **quel texte** a posé l'interdiction de cumul et
+**quel texte** a ouvert l'exception. Une fiche service-public donne la **règle
+en vigueur**, pas sa **généalogie**. Recette, en deux appels :
+
+```
+1. recherche restreinte au domaine : allowed_domains: ["anil.org"]
+   requête = la règle en langage naturel + « article » + l'année
+   -> l'URL de l'ANALYSE JURIDIQUE (les archives sont datées et numérotées)
+2. WebFetch sur cette URL, en demandant LES RÉFÉRENCES DE TEXTES,
+   pas un résumé
+   -> « loi du 6.7.89 : art. 22-1 » · « Loi du 24.11.09 : art. 39
+      (JO du 25.11.09) » · analyse n° 2009-19, à jour au 26/11/2009
+```
+
+⚠️ **Et lire la DATE de l'analyse** : celle du jour datait de **2009**. Elle est
+fiable sur **l'histoire** (quel texte a fait quoi en 2009) et **périmable** sur
+**l'état du droit** — c'est pourquoi la règle en vigueur a été prise sur
+**F31267, vérifiée le 10 avril 2025**, et l'histoire sur l'ANIL. **Deux
+sources, deux rôles.**
+
+**4. 🟢 UNE SERP TENUE À 100 % PAR DES VENDEURS DU PRODUIT EST LA MEILLEURE
+PLACE GEO MESURÉE À CE JOUR, ET ELLE SE RECONNAÎT À UN MOTIF.**
+
+Sur « peut-on demander un garant si le propriétaire a déjà une assurance loyers
+impayés » : **9 résultats sur 9 sont des assureurs, comparateurs d'assurance ou
+éditeurs de bail** (`selectra` ×5, `luko` ×2, `bailfacile`, `gererseul`), le
+moteur **avoue** n'avoir consulté « aucun texte juridique », et **le premier
+résultat se trompe** (« la loi Boutin », et l'apprenti oublié).
+
+📌 **Le motif est maintenant à 3 occurrences (18/10, 19/10, 23/10) et devient
+une méthode de choix de sujet** : chercher les questions où **celui qui vend le
+produit est le seul à répondre**. Il répond en vendant, donc il simplifie, donc
+une réponse sourcée au texte le dépasse. **Corollaire confirmé 7 fois sur 7 :
+ces SERP ne contiennent aucune agence immobilière.**
+
+**5. 🟢 LA PARITÉ FAQ ↔ `FAQPage` SE VÉRIFIE SUR LES RÉPONSES ENTIÈRES, PAS SUR
+LEURS 120 PREMIERS CARACTÈRES.**
+
+Mon premier script de parité comparait `a[:120]` au texte visible — il passe
+toujours, puisque le début d'une réponse ne diverge jamais. **Le mismatch
+sanctionnable est en fin de réponse** (une phrase ajoutée au JSON-LD et pas à
+l'affichage, ou l'inverse). Le contrôle utile compare **la chaîne complète** :
+
+```python
+sum(1 for a in ans if html.unescape(a) in vis)   # et non a[:120]
+```
+
+**Résultat du run : 8/8 questions et 8/8 réponses ENTIÈRES, mesuré en
+production après déploiement.**
 
 ### 2026-10-22 — Le contrôle « la fiche officielle comprime-t-elle un calendrier ? », et comment établir la version d'un BOI quand BOFiP ne répond pas
 
