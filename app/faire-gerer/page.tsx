@@ -172,7 +172,15 @@ const FAQ: FaqItem[] = [
       MISE_EN_LOCATION,
     )} pour un logement loué ${eur(
       LOYER_MOIS,
-    )} par mois. Le locataire en règle également une part, plafonnée par la loi et qui ne peut jamais dépasser celle du propriétaire.`,
+    )} par mois. Le locataire, lui, en règle une part encadrée deux fois : par un plafond au mètre carré — Villeurbanne étant en zone tendue, 10 €/m² de surface habitable pour la visite, le dossier et le bail, plus 3 €/m² pour l'état des lieux d'entrée, soit 585 € pour un T2 de 45 m² —, et par l'article 5 de la loi du 6 juillet 1989, qui interdit que sa part dépasse celle du bailleur pour les mêmes prestations. L'entremise et la négociation, elles, restent à la charge exclusive du bailleur. Le barème ligne par ligne est sur la page « nos honoraires ».`,
+  },
+  {
+    q: "Si je prends la garantie loyers impayés, puis-je quand même demander un garant à mon locataire ?",
+    a: "Non, sauf si le logement est loué à un étudiant ou à un apprenti. Un bailleur particulier — personne physique ou SCI familiale — qui a souscrit une assurance couvrant les loyers impayés ne peut plus exiger en plus le cautionnement d'un tiers : c'est l'article 22-1 de la loi du 6 juillet 1989, et la fiche officielle F31267 de service-public.gouv.fr, vérifiée le 10 avril 2025, le formule ainsi — le propriétaire qui a déjà une assurance privée contre les risques locatifs « peut demander une caution seulement si son locataire est étudiant ou apprenti ». L'interdiction vient de la loi du 25 mars 2009 et l'exception de l'article 39 de la loi du 24 novembre 2009. Deux points souvent confondus : le dépôt de garantie n'est pas un cautionnement et reste dû dans tous les cas ; la garantie Visale d'Action Logement est elle-même un cautionnement, et ne se cumule donc pas davantage avec une garantie loyers impayés.",
+  },
+  {
+    q: "Combien de temps dure le mandat d'un syndic de copropriété ?",
+    a: "Trois ans au plus, et l'assemblée générale peut en voter moins : l'article 28 du décret n° 67-223 du 17 mars 1967 fixe ce plafond, et il n'y a pas de reconduction tacite — le renouvellement se vote. Deux situations sont plafonnées à un an : le syndic qui a participé à la construction de l'immeuble comme promoteur ou architecte, directement ou par son conjoint ou un proche, et le syndic provisoire d'une copropriété neuve, dont le contrat prend fin automatiquement à l'échéance. Source : service-public.gouv.fr, fiche F2608, vérifiée le 8 juillet 2026.",
   },
   {
     q: "La gestion locative et le syndic, est-ce le même contrat ?",
@@ -413,7 +421,11 @@ export default function FaireGererPage() {
                   <p>
                     Le taux couvre la <strong>gestion courante</strong> : appels
                     de loyers et encaissement, quittances, révision annuelle du
-                    loyer, régularisation des charges, relances en cas de retard,
+                    loyer lorsque le bail comporte une clause de révision — sauf
+                    logement classé F ou G au DPE, où réviser le loyer est
+                    interdit pour tout bail signé, renouvelé ou tacitement
+                    reconduit depuis le 24 août 2022 en métropole (fiche F1310)
+                    —, régularisation des charges, relances en cas de retard,
                     suivi de l&apos;entretien et accès à l&apos;extranet
                     propriétaire. Ce qui est ponctuel est facturé à part, et la
                     liste est publiée : vacation horaire à 100 €, document
@@ -492,7 +504,37 @@ export default function FaireGererPage() {
                 <H2>Faut-il prendre la garantie loyers impayés ?</H2>
                 <Body>
                   <p>
-                    La garantie loyers impayés (GLI) est optionnelle et facturée{" "}
+                    Elle se décide en arbitrage avec le garant, et non en plus
+                    de lui, parce que{" "}
+                    <strong>les deux ne se cumulent pas</strong> : un bailleur
+                    particulier — personne physique ou SCI familiale — qui
+                    souscrit une assurance couvrant les loyers impayés ne peut
+                    plus exiger le cautionnement d&apos;un tiers, sauf si le
+                    logement est loué à un étudiant ou à un apprenti. La GLI
+                    n&apos;est donc pas une sécurité de plus, c&apos;est une
+                    sécurité <em>à la place</em> du garant — et le choix se fait
+                    avant de publier l&apos;annonce, pas après avoir retenu un
+                    candidat.
+                  </p>
+                  <p>
+                    La règle est à l&apos;<strong>article 22-1 de la loi du 6
+                    juillet 1989</strong> — interdiction posée par la loi du 25
+                    mars 2009, exception des étudiants et des apprentis ouverte
+                    par l&apos;article 39 de la loi du 24 novembre 2009. La fiche
+                    officielle F31267 (service-public.gouv.fr, vérifiée le 10
+                    avril 2025) la résume en une phrase : le propriétaire qui a
+                    déjà une assurance privée contre les risques locatifs peut
+                    demander une caution « seulement si son locataire est
+                    étudiant ou apprenti ». Deux précisions qui évitent les
+                    confusions courantes : le{" "}
+                    <strong>dépôt de garantie n&apos;est pas un cautionnement</strong>{" "}
+                    et reste dû dans tous les cas ; la garantie{" "}
+                    <strong>Visale</strong> d&apos;Action Logement est, elle,
+                    un cautionnement — elle ne se cumule donc pas davantage avec
+                    une GLI.
+                  </p>
+                  <p>
+                    Côté prix, la GLI est facturée{" "}
                     <strong>{pct(TAUX_GLI)} du loyer</strong>. Sur
                     l&apos;appartement de référence loué {eur(LOYER_MOIS)} par
                     mois, elle coûte {eur(GLI_MOIS)} par mois, soit{" "}
@@ -500,14 +542,16 @@ export default function FaireGererPage() {
                     d&apos;environ {GLI_JOURS}{" "}jours de loyer. C&apos;est le bon
                     ordre de grandeur à mettre en face du risque : un seul mois
                     d&apos;impayé représente déjà plus de trois fois cette somme.
+                    Au régime réel, la prime se déduit des loyers perçus ; au
+                    micro-foncier, non.
                   </p>
                   <p>
                     La GLI ne remplace pas la sélection du locataire, elle la
                     complète — les assureurs conditionnent d&apos;ailleurs leur
-                    garantie à un niveau de solvabilité du dossier. L&apos;étendue
-                    exacte des garanties, les franchises et les plafonds
-                    dépendent du contrat d&apos;assurance, qui vous est remis
-                    avant toute signature.
+                    garantie à un niveau de solvabilité du dossier.
+                    L&apos;étendue exacte des garanties, les franchises et les
+                    plafonds dépendent du contrat d&apos;assurance, qui vous est
+                    remis avant toute signature.
                   </p>
                 </Body>
               </section>
@@ -586,13 +630,31 @@ export default function FaireGererPage() {
                     l&apos;était jusqu&apos;au 31 mai 2020 ; l&apos;ordonnance
                     n° 2019-1101 du 30 octobre 2019 a réécrit l&apos;article 21
                     et supprimé cette périodicité à compter du 1ᵉʳ juin 2020. Ce
-                    qui dure trois ans, c&apos;est le <em>mandat</em> du syndic
-                    (un an possible), et c&apos;est cette durée que
-                    l&apos;habitude a transformée en « mise en concurrence tous
-                    les trois ans ». Les deux sont indépendantes : un mandat
+                    qui dure trois ans, c&apos;est le <em>mandat</em> du syndic,
+                    et c&apos;est cette durée que l&apos;habitude a transformée
+                    en « mise en concurrence tous les trois ans ». Les deux
+                    sont indépendantes : un mandat
                     reconduit sans vote de dispense doit être précédé
                     d&apos;une mise en concurrence, quelle que soit la date de la
                     précédente.
+                  </p>
+                  <p>
+                    Ce mandat, justement, se compte précisément :{" "}
+                    <strong>trois ans au plus</strong>, l&apos;assemblée générale
+                    restant libre d&apos;en voter moins, et{" "}
+                    <strong>sans reconduction tacite</strong> — le renouvellement
+                    se vote. C&apos;est l&apos;article 28 du décret n° 67-223 du
+                    17 mars 1967. Deux situations sont plafonnées à{" "}
+                    <strong>un an</strong>, et la seconde concerne beaucoup
+                    d&apos;immeubles neufs villeurbannais : le syndic qui a
+                    participé à la construction de l&apos;immeuble comme
+                    promoteur ou architecte — directement, ou par son conjoint ou
+                    un proche —, et le <strong>syndic provisoire</strong> d&apos;une
+                    copropriété neuve, dont le contrat prend fin automatiquement à
+                    l&apos;échéance (service-public.gouv.fr, fiche F2608, vérifiée
+                    le 8 juillet 2026). Une copropriété neuve est donc appelée à
+                    désigner son syndic — et à le mettre en concurrence — dès la
+                    première assemblée générale qui suit cette échéance.
                   </p>
                   <p>
                     Indépendamment de cette obligation, tout copropriétaire peut

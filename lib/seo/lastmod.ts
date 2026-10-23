@@ -45,7 +45,7 @@ export const PAGE_LASTMOD: Record<string, string> = {
   "/agence-immobiliere-charpennes": "2026-10-04",
   "/agence-immobiliere-cusset": "2026-10-08",
   "/annonces": "2026-08-27",
-  "/faire-gerer": "2026-10-20",
+  "/faire-gerer": "2026-10-23",
   "/blog": "2026-09-13",
   "/contact": "2026-06-24",
   "/recrutement": "2026-06-24",
