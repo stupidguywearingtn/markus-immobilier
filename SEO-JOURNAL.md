@@ -14,6 +14,128 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-24**
+
+- ⚠️ **CONFIGURATION DE DÉPART SAINE, MAIS JE N'AI PAS MESURÉ CE QUE LE FETCH A
+  CHANGÉ — défaut de méthode du jour, consigné en « Erreurs commises ».** Après
+  `git fetch origin`, `origin/main`, le `main` local et `HEAD` concordaient tous
+  les trois sur **`97e4689`**, et **deux commits portent la date du 2026-10-23**
+  (le run d'hier a bien eu lieu). ⚠️ **Mais je n'ai relevé `origin/main` qu'APRÈS
+  le fetch** : je ne peux donc pas dire si le fetch retardait, comme c'était le
+  cas les 22 et 23/10. **La règle du 16/09 exige de relever la valeur AVANT.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trentième constat identique** (21/09 → 24/10).
+- ⚠️ **L'auteur Git du conteneur est `Claude <noreply@anthropic.com>` au
+  démarrage** (config globale). Reconfiguré en `Yanis Ouammou
+  <93429758+stupidguywearingtn@users.noreply.github.com>` **avant le commit**
+  (sinon Vercel Hobby bloque le build). **Treizième confirmation.**
+- ✅ **LE TRAVAIL DU 23/10 EST BIEN SERVI EN PRODUCTION — vérifié avant d'agir.**
+  `/faire-gerer` répondait 200 à **152 345 octets** au démarrage, soit
+  exactement la taille relevée après déploiement hier. **Ne pas réauditer la
+  GLI / le garant ni le mandat de syndic.**
+- Toujours mesurer sur **`https://www.markusimmobilier.fr/…`** (l'hôte sans
+  `www` répond 308). ⚠️ **Et en local, `curl` doit porter `--noproxy '*'`** :
+  sans lui, le proxy du conteneur intercepte `localhost:3000` et la requête
+  échoue (constat neuf, recette en « Techniques apprises »).
+- 🟢 **REQUÊTES CIBLES : RIEN N'ÉTAIT DÛ, et les interdits sont respectés.** Les
+  deux SERP anciennement gelées ont été mesurées le 23/10 → **prochaine échéance
+  le 30/10**. « Prix m2 Villeurbanne » → **26/10** (avec la **veille du lundi**).
+  « Vendre appartement Villeurbanne » → **vers le 27/10**.
+  **Une SERP DE CHANTIER mesurée à la place** (méthode du 15/10, **9ᵉ test
+  positif**) : « plafond de loyer bail signé Villeurbanne encadrement des loyers
+  quel arrêté s'applique novembre 2026 » — **site absent**, attendu (le contenu
+  est déployé aujourd'hui). 📌 **Et elle vaut mieux qu'un relevé de position :
+  LES TROIS SOURCES QUI RÉPONDENT SE CONTREDISENT ET AUCUNE N'EST À JOUR.**
+  `fr.foncia.com` cite l'arrêté **DDT 69-2025-10-23-00004** (juste jusqu'au
+  31/10/2026) ; `manda.fr` cite celui du **22 octobre 2024** (faux) et annonce
+  le nouvel arrêté comme **« prévu pour le 1ᵉʳ novembre 2026 »** alors qu'il est
+  **publié depuis le 23 octobre 2026** ; `cpim.fr` croit la pérennisation
+  **« pas encore inscrite au Sénat »** alors que **le Sénat l'a adoptée le
+  21 octobre 2026**. Le moteur conclut lui-même : « **Je n'ai pas pu consulter
+  directement un texte officiel.** » **Aucune agence locale dans les 9
+  résultats** (Foncia, Manda, CPIM, moicombien, un PDF de l'Assemblée, un PDF du
+  Grand Lyon de 2021). **Motif « le vendeur du produit est seul à répondre » :
+  4ᵉ occurrence (18, 19, 23 et 24/10).**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, comme prescrit le 23/10, et sur LE
+  CANDIDAT N°1 DÉSIGNÉ — la parité des règles de droit entre pages, passée sur
+  le corpus** (désigné n°1 le 22/10, **reporté trois fois**). **Candidat
+  consommé.** Détail en « Chantiers faits ».
+- 🔴 🆕 **LE DÉFAUT CENTRAL EST L'USAGE (c) DU BALAYAGE, CELUI DU 23/10, ET IL
+  SE RÉPÈTE DONC DEUX JOURS DE SUITE : UN SILENCE QUI FERME UN DROIT.**
+  L'encadrement des loyers n'était publié **qu'à un seul endroit du corpus** —
+  l'article `rentabilite-locative-lyon`, écrit pour l'investisseur — pendant que
+  **les trois pages qui vendent la mise en location et la gestion à un bailleur
+  étaient muettes** (`/gestion-locative`, `/faire-gerer`, `/honoraires`). Et
+  **« complément de loyer » était à ZÉRO occurrence sur tout le corpus**, comme
+  « garant » l'était hier. 📌 **Le « zéro » reste le meilleur signal connu.**
+- 🔴 🆕 **ET LE FAIT LE PLUS PÉRISSABLE DU RUN : UN NOUVEL ARRÊTÉ PRÉFECTORAL
+  CHANGE LE PLAFOND DANS UNE SEMAINE.** Relevé sur la source primaire (page
+  « Encadrement des loyers » de la préfecture du Rhône) : **arrêté
+  n° DDT-69-2026-10-23-00004 du 23 octobre 2026** — publié **la veille de ce
+  run** — **pour les baux signés à compter du 01/11/2026** ; l'arrêté
+  **n° DDT 69-2025-10-23-00004** vaut pour ceux signés **à compter du
+  01/11/2025**. **C'est la date de SIGNATURE du bail qui désigne le texte
+  applicable** (fiche **F1314**, vérifiée le **1ᵉʳ août 2026**), donc un bail
+  signé le 30 octobre et un bail signé le 2 novembre ne sont **pas** plafonnés
+  pareil. ⚠️ **Et la fiche officielle elle-même est en retard** : elle renvoie
+  encore aux « loyers de référence **de novembre 2025 à octobre 2026** ».
+- 🔴 🆕 **ÉCHÉANCE À SUIVRE, LA PLUS IMPORTANTE DU DOSSIER : L'ENCADREMENT DES
+  LOYERS S'ÉTEINT LE 23 NOVEMBRE 2026 SAUF VOTE.** Expérimentation ouverte par
+  l'**article 140 de la loi ELAN du 23 novembre 2018**, portée de **cinq à huit
+  ans** par la **loi 3DS du 21 février 2022**. Le **Sénat** a adopté le
+  **21 octobre 2026**, **en première lecture** (scrutin public n° 25), une
+  **prolongation de deux ans à périmètre constant** — aucune nouvelle commune
+  admise, faculté de sortie pour les collectivités —, et porterait la
+  contestation du complément de loyer **de 3 mois à 1 an**. **Le texte n'est pas
+  définitif : il doit retourner devant l'Assemblée nationale.** 🔴 **À
+  REVÉRIFIER APRÈS LE 23/11/2026 — et deux pages du site publient désormais
+  cette date.**
+- 🟢 **LA GRILLE DE LOYERS DE RÉFÉRENCE N'EST VOLONTAIREMENT PAS REPRODUITE, ET
+  C'EST LA DÉCISION DU 14/10 REPRISE TELLE QUELLE** : révisée chaque année, une
+  valeur périmée nuirait plus qu'une absence. **Ce qui est publié est la
+  MÉTADONNÉE** (quel arrêté pour quel bail) **et la STRUCTURE** (majoré = +20 %,
+  minoré = −30 % du loyer de référence de la **catégorie**), toutes deux
+  durables. 📌 **Conséquence publiée que personne d'autre n'énonce : le loyer
+  médian communal (14,6 €/m²) NE PERMET PAS de tester la légalité d'un loyer**,
+  une médiane communale n'étant pas une médiane de catégorie.
+- ✅ **DÉPLOIEMENT CONSTATÉ au 4ᵉ tour de sondage (~t+60 s), les deux témoins
+  d'accord** : `/gestion-locative` **119 709 → 143 708 octets** *et* 6
+  occurrences de la chaîne neuve. **Septième run d'affilée où
+  `git branch -f main HEAD && git push -u origin main` tient** :
+  `97e4689..1e03acb main -> main`, `origin/main == HEAD` vérifié.
+- ✅ **SIGNAUX REVÉRIFIÉS EN PRODUCTION APRÈS DÉPLOIEMENT — ne pas les
+  réauditer.** `/gestion-locative` : **5 blocs JSON-LD** (`RealEstateAgent`,
+  `WebPage`, `Service`, `FAQPage`, `BreadcrumbList`), **1 `<h1>` / 8 `<h2>`**,
+  **parité FAQ visible ↔ `FAQPage` 8/8 questions ET 8/8 réponses ENTIÈRES**
+  (recette du 23/10), `dateModified` **2026-10-24**, **3 506 mots**.
+  `/faire-gerer` : **6 blocs**, **1 `<h1>` / 8 `<h2>`**, **parité 8/8 + 8/8
+  préservée**, `dateModified` **2026-10-24**, **3 053 mots** (2 828 hier).
+  `/blog/rentabilite-locative-lyon` : arrêté 2026 et échéance servis,
+  `dateModified` **2026-10-24**. **`/llms.txt` de production sert les deux
+  arrêtés et l'échéance.** **Sitemap de production : 53 URL dont exactement 3
+  au `lastmod` 2026-10-24** — les trois pages réellement modifiées.
+- ⚠️ **Texte servi par `/gestion-locative` : 2 366 → 3 506 mots, +48,2 %.**
+  📌 **`wc -w` et `split()` mesurés DANS LA MÊME COMMANDE et ils donnent le
+  MÊME nombre aux deux bornes** (2 366 et 3 506) — première fois que les deux
+  compteurs s'accordent exactement, le piège des 20–21/10 n'a pas joué ici.
+- ⚠️ **51 URL au sitemap en LOCAL contre 53 en production — ce n'est PAS une
+  régression** (constat inchangé : 2 annonces en base Supabase inaccessible
+  depuis ce conteneur).
+- ⚠️ **`/estimation`, `lib/dvf.ts` et `lib/estimation.ts` NON touchés** —
+  `git status` vérifié : **diff du chantier = 5 fichiers**
+  (`app/gestion-locative/page.tsx`, `app/faire-gerer/page.tsx`,
+  `app/llms.txt/route.ts`, `lib/blog.ts`, `lib/seo/lastmod.ts`, 148 insertions /
+  7 suppressions). **`npx tsc --noEmit` muet, `npm run build` vert, et les 35
+  problèmes d'ESLint sont tous HORS des fichiers touchés** (`scripts/`,
+  `studio/`) — vérifié fichier par fichier, pas supposé.
+- ⚠️ **Défauts mineurs VUS et volontairement NON corrigés** (inchangés) :
+  `/equipe` enchaîne `h1` sur `h3` (30/09) ; la page 404 sert deux
+  `<meta name="robots">` non contradictoires (04/10) ; 6 `<a>` bruts pour des
+  liens internes (06/10) ; indentation JSX bizarre sur deux pages de quartier
+  (08/10) ; **`/honoraires` ne sert aucun « Dernière mise à jour » visible**
+  (20/10, **cinquième report** — et c'est la page la plus concernée par le
+  chantier du jour qui n'a PAS été touchée, voir « Chantiers en attente »).
+
 **Au 2026-10-23**
 
 - ✅ **AUCUN RUN MANQUÉ, mais la configuration de départ N'ÉTAIT PAS saine — la
@@ -3368,6 +3490,129 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-24 — L'encadrement des loyers n'était publié que dans un article pour investisseurs, et un arrêté publié la veille change le plafond au 1ᵉʳ novembre
+
+**Angle : NON-CONTENU** (balayage de parité du corpus), comme prescrit la veille.
+**Candidat n°1 consommé** après trois reports.
+
+#### 1. Le balayage, et ce qu'il a trouvé
+
+Méthode des 21, 22 et 23/10 appliquée aux **objets de droit locatif** : grepper
+chaque objet dans tout le corpus, puis comparer **ce que chaque page en dit**.
+
+```bash
+for t in "encadrement des loyers" "loyer de référence" "complément de loyer" \
+         "permis de louer" "zone tendue" "préavis" "dépôt de garantie" "Visale"; do
+  printf "%-28s %s\n" "$t" "$(grep -rowi "$t" --include=*.ts --include=*.tsx lib app components | wc -l)"
+done
+```
+
+| Objet | Occurrences | Lecture |
+|---|---|---|
+| `encadrement des loyers` | **2** | une seule page le traite |
+| `loyer de référence` | 10 | dont 3 pour dire qu'il n'en existe pas par quartier |
+| **`complément de loyer`** | **0** | **le mécanisme qui permet de dépasser le plafond est absent de 100 % du corpus** |
+| `zone tendue` | 5 | mais uniquement pour **plafonner les honoraires**, jamais le loyer |
+| `préavis` | **0** | silence, hors périmètre du jour (noté en attente) |
+| plafond du dépôt de garantie | **0** | silence, hors périmètre du jour (noté en attente) |
+
+📌 **Le défaut est l'usage (c) du balayage — un silence qui ferme un droit — et
+c'est le deuxième jour de suite qu'il sort.** `/faire-gerer` chiffrait la part
+locataire de la mise en location **« Villeurbanne étant en zone tendue »**, donc
+la page sait que la commune est en zone tendue, **et ne disait pas que le loyer
+lui-même y est plafonné**. `/gestion-locative` listait **huit obligations du
+bailleur** sans celle-là. Seul `rentabilite-locative-lyon` publiait la règle —
+correctement, annulation du TA de Lyon du 14/10/2025 comprise — **mais pour un
+investisseur qui calcule un rendement, pas pour un bailleur qui signe un bail.**
+
+#### 2. Les faits, pris sur les sources primaires
+
+**Préfecture du Rhône, page « Encadrement des loyers »** (seule source qui donne
+les numéros d'arrêtés) :
+
+| Baux signés à compter du | Arrêté |
+|---|---|
+| **01/11/2026** | **n° DDT-69-2026-10-23-00004 du 23 octobre 2026** (PDF 13,89 Mo, mis en ligne le 23/10/2026 — **la veille de ce run**) |
+| 01/11/2025 | n° DDT 69-2025-10-23-00004 |
+| 01/11/2024 | n° DDT 69-2024-10-22-00004 |
+| 01/11/2023 | n° DDT 69-2023-09-29-00003 *(celui annulé par le TA de Lyon le 14/10/2025)* |
+
+Et la **structure**, durable là où la grille est périssable : **loyer de
+référence majoré = +20 %**, **minoré = −30 %** du loyer de référence, lui-même
+**médiane par catégorie** (secteur, nombre de pièces, époque de construction,
+vide ou meublé), **exprimée en €/m² de surface habitable**. Contrôle confié à
+l'**équipe métropolitaine de l'habitat**, numéro vert **0805 160 111**.
+
+**Fiche F1314 (`service-public.gouv.fr`), vérifiée le 1ᵉʳ août 2026, onglet
+« Lyon, Villeurbanne »** — la mécanique :
+- le **loyer de base** ne doit pas dépasser le majoré **en vigueur à la date de
+  signature du bail** ;
+- **loyer de base, loyer de référence et loyer de référence majoré** doivent
+  figurer **au bail ET dans l'annonce** ;
+- bail muet → **mise en demeure du locataire sous 1 mois** de la prise d'effet,
+  **réponse du bailleur sous 1 mois**, puis **juge des contentieux de la
+  protection sous 3 mois** ;
+- dépassement → **diminution + remboursement des trop-perçus**, CDC puis juge,
+  **signalement au préfet**, **mise en demeure** puis **amende de 5 000 €
+  (personne physique) / 15 000 € (personne morale)** ;
+- **complément de loyer** : deux conditions **cumulatives** (caractéristiques
+  particulières **ET** loyer de base **déjà égal** au majoré), **interdit depuis
+  le 18 août 2022** en présence d'**une seule** caractéristique listée (DPE F ou
+  G, sanitaires sur le palier, humidité, vis-à-vis < 10 m, fenêtres non étanches,
+  infiltrations, évacuation d'eau défaillante depuis moins de 3 mois, électricité
+  dégradée, mauvaise exposition), **contestable devant la CDC dans les 3 mois de
+  la signature**, **la preuve incombant au bailleur ou à son agence**.
+
+**Sénat, dossier de la PPL « pour retrouver la confiance et l'équilibre dans les
+rapports locatifs »** : l'expérimentation **prend fin le 23 novembre 2026** ;
+**prolongation de deux ans à périmètre constant adoptée en première lecture le
+21 octobre 2026** (scrutin public n° 25) ; **texte non définitif**, retour à
+l'Assemblée nationale ; contestation du complément **portée de 3 mois à 1 an**.
+
+#### 3. Ce qui a été écrit
+
+- **`/gestion-locative`** — section neuve **« Le plafond / Quel plafond de loyer
+  s'applique à un bail signé à Villeurbanne aujourd'hui ? »** (réponse directe
+  en tête, six paragraphes autonomes), **le plafond ajouté en tête de la liste
+  des obligations du bailleur** (la page documentait la règle et sa propre liste
+  l'ignorait — leçon du 21/10 appliquée), **deux questions de FAQ neuves** (le
+  bail du 30 octobre contre celui du 2 novembre ; la contestation du complément),
+  **sources inscrites dans l'en-tête du fichier**. **2 366 → 3 506 mots.**
+- **`/faire-gerer`** — la réponse « qui paie les honoraires de mise en
+  location » dit désormais que **le loyer lui-même est plafonné**, avec l'arrêté
+  applicable. **Une seule phrase ajoutée** : la page a été refondue hier, et le
+  lien vers `/gestion-locative` existait déjà dans le paragraphe voisin.
+- **`/blog/rentabilite-locative-lyon`** — **deux paragraphes** ajoutés au
+  passage existant : les deux arrêtés qui se succèdent **à une semaine
+  d'intervalle**, la structure +20 / −30, et **l'échéance du 23 novembre 2026**
+  avec le vote du Sénat. 📌 **Le passage existant n'a pas été réécrit** : il est
+  juste, et sa décision de ne pas publier la grille est reprise telle quelle.
+- **`/llms.txt`** — la règle complète sur la ligne `/gestion-locative`.
+- **Correction de cadre, sans changer une date** : la liste de
+  `/gestion-locative` énonçait la décence énergétique en **« DPE au minimum
+  classé F, puis E en 2028, D en 2034 »** quand la FAQ de la même page,
+  `/llms.txt` et le blog l'énoncent en **« G interdite, puis F, puis E »**.
+  **Les deux cadres sont justes et disent la même chose** — mais un passage
+  extrait seul se lit « E interdite en 2028 », exactement l'inversion qu'un LLM
+  publierait. **Les deux cadres sont désormais écrits côte à côte.**
+
+#### 4. Ce qui a été décidé de NE PAS faire
+
+- 🔴 **`/honoraires` n'a pas été touchée, alors qu'elle est la troisième page
+  muette.** Son seul lien avec le sujet est le **plafond d'honoraires** de la
+  zone tendue, déjà publié et juste ; y ajouter le plafond de **loyer** aurait
+  dupliqué `/gestion-locative` sans que l'architecture du site la désigne pour
+  ça. **Son « Dernière mise à jour » manquant reste au backlog (5ᵉ report).**
+- 🔴 **La grille de loyers de référence n'est pas reproduite** (décision du
+  14/10 reprise). **Et le PDF de l'arrêté 2026 n'a pas été ouvert** : 13,89 Mo,
+  aucune valeur n'en est publiée, donc rien n'en dépend.
+- ⚠️ **Rien n'a été écrit sur le sort des baux en cours si l'expérimentation
+  s'éteint le 23/11/2026** : aucun texte publié ne le règle. **La page le dit
+  explicitement au lieu de le supposer.**
+- ⚠️ **Le silence sur le préavis (0 occurrence) et sur le plafond du dépôt de
+  garantie (0 occurrence) n'a pas été comblé** : hors périmètre d'un run, et
+  un ajout de plus aurait dilué la section. **Inscrits en attente.**
 
 ### 2026-10-23 — La page vendait la garantie loyers impayés sans dire qu'elle ferme le droit d'exiger un garant, et le mot « caution » était absent de tout le corpus
 
@@ -8613,6 +8858,109 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — la parité des règles de droit entre
+pages, passée sur le corpus** (24/10 : **l'encadrement des loyers n'était publié
+qu'à un seul endroit** — l'article `rentabilite-locative-lyon`, écrit pour
+l'investisseur — pendant que les trois pages qui vendent la mise en location et
+la gestion étaient **muettes**, et que **« complément de loyer » était à zéro
+occurrence du corpus**. Usage **(c)** du balayage — un silence qui ferme un
+droit — **deux jours de suite**. Faits publiés : les deux arrêtés préfectoraux
+qui se succèdent (**n° DDT 69-2025-10-23-00004** jusqu'au 31/10/2026,
+**n° DDT-69-2026-10-23-00004 du 23 octobre 2026** à compter du 01/11/2026), la
+date de **signature** comme critère, la structure **+20 % / −30 %**, les
+mentions obligatoires du bail et de l'annonce, les recours du locataire,
+l'amende de **5 000 / 15 000 €**, le complément de loyer et son interdiction du
+**18 août 2022**, et **l'échéance du 23 novembre 2026** avec la prolongation
+adoptée par le Sénat le **21 octobre 2026**. `/gestion-locative` 2 366 → 3 506
+mots, parité 8/8 + 8/8. **Candidat n°1 consommé après trois reports.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (25/10) DOIT ÊTRE DU CONTENU**
+(alternance : 22/10 non-contenu → 23/10 contenu → 24/10 non-contenu).
+**Candidats, par ordre d'impact :**
+  1. ⚠️ **`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** — avec son
+     **périmètre imposé du 11/10** : réécriture **procédurale** (méthode pas à
+     pas, zéro nouveau tableau de marché) **ou** fusion. **Ne pas rouvrir
+     l'angle « chiffres du marché », fermé par la mesure.** 📌 **Candidat
+     contenu n°1 par défaut depuis le 23/10 : les pages de droit sont faites.**
+  2. 🟢 🆕 **LA FAMILLE DE SERP IDENTIFIÉE LE 23/10 VIENT D'ÊTRE CONFIRMÉE UNE
+     QUATRIÈME FOIS, ET LE SUJET DU JOUR EN OUVRE DEUX AUTRES.** Questions de
+     droit locatif dont la SERP est tenue par des **vendeurs du produit** et
+     jamais par une agence ni par un texte. **À mesurer avant d'écrire** : ce
+     que couvre une GLI et ce qu'elle exclut, Visale vs GLI, **le dépôt de
+     garantie (plafond, délai de restitution, retenues — `0 occurrence` du
+     plafond dans notre corpus, mesuré le 24/10)**, **le préavis du locataire
+     et du bailleur en zone tendue (`0 occurrence` dans tout le corpus,
+     mesuré le 24/10 — et Villeurbanne EST en zone tendue, ce que le site dit
+     déjà pour les honoraires)**, la caution solidaire vs simple.
+  3. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour
+     cette place.
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (26/10 — jour de la VEILLE
+hebdomadaire ET de « prix m2 Villeurbanne »), par ordre d'impact :**
+  1. 🔴 **RÉEXAMINER LA THÈSE « AFFICHÉ ≠ SIGNÉ »** — inchangé depuis le 23/10,
+     **non fait** : quatre mesures concordantes (`pap.fr` +1,6 %,
+     `blog.qoridor.fr` −1,7 %, `efficity` −2,4 %, `squarehabitat` −3,5 %) contre
+     16 à 45 % au-dessus pour tout ce qui a été relevé du 27/09 au 18/10.
+     ⚠️ **Travail de MESURE d'abord** : moyennes 2026 contre médiane de ventes
+     signées 2025. **La question se tranche avec DVF 2026 sur la commune**
+     (recette du 14/10), pas avec les SERP. 🔴 **Ne RIEN réécrire avant.**
+  2. 🔴 **LE CONTRÔLE « LA FICHE COMPRIME-T-ELLE UN CALENDRIER ? » passé sur les
+     autres calendriers du corpus** (candidat du 22/10, **non fait deux fois**).
+     Restants, vérifiés **en vigueur** mais jamais **palier par palier contre le
+     décret** : décence énergétique (G/F/E), DPE collectif, plan pluriannuel de
+     travaux, validité des DPE. 📌 **Et le 24/10 lui ajoute un cas d'école
+     inverse, à ne pas confondre** : notre propre page énonçait le MÊME
+     calendrier dans DEUX CADRES opposés (« minimum F » vs « G interdite »),
+     tous deux justes. **Chercher aussi les cadres mélangés, pas seulement les
+     dates comprimées.**
+  3. ⚠️ **`/honoraires` ne sert AUCUN « Dernière mise à jour » visible**
+     (identifié le 20/10, **non fait les 20, 21, 22, 23 et 24/10 — cinquième
+     report**). Les deux autres pages du triptyque en ont un. **À faire en
+     lisant d'abord la structure de la page** : elle n'utilise ni
+     `seo-landing.tsx` ni l'inline de `/faire-gerer`. *(Son `dateModified`
+     JSON-LD est bien à jour.)*
+  4. 🟢 **`blog.qoridor.fr`** — inchangé depuis le 19/10 : lire une de ses pages
+     de quartier et établir **ce que nous publions qu'il ne publie pas**.
+     📌 **À fusionner avec le candidat n°1.**
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`). **Aucun défaut connu :
+     prévention.**
+
+→ 🔴 **REQUÊTES CIBLES — ce qui est dû le 25/10 : RIEN.** « Prix m2
+Villeurbanne » → **26/10** (hebdomadaire, **avec la veille du lundi**). « Vendre
+appartement Villeurbanne » → **vers le 27/10**. Les deux SERP de marque interdite
+(« agence immobilière Villeurbanne », « estimation immobilière Villeurbanne »)
+→ **30/10** (hebdomadaire, dernière mesure le 23/10, site absent des deux).
+
+🆕 🔴 **ÉCHÉANCE JURIDIQUE À SURVEILLER — LA PLUS IMPORTANTE DU BACKLOG, ET ELLE
+A UNE DATE : 23 NOVEMBRE 2026.** L'encadrement des loyers de Lyon et Villeurbanne
+s'éteint ce jour-là **sauf adoption définitive** de la prolongation votée par le
+Sénat le 21/10/2026 (texte à l'Assemblée nationale). **Trois pages publient
+désormais cette date** (`/gestion-locative`, `/faire-gerer` pour l'arrêté,
+`/blog/rentabilite-locative-lyon`) **et `/llms.txt`**. 📌 **À revérifier dès le
+24/11/2026, et plus tôt si un run passe à proximité** : si le texte est adopté,
+la date et la durée changent ; s'il ne l'est pas, c'est le dispositif entier
+qu'il faut requalifier au passé. **Ne pas laisser cette date se périmer sur le
+site : c'est précisément le défaut qu'on reproche à `laforet.com` depuis le
+20/10.**
+
+🆕 ⚠️ **SERP DE CHANTIER À REMESURER — quatre échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à courir »**
+  (21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (22/10) → **vers le 05/11**.
+- **« peut-on demander un garant si le propriétaire a déjà une assurance loyers
+  impayés »** (23/10) → **vers le 06/11**.
+- 🆕 **« plafond de loyer bail signé Villeurbanne encadrement des loyers quel
+  arrêté s'applique novembre 2026 »** (24/10, site absent au relevé) → **vers
+  le 07/11**. 📌 **Repère** : 9 résultats, **trois sources qui se contredisent
+  et aucune à jour** (Foncia sur l'arrêté 2025, Manda sur celui de 2024 avec le
+  nouveau annoncé « à venir », CPIM sur une pérennisation « pas encore inscrite
+  au Sénat »), **aucune agence locale**, et le moteur avoue n'avoir consulté
+  aucun texte officiel.
+
 **Angle du dernier run : CONTENU — `/faire-gerer`, le droit jamais revérifié
 côté contenu** (23/10 : **un défaut d'une famille neuve — un SILENCE qui ferme
 un droit au lecteur.** La page vendait la GLI sans dire qu'un bailleur
@@ -9742,6 +10090,25 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-10-24 — Trois points laissés ouverts par le chantier de l'encadrement des loyers
+
+- 🔴 **Que deviennent les BAUX EN COURS si l'expérimentation s'éteint le
+  23 novembre 2026 ?** Aucun texte publié ne le règle au jour du run. La page le
+  dit explicitement plutôt que de le supposer. **À trancher dès que le sort de
+  la PPL est connu** (adoption définitive ou extinction), et non avant.
+- ⚠️ **L'orthographe exacte du numéro d'arrêté 2026.** La préfecture écrit, dans
+  le libellé de son propre lien, « **Arrêté préfectoral n° DDT - 69-2026-10-23-00004**
+  du 23 octobre 2026 » (avec espaces autour du tiret) alors qu'elle écrivait
+  « **N°DDT 69-2025-10-23-00004** » l'an dernier : **sa propre numérotation est
+  typographiquement incohérente d'une année sur l'autre.** Nous publions la forme
+  compactée **`DDT-69-2026-10-23-00004`**. **Sans effet sur le droit, mais à
+  surveiller si un jour une recherche exacte du numéro doit nous trouver.**
+- ⚠️ **Le ratio +20 % / −30 % est-il national ou propre au Rhône ?** Il est
+  publié par la préfecture du Rhône pour Lyon et Villeurbanne, et c'est à ce
+  titre qu'il est écrit sur le site (source nommée). **La loi borne ces écarts,
+  mais la valeur retenue est celle de l'arrêté local** : ne pas la généraliser à
+  une autre agglomération si une page future en parlait.
+
 ### 2026-10-23
 
 **1. ⚠️ L'interdiction de cumul de l'article 22-1 s'applique-t-elle de la même
@@ -10840,6 +11207,43 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-24 — J'ai relevé `origin/main` après le fetch, pas avant, et je me suis donc privé de la seule mesure que ce fetch servait à produire
+
+**1. 🔴 LA RÈGLE DU 16/09 DIT « `git fetch` EN PREMIER ». ELLE NE DIT PAS
+POURQUOI, ET C'EST POUR ÇA QUE JE L'AI MAL APPLIQUÉE.** J'ai bien lancé le fetch
+avant tout contrôle, puis relevé `origin/main == main == HEAD == 97e4689` et
+conclu « configuration saine ». **Mais la valeur utile n'est pas celle d'après le
+fetch : c'est l'écart entre avant et après**, qui dit si le conteneur démarrait
+en retard. Les 22 et 23/10, cet écart valait **deux** et **trois** commits — et
+c'est ce constat, répété, qui justifie la règle. **Aujourd'hui je ne peux rien en
+dire** : mon premier `git log` portait sur `main` local, et `origin/main` n'a été
+lu qu'après le fetch.
+
+```bash
+# la bonne séquence, dans CET ordre, en une commande pour qu'elle ne se sépare pas
+A=$(git rev-parse origin/main 2>/dev/null || echo "absent")
+git fetch origin -q
+B=$(git rev-parse origin/main)
+echo "origin/main avant=$A après=$B  (égal ⇒ le conteneur ne retardait pas)"
+```
+
+📌 **La leçon n'est pas « penser au fetch », c'est « capturer la valeur AVANT
+l'action qui la modifie ».** Le même défaut avait produit, le 21/10, un compteur
+de mots mesuré le matin avec un outil et le soir avec un autre : **une mesure
+d'avant/après n'a de valeur que prise dans la même commande que l'action.**
+⚠️ **Conséquence pour demain : la ligne « aucun run manqué » du jour est
+établie autrement** — par les deux commits datés du 23/10 dans l'historique, ce
+qui est suffisant pour cette question-là, mais ne remplace pas l'autre mesure.
+
+**2. ⚠️ MON PREMIER SONDAGE LOCAL A ÉCHOUÉ SUR `localhost`, ET LE PROXY EN EST
+LA CAUSE.** `curl -s http://localhost:3000/gestion-locative` sortait en erreur
+alors que `next start` annonçait « Ready in 149 ms » : le proxy HTTPS du
+conteneur intercepte aussi `localhost`. **Recette :** `curl --noproxy '*'` pour
+tout contrôle local. 📌 **Et le symptôme était trompeur** : la boucle d'attente
+« serveur prêt ? » échouait 30 fois de suite, ce qui ressemble à un serveur mort
+— j'ai failli relancer le build au lieu de lire le log du serveur, qui disait
+l'inverse. **Lire le log du processus avant de conclure qu'il est en panne.**
 
 ### 2026-10-23 — Deux inférences de ma propre plume, attrapées à la relecture adversariale avant le push, et un détecteur de mots collés qui remonte 20 faux positifs si on l'écrit en grep
 
@@ -12266,6 +12670,122 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-24 — Le contrôle « quel TEXTE LOCAL fixe le prix de ce que la page vend ? », la préfecture comme source plus fraîche que la fiche officielle, et la métadonnée qui ne périme pas
+
+**1. 🔴 LE CONTRÔLE NEUF DU RUN, ET IL PART DU PRIX, PAS DU DROIT :
+« LE PRIX DE CE QUE LA PAGE VEND EST-IL PLAFONNÉ PAR UN TEXTE LOCAL QU'ELLE NE
+NOMME PAS ? »**
+
+Les six contrôles accumulés :
+- 17/10 : « la règle citée est-elle encore en vigueur ? »
+- 19/10 : « la source citée dit-elle ce que la page affirme ? »
+- 20/10 : « le périmètre est-il celui de la source ? »
+- 21/10 : « une autre de nos pages dit-elle déjà le contraire ? »
+- 22/10 : « la fiche officielle comprime-t-elle un calendrier ? »
+- 23/10 : « la page vend-elle une prestation sans dire ce qu'elle FERME ? »
+
+**Le défaut du jour passe sous les six.** `/faire-gerer` et `/gestion-locative`
+chiffrent **leurs honoraires** avec exactitude, citent **le plafond
+d'honoraires** de la zone tendue, et ne disent pas que **le loyer** — la somme
+sur laquelle tout leur calcul est assis — est lui-même plafonné par un **arrêté
+préfectoral**. Le contrôle :
+
+> **Pour chaque somme qu'une page met en face du client, chercher s'il existe un
+> TEXTE LOCAL (arrêté préfectoral, délibération, barème départemental) qui en
+> fixe un plafond ou un plancher.** Si la page cite le plafond de SA propre
+> rémunération mais pas celui de l'assiette, elle vend un calcul incomplet.
+
+**Le cadrage se fait en deux greps, et c'est le second qui parle :**
+
+```bash
+# le site sait-il que la commune est en zone tendue ? (ici : oui, 5 fois)
+grep -rowi "zone tendue" --include=*.tsx --include=*.ts app lib components | wc -l
+# mais à quoi l'applique-t-il ? (ici : aux HONORAIRES seulement)
+grep -rn "zone tendue" --include=*.tsx --include=*.ts app lib | cut -c1-160
+# et le mécanisme du plafond de LOYER : zéro
+grep -rowi "complément de loyer" --include=*.tsx --include=*.ts app lib components | wc -l
+```
+
+📌 **Le motif « le site connaît la qualification juridique et ne lui applique
+qu'une seule de ses conséquences » est le signal.** **Autres assiettes du site à
+passer au même crible** : le prix de vente (aucun plafond, mais un **barème de
+droits de mutation** voté par la Métropole, déjà publié), les charges de
+copropriété (**plafond de l'état daté**, déjà publié), **le dépôt de garantie**
+(plafond légal, **zéro occurrence**), **le préavis** (réduit en zone tendue,
+**zéro occurrence**).
+
+**2. 🟢 POUR UN TEXTE LOCAL, LA PRÉFECTURE EST PLUS FRAÎCHE QUE LA FICHE
+OFFICIELLE — ET C'EST L'INVERSE DE CE QUE LE JOURNAL SUPPOSAIT.**
+
+Les 20 et 22/10 ont établi que `service-public` **élague l'historique**. Le jour
+même, elle **retarde aussi sur le présent** : la fiche **F1314**, pourtant
+« vérifiée le 1ᵉʳ août 2026 », renvoie aux « loyers de référence **de novembre
+2025 à octobre 2026** », quand la préfecture du Rhône publiait **depuis la
+veille** l'arrêté applicable aux baux signés à compter du 01/11/2026.
+
+```bash
+# la page de la préfecture porte la DATE DE MISE EN LIGNE de chaque PDF
+curl -s "https://www.rhone.gouv.fr/.../Encadrement-des-loyers" \
+ | grep -oE "Arrêté préfectoral[^<]{0,80}|PDF - [0-9,]+ Mb - [0-9/]{10}"
+```
+
+📌 **Répartition des rôles, maintenant à trois sources** : la **préfecture** (ou
+le site de la collectivité) donne **le texte applicable aujourd'hui et son
+numéro** ; la **fiche service-public** donne **la mécanique des droits et des
+recours**, stable d'une année sur l'autre ; l'**ANIL** donne **la généalogie**.
+**Ne jamais demander à l'une le rôle d'une autre.**
+
+**3. 🟢 QUAND UNE VALEUR EST PÉRISSABLE, PUBLIER LA MÉTADONNÉE ET LA STRUCTURE —
+ELLES NE PÉRIMENT PAS, ET ELLES SE FONT CITER.**
+
+Le dilemme du jour : les loyers de référence changent **chaque année** (et la
+grille 2026 fait 13,89 Mo). Les publier, c'est programmer une page fausse au
+1ᵉʳ novembre 2027 ; se taire, c'est laisser la place. **Troisième voie, retenue :**
+
+| Ce qui périme — **non publié** | Ce qui ne périme pas — **publié** |
+|---|---|
+| les €/m² de chaque catégorie | **quel arrêté s'applique à quel bail** (n° + date) |
+| le plafond d'un logement donné | **le critère** : la date de **signature** du bail |
+| — | **la structure** : majoré = **+20 %**, minoré = **−30 %** |
+| — | **les recours, délais et sanctions** (1 mois / 1 mois / 3 mois ; 5 000 / 15 000 €) |
+| — | **l'échéance du dispositif** (23/11/2026) et l'état du vote |
+
+📌 **Et la métadonnée bat la valeur sur le terrain GEO, ce que la SERP du jour
+démontre** : les trois sources qui répondent publient **des plafonds** (donc
+périssables, et deux se trompent déjà d'arrêté) ; **aucune ne publie quel arrêté
+s'applique à quelle date de signature**, qui est pourtant la seule chose dont un
+bailleur a besoin pour agir. **Corollaire opérationnel : écrire le NUMÉRO du
+texte.** Une page qui cite « l'arrêté n° DDT-69-2026-10-23-00004 du 23 octobre
+2026 » est vérifiable par un moteur ; une page qui dit « l'arrêté en vigueur »
+ne l'est pas.
+
+**4. ⚠️ DEUX CADRES JUSTES POUR LA MÊME RÈGLE SONT UN DÉFAUT GEO, MÊME SANS
+AUCUNE ERREUR — ET C'EST UN TYPE DE DÉFAUT NEUF.**
+
+`/gestion-locative` écrivait « **DPE au minimum classé F**, puis **E** au
+1ᵉʳ janvier 2028 et **D** au 1ᵉʳ janvier 2034 » ; sa propre FAQ, `/llms.txt` et
+le blog écrivent « **G interdite** depuis le 1ᵉʳ janvier 2025, **F** en 2028,
+**E** en 2034 ». **Les deux disent exactement la même chose** — « minimum F » ⇔
+« G interdite ». **Aucune date n'est fausse, aucun contrôle existant ne lève
+quoi que ce soit.** Mais un LLM qui extrait la liste seule publie « **E
+interdite en 2028** », soit un palier d'écart.
+
+```bash
+# repérer un calendrier énoncé dans deux cadres opposés
+grep -rn "au minimum classé\|minimum class" --include=*.tsx --include=*.ts app lib
+grep -rn "interdit depuis le 1\|ne peut plus être lou" --include=*.tsx --include=*.ts app lib
+# si les deux listes citent les MÊMES dates avec des LETTRES décalées d'un cran : c'est ça
+```
+
+📌 **Correction appliquée : écrire les deux cadres côte à côte** (« au minimum
+classé F — autrement dit la classe G ne peut plus être louée — »), **sans
+toucher aux dates**. **Un passage doit se suffire à lui-même, y compris contre
+une lecture inverse.**
+
+**5. ⚠️ `curl` LOCAL DOIT PORTER `--noproxy '*'`.** Le proxy HTTPS du conteneur
+intercepte `localhost:3000` et fait échouer tout sondage local, même quand
+`next start` annonce « Ready ». Détail en « Erreurs commises ».
 
 ### 2026-10-23 — Le contrôle « que la page ne dit PAS », la redirection de service-public.fr, et l'ANIL comme source d'histoire législative quand Légifrance est muré
 
