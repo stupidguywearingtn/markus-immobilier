@@ -46,6 +46,23 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *  - calendrier de décence énergétique (G au 1ᵉʳ janvier 2025, F en 2028,
  *    E en 2034) → loi Climat et Résilience n° 2021-1104 du 22 août 2021.
  *  - assurance PNO obligatoire en copropriété → loi n° 65-557, art. 9-1.
+ *  - encadrement des loyers (section « Le plafond », ajoutée le 2026-10-24) :
+ *    préfecture du Rhône, page « Encadrement des loyers » — dispositif en
+ *    vigueur à Lyon et Villeurbanne depuis le 1ᵉʳ novembre 2021, loyer de
+ *    référence majoré = +20 % / minoré = −30 %, arrêté n° DDT 69-2025-10-23-00004
+ *    pour les baux signés à compter du 01/11/2025 et arrêté
+ *    n° DDT-69-2026-10-23-00004 du 23 octobre 2026 pour ceux signés à compter
+ *    du 01/11/2026 ; mise en demeure du préfet puis amende de 5 000 € / 15 000 €.
+ *    Mécanique du bail, du complément de loyer et des recours → fiche F1314
+ *    (service-public.gouv.fr), vérifiée le 1ᵉʳ août 2026, onglet
+ *    « Lyon, Villeurbanne ». Terme de l'expérimentation (23 novembre 2026,
+ *    loi ELAN art. 140 portée de 5 à 8 ans par la loi 3DS du 21 février 2022)
+ *    et prolongation de deux ans adoptée par le Sénat en première lecture le
+ *    21 octobre 2026 (scrutin public n° 25, texte non définitif) → dossier
+ *    législatif du Sénat, PPL « pour retrouver la confiance et l'équilibre
+ *    dans les rapports locatifs ».
+ *    ⚠️ La GRILLE de loyers de référence n'est volontairement PAS reproduite :
+ *    révisée chaque année, une valeur périmée nuirait plus qu'une absence.
  *  Aucune durée de gestion « en heures par an » n'est avancée : personne ne
  *  l'a mesurée ici, et l'inventer est exclu.
  */
@@ -131,6 +148,14 @@ const A =
 
 /** FAQ visible — le JSON-LD FAQPage est généré depuis ce MÊME tableau. */
 const FAQ: FaqItem[] = [
+  {
+    q: "Un bail signé le 30 octobre 2026 et un bail signé le 2 novembre 2026 sont-ils plafonnés au même montant ?",
+    a: "Non : ils relèvent de deux arrêtés préfectoraux différents. Le plafond applicable est celui de l'arrêté en vigueur à la date de signature du bail. Un bail signé le 30 octobre 2026 relève de l'arrêté n° DDT 69-2025-10-23-00004, qui vise les baux signés à compter du 1ᵉʳ novembre 2025 ; un bail signé le 2 novembre 2026 relève de l'arrêté n° DDT-69-2026-10-23-00004 du 23 octobre 2026, qui vise les baux signés à compter du 1ᵉʳ novembre 2026. Les deux grilles sont publiées par la préfecture du Rhône et c'est la seule source à consulter avant de fixer un loyer : nous ne reproduisons pas ces montants, qui sont révisés chaque année.",
+  },
+  {
+    q: "Le locataire peut-il contester un complément de loyer, et dans quel délai ?",
+    a: "Oui, dans un délai de trois mois à compter de la signature du bail, en saisissant la commission départementale de conciliation — et c'est au bailleur ou à son agence de prouver que le complément est justifié, pas au locataire de prouver l'inverse. Si la conciliation échoue, le locataire a trois mois à compter de la réception de l'avis de la commission pour saisir le juge des contentieux de la protection, qui peut annuler ou diminuer le complément ; le loyer qu'il fixe s'applique à partir de la date d'entrée en vigueur du bail, donc rétroactivement. Source : service-public.gouv.fr, fiche F1314, vérifiée le 1ᵉʳ août 2026. La proposition de loi adoptée par le Sénat le 21 octobre 2026 porterait ce délai de trois mois à un an, mais elle n'est pas définitivement adoptée.",
+  },
   {
     q: "L'option pour le régime réel est-elle réversible ?",
     a: `Non, pas immédiatement : l'option est exercée pour trois ans et elle est irrévocable pendant cette période. Elle se prend sans formalité particulière, par la simple souscription de la déclaration n° 2044 dans le délai de dépôt de la déclaration de revenus. Au terme des trois ans, en revanche, l'option cesse de produire ses effets : vous retrouvez le choix chaque année. Si vous continuez à déposer une 2044 au-delà de ce terme, l'administration considère que vous exercez une option annuelle, et non plus triennale — autrement dit vous pouvez revenir à l'abattement forfaitaire d'une année sur l'autre, sans attendre un nouveau cycle de trois ans. Source : BOFiP, BOI-RFPI-DECLA-10 § 240 et § 250, version en vigueur depuis le 6 mars 2025.`,
@@ -420,15 +445,129 @@ export default function GestionLocativePage() {
               </p>
             ),
             bullets: [
-              "Établir un bail conforme au contrat type réglementaire et y annexer le dossier de diagnostic technique complet (DPE, état des risques, et selon l'immeuble plomb, amiante, électricité, gaz).",
+              "Fixer le loyer de base dans la limite du loyer de référence majoré de l'arrêté préfectoral en vigueur à la date de signature du bail, et faire figurer au bail comme dans l'annonce le loyer de base, le loyer de référence et le loyer de référence majoré — détaillé dans la section suivante.",
+      "Établir un bail conforme au contrat type réglementaire et y annexer le dossier de diagnostic technique complet (DPE, état des risques, et selon l'immeuble plomb, amiante, électricité, gaz).",
               "Dresser un état des lieux d'entrée et un état des lieux de sortie, contradictoires et comparables — c'est la pièce qui décide du sort du dépôt de garantie.",
               "Remettre une quittance gratuite dès que le locataire la demande, en ventilant loyer et charges (article 21 de la loi du 6 juillet 1989).",
               "Réviser le loyer une fois par an si le bail comporte une clause de révision, en appliquant l'indice de référence des loyers du trimestre prévu au contrat — SAUF si le logement est classé F ou G au DPE : réviser le loyer y est alors interdit, pour tout bail signé, renouvelé ou tacitement reconduit depuis le 24 août 2022 en métropole (service-public.fr, fiche F1310, vérifiée le 1ᵉʳ août 2026).",
               "Régulariser les charges annuellement et communiquer au locataire leur décompte par nature un mois avant la régularisation (article 23 de la loi du 6 juillet 1989 ; article 25-10 pour un meublé), puis tenir les justificatifs à sa disposition pendant les six mois qui suivent.",
-              "Maintenir le logement décent, ce qui inclut depuis le 1ᵉʳ janvier 2025 un DPE au minimum classé F, puis E au 1ᵉʳ janvier 2028 et D au 1ᵉʳ janvier 2034.",
+              "Maintenir le logement décent, ce qui inclut depuis le 1ᵉʳ janvier 2025 un DPE au minimum classé F — autrement dit la classe G ne peut plus être louée —, puis au minimum E au 1ᵉʳ janvier 2028 (la classe F est alors exclue) et au minimum D au 1ᵉʳ janvier 2034 (la classe E est alors exclue).",
               "Restituer le dépôt de garantie dans le mois suivant la remise des clés si les deux états des lieux concordent, dans les deux mois s'ils révèlent des dégradations imputables au locataire.",
               "Souscrire au minimum une assurance de responsabilité civile propriétaire non occupant, obligatoire en copropriété (article 9-1 de la loi du 10 juillet 1965).",
             ],
+          },
+          {
+            eyebrow: "Le plafond",
+            h2: "Quel plafond de loyer s'applique à un bail signé à Villeurbanne aujourd'hui ?",
+            body: (
+              <>
+                <p>
+                  <strong>
+                    Le loyer hors charges d&apos;un logement loué à Villeurbanne
+                    ne peut pas dépasser le « loyer de référence majoré » fixé
+                    par l&apos;arrêté préfectoral en vigueur à la date de
+                    signature du bail.
+                  </strong>{" "}
+                  Pour un bail signé jusqu&apos;au 31 octobre 2026, ce texte est
+                  l&apos;arrêté n° DDT 69-2025-10-23-00004 ; pour un bail signé à
+                  compter du 1ᵉʳ novembre 2026, c&apos;est l&apos;arrêté{" "}
+                  <strong>n° DDT-69-2026-10-23-00004 du 23 octobre 2026</strong>,
+                  publié par la préfecture du Rhône. C&apos;est la date de
+                  signature du bail qui désigne le texte applicable — ni la date
+                  de mise en annonce, ni celle de l&apos;entrée dans les lieux.
+                </p>
+                <p>
+                  Ce plafond n&apos;est pas un prix unique. L&apos;arrêté fixe un
+                  loyer de référence par <em>catégorie</em> de logement — secteur
+                  géographique, nombre de pièces, époque de construction,
+                  location vide ou meublée — exprimé en euros par mètre carré de
+                  surface habitable. Le loyer de référence majoré lui est{" "}
+                  <strong>supérieur de 20 %</strong>, et le loyer de référence
+                  minoré <strong>inférieur de 30 %</strong>. D&apos;où une
+                  conséquence que peu de pages énoncent : le loyer médian
+                  communal de {LOYER_MEDIAN_HC.toLocaleString("fr-FR")} €/m² qui
+                  sert de repère ailleurs sur cette page{" "}
+                  <strong>ne permet pas de tester la légalité d&apos;un loyer</strong>,
+                  parce qu&apos;une médiane communale n&apos;est pas une médiane
+                  de catégorie. Nous ne reproduisons pas la grille ici : elle est
+                  révisée chaque année, et une valeur périmée coûterait plus cher
+                  qu&apos;une absence de valeur.
+                </p>
+                <p>
+                  Trois montants doivent figurer <strong>dans le bail et dans
+                  l&apos;annonce</strong> : le loyer de base, le loyer de
+                  référence et le loyer de référence majoré de la catégorie du
+                  logement. Si le bail omet le loyer de référence majoré, le
+                  locataire a <strong>un mois</strong> à compter de la prise
+                  d&apos;effet du bail pour mettre le bailleur en demeure de
+                  l&apos;indiquer, par lettre recommandée avec accusé de
+                  réception ; le bailleur a un mois pour répondre, et à défaut de
+                  réponse ou en cas de refus, le locataire peut saisir le juge
+                  des contentieux de la protection dans les trois mois suivants
+                  pour obtenir une diminution de loyer.
+                </p>
+                <p>
+                  Si le loyer de base dépasse le plafond — qu&apos;il soit
+                  mentionné au bail ou non — le locataire peut demander la
+                  diminution du loyer et le remboursement des trop-perçus,
+                  saisir la commission départementale de conciliation puis le
+                  juge, et signaler le dépassement à la préfecture. Le préfet
+                  peut alors mettre le bailleur en demeure de mettre le bail en
+                  conformité et de rembourser ; à défaut, l&apos;amende
+                  administrative atteint <strong>5 000 €</strong> pour une
+                  personne physique et <strong>15 000 €</strong> pour une
+                  personne morale. Le contrôle du dispositif est confié à
+                  l&apos;équipe métropolitaine de l&apos;habitat, et un numéro
+                  vert (0805 160 111) renseigne les particuliers.
+                </p>
+                <p>
+                  Un <strong>complément de loyer</strong> permet de dépasser le
+                  plafond, mais à deux conditions cumulatives : le logement
+                  présente des caractéristiques particulières de localisation ou
+                  de confort, <em>et</em> le loyer de base est déjà égal au loyer
+                  de référence majoré. Son montant et les caractéristiques qui le
+                  justifient doivent figurer au bail, et la preuve en incombe au
+                  bailleur ou à son agence. Depuis le{" "}
+                  <strong>18 août 2022</strong>, il est interdit dès que le
+                  logement présente une seule des caractéristiques listées par le
+                  texte : DPE de classe F ou G, sanitaires sur le palier, signes
+                  d&apos;humidité sur certains murs, vis-à-vis à moins de dix
+                  mètres, fenêtres laissant anormalement passer l&apos;air,
+                  infiltrations ou inondations venant de l&apos;extérieur,
+                  problèmes d&apos;évacuation d&apos;eau au cours des trois
+                  derniers mois, installation électrique dégradée, mauvaise
+                  exposition de la pièce principale.{" "}
+                  <em>
+                    Source : service-public.gouv.fr, fiche F1314, vérifiée le
+                    1ᵉʳ août 2026 ; préfecture du Rhône, page « Encadrement des
+                    loyers ».
+                  </em>
+                </p>
+                <p>
+                  Reste une échéance que tout bailleur villeurbannais a intérêt à
+                  connaître avant de signer : l&apos;encadrement des loyers est
+                  une <strong>expérimentation</strong>, ouverte par
+                  l&apos;article 140 de la loi ELAN du 23 novembre 2018 et portée
+                  de cinq à huit ans par la loi 3DS du 21 février 2022. Elle{" "}
+                  <strong>arrive à son terme le 23 novembre 2026</strong>. Le
+                  Sénat a adopté le <strong>21 octobre 2026</strong>, en première
+                  lecture, une prolongation de deux ans à périmètre constant —
+                  aucune nouvelle commune ne pourrait rejoindre le dispositif, et
+                  les collectivités engagées pourraient en sortir ; le texte
+                  n&apos;est pas définitif et doit retourner devant
+                  l&apos;Assemblée nationale. Ce que deviendraient les baux en
+                  cours si rien n&apos;était adopté avant cette date n&apos;est
+                  réglé par aucun texte publié à ce jour : nous ne le supposons
+                  pas, et cette page sera corrigée quand le texte le sera. Le
+                  rendement qu&apos;un loyer plafonné laisse espérer est chiffré
+                  quartier par quartier dans notre{" "}
+                  <Link href="/blog/rentabilite-locative-lyon" className={A}>
+                    analyse de la rentabilité locative
+                  </Link>
+                  .
+                </p>
+              </>
+            ),
           },
           {
             eyebrow: "Le risque",
