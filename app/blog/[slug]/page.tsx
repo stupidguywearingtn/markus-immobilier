@@ -12,6 +12,19 @@ export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
 }
 
+/**
+ * Retire les marqueurs inline des articles (`**gras**`, `[texte](/lien)`) pour
+ * un usage en JSON-LD, où le texte doit être nu. Les mêmes formes que celles
+ * reconnues par `components/blog/article-body.tsx`, dans le même ordre : le
+ * lien se réduit à son libellé AVANT que le gras ne soit retiré, sinon
+ * `**[texte](/lien)**` laisse des crochets dans la donnée balisée.
+ */
+function plain(text: string): string {
+  return text
+    .replace(/\[([^\]\n]+)\]\((?:\/|https?:\/\/)[^)\s]+\)/g, "$1")
+    .replace(/\*\*/g, "");
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -75,9 +88,33 @@ export default async function ArticlePage({
     },
   };
 
+  // `HowTo` — construit depuis le bloc `steps` de l'article, et depuis lui
+  // seul : les étapes balisées sont littéralement celles qui s'affichent, donc
+  // aucun écart visible ↔ JSON-LD n'est possible. Absent si l'article n'est pas
+  // procédural.
+  // ⚠️ Google ne montre plus de rich result HowTo depuis août 2023 (ni FAQ
+  // depuis le 7 mai 2026) : ce balisage ne vise pas un affichage Google, il
+  // sert la lecture machine (moteurs de réponse). Google indique que du
+  // balisage inutilisé ne nuit pas.
+  const steps = a.blocks.find((b) => b.type === "steps");
+  const howToLd = steps && {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: steps.name,
+    inLanguage: "fr-FR",
+    mainEntityOfPage: `${BASE}/blog/${a.slug}`,
+    step: steps.items.map((st, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: plain(st.name),
+      text: plain(st.text),
+    })),
+  };
+
   return (
     <>
       <JsonLd data={blogPostingLd} />
+      {howToLd && <JsonLd data={howToLd} />}
       {a.faq && a.faq.length > 0 && (
         <JsonLd
           data={{

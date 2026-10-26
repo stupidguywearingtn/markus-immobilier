@@ -188,6 +188,26 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
                 ))}
               </ol>
             );
+          case "steps":
+            return (
+              <ol key={i} className="space-y-4">
+                {b.items.map((st, j) => (
+                  <li key={j} className="flex items-start gap-3">
+                    <span className="w-6 h-6 shrink-0 mt-0.5 rounded-full bg-anthracite text-blanc grid place-items-center text-[12px] font-bold tabular-nums">
+                      {j + 1}
+                    </span>
+                    <div className="pt-0.5">
+                      <p className="text-[16px] leading-[1.6] font-semibold text-anthracite">
+                        {inline(st.name)}
+                      </p>
+                      <p className="mt-1 text-[16px] leading-[1.7] text-[#3d4347]">
+                        {inline(st.text)}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            );
           default:
             return null;
         }

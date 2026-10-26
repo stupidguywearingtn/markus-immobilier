@@ -225,6 +225,20 @@ export type Block =
   | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
+  /**
+   * Suite d'étapes d'une procédure. Rendue visiblement en liste numérotée
+   * (titre d'étape + explication) ET reprise en JSON-LD `HowTo` par
+   * `app/blog/[slug]/page.tsx`, qui lit CE bloc et lui seul.
+   * La parité visible ↔ balisage est donc garantie par construction : il n'y a
+   * qu'une source, contrairement à `faq` qui en duplique le contenu.
+   * ⚠️ Un seul bloc `steps` par article (le premier rencontré est balisé).
+   */
+  | {
+      type: "steps";
+      /** Intitulé de la procédure, repris en `HowTo.name`. */
+      name: string;
+      items: { name: string; text: string }[];
+    }
   /** Tableau de données. `source` = mention de provenance affichée en légende. */
   | {
       type: "table";
@@ -256,41 +270,105 @@ export type Article = {
 export const ARTICLES: Article[] = [
   {
     slug: "comment-estimer-son-bien-immobilier-lyon-villeurbanne",
-    title:
-      "Comment bien estimer son bien immobilier à Lyon et Villeurbanne (2026)",
+    title: "Comment estimer son bien immobilier à Villeurbanne et à Lyon",
     metaDescription:
-      "Estimez la juste valeur de votre bien à Lyon ou Villeurbanne : les 8 critères clés, les méthodes fiables et l'estimation gratuite Markus Immobilier.",
-    h1: "Comment bien estimer son bien immobilier à Lyon et Villeurbanne",
+      "La méthode pas à pas pour estimer votre bien sur les ventes réellement signées (base DVF) : où les trouver, jusqu'à quelle date, et les 4 pièges du prix au m².",
+    h1: "Comment estimer son bien immobilier soi-même, à Villeurbanne et à Lyon",
     excerpt:
-      "Fixer le bon prix, c'est 80 % de la réussite d'une vente. Les 8 critères qui comptent et les méthodes fiables pour estimer votre bien.",
+      "La méthode pas à pas pour estimer un appartement sur les ventes réellement signées, et les quatre limites officielles de la base DVF que presque personne ne publie : elle ne va pas au-delà de fin juin de l'année en cours, son prix est net vendeur (hors frais d'agence et de notaire), sa surface n'est pas la surface Carrez, et l'étage n'y figure pas.",
     date: "2026-04-07",
+    updated: "2026-10-26",
     internalHref: "/estimation",
     internalLabel: "Estimer mon bien gratuitement",
     blocks: [
-      { type: "p", text: "Fixer le bon prix, c'est 80 % de la réussite d'une vente. Un bien surévalué stagne, accumule les visites sans offre et finit par se vendre en dessous de sa valeur réelle. Un bien sous-évalué part vite, mais vous laisse de l'argent sur la table. Voici comment estimer la juste valeur de votre appartement ou maison à Lyon et Villeurbanne." },
-      { type: "h2", text: "Pourquoi une bonne estimation change tout" },
-      { type: "p", text: "Le marché lyonnais est exigeant : les acheteurs comparent et repèrent immédiatement un prix « hors marché ». Une estimation juste attire les bons acheteurs dès la mise en ligne, là où l'attention est maximale (les deux premières semaines). À l'inverse, baisser son prix après plusieurs semaines envoie un mauvais signal." },
-      { type: "h2", text: "Les 8 critères qui déterminent la valeur" },
-      { type: "ol", items: [
-        "**La localisation** : quartier, rue, proximité métro/tram, commerces, écoles.",
-        "**[La surface (loi Carrez)](/blog/loi-carrez-surface)** : la base, mais pas tout.",
-        "**L'étage et l'exposition** : lumière et ascenseur pèsent lourd.",
-        "**L'état général** : rénové, à rafraîchir ou à refaire.",
-        "**Le DPE** : une mauvaise note (F, G) fait baisser la valeur.",
-        "**Les annexes** : balcon, terrasse, cave, parking, box.",
-        "**Les charges de copropriété** : élevées, elles réduisent le budget des acheteurs.",
-        "**L'état du marché local** au moment de la vente.",
-      ] },
-      { type: "h2", text: "Les méthodes (de la moins à la plus fiable)" },
+      { type: "p", text: "Oui, vous pouvez estimer votre bien vous-même et gratuitement : l'État publie le prix de **toutes les ventes signées des cinq dernières années**, adresse par adresse, dans la base DVF. Comptez une trentaine de minutes pour un appartement. Mais cette base a **quatre limites qu'elle documente elle-même**, et les ignorer est ce qui fait échouer la plupart des estimations maison : elle s'arrête plusieurs mois avant aujourd'hui, son prix n'est pas celui que paie l'acheteur, sa surface n'est pas celle de votre annonce, et elle ne contient ni l'étage ni l'état du logement." },
+      { type: "p", text: "Cette page donne la méthode dans l'ordre, puis les quatre limites à connaître avant de conclure quoi que ce soit sur votre logement. Les prix de Villeurbanne, eux, sont déjà calculés : ils sont [publiés quartier par quartier](/blog/prix-immobilier-villeurbanne-2026)." },
+
+      { type: "h2", text: "Peut-on estimer son bien immobilier soi-même ?" },
+      { type: "p", text: "Oui, et la donnée est publique et gratuite. La Direction générale des finances publiques (DGFiP) publie les « demandes de valeurs foncières » (DVF) : le prix inscrit chez le notaire pour chaque vente des cinq dernières années, avec la date, la surface et le type de bien. C'est l'une des sources sur lesquelles travaillent les professionnels." },
+      { type: "p", text: "Ce qu'une estimation maison ne remplace pas, c'est l'ajustement : la base ne contient ni l'étage, ni l'état du logement, ni la qualité de la copropriété. Elle vous donne un **point de départ chiffré et vérifiable**, pas un prix de mise en vente." },
+
+      { type: "h2", text: "La méthode pas à pas pour estimer son appartement" },
+      {
+        type: "steps",
+        name: "Estimer son appartement à partir des ventes réellement signées (base DVF)",
+        items: [
+          { name: "Mesurez la bonne surface", text: "Reprenez la surface privative écrite dans votre acte de vente, dite [surface loi Carrez](/blog/loi-carrez-surface) — pas la surface au sol, et pas un chiffre de mémoire. C'est celle qui figurera dans votre annonce. Notez bien qu'elle ne répond pas à la même définition que la surface affichée par DVF — c'est l'une des quatre limites détaillées plus bas." },
+          { name: "Ouvrez la base des ventes réelles", text: "Rendez-vous sur l'[application publique de consultation des valeurs foncières](https://app.dvf.etalab.gouv.fr/), gratuite et sans création de compte. Cherchez votre commune, puis zoomez sur votre rue : les parcelles vendues apparaissent, et chaque vente s'ouvre en détail." },
+          { name: "Ne retenez que des ventes réellement comparables", text: "Même type de bien — un appartement se compare à un appartement, jamais à une maison —, surface proche de la vôtre, et périmètre serré : votre quartier, pas la commune entière. À Villeurbanne, l'écart entre le quartier le moins cher et le plus cher atteint **43 %** : une médiane communale ne dit rien de votre rue." },
+          { name: "Calculez un prix au m² par vente, puis prenez la médiane", text: "Divisez chaque prix par la surface de la vente correspondante, puis retenez la **médiane** de vos 5 à 8 comparables — pas la moyenne. Une seule vente atypique (bien refait à neuf, vente entre proches) déplace une moyenne ; elle ne déplace pas une médiane." },
+          { name: "Vérifiez la date de chaque vente retenue", text: "La base ne descend pas jusqu'au mois dernier : sa publication d'octobre s'arrête à fin juin de l'année en cours, celle d'avril à fin décembre de l'année précédente. Une vente des derniers mois **n'y est pas encore** — de quatre à dix mois selon le moment où vous consultez la base —, et vos comparables sont donc toujours antérieurs au marché dans lequel vous vendrez." },
+          { name: "Ajustez ce que la base ne voit pas", text: "Reprenez votre médiane et corrigez-la à la hausse ou à la baisse selon l'étage et l'ascenseur, l'exposition et la luminosité, l'état du logement, les annexes (balcon, cave, parking), le [DPE](/blog/dpe-2026-ce-qui-change) et les [charges de copropriété](/blog/charges-copropriete). Aucune de ces données ne figure dans DVF." },
+          { name: "Ne confondez pas ce prix avec un budget d'acheteur", text: "Le prix DVF est un prix **net vendeur** : il ne comprend ni honoraires d'agence ni [frais de notaire](/blog/frais-de-notaire-lyon-2026). L'acheteur, lui, décaissera le prix **plus** ces frais ; ne les ajoutez donc pas à votre estimation de valeur." },
+        ],
+      },
+
+      { type: "h2", text: "Où trouver le prix réel des ventes à Villeurbanne ?" },
+      { type: "p", text: "Dans la base DVF, publiée en open data par la DGFiP sur [data.gouv.fr](https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/). Elle recense les **mutations à titre onéreux des cinq dernières années** et se consulte gratuitement, sans compte, via l'application cartographique d'Etalab. C'est une source de prix **signés** et non de prix demandés — à la différence des prix moyens publiés par les portails d'annonces." },
+      { type: "p", text: "Une réserve de couverture, qui ne concerne pas Villeurbanne mais qu'il faut connaître : la DGFiP indique ne pas disposer des mutations du **Bas-Rhin, du Haut-Rhin, de la Moselle et de Mayotte**, qui relèvent d'un autre régime de publicité foncière. Le Rhône, lui, n'est pas concerné par cette exclusion." },
+
+      { type: "h2", text: "Jusqu'à quelle date les ventes sont-elles visibles dans DVF ?" },
+      { type: "p", text: "La base est mise à jour **deux fois par an, fin avril et fin octobre**, et chaque publication a sa propre borne : celle d'avril ajoute les données « allant jusqu'à fin décembre de l'année passée », celle d'octobre « jusqu'à fin juin de l'année en cours ». Autrement dit, DVF a toujours **quatre à dix mois de retard sur le marché** : quatre au lendemain d'une publication, près de dix la veille de la suivante." },
+      { type: "p", text: "Concrètement, en octobre 2026, une vente signée en septembre 2026 **n'est pas dans la base** : elle n'y apparaîtra qu'à la publication d'avril 2027. C'est la limite la plus souvent ignorée des estimations faites soi-même, et la raison pour laquelle un prix au m² tiré de DVF décrit toujours un marché légèrement antérieur à celui dans lequel vous allez vendre." },
+      { type: "p", text: "La DGFiP ajoute que « la remontée des données DVF peut être lente » et qu'« il manque encore une partie des données de l'année passée ». Si une vente que vous connaissez est absente, trois causes sont possibles : ce retard de remontée, un échec de rapprochement avec le plan cadastral, ou une parcelle mal renseignée ou renumérotée." },
+
+      { type: "h2", text: "Pourquoi le prix au m² de DVF n'est pas celui d'une annonce ?" },
+      { type: "p", text: "Parce que les deux chiffres ne portent ni sur le même montant, ni sur la même surface. Le prix DVF est un prix « net vendeur », c'est-à-dire, selon la documentation officielle, « ne comprenant ni frais d'agence immobilière, ni frais de notaire ». La TVA, elle, est incluse ; le mobilier vendu avec le logement, en revanche, « n'est pas compris dans le prix affiché »." },
+      { type: "p", text: "Et la surface n'est pas celle de votre annonce : DVF affiche la **surface réelle bâtie** « et non la surface carrez », laquelle est bien présente dans le fichier mais « remplie sporadiquement et sans valeur légale ». Vous divisez donc un prix hors frais par une surface qui n'est pas la vôtre." },
+      { type: "p", text: "Ce décalage de surface n'est pas un biais systématique, et nous l'avons mesuré sur nos propres données : sur les **1 716 ventes d'appartements villeurbannais de 2025** portant une surface Carrez unique, la surface bâtie cadastrale et la surface Carrez ne coïncident à moins de 0,5 m² près que dans **38,2 %** des cas, mais **l'écart médian entre les deux n'est que de −0,31 %**. Autrement dit : à l'échelle d'un quartier, les deux définitions donnent presque le même prix au m² ; c'est **appartement par appartement** qu'elles s'écartent, et dans les deux sens (la surface Carrez dépasse la surface bâtie de plus de 5 % dans 5,8 % des ventes, et lui est inférieure de plus de 5 % dans 7,0 %). Le détail est dans [loi Carrez : la surface et le seuil de 5 %](/blog/loi-carrez-surface)." },
+
+      { type: "h2", text: "Que faut-il ajuster à la main après le calcul ?" },
+      { type: "p", text: "Tout ce que la base ne contient pas, et la liste est courte mais lourde. Interrogée sur l'étage d'un appartement, la documentation officielle répond : « cette information n'est pas présente dans la base de données initiale ». Il faut donc y ajouter, de votre côté :" },
       { type: "ul", items: [
-        "**Le prix au m² « de quartier »** : utile pour une première idée, mais c'est une moyenne trompeuse. À Villeurbanne, nous publions [les médianes réelles par quartier](/blog/prix-immobilier-villeurbanne-2026), calculées sur les ventes signées.",
-        "**La comparaison avec les ventes réelles** : la méthode des pros, basée sur les prix réellement signés (données officielles DVF), pas les prix affichés.",
-        "**L'expertise terrain** : un conseiller ajuste avec ce qu'aucun algorithme ne voit (luminosité, calme, qualité de copropriété).",
+        "**L'étage et l'ascenseur** : absents de la base, et déterminants sur un immeuble collectif.",
+        "**L'état du logement** : refait à neuf, à rafraîchir ou à reprendre entièrement.",
+        "**Le DPE** : une étiquette F ou G pèse sur le prix et [restreint la mise en location](/blog/dpe-2026-ce-qui-change).",
+        "**L'exposition, la luminosité, le vis-à-vis et le bruit** : rien de tout cela n'est enregistré.",
+        "**Les annexes** : balcon, terrasse, cave, parking ou box.",
+        "**Les charges de copropriété** : élevées, elles réduisent le budget des acheteurs.",
       ] },
-      { type: "p", text: "La meilleure estimation combine les trois." },
-      { type: "h2", text: "Estimez votre bien gratuitement" },
-      { type: "p", text: "Notre outil croise les ventes réelles près de chez vous, les caractéristiques précises de votre logement et une analyse du marché Lyon / Villeurbanne, pour une fourchette réaliste — sans engagement." },
-      { type: "p", text: "Si votre bien se situe à Villeurbanne, la page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne) donne l'ordre de grandeur par quartier avant même de remplir le formulaire." },
+
+      { type: "h2", text: "Quel est le prix au m² par quartier à Villeurbanne ?" },
+      { type: "p", text: "Ce travail est déjà fait, et publié. Nous recalculons nous-mêmes les médianes de Villeurbanne sur les ventes d'appartements réellement signées, quartier par quartier : le détail, les volumes de ventes et l'évolution depuis 2022 sont dans [prix au m² à Villeurbanne, les chiffres réels par quartier](/blog/prix-immobilier-villeurbanne-2026). Si votre bien est villeurbannais, c'est le point de départ le plus rapide." },
+      { type: "p", text: "Ces médianes portent sur la **dernière année civile complète**, et c'est un choix de méthode qui découle directement du calendrier de publication ci-dessus : comme la base s'arrête à fin juin pour l'année en cours, un « prix 2026 » ne reposerait que sur un semestre — moins de ventes par quartier, et un semestre ne se compare pas à une année entière." },
+
+      { type: "h2", text: "Quand faut-il faire estimer son bien par une agence ?" },
+      { type: "p", text: "Dès que l'enjeu dépasse la curiosité. Une estimation maison situe correctement un bien standard dans son quartier ; elle se trompe davantage sur les biens atypiques — dernier étage, rez-de-chaussée, gros travaux, surface rare, copropriété fragile — parce que ce sont précisément les caractéristiques que la base ne contient pas. Nous avons mesuré cet écart de fiabilité dans [estimation en ligne ou en agence](/blog/estimation-en-ligne-ou-agence)." },
+      { type: "p", text: "Notre [outil d'estimation](/estimation) fait les étapes 2 à 5 pour vous à partir des ventes proches de votre adresse, en moins de deux minutes, et un conseiller reprend ensuite les ajustements de l'étape 6. Pour un bien villeurbannais, la page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne) donne l'ordre de grandeur par quartier avant même de remplir le formulaire." },
+    ],
+    faq: [
+      {
+        q: "Peut-on estimer son bien immobilier gratuitement et soi-même ?",
+        a: "Oui. La base DVF, publiée par la Direction générale des finances publiques sur data.gouv.fr, donne gratuitement et sans compte le prix signé de toutes les ventes des cinq dernières années, avec la date, la surface et le type de bien. Elle se consulte sur une carte, rue par rue. Il faut ensuite ajuster le résultat, car la base ne contient ni l'étage, ni l'état du logement, ni le DPE.",
+      },
+      {
+        q: "Où trouver le prix réel des ventes immobilières à Villeurbanne ?",
+        a: "Dans la base DVF (demandes de valeurs foncières) de la DGFiP, consultable gratuitement et sans compte sur l'application publique app.dvf.etalab.gouv.fr. Elle recense les mutations à titre onéreux des cinq dernières années. Le Rhône n'est pas concerné par l'exclusion de couverture ; la DGFiP indique en effet ne pas disposer des mutations du Bas-Rhin, du Haut-Rhin, de la Moselle et de Mayotte.",
+      },
+      {
+        q: "Jusqu'à quelle date les ventes sont-elles visibles dans la base DVF ?",
+        a: "La base est mise à jour deux fois par an, fin avril et fin octobre. La publication d'avril ajoute les données allant jusqu'à fin décembre de l'année passée, celle d'octobre jusqu'à fin juin de l'année en cours. Une vente signée en septembre 2026 n'apparaît donc pas avant la publication d'avril 2027. La DGFiP précise par ailleurs que la remontée des données peut être lente et qu'il manque encore une partie des données de l'année passée.",
+      },
+      {
+        q: "Le prix affiché dans DVF comprend-il les frais de notaire et d'agence ?",
+        a: "Non. La documentation officielle indique qu'il s'agit d'un prix « net vendeur », c'est-à-dire ne comprenant ni frais d'agence immobilière, ni frais de notaire. La TVA est en revanche incluse, et le montant d'un mobilier vendu avec le bien n'est pas compris dans le prix affiché. Un acheteur décaisse donc le prix DVF plus les frais d'acquisition, qu'il ne faut pas ajouter à une estimation de valeur.",
+      },
+      {
+        q: "La surface indiquée dans DVF est-elle la surface loi Carrez ?",
+        a: "Non. La surface affichée correspond à la surface réelle bâtie et non à la surface Carrez. Cette dernière est bien présente dans le fichier, mais elle est remplie sporadiquement et sans valeur légale. Un prix au m² calculé sur DVF ne porte donc pas sur la même surface que celle de votre annonce de vente, qui est une surface privative loi Carrez. Sur les 1 716 ventes d'appartements villeurbannais de 2025 portant une surface Carrez unique, les deux surfaces ne coïncident à moins de 0,5 m² près que dans 38,2 % des cas, mais l'écart médian entre elles n'est que de −0,31 % : le décalage est individuel, pas systématique.",
+      },
+      {
+        q: "Faut-il prendre la moyenne ou la médiane des ventes comparables ?",
+        a: "La médiane. Sur un échantillon de cinq à huit ventes, une seule transaction atypique — un bien entièrement refait, une vente entre proches, un lot vendu avec un parking — suffit à déplacer une moyenne, alors qu'elle ne déplace pas la médiane. C'est pour la même raison que nous publions des médianes, et non des moyennes, pour les quartiers de Villeurbanne.",
+      },
+      {
+        q: "Pourquoi les prix par quartier publiés portent-ils sur l'année précédente ?",
+        a: "Parce que la base DVF s'arrête à fin juin pour l'année en cours. Un prix au m² de l'année en cours ne reposerait donc que sur un semestre de ventes : moins de transactions par quartier, et un semestre n'est pas comparable à une année civile entière. Nous calculons donc nos médianes sur la dernière année complète publiée, ce qui garantit des volumes suffisants et une comparaison d'année à année homogène.",
+      },
+      {
+        q: "Une estimation faite soi-même suffit-elle pour mettre son bien en vente ?",
+        a: "Pour un bien standard dans un quartier où les ventes sont nombreuses, elle donne un ordre de grandeur correct. Elle se dégrade sur les biens atypiques — dernier étage, rez-de-chaussée, travaux lourds, surface rare, copropriété fragile — parce que ce sont exactement les caractéristiques absentes de la base : étage, état, exposition, charges. Au-delà de l'ordre de grandeur, un passage sur place reste nécessaire pour fixer un prix de mise en vente.",
+      },
     ],
   },
   {

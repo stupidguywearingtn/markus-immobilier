@@ -14,6 +14,104 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-26 (lundi — veille hebdomadaire faite)**
+
+- 🔴 **IL N'Y A PAS EU DE RUN LE 25/10, ET C'EST ÉTABLI, PAS SUPPOSÉ.** Le
+  journal s'arrête au 24/10 et **aucun commit ne porte la date du 25/10**
+  (dimanche). Le backlog réclamait du **contenu** pour le 25/10 : cette
+  consigne est donc reprise **aujourd'hui**, et l'alternance repart du
+  24/10 (non-contenu) → **26/10 contenu**. ⚠️ **Ne pas lire le bloc
+  « prochain run (25/10) » du backlog comme non honoré : il l'est par ce run.**
+- ✅ **LA MESURE QUE LE RUN DU 24/10 S'ÉTAIT PRIVÉ DE PRENDRE EST PRISE, ET LE
+  FETCH RETARDAIT BIEN.** Relevé **AVANT** `git fetch` (règle du 16/09, violée
+  le 24/10) : `HEAD` = **`8f369e6`**, `main` local = **`97e4689`**,
+  `origin/main` = **`97e4689`**. Après fetch : `origin/main` passe à
+  **`8f369e6`** (`97e4689..8f369e6`). **`origin/main` retardait donc de deux
+  commits — quatrième occurrence (22, 23, 24 et 26/10).** 📌 **La règle est
+  payante : elle a produit aujourd'hui le fait que le 24/10 n'a pas pu établir.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-et-unième constat identique** (21/09 → 26/10).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Quatorzième confirmation.**
+- ✅ **LE TRAVAIL DU 24/10 EST SERVI EN PRODUCTION — vérifié avant d'agir.**
+  `/estimation` 200 / 86 465 o, `/estimation-immobiliere-villeurbanne` 200 /
+  115 631 o, `/llms.txt` 200 / 28 619 o,
+  `/blog/comment-estimer-son-bien-immobilier-lyon-villeurbanne` 200 / 73 551 o.
+- 🔴 **REQUÊTE CIBLE DUE AUJOURD'HUI, MESURÉE : « prix m2 Villeurbanne » →
+  SITE ABSENT, 6ᵉ mesure, et les 9 résultats sont encore 9 portails nationaux
+  de prix** (squarehabitat, pap, journaldunet, meilleursagents, fonciris,
+  bien-estimer-safti, netvendeur, immosudest, solvimo). **Zéro agence, zéro
+  contenu éditorial, zéro villeurbannais** — configuration **identique au
+  19/10**. 📌 **La lecture du 19/10 tient et se durcit : cette SERP ne
+  récompense pas un contenu, elle récompense un TYPE de page** (page de données
+  nationale, maillée ville par ville, rafraîchie mensuellement). **Ne pas y
+  réinvestir d'effort rédactionnel.**
+- 🟢 **ET CETTE MESURE DONNE LA CINQUIÈME ET SIXIÈME MESURE CONCORDANTE SUR
+  « AFFICHÉ ≠ SIGNÉ » — toutes au niveau COMMUNAL.** Relevés du jour contre
+  notre médiane DVF 2025 de **3 567 €/m²** : `pap.fr` appartements
+  **3 623 €/m² (+1,6 %)**, `immosudest` **3 589 €/m² (+0,6 %)**,
+  `meilleursagents` **3 707 €/m² (+3,9 %)**, `fonciris` (qui se dit DVF)
+  **3 523 €/m² (−1,2 %)**. ⚠️ **MAIS CE N'EST PAS CE QUE NOS PAGES
+  AFFIRMENT, et la distinction est le cœur du sujet** : l'écart de **16,1 à
+  45,3 %** que publient `/acheter` et `/llms.txt` a été mesuré **par
+  QUARTIER** (Charpennes 5 120 €/m² annoncés contre 3 524 €/m² signés), pas sur
+  la commune. **Une convergence communale ne réfute pas un écart de quartier** :
+  la médiane communale lisse précisément ce que l'écart de quartier mesure.
+  🔴 **La règle du 23/10 reste donc intacte et NON LEVÉE : ne rien réécrire sur
+  cette thèse avant un relevé DVF 2026 par quartier.** 📌 **Ce que le run
+  ajoute, c'est que la question est désormais MAL POSÉE dans le backlog** : elle
+  doit se lire « l'écart par QUARTIER a-t-il disparu ? », et aucune des six
+  mesures accumulées n'y répond.
+- 🟢 **SERP DE CHANTIER MESURÉE AVANT D'ÉCRIRE (méthode du 15/10, 10ᵉ test
+  positif), ET ELLE A DÉCIDÉ LE CHANTIER.** Sur « comment estimer le prix de mon
+  appartement soi-même étapes méthode DVF Villeurbanne » : **site absent**, et
+  **9 résultats sur 9 sont des agences ou des vendeurs non villeurbannais**
+  (pulp-immobilier, imkiz, lecolefrancaise, assurly,
+  vendreappartementsansagence, estimerlogement, cataneo, prigentimmobilier,
+  perpignan-immobilier). 🔴 **ET LE MOTEUR ÉCRIT LUI-MÊME LA PLACE VIDE :
+  « Aucune source ne donne de prix au m² pour Villeurbanne, il faudra donc le
+  relever vous-même dans la base. »** **Motif « le moteur avoue n'avoir aucune
+  source » : 4ᵉ occurrence (18/10, 19/10, 24/10, 26/10)** — et c'est la
+  première fois qu'il porte sur une question **procédurale**, donc sur une page
+  que nous pouvons écrire sans nouvelle donnée de marché.
+- 🟢 **CHANTIER DU JOUR : CONTENU, sur LE CANDIDAT CONTENU N°1 DÉSIGNÉ depuis
+  le 23/10 et reporté trois fois** —
+  `comment-estimer-son-bien-immobilier-lyon-villeurbanne`, **réécriture
+  PROCÉDURALE dans le périmètre imposé du 11/10** (zéro nouveau tableau de
+  marché, liens sortants vers les pages qui portent la donnée).
+  **351 → 2 069 mots. Candidat consommé.** Détail en « Chantiers faits ».
+- 🔴 🆕 **LE DÉFAUT CENTRAL EST DANS MA PROPRE MÉTHODE DE VÉRIFICATION, PAS DANS
+  LE SITE : LA RECETTE DE PARITÉ FAQ DU 23/10 EST AVEUGLE.** Elle retirait les
+  balises **avant** les `<script>`, si bien que le JSON-LD restait dans le
+  « texte visible » et **se comparait à lui-même** : toute FAQ passait 8/8, même
+  absente de la page. **Détectée aujourd'hui parce que la version corrigée a
+  d'abord affiché 4/7 là où la version aveugle affichait 7/7.**
+  ✅ **Conséquence vérifiée immédiatement, et elle est rassurante** : passé en
+  ordre correct sur **12 pages et 89 paires Q/R** (`/gestion-locative`,
+  `/faire-gerer`, `/honoraires`, `/estimation-immobiliere-villeurbanne`,
+  `/acheter`, `/vendre` et 6 articles), **écarts = 0**. **La recette était
+  aveugle mais ses verdicts étaient justes : aucun défaut en production.**
+  Recette corrigée en « Techniques apprises ».
+- 🔴 🆕 **VEILLE DU LUNDI — LE FAIT LE PLUS IMPORTANT DU RUN, ET IL EST SOURCÉ
+  CHEZ GOOGLE : LE RICH RESULT FAQ N'EXISTE PLUS DEPUIS LE 7 MAI 2026.**
+  Relevé sur le **changelog de la documentation Google** (et non sur un blog
+  SEO) : avis de dépréciation ajouté le **8 mai 2026** — « This feature will no
+  longer appear in Google Search starting May 7, 2026 » —, **documentation
+  FAQPage supprimée le 15 juin 2026** (« The FAQ rich result feature is no
+  longer shown in Google Search results »). Le rich result **HowTo**, lui, a été
+  retiré en **août 2023**. ⚠️ **Google ne demande PAS de retirer le balisage.**
+  📌 **Conséquence pour ce site, qui publie FAQPage sur au moins 12 pages : ce
+  balisage ne rapporte plus rien à l'affichage Google.** Il n'est pas retiré
+  pour autant — il reste du schema.org valide et lisible par les moteurs de
+  réponse, et **la FAQ VISIBLE garde toute sa valeur** (c'est elle qui se fait
+  citer). **Ce qu'il faut cesser, c'est de compter FAQPage comme un gain SEO** :
+  plusieurs entrées de ce journal le font. Consigné en « Erreurs commises ».
+- 🟡 **Sitemap local : 51 URL, dont exactement 1 au `lastmod` 2026-10-26** — la
+  seule page modifiée. ⚠️ **Le 24/10 relevait 53 URL en production** : l'écart
+  de 2 est **local**, pas une régression (les pages d'annonces dépendent de
+  Supabase, absent du conteneur). **À revérifier en production après
+  déploiement, pas à corriger.**
+
 **Au 2026-10-24**
 
 - ⚠️ **CONFIGURATION DE DÉPART SAINE, MAIS JE N'AI PAS MESURÉ CE QUE LE FETCH A
@@ -3490,6 +3588,136 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-26 — Le moteur écrivait « aucune source ne donne de prix au m² pour Villeurbanne » sur une question procédurale, et notre page de méthode tenait en 351 mots sans dire une seule des quatre limites de la base qu'elle recommande
+
+**Chantier choisi : CONTENU** (alternance : 22/10 non-contenu → 23/10 contenu →
+24/10 non-contenu → **26/10 contenu**, le 25/10 n'ayant pas eu de run).
+**Candidat contenu n°1 désigné depuis le 23/10, reporté trois fois,
+aujourd'hui consommé** : réécriture **procédurale** de
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne`, **dans le périmètre
+imposé du 11/10** — zéro nouveau tableau de marché, liens sortants vers les
+pages qui portent la donnée.
+
+**Pourquoi celui-là, et la mesure qui l'a décidé.** La SERP de chantier
+(« comment estimer le prix de mon appartement soi-même étapes méthode DVF
+Villeurbanne ») donne **9 résultats sur 9 d'agences ou de vendeurs non
+villeurbannais**, et le moteur conclut de lui-même : **« Aucune source ne donne
+de prix au m² pour Villeurbanne, il faudra donc le relever vous-même dans la
+base. »** C'est la **4ᵉ occurrence** du motif « le moteur avoue n'avoir aucune
+source » (18, 19, 24 et 26/10) et **la première sur une question procédurale** —
+donc la première qu'on peut prendre **sans produire de nouvelle donnée de
+marché**, ce que le périmètre du 11/10 interdit précisément.
+
+**Ce que la page disait, et ce qu'elle ne disait pas.** 351 mots, 4 `<h2>`,
+**aucune FAQ**, aucune date de mise à jour visible. Elle recommandait « la
+comparaison avec les ventes réelles (données officielles DVF) » **en une seule
+phrase, sans dire comment faire, ni aucune des limites de cette base.** C'est
+le même type de défaut que le 23/10 — un **silence** —, mais d'une famille
+nouvelle : **un silence qui fait échouer la méthode que la page recommande.**
+
+**Les quatre limites publiées, toutes relues MOT POUR MOT sur la FAQ officielle
+de l'application DVF (Etalab) avant écriture :**
+
+1. 🔴 **LA FRAÎCHEUR, ET C'EST LE FAIT QUE PERSONNE SUR LA SERP NE PUBLIE.**
+   « Les données brutes font l'objet d'une mise à jour semestrielle par la
+   DGFiP, **fin avril et fin octobre** » ; celle d'avril ajoute les données
+   « allant jusqu'à **fin décembre de l'année passée** », celle d'octobre
+   « jusqu'à **fin juin de l'année en cours** ». **Conséquence calculée et
+   publiée : DVF a toujours quatre à dix mois de retard sur le marché** —
+   quatre au lendemain d'une publication, près de dix la veille de la suivante.
+   Exemple daté publié : **une vente de septembre 2026 n'apparaîtra qu'en
+   avril 2027.**
+2. **LE PRIX N'EST PAS CELUI QUE PAIE L'ACHETEUR** : prix « net vendeur »,
+   « ne comprenant ni frais d'agence immobilière, ni frais de notaire » ; TVA
+   incluse ; le mobilier « n'est pas compris dans le prix affiché ».
+3. **LA SURFACE N'EST PAS CELLE DE L'ANNONCE** : « surface réelle bâtie et non
+   la surface carrez », cette dernière « présente cependant dans le fichier,
+   mais **remplie sporadiquement et sans valeur légale** ».
+4. **CE QUE LA BASE NE CONTIENT PAS** : interrogée sur l'étage d'un
+   appartement, la FAQ répond « cette information n'est pas présente dans la
+   base de données initiale ». Plus « la remontée des données DVF peut être
+   lente » et « il manque encore une partie des données de l'année passée ».
+
+**Un apport qui ne vient pas de la source officielle mais de NOS données, et
+c'est le passage le plus différenciant.** Sur la limite n°3, j'allais écrire que
+la surface réelle bâtie étant plus large que la Carrez, le prix au m² DVF est
+mécaniquement plus bas. 🔴 **C'est FAUX, et c'est notre propre page qui le
+démontre** : `loi-carrez-surface` publie, sur les **1 716 ventes
+d'appartements villeurbannais de 2025** à surface Carrez unique, un **écart
+médian surface bâtie − Carrez de −0,31 %**, une coïncidence à moins de 0,5 m²
+près dans **38,2 %** des cas, et une divergence **dans les deux sens** au-delà
+de ±5 % (**5,8 %** / **7,0 %**). **Le décalage est individuel, pas
+systématique** — c'est ce qui est publié, avec le lien vers la page qui le
+mesure. **Défaut attrapé par le contrôle du 21/10 (« une autre de nos pages dit-
+elle déjà le contraire ? »), appliqué AVANT publication cette fois.**
+
+**Structure livrée.** **351 → 2 069 mots** (`wc` sur blocs + FAQ, compteur
+corrigé — voir « Erreurs commises »), **8 `<h2>` tous en question réelle**,
+chacun ouvrant par une réponse autonome de 2-3 phrases (consigne GEO),
+**8 questions de FAQ** neuves, `updated` au **2026-10-26** (« Mis à jour le
+26 octobre 2026 » visible), **7 liens internes sortants** vers
+`loi-carrez-surface`, `dpe-2026-ce-qui-change`, `charges-copropriete`,
+`frais-de-notaire-lyon-2026`, `prix-immobilier-villeurbanne-2026`,
+`estimation-en-ligne-ou-agence`, `/estimation` et
+`/estimation-immobiliere-villeurbanne` — **les 8 cibles vérifiées en HTTP 200**.
+
+**Données structurées : un bloc `HowTo` neuf, et une garantie de parité par
+CONSTRUCTION.** Nouveau type de bloc `steps` dans `lib/blog.ts` (`{ name,
+items: [{ name, text }] }`), rendu visiblement en liste numérotée par
+`article-body.tsx`, et **lu par `app/blog/[slug]/page.tsx` pour émettre le
+`HowTo`**. **Les 7 étapes balisées sont littéralement celles qui s'affichent :
+il n'y a qu'une source, donc aucun écart possible** — contrairement à `faq`,
+qui duplique son contenu et dont la parité doit être mesurée. Helper `plain()`
+pour retirer les marqueurs `**gras**` et `[texte](/lien)` du JSON-LD.
+⚠️ **Et la veille du jour dit que ce balisage ne rapporte rien côté Google**
+(rich result HowTo retiré en août 2023) : il est posé pour la lecture machine,
+pas pour un affichage, et c'est écrit en commentaire dans le code pour qu'un
+run futur ne le prenne pas pour un gain SEO.
+
+**Contrôles passés sur le HTML RENDU (jamais sur la source).**
+`HowTo` 1 bloc / **7 `HowToStep`**, `FAQPage` **8 Question / 8 Answer**,
+`BlogPosting`, `BreadcrumbList` ; **1 `<h1>` / 8 `<h2>`** ;
+**0 marqueur markdown brut et 0 backtick servis au lecteur** ;
+**parité JSON-LD ↔ texte réellement visible : 8/8 questions, 8/8 réponses
+ENTIÈRES, 7/7 étapes (nom ET texte), 0 écart** — avec la recette **corrigée**,
+l'ancienne étant aveugle. `HowTo` **absent des autres articles** (pas de
+sur-balisage). `dateModified` **2026-10-26**, sitemap **1 seule URL** à ce
+`lastmod`. `tsc --noEmit`, `eslint` et `next build` verts ; **8 pages témoins
+en 200** (dont `/`, `/blog`, 3 articles non touchés, `/sitemap.xml`,
+`/llms.txt`).
+
+**`llms.txt` n'a demandé aucune retouche manuelle, et c'est voulu** : les
+entrées d'articles y sont générées depuis `title` + `excerpt`
+(`app/llms.txt/route.ts` l. 43). L'`excerpt` a donc été réécrit pour porter les
+quatre limites, et l'entrée s'est mise à jour seule — **vérifié sur le
+`/llms.txt` rendu**. 📌 **C'est la réponse structurelle au « llms.txt dérive
+vite » : pour le blog, il ne peut pas dériver.**
+
+**CE QUE J'AI DÉCIDÉ DE NE PAS FAIRE, ET POURQUOI**
+
+- 🔴 **Ne rien réécrire sur « affiché ≠ signé »**, malgré deux mesures
+  concordantes de plus aujourd'hui (6 au total). **Elles sont COMMUNALES,
+  l'affirmation de nos pages est par QUARTIER** : une médiane communale lisse
+  exactement ce que l'écart de quartier mesure. Règle du 23/10 non levée.
+- 🔴 **Ne pas publier le piège de la mutation à plusieurs lots**, pourtant le
+  plus cité par les concurrents. **La FAQ officielle ne le traite PAS**
+  (vérifié explicitement) : les seules sources sont des blogs. Rien publié.
+- 🔴 **Ne pas publier les écarts chiffrés Carrez / surface bâtie trouvés chez
+  les concurrents** (« 5 à 15 % », « 30-50 % d'écart entre estimateurs ») :
+  **aucun n'est sourcé**. Remplacés par notre propre mesure, sourcée et datée.
+- ⚠️ **Ne pas publier de lien vers `explore.data.gouv.fr/…/immobilier`**, la
+  nouvelle application annoncée par Etalab. **Les deux chemins testés renvoient
+  la même coquille JavaScript** depuis ce conteneur : impossible de distinguer
+  une route réelle d'un repli d'application. **Rédigé puis RETIRÉ des deux
+  emplacements avant publication** — un lien mort aurait été un défaut servi.
+  Seules les deux URL vérifiées sont publiées. Inscrit en « Hypothèses ».
+- 🔴 **Ne pas retirer les blocs `FAQPage` du site** malgré la dépréciation
+  confirmée chez Google. Google ne le demande pas, le balisage reste valide, et
+  **la FAQ visible est ce qui se fait citer**. Un retrait serait un risque pour
+  un gain nul.
+- ⚠️ **Ne pas réinvestir sur « prix m2 Villeurbanne »** : 6ᵉ mesure, SERP
+  toujours à 9/9 portails nationaux. C'est un type de page, pas un contenu.
 
 ### 2026-10-24 — L'encadrement des loyers n'était publié que dans un article pour investisseurs, et un arrêté publié la veille change le plafond au 1ᵉʳ novembre
 
@@ -8858,6 +9086,112 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — la réécriture procédurale de
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne`** (26/10 : la page
+recommandait DVF en une phrase **sans dire aucune des quatre limites de cette
+base**, dont celle que personne ne publie — **quatre à dix mois de retard sur le
+marché**, calculée sur le calendrier semestriel officiel. 351 → **2 069 mots**,
+8 `<h2>` en questions, 8 FAQ, `HowTo` à 7 étapes **à parité garantie par
+construction**. Périmètre du 11/10 respecté : **zéro nouveau tableau de
+marché**. **Candidat contenu n°1 consommé après trois reports.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (27/10) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 23/10 contenu → 24/10 non-contenu → 26/10 contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 🆕 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE, PAGE
+     PAR PAGE — candidat n°1, né de la veille du 26/10.** Le rich result FAQ
+     n'existe plus depuis le **7 mai 2026** (source : changelog Google). **Le
+     chantier n'est PAS un retrait de balisage** (voir « Chantiers faits » :
+     décidé contre) : c'est de **relire les entrées de ce journal qui comptent
+     `FAQPage` comme un gain SEO** et de les requalifier, puis de vérifier que
+     **les FAQ VISIBLES** — celles qui se font citer — sont bien les 12 pages
+     recensées et pas moins. ⚠️ **Travail de mesure et de journal, aucun risque
+     de rendu.**
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » EST MAL POSÉE DANS CE BACKLOG, ET
+     C'EST LE RUN DU 26/10 QUI LE DIT.** Six mesures concordantes existent
+     désormais (`pap` +1,6 %, `immosudest` +0,6 %, `meilleursagents` +3,9 %,
+     `fonciris` −1,2 %, plus `blog.qoridor` −1,7 % et `efficity` −2,4 %) —
+     **mais toutes sont COMMUNALES**, alors que `/acheter` et `/llms.txt`
+     affirment un écart **de 16,1 à 45,3 % PAR QUARTIER**. **Une médiane
+     communale lisse exactement ce que l'écart de quartier mesure : les six
+     mesures ne réfutent donc rien.** 🔴 **Reformuler la question avant de la
+     traiter : « l'écart par QUARTIER a-t-il disparu ? », et elle se tranche
+     avec un relevé DVF 2026 par quartier** (recette du 14/10), **pas avec les
+     SERP**. **Ne RIEN réécrire avant.**
+  3. 🔴 **LE CONTRÔLE « LA FICHE COMPRIME-T-ELLE UN CALENDRIER ? » passé sur les
+     autres calendriers du corpus** (candidat du 22/10, **non fait trois fois**).
+     Restants, vérifiés **en vigueur** mais jamais **palier par palier contre le
+     décret** : décence énergétique (G/F/E), DPE collectif, plan pluriannuel de
+     travaux, validité des DPE. 📌 **Chercher aussi les cadres mélangés** (cas
+     d'école du 24/10), pas seulement les dates comprimées.
+  4. ⚠️ **`/honoraires` ne sert AUCUN « Dernière mise à jour » visible**
+     (identifié le 20/10, **non fait les 20, 21, 22, 23, 24 et 26/10 —
+     sixième report**). Les deux autres pages du triptyque en ont un. **À faire
+     en lisant d'abord la structure de la page** : elle n'utilise ni
+     `seo-landing.tsx` ni l'inline de `/faire-gerer`. *(Son `dateModified`
+     JSON-LD est bien à jour.)*
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`). **Aucun défaut connu :
+     prévention.**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (28/10), par ordre d'impact :**
+  1. 🔴 🆕 **LE DÉPÔT DE GARANTIE ET LE PRÉAVIS EN ZONE TENDUE — et la mesure du
+     jour en fait le candidat n°1.** `préavis` est à **ZÉRO occurrence de TOUT
+     le corpus** (`app`, `lib`, `components`, `data` — mesuré le 26/10, déjà
+     mesuré le 24/10), alors que **Villeurbanne EST en zone tendue** et que le
+     site le dit déjà pour les honoraires (3 fichiers portent « zone tendue »).
+     Le plafond du dépôt de garantie est lui aussi absent. 📌 **Le « zéro
+     occurrence » reste le meilleur signal connu** (il a donné le défaut du
+     23/10 et celui du 24/10). **Famille de SERP tenue par des vendeurs du
+     produit, confirmée 4 fois.** **À mesurer avant d'écrire.**
+  2. ⚠️ **`cout-gestion-locative` (288 mots) et
+     `gestion-locative-villeurbanne-deleguer-ou-non` (892 mots)** — les deux
+     pages de gestion locative les plus faibles, et **les destinataires
+     naturels du candidat n°1**. 📌 **À fusionner avec lui.**
+  3. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour
+     cette place.
+  4. 🟡 **Le reste du blog faible, recompté le 26/10** : **12 articles sous
+     200 mots et SANS AUCUNE FAQ** (`lmnp-location-meublee` 107,
+     `home-staging-vendre-plus-cher` 111, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `taxe-fonciere-vente-qui-paie` 144,
+     `vendre-appartement-lyon-etapes` 154, `mandat-simple-ou-exclusif` 187,
+     `capacite-emprunt-immobilier` 194, puis `cout-gestion-locative` 288 et
+     `compromis-de-vente-delais` 345). **Total du blog : 36 898 mots / 26
+     articles.** ⚠️ **Ne pas en prendre un « parce qu'il est court » :
+     mesurer d'abord s'il existe une SERP où le site est absent.**
+
+→ 🔴 **REQUÊTES CIBLES — ce qui est dû le 27/10 : « vendre appartement
+Villeurbanne »** (deux par mois, dernière le 20/10). « Prix m2 Villeurbanne »
+→ **02/11** (hebdomadaire, mesurée le 26/10, site absent, 6ᵉ mesure). Les deux
+SERP de marque interdite (« agence immobilière Villeurbanne », « estimation
+immobilière Villeurbanne ») → **30/10**. **Prochaine veille du lundi : 02/11.**
+
+🆕 ⚠️ **SERP DE CHANTIER À REMESURER — cinq échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à courir »**
+  (21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (22/10) → **vers le 05/11**.
+- **« peut-on demander un garant si le propriétaire a déjà une assurance loyers
+  impayés »** (23/10) → **vers le 06/11**.
+- **« plafond de loyer bail signé Villeurbanne encadrement des loyers quel
+  arrêté s'applique novembre 2026 »** (24/10) → **vers le 07/11**.
+- 🆕 **« comment estimer le prix de mon appartement soi-même étapes méthode DVF
+  Villeurbanne »** (26/10, site absent au relevé) → **vers le 09/11**.
+  📌 **Repère** : 9 résultats sur 9 d'agences ou vendeurs **non
+  villeurbannais**, et le moteur écrit lui-même « **Aucune source ne donne de
+  prix au m² pour Villeurbanne** ». **C'est la place que la page du jour vise.**
+
+🔴 **ÉCHÉANCE JURIDIQUE INCHANGÉE ET TOUJOURS LA PLUS IMPORTANTE DU BACKLOG :
+23 NOVEMBRE 2026.** L'encadrement des loyers de Lyon et Villeurbanne s'éteint ce
+jour-là **sauf adoption définitive** de la prolongation votée par le Sénat le
+21/10/2026 (texte à l'Assemblée nationale). **Trois pages publient cette date**
+(`/gestion-locative`, `/faire-gerer`, `/blog/rentabilite-locative-lyon`) **et
+`/llms.txt`**. 📌 **À revérifier dès le 24/11/2026, et plus tôt si un run passe
+à proximité.** **Non touché aujourd'hui (chantier contenu sur un autre sujet).**
+
 **Angle du dernier run : NON-CONTENU — la parité des règles de droit entre
 pages, passée sur le corpus** (24/10 : **l'encadrement des loyers n'était publié
 qu'à un seul endroit** — l'article `rentabilite-locative-lyon`, écrit pour
@@ -10090,6 +10424,47 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-10-26 — Quatre points laissés ouverts par le chantier de l'estimation procédurale
+
+**1. ⚠️ La nouvelle application DVF d'Etalab existe-t-elle à l'URL annoncée ?**
+`app.dvf.etalab.gouv.fr` affiche que l'application « fait peau neuve » et
+renvoie vers `explore.data.gouv.fr/immobilier`. **Les deux chemins testés
+(`/immobilier` et `/fr/immobilier`) renvoient la même coquille JavaScript
+« Explorateur de données data.gouv.fr »** depuis ce conteneur : impossible de
+distinguer une route réelle d'un repli d'application monopage. **Le lien a été
+rédigé puis retiré avant publication.** 📌 **Ce qu'il faut pour trancher** :
+une vérification depuis un client capable d'exécuter le JavaScript, ou une
+annonce datée d'Etalab. ⚠️ **Et un enjeu de péremption** : si l'ancienne
+application ferme, **la page du jour et sa FAQ citent `app.dvf.etalab.gouv.fr`
+à trois endroits** et deviendraient fausses. **À revérifier dans un mois.**
+
+**2. 🔴 L'écart « affiché ≠ signé » par QUARTIER existe-t-il encore ?**
+C'est la reformulation imposée par le run (voir « Chantiers en attente » n°2).
+Les six mesures accumulées sont **communales** et convergent à ±4 % de notre
+médiane DVF 2025 ; l'affirmation publiée sur `/acheter` et `/llms.txt` est **par
+quartier** et vaut 16,1 à 45,3 %. **Les deux peuvent être vraies en même
+temps.** ⚠️ **Ce qui la falsifierait** : un relevé DVF 2026 par quartier
+montrant que les médianes de quartier ont rejoint les prix affichés. **Ce qu'il
+ne faut pas faire** : conclure depuis les SERP, ni retirer l'argument.
+
+**3. 🟡 Le balisage `HowTo` et `FAQPage` sert-il réellement la citation par les
+moteurs de réponse ?** La veille du 26/10 établit que **Google ne montre plus
+ni l'un ni l'autre** (HowTo août 2023, FAQ 7 mai 2026). L'argument « ça sert
+quand même la lecture machine » est **du consensus de praticiens, pas une
+mesure** : les sources trouvées le disent elles-mêmes « unsettled ». 📌 **Ce
+qui la trancherait, et c'est mesurable ici** : la page du jour est désormais
+**la seule du site à porter un `HowTo`**. Si elle se fait citer sur sa SERP de
+chantier (échéance **09/11**) et que les pages à `FAQPage` seul ne le sont pas,
+c'est un indice. **Un seul cas ne conclura rien** — mais c'est un test gratuit
+qui tourne tout seul.
+
+**4. 🟡 Combien d'entrées de ce journal comptent `FAQPage` comme un gain SEO ?**
+Non compté aujourd'hui, faute de temps après le chantier. **C'est le candidat
+non-contenu n°1 du 27/10.** ⚠️ **Ne pas en déduire que le balisage doit
+partir** : la décision de le garder est prise et motivée (voir « Chantiers
+faits »). Ce qui doit changer est **la valeur qu'on lui prête dans ce journal**,
+pas le code.
+
 ### 2026-10-24 — Trois points laissés ouverts par le chantier de l'encadrement des loyers
 
 - 🔴 **Que deviennent les BAUX EN COURS si l'expérimentation s'éteint le
@@ -11207,6 +11582,75 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-26 — Ma recette de parité FAQ était aveugle depuis le 23/10, mon compteur de mots ignorait le bloc neuf, et sept fautes de ma propre plume attrapées avant le push
+
+**1. 🔴 LA FAUTE LA PLUS GRAVE EST UN DÉTECTEUR AVEUGLE, ET IL A TOURNÉ TROIS
+JOURS : LA RECETTE DE PARITÉ FAQ DU 23/10.** Elle était écrite ainsi :
+`re.sub(r'<script[^>]*>.*?</script>','', re.sub(r'<[^>]+>',' ', h), flags=re.S)`
+— **les balises sont retirées AVANT les `<script>`**, donc après la première
+substitution il n'existe plus aucune balise `<script>` à retirer, et **tout le
+JSON-LD reste dans le texte dit « visible »**. Le contrôle comparait donc **le
+JSON-LD à lui-même** : *n'importe quelle* FAQ passait 8/8, y compris une FAQ
+totalement absente de la page. **Les verdicts « parité 8/8 + 8/8 » des 23 et
+24/10 ont été rendus par ce détecteur.**
+✅ **Détectée par accident utile** : la version corrigée a affiché **4/7** là où
+l'aveugle affichait **7/7**, et c'est l'écart entre les deux qui a trahi la
+faute. **Toujours se demander pourquoi un contrôle passe, pas seulement s'il
+passe** — c'est la leçon du 15/10, re-commise.
+✅ **Conséquence vérifiée tout de suite, et elle est rassurante** : recette
+corrigée passée sur **12 pages / 89 paires Q/R**, **écarts = 0**. **Le détecteur
+était aveugle, ses verdicts étaient justes : aucun défaut en production.**
+**Recette corrigée en « Techniques apprises » — ne plus jamais utiliser
+l'ancienne.**
+
+**2. ⚠️ MON COMPTEUR DE MOTS A IGNORÉ LE BLOC QUE JE VENAIS DE CRÉER, ET IL
+SOUS-COMPTAIT DE 350 MOTS.** Le compteur faisait `b.items.join(' ')`, ce qui
+donne `"[object Object]"` sur le bloc `steps` dont les items sont des objets
+`{name, text}`. **Première mesure : 1 719 mots. Vraie mesure : 2 069.**
+📌 **Famille déjà connue — le piège des compteurs des 20-21/10 — mais sous une
+forme neuve : ce n'est pas deux compteurs qui divergent, c'est UN compteur qui
+ne connaît pas une structure neuve.** **Règle à ajouter : qui crée un type de
+bloc doit mettre à jour les outils de mesure dans la même session.**
+
+**3. ⚠️ SEPT FAUTES DANS MON PROPRE BROUILLON, TOUTES ATTRAPÉES À LA RELECTURE
+ADVERSARIALE AVANT LE PUSH.** Aucune n'a été publiée.
+- 🔴 **Une contradiction avec notre propre page** : j'allais écrire que la
+  surface réelle bâtie étant plus large que la Carrez, le prix au m² DVF est
+  mécaniquement plus bas. **`loi-carrez-surface` publie l'inverse** : écart
+  médian **−0,31 %**, divergence **dans les deux sens** (5,8 % / 7,0 %).
+  **Le contrôle du 21/10 a payé — appliqué AVANT publication cette fois.**
+- 🔴 **Une contradiction interne au même texte** : « Le Rhône, lui, est
+  intégralement couvert » deux paragraphes avant « il manque encore une partie
+  des données de l'année passée ». Corrigé en « n'est pas concerné par cette
+  exclusion » (2 emplacements).
+- 🔴 **Un fait faux par exclusivité** : « C'est la seule source qui donne des
+  prix signés ». **Faux, et ce journal le savait** : il note au 05/10 que
+  `immobilier.notaires.fr` classe 4ᵉ sur une SERP de prix, « la source
+  officielle des ventes signées ». Corrigé.
+- ⚠️ **Une sous-estimation chiffrée** : « DVF ne contient jamais les ventes du
+  trimestre qui vient de s'écouler ». **Le retard réel est de quatre à dix
+  mois** selon le moment de consultation — la phrase était vraie mais faisait
+  croire à un écart trois fois moindre. Corrigée aux deux endroits (texte et
+  étape 5).
+- ⚠️ **Un renvoi croisé faux** : l'étape 1 renvoyait « à l'étape 7 » pour la
+  question de la surface, alors que l'étape 7 porte sur les **frais**. Corrigé.
+- ⚠️ **Une annonce non tenue** : l'introduction promettait « quatre raisons »
+  pour lesquelles le prix au m² n'est pas comparable à une annonce, alors que
+  **deux des quatre limites ne portent pas sur cette comparaison**. Réécrite
+  pour annoncer exactement les quatre limites livrées.
+- ⚠️ **Un sur-énoncé** : « C'est la même source que celle sur laquelle
+  travaillent les professionnels » → « l'une des sources ».
+
+**4. ⚠️ `pkill -f "next start"` DANS UNE COMMANDE COMPOSÉE A TUÉ MON PROPRE
+SHELL (code 144) ET LAISSÉ L'ANCIEN SERVEUR VIVANT — J'AI DONC VÉRIFIÉ UN BUILD
+PÉRIMÉ.** Le `curl` suivant a rendu **exactement la même taille** (136 165 o)
+qu'avant la modification, et c'est cette **coïncidence de taille** qui a mis la
+puce à l'oreille. ⚠️ **Le motif est le même que le 18/10** (un push vert qui
+n'avait rien déployé) : **la taille seule ne prouve pas la fraîcheur.**
+📌 **Règle** : après tout rebuild, vérifier un **témoin de contenu** — une
+chaîne neuve présente ET une chaîne ancienne absente — jamais la taille.
+Recette en « Techniques apprises ».
 
 ### 2026-10-24 — J'ai relevé `origin/main` après le fetch, pas avant, et je me suis donc privé de la seule mesure que ce fetch servait à produire
 
@@ -12670,6 +13114,105 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-26 — La recette de parité corrigée, la parité garantie par construction, le témoin de fraîcheur, et la veille du lundi (dépréciation FAQ confirmée chez Google)
+
+**1. 🔴 LA RECETTE DE PARITÉ FAQ / JSON-LD, CORRIGÉE. L'ANCIENNE EST AVEUGLE :
+NE PLUS L'UTILISER.** Deux fautes à éviter, la première est fatale.
+
+```python
+# ORDRE OBLIGATOIRE : retirer les <script> AVANT les balises.
+# L'inverse laisse le JSON-LD dans le texte « visible » : il se compare
+# alors a lui-meme et TOUTE FAQ passe, meme absente de la page.
+body = re.sub(r'<script[^>]*>.*?</script>', '', html_source, flags=re.S)
+vis  = html.unescape(re.sub(r'<[^>]+>', ' ', body))
+# COMPARER SANS LES ESPACES : retirer une balise insere un espace, donc
+# « frais de notaire. » devient « frais de notaire . » et un test naif echoue
+# sur un texte pourtant bien present (3 faux negatifs constates aujourd'hui).
+sq = lambda t: re.sub(r'\s', '', t)
+ok = sq(html.unescape(question_du_jsonld)) in sq(vis)
+```
+
+📌 **Le script réutilisable est reconstruit à chaque run** (il vit dans le
+scratchpad, pas dans le repo) : il prend des chemins en arguments, lit
+`http://localhost:3000`, et affiche pour chaque page `N Q/R  ecarts=K`.
+⚠️ **En local, `urllib` doit court-circuiter le proxy** —
+`urllib.request.build_opener(urllib.request.ProxyHandler({}))` — exactement
+comme `curl` a besoin de `--noproxy '*'` (constat du 24/10).
+
+**2. 🟢 LA PARITÉ PEUT ÊTRE GARANTIE PAR CONSTRUCTION PLUTÔT QUE MESURÉE, ET
+C'EST STRICTEMENT MIEUX.** Le bloc `steps` créé aujourd'hui porte **une seule
+fois** le texte des étapes : `article-body.tsx` l'affiche, et
+`app/blog/[slug]/page.tsx` le lit **pour émettre le `HowTo`**. Il n'y a donc
+**aucun écart possible** entre le visible et le balisé. 📌 **À opposer à `faq`,
+qui DUPLIQUE son contenu** (le champ `faq` d'un côté, le rendu de l'autre) et
+dont la parité doit être mesurée à chaque run. **Pour tout balisage neuf :
+dériver du contenu affiché, ne jamais le recopier.** C'est la seule forme de
+parité qu'un détecteur aveugle ne peut pas rater.
+
+**3. 🔴 TÉMOIN DE FRAÎCHEUR APRÈS REBUILD — la taille ne prouve rien.**
+Après un `next build`, vérifier **deux** témoins sur le HTML rendu :
+```bash
+grep -c '<chaine NEUVE>'  page.html   # doit etre > 0
+grep -c '<chaine ANCIENNE>' page.html # doit etre = 0
+```
+⚠️ **Aujourd'hui l'ancien serveur a survécu à un `pkill` et a servi un build
+périmé AVEC LA MÊME TAILLE à l'octet** (136 165 o). Même famille que le
+18/10 (push vert, rien de déployé). **Et `pkill -f "next start"` dans une
+commande composée tue le shell appelant (code 144)** : utiliser
+`pkill -9 -f next-server`, dans sa propre commande, puis relancer avec
+`nohup … &` et attendre le 200.
+
+**4. 🔴 VEILLE DU LUNDI 26/10 — ET ELLE RAPPORTE LE FAIT LE PLUS IMPORTANT
+DEPUIS DES SEMAINES** (la précédente datait du 19/10, négative).
+
+**a. Le rich result FAQ n'existe plus, et c'est Google qui le dit.** Vérifié sur
+le **changelog de la documentation Google Search Central**, pas sur un blog SEO
+(les blogs trouvés étaient contradictoires sur les dates et les périmètres) :
+- **8 mai 2026** : avis de dépréciation — « *This feature will no longer appear
+  in Google Search starting May 7, 2026* ».
+- **15 juin 2026** : documentation `FAQPage` **supprimée** — « *The FAQ rich
+  result feature is no longer shown in Google Search results* ».
+- Le rich result **`HowTo`** avait été retiré en **août 2023**.
+- ⚠️ **Google ne demande PAS de retirer le balisage**, et indique qu'un
+  balisage inutilisé ne nuit pas.
+📌 **Applicable ici, et la conséquence est une correction de doctrine, pas de
+code** : ce site publie `FAQPage` sur **au moins 12 pages**. **Cesser de compter
+ce balisage comme un gain SEO** — plusieurs entrées de ce journal le font.
+**Ce qui garde toute sa valeur, c'est la FAQ VISIBLE** : c'est elle que les
+moteurs de réponse extraient, et c'est la consigne « réponse directe en tête »
+qui la rend citable, pas le JSON-LD. **Chantier de requalification : candidat
+n°1 du 27/10.**
+
+**b. Sur le reste de l'état de l'art GEO, la veille est pauvre et il faut le
+dire.** Recherche faite sur les évolutions AI Overviews / ChatGPT / Perplexity
+d'octobre 2026 : **aucune annonce officielle de Google, OpenAI ou Perplexity
+trouvée.** Les neuf résultats sont des blogs de prestataires SEO, dont les
+chiffres se contredisent. ⚠️ **Deux chiffres circulent beaucoup et ne sont PAS
+reprenables** : « 2 % seulement des URL citées sont communes aux trois moteurs »
+et « 82 % de citation pour un contenu mis à jour sous 30 jours » — **une seule
+source d'éditeur chacun, aucune réplication.** 📌 **Ce qui est néanmoins
+cohérent avec notre pratique et déjà appliqué** : réponse autonome en tête de
+section, titres en questions réelles, passages courts auto-suffisants, contenu
+daté. **Rien de neuf à appliquer : la veille est négative sur ce volet.**
+**Ne pas la refaire avant le 02/11.**
+
+**5. 🟢 LE MOTIF « LE MOTEUR AVOUE N'AVOIR AUCUNE SOURCE » TIENT UNE QUATRIÈME
+FOIS, ET IL SE QUALIFIE MAINTENANT PAR TYPE DE QUESTION.** Occurrences : 18/10
+(budget total d'achat), 19/10 (les 17,2 %), 24/10 (quel arrêté de loyer),
+**26/10 (comment estimer soi-même)**. 📌 **Ce que le cas du 26/10 ajoute : une
+question PROCÉDURALE est la meilleure cible de ce motif**, parce qu'on peut la
+servir **sans produire de donnée de marché neuve** — donc même quand un
+périmètre interdit d'en produire (celui du 11/10). **Chercher en priorité les
+questions en « comment … » où la SERP est tenue par des vendeurs.**
+
+**6. 🟢 RECETTE : MESURER LA FAIBLESSE DU BLOG EN UN COUP.** `npx tsx` sur un
+script qui importe `ARTICLES` depuis `lib/blog.ts` et compte, par article,
+mots + `<h2>` + FAQ + `updated`. ⚠️ **Le mapper de texte doit traiter TOUS les
+types de bloc**, `steps` compris (`items` d'objets), sinon il sous-compte en
+silence — faute commise aujourd'hui. **État au 26/10 : 36 898 mots / 26
+articles, 12 articles sous 200 mots et sans aucune FAQ** (liste en « Chantiers
+en attente »).
 
 ### 2026-10-24 — Le contrôle « quel TEXTE LOCAL fixe le prix de ce que la page vend ? », la préfecture comme source plus fraîche que la fiche officielle, et la métadonnée qui ne périme pas
 
