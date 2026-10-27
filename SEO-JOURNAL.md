@@ -117,6 +117,16 @@
   Consigné en « Erreurs commises ». 📌 **Audit refait en insensible à la casse :
   aucune page de fond ne manque de marqueur de fraîcheur** (toutes les pages
   `seo-landing`, tous les articles, `/faire-gerer`, `/honoraires`).
+- ✅ 🆕 **DÉPLOIEMENT CONFIRMÉ EN PRODUCTION, APRÈS LE PUSH — vérifié, pas
+  supposé.** Commit `a35aa79` poussé sur `main` ; la page servie portait le
+  nouveau contenu **75 secondes** plus tard. Relevés en production :
+  `/gestion-locative` 200 / **169 557 o** (143 708 o avant), 
+  `/blog/dpe-2026-ce-qui-change` 200 / **210 360 o**, `/llms.txt` 200 /
+  **31 584 o** (28 830 o avant). **Parité FAQ revérifiée sur le HTML rendu EN
+  PRODUCTION : 21 paires Q/R, 21 à parité, 0 écart.** Sitemap de production :
+  **2 URL au `lastmod` 2026-10-27**. Faits clés présents une fois chacun dans la
+  page servie (`1,9 à 1,7`, `300 000`, `arrêté du 19 août 2026`,
+  `Observatoire DPE-Audit`, date visible `27 octobre 2026`).
 - 🟡 **Sitemap local après build : 2 URL au `lastmod` 2026-10-27** —
   `/gestion-locative` et `/blog/dpe-2026-ce-qui-change`, les deux pages
   réellement modifiées, et elles seules.
