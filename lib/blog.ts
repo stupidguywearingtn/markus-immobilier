@@ -175,6 +175,21 @@
  * (/api/v1/gaspar/risques?code_insee=69266, relevé du 12/10/2026) : six familles,
  * et AUCUN risque minier — l'ancienne version de la page écrivait « miniers ».
  *
+ * ⚠️ « dpe-2026-ce-qui-change » — PIÈGE ÉTABLI LE 27/10/2026, valable pour TOUTE
+ * fiche service-public citée dans ce fichier : la mention « Vérifié le … » NE
+ * BOUGE PAS quand la fiche annonce un changement FUTUR. La fiche F16096 était
+ * (et reste) « vérifiée le 1er janvier 2026 », alors que son encadré
+ * « Évolutions du DPE » annonce deux textes applicables au 01/01/2027 (arrêtés
+ * du 11/06/2026 et du 19/08/2026). Comparer les dates de vérification ne suffit
+ * donc pas : il faut relire l'encadré d'évolutions de chaque fiche citée.
+ * ⚠️ Deux réserves à ne jamais retirer du bloc 2027 : l'amélioration d'étiquette
+ * « n'est pas systématique » (la classe finale du DPE est la PIRE des deux
+ * étiquettes, et l'étiquette gaz à effet de serre ne bouge pas), et le gain d'un
+ * G devenu F ne dure QU'UN AN (la classe F est exclue de la location à partir de
+ * 2028). ⚠️ La fiche F16096 écrit la nouvelle classe européenne « (AO) » —
+ * lettre O, probable coquille pour « A0 » : la lettre n'est PAS publiée tant
+ * qu'une source ne la tranche pas.
+ *
  * Depuis le 15/10/2026, « charges-copropriete » est passé de 164 à ~2 500 mots et
  * PORTE ENFIN la composition du dossier de copropriété que l'architecture du site
  * lui réserve : le renvoi de « diagnostics-obligatoires-vente » (« règlement,
@@ -693,14 +708,14 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "dpe-2026-ce-qui-change",
-    title: "DPE à Villeurbanne : 4,9 % de passoires, et ce qui change en 2026",
+    title: "DPE à Villeurbanne : 4,9 % de passoires, et ce qui change en 2026 et 2027",
     metaDescription:
-      "Sur 49 717 appartements diagnostiqués à Villeurbanne, 4,9 % sont classés F ou G, contre 7,1 % en France. Détail par période de construction et règles 2026.",
-    h1: "DPE à Villeurbanne : combien de passoires énergétiques, et ce qui change en 2026",
+      "Sur 49 717 appartements diagnostiqués à Villeurbanne, 4,9 % sont classés F ou G, contre 7,1 % en France. Détail par période de construction, règles 2026 et coefficient 1,7 au 1er janvier 2027.",
+    h1: "DPE à Villeurbanne : combien de passoires énergétiques, et ce qui change en 2026 et 2027",
     excerpt:
       "Nous avons compté les étiquettes DPE des 49 717 appartements diagnostiqués à Villeurbanne : 4,9 % sont classés F ou G, contre 7,1 % en France. Le risque dépend d'abord de l'année de construction.",
     date: "2026-05-05",
-    updated: "2026-10-22",
+    updated: "2026-10-27",
     internalHref: "/vendre",
     internalLabel: "Faire le point sur la valeur de mon bien",
     blocks: [
@@ -753,8 +768,22 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Depuis le 1er janvier 2026, le facteur de conversion de l'électricité en énergie primaire passe de 2,3 à 1,9.** Un logement chauffé à l'électricité obtient donc une meilleure étiquette qu'avec l'ancien calcul, sans aucun travaux. Les DPE réalisés en 2025 et avant restent valables, et ils peuvent être mis à jour gratuitement, sans nouvelle visite du diagnostiqueur, sur le site de l'ADEME." },
       { type: "p", text: "**À Villeurbanne, cela concerne un nombre précis de logements : 1 287 appartements classés F ou G y sont chauffés à l'électricité, et 1 077 d'entre eux ont un DPE établi avant le 1er janvier 2026.** Ce sont ces 1 077 là qui ont quelque chose à gagner à demander la mise à jour gratuite. L'électricité est d'ailleurs le premier mode de chauffage des passoires villeurbannaises : 52,4 % des appartements classés F ou G, contre 42,3 % au gaz naturel et 3,1 % raccordés à un réseau de chaleur." },
 
+      { type: "h2", text: "Qu'est-ce qui change au 1er janvier 2027 pour le DPE ?" },
+      { type: "p", text: "**Au 1er janvier 2027, le facteur de conversion de l'électricité en énergie primaire est abaissé une seconde fois, de 1,9 à 1,7.** Le ministère chargé du logement en attend la sortie du statut de passoire énergétique pour **environ 300 000 logements**, sur les **3,2 millions** que comptait le parc de résidences principales au 1er janvier 2025 — sans travaux, par le seul effet du calcul. La valeur est fixée par l'arrêté du 19 août 2026, publié au Journal officiel du 26 août 2026, qui abroge au 1er janvier 2027 celui du 13 août 2025 ayant fixé 1,9." },
+      { type: "p", text: "**Pourquoi l'électricité seulement : le DPE porte deux étiquettes — énergie et gaz à effet de serre — et la classe finale retenue est la pire des deux.** L'étiquette énergie se calcule en énergie primaire : on part des besoins en énergie finale du logement, puis on applique ce facteur à la part d'électricité. Abaisser le facteur ne change donc rien à un logement chauffé au gaz ou au fioul, et rien non plus à l'étiquette gaz à effet de serre. Le ministère pose deux limites qu'il faut lire ensemble : l'amélioration « n'est pas systématique », et « aucun logement ne verra son étiquette dégradée après le changement ». Le gain atteint une classe, voire deux dans de rares cas qui concernent les petits logements." },
+      { type: "p", text: "**À Villeurbanne, la population concernée est connue, et c'est la majorité des passoires : 1 287 appartements classés F ou G y sont chauffés à l'électricité, soit 52,4 % des passoires de la commune.** Tous ont un DPE antérieur au 1er janvier 2027, puisque notre extraction date du 11 octobre 2026. Et la réserve du ministère sur les deux classes gagnées « dans de rares cas (petits logements) » vise un parc que Villeurbanne possède plus que la moyenne : 18 134 appartements diagnostiqués font 40 m² ou moins, soit 36,5 % de ceux dont la surface est renseignée, et 6,26 % d'entre eux sont classés F ou G." },
+      { type: "p", text: "**Un DPE déjà établi n'a pas à être refait.** À partir du 1er janvier 2027, le propriétaire d'un DPE existant télécharge gratuitement une attestation officielle de nouvelle étiquette sur l'[Observatoire DPE-Audit de l'ADEME](https://observatoire-dpe-audit.ademe.fr), en saisissant le numéro du DPE qui figure en haut à droite du rapport :" },
+      { type: "ul", items: [
+        "L'attestation **remplace l'étiquette** du DPE et **conserve la durée de validité** du diagnostic d'origine.",
+        "Elle **s'utilise dans une vente comme dans une mise en location**, et elle prend en compte les seuils spécifiques des logements de moins de 40 m².",
+        "Les attestations **déjà délivrées** au titre du passage à 1,9 **restent valables** jusqu'à leur date de fin de validité, et les DPE réalisés entre le 1er juillet 2021 et le 1er janvier 2027 restent valides même sans correction.",
+        "Pour un **audit énergétique** réalisé avant cette date, une attestation équivalente se télécharge sur le même site et s'utilise notamment dans un dossier MaPrimeRénov' déposé à compter du 1er janvier 2027.",
+      ] },
+      { type: "p", text: "**Pour un bailleur, ce gain a une durée de vie précise, et c'est le calendrier de location qui la fixe : un logement qui passe de G à F au 1er janvier 2027 redevient louable, mais pour un bail signé, renouvelé ou tacitement reconduit en 2027 seulement.** À partir de 2028, seules les classes A à E peuvent être louées et la classe F est exclue à son tour. Le nouveau coefficient n'ouvre donc pas une sortie durable de l'interdiction pour un G devenu F : il ouvre une année. Dans les rares cas où le gain atteint deux classes — les petits logements —, un G devenu E sort en revanche de l'interdiction jusqu'en 2034." },
+      { type: "p", text: "**Un second texte entre en vigueur le même jour, et il est de nature différente** : un arrêté du 11 juin 2026 adapte le DPE à la réglementation européenne — prise en compte de la place des énergies renouvelables et création d'une nouvelle classe énergie pour certains bâtiments. Service-Public annonce que sa fiche sera modifiée à cette date. Conséquence pratique : un DPE réalisé en décembre 2026 et le même logement rediagnostiqué en janvier 2027 ne sont pas directement comparables." },
+
       { type: "h2", text: "À partir de quand ne peut-on plus louer un logement selon son DPE ?" },
-      { type: "p", text: "**Un logement classé G ne peut plus être mis en location depuis le 1er janvier 2025, et l'interdiction vaut aussi pour le renouvellement du bail et sa reconduction tacite.** La classe F suit à partir de 2028 et la classe E à partir de 2034. Les logements F et G subissent par ailleurs un gel des loyers : pas d'augmentation tant que le bien reste une passoire." },
+      { type: "p", text: "**Un logement classé G ne peut plus être mis en location depuis le 1er janvier 2025, et l'interdiction vaut aussi pour le renouvellement du bail et sa reconduction tacite.** La classe F suit à partir de 2028 et la classe E à partir de 2034. Une précision que la plupart des pages omettent : pour un bail signé, renouvelé ou tacitement reconduit entre 2023 et 2024 et pas encore renouvelé depuis, le critère de décence n'est pas une classe mais une consommation — moins de 450 kWh d'énergie finale par m² de surface habitable et par an. Le détail des quatre périodes, et les trois cas où le juge ne peut pas imposer les travaux, sont dans nos [obligations du bailleur](/gestion-locative). Les logements F et G ne peuvent par ailleurs pas voir leur loyer révisé : l'interdiction vaut en métropole pour tout bail signé, renouvelé ou tacitement reconduit depuis le 24 août 2022." },
       { type: "ul", items: [
         "**Classe G** : interdite à la location depuis le 1er janvier 2025 — **811 appartements** à Villeurbanne.",
         "**Classe F** : interdite à partir de 2028 — **1 643 appartements** de plus.",
@@ -792,7 +821,8 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Les comparaisons France et Lyon sont calculées sur la même base et avec le même filtre (appartements), pour que l'écart mesure une différence de parc et non une différence de méthode : **10 646 482 appartements diagnostiqués en France** et **209 444 dans les neuf arrondissements de Lyon**." },
       { type: "p", text: "Les règles citées, elles, proviennent de sources officielles :" },
       { type: "ul", items: [
-        "[Diagnostic de performance énergétique (DPE)](https://www.service-public.gouv.fr/particuliers/vosdroits/F16096), Service-Public — fiche vérifiée le 1er janvier 2026 : facteur de conversion, durée de validité, seuils des logements de 40 m² ou moins.",
+        "[Diagnostic de performance énergétique (DPE)](https://www.service-public.gouv.fr/particuliers/vosdroits/F16096), Service-Public — fiche vérifiée le 1er janvier 2026 : facteur de conversion, durée de validité, seuils des logements de 40 m² ou moins. Son encadré « Évolutions du DPE », lu le 27 octobre 2026, annonce les deux textes applicables au 1er janvier 2027 (arrêtés du 11 juin et du 19 août 2026) — la date de vérification de la fiche, elle, n'a pas bougé.",
+        "[FAQ DPE — modification du facteur de conversion en énergie primaire de l'électricité](https://rt-re-batiment.developpement-durable.gouv.fr/faq-dpe-modification-du-facteur-de-conversion-en-a1021.html), ministère chargé du logement — lue le 27 octobre 2026 : historique du coefficient (2,58, puis 2,3 en 2021, 1,9 en 2026, 1,7 au 1er janvier 2027), effet attendu de 300 000 logements sur 3,2 millions de passoires au 1er janvier 2025, règle de la pire des deux étiquettes, attestation gratuite de nouvelle étiquette sur l'Observatoire DPE-Audit de l'ADEME et sort des attestations délivrées au titre du coefficient 1,9.",
         "[Quels sont les diagnostics immobiliers qu'un bailleur doit fournir au locataire ?](https://www.service-public.gouv.fr/particuliers/vosdroits/F33463), Service-Public — fiche vérifiée le 20 février 2026 : calendrier d'interdiction de location.",
         "[Audit énergétique en cas de vente d'un bien immobilier dit « passoire thermique »](https://www.service-public.gouv.fr/particuliers/vosdroits/F37110), Service-Public — fiche vérifiée le 14 septembre 2026 : périmètre de l'audit.",
         "[Diagnostic de performance énergétique](https://www.ecologie.gouv.fr/politiques-publiques/diagnostic-performance-energetique-dpe), ministère chargé de la Transition écologique : calendrier du DPE collectif en copropriété.",
@@ -818,6 +848,14 @@ export const ARTICLES: Article[] = [
       {
         q: "Mon appartement est chauffé à l'électricité et classé F : que change le 1er janvier 2026 ?",
         a: "Depuis le 1er janvier 2026, le facteur de conversion de l'électricité en énergie primaire passe de 2,3 à 1,9, ce qui améliore l'étiquette d'un logement électrique sans aucun travaux. Un DPE réalisé en 2025 ou avant reste valable et peut être mis à jour gratuitement, sans nouvelle visite, sur le site de l'ADEME. À Villeurbanne, 1 287 appartements classés F ou G sont chauffés à l'électricité, dont 1 077 avec un DPE établi avant cette date.",
+      },
+      {
+        q: "Qu'est-ce qui change pour le DPE au 1er janvier 2027 ?",
+        a: "Deux textes entrent en vigueur ce jour-là. L'arrêté du 19 août 2026 abaisse le facteur de conversion de l'électricité en énergie primaire de 1,9 à 1,7 : le ministère chargé du logement en attend la sortie du statut de passoire pour environ 300 000 logements, sur les 3,2 millions que comptait le parc de résidences principales au 1er janvier 2025, sans aucun travaux. L'arrêté du 11 juin 2026 adapte par ailleurs le DPE à la réglementation européenne et crée une nouvelle classe énergie pour certains bâtiments. Un DPE déjà réalisé n'a pas à être refait : à partir du 1er janvier 2027, une attestation officielle de nouvelle étiquette se télécharge gratuitement sur l'Observatoire DPE-Audit de l'ADEME avec le numéro du DPE, elle remplace l'étiquette et conserve la durée de validité du diagnostic d'origine.",
+      },
+      {
+        q: "Mon logement classé G va-t-il redevenir louable avec le coefficient de 1,7 ?",
+        a: "Peut-être, et pour une année seulement. Si le passage du facteur de conversion de 1,9 à 1,7 au 1er janvier 2027 fait remonter l'étiquette de G à F, le logement redevient louable — mais pour un bail signé, renouvelé ou tacitement reconduit en 2027, puisqu'à partir de 2028 seules les classes A à E peuvent être louées. Un G devenu E, en revanche, est hors interdiction jusqu'en 2034. Deux réserves du ministère valent ici : l'amélioration n'est pas systématique, et comme la classe finale du DPE est la pire des deux étiquettes, un gain sur l'étiquette énergie peut être annulé par une étiquette gaz à effet de serre inchangée. À Villeurbanne, 1 287 appartements classés F ou G sont chauffés à l'électricité, soit 52,4 % des passoires de la commune.",
       },
       {
         q: "Faut-il un audit énergétique pour vendre un appartement classé F ou G ?",

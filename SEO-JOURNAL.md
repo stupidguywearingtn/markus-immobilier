@@ -14,6 +14,119 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-27 (mardi)**
+
+- ✅ **CONFIGURATION DE DÉPART SAINE, ET POUR LA PREMIÈRE FOIS DEPUIS LE 21/10 LE
+  FETCH NE RETARDAIT PAS.** Relevé **AVANT** `git fetch` (règle du 16/09) :
+  `HEAD` = `main` local = `origin/main` = **`9a1f7b9`**. Après `git fetch origin
+  main` : `origin/main` **inchangé**. 📌 **Le retard d'`origin/main` constaté les
+  22, 23, 24 et 26/10 ne s'est donc PAS reproduit** — la règle reste payante,
+  mais elle décrit un aléa, pas une constante.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-deuxième constat identique** (21/09 → 27/10).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Quinzième confirmation.**
+- 🆕 ⚠️ **OUTILLAGE : `markusimmobilier.fr` SANS `www` REND 308 SUR TOUTES LES
+  URL.** Première passe de contrôle de production entièrement en **308 / 15
+  octets** sur les 8 URL testées, ce qui ressemble à un site mort. Ce n'est
+  qu'une redirection vers `www`. 📌 **Toujours contrôler
+  `https://www.markusimmobilier.fr` (ou `curl -L`)** — consigné en
+  « Techniques apprises » avec la famille du 24/09 (`curl` sans `--cacert`).
+- ✅ **LE TRAVAIL DU 26/10 EST SERVI EN PRODUCTION — vérifié avant d'agir.**
+  `/` 200 / 284 361 o, `/estimation` 200 / 86 465 o, `/honoraires` 200 /
+  131 002 o, `/gestion-locative` 200 / 143 708 o, `/faire-gerer` 200 /
+  154 707 o, `/blog/comment-estimer-son-bien-immobilier-lyon-villeurbanne`
+  200 / **142 005 o** (contre 73 551 o le 26/10 avant réécriture), `/llms.txt`
+  200 / 28 830 o, `/sitemap.xml` 200. **Sitemap de production : 53 URL, dont
+  exactement 1 au `lastmod` 2026-10-26** — la page réécrite hier, et elle seule.
+  📌 **L'écart 51/53 relevé hier en local était bien local** (annonces
+  dépendantes de Supabase) : rien à corriger, confirmé.
+- 🔴 **REQUÊTE CIBLE DUE AUJOURD'HUI, MESURÉE : « vendre appartement
+  Villeurbanne » → SITE ABSENT.** Les 9 résultats : `pap.fr`, **`laforet.com`
+  ×2 (éditorial)**, **`orpi.com/actualites` (éditorial)**, `capifrance.fr`,
+  `immo.trovit.fr` ×2, `zimo.fr` ×2.
+- 🟢 🆕 **ET CETTE MESURE TRANCHE UNE HYPOTHÈSE OUVERTE DEPUIS LE 13/10 : OUI,
+  CETTE SERP S'EST OUVERTE À L'ÉDITORIAL — TROISIÈME MESURE CONCORDANTE.**
+  04/10 : « 9 résultats, tous des pages de listings, **zéro contenu
+  éditorial** » → l'angle avait été fermé sur cette base. 13/10 : **3 des 9
+  éditoriaux**. 20/10 : `laforet.com` tient **deux** positions éditoriales.
+  27/10 : **3 des 9 éditoriaux** (Laforêt ×2 + Orpi actualités). **La règle du
+  08/10 (« un seul delta ne conclut rien ») est satisfaite : il y a désormais
+  trois relevés, et la lecture du 04/10 est RÉFUTÉE.** 🔴 **Conséquence :
+  `/vendre` redevient un candidat CONTENU, et c'est le candidat n°1 de demain.**
+  📌 **Et l'avantage est intact** : les deux pages de Laforêt qui tiennent ces
+  positions sont **périmées et le moteur le dit lui-même** (« Villeurbanne en
+  2024 », transactions de **2019**, moyenne de 3 258 €/m² présentée comme
+  actuelle). **La fraîcheur datée et sourcée reste la place vide.**
+- 🟢 **SERP DE CHANTIER MESURÉE AVANT D'ÉCRIRE (méthode du 15/10, 11ᵉ test
+  positif), ET ELLE A CONFIRMÉ LE CHANTIER.** Sur « bail signé en 2024 logement
+  classé G puis-je encore le louer critère 450 kWh ou classe DPE » : **site
+  absent**, et **9 résultats sur 9 sont des éditeurs nationaux ou des vendeurs
+  de service** (slate.fr, orpi, `edito.seloger.com` ×4, bailfacile, selectra,
+  human-immobilier, generali) — **zéro agence locale, zéro source officielle,
+  zéro villeurbannais**. 🔴 **ET LE MOTEUR AVOUE DEUX FOIS QU'IL NE SAIT PAS :
+  « Les recherches ne disent pas explicitement ce qu'il advient d'un bail en
+  cours signé en 2024, donc à vérifier » et « Ce point n'est pas détaillé dans
+  les résultats, et je ne peux pas le confirmer ici. »** **Motif « le moteur
+  avoue n'avoir aucune source » : 5ᵉ occurrence (18/10, 19/10, 24/10, 26/10,
+  27/10).**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée** (24/10
+  non-contenu → 26/10 contenu → **27/10 non-contenu**). **Candidat n°3 du
+  backlog consommé** — « le contrôle *la fiche comprime-t-elle un calendrier ?*
+  passé sur les autres calendriers », inscrit le 22/10 et reporté trois fois. Il a
+  rendu **deux défauts**, dont un que personne ne pouvait voir en comparant des
+  dates de vérification. Détail en « Chantiers faits ».
+- 🔴 🆕 **DÉFAUT N°1, ET C'EST LE PLUS IMPORTANT DU RUN : LA FICHE QUE NOUS
+  CITONS A CHANGÉ SANS QUE SA DATE DE VÉRIFICATION BOUGE.** `F16096` (DPE) est
+  **toujours « vérifiée le 1er janvier 2026 »**, exactement comme quand nous
+  l'avons lue — mais elle porte désormais un encadré **« Évolutions du DPE »**
+  qui annonce **deux arrêtés applicables au 1er janvier 2027** : le **19 août
+  2026** (facteur de conversion de l'électricité **1,9 → 1,7**) et le **11 juin
+  2026** (réglementation européenne, nouvelle classe énergie). **Notre article
+  `dpe-2026-ce-qui-change`, intitulé « ce qui change en 2026 », était donc muet
+  sur ce qui change dans 65 jours** : `2027` était à **zéro occurrence** de tout
+  le corpus sur ce sujet. 📌 **Un contrôle de fraîcheur fondé sur la mention
+  « Vérifié le … » ne pouvait PAS l'attraper.** Recette corrigée en
+  « Techniques apprises ».
+- 🔴 🆕 **DÉFAUT N°2 : LE CRITÈRE DE DÉCENCE ÉNERGÉTIQUE N'EST PAS LE MÊME POUR
+  TOUS LES BAUX, ET NOS PAGES LE COMPRIMAIENT EN UNE SEULE DATE.** La fiche
+  `F2042` (onglet **Métropole**, vérifiée le 21 mars 2025) pose **quatre
+  périodes indexées sur la DATE DU BAIL**, et pour la première ce n'est **pas
+  une classe mais une consommation** : **moins de 450 kWh d'énergie finale/m²/an**
+  pour un bail signé, renouvelé ou tacitement reconduit **entre 2023 et 2024**.
+  **`450` + kWh étaient à ZÉRO occurrence du corpus.** Comme l'étiquette se
+  calcule en énergie **primaire** et le seuil en énergie **finale**, un logement
+  classé **G pouvait rester décent** sous un bail de 2023-2024 — ce que
+  `/gestion-locative` et `/llms.txt` niaient implicitement.
+- 🔴 🆕 **DÉFAUT N°3, DE LA MÊME FAMILLE QUE LE 23 ET LE 24/10 — UN SILENCE QUI
+  FERMAIT UN DROIT DU BAILLEUR.** Les **trois cas où le juge ne peut PAS**
+  imposer la mise aux normes énergétiques (article 20-1 de la loi du 6 juillet
+  1989) étaient à **zéro occurrence** : copropriété + travaux proposés en AG
+  (bail 2023-2024) ; risque de pathologie du bâti attesté par un architecte ;
+  refus d'autorisation d'urbanisme ou de patrimoine (baux depuis 2025). **Usage
+  (c) du balayage — un silence qui ferme un droit — troisième fois en quatre
+  runs (23/10, 24/10, 27/10).**
+- ✅ 🆕 **UN CANDIDAT DU BACKLOG RETIRÉ PARCE QU'IL ÉTAIT FAUX, PAS PARCE QU'IL
+  EST FAIT AUJOURD'HUI.** Le candidat n°4 (« `/honoraires` ne sert AUCUN
+  *Dernière mise à jour* visible », inscrit le 20/10 et reporté **six fois**)
+  est **sans objet** : la page sert bien **« Barème en vigueur — dernière mise à
+  jour : 20 octobre 2026 »**, câblé sur `lastmodOf("/honoraires")`, vérifié dans
+  le HTML **rendu**. Le défaut était dans le grep qui l'avait « établi » :
+  `Dernière` avec une majuscule, alors que la page écrit `dernière` en milieu de
+  phrase. **J'ai reproduit la même erreur ce matin avant de m'en apercevoir.**
+  Consigné en « Erreurs commises ». 📌 **Audit refait en insensible à la casse :
+  aucune page de fond ne manque de marqueur de fraîcheur** (toutes les pages
+  `seo-landing`, tous les articles, `/faire-gerer`, `/honoraires`).
+- 🟡 **Sitemap local après build : 2 URL au `lastmod` 2026-10-27** —
+  `/gestion-locative` et `/blog/dpe-2026-ce-qui-change`, les deux pages
+  réellement modifiées, et elles seules.
+- ✅ **Parité FAQ visible ↔ JSON-LD vérifiée avec la recette CORRIGÉE du 26/10
+  (scripts retirés AVANT les balises), sur le HTML rendu : 21 paires Q/R,
+  21 à parité, 0 écart** (`/gestion-locative` 10/10,
+  `/blog/dpe-2026-ce-qui-change` 11/11). `npm run build` vert, `npm run lint`
+  sans aucune erreur sur les fichiers touchés (les 24 erreurs restantes sont
+  préexistantes et toutes dans `scripts/*.js` et `studio/`).
+
 **Au 2026-10-26 (lundi — veille hebdomadaire faite)**
 
 - 🔴 **IL N'Y A PAS EU DE RUN LE 25/10, ET C'EST ÉTABLI, PAS SUPPOSÉ.** Le
@@ -3588,6 +3701,170 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-27 — La fiche que nous citons avait changé sans que sa date de vérification bouge, et le critère de décence énergétique n'est pas le même pour un bail de 2024 que pour un bail d'aujourd'hui
+
+**Angle : NON-CONTENU** (alternance respectée : 24/10 non-contenu → 26/10
+contenu → 27/10 non-contenu). **Candidat n°3 du backlog, inscrit le 22/10 et
+reporté trois fois (23, 24 et 26/10) :** passer le contrôle « la fiche officielle comprime-t-elle un
+calendrier ? » sur les calendriers énergétiques restants. Il a rendu trois
+défauts, sur deux pages.
+
+**1. `dpe-2026-ce-qui-change` — ce qui change au 1er janvier 2027 n'était écrit
+nulle part, et la date de vérification de la source ne pouvait pas le révéler.**
+
+L'article cite `F16096` « vérifiée le 1er janvier 2026 » et publie le passage du
+facteur de conversion de l'électricité de **2,3 à 1,9**. La fiche est **toujours
+vérifiée au 1er janvier 2026** — mais elle porte un encadré **« Évolutions du
+DPE »**, lu le 27/10, qui annonce deux textes applicables au **1er janvier
+2027**. `2027` était à **zéro occurrence** du corpus sur ce sujet.
+
+Faits publiés, tous relevés sur la **FAQ du ministère chargé du logement**
+(`rt-re-batiment.developpement-durable.gouv.fr`, page dédiée au changement de
+facteur de conversion) et sur `F16096` :
+
+- le facteur passe de **1,9 à 1,7** au 1er janvier 2027 — **arrêté du 19 août
+  2026**, JO du 26 août 2026, qui abroge à cette date celui du 13 août 2025
+  ayant fixé 1,9 ; historique complet du coefficient : 2,58, puis 2,3 en 2021,
+  1,9 en 2026 (valeur par défaut européenne), 1,7 en 2027 ;
+- l'effet attendu, chiffré par le ministère : **environ 300 000 logements**
+  sortiraient du statut de passoire, sur les **3,2 millions** que comptait le
+  parc de résidences principales au 1er janvier 2025 — **sans travaux** ;
+- **le mécanisme, qui est la clé et que personne ne publie sur ces SERP** : le
+  DPE porte deux étiquettes et **la classe finale retenue est la PIRE des
+  deux** ; l'étiquette énergie se calcule en énergie primaire, donc abaisser le
+  facteur ne change **rien** à un logement au gaz ou au fioul, **ni** à
+  l'étiquette gaz à effet de serre. Les deux réserves du ministère sont
+  publiées telles quelles : l'amélioration « n'est pas systématique », et
+  « aucun logement ne verra son étiquette dégradée » ;
+- la procédure : à partir du 1er janvier 2027, **attestation gratuite de
+  nouvelle étiquette** sur l'**Observatoire DPE-Audit de l'ADEME**, avec le
+  numéro du DPE ; elle **remplace l'étiquette**, **conserve la durée de
+  validité** du diagnostic d'origine, **s'utilise en vente comme en mise en
+  location**, et prend en compte les seuils des logements de moins de 40 m² ;
+  les attestations déjà délivrées au titre du coefficient 1,9 **restent
+  valables** jusqu'à leur terme ; un **audit énergétique** antérieur ouvre droit
+  à une attestation équivalente, utilisable dans un dossier MaPrimeRénov'
+  déposé à compter du 1er janvier 2027 ;
+- **le fait que personne ne calcule, et qui est le cœur de l'apport** : le gain
+  a une **durée de vie d'un an**. Un logement qui passe de **G à F** au
+  1er janvier 2027 redevient louable **pour un bail signé, renouvelé ou
+  tacitement reconduit en 2027 SEULEMENT**, puisque à partir de 2028 seules les
+  classes A à E peuvent être louées. Seul le cas rare du **gain de deux classes
+  (petits logements)** fait sortir jusqu'en 2034. **Ce calcul croise les deux
+  calendriers officiels ; aucun des 9 résultats mesurés ne le fait** ;
+- le second texte du même jour : **arrêté du 11 juin 2026**, adaptation à la
+  réglementation européenne et **nouvelle classe énergie** pour certains
+  bâtiments. ⚠️ **La LETTRE de cette classe n'est pas publiée** : la fiche
+  écrit « (AO) » avec un O, probable coquille pour « A0 », et aucune source ne
+  la tranche. Conséquence pratique publiée à la place : un DPE de décembre 2026
+  et le même logement rediagnostiqué en janvier 2027 ne sont pas comparables.
+
+**Couche locale, sans aucun chiffre neuf** (règle du 02/10 : reprendre les
+valeurs déjà publiées, ne pas les recalculer) : **1 287 appartements classés F
+ou G chauffés à l'électricité, 52,4 % des passoires de la commune**, et **tous**
+ont un DPE antérieur au 1er janvier 2027 puisque l'extraction date du 11 octobre
+2026 — c'est une **déduction de date**, pas un comptage nouveau. La réserve du
+ministère sur les deux classes gagnées « dans de rares cas (petits logements) »
+est rapprochée des **18 134 appartements de 40 m² ou moins (36,5 %)** et des
+**6,26 %** d'entre eux classés F ou G, déjà publiés.
+
+Également sur cette page : le titre, le `h1` et la `metaDescription` passent de
+« ce qui change en **2026** » à « ce qui change en **2026 et 2027** » — le jeton
+`2026` est **conservé**, le slug n'est **pas** touché. Et la règle de révision
+de loyer des F/G, qui était écrite « gel des loyers : pas d'augmentation tant
+que le bien reste une passoire », porte désormais sa condition réelle
+(métropole, tout bail signé, renouvelé ou tacitement reconduit **depuis le
+24 août 2022**), comme `/gestion-locative` et `/llms.txt` le font déjà.
+**2 FAQ neuves**, à parité garantie par construction. `updated` au 2026-10-27.
+
+**2. `/gestion-locative` — nouvelle section « La décence », et deux corrections.**
+
+La page disait, dans la liste des obligations du bailleur : « Maintenir le
+logement décent, ce qui inclut **depuis le 1er janvier 2025** un DPE au minimum
+classé F… ». C'est la compression : le critère se lit **à la date du bail**, pas
+à la date de location. Faits publiés, sur `F2042` « Logement à louer décent »,
+onglet **MÉTROPOLE**, vérifiée le 21 mars 2025 :
+
+- **bail signé, renouvelé ou tacitement reconduit entre 2023 et 2024** : moins
+  de **450 kWh d'énergie finale par m² de surface habitable et par an**, estimée
+  par le DPE — **aucune classe n'est visée**. Et comme l'étiquette se calcule en
+  énergie **primaire**, **un logement classé G pouvait rester sous ce seuil
+  d'énergie finale** : un bail de trois ans signé fin 2024 court jusqu'à fin
+  2027 et reste gouverné par ce critère tant qu'il n'est pas renouvelé ;
+- **bail 2025-2027** : classes **A à F** ; **bail 2028-2033** : **A à E** ;
+  **bail à partir de 2034** : **A à D**. ⚠️ **Calendrier de métropole** : la
+  page le dit, l'outre-mer étant décalé ;
+- **les trois cas où le juge ne peut PAS imposer la mise aux normes**
+  (article 20-1 de la même loi, via `F2042`) : (a) bail 2023-2024, logement en
+  **copropriété**, le propriétaire démontrant avoir **proposé en AG** des
+  travaux sur les parties ou équipements communs sans atteindre le seuil malgré
+  des travaux privatifs ; (b) bail depuis 2025, travaux faisant courir un
+  **risque de pathologie du bâti** (structures, clos et couvert) attesté par une
+  **note argumentée d'architecte** ; (c) bail depuis 2025, travaux modifiant les
+  **parties extérieures** ou les éléments d'architecture et **refusés pour ce
+  motif** par l'autorité d'urbanisme ou de patrimoine. **La preuve incombe au
+  PROPRIÉTAIRE** ; le juge peut reporter sa décision dans l'attente de la
+  décision administrative ;
+- la procédure, chiffrée : signalement écrit, **mise en demeure LRAR**, **deux
+  mois**, puis saisine du **juge des contentieux de la protection**, la CDC
+  restant **facultative** ; hors les trois cas, le juge peut fixer les travaux
+  et leur délai, **réduire le loyer**, ou **suspendre son paiement et la durée
+  du bail**.
+
+**Ancrage local pris sur des valeurs déjà publiées** : le premier cas « vise la
+situation la plus courante à Villeurbanne, où **73 582 lots d'habitation** se
+répartissent dans **2 065 copropriétés** immatriculées » — les deux chiffres
+sont ceux de `charges-copropriete` (RNIC, extraction du 15/10/2026), repris tels
+quels. ⚠️ **Première version écartée à la relecture** : « ces trois cas visent
+des situations très villeurbannaises » — vrai du premier (copropriété), **non
+établi** des deux autres (pathologie du bâti, refus patrimonial). La formule a
+été resserrée sur ce qui se démontre.
+
+**2 FAQ neuves** (« J'ai signé un bail en 2024 : l'interdiction… s'applique-t-elle
+à moi ? » et « Le juge peut-il obliger un bailleur en copropriété à faire des
+travaux… ? ») et **la FAQ « classé G » existante corrigée** pour porter le
+critère des baux 2023-2024. `lastmodOf("/gestion-locative")` au 2026-10-27.
+
+**3. `/llms.txt`** — la ligne `/gestion-locative` portait « le calendrier de
+décence énergétique (G interdit depuis le 1er janvier 2025, F en 2028, E en
+2034) », soit exactement la compression corrigée. Elle porte désormais les
+quatre périodes indexées sur la date du bail, le seuil de 450 kWh et la
+distinction énergie finale / primaire, les trois cas d'exclusion du pouvoir du
+juge avec la charge de la preuve, la procédure et ses deux mois, et l'échéance
+du 1er janvier 2027 avec le coefficient 1,7 et la fenêtre d'un an. **28 830 →
+31 070 octets.**
+
+**Trois relectures avant push, trois corrections de ma propre plume** : « sans
+un seul travaux » (accord), « conserve la durée de validité de celui dont elle
+remplace l'étiquette » (répétition), « ni s'ils modifieraient… » en tête de
+puce — une puce doit se suffire à elle-même pour être citée (règle GEO), donc
+reformulée en « le juge ne peut pas davantage ordonner les travaux s'ils… ».
+
+**Contrôles** : `npm run build` vert ; `npm run lint` sans erreur sur les
+fichiers touchés ; parité FAQ visible ↔ JSON-LD **21/21 sur le HTML rendu**,
+recette corrigée du 26/10 ; `dateModified` JSON-LD et date visible concordants
+au 27/10 sur les deux pages ; sitemap local à **2 URL** au 2026-10-27, les deux
+pages modifiées et elles seules.
+
+**Ce que ce run a décidé de NE PAS faire.** (1) **Ne pas toucher au slug**
+`dpe-2026-ce-qui-change` : la page est indexée sous cette adresse, le titre
+suffit à porter 2027. (2) **Ne pas étendre l'`excerpt`** de l'article pour y
+glisser le fait de 2027 : il alimente aussi les cartes de `/blog` et le partage,
+donc une mise en page que je n'ai pas mesurée — le titre, lui, remonte déjà dans
+`llms.txt`. (3) **Ne pas ajouter de champ `llmsNote`** au générateur partagé
+`articleLine()` pour enrichir la ligne de l'article : modifier un gabarit
+partagé pour un seul article ne se justifie pas, et le fait est publié sur la
+ligne `/gestion-locative`. (4) **Ne pas aligner** `estimation-immobiliere-villeurbanne`
+(« depuis l'interdiction de louer les logements classés G (janvier 2025), puis F
+(janvier 2028) ») ni le passage équivalent de `prix-immobilier-villeurbanne-2026` :
+ce sont des **constats de marché** sur des pages de vente, pas des prescriptions
+au bailleur, et ils ne contredisent pas le calendrier — les alourdir du critère
+des baux 2023-2024 nuirait à leur lecture. **Inscrit en « Hypothèses » pour
+arbitrage, pas corrigé à l'aveugle.** (5) **Ne pas publier la lettre de la
+nouvelle classe européenne** (voir ci-dessus). (6) **Ne rien réécrire sur
+« affiché ≠ signé »** : la règle du 23/10 tient, il manque un relevé DVF 2026
+**par quartier**.
 
 ### 2026-10-26 — Le moteur écrivait « aucune source ne donne de prix au m² pour Villeurbanne » sur une question procédurale, et notre page de méthode tenait en 351 mots sans dire une seule des quatre limites de la base qu'elle recommande
 
@@ -9086,6 +9363,132 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le contrôle « la fiche comprime-t-elle un
+calendrier ? » passé sur les calendriers énergétiques** (27/10 : la fiche
+`F16096` que nous citons **avait changé sans que sa date de vérification bouge**
+— son encadré « Évolutions du DPE » annonce le coefficient **1,7 au 1er janvier
+2027**, et `2027` était à zéro occurrence du corpus ; et le critère de **décence
+énergétique se lit À LA DATE DU BAIL**, la première période étant une
+**consommation de 450 kWh d'énergie finale/m²/an** et non une classe, `450` étant
+lui aussi à zéro occurrence. Troisième défaut de la famille « silence qui ferme
+un droit » : les **trois cas où le juge ne peut pas imposer les travaux**.
+`dpe-2026-ce-qui-change` et `/gestion-locative` corrigées et complétées,
+`/llms.txt` 28 830 → 31 070 o, parité FAQ 21/21. **Candidat n°3 consommé après
+trois reports.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (28/10) DOIT ÊTRE DU CONTENU**
+(alternance : 24/10 non-contenu → 26/10 contenu → 27/10 non-contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 🆕 **`/vendre` — ET C'EST LA MESURE DU 27/10 QUI LE REMET EN TÊTE.**
+     L'hypothèse ouverte le 13/10 est **tranchée** : la SERP « vendre
+     appartement Villeurbanne » **s'est ouverte à l'éditorial**, trois relevés
+     concordants (13/10 : 3/9 ; 20/10 : Laforêt tient deux positions ; 27/10 :
+     3/9 — Laforêt ×2 + Orpi actualités). **La lecture du 04/10 qui avait fermé
+     l'angle est réfutée.** 🟢 **Et la place est tenue par du périmé que le
+     moteur signale lui-même** : « Villeurbanne en 2024 », transactions de
+     **2019**, 3 258 €/m² donnés pour actuels. ⚠️ **À mesurer avant d'écrire**
+     (la requête est transactionnelle : vérifier ce que le moteur comprend
+     aujourd'hui), et **ne pas rouvrir l'angle « prix du marché »** — `/vendre`
+     porte le **net vendeur**, c'est ce créneau qui est vide.
+  2. 🔴 **LE DÉPÔT DE GARANTIE ET LE PRÉAVIS EN ZONE TENDUE** (candidat n°1 du
+     backlog d'hier, **non consommé**). `préavis` à **ZÉRO occurrence** de tout
+     le corpus (mesuré les 24 et 26/10), plafond du dépôt de garantie absent,
+     alors que **Villeurbanne EST en zone tendue** et que le site le dit déjà
+     pour les honoraires. 📌 **Le « zéro occurrence » vient de produire DEUX
+     défauts de plus aujourd'hui** (`450` et les limites au pouvoir du juge) :
+     c'est le signal le plus rentable de ce journal.
+     **Destinataires naturels : `cout-gestion-locative` (288 mots) et
+     `gestion-locative-villeurbanne-deleguer-ou-non` (892 mots).**
+  3. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place.
+  4. 🟡 **Le reste du blog faible** : **12 articles sous 200 mots et SANS AUCUNE
+     FAQ** (liste au 26/10 : `lmnp-location-meublee` 107,
+     `home-staging-vendre-plus-cher` 111, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `taxe-fonciere-vente-qui-paie` 144,
+     `vendre-appartement-lyon-etapes` 154, `mandat-simple-ou-exclusif` 187,
+     `capacite-emprunt-immobilier` 194, puis `cout-gestion-locative` 288 et
+     `compromis-de-vente-delais` 345). ⚠️ **Ne pas en prendre un « parce
+     qu'il est court » : mesurer d'abord s'il existe une SERP où le site est
+     absent.**
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (29/10), par ordre d'impact :**
+  1. 🔴 🆕 **PASSER LA RECETTE « ENCADRÉ D'ÉVOLUTIONS » SUR TOUTES LES FICHES
+     CITÉES PAR LE CORPUS — candidat n°1, né du défaut n°1 du 27/10.** Le
+     contrôle de fraîcheur par la mention « Vérifié le … » est **aveugle aux
+     changements FUTURS** : `F16096` annonçait deux arrêtés pour le 1er janvier
+     2027 sans que sa date bouge. 📌 **Le corpus cite au moins une quinzaine de
+     fiches `F…` avec leur date de vérification** (F1310, F1314, F2042, F2066,
+     F2590, F2604, F2608, F2965, F10864, F16096, F31267, F32920, F33463, F37110,
+     F37190, F37294, F947…). **Il faut relire l'encadré d'évolutions de chacune,
+     pas sa date.** ⚠️ **Travail de mesure ; corriger seulement ce qui ressort.**
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE.**
+     Six mesures concordantes existent, **toutes COMMUNALES**, alors que
+     `/acheter` et `/llms.txt` affirment un écart **de 16,1 à 45,3 % PAR
+     QUARTIER**. **Reformuler la question — « l'écart par QUARTIER a-t-il
+     disparu ? » — et la trancher avec un relevé DVF 2026 par quartier**
+     (recette du 14/10), **pas avec les SERP. Ne RIEN réécrire avant.**
+  3. 🟡 🆕 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **non fait**) : premier concurrent mesuré qui publie du **DVF par
+     quartier**. Établir **ce que nous publions qu'il ne publie pas** (surface
+     médiane, nombre de ventes, seuils fiscaux dérivés, écarts 2022, droit
+     sourcé au paragraphe). **Ne RIEN réécrire sur la foi d'un seul relevé.**
+  4. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Aucun défaut connu :
+     prévention.** 📌 **`73 582` est désormais sur DEUX pages**
+     (`charges-copropriete` et `/gestion-locative`) : il entre dans le
+     périmètre de cette parité.
+  5. ✅ **RETIRÉ — `/honoraires` et son « Dernière mise à jour ».** Le candidat
+     était **faux** : la page sert « Barème en vigueur — dernière mise à jour :
+     20 octobre 2026 » depuis le 20/10, vérifié dans le HTML rendu le 27/10.
+     Voir « Erreurs commises ». **Ne pas le réinscrire.**
+  6. 🟢 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** (candidat
+     n°1 du 26/10, **non fait**, et **volontairement déclassé**) : travail de
+     journal, **zéro effet sur les positions**. Les FAQ **visibles** gardent
+     toute leur valeur et ce run en a ajouté quatre. **À faire un jour creux.**
+
+→ 🔴 **REQUÊTES CIBLES — prochaines échéances : les deux SERP de marque
+interdite (« agence immobilière Villeurbanne », « estimation immobilière
+Villeurbanne ») → 30/10.** « Prix m2 Villeurbanne » → **02/11** (hebdomadaire,
+site absent, 6ᵉ mesure le 26/10 — **ne pas y réinvestir d'effort
+rédactionnel**, cette SERP récompense un TYPE de page, pas un contenu).
+« Vendre appartement Villeurbanne » → **vers le 10/11** (deux par mois, mesurée
+le 27/10). **Prochaine veille du lundi : 02/11.**
+
+🆕 ⚠️ **SERP DE CHANTIER À REMESURER — six échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à courir »**
+  (21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (22/10) → **vers le 05/11**.
+- **« peut-on demander un garant si le propriétaire a déjà une assurance loyers
+  impayés »** (23/10) → **vers le 06/11**.
+- **« plafond de loyer bail signé Villeurbanne encadrement des loyers quel
+  arrêté s'applique novembre 2026 »** (24/10) → **vers le 07/11**.
+- **« comment estimer le prix de mon appartement soi-même étapes méthode DVF
+  Villeurbanne »** (26/10, site absent) → **vers le 09/11**.
+- 🆕 **« bail signé en 2024 logement classé G puis-je encore le louer critère
+  450 kWh ou classe DPE »** (27/10, site absent, 9/9 non villeurbannais) →
+  **vers le 10/11**. 📌 **Repère** : le moteur écrit deux fois qu'il **ne peut
+  pas confirmer** le sort d'un bail en cours signé en 2024. **C'est la place que
+  la section « La décence » vise.**
+
+🔴 **DEUX ÉCHÉANCES JURIDIQUES À TENIR, PAR ORDRE DE DATE :**
+- **23 NOVEMBRE 2026 — encadrement des loyers de Lyon et Villeurbanne.** Il
+  s'éteint ce jour-là **sauf adoption définitive** de la prolongation votée par
+  le Sénat le 21/10/2026 (texte à l'Assemblée nationale). **Trois pages publient
+  cette date** (`/gestion-locative`, `/faire-gerer`,
+  `/blog/rentabilite-locative-lyon`) **et `/llms.txt`**. 📌 **À revérifier dès
+  le 24/11/2026, et plus tôt si un run passe à proximité.**
+- 🆕 **1er JANVIER 2027 — coefficient de l'électricité à 1,7 et adaptation
+  européenne du DPE.** Deux pages publient désormais cette date
+  (`dpe-2026-ce-qui-change`, `/gestion-locative`) **et `/llms.txt`**. 📌 **À
+  revérifier début janvier 2027 : (a) les attestations sont-elles effectivement
+  téléchargeables sur l'Observatoire DPE-Audit de l'ADEME ? (b) la fiche
+  `F16096` a-t-elle été réécrite comme Service-Public l'annonce ? (c) la lettre
+  de la nouvelle classe énergie est-elle tranchée (« AO » ou « A0 ») ?**
+
 **Angle du dernier run : CONTENU — la réécriture procédurale de
 `comment-estimer-son-bien-immobilier-lyon-villeurbanne`** (26/10 : la page
 recommandait DVF en une phrase **sans dire aucune des quatre limites de cette
@@ -10424,6 +10827,41 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-10-27 — Trois points laissés ouverts par le chantier des calendriers énergétiques
+
+🆕 🟡 **Faut-il aligner les formulations « de marché » sur le calendrier précis,
+ou les laisser courtes ?** Deux emplacements écrivent « depuis l'interdiction de
+louer les logements classés G (janvier 2025), puis F (janvier 2028), les
+passoires se négocient sous le marché » —
+`app/estimation-immobiliere-villeurbanne/page.tsx` et le bloc équivalent de
+`prix-immobilier-villeurbanne-2026`. **Ce sont des constats de marché sur des
+pages de VENTE, pas des prescriptions au bailleur**, et ils ne contredisent pas
+le calendrier : ils l'abrègent. Les alourdir du critère des baux 2023-2024
+nuirait à leur lecture. ⚠️ **Non corrigé volontairement**, mais à trancher
+une fois : soit on pose la règle « une formulation de marché peut abréger un
+calendrier tant qu'elle ne prescrit rien », soit on aligne partout. **La règle
+manque, et c'est elle qui manque, pas la correction.**
+
+🆕 🟡 **Le titre de `dpe-2026-ce-qui-change` porte maintenant « 2026 et 2027 » —
+à surveiller, pas à défaire.** Le jeton `2026` est conservé et le slug n'a pas
+bougé, mais c'est le `h1` et le `<title>` d'une page de fond qui ont changé.
+📌 **À regarder au prochain passage sur cette page** : si la page perd de la
+visibilité sur les requêtes « DPE 2026 », revenir au titre d'origine et porter
+2027 par un `h2` seul. **Aucun signe en ce sens aujourd'hui — c'est une
+précaution, pas un doute.**
+
+🆕 🟡 **Combien de logements villeurbannais sortiront réellement du statut de
+passoire au 1er janvier 2027 ?** Le ministère chiffre **300 000 sur 3,2 millions
+au niveau national**, soit **9,4 % des passoires**, et précise que ce sont
+« principalement » des logements électriques. À Villeurbanne, les passoires sont
+électriques à **52,4 %** — la commune est donc **structurellement plus exposée
+que la moyenne**. ⚠️ **Mais le rapport ne se calcule pas** : il faudrait la part
+nationale des passoires électriques, que la FAQ ne donne pas, et appliquer un
+taux national à un parc local serait une invention. **Rien de tel n'a été
+publié : la page dit seulement que 1 287 appartements constituent la population
+concernée, ce qui est un plafond et non une prévision.** 📌 **À trancher si
+l'ONRE ou l'ADEME publie la ventilation nationale par énergie de chauffage.**
+
 ### 2026-10-26 — Quatre points laissés ouverts par le chantier de l'estimation procédurale
 
 **1. ⚠️ La nouvelle application DVF d'Etalab existe-t-elle à l'URL annoncée ?**
@@ -11582,6 +12020,71 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-27 — Un candidat du backlog était faux depuis sept jours à cause d'une majuscule, et j'ai refait exactement la même erreur ce matin
+
+🔴 **LE FAIT.** Le candidat n°4 du backlog — « `/honoraires` ne sert AUCUN
+*Dernière mise à jour* visible » — a été inscrit le 20/10 et reporté **six
+fois** (20, 21, 22, 23, 24 et 26/10). **Il est faux.** La page sert, depuis le
+20/10, **« Barème en vigueur — dernière mise à jour : 20 octobre 2026 »**, câblé
+sur `lastmodOf("/honoraires")`, à sa ligne 224 et vérifié ce jour dans le HTML
+**rendu** en production.
+
+🔴 **LA CAUSE, ET ELLE EST DANS MON INSTRUMENT.** Le grep qui a « établi »
+l'absence cherchait la formule avec sa majuscule :
+
+```bash
+grep -rn "Dernière mise à jour\|Mis à jour le" app components lib
+# -> faire-gerer, blog/[slug], cookies, confidentialite, seo-landing
+#    PAS honoraires
+```
+
+La page écrit `dernière mise à jour` **en minuscule, en milieu de phrase**
+(« Barème en vigueur — dernière mise à jour : … »). **Le grep ne pouvait pas la
+trouver.** ⚠️ **Et j'ai relancé le même grep, avec la même majuscule, ce matin,
+en reproduisant le constat sans le vérifier** : je ne m'en suis aperçu qu'en
+allant lire la structure de la page avant de la modifier. **Six reports d'un
+travail déjà fait, et une septième occasion manquée évitée de justesse.**
+
+✅ **LA CORRECTION, ET ELLE EST DOUBLE.** (1) Le candidat est **retiré** du
+backlog avec la mention « ne pas le réinscrire ». (2) **La règle d'instrument
+s'élargit** : la règle du 14/10 disait « ne pas grep le SUJET, grep la
+FORMULE ». Elle devient — **grep la formule, et toujours sans la casse**
+(`grep -i`), parce qu'une formule qui ouvre une phrase et la même formule au
+milieu d'une phrase ne s'écrivent pas pareil. **C'est la deuxième fois en six
+semaines qu'un grep trop littéral produit un faux constat** (cf. 19/09, où
+`[A-ZÉÈÀ]` attrapait les octets de continuation d'`é`).
+
+📌 **CE QUE L'ÉPISODE DIT DU JOURNAL LUI-MÊME, et c'est le vrai enseignement :
+un candidat de backlog inscrit par un run précédent n'est PAS un fait établi,
+c'est une mesure à refaire.** La règle du 24/09 (« un candidat se remesure avant
+de s'exécuter, même quand c'est soi-même qui l'a inscrit la veille ») existait
+déjà — **elle n'a pas été appliquée pendant six runs parce que le candidat
+paraissait trivial.** 🔴 **Un candidat trivial est précisément celui qu'on
+n'ira pas vérifier : c'est lui qu'il faut remesurer en premier.**
+
+✅ **Audit refait correctement, en insensible à la casse** : les marqueurs de
+fraîcheur visibles couvrent `app/blog/[slug]`, `app/faire-gerer`,
+`app/honoraires`, `app/confidentialite`, `app/cookies` et
+`components/layout/seo-landing.tsx` — donc **toutes** les pages de fond
+(`/gestion-locative`, `/vendre`, `/acheter`, `/estimation-immobiliere-*`,
+`/agence-immobiliere-*` passent par `seo-landing`). **Aucune page de fond ne
+manque de marqueur.**
+
+### 2026-10-27 — J'ai failli écrire une généralité locale que rien ne démontre
+
+🟡 **LE FAIT.** La première version de la section « La décence » annonçait les
+trois cas d'exclusion du pouvoir du juge par : « et ces trois cas visent des
+situations **très villeurbannaises** ». 🔴 **C'est vrai du premier** (le logement
+en copropriété : 73 582 lots d'habitation dans 2 065 copropriétés) et **non
+établi des deux autres** — rien dans nos données ne dit que le risque de
+pathologie du bâti ou le refus d'autorisation patrimoniale soient plus fréquents
+à Villeurbanne qu'ailleurs. ✅ **Corrigé avant push** en « et le premier vise la
+situation la plus courante à Villeurbanne, où 73 582 lots d'habitation se
+répartissent dans 2 065 copropriétés immatriculées ». 📌 **La tentation est
+toujours la même : l'ancrage local se paie en précision, et une couleur locale
+posée sur trois faits dont un seul la porte est un chiffre non sourcé déguisé en
+adjectif.**
 
 ### 2026-10-26 — Ma recette de parité FAQ était aveugle depuis le 23/10, mon compteur de mots ignorait le bloc neuf, et sept fautes de ma propre plume attrapées avant le push
 
@@ -13114,6 +13617,126 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-27 — La date « Vérifié le … » d'une fiche officielle NE BOUGE PAS quand la fiche annonce un changement futur : c'est l'encadré d'évolutions qu'il faut lire
+
+🔴 **LE PIÈGE, ET IL INVALIDE UN CONTRÔLE QUE CE JOURNAL UTILISE DEPUIS DES
+SEMAINES.** Toutes nos pages de droit citent des fiches `service-public.gouv.fr`
+avec leur mention « Vérifié le … », et le contrôle de fraîcheur consistait à
+recomparer cette date. **Il est aveugle aux changements à venir.** Cas mesuré ce
+jour : `F16096` (DPE) est **toujours « vérifiée le 1er janvier 2026 »**,
+exactement comme à notre dernière lecture — mais elle porte en bas un encadré
+**« Évolutions du DPE »** qui annonce **deux arrêtés applicables au 1er janvier
+2027** (19 août 2026, coefficient 1,9 → 1,7 ; 11 juin 2026, réglementation
+européenne), et conclut : « **Les informations contenues sur cette page restent
+d'actualité et seront modifiées à cette date.** » **Comparer les dates de
+vérification aurait rendu « aucun changement ».**
+
+✅ **LA RECETTE.** Télécharger la fiche, puis chercher les deux marqueurs — la
+date de vérification **et** le bloc d'évolutions :
+
+```bash
+curl -sL --cacert /root/.ccr/ca-bundle.crt \
+  "https://www.service-public.gouv.fr/particuliers/vosdroits/F16096" -o f.html
+python3 -I h2t.py f.html > f.txt     # scripts retirés AVANT les balises (26/10)
+grep -n -i "Vérifié le" f.txt                      # la date affichée
+grep -n -i "évolution\|s'appliquer\|à partir du\|arrêté du" f.txt
+# -> « Évolutions du DPE … arrêté du 11 juin 2026 … arrêté du 19 août 2026
+#     … Ces changements s'appliqueront à partir du 1er janvier 2027 »
+```
+
+📌 **Et le bloc d'évolutions peut vivre dans un AUTRE onglet que celui qu'on
+lit.** Ici il figure dans la partie « vente » de la fiche, pas dans la partie
+consultée pour la location : **extraire la fiche ENTIÈRE en texte et chercher
+dans tout le fichier**, jamais dans la seule section qui intéresse.
+
+🟢 **LA SOURCE QUI VA PLUS LOIN QUE SERVICE-PUBLIC SUR CE SUJET, ET ELLE EST
+OFFICIELLE ET ACCESSIBLE :** `rt-re-batiment.developpement-durable.gouv.fr`
+(ministère chargé du logement) publie des **FAQ techniques** par réforme, bien
+plus détaillées que la fiche grand public — historique complet du coefficient,
+effet chiffré (300 000 logements sur 3,2 millions), mécanique des deux
+étiquettes, procédure d'attestation, sort des attestations antérieures. 📌 **À
+ajouter à la liste des domaines utiles depuis ce conteneur** (avec
+`service-public.gouv.fr`, `anil.org`, `justice.fr`, `bofip.impots.gouv.fr`).
+⚠️ **`legifrance.gouv.fr` rend toujours 403** — re-testé ce jour (WebFetch,
+403 Forbidden), constat déjà consigné plusieurs fois dans ce journal ; passer par la FAQ ministérielle ou par la fiche, qui
+citent l'une et l'autre les numéros d'arrêtés.
+
+### 2026-10-27 — Deux instruments à corriger : grep sans la casse, et l'apex du domaine qui rend 308
+
+🔴 **GREP : TOUJOURS `-i`.** La règle du 14/10 (« ne pas grep le SUJET, grep la
+FORMULE ») est **insuffisante** : une formule qui ouvre une phrase et la même
+formule au milieu d'une phrase ne s'écrivent pas pareil, et un grep sensible à
+la casse a entretenu un faux candidat de backlog pendant **six runs** (détail en
+« Erreurs commises »).
+
+```bash
+# INSUFFISANT — rate /honoraires, qui écrit « dernière » en milieu de phrase
+grep -rn "Dernière mise à jour" app components
+
+# SUFFISANT
+grep -rni "mise à jour\|mis à jour le" app components --include=*.tsx
+# -> blog/[slug] · faire-gerer · HONORAIRES · confidentialite · cookies
+#    · seo-landing (qui couvre toutes les pages de fond)
+```
+
+🔴 **CONTRÔLE DE PRODUCTION : TOUJOURS `www` OU `curl -L`.** L'apex
+`markusimmobilier.fr` répond **308 / 15 octets sur TOUTES les URL** — huit
+contrôles d'affilée en 308, ce qui ressemble à un site hors ligne. Ce n'est
+qu'une redirection vers `www`.
+
+```bash
+# TROMPEUR — rend « 308 15 » partout
+curl -s -o /dev/null -w "%{http_code} %{size_download}" \
+  --cacert /root/.ccr/ca-bundle.crt "https://markusimmobilier.fr/estimation"
+
+# JUSTE
+curl -sL -o /dev/null -w "%{http_code} %{size_download}" \
+  --cacert /root/.ccr/ca-bundle.crt "https://www.markusimmobilier.fr/estimation"
+```
+
+📌 **Même famille que le 24/09** (`curl` sans `--cacert` rend « HTTP 000 ») :
+**un défaut d'outillage ressemble toujours à une panne du site.** Avant de
+conclure qu'une page est cassée, changer **une** variable de la commande.
+
+### 2026-10-27 — Croiser deux calendriers officiels produit un fait que personne ne publie, et c'est le meilleur matériau GEO disponible sans nouvelle donnée
+
+🟢 **LA MÉTHODE.** Les SERP de droit immobilier sont tenues par des éditeurs qui
+recopient **un** calendrier à la fois. Le fait citable naît du **croisement de
+deux calendriers**, qui ne demande aucune donnée nouvelle — seulement de les
+lire ensemble :
+
+- calendrier A (décence énergétique) : classes **A à F** pour un bail
+  2025-2027, **A à E** pour un bail 2028-2033 ;
+- calendrier B (DPE) : coefficient de l'électricité à **1,7** au **1er janvier
+  2027**, qui peut faire remonter une étiquette **d'une classe** ;
+- **croisement** : un **G devenu F** au 1er janvier 2027 redevient louable
+  **pour un bail de 2027 SEULEMENT** — la classe F est exclue dès 2028. **Le
+  nouveau coefficient n'ouvre pas une sortie de l'interdiction : il ouvre une
+  année.** Aucun des 9 résultats mesurés ne le dit.
+
+📌 **Le test de valeur est simple et il se pose avant d'écrire : le fait
+survit-il à la suppression de l'un des deux calendriers ?** Si oui, ce n'est pas
+un croisement, c'est une recopie. **Troisième usage réussi de ce motif** (16/10
+« deux fiches officielles qui se recouvrent à 50 lots », 22/10 « la fiche
+comprime trois paliers en une date », 27/10 « la fenêtre d'un an »).
+
+⚠️ **ET LA LIMITE À RESPECTER DANS LE MÊME MOUVEMENT : ne jamais compléter le
+croisement par un chiffre qu'aucune source ne donne.** Le ministère chiffre
+**300 000 logements sur 3,2 millions** au niveau national mais ne publie pas la
+part nationale des passoires électriques : appliquer ce taux au parc
+villeurbannais aurait été une invention. **Ce qui est publié à la place est un
+plafond mesuré — 1 287 appartements F/G électriques, 52,4 % des passoires de la
+commune — explicitement présenté comme la population concernée, pas comme une
+prévision.**
+
+⚠️ **Et une règle de prudence typographique née du même run : ne pas republier
+un glyphe ambigu d'une source officielle.** `F16096` écrit la nouvelle classe
+énergie européenne « **(AO)** » — lettre O, probable coquille pour « A0 ».
+**Aucune source ne tranche, donc la lettre n'est pas publiée** : la page dit
+« une nouvelle classe énergie pour certains bâtiments » et cite l'arrêté.
+**Publier « A0 » serait une correction silencieuse de la source ; publier
+« AO » serait propager sa coquille.**
 
 ### 2026-10-26 — La recette de parité corrigée, la parité garantie par construction, le témoin de fraîcheur, et la veille du lundi (dépréciation FAQ confirmée chez Google)
 

@@ -43,8 +43,27 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *  - prélèvements sociaux sur revenus fonciers : 17,2 %.
  *  - pénalité de retard sur le dépôt de garantie : 10 % du loyer mensuel en
  *    principal par mois entamé → loi n° 89-462 du 6 juillet 1989, art. 22.
- *  - calendrier de décence énergétique (G au 1ᵉʳ janvier 2025, F en 2028,
- *    E en 2034) → loi Climat et Résilience n° 2021-1104 du 22 août 2021.
+ *  - décence énergétique (section « La décence », ajoutée le 2026-10-27) : le
+ *    critère dépend de la DATE DU BAIL, pas de la date de location, et pour la
+ *    première période ce n'est PAS une classe — moins de 450 kWh d'énergie
+ *    finale/m²/an pour un bail signé, renouvelé ou tacitement reconduit entre
+ *    2023 et 2024, puis classes A à F (2025-2027), A à E (2028-2033), A à D
+ *    (à partir de 2034) → service-public.gouv.fr, fiche F2042 « Logement à
+ *    louer décent », onglet MÉTROPOLE, vérifiée le 21 mars 2025 ; critère de
+ *    l'article 6 de la loi n° 89-462 du 6 juillet 1989 et du décret
+ *    n° 2002-120 du 30 janvier 2002.
+ *    ⚠️ Le calendrier OUTRE-MER est décalé : ne jamais écrire celui-ci comme
+ *    national. ⚠️ L'étiquette du DPE se calcule en énergie PRIMAIRE et le seuil
+ *    de 450 kWh en énergie FINALE : les deux ne sont pas interchangeables, et
+ *    c'est pourquoi un G pouvait rester décent sous un bail de 2023-2024.
+ *  - limites au pouvoir du juge (même section, article 20-1 de la loi du
+ *    6 juillet 1989 via la fiche F2042) : copropriété + travaux proposés en AG
+ *    pour un bail 2023-2024 ; risque de pathologie du bâti attesté par un
+ *    architecte, ou refus d'autorisation d'urbanisme/patrimoine, pour un bail
+ *    depuis 2025 ; preuve à la charge du propriétaire. Mise en demeure LRAR puis
+ *    DEUX MOIS avant la saisine du juge des contentieux de la protection, CDC
+ *    facultative. ⚠️ Ces trois cas étaient à ZÉRO occurrence du corpus avant le
+ *    27/10/2026 : un silence qui fermait un droit du bailleur.
  *  - assurance PNO obligatoire en copropriété → loi n° 65-557, art. 9-1.
  *  - encadrement des loyers (section « Le plafond », ajoutée le 2026-10-24) :
  *    préfecture du Rhône, page « Encadrement des loyers » — dispositif en
@@ -178,7 +197,15 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Mon logement est classé G au DPE : puis-je encore le louer ?",
-    a: "Non, pas pour une nouvelle mise en location. Depuis le 1ᵉʳ janvier 2025, un logement classé G au diagnostic de performance énergétique n'atteint plus le niveau de performance minimal exigé par le critère de décence, en application de la loi Climat et Résilience du 22 août 2021. Un bail signé avant cette date n'est pas rompu, mais l'interdiction s'applique à son renouvellement ou à sa reconduction tacite. Les logements classés F suivront au 1ᵉʳ janvier 2028, et les E au 1ᵉʳ janvier 2034.",
+    a: "Non, pas pour une nouvelle mise en location. Pour un bail signé, renouvelé ou tacitement reconduit entre 2025 et 2027, seules les classes A à F peuvent être louées : la classe G n'atteint plus le niveau de performance minimal exigé par le critère de décence. Un bail signé avant 2025 n'est pas rompu, mais l'interdiction s'applique à son renouvellement comme à sa reconduction tacite. Attention à ne pas confondre les paliers : un bail signé entre 2023 et 2024 et non encore renouvelé relève d'un critère de CONSOMMATION — moins de 450 kWh d'énergie finale par m² de surface habitable et par an — et non d'une classe. Ensuite, seules les classes A à E pourront être louées pour un bail de 2028 à 2033, et A à D à partir de 2034. Source : service-public.gouv.fr, fiche F2042 « Logement à louer décent », onglet Métropole, vérifiée le 21 mars 2025.",
+  },
+  {
+    q: "J'ai signé un bail en 2024 : l'interdiction de louer un logement classé G s'applique-t-elle à moi ?",
+    a: "Pas tant que ce bail n'est ni renouvelé ni tacitement reconduit. Le critère de décence énergétique se lit à la date du bail : un bail signé, renouvelé ou tacitement reconduit entre 2023 et 2024 reste gouverné par un seuil de consommation — moins de 450 kWh d'énergie finale par m² de surface habitable et par an, estimée par le DPE — et non par une classe. Comme l'étiquette du DPE se calcule en énergie primaire et non en énergie finale, un logement classé G peut se trouver sous ce seuil. En revanche, au renouvellement ou à la reconduction tacite du bail, c'est le palier de la période en cours qui s'applique : classes A à F jusqu'en 2027, A à E de 2028 à 2033. Source : service-public.gouv.fr, fiche F2042, onglet Métropole, vérifiée le 21 mars 2025.",
+  },
+  {
+    q: "Le juge peut-il obliger un bailleur en copropriété à faire des travaux de performance énergétique ?",
+    a: "Pas dans trois cas, et c'est le seul abri du propriétaire. Pour un bail de 2023-2024, le juge ne peut ordonner aucune mesure visant le seuil de consommation si le logement est en copropriété et si le propriétaire démontre qu'il a proposé en assemblée générale des travaux sur les parties ou équipements communs et que, malgré des travaux dans ses parties privatives, le seuil est resté hors d'atteinte. Pour un bail signé depuis 2025, le juge ne peut ordonner les travaux ni s'ils feraient courir un risque de pathologie du bâti — structures, clos et couvert — attesté par une note argumentée d'un architecte, ni s'ils modifieraient les parties extérieures ou les éléments d'architecture et ont été refusés pour ce motif par l'autorité compétente en urbanisme ou en patrimoine. Dans ces deux derniers cas, c'est au propriétaire de fournir au juge les documents attestant l'impossibilité des travaux. Hors ces cas, le juge peut fixer les travaux et leur délai, réduire le loyer ou suspendre son paiement et la durée du bail. Source : article 20-1 de la loi n° 89-462 du 6 juillet 1989, via la fiche F2042 de service-public.gouv.fr, vérifiée le 21 mars 2025.",
   },
   {
     q: "Le propriétaire doit-il remettre une quittance chaque mois ?",
@@ -451,7 +478,7 @@ export default function GestionLocativePage() {
               "Remettre une quittance gratuite dès que le locataire la demande, en ventilant loyer et charges (article 21 de la loi du 6 juillet 1989).",
               "Réviser le loyer une fois par an si le bail comporte une clause de révision, en appliquant l'indice de référence des loyers du trimestre prévu au contrat — SAUF si le logement est classé F ou G au DPE : réviser le loyer y est alors interdit, pour tout bail signé, renouvelé ou tacitement reconduit depuis le 24 août 2022 en métropole (service-public.fr, fiche F1310, vérifiée le 1ᵉʳ août 2026).",
               "Régulariser les charges annuellement et communiquer au locataire leur décompte par nature un mois avant la régularisation (article 23 de la loi du 6 juillet 1989 ; article 25-10 pour un meublé), puis tenir les justificatifs à sa disposition pendant les six mois qui suivent.",
-              "Maintenir le logement décent, ce qui inclut depuis le 1ᵉʳ janvier 2025 un DPE au minimum classé F — autrement dit la classe G ne peut plus être louée —, puis au minimum E au 1ᵉʳ janvier 2028 (la classe F est alors exclue) et au minimum D au 1ᵉʳ janvier 2034 (la classe E est alors exclue).",
+              "Maintenir le logement décent, ce qui inclut un niveau de performance énergétique minimal dont le palier dépend de la DATE DU BAIL, et non de la date à laquelle vous louez : moins de 450 kWh d'énergie finale par m² et par an pour un bail signé, renouvelé ou tacitement reconduit entre 2023 et 2024, puis les classes A à F entre 2025 et 2027 (la classe G est exclue), A à E entre 2028 et 2033 et A à D à partir de 2034 — détaillé plus bas, avec les trois cas où le juge ne peut PAS ordonner les travaux.",
               "Restituer le dépôt de garantie dans le mois suivant la remise des clés si les deux états des lieux concordent, dans les deux mois s'ils révèlent des dégradations imputables au locataire.",
               "Souscrire au minimum une assurance de responsabilité civile propriétaire non occupant, obligatoire en copropriété (article 9-1 de la loi du 10 juillet 1965).",
             ],
@@ -565,6 +592,126 @@ export default function GestionLocativePage() {
                     analyse de la rentabilité locative
                   </Link>
                   .
+                </p>
+              </>
+            ),
+          },
+          {
+            eyebrow: "La décence",
+            h2: "Mon logement est-il encore louable au regard de son DPE ?",
+            body: (
+              <>
+                <p>
+                  <strong>
+                    Cela dépend de la date du bail, et pas de la date à laquelle
+                    vous louez : le critère de décence énergétique n&apos;est pas
+                    le même pour un bail signé en 2024 et pour un bail signé
+                    aujourd&apos;hui.
+                  </strong>{" "}
+                  La fiche officielle pose quatre périodes, et pour la première
+                  ce n&apos;est même pas une classe de DPE qui compte, mais une
+                  consommation. C&apos;est la distinction que la plupart des
+                  pages écrasent en une seule date.
+                </p>
+                <ul className="mt-3 space-y-2.5 list-disc pl-5 text-[15.5px] leading-relaxed text-[#3d4347]">
+                  <li>
+                    <strong>
+                      Bail signé, renouvelé ou tacitement reconduit entre 2023 et
+                      2024
+                    </strong>{" "}
+                    : le logement doit consommer{" "}
+                    <strong>
+                      moins de 450 kWh d&apos;énergie finale par m² de surface
+                      habitable et par an
+                    </strong>
+                    , consommation estimée par le DPE. Aucune classe n&apos;est
+                    visée ici. Et comme l&apos;étiquette du DPE se calcule en
+                    énergie <em>primaire</em>, un logement classé G pouvait
+                    rester sous ce seuil d&apos;énergie finale : un bail de trois
+                    ans signé fin 2024 court jusqu&apos;à fin 2027 et reste
+                    gouverné par ce critère-là tant qu&apos;il n&apos;est pas
+                    renouvelé ni tacitement reconduit.
+                  </li>
+                  <li>
+                    <strong>Bail entre 2025 et 2027</strong> : seules les classes{" "}
+                    <strong>A à F</strong> peuvent être louées — autrement dit la
+                    classe G est exclue.
+                  </li>
+                  <li>
+                    <strong>Bail entre 2028 et 2033</strong> : seules les classes{" "}
+                    <strong>A à E</strong> — la classe F est exclue à son tour.
+                  </li>
+                  <li>
+                    <strong>Bail à partir de 2034</strong> : seules les classes{" "}
+                    <strong>A à D</strong> — la classe E est exclue.
+                  </li>
+                </ul>
+                <p>
+                  <strong>
+                    Ce que presque personne n&apos;écrit, et qui est le seul
+                    abri du bailleur : le juge ne peut pas tout ordonner.
+                  </strong>{" "}
+                  Si le logement n&apos;est pas décent, le locataire met le
+                  propriétaire en demeure par lettre recommandée ; après{" "}
+                  <strong>deux mois</strong> sans réponse ou en cas de désaccord
+                  persistant, l&apos;un ou l&apos;autre peut saisir le juge des
+                  contentieux de la protection, la commission départementale de
+                  conciliation restant facultative. Le juge peut alors fixer les
+                  travaux et leur délai, <strong>réduire le loyer</strong>, ou{" "}
+                  <strong>suspendre son paiement</strong> et la durée du bail
+                  jusqu&apos;à réalisation des travaux. Mais dans trois cas la loi lui
+                  interdit d&apos;imposer la mise aux normes énergétiques, et le
+                  premier vise la situation la plus courante à Villeurbanne, où
+                  73 582 lots d&apos;habitation se répartissent dans 2 065
+                  copropriétés immatriculées :
+                </p>
+                <ul className="mt-3 space-y-2.5 list-disc pl-5 text-[15.5px] leading-relaxed text-[#3d4347]">
+                  <li>
+                    <strong>Bail de 2023-2024, logement en copropriété</strong> :
+                    le juge ne peut ordonner aucune mesure visant le seuil de
+                    consommation si le propriétaire démontre qu&apos;il a proposé
+                    en assemblée générale des travaux sur les parties ou les
+                    équipements communs et que, malgré des travaux dans ses
+                    parties privatives, le seuil est resté hors d&apos;atteinte.
+                    En pratique, cela se prouve avec la convocation et le
+                    procès-verbal de l&apos;assemblée : cet abri se prépare donc
+                    avant le litige, pas pendant.
+                  </li>
+                  <li>
+                    <strong>Bail depuis 2025, risque pour le bâti</strong> : le
+                    juge ne peut ordonner les travaux s&apos;ils feraient courir
+                    un risque de pathologie du bâti — structures, clos et
+                    couvert — attesté par une note argumentée rédigée sous sa
+                    responsabilité par un architecte.
+                  </li>
+                  <li>
+                    <strong>Bail depuis 2025, refus d&apos;autorisation</strong>{" "}
+                    : le juge ne peut pas davantage ordonner les travaux
+                    s&apos;ils modifieraient les parties extérieures, le second
+                    œuvre ou les éléments d&apos;architecture et de décoration,
+                    et ont été refusés pour ce motif par l&apos;autorité
+                    compétente en urbanisme ou en patrimoine.
+                  </li>
+                </ul>
+                <p>
+                  Dans les deux derniers cas, <strong>la preuve incombe au
+                  propriétaire</strong> : c&apos;est à lui de fournir au juge les
+                  documents attestant que les travaux sont impossibles, le juge
+                  pouvant reporter sa décision dans l&apos;attente de la décision
+                  administrative. Sources : service-public.gouv.fr, fiche F2042
+                  « Logement à louer décent », onglet Métropole, vérifiée le
+                  21 mars 2025 ; critère de performance énergétique de
+                  l&apos;article 6 de la loi n° 89-462 du 6 juillet 1989 et du
+                  décret n° 2002-120 du 30 janvier 2002, recours du locataire et
+                  limites au pouvoir du juge de l&apos;article 20-1 de la même
+                  loi. Le calendrier outre-mer est différent et n&apos;est pas
+                  celui ci-dessus. Combien de logements sont concernés à
+                  Villeurbanne, étiquette par étiquette, est compté dans notre{" "}
+                  <Link href="/blog/dpe-2026-ce-qui-change" className={A}>
+                    relevé des DPE de la commune
+                  </Link>{" "}
+                  — qui dit aussi ce que le nouveau coefficient du 1ᵉʳ janvier
+                  2027 peut changer pour un logement chauffé à l&apos;électricité.
                 </p>
               </>
             ),
