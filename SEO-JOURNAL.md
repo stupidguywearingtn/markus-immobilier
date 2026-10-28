@@ -14,6 +14,115 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-28 (mercredi)**
+
+- ⚠️ **`origin/main` RETARDAIT DE DEUX COMMITS — CINQUIÈME OCCURRENCE.** Relevé
+  **AVANT** `git fetch` (règle du 16/09) : `HEAD` = **`eec33b3`**, `main` local =
+  **`9a1f7b9`**, `origin/main` = **`9a1f7b9`**. Après `git fetch origin main` :
+  `origin/main` passe à **`eec33b3`** (`9a1f7b9..eec33b3`). 📌 **Le retard est
+  donc la règle plutôt que l'exception (22, 23, 24, 26 et 28/10 ; seul le 27/10
+  ne retardait pas) — et il porte précisément sur les deux commits du run
+  précédent, ce qui ferait croire que le run d'hier n'a pas eu lieu.** La règle
+  du 16/09 reste payante.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-troisième constat identique** (21/09 → 28/10).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Seizième confirmation.**
+- ✅ **LE TRAVAIL DU 27/10 EST SERVI EN PRODUCTION — vérifié avant d'agir** (et
+  sur `www`, règle du 27/10). `/` 200 / 284 318 o, `/vendre` 200 / 136 838 o,
+  `/acheter` 200 / 111 621 o, `/estimation` 200 / 86 465 o, `/gestion-locative`
+  200 / **169 557 o**, `/faire-gerer` 200 / 154 707 o, `/llms.txt` 200 /
+  **31 584 o**, `/sitemap.xml` 200. **Les trois tailles clés concordent à
+  l'octet avec les relevés d'après-déploiement du 27/10** : rien à réauditer sur
+  le DPE ni la décence énergétique.
+- 🔴 **SERP DE CHANTIER MESURÉE AVANT D'ÉCRIRE (méthode du 15/10, 12ᵉ test
+  positif), ET ELLE A DÉCIDÉ LE CHANTIER.** Sur « préavis de départ locataire
+  Villeurbanne zone tendue 1 mois ou 3 mois quel délai » : **site absent**, et
+  les **19 résultats sont tous des éditeurs nationaux ou des vendeurs de
+  service** (selectra ×3, aide-sociale, bailpdf ×2, fortuneo ×2, ornikar,
+  goodassur, laposte, papernest, mysweetimmo, `edito.seloger`, familles-de-france,
+  un PDF de `logement.defense.gouv.fr`). **Zéro agence locale, zéro
+  villeurbannais.** 📌 **Repère marquant : Laforêt y tient trois positions avec
+  des pages écrites pour GIVORS, VERNON et GAILLON** — la requête est servie par
+  des pages d'autres villes, donc la place villeurbannaise est littéralement
+  vide.
+- 🔴 🆕 **ET LE MOTIF EST NEUF DANS CE JOURNAL : CE N'EST PAS UN TROU DE
+  CONTENU, C'EST UNE ERREUR PARTAGÉE. LES PAGES QUI TIENNENT CETTE SERP
+  PUBLIENT L'INVERSE DE LA FICHE OFFICIELLE.** Elles affirment que la réduction
+  à un mois est **automatique** (« le préavis est automatiquement réduit à
+  1 mois, sans que le locataire ait à invoquer de motif particulier »), et **le
+  résumé du moteur a repris cette affirmation telle quelle**. La fiche `F1168`
+  (**vérifiée le 16 avril 2026**) dit le contraire : le préavis n'est de un mois
+  **qu'à la condition** que la lettre de congé indique l'adresse du logement et
+  le fait de bénéficier du délai réduit, et elle conclut par la même formule
+  pour chaque motif — « **Si vous ne le faites pas, le délai de préavis est de
+  3 mois.** » 📌 **Nouvelle famille de place vide, à chercher désormais
+  activement : la SERP n'est pas muette, elle est UNANIME ET FAUSSE.** Recette
+  en « Techniques apprises ».
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée** (26/10 contenu →
+  27/10 non-contenu → **28/10 contenu**). **Nouvel article
+  `/blog/preavis-depot-garantie-location-villeurbanne`**, 9 `<h2>` en questions,
+  11 FAQ, `HowTo` à 7 étapes, 2 tableaux sourcés. Détail en « Chantiers faits ».
+- 🔴 **J'AI ÉCARTÉ LE CANDIDAT N°1 DU BACKLOG (`/vendre`) APRÈS L'AVOIR MESURÉ,
+  ET LA MESURE EST CONSIGNÉE POUR QUE DEMAIN NE LA REFASSE PAS.** Sur « combien
+  me restera-t-il vraiment après la vente de mon appartement à Villeurbanne net
+  vendeur frais déduits » : **la SERP est tenue par SIX pages de listings
+  `capifrance.fr/…/villeurbanne_69`**, plus des pages de définition nationales
+  (`edito.seloger` ×2, empruntis, etreproprio, gererseul) et — c'est le point
+  qui tranche — **deux concurrents LOCAUX déjà en place** :
+  `calcunet.fr/calculateur-frais-agence/villeurbanne/` (simulateur, qui publie
+  un net vendeur chiffré sur un 70 m²) et
+  `orpi.com/orpicetrim/comment-evaluer-le-bon-prix-de-son-bien-a-villeurbanne`.
+  📌 **Configuration opposée à celle du préavis** : concurrence locale présente,
+  et six positions sur quinze tenues par un TYPE de page (listing) que du
+  contenu ne déloge pas — **la lecture du 26/10 sur « prix m2 Villeurbanne »
+  s'applique ici aussi.** ⚠️ **`/vendre` n'est pas refermé pour autant** : la
+  SERP éditoriale « vendre appartement Villeurbanne » (mesurée le 27/10, 3 sur 9
+  éditoriaux) reste ouverte — **ce sont deux requêtes différentes, et c'est
+  celle du 27/10 qui portait l'angle**. 🟢 **À noter aussi : le moteur a
+  complété sa réponse par « d'après mes connaissances générales (non vérifiées
+  par la recherche) » sur le solde de prêt, l'indemnité de remboursement
+  anticipé et les diagnostics** — ces trois postes sont donc une place vide
+  **dans la requête net vendeur**, et `/vendre` les porte déjà en partie.
+- ✅ 🆕 **UNE ALERTE SÉRIEUSE LEVÉE, ET ELLE AURAIT PU FAIRE ÉCRIRE UN FAUX :
+  VILLEURBANNE EST TOUJOURS EN ZONE TENDUE, VÉRIFIÉ.** Le simulateur officiel
+  porte une branche « **votre logement n'est plus considéré en zone tendue** »
+  pour les baux « depuis le 24 décembre 2025 », ce qui mettait en cause le socle
+  de `/honoraires` (« Villeurbanne est classée en zone tendue »). **Fait établi :
+  c'est le décret n° 2025-1267 du 22 décembre 2025, en vigueur le 24 décembre
+  2025, et c'est une mise à jour de FUSIONS de communes.** Communes retirées :
+  Oullins, Pierre-Bénite, Pierrefitte-sur-Seine, Haut Valromey, Gerrots,
+  Victot-Pontfol, Hauterive-la-Fresse, Ville-du-Pont, Corbès, Boëge ; ajoutées :
+  **Oullins-Pierre-Bénite** (Métropole de Lyon) et Victot-en-Auge.
+  **Villeurbanne n'est dans aucune des deux listes : son classement est
+  inchangé.** 📌 **`/honoraires` et `/gestion-locative` n'ont RIEN à corriger —
+  constat de prévention, pas de défaut.**
+- 🔴 🆕 **DÉFAUT TROUVÉ CHEZ LA SOURCE OFFICIELLE ELLE-MÊME, ET IL EST PUBLIÉ :
+  DEUX SIMULATEURS DU MÊME SITE SE CONTREDISENT SUR « LE DERNIER DÉCRET EN
+  VIGUEUR ».** Relevé sur le HTML brut téléchargé le 28/10/2026 :
+  `/simulateur/calcul/zones-tendues` (**vérifié le 15 janvier 2026**) annonce
+  être conforme au **décret n° 2023-822 du 25 août 2023**, « dernier décret en
+  vigueur fixant la liste des communes en zone tendue », tandis que
+  `/simulateur/calcul/delaiPreavisLocataire` (**vérifié le 20 janvier 2026**)
+  cite bien le **décret n° 2025-1267 du 22 décembre 2025**. 📌 **Le périmé est
+  celui qui sert à VÉRIFIER SA COMMUNE** : un lecteur d'une commune fusionnée de
+  la Métropole y lit une réponse fausse. **Famille du 27/10 (la date de
+  vérification ne dit pas la fraîcheur du contenu), mais cas neuf : ici ce sont
+  DEUX pages officielles qui divergent, à cinq jours d'écart de vérification.**
+- ✅ **DÉPLOIEMENT CONFIRMÉ EN PRODUCTION, APRÈS LE PUSH — vérifié, pas
+  supposé.** Commit `b95e0b8` ; la page a répondu 404 pendant ~60 s puis 200 à
+  **189 439 octets** après ~75 s. **Parité revérifiée SUR LE HTML DE
+  PRODUCTION : 11 Q/R + `HowTo`, 0 écart.** `/llms.txt` 200 / **35 606 o**
+  (31 584 o avant). **Sitemap de production : 54 URL** (53 avant), **dont
+  exactement 1 au `lastmod` 2026-10-28**. Faits clés présents dans la page
+  servie (`2025-1267` ×5, `905` ×5, `90,50` ×2, `16 avril 2026` ×2,
+  « Mis à jour le » ×1).
+- ✅ **Contrôles avant push : `npx tsc --noEmit` sans erreur, `eslint` sans
+  aucune erreur sur les deux fichiers touchés, `npm run build` vert
+  (« Compiled successfully »), parité FAQ/`HowTo` en local 0 écart sur la page
+  neuve ET sur les trois pages voisines modifiées ou citées, et zéro markdown
+  brut (`**` à 0 occurrence dans le texte visible).**
+
 **Au 2026-10-27 (mardi)**
 
 - ✅ **CONFIGURATION DE DÉPART SAINE, ET POUR LA PREMIÈRE FOIS DEPUIS LE 21/10 LE
@@ -3711,6 +3820,115 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-28 — `préavis` était à zéro occurrence du corpus, et la SERP qui tient la question publie l'inverse de la fiche officielle
+
+**Pourquoi ce chantier plutôt que le candidat n°1 du backlog.** Le backlog
+désignait `/vendre`. Les deux SERP ont été mesurées avant d'écrire, et la mesure
+a inversé l'ordre : la requête net vendeur est tenue par six pages de listings
+`capifrance` **et deux concurrents locaux déjà en place** (`calcunet.fr` avec un
+simulateur villeurbannais, `orpi.com/orpicetrim`), configuration où du contenu
+ne déloge rien (lecture du 26/10) ; la requête préavis, elle, n'a **aucune
+agence locale sur 19 résultats** et Laforêt y tient trois positions avec des
+pages écrites pour **Givors, Vernon et Gaillon**. **Le candidat n°2 du backlog a
+donc été promu, et `/vendre` reste ouvert sur SA requête (celle du 27/10, pas
+celle-ci).**
+
+**Le signal de départ, et c'est le plus rentable de ce journal pour la quatrième
+fois.** `préavis` était à **ZÉRO occurrence** de tout le corpus (`app`, `lib`,
+`components`, `data`), alors que **Villeurbanne est en zone tendue et que le site
+le disait déjà pour ses honoraires** (3 fichiers portaient « zone tendue », tous
+pour le plafond d'honoraires). Le plafond du dépôt de garantie était lui aussi
+absent : le corpus ne portait que la **restitution** (délais 1/2 mois et
+pénalité de 10 %, sur `/gestion-locative`), jamais le **plafond**, jamais la
+provision de 20 %, jamais les interdictions.
+
+**Créé : `/blog/preavis-depot-garantie-location-villeurbanne`** (27ᵉ article).
+3 655 mots rendus, 9 `<h2>` **tous formulés en questions**, chacun ouvrant par
+une réponse autonome de 2-3 phrases, 11 FAQ, un `HowTo` de 7 étapes et
+**2 tableaux sourcés avec la date de vérification de chaque fiche**.
+
+**Les cinq faits que personne d'autre ne publiait sur cette requête :**
+
+1. 🔴 **LE PRÉAVIS D'UN MOIS N'EST PAS AUTOMATIQUE — et les 19 résultats
+   mesurés disent le contraire.** La fiche `F1168` (vérifiée le **16 avril
+   2026**) : le préavis n'est de un mois **qu'à la condition d'indiquer dans la
+   lettre de congé** l'adresse du logement **et** le fait de bénéficier du délai
+   réduit (article 15 de la loi n° 89-462). « **Si vous ne le faites pas, le
+   délai de préavis est de 3 mois.** » **Chiffré au loyer médian local : 1 810 €
+   hors charges payés pour rien** (62 m² × 14,6 €/m² = 905 €/mois, valeurs déjà
+   établies du site, aucune nouvelle donnée de marché).
+2. 🔴 **LA LISTE DES COMMUNES SE LIT À LA DATE DU BAIL** (famille du défaut n°2
+   du 27/10) : décret **n° 2025-1267 du 22 décembre 2025** depuis le
+   **24 décembre 2025**, décret **n° 2023-822** entre le 27 août 2023 et le
+   24 décembre 2025. **Et la liste a réellement bougé dans la Métropole de
+   Lyon** : Oullins et Pierre-Bénite sorties comme communes distinctes,
+   **Oullins-Pierre-Bénite** entrée. **Villeurbanne classée dans les trois
+   périodes.**
+3. 🔴 **DEUX PAGES OFFICIELLES DU MÊME SITE SE CONTREDISENT**, relevé daté dans
+   l'article (28/10/2026) : le simulateur qui sert à **vérifier sa commune**
+   cite encore 2023-822 comme « dernier décret en vigueur » quand celui du délai
+   de préavis cite 2025-1267.
+4. 🔴 **QUATRE MOTIFS QUE LES GUIDES CLASSENT À UN MOIS SONT À TROIS MOIS** :
+   **départ à la retraite**, **démission ou abandon de poste**, **fin de droits
+   à l'assurance chômage**, **cessation d'activité d'un indépendant ou libéral**.
+   Seule la **perte d'emploi** (licenciement, rupture conventionnelle, fin de
+   CDD) donne un mois. Deux nuances publiées en plus : une **simple fatigue
+   médicalement constatée reste à 3 mois**, et un **nouvel emploi consécutif à
+   une perte d'emploi** n'ouvre le mois que si les deux surviennent **pendant le
+   même bail**. Et un **logement en péril ou insalubre dispense de tout
+   préavis**, à condition d'avoir mis le bailleur en demeure d'agir.
+5. 🟢 **CROISEMENT DE DEUX CALENDRIERS — quatrième usage réussi du motif
+   (16/10, 22/10, 27/10, 28/10).** **La fin de l'encadrement des loyers le
+   23 novembre 2026 ne supprimerait PAS le préavis d'un mois** : il repose sur
+   l'article 15 + le décret zone tendue, l'encadrement sur l'expérimentation de
+   la loi ELAN (art. 140) prolongée par la loi 3DS. **Test de valeur passé** :
+   le fait meurt si l'on retire l'un des deux calendriers, ce n'est donc pas une
+   recopie. **Et il se périme à une date connue — à revérifier le 24/11/2026.**
+
+**Dépôt de garantie, ce qui manquait** (fiche `F39713`, onglets vide et meublé,
+vérifiée le **9 juin 2026**) : plafond **1 mois HC en vide / 2 mois HC en
+meublé**, inscrit au bail, **non augmentable en cours de bail ni au
+renouvellement**, **interdit** si le loyer est payable d'avance **au trimestre**
+et **en bail mobilité** ; restitution **1 mois** si les deux états des lieux
+concordent, **2 mois** sinon, **à compter de la remise des clés** et non de la
+fin du bail ; distinction **retenue** (somme due, justificatifs obligatoires) /
+**provision** (copropriété, **plafonnée à 20 % du dépôt**, solde rendu dans le
+mois suivant l'approbation définitive des comptes) ; retard **majoré de 10 % du
+loyer mensuel HC par mois entamé** (**90,50 €** ici), **sauf** si le locataire
+n'a pas communiqué sa nouvelle adresse ; et **déduire le dépôt du dernier loyer
+est illégal** (pas de quittance — donc pas d'aide au logement —, saisie
+conservatoire possible **sans juge**). Préavis du **bailleur** en logement vide
+(fiche `F929`, vérifiée le **1er juin 2026**) : réception **au moins 6 mois**
+avant l'échéance ; **la réduction de zone tendue ne bénéficie jamais au
+propriétaire**.
+
+**Maillage interne.** Liens **entrants** ajoutés depuis les deux articles
+faibles que le backlog désignait — `cout-gestion-locative` (288 mots) et
+`gestion-locative-villeurbanne-deleguer-ou-non` — et liens **sortants** de
+l'article neuf vers `/gestion-locative` (page argent, aussi en CTA),
+`/faire-gerer` et `gestion-locative-villeurbanne-deleguer-ou-non`.
+**`/llms.txt`** : la ligne d'article est dérivée automatiquement de
+`title` + `excerpt`, et le bloc **manuel** `/gestion-locative` porte désormais
+ces règles de fin de bail (28 830 → **35 606 o** en production).
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+- ❌ **Ne pas toucher `/vendre`** : mesuré, concurrence locale en place, voir
+  ci-dessus. **Et surtout ne pas confondre les deux requêtes.**
+- ❌ **Ne pas ajouter de puce à la liste d'obligations de `/gestion-locative`**
+  (fichier `.tsx` qui rend bien) : le maillage est passé par les tableaux de
+  données de `lib/blog.ts`, sans risque de rendu. **Inscrit en « Chantiers en
+  attente » comme candidat non-contenu.**
+- ❌ **Aucun chiffre de marché nouveau** : seules les valeurs déjà établies du
+  site ont été réutilisées (**14,6 €/m² HC, 62 m², 905 €/mois**) et les montants
+  dérivés sont signalés comme calcul Markus Immobilier sur le loyer médian, pas
+  comme le loyer du lecteur.
+- ❌ **Ne pas écrire que le simulateur officiel « est faux »** : la phrase
+  publiée **date le relevé** (28/10/2026) et dit ce qui a été lu, parce qu'une
+  page officielle peut être corrigée demain.
+- ❌ **Aucune FAQ sans parité** : les réponses de FAQ sont rendues en texte brut
+  par le gabarit (`{f.a}`, sans `inline()`), donc **écrites sans markdown** —
+  la parité est garantie par construction, et vérifiée en plus.
 
 ### 2026-10-27 — La fiche que nous citons avait changé sans que sa date de vérification bouge, et le critère de décence énergétique n'est pas le même pour un bail de 2024 que pour un bail d'aujourd'hui
 
@@ -9373,6 +9591,140 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — le préavis et le dépôt de garantie en zone
+tendue** (28/10 : `préavis` était à **zéro occurrence** du corpus ; SERP mesurée
+**sans aucune agence locale sur 19 résultats**, Laforêt y tenant trois positions
+avec des pages de **Givors, Vernon et Gaillon** ; et surtout **les pages qui
+tiennent cette SERP publient l'inverse de la fiche officielle** — elles disent la
+réduction automatique, `F1168` exige la mention dans le congé sous peine de
+3 mois. Nouvel article de 3 655 mots, 9 `<h2>` en questions, 11 FAQ, `HowTo` à
+7 étapes, 2 tableaux sourcés ; `/llms.txt` 31 584 → **35 606 o** ; sitemap 53 →
+**54 URL**. **Candidat n°2 du backlog consommé ; le n°1 (`/vendre`) a été écarté
+APRÈS mesure, pas par oubli.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (29/10) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 26/10 contenu → 27/10 non-contenu → 28/10 contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 **PASSER LA RECETTE « ENCADRÉ D'ÉVOLUTIONS » SUR TOUTES LES FICHES
+     CITÉES PAR LE CORPUS — candidat n°1, inscrit le 27/10 et NON CONSOMMÉ.** Le
+     contrôle de fraîcheur par la mention « Vérifié le … » est **aveugle aux
+     changements FUTURS**. 📌 **Le run du 28/10 vient d'en administrer une
+     deuxième preuve, et pire que la première** : deux simulateurs officiels du
+     même site citent des décrets différents comme « le dernier en vigueur », à
+     cinq jours d'écart de date de vérification. **Il faut relire l'encadré
+     d'évolutions ET la référence de texte de chaque fiche, pas sa date.**
+     Fiches citées par le corpus : F1310, F1314, F2042, F2066, F2590, F2604,
+     F2608, F2965, F10864, F16096, F31267, F32920, F33463, F37110, F37190,
+     F37294, F947, **et désormais F1168, F39713, F929**. ⚠️ **Travail de
+     mesure ; corriger seulement ce qui ressort.**
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE.**
+     Six mesures concordantes, **toutes COMMUNALES**, alors que `/acheter` et
+     `/llms.txt` affirment un écart **de 16,1 à 45,3 % PAR QUARTIER**.
+     **Reformuler — « l'écart par QUARTIER a-t-il disparu ? » — et trancher avec
+     un relevé DVF 2026 par quartier** (recette du 14/10), **pas avec les SERP.
+     Ne RIEN réécrire avant.**
+  3. 🟡 🆕 **AJOUTER LE PRÉAVIS D'UN MOIS À LA LISTE D'OBLIGATIONS DE
+     `/gestion-locative`** — volontairement NON fait le 28/10 pour ne pas
+     toucher un `.tsx` qui rend bien un jour de gros chantier. La liste
+     (`app/gestion-locative/page.tsx`, autour de la ligne 477) énumère ce que
+     doit faire le bailleur qui gère seul et **ne dit pas que son locataire peut
+     partir en un mois**. ⚠️ **Ajout d'une seule puce dans un tableau de
+     chaînes ; relire la parité FAQ de la page après (10 Q/R au 28/10).**
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **non fait**) : premier concurrent mesuré qui publie du **DVF par
+     quartier**. Établir **ce que nous publions qu'il ne publie pas**. **Ne RIEN
+     réécrire sur la foi d'un seul relevé.**
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Aucun défaut connu :
+     prévention.**
+  6. 🟢 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** (inscrit
+     le 26/10, **non fait**, **volontairement déclassé**) : travail de journal,
+     **zéro effet sur les positions**. **À faire un jour creux.** 📌 **Note du
+     28/10 : l'article neuf porte 11 FAQ VISIBLES — c'est elles qui se font
+     citer, le balisage n'ajoute plus d'affichage Google.**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (30/10), par ordre d'impact :**
+  1. 🔴 **`/vendre` SUR SA PROPRE REQUÊTE — et ne pas répéter la confusion du
+     28/10.** L'angle ouvert est **« vendre appartement Villeurbanne »** (SERP
+     éditoriale, 3 sur 9 éditoriaux aux relevés des 13, 20 et 27/10, place tenue
+     par du **périmé que le moteur signale lui-même** : « Villeurbanne en 2024 »,
+     transactions de **2019**, 3 258 €/m² donnés pour actuels). ⚠️ **Ce n'est
+     PAS la requête « net vendeur » mesurée le 28/10**, qui est tenue par six
+     listings `capifrance` et deux concurrents locaux (`calcunet.fr`,
+     `orpi.com/orpicetrim`) — **celle-là, ne pas y réinvestir.** 📌 **Angle à
+     tenir : le net vendeur et la fraîcheur datée, pas le prix du marché.**
+  2. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. 🆕 **Et le 28/10 en a mesuré une voisine** : sur la requête net
+     vendeur, le moteur complète par « **d'après mes connaissances générales
+     (non vérifiées par la recherche)** » sur le **solde de prêt, l'indemnité de
+     remboursement anticipé et les diagnostics** — trois postes que `/vendre`
+     porte déjà en partie et pourrait porter mieux.
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). 📌 **`cout-gestion-locative` sort de
+     cette liste** : il a reçu un paragraphe de liaison le 28/10. ⚠️ **Ne pas en
+     prendre un « parce qu'il est court » : mesurer d'abord s'il existe une SERP
+     où le site est absent.**
+
+→ 🔴 **REQUÊTES CIBLES — prochaines échéances : les deux SERP de marque
+interdite (« agence immobilière Villeurbanne », « estimation immobilière
+Villeurbanne ») → 30/10.** « Prix m2 Villeurbanne » → **02/11** (hebdomadaire,
+site absent, 6ᵉ mesure le 26/10 — **ne pas y réinvestir d'effort
+rédactionnel**). « Vendre appartement Villeurbanne » → **vers le 10/11**.
+**Prochaine veille du lundi : 02/11.**
+
+⚠️ **SERP DE CHANTIER À REMESURER — sept échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à courir »**
+  (21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (22/10) → **vers le 05/11**.
+- **« peut-on demander un garant si le propriétaire a déjà une assurance loyers
+  impayés »** (23/10) → **vers le 06/11**.
+- **« plafond de loyer bail signé Villeurbanne encadrement des loyers quel
+  arrêté s'applique novembre 2026 »** (24/10) → **vers le 07/11**.
+- **« comment estimer le prix de mon appartement soi-même étapes méthode DVF
+  Villeurbanne »** (26/10, site absent) → **vers le 09/11**.
+- **« bail signé en 2024 logement classé G puis-je encore le louer critère
+  450 kWh ou classe DPE »** (27/10, site absent) → **vers le 10/11**.
+- 🆕 **« préavis de départ locataire Villeurbanne zone tendue 1 mois ou 3 mois
+  quel délai »** (28/10, site absent, 19 résultats sans aucune agence locale) →
+  **vers le 11/11**. 📌 **Repère de contrôle** : les pages en place affirment la
+  réduction **automatique**. **Si cette affirmation disparaît des résultats,
+  c'est que la place s'est refermée ; si elle persiste, notre page a un avantage
+  de justesse et il faut vérifier si elle est entrée.**
+
+🔴 **DEUX ÉCHÉANCES JURIDIQUES À TENIR, PAR ORDRE DE DATE :**
+- **23 NOVEMBRE 2026 — encadrement des loyers de Lyon et Villeurbanne.** Il
+  s'éteint ce jour-là **sauf adoption définitive** de la prolongation votée par
+  le Sénat le 21/10/2026 (texte à l'Assemblée nationale). 🆕 **QUATRE pages
+  publient désormais cette date** (`/gestion-locative`, `/faire-gerer`,
+  `/blog/rentabilite-locative-lyon`, **`/blog/preavis-depot-garantie-location-villeurbanne`**)
+  **et `/llms.txt`**. 📌 **À revérifier dès le 24/11/2026.** ⚠️ **Et la nouvelle
+  page affirme que la fin de l'encadrement NE CHANGERAIT PAS le préavis d'un
+  mois** : si la prolongation échoue, **vérifier que le décret zone tendue
+  n'est pas modifié dans le même mouvement** avant de laisser cette phrase.
+- **1er JANVIER 2027 — coefficient de l'électricité à 1,7 et adaptation
+  européenne du DPE.** Deux pages publient cette date
+  (`dpe-2026-ce-qui-change`, `/gestion-locative`) **et `/llms.txt`**. 📌 **À
+  revérifier début janvier 2027 : (a) attestations téléchargeables sur
+  l'Observatoire DPE-Audit ? (b) `F16096` réécrite ? (c) la lettre de la
+  nouvelle classe énergie est-elle tranchée (« AO » ou « A0 ») ?**
+
+🆕 🟢 **UN FAIT DE PRÉVENTION À NE PAS PERDRE : VILLEURBANNE EST TOUJOURS EN
+ZONE TENDUE, VÉRIFIÉ LE 28/10.** Le décret **n° 2025-1267 du 22 décembre 2025**
+(en vigueur le **24 décembre 2025**) n'a retiré que des communes fusionnées —
+dont **Oullins et Pierre-Bénite**, remplacées par **Oullins-Pierre-Bénite**.
+**Villeurbanne n'est ni retirée ni ajoutée : son classement est inchangé, et
+`/honoraires` n'a rien à corriger.** ⚠️ **Ne pas repartir en alerte là-dessus :
+la branche « votre logement n'est plus considéré en zone tendue » du simulateur
+officiel est un gabarit générique, pas un verdict sur Villeurbanne.**
+
 **Angle du dernier run : NON-CONTENU — le contrôle « la fiche comprime-t-elle un
 calendrier ? » passé sur les calendriers énergétiques** (27/10 : la fiche
 `F16096` que nous citons **avait changé sans que sa date de vérification bouge**
@@ -12031,6 +12383,50 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-10-28 — J'ai refait l'erreur de grep du 27/10, le jour même où elle était consignée, et en cherchant exactement la même chose
+
+🔴 **LA FAUTE.** Pour vérifier que l'article neuf servait bien un marqueur de
+fraîcheur, j'ai cherché `mise à jour` dans la page rendue. **Zéro occurrence.**
+J'ai cru à un défaut et j'ai commencé à chercher pourquoi le gabarit n'affichait
+pas de date. **Le gabarit écrit « Mis à jour le … » au MASCULIN** (`app/blog/
+[slug]/page.tsx`, ligne 162) : la page servait la date depuis le début.
+
+🔴 **ET C'EST LA MÊME ERREUR QUE LA VEILLE, SUR LE MÊME SUJET.** Le 27/10, un
+grep `Dernière mise à jour` sensible à la casse avait entretenu un faux candidat
+de backlog pendant **six runs** sur `/honoraires`. La règle consignée ce jour-là
+(« GREP : TOUJOURS `-i` ») était **insuffisante** : ici, `-i` n'aurait **rien
+changé**, parce que ce n'est pas la casse qui diffère mais **l'accord du
+participe**.
+
+✅ **LA RÈGLE CORRIGÉE, ET ELLE REMPLACE CELLE DU 27/10.** Ne pas chercher une
+formule accordée. Chercher **le radical invariable**, avec `-i`, et lire les
+résultats :
+
+```bash
+# INSUFFISANT (27/10) : rate « Mis à jour le » (masculin)
+grep -ri "mise à jour" page.txt
+
+# INSUFFISANT AUSSI : rate « mis à jour » si l'on tape « mise »
+grep -ri "Dernière mise à jour" page.txt
+
+# JUSTE : le radical, qui survit à l'accord ET à la casse
+grep -ri "à jour" page.txt
+grep -roi "mise\? à jour[^|]\{0,40\}" page.txt   # pour voir la formule exacte
+```
+
+📌 **Le motif général, et il vaut au-delà des dates : un grep négatif sur du
+français n'établit RIEN tant qu'il porte sur une forme fléchie** (accord,
+pluriel, élision, trait d'union). **Avant de conclure « zéro occurrence », tester
+la même recherche sur une page dont on SAIT qu'elle contient la chose.** C'est
+ce test qui m'a détrompé en dix secondes aujourd'hui, et qui a manqué pendant
+six runs le 27/10.
+
+⚠️ **Portée à vérifier plus tard** : les « zéro occurrence » de ce journal qui
+ont servi à choisir un chantier ont tous porté sur des **termes invariables**
+(`préavis`, `450`, `2027`, `73 582`), donc ils tiennent. **Mais un futur « zéro
+occurrence » sur un mot accordable doit être retesté avec cette recette avant
+d'être écrit ici.**
+
 ### 2026-10-27 — Un candidat du backlog était faux depuis sept jours à cause d'une majuscule, et j'ai refait exactement la même erreur ce matin
 
 🔴 **LE FAIT.** Le candidat n°4 du backlog — « `/honoraires` ne sert AUCUN
@@ -12393,8 +12789,6 @@ VOULU faire, pas ce qu'on croyait avoir fait** : la bonne chaîne « disparue »
 était `jamais plus que le plus faible de deux plafonds : 6 mois` **non précédé
 de** « taux fixe ». **Vérifié à la main sur le rendu avant de conclure** — ne
 jamais lever une alerte de son propre harnais sans aller lire la phrase.
-
-### 2026-10-20 —## Erreurs commises et corrigées
 
 ### 2026-10-20 — J'ai failli publier l'exclusion exactement à l'envers, et c'est le § de la source qui m'a arrêté
 
@@ -13627,6 +14021,113 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-28 — Une SERP peut être unanime ET fausse : c'est une place vide, et elle ne ressemble pas à un trou de contenu
+
+🟢 **LE MOTIF, NEUF DANS CE JOURNAL.** Jusqu'ici, une place vide se reconnaissait
+à un **silence** : le site absent, les concurrents hors sujet, ou le moteur qui
+**avoue n'avoir aucune source** (5 occurrences : 18, 19, 24, 26 et 27/10).
+Aujourd'hui la SERP n'était pas silencieuse : **19 résultats bien rédigés,
+cohérents entre eux — et tous faux sur le point décisif.** Ils affirment que le
+préavis d'un mois en zone tendue est **automatique** ; la fiche officielle exige
+la mention dans le congé, **sous peine de 3 mois**. **Le résumé du moteur a
+repris l'erreur mot pour mot**, ce qui la rend auto-renforçante.
+
+✅ **LA RECETTE, et elle inverse l'ordre habituel.** Ne pas conclure sur la
+nature d'une place vide d'après la SERP seule : **lire la fiche officielle AVANT
+de décider que le sujet est couvert.**
+
+```bash
+# 1) la SERP dit « c'est automatique » -> NE PAS en déduire que c'est vrai
+# 2) télécharger la fiche et chercher la CONDITION, pas le sujet
+curl -sL --cacert /root/.ccr/ca-bundle.crt \
+  "https://www.service-public.gouv.fr/particuliers/vosdroits/F1168" -o f.html
+python3 -I h2t.py f.html > f.txt        # scripts retires AVANT les balises
+grep -n -i "à la condition\|vous devez indiquer\|si vous ne le faites pas\|à défaut" f.txt
+# -> « Si vous ne le faites pas, le delai de preavis est de 3 mois. » x10
+```
+
+📌 **Le marqueur à chercher est la formule de CONDITION, répétée.** Ici
+`F1168` conclut **dix fois** par la même phrase, pour chaque motif de réduction.
+**Quand une fiche officielle répète une condition dix fois et qu'aucun des
+19 résultats ne la mentionne, la place vide est démontrée** — et elle est bien
+meilleure qu'un silence, parce que le contenu qui la comble **contredit** les
+pages en place au lieu de s'y ajouter.
+
+⚠️ **ET LA LIMITE À TENIR : ne pas écrire que les concurrents « se trompent »
+sans citer la fiche et sa date de vérification.** La page publiée dit ce que dit
+`F1168` **vérifiée le 16 avril 2026**, et date son propre relevé. Une fiche peut
+être réécrite ; une accusation non datée vieillit mal.
+
+### 2026-10-28 — Deux pages officielles du même site peuvent citer des textes différents comme « le dernier en vigueur » : vérifier la RÉFÉRENCE, pas la date
+
+🔴 **LE CAS.** Le 27/10 avait établi qu'une date « Vérifié le … » ne dit pas la
+fraîcheur du contenu. Le 28/10 va plus loin : **deux simulateurs officiels du
+même site, vérifiés à cinq jours d'écart, citent des décrets différents comme
+« le dernier décret en vigueur fixant la liste des communes en zone tendue ».**
+
+```bash
+for u in zones-tendues delaiPreavisLocataire; do
+  curl -sL --cacert /root/.ccr/ca-bundle.crt \
+    "https://www.service-public.gouv.fr/simulateur/calcul/$u" -o "$u.html"
+  printf "%-22s " "$u"
+  grep -o "décret n° 202[0-9]-[0-9]*[^<]*" "$u.html" | head -1
+  grep -o "Vérifié le [^<]*" "$u.html" | head -1
+done
+# zones-tendues         -> decret n° 2023-822 du 25 aout 2023   (verifie le 15/01/2026)
+# delaiPreavisLocataire -> decret n° 2025-1267 du 22 decembre 2025 (verifie le 20/01/2026)
+```
+
+📌 **Et c'est l'outil de VÉRIFICATION qui portait la référence périmée** — celui
+qu'un lecteur utilise pour savoir si sa commune est classée. **Donc : toujours
+extraire le NUMÉRO DE TEXTE cité, sur le HTML brut, et le comparer entre les
+pages officielles qui traitent le même sujet.** Un désaccord de référence est un
+fait publiable ; une date de vérification plus récente ne garantit pas la bonne
+référence.
+
+🟢 **ET LA MANŒUVRE DE SÉCURITÉ QUI A ÉVITÉ UN FAUX AUJOURD'HUI.** La branche
+« **votre logement n'est plus considéré en zone tendue** » du simulateur, avec
+un nom de commune vide (`()`), ressemble à un verdict sur la commune qu'on
+consulte. **C'est un gabarit générique** : le nom est injecté en JavaScript, que
+`curl` ne joue pas. **Ne jamais lire une branche de simulateur comme une
+réponse** — il faut la liste du décret. `legifrance.gouv.fr` rendant toujours
+**403** depuis ce conteneur (re-testé ce jour, 2 URL), la liste des communes
+ajoutées et retirées a été établie sur
+`immobilier.notaires.fr` **et recoupée** avec la référence citée par le
+simulateur officiel du préavis. **Villeurbanne n'y figure dans aucun sens :
+classement inchangé.**
+
+⚠️ **Domaines utiles depuis ce conteneur, mis à jour** :
+`service-public.gouv.fr` (fiches **et simulateurs**, dont le HTML porte les
+références de décret), `rt-re-batiment.developpement-durable.gouv.fr`,
+`anil.org`, `justice.fr`, `bofip.impots.gouv.fr`, **`immobilier.notaires.fr`**
+(utile pour le contenu d'un décret quand Legifrance refuse). **`legifrance.gouv.fr`
+= 403, constat reconfirmé le 28/10.**
+
+### 2026-10-28 — Une FAQ dont les réponses sont rendues en texte brut doit être écrite sans markdown : la parité devient structurelle
+
+🟢 **LE FAIT DE GABARIT, à connaître avant d'écrire une FAQ dans ce dépôt.**
+`app/blog/[slug]/page.tsx` rend la réponse de FAQ par **`{f.a}` seul**, sans
+passer par `inline()` — contrairement aux blocs `p`, `ul`, `table` et `steps`.
+**Conséquence double :**
+
+1. **Du markdown dans une réponse de FAQ ressortirait BRUT à l'écran**
+   (`**gras**` et `[texte](/lien)` visibles tels quels).
+2. **Mais comme le JSON-LD `FAQPage` émet la MÊME chaîne `f.a`, la parité est
+   garantie par construction** — exactement comme le bloc `steps` l'est pour le
+   `HowTo` (constat du 26/10). **À condition de n'y mettre aucun markdown**, qui
+   serait le seul moyen de créer un écart.
+
+📌 **Règle pratique : réponses de FAQ en texte brut, liens et gras réservés aux
+blocs `p`/`ul`/`table`/`steps`.** Les 11 réponses de l'article du 28/10 sont
+écrites ainsi, et la vérification a rendu **0 écart en local comme en
+production**.
+
+⚠️ **Le contrôle reste utile malgré la garantie** : il attrape les écarts de
+**question** (`f.q` est rendu dans un `<summary>`) et surtout les pages où la
+FAQ visible aurait disparu du rendu. **Script toujours reconstruit dans le
+scratchpad, jamais dans le dépôt, avec `ProxyHandler({})` pour joindre
+`localhost:3000`.**
 
 ### 2026-10-27 — La date « Vérifié le … » d'une fiche officielle NE BOUGE PAS quand la fiche annonce un changement futur : c'est l'encadré d'évolutions qu'il faut lire
 
