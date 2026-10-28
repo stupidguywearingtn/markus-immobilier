@@ -1015,6 +1015,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "La garantie loyers impayés est une option distincte, à **2,5 %**. Pour le détail de ce que le pourcentage couvre et de ce qui se facture à l'unité, voir [combien coûte vraiment une gestion locative](/blog/cout-gestion-locative)." },
       { type: "h2", text: "Alors, faut-il déléguer ou gérer soi-même ?" },
       { type: "p", text: "**Cette question ne se tranche pas sur le taux, mais sur la vacance et le risque d'impayé** : au loyer médian villeurbannais, une année de gestion déléguée coûte moins qu'un seul mois de logement vide. Le calcul complet — coût net après impôt selon votre régime fiscal, ce que le bailleur qui gère seul doit faire et ce qu'il risque en euros — est développé sur [déléguer sa gestion locative ou gérer seul : le calcul à Villeurbanne](/gestion-locative). C'est cette page qui porte la comparaison ; celle-ci se limite au contenu du mandat." },
+      { type: "p", text: "Un dernier poste décide de la vacance, et il ne figure dans aucun mandat : la vitesse à laquelle le logement se libère. À Villeurbanne, commune classée en zone tendue, **le locataire d'un logement vide peut partir avec un mois de préavis** au lieu de trois — à condition de le mentionner dans son congé. Les délais, les mentions obligatoires et les règles du dépôt de garantie sont réunis sur [préavis et dépôt de garantie en zone tendue](/blog/preavis-depot-garantie-location-villeurbanne)." },
     ],
     faq: [
       {
@@ -2011,6 +2012,170 @@ export const ARTICLES: Article[] = [
     ],
   },
   {
+    slug: "preavis-depot-garantie-location-villeurbanne",
+    title:
+      "Préavis et dépôt de garantie à Villeurbanne : les règles de la zone tendue",
+    metaDescription:
+      "Villeurbanne est en zone tendue : le préavis du locataire passe de 3 mois à 1 mois, mais seulement si la lettre de congé le mentionne. Plafonds du dépôt de garantie, délais de restitution et pénalité de retard, sourcés.",
+    h1: "Préavis de départ et dépôt de garantie à Villeurbanne : ce que change la zone tendue",
+    excerpt:
+      "Villeurbanne figure à l'annexe du décret qui liste les communes en zone tendue — décret n° 2025-1267 du 22 décembre 2025 pour un bail signé, reconduit ou renouvelé depuis le 24 décembre 2025. Le préavis du locataire d'un logement vide y tombe de 3 mois à 1 mois, mais ce n'est PAS automatique : la lettre de congé doit indiquer l'adresse du logement et le fait de bénéficier du préavis réduit, sinon le délai de 3 mois s'applique — soit 1 810 € de loyer en plus au loyer médian villeurbannais (905 €/mois HC pour 62 m²). Côté dépôt de garantie : plafond de 1 mois de loyer hors charges en logement vide, 2 mois en meublé, interdit si le loyer est payable d'avance au trimestre et en bail mobilité, non augmentable en cours de bail ni au renouvellement ; restitution sous 1 mois si les deux états des lieux concordent, 2 mois sinon, provision de charges de copropriété plafonnée à 20 % du dépôt, et retard majoré de 10 % du loyer mensuel hors charges par mois entamé (90,50 € ici). Points que les guides nationaux publient faux : le départ à la retraite, la démission et la fin de droits au chômage donnent 3 mois et non 1 ; seule la perte d'emploi donne 1 mois. Et la fin de l'encadrement des loyers le 23 novembre 2026 ne supprimerait pas le préavis d'un mois, qui repose sur un autre texte.",
+    date: "2026-10-28",
+    updated: "2026-10-28",
+    internalHref: "/gestion-locative",
+    internalLabel: "Confier la gestion de mon bien",
+    blocks: [
+      { type: "p", text: "**Villeurbanne est en zone tendue, et le préavis du locataire d'un logement vide y est donc de 1 mois au lieu de 3.** Mais cette réduction n'est pas automatique, et c'est le point que presque toutes les pages consultées sur cette question publient à l'envers : la lettre de congé doit **indiquer l'adresse du logement et le fait de bénéficier du préavis réduit à un mois**. Si elle ne le fait pas, le délai de 3 mois s'applique — au loyer médian villeurbannais, cela représente **1 810 € de loyer payés pour rien**." },
+      { type: "p", text: "Cette page réunit les deux sujets qui décident de la fin d'un bail : le **préavis** (sa durée, ses conditions de forme, son point de départ) et le **dépôt de garantie** (son plafond, son délai de restitution, ce qui peut en être retenu). Tous les chiffres sont sourcés, fiche par fiche, avec leur date de vérification. Côté bailleur, les obligations correspondantes sont détaillées sur [notre page gestion locative](/gestion-locative)." },
+
+      { type: "h2", text: "Villeurbanne est-elle en zone tendue en 2026 ?" },
+      { type: "p", text: "**Oui.** Villeurbanne figure à l'annexe du décret qui fixe la liste des communes en zone tendue, et le décret en vigueur est le **décret n° 2025-1267 du 22 décembre 2025** pour un bail signé, reconduit ou renouvelé **depuis le 24 décembre 2025**. Ce classement ouvre deux droits distincts, qu'il ne faut pas confondre : le **préavis réduit à un mois pour le locataire** et l'**encadrement des loyers**." },
+      { type: "p", text: "La liste se lit **à la date du bail**, et non à la date du départ : trois textes se succèdent selon que le bail a été signé, reconduit ou renouvelé avant le 27 août 2023, entre le 27 août 2023 et le 24 décembre 2025, ou depuis le 24 décembre 2025. **Villeurbanne est classée dans les trois cas**, mais la liste a bel et bien bougé dans la Métropole de Lyon le 24 décembre 2025 : Oullins et Pierre-Bénite en sont sorties en tant que communes distinctes, et la commune née de leur fusion, **Oullins-Pierre-Bénite**, y est entrée." },
+      { type: "p", text: "⚠️ **Et sur ce point précis, deux pages officielles du même site se contredisaient encore au 28 octobre 2026.** Le simulateur « Savoir si un logement est situé en zone tendue » (vérifié le 15 janvier 2026) annonce être conforme au **décret n° 2023-822 du 25 août 2023**, qu'il présente comme « le dernier décret en vigueur », alors que le simulateur « Délai de préavis du locataire » (vérifié le 20 janvier 2026) cite bien le **décret n° 2025-1267 du 22 décembre 2025**. Un locataire qui vérifie sa commune sur le premier consulte donc une liste périmée. Pour Villeurbanne, la conclusion est la même dans les deux cas ; pour une commune fusionnée de la Métropole, elle peut différer." },
+
+      { type: "h2", text: "Le préavis d'un mois en zone tendue est-il automatique ?" },
+      { type: "p", text: "**Non, et c'est l'erreur la plus coûteuse de ce sujet.** Le préavis n'est de 1 mois **qu'à la condition d'indiquer dans la lettre de congé** l'adresse du logement loué et le fait de bénéficier d'un délai réduit à un mois, au titre de l'**article 15 de la loi n° 89-462 du 6 juillet 1989** et du décret listant les communes en zone tendue. **À défaut de cette mention, le délai de préavis est de 3 mois.**" },
+      { type: "p", text: "La fiche officielle répète la même formule pour chacun des motifs de réduction, sans exception : « Si vous ne le faites pas, le délai de préavis est de 3 mois. » Autrement dit, le droit existe mais il ne se déclenche pas tout seul : **il se réclame, par écrit, dans le congé lui-même.** Un congé déjà envoyé sans la mention ne se rattrape pas en téléphonant à l'agence." },
+      { type: "p", text: "**Ce que cela coûte, en euros, à Villeurbanne.** Au loyer médian communal de 14,6 €/m² hors charges, un appartement de 62 m² — la surface médiane des ventes villeurbannaises — se loue **905 € par mois hors charges**. Deux mois de préavis supplémentaires représentent donc **1 810 € hors charges**, soit davantage qu'une année complète de gestion locative déléguée sur le même bien." },
+
+      {
+        type: "steps",
+        name: "Rédiger un congé qui ouvre réellement le préavis d'un mois à Villeurbanne",
+        items: [
+          { name: "Écrivez un congé, pas un e-mail", text: "Le congé est un acte écrit. Il se donne par lettre recommandée avec demande d'avis de réception, par acte de commissaire de justice, ou par remise en main propre contre récépissé ou émargement. Un simple e-mail ou un appel ne fait pas courir le préavis." },
+          { name: "Faites figurer l'adresse du logement loué", text: "C'est l'une des deux mentions exigées pour le préavis réduit : l'adresse complète du logement que vous quittez, celle qui permet de vérifier que la commune est bien classée en zone tendue." },
+          { name: "Réclamez expressément le préavis d'un mois", text: "Indiquez noir sur blanc que vous bénéficiez d'un délai de préavis réduit à un mois, conformément à l'article 15 de la loi n° 89-462 du 6 juillet 1989 et au décret fixant la liste des communes en zone tendue. Sans cette mention, le préavis est de 3 mois." },
+          { name: "Comptez le délai depuis la réception, pas depuis l'envoi", text: "Le préavis court à partir du jour où le bailleur reçoit la lettre. Un préavis d'un mois dont la lettre est reçue le 5 septembre expire à minuit le 5 octobre." },
+          { name: "Payez le loyer jusqu'au terme du préavis", text: "Le loyer et les charges restent dus à la date convenue jusqu'à la fin du bail. Déduire le dépôt de garantie du dernier loyer est illégal, même si vous partez dans quelques jours." },
+          { name: "Organisez un état des lieux de sortie comparable à celui d'entrée", text: "C'est la pièce qui décide du sort du dépôt de garantie, et elle décide aussi du délai de restitution : un mois si les deux états des lieux concordent, deux mois sinon." },
+          { name: "Donnez votre nouvelle adresse et votre RIB à la remise des clés", text: "C'est à ce moment que part le délai de restitution. Et si le retard de restitution vient de ce que vous n'avez pas communiqué votre nouvelle adresse, la pénalité de 10 % par mois entamé ne s'applique pas." },
+        ],
+      },
+
+      { type: "h2", text: "Quels motifs donnent un préavis d'un mois en dehors de la zone tendue ?" },
+      { type: "p", text: "Hors zone tendue, le préavis du locataire d'un logement vide est de **3 mois**, sauf situation particulière ouvrant droit à 1 mois. Ces situations sont limitativement énumérées, et **chacune suppose d'être mentionnée dans le congé avec un justificatif**, faute de quoi les 3 mois s'appliquent. Un logement meublé, lui, relève d'un préavis de 1 mois quelle que soit la zone." },
+      { type: "p", text: "🔴 **Et c'est ici que les guides nationaux se trompent le plus souvent.** Plusieurs d'entre eux rangent la retraite ou la démission parmi les motifs de réduction : la fiche officielle dit l'inverse." },
+      {
+        type: "table",
+        caption: "Durée du préavis du locataire d'un logement vide, selon la situation",
+        source:
+          "Source : service-public.gouv.fr, fiche F1168 « Préavis et formalités du congé donné par le locataire », vérifiée le 16 avril 2026. Article 15 de la loi n° 89-462 du 6 juillet 1989.",
+        headers: ["Situation du locataire", "Préavis", "Mention + justificatif exigés"],
+        rows: [
+          ["Logement situé en zone tendue (dont Villeurbanne)", "1 mois", "Oui — adresse du logement et mention du préavis réduit"],
+          ["Logement meublé, quelle que soit la zone", "1 mois", "Non"],
+          ["Obtention d'un logement social", "1 mois", "Oui"],
+          ["Bénéficiaire du RSA ou de l'AAH", "1 mois", "Oui"],
+          ["État de santé incompatible avec le logement", "1 mois", "Oui — certificat médical"],
+          ["Victime de violences au sein du couple", "1 mois", "Oui"],
+          ["Obtention d'un premier emploi", "1 mois", "Oui"],
+          ["Changement de lieu de travail (mutation)", "1 mois", "Oui — sans condition d'éloignement"],
+          ["Perte d'emploi, rupture conventionnelle, fin de CDD", "1 mois", "Oui"],
+          ["Départ à la retraite", "3 mois", "—"],
+          ["Démission ou abandon de poste", "3 mois", "—"],
+          ["Fin de droits à l'assurance chômage", "3 mois", "—"],
+          ["Cessation d'activité d'un indépendant ou libéral", "3 mois", "—"],
+          ["Logement en péril ou insalubre", "Aucun préavis", "Bailleur préalablement averti et mis en demeure d'agir"],
+        ],
+      },
+      { type: "p", text: "Deux précisions que la fiche apporte et qu'on trouve rarement ailleurs. D'abord, une **simple fatigue physique ou psychique, même médicalement constatée, ne suffit pas** : le préavis reste de 3 mois, le motif de santé supposant que le logement ne soit plus compatible avec l'état du locataire. Ensuite, un **nouvel emploi consécutif à une perte d'emploi** ouvre le préavis d'un mois seulement si la perte et le nouvel emploi interviennent **au cours du même bail** : si le locataire était déjà au chômage à la signature, le préavis reste de 3 mois." },
+
+      { type: "h2", text: "Quel est le plafond du dépôt de garantie à Villeurbanne ?" },
+      { type: "p", text: "**Le dépôt de garantie ne peut pas dépasser 1 mois de loyer hors charges pour un logement vide, et 2 mois hors charges pour un meublé.** Le montant doit figurer dans le bail, et le bailleur **ne peut l'augmenter ni en cours de bail, ni au renouvellement**. Ces plafonds sont nationaux : la zone tendue ne les modifie pas." },
+      { type: "p", text: "Deux cas d'interdiction pure et simple, que beaucoup de bailleurs ignorent : lorsque le **loyer est payable d'avance par trimestre**, le dépôt de garantie est **interdit** ; il l'est également dans un **bail mobilité**. En revanche, un loyer payable d'avance chaque mois ou tous les deux mois autorise le dépôt, dans la limite des plafonds ci-dessus." },
+      {
+        type: "table",
+        caption: "Plafond du dépôt de garantie, et ce que cela représente au loyer médian villeurbannais (62 m² à 14,6 €/m² hors charges, soit 905 €/mois)",
+        source:
+          "Source : service-public.gouv.fr, fiche F39713 « Dépôt de garantie dans un bail d'habitation », onglets Logement vide et Logement meublé, vérifiée le 9 juin 2026. Article 22 de la loi n° 89-462 du 6 juillet 1989. Montants en euros : calcul Markus Immobilier sur le loyer médian communal.",
+        headers: ["Type de bail et paiement du loyer", "Plafond légal", "Soit, sur un 62 m² villeurbannais"],
+        rows: [
+          ["Logement vide, loyer payé d'avance chaque mois ou tous les 2 mois", "1 mois de loyer hors charges", "905 €"],
+          ["Logement meublé, loyer payé d'avance chaque mois ou tous les 2 mois", "2 mois de loyer hors charges", "1 810 €"],
+          ["Logement vide ou meublé, loyer payable d'avance au trimestre", "Dépôt interdit", "0 €"],
+          ["Bail mobilité", "Dépôt interdit", "0 €"],
+        ],
+      },
+
+      { type: "h2", text: "Dans quel délai le dépôt de garantie doit-il être rendu ?" },
+      { type: "p", text: "**Un mois si l'état des lieux de sortie est conforme à celui d'entrée, deux mois s'il révèle des dégradations imputables au locataire.** Le délai court **à partir du jour où le locataire rend les clés**, en main propre ou par lettre recommandée avec avis de réception — pas à partir de la fin du bail. C'est donc la remise des clés qu'il faut dater, et l'état des lieux qui fixe lequel des deux délais s'applique." },
+      { type: "p", text: "Le montant rendu peut être inférieur au montant versé, pour deux raisons qu'il faut distinguer. Une **retenue** correspond à une somme restant due — loyer ou charges impayés, réparations locatives non faites — et le bailleur doit remettre les justificatifs correspondants (états des lieux, photos, devis ou factures, lettre de réclamation restée sans réponse). Une **provision** est différente : lorsque le logement est en copropriété, le bailleur peut conserver une somme jusqu'à l'arrêté annuel des comptes de l'immeuble, **dans la limite de 20 % du dépôt de garantie**, puis doit régulariser et rendre le solde **dans le mois qui suit l'approbation définitive des comptes**." },
+      { type: "p", text: "**En cas de retard, le dépôt dû au locataire est majoré de 10 % du loyer mensuel hors charges par mois de retard commencé** — soit **90,50 € par mois entamé** sur notre 62 m² à 905 €. La pénalité se réclame par lettre recommandée de mise en demeure. ⚠️ **Une exception à connaître des deux côtés** : elle ne s'applique pas lorsque le retard vient de ce que le locataire n'a pas communiqué sa nouvelle adresse lors de la remise des clés." },
+
+      { type: "h2", text: "Peut-on ne pas payer le dernier mois de loyer puisque le bailleur garde le dépôt ?" },
+      { type: "p", text: "**Non, c'est illégal, et la fiche officielle le dit sans nuance.** Le locataire doit payer l'intégralité du loyer et des charges à la date convenue jusqu'à la fin du bail, et il lui est interdit de déduire du dernier loyer le montant du dépôt de garantie. Le dépôt garantit d'éventuels manquements constatés **après** le départ : il n'est pas une avance sur loyer." },
+      { type: "p", text: "Les conséquences sont concrètes. Le bailleur **ne délivre pas de quittance de loyer** — document indispensable pour obtenir une aide au logement —, il peut faire pratiquer une **saisie conservatoire** sur le compte bancaire du locataire **sans passer devant un juge**, et il peut demander au juge la condamnation au paiement du loyer impayé." },
+
+      { type: "h2", text: "La fin de l'encadrement des loyers supprimerait-elle le préavis d'un mois à Villeurbanne ?" },
+      { type: "p", text: "**Non, et c'est une confusion fréquente : les deux règles ne reposent pas sur le même texte.** Le préavis réduit à un mois découle de l'article 15 de la loi du 6 juillet 1989 et du décret qui liste les communes en zone tendue — le décret n° 2025-1267 du 22 décembre 2025. L'encadrement des loyers, lui, est une **expérimentation distincte** (article 140 de la loi ELAN du 23 novembre 2018, portée de 5 à 8 ans par la loi 3DS du 21 février 2022)." },
+      { type: "p", text: "Cette expérimentation arrive à son **terme le 23 novembre 2026**. Une prolongation de deux ans à périmètre constant a été adoptée par le Sénat en première lecture le 21 octobre 2026, texte non définitif qui doit encore passer devant l'Assemblée nationale. **Si elle n'était pas adoptée, les plafonds de loyer tomberaient — mais Villeurbanne resterait inscrite à l'annexe du décret zone tendue, et le préavis du locataire resterait donc de un mois.** Les plafonds de loyer applicables aujourd'hui, et l'arrêté préfectoral dont ils dépendent, sont détaillés sur [notre page gestion locative](/gestion-locative)." },
+
+      { type: "h2", text: "Et le préavis du propriétaire qui veut reprendre son logement ?" },
+      { type: "p", text: "**La réduction de la zone tendue ne bénéficie qu'au locataire.** Le propriétaire d'un logement vide doit, lui, faire en sorte que le locataire **reçoive la lettre de congé au moins 6 mois avant la date d'échéance du bail**. Si la lettre parvient en retard au locataire, le congé n'est pas valable — le préavis du bailleur ne se rattrape donc pas, il se planifie." },
+      { type: "p", text: "Pour un bailleur, ces deux délais asymétriques — six mois pour reprendre, un mois pour se voir rendre les clés — sont précisément ce qui rend la vacance locative coûteuse à Villeurbanne. L'arbitrage chiffré entre gérer soi-même et déléguer, vacance et impayés compris, est fait sur [faut-il déléguer sa gestion locative](/blog/gestion-locative-villeurbanne-deleguer-ou-non), et le détail de nos prestations sur [faire gérer son bien](/faire-gerer)." },
+
+      { type: "h2", text: "Les sources, avec leur date de vérification" },
+      { type: "p", text: "Toutes les règles de cette page proviennent de fiches officielles, consultées et relevées le **28 octobre 2026** :" },
+      {
+        type: "ul",
+        items: [
+          "**Préavis du locataire** : [service-public.gouv.fr, fiche F1168](https://www.service-public.gouv.fr/particuliers/vosdroits/F1168), vérifiée le 16 avril 2026 — durée, mentions obligatoires, motifs de réduction, point de départ du délai.",
+          "**Dépôt de garantie** : [service-public.gouv.fr, fiche F39713](https://www.service-public.gouv.fr/particuliers/vosdroits/F39713), vérifiée le 9 juin 2026 — plafonds, interdictions, retenues, provision de 20 %, pénalité de 10 %.",
+          "**Préavis du propriétaire** : [service-public.gouv.fr, fiche F929](https://www.service-public.gouv.fr/particuliers/vosdroits/F929), vérifiée le 1er juin 2026 — délai de 6 mois en logement vide.",
+          "**Liste des communes en zone tendue** : décret n° 2025-1267 du 22 décembre 2025, applicable aux baux signés, reconduits ou renouvelés depuis le 24 décembre 2025, cité par le [simulateur officiel du délai de préavis](https://www.service-public.gouv.fr/simulateur/calcul/delaiPreavisLocataire) (vérifié le 20 janvier 2026).",
+          "**Textes de référence** : articles 15 et 22 de la loi n° 89-462 du 6 juillet 1989 ; article 140 de la loi ELAN du 23 novembre 2018 ; loi 3DS du 21 février 2022.",
+        ],
+      },
+      { type: "p", text: "Les montants en euros sont calculés par Markus Immobilier sur le loyer médian communal hors charges (14,6 €/m², carte des loyers data.gouv.fr) appliqué à 62 m², surface médiane des ventes d'appartements villeurbannaises. Ce sont des ordres de grandeur locaux, pas le loyer de votre logement." },
+    ],
+    faq: [
+      {
+        q: "Le préavis est-il de 1 mois ou de 3 mois à Villeurbanne ?",
+        a: "Villeurbanne est classée en zone tendue : le préavis du locataire d'un logement vide y est de 1 mois au lieu de 3. Mais la réduction n'est pas automatique. La lettre de congé doit indiquer l'adresse du logement loué et le fait de bénéficier d'un préavis réduit à un mois, au titre de l'article 15 de la loi du 6 juillet 1989 et du décret listant les communes en zone tendue. Sans cette mention, le délai de 3 mois s'applique.",
+      },
+      {
+        q: "Quel décret fixe aujourd'hui la liste des communes en zone tendue ?",
+        a: "Le décret n° 2025-1267 du 22 décembre 2025, pour un bail signé, reconduit ou renouvelé depuis le 24 décembre 2025. Villeurbanne y figure, comme dans les listes précédentes. La liste se lit à la date du bail et non à la date du départ. Attention : au 28 octobre 2026, le simulateur officiel permettant de vérifier sa commune citait encore le décret n° 2023-822 du 25 août 2023 comme dernier décret en vigueur, alors que le simulateur du délai de préavis citait bien celui de 2025.",
+      },
+      {
+        q: "À partir de quand le préavis commence-t-il à courir ?",
+        a: "À partir du jour où le bailleur reçoit la lettre de congé, et non du jour de son envoi. Un préavis d'un mois dont la lettre est reçue le 5 septembre expire à minuit le 5 octobre. Le congé doit être donné par lettre recommandée avec avis de réception, par acte de commissaire de justice, ou remis en main propre contre récépissé ou émargement.",
+      },
+      {
+        q: "Le départ à la retraite permet-il un préavis d'un mois ?",
+        a: "Non. Selon la fiche F1168 de service-public.gouv.fr, le départ à la retraite, la démission ou l'abandon de poste, la fin de droits à l'assurance chômage et la cessation d'activité d'un indépendant relèvent d'un préavis de 3 mois. Seule la perte d'emploi — licenciement, rupture conventionnelle, fin de CDD — ouvre le préavis d'un mois, à condition qu'elle précède l'envoi du congé et en soit proche. À Villeurbanne, la question est de toute façon secondaire : la zone tendue ouvre déjà le préavis d'un mois pour un logement vide.",
+      },
+      {
+        q: "Quel est le montant maximum du dépôt de garantie ?",
+        a: "Un mois de loyer hors charges pour un logement vide, deux mois hors charges pour un meublé. Le montant doit être écrit dans le bail et ne peut être augmenté ni en cours de bail ni au renouvellement. Le dépôt de garantie est purement et simplement interdit lorsque le loyer est payable d'avance par trimestre, ainsi qu'en bail mobilité. La zone tendue ne modifie pas ces plafonds, qui sont nationaux.",
+      },
+      {
+        q: "Dans quel délai le propriétaire doit-il rendre le dépôt de garantie ?",
+        a: "Un mois si l'état des lieux de sortie est conforme à celui d'entrée, deux mois s'il révèle des dégradations imputables au locataire. Le délai part du jour de la remise des clés, en main propre ou par lettre recommandée avec avis de réception, et non de la fin du bail.",
+      },
+      {
+        q: "Que peut retenir le propriétaire sur le dépôt de garantie ?",
+        a: "Deux choses différentes. Les retenues correspondent à des sommes restant dues — loyers ou charges impayés, réparations locatives non faites — et le propriétaire doit en remettre les justificatifs : états des lieux, photos, devis ou factures, lettre de réclamation restée sans réponse. La provision est autre chose : en copropriété, le propriétaire peut conserver jusqu'à 20 % du dépôt dans l'attente de l'arrêté annuel des comptes de l'immeuble, puis doit régulariser et rendre le solde dans le mois suivant l'approbation définitive des comptes.",
+      },
+      {
+        q: "Que se passe-t-il si le dépôt de garantie est rendu en retard ?",
+        a: "La somme due au locataire est majorée de 10 % du loyer mensuel hors charges pour chaque mois de retard commencé, soit environ 90,50 € par mois entamé pour un 62 m² loué 905 € hors charges au loyer médian villeurbannais. Le locataire met le propriétaire en demeure par lettre recommandée avec avis de réception. Cette pénalité ne s'applique pas si le retard est dû au fait que le locataire n'a pas communiqué sa nouvelle adresse lors de la remise des clés.",
+      },
+      {
+        q: "Peut-on utiliser le dépôt de garantie pour payer le dernier mois de loyer ?",
+        a: "Non, c'est illégal. Le loyer et les charges restent dus en totalité jusqu'à la fin du bail. Un locataire qui déduit le dépôt de son dernier loyer ne reçoit pas de quittance — document indispensable pour une aide au logement — et le propriétaire peut faire pratiquer une saisie conservatoire sur son compte bancaire sans passer devant un juge, puis demander au juge sa condamnation au paiement.",
+      },
+      {
+        q: "Si l'encadrement des loyers s'arrête le 23 novembre 2026, le préavis repasse-t-il à 3 mois ?",
+        a: "Non. Les deux règles reposent sur des textes différents. L'encadrement des loyers est une expérimentation issue de la loi ELAN du 23 novembre 2018, prolongée par la loi 3DS du 21 février 2022, qui arrive à terme le 23 novembre 2026 ; une prolongation de deux ans a été adoptée par le Sénat en première lecture le 21 octobre 2026 et doit encore passer devant l'Assemblée nationale. Le préavis d'un mois, lui, découle de l'article 15 de la loi du 6 juillet 1989 et du décret listant les communes en zone tendue. Même sans encadrement des loyers, Villeurbanne resterait en zone tendue et le préavis resterait de un mois.",
+      },
+      {
+        q: "Quel préavis le propriétaire doit-il respecter pour reprendre son logement ?",
+        a: "Pour un logement vide, le locataire doit recevoir la lettre de congé au moins 6 mois avant la date d'échéance du bail. Si la lettre lui parvient en retard, le congé n'est pas valable. La réduction de préavis liée à la zone tendue ne bénéficie qu'au locataire, jamais au propriétaire.",
+      },
+    ],
+  },
+  {
     slug: "cout-gestion-locative",
     title: "Gestion locative : combien ça coûte vraiment ?",
     metaDescription:
@@ -2032,6 +2197,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Le bon calcul" },
       { type: "p", text: "Le coût se compare au temps et au risque que vous évitez. Pour un propriétaire occupé ou éloigné, déléguer est vite rentable." },
       { type: "p", text: "Cet article donne la fourchette du marché et nos deux frais fixes. Si votre question est **combien ça coûte en euros sur votre bien**, le calcul complet est fait sur un appartement villeurbannais réel — 62 m² loué au loyer médian communal, coût d'une année de gestion, seuil d'application du minimum, comparaison de deux taux HT et TTC — sur [ce que coûte la gestion locative à Villeurbanne](/faire-gerer)." },
+      { type: "p", text: "Deux règles de fin de bail pèsent davantage sur le rendement que le taux de gestion, et elles sont souvent découvertes trop tard : à Villeurbanne, **le préavis du locataire d'un logement vide est de un mois** et non de trois, et le **dépôt de garantie est plafonné à un mois de loyer hors charges**, avec une pénalité de 10 % du loyer par mois entamé en cas de restitution tardive. Le détail, sourcé, est sur [préavis et dépôt de garantie en zone tendue](/blog/preavis-depot-garantie-location-villeurbanne)." },
     ],
   },
   {
