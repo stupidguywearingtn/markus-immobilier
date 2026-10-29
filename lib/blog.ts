@@ -888,7 +888,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "La liste exacte des diagnostics à remettre à l'acquéreur, leur condition de déclenchement et la durée de validité de chacun en cas de vente — appartement et maison, qui n'ont pas la même liste.",
     date: "2026-05-12",
-    updated: "2026-10-22",
+    updated: "2026-10-29",
     internalHref: "/vendre",
     internalLabel: "Être accompagné pour ma vente",
     blocks: [
@@ -918,12 +918,12 @@ export const ARTICLES: Article[] = [
         type: "table",
         caption: "Conditions et durées de validité des diagnostics, en cas de vente d'un appartement",
         source:
-          "Vérifié pièce par pièce sur service-public.gouv.fr le 12 octobre 2026 : fiche F10798 (liste des diagnostics, vérifiée le 7 mars 2025), F16096 (DPE, 1er janvier 2026), F1142 (plomb, 17 août 2026), F742 (amiante, 6 décembre 2024), F18692 (électricité, 17 septembre 2026), F17337 (gaz, 17 septembre 2026), F31685 (assainissement, 26 février 2025), F3150 (termites, 26 février 2026), F12239 (état des risques, 28 septembre 2026).",
+          "Vérifié pièce par pièce sur service-public.gouv.fr, relevé du 29 octobre 2026 : fiche F10798 (liste des diagnostics, vérifiée le 7 mars 2025), F16096 (DPE, 1er janvier 2026), F1142 (plomb, 17 août 2026), F742 (amiante, 16 octobre 2026), F18692 (électricité, 17 septembre 2026), F17337 (gaz, 17 septembre 2026), F31685 (assainissement, 26 février 2025), F3150 (termites, 26 février 2026), F12239 (état des risques, 28 septembre 2026). Huit de ces neuf fiches portent la même date de vérification qu'à notre relevé du 12 octobre 2026 ; seule F742 a été revue depuis, et son contenu a changé.",
         headers: ["Diagnostic", "Dû dans quel cas", "Validité en cas de vente"],
         rows: [
           ["DPE", "Tout appartement, sans condition de surface", "10 ans, s'il a été réalisé depuis le 1er juillet 2021"],
           ["Plomb (CREP)", "Construction avant le 1er janvier 1949", "Illimitée si absence de plomb ou concentration inférieure à 1 mg/cm² ; moins de 1 an si la concentration dépasse 1 mg/cm²"],
-          ["Amiante", "Permis de construire délivré avant le 1er juillet 1997", "Illimitée s'il a été réalisé à partir du 1er avril 2013 ; à refaire avant la vente s'il est antérieur"],
+          ["Amiante", "Permis de construire délivré avant le 1er juillet 1997", "Illimitée, sans date butoir ; nouveau diagnostic seulement recommandé si des travaux de rénovation ont eu lieu depuis. Si de l'amiante est repérée, c'est une surveillance qui s'ouvre, pas une date d'expiration"],
           ["Électricité", "Installation de plus de 15 ans", "Moins de 3 ans à la promesse ou à l'acte (6 ans en location)"],
           ["Gaz", "Installation de plus de 15 ans", "Moins de 3 ans à la promesse ou à l'acte (6 ans en location)"],
           ["Assainissement non collectif", "Installation autonome", "Moins de 3 ans à l'acte authentique"],
@@ -937,6 +937,18 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Un DPE réalisé en 2019 est-il encore valable pour vendre ?" },
       { type: "p", text: "**Non.** Les DPE réalisés entre le 1er janvier 2018 et le 30 juin 2021 **ne sont plus valables depuis le 1er janvier 2025** et doivent être refaits avant une mise en vente. La règle des 10 ans ne s'applique qu'aux DPE réalisés **depuis le 1er juillet 2021** : c'est à cette date que la méthode de calcul a changé." },
       { type: "p", text: "La confusion est facile et coûteuse : un vendeur qui détient un DPE de 2019 le croit valable jusqu'en 2029, alors qu'il est caduc depuis plus d'un an. Un DPE sans numéro d'identification délivré par l'ADEME au diagnostiqueur n'est, lui, pas valable du tout." },
+      { type: "h2", text: "Un diagnostic amiante réalisé avant 2013 est-il encore valable pour vendre ?" },
+      { type: "p", text: "**Oui. La fiche officielle ne fixe aucune date butoir et donne à l'état d'amiante une durée de validité illimitée.** Elle n'assortit cette validité que d'une seule réserve, et c'est une recommandation, pas une obligation : faire réaliser un nouveau diagnostic avant la vente **si des travaux de rénovation ont été effectués** depuis, parce que ces travaux peuvent révéler des matériaux qui n'étaient pas visibles lors du repérage précédent. Relevé le 29 octobre 2026 sur la fiche F742 de service-public.gouv.fr, **vérifiée le 16 octobre 2026**." },
+      { type: "p", text: "⚠️ **Ce point mérite d'être signalé, parce que l'essentiel de ce qui se publie sur la question dit l'inverse — et notre propre tableau le disait aussi jusqu'à ce relevé.** Interrogé le 29 octobre 2026 sur la validité d'un diagnostic amiante de 2010, un moteur de recherche répond qu'il faut « sans doute le refaire », au motif que la validité illimitée ne vaudrait que pour les diagnostics postérieurs au **1er avril 2013**, et qu'un diagnostic positif ne vaudrait que **3 ans**. **Aucune de ces deux règles ne figure dans la fiche F742 dans sa version vérifiée le 16 octobre 2026** : le mot « 2013 » n'y apparaît pas une seule fois, et les 3 ans n'y sont pas une durée de validité (voir juste en dessous). Nous avons retiré la mention du 1er avril 2013 de notre tableau le jour où la fiche a été relue." },
+      { type: "p", text: "La prudence reste de mise dans un cas précis : un repérage réalisé **avant des travaux** ne dit rien des matériaux que ces travaux ont pu mettre au jour. Ce n'est pas une question de date, c'est une question d'historique du logement — et c'est exactement la réserve que porte la fiche." },
+      { type: "h2", text: "Le diagnostic a révélé de l'amiante : que doit faire le vendeur ensuite ?" },
+      { type: "p", text: "**La présence d'amiante n'empêche pas de vendre, et elle n'ouvre pas une date d'expiration : elle ouvre une obligation de suivi, dont la périodicité dépend de la liste à laquelle le matériau appartient.** Selon l'état de conservation constaté, le rapport du diagnostiqueur peut prévoir une évaluation périodique de cet état, une analyse de risque approfondie — avec prélèvements d'air pour mesurer la quantité de fibres —, ou des actions correctives et mesures conservatoires pouvant aller jusqu'au confinement ou au retrait, travaux réservés à une entreprise qualifiée." },
+      { type: "ul", items: [
+        "**Matériaux de la liste A classés en surveillance périodique** : une nouvelle évaluation de l'état de conservation doit être réalisée dans un **délai maximal de 3 ans**.",
+        "**Matériaux de la liste B** : la réglementation **ne fixe aucune périodicité obligatoire** — le suivi dépend de leur état et des éventuelles dégradations constatées.",
+      ] },
+      { type: "p", text: "**C'est la distinction que les pages annonçant « 3 ans » laissent tomber**, et elle change la réponse qu'on donne à un vendeur : ces 3 ans ne sont pas la durée de validité du diagnostic : c'est l'intervalle maximal entre deux évaluations de l'état de conservation, et il ne s'applique qu'à la liste A placée sous surveillance périodique. Un diagnostic positif de 2010 n'est donc pas « périmé » : c'est le **suivi** qui peut être en retard." },
+      { type: "p", text: "**Et une conséquence qui se joue à la signature, côté acquéreur** : informé de la présence d'amiante et achetant le bien en l'état, il ne peut pas demander en justice l'annulation de la vente pour ce seul motif — mais il reprend à sa charge, **et à ses frais**, les obligations liées à cette présence, travaux compris. C'est un sujet à poser avant le compromis plutôt qu'après, et il n'est pas marginal à Villeurbanne : l'état d'amiante est dû pour **au moins 61,0 % des appartements diagnostiqués** de la commune, part détaillée juste en dessous." },
       { type: "h2", text: "Quels diagnostics concernent réellement un appartement à Villeurbanne ?" },
       { type: "p", text: "**Deux conditions de déclenchement se mesurent sur le parc local, et elles ne concernent pas une minorité de biens : l'âge du bâti rend le constat plomb dû pour au moins un appartement villeurbannais sur cinq, et l'état d'amiante pour au moins trois sur cinq.** Les comptages ci-dessous viennent de la base DPE de l'ADEME, filtrée sur le code INSEE de Villeurbanne (69266) et sur les appartements, soit 49 717 logements diagnostiqués." },
       { type: "ul", items: [
@@ -974,6 +986,14 @@ export const ARTICLES: Article[] = [
       {
         q: "Combien de temps l'état des risques reste-t-il valable ?",
         a: "Moins de 6 mois, et il doit être actualisé si les informations qu'il contient ne sont plus exactes à la date de signature de la promesse ou de l'acte. C'est la durée la plus courte du dossier, avec le diagnostic termites : mieux vaut donc les commander une fois l'acquéreur trouvé plutôt qu'au moment de la mise en vente.",
+      },
+      {
+        q: "Un diagnostic amiante réalisé avant 2013 doit-il être refait pour vendre ?",
+        a: "Non. La fiche F742 de service-public.gouv.fr, vérifiée le 16 octobre 2026, donne à l'état d'amiante une durée de validité illimitée et ne fixe aucune date butoir. Elle recommande seulement un nouveau diagnostic avant la vente si des travaux de rénovation ont été effectués depuis, parce qu'ils peuvent avoir révélé des matériaux invisibles au repérage précédent. La règle du 1er avril 2013, encore très largement publiée ailleurs, ne figure pas dans cette version de la fiche : le mot 2013 n'y apparaît pas.",
+      },
+      {
+        q: "Le diagnostic a trouvé de l'amiante : faut-il le refaire tous les 3 ans ?",
+        a: "Pas dans tous les cas, et ces 3 ans ne sont pas une durée de validité. Lorsque des matériaux de la liste A sont classés en surveillance périodique, une nouvelle évaluation de leur état de conservation doit être réalisée dans un délai maximal de 3 ans. Pour les matériaux de la liste B, la réglementation ne fixe aucune périodicité obligatoire : le suivi dépend de leur état et des dégradations constatées. Source : fiche F742 de service-public.gouv.fr, vérifiée le 16 octobre 2026.",
       },
       {
         q: "Que risque le vendeur s'il manque un diagnostic au dossier ?",
@@ -2021,7 +2041,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Villeurbanne figure à l'annexe du décret qui liste les communes en zone tendue — décret n° 2025-1267 du 22 décembre 2025 pour un bail signé, reconduit ou renouvelé depuis le 24 décembre 2025. Le préavis du locataire d'un logement vide y tombe de 3 mois à 1 mois, mais ce n'est PAS automatique : la lettre de congé doit indiquer l'adresse du logement et le fait de bénéficier du préavis réduit, sinon le délai de 3 mois s'applique — soit 1 810 € de loyer en plus au loyer médian villeurbannais (905 €/mois HC pour 62 m²). Côté dépôt de garantie : plafond de 1 mois de loyer hors charges en logement vide, 2 mois en meublé, interdit si le loyer est payable d'avance au trimestre et en bail mobilité, non augmentable en cours de bail ni au renouvellement ; restitution sous 1 mois si les deux états des lieux concordent, 2 mois sinon, provision de charges de copropriété plafonnée à 20 % du dépôt, et retard majoré de 10 % du loyer mensuel hors charges par mois entamé (90,50 € ici). Points que les guides nationaux publient faux : le départ à la retraite, la démission et la fin de droits au chômage donnent 3 mois et non 1 ; seule la perte d'emploi donne 1 mois. Et la fin de l'encadrement des loyers le 23 novembre 2026 ne supprimerait pas le préavis d'un mois, qui repose sur un autre texte.",
     date: "2026-10-28",
-    updated: "2026-10-28",
+    updated: "2026-10-29",
     internalHref: "/gestion-locative",
     internalLabel: "Confier la gestion de mon bien",
     blocks: [
@@ -2087,7 +2107,7 @@ export const ARTICLES: Article[] = [
         type: "table",
         caption: "Plafond du dépôt de garantie, et ce que cela représente au loyer médian villeurbannais (62 m² à 14,6 €/m² hors charges, soit 905 €/mois)",
         source:
-          "Source : service-public.gouv.fr, fiche F39713 « Dépôt de garantie dans un bail d'habitation », onglets Logement vide et Logement meublé, vérifiée le 9 juin 2026. Article 22 de la loi n° 89-462 du 6 juillet 1989. Montants en euros : calcul Markus Immobilier sur le loyer médian communal.",
+          "Source : service-public.gouv.fr, fiche F31269 « Dépôt de garantie dans un bail d'habitation », onglets Logement vide et Logement meublé, vérifiée le 9 juin 2026. Article 22 de la loi n° 89-462 du 6 juillet 1989. Montants en euros : calcul Markus Immobilier sur le loyer médian communal.",
         headers: ["Type de bail et paiement du loyer", "Plafond légal", "Soit, sur un 62 m² villeurbannais"],
         rows: [
           ["Logement vide, loyer payé d'avance chaque mois ou tous les 2 mois", "1 mois de loyer hors charges", "905 €"],
@@ -2120,7 +2140,7 @@ export const ARTICLES: Article[] = [
         type: "ul",
         items: [
           "**Préavis du locataire** : [service-public.gouv.fr, fiche F1168](https://www.service-public.gouv.fr/particuliers/vosdroits/F1168), vérifiée le 16 avril 2026 — durée, mentions obligatoires, motifs de réduction, point de départ du délai.",
-          "**Dépôt de garantie** : [service-public.gouv.fr, fiche F39713](https://www.service-public.gouv.fr/particuliers/vosdroits/F39713), vérifiée le 9 juin 2026 — plafonds, interdictions, retenues, provision de 20 %, pénalité de 10 %.",
+          "**Dépôt de garantie** : [service-public.gouv.fr, fiche F31269](https://www.service-public.gouv.fr/particuliers/vosdroits/F31269), vérifiée le 9 juin 2026 — plafonds, interdictions, retenues, provision de 20 %, pénalité de 10 %.",
           "**Préavis du propriétaire** : [service-public.gouv.fr, fiche F929](https://www.service-public.gouv.fr/particuliers/vosdroits/F929), vérifiée le 1er juin 2026 — délai de 6 mois en logement vide.",
           "**Liste des communes en zone tendue** : décret n° 2025-1267 du 22 décembre 2025, applicable aux baux signés, reconduits ou renouvelés depuis le 24 décembre 2025, cité par le [simulateur officiel du délai de préavis](https://www.service-public.gouv.fr/simulateur/calcul/delaiPreavisLocataire) (vérifié le 20 janvier 2026).",
           "**Textes de référence** : articles 15 et 22 de la loi n° 89-462 du 6 juillet 1989 ; article 140 de la loi ELAN du 23 novembre 2018 ; loi 3DS du 21 février 2022.",
