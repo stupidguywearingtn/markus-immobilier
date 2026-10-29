@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { shareMeta } from "@/lib/seo/share";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { QuartierPrixTable } from "@/components/seo/quartier-prix";
-import { DVF_ANNEE } from "@/lib/quartiers";
 import { Reveal } from "@/components/reveal";
 import { PageHero } from "@/components/layout/page-hero";
 import { Button, ArrowRight } from "@/components/ui/button";
@@ -13,12 +11,12 @@ import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "Estimation de bien à Lyon & Villeurbanne — gratuite en 2 min",
+  title: "Estimation immobilière en ligne gratuite — rapport en 2 min",
   description:
-    "Estimation immobilière gratuite et sans engagement à Lyon et Villeurbanne : valeur de vente, loyer mensuel, taux de rendement. Rapport détaillé envoyé par email en moins de 2 minutes.",
+    "Notre outil d'estimation en ligne, gratuit et sans engagement : valeur de vente, loyer mensuel et taux de rendement de votre bien. Rapport détaillé envoyé par email en moins de 2 minutes.",
   alternates: { canonical: "/estimation" },
   ...shareMeta({
-    title: "Estimation de bien à Lyon & Villeurbanne — gratuite en 2 min",
+    title: "Estimation immobilière en ligne gratuite — rapport en 2 min",
     description:
       "Valeur de vente, loyer, rendement : votre rapport d'estimation en moins de 2 minutes. Gratuit, sans engagement.",
     path: "/estimation",
@@ -160,21 +158,21 @@ export default function EstimationPage() {
         </div>
       </section>
 
-      {/* REPÈRES DE PRIX — contenu statique, SOUS le formulaire.
-          Ajouté le 2026-09-15 pour deux raisons :
-          1. maillage : /estimation n'émettait AUCUN lien vers les pages
-             quartiers, alors que les trois pages quartiers pointent ici. La
-             veille du 15/09 désigne les liens internes comme le levier de
-             citation le mieux corrélé — ce sens-là manquait.
-          2. contenu : la page ne servait qu'un H1, un H2 et un H3, sans une
-             seule donnée de marché, sur une requête commerciale majeure.
+      {/* SUR QUOI REPOSE L'ESTIMATION — contenu statique, SOUS le formulaire.
+          29/10/2026 — arbitrage cannibalisation : le tableau des médianes par
+          quartier de Villeurbanne vivait ici ET sur
+          /estimation-immobiliere-villeurbanne. Une seule page doit porter
+          « estimation Villeurbanne » : c'est /estimation-immobiliere-villeurbanne
+          (repères par quartier, méthode, FAQ). /estimation reste la page de
+          L'OUTIL (« estimation en ligne gratuite ») et renvoie vers elle.
+          Ne pas remettre QuartierPrixTable ici.
           ⚠️ NE TOUCHE PAS au bloc résultat de l'outil (consigne client
           « il faut juste rien casser ») : cette section est purement statique
           et vit en dehors de <EstimationForm />. */}
       <section className="bg-blanc py-[100px] max-md:py-[64px]">
         <div className="max-w-[860px] mx-auto px-8 max-md:px-5">
           <Reveal>
-            <Eyebrow className="mb-3">Repères de prix</Eyebrow>
+            <Eyebrow className="mb-3">La méthode</Eyebrow>
             <h2
               className="font-bold tracking-[-0.01em] text-anthracite mb-4 leading-[1.15]"
               style={{ fontSize: "clamp(22px, 2.6vw, 30px)" }}
@@ -187,13 +185,8 @@ export default function EstimationPage() {
                 une moyenne d&apos;annonces. L&apos;outil interroge la base DVF
                 publiée par l&apos;État — les prix inscrits aux actes notariés —
                 puis pondère les comparables selon leur distance et leur
-                ancienneté. À titre de repère, voici les médianes de{" "}
-                {DVF_ANNEE} par quartier de Villeurbanne, calculées avec la même
-                source et le même filtrage.
+                ancienneté.
               </p>
-            </div>
-            <QuartierPrixTable />
-            <div className="text-[15.5px] leading-relaxed text-[#3d4347] space-y-3">
               <p>
                 Un prix au m² de quartier ne remplace pas une estimation :
                 l&apos;étage, l&apos;ascenseur, le DPE, l&apos;extérieur et
@@ -202,7 +195,15 @@ export default function EstimationPage() {
                 intègre.
               </p>
               <p>
-                Nous détaillons le marché secteur par secteur sur nos pages{" "}
+                Pour les repères de prix quartier par quartier, voir notre page{" "}
+                <Link href="/estimation-immobiliere-villeurbanne" className={LNK}>
+                  estimation immobilière à Villeurbanne
+                </Link>{" "}
+                ou, pour un bien à Lyon,{" "}
+                <Link href="/estimation-immobiliere-lyon" className={LNK}>
+                  estimation immobilière à Lyon
+                </Link>
+                . Nous détaillons aussi le marché sur nos pages{" "}
                 <Link href="/agence-immobiliere-gratte-ciel" className={LNK}>
                   Gratte-Ciel
                 </Link>
@@ -214,18 +215,9 @@ export default function EstimationPage() {
                 <Link href="/agence-immobiliere-cusset" className={LNK}>
                   Cusset
                 </Link>
-                , ainsi que sur la page{" "}
-                <Link href="/agence-immobiliere-villeurbanne" className={LNK}>
-                  agence immobilière à Villeurbanne
-                </Link>
-                . La méthode de calcul complète, les prix par typologie et les
-                limites assumées de la base DVF sont dans notre analyse des{" "}
+                , et la méthode complète est dans notre analyse des{" "}
                 <Link href="/blog/prix-immobilier-villeurbanne-2026" className={LNK}>
                   prix au m² réels par quartier de Villeurbanne
-                </Link>
-                . Pour un bien à Lyon, voir{" "}
-                <Link href="/estimation-immobiliere-lyon" className={LNK}>
-                  estimation immobilière à Lyon
                 </Link>
                 .
               </p>

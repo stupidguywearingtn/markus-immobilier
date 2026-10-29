@@ -14,9 +14,13 @@ import { Agency } from "@/components/home/agency";
 import { PageRender } from "@/components/page-builder/page-render";
 import { getPublishedPage, rootSeo } from "@/lib/page-builder/db";
 
-const DEFAULT_TITLE = "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon";
+// Mot-clé « agence immobilière Villeurbanne » : porté par
+// /agence-immobiliere-villeurbanne SEULEMENT (arbitrage cannibalisation du
+// 29/10/2026). La home porte la marque + l'ensemble des services : ne pas y
+// remettre « Agence immobilière à Villeurbanne » dans le title ni le <h1>.
+const DEFAULT_TITLE = "Markus Immobilier — Vente, achat, location et gestion à Lyon & Villeurbanne";
 const DEFAULT_DESCRIPTION =
-  "Agence immobilière indépendante à Villeurbanne. Vente, location et gestion à Lyon et Villeurbanne. Estimez votre bien gratuitement en moins de 2 minutes.";
+  "Markus Immobilier, agence indépendante : vente, achat, location et gestion locative à Lyon et Villeurbanne. Estimez votre bien gratuitement en moins de 2 minutes.";
 
 /**
  * Titre / description Google : ceux saisis dans l'éditeur de pages s'ils

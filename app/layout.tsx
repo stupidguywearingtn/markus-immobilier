@@ -25,7 +25,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon",
+    default: "Markus Immobilier — Vente, achat, location et gestion à Lyon & Villeurbanne",
     template: "%s · Markus Immobilier",
   },
   description:
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "Markus Immobilier",
-    title: "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon",
+    title: "Markus Immobilier — Vente, achat, location et gestion à Lyon & Villeurbanne",
     description:
       "Agence indépendante à Villeurbanne. Vente, location, gestion. Estimez votre bien gratuitement en moins de 2 minutes.",
     url: SITE_URL,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Markus Immobilier",
     description:
-      "Agence immobilière à Villeurbanne & Lyon — vente, location, gestion. Estimation gratuite en 2 minutes.",
+      "Vente, achat, location et gestion à Lyon & Villeurbanne. Estimation gratuite en 2 minutes.",
   },
   // Favicons : auto-détectés par Next via app/favicon.ico, app/icon.png (onglet)
   // et app/apple-icon.png (apple-touch-icon / écran d'accueil iOS) — même recette

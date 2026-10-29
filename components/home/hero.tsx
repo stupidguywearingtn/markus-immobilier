@@ -63,8 +63,8 @@ export function Hero() {
             moteurs et les lecteurs d'écran. Il décrit exactement le contenu de
             la page — ce n'est pas du texte caché à des fins de référencement. */}
         <h1 className="sr-only">
-          Markus Immobilier — agence immobilière à Villeurbanne et Lyon : achat,
-          vente, location et gestion locative
+          Markus Immobilier — achat, vente, location et gestion locative à Lyon
+          et Villeurbanne
         </h1>
 
         <div

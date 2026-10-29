@@ -6,11 +6,12 @@ const SERVICES = [
   { href: "/acheter", label: "Acheter" },
   { href: "/gestion-locative", label: "Gestion locative" },
   { href: "/estimation", label: "Estimation" },
+  { href: "/estimation-immobiliere-villeurbanne", label: "Estimation à Villeurbanne" },
   { href: "/estimation-immobiliere-lyon", label: "Estimation à Lyon" },
 ];
 
 const AGENCE = [
-  { href: "/agence-immobiliere-villeurbanne", label: "Agence Villeurbanne" },
+  { href: "/agence-immobiliere-villeurbanne", label: "Agence immobilière à Villeurbanne" },
   { href: "/equipe", label: "Notre équipe" },
   { href: "/blog", label: "Blog" },
   { href: "/honoraires", label: "Nos honoraires" },

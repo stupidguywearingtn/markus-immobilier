@@ -3936,6 +3936,26 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-10-29 (session interactive, hors routine) — Arbitrage cannibalisation demandé par le client : une seule page par mot-clé
+
+**Demande de Tony (WhatsApp, 29/10)** : l'accueil et `/agence-immobiliere-villeurbanne`
+visaient tous deux « agence immobilière Villeurbanne », `/estimation` et
+`/estimation-immobiliere-villeurbanne` tous deux « estimation Villeurbanne ».
+
+**Arbitrage appliqué — À NE PAS DÉFAIRE dans les prochains runs :**
+
+| Requête | Page qui la porte | Ce qui a changé ailleurs |
+|---|---|---|
+| marque « Markus Immobilier » + services | `/` | title « Markus Immobilier — Vente, achat, location et gestion à Lyon & Villeurbanne », `<h1>` et description sans « agence immobilière à Villeurbanne » (layout, OG, alt OG alignés) |
+| « agence immobilière Villeurbanne » | `/agence-immobiliere-villeurbanne` | inchangée ; ancre du footer passée de « Agence Villeurbanne » à « Agence immobilière à Villeurbanne » |
+| « estimation immobilière en ligne gratuite » (l'outil) | `/estimation` | title « Estimation immobilière en ligne gratuite — rapport en 2 min », description recentrée sur l'outil, **tableau des médianes par quartier retiré** (doublon exact de `/estimation-immobiliere-villeurbanne`), remplacé par un renvoi vers elle ; llms.txt aligné |
+| « estimation Villeurbanne » | `/estimation-immobiliere-villeurbanne` | inchangée ; nouveau lien « Estimation à Villeurbanne » dans le footer (lien entrant depuis toutes les pages) |
+
+Bloc résultat de l'outil d'estimation non touché. Build + `tsc` OK.
+À mesurer dans Search Console sous 3-4 semaines : quelle URL sort sur chacune
+des deux requêtes (si `/` continue de sortir sur « agence immobilière
+Villeurbanne », c'est normal au début — Google réattribue lentement).
+
 ### 2026-10-29 — Le contrôle de fraîcheur passé sur les 29 fiches officielles du corpus (le backlog n'en listait que 20) : une fiche a été revue et la règle que nous publiions en a été retirée, et un numéro de fiche publié la veille n'était qu'un onglet dont l'URL mène ailleurs
 
 **Angle : NON-CONTENU.** Candidat n°1 du backlog, inscrit le 27/10, reporté le

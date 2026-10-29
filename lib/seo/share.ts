@@ -24,7 +24,7 @@ const DEFAULT_IMAGE = {
   url: `${BASE}/opengraph-image`,
   width: 1200,
   height: 630,
-  alt: "Markus Immobilier — Agence immobilière à Villeurbanne & Lyon",
+  alt: "Markus Immobilier — Vente, achat, location et gestion à Lyon & Villeurbanne",
 };
 
 type ShareImage = { url: string; alt?: string };
