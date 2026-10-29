@@ -14,6 +14,121 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-29 (jeudi)**
+
+- ⚠️ **`origin/main` RETARDAIT DE DEUX COMMITS — SIXIÈME OCCURRENCE.** Relevé
+  **AVANT** `git fetch` (règle du 16/09) : `HEAD` = **`55f9e30`**, `main` local =
+  **`9a1f7b9`**, `origin/main` = **`9a1f7b9`**. Après `git fetch origin main` :
+  `origin/main` passe à **`55f9e30`**. 📌 **Six fois sur sept runs (22, 23, 24,
+  26, 28 et 29/10), et toujours sur les deux commits du run précédent.** La
+  règle du 16/09 continue de payer : sans elle, on croit que la veille n'a pas
+  eu lieu. `main` local était lui-même en retard de **quatre** commits, remis à
+  niveau par `git merge --ff-only`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-quatrième constat identique** (21/09 → 29/10).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Dix-septième confirmation.**
+- ✅ **LE TRAVAIL DU 28/10 EST SERVI EN PRODUCTION — vérifié avant d'agir** (sur
+  `www`, règle du 27/10). `/` 200 / 284 361 o, `/vendre` 200 / 136 838 o,
+  `/acheter` 200 / 111 621 o, `/estimation` 200 / 86 465 o, `/gestion-locative`
+  200 / 169 557 o, `/faire-gerer` 200 / 154 707 o, `/honoraires` 200 /
+  131 002 o, `/llms.txt` 200 / 35 606 o, `/sitemap.xml` 200,
+  `/blog/preavis-depot-garantie-location-villeurbanne` 200 / **189 439 o**,
+  `/blog/dpe-2026-ce-qui-change` 200 / 210 360 o. **Sept tailles concordent à
+  l'octet avec les relevés d'après-déploiement du 28/10** ; seule la home varie
+  de 43 octets (contenu dynamique). Rien à réauditer sur le préavis.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée** (27/10
+  non-contenu → 28/10 contenu → **29/10 non-contenu**). **Candidat n°1 du
+  backlog consommé après deux reports** (inscrit le 27/10, non consommé le
+  28/10) : la recette « encadré d'évolutions » passée sur **toutes** les fiches
+  citées par le corpus.
+- 🔴 **ET LE BACKLOG SE TROMPAIT SUR SON PROPRE PÉRIMÈTRE : IL LISTAIT 20 FICHES,
+  LE CORPUS EN CITE 29.** Les neuf manquantes : **F742, F1142, F1669, F3150,
+  F10798, F12239, F17337, F18692, F31685**. 📌 **Toutes les neuf sont citées en
+  TEXTE avec leur date de vérification, sans lien** — et c'est précisément une
+  de celles-là qui portait le défaut du jour. **La liste du backlog avait été
+  construite sur les URL `vosdroits/F…`, qui n'en couvrent que 7 sur 29.**
+  Recette corrigée en « Techniques apprises ».
+- 🔴 **DÉFAUT N°1 — UNE FICHE A ÉTÉ REVUE ET SON CONTENU A CHANGÉ : LA RÈGLE QUE
+  NOUS PUBLIIONS N'Y EST PLUS.** `F742` (amiante) est passée de **« vérifiée le
+  6 décembre 2024 »** (ce que publiait notre tableau) à **« vérifiée le
+  16 octobre 2026 »**. Elle donne désormais au diagnostic une **durée de
+  validité illimitée, sans date butoir**, avec une seule réserve qui est une
+  **recommandation** : un nouveau diagnostic si des **travaux de rénovation**
+  ont eu lieu depuis. **Le mot « 2013 » n'y apparaît plus une seule fois**,
+  alors que notre cellule publiait « illimitée s'il a été réalisé à partir du
+  1er avril 2013 ; à refaire avant la vente s'il est antérieur ». 📌 **C'est
+  l'INVERSE du piège du 27/10** : là la date ne bougeait pas alors que la fiche
+  annonçait un changement ; ici **la date a bougé et le contenu a été RETIRÉ**.
+  Les deux échappent à un contrôle qui compare des dates sans relire la fiche.
+- 🔴 **SERP DE CHANTIER MESURÉE AVANT D'ÉCRIRE (méthode du 15/10, 13ᵉ test
+  positif), ET C'EST ENCORE LA CONFIGURATION DU 28/10 : UNANIME ET FAUSSE.** Sur
+  « mon diagnostic amiante date de 2010 est-il encore valable pour vendre mon
+  appartement » : **site absent**, **18 résultats, aucune agence locale, aucune
+  villeurbannaise** (iad, `edito.seloger` ×3, cafpi, construires, macsf en PDF,
+  avocats-picovschi, empruntis ×2, orpi national, selectra, mysweetimmo,
+  immobilier-danger, un PDF de `orne.gouv.fr`, savills, credixia). 📌 **Et le
+  résumé du moteur répond lui-même « il faut sans doute le refaire »**, au motif
+  que la validité illimitée ne vaudrait que pour les diagnostics postérieurs au
+  **1er avril 2013**, et ajoute qu'un diagnostic **positif ne vaudrait que
+  3 ans**. **Ni l'une ni l'autre de ces deux règles n'est dans `F742` vérifiée
+  le 16 octobre 2026.** 🟢 **Le moteur signale même le désordre de ses sources**
+  (« une indique le 1er janvier 2013, mais la plupart retiennent le 1er avril »,
+  « une source mentionne une date de 2023, qui semble être une erreur »).
+- 🟢 **CE QUE LA FICHE PUBLIE ET QUE PERSONNE NE REPREND — le matériau GEO du
+  jour, et il est entièrement sourcé sur `F742` seule.** Les « 3 ans » ne sont
+  **pas une durée de validité** : c'est l'**intervalle maximal entre deux
+  évaluations de l'état de conservation**, et il ne vaut que pour les matériaux
+  de la **LISTE A classés en surveillance périodique** — pour la **LISTE B**,
+  « la réglementation ne fixe pas de périodicité obligatoire ». S'y ajoute la
+  conséquence côté **acquéreur** : informé et achetant en l'état, il ne peut pas
+  demander l'annulation pour ce seul motif, **mais il reprend à ses frais les
+  obligations liées à la présence d'amiante**.
+- 🔴 **DÉFAUT N°2 — UN NUMÉRO DE FICHE QUE NOUS PUBLIIONS N'EST PAS UNE FICHE,
+  C'EST UN ONGLET, ET SON URL NE MÈNE PLUS AU SUJET.** `F39713`
+  (« Dépôt de garantie »), publiée **hier**, **redirige vers le carrefour
+  thématique `N349`** (« Location immobilière : bail d'habitation »), qui ne
+  porte **ni le contenu du dépôt de garantie ni aucune date de vérification**.
+  La fiche citable est **`F31269`**, « Dépôt de garantie dans un bail
+  d'habitation », **vérifiée le 9 juin 2026** — **exactement la date que nous
+  publiions**, mêmes deux onglets, et son HTML porte bien les trois faits que
+  nous en tirons (**plafond d'1 mois HC**, **provision de copropriété plafonnée
+  à 20 %**, **pénalité de 10 % du loyer par mois entamé**). **Aucun fait publié
+  ne bouge : seule la référence change.**
+- ✅ **LES 27 AUTRES FICHES SONT SAINES, ET C'EST UN RÉSULTAT, PAS UN NON-ÉVÉNEMENT.**
+  Dates de vérification **identiques** à celles que nous publions, **aucun
+  encadré d'évolutions neuf** (seule `F16096` en porte un, celui du 1er janvier
+  2027 déjà traité le 27/10), **aucune redirection**, **aucune fiche sans date**
+  en dehors de `F39713`.
+- 🟡 **ÉCARTÉ VOLONTAIREMENT, ET MESURÉ AVANT DE L'ÉCARTER** : `F1142` (plomb)
+  porte une échéance au **1er avril 2027**, mais elle ne concerne que les
+  **critères de performance de l'appareil à fluorescence X du diagnostiqueur**
+  (arrêté du 3 août 2026) — **sans effet pour un vendeur ou un bailleur, donc
+  non publiée.** `F37110` porte l'extension de l'audit à la classe E **outre-mer
+  au 1er janvier 2028** : **déjà publiée** par `rentabilite-locative-lyon`.
+- 🟡 **LES DEUX SERP COMMERCIALES DE MARQUE INTERDITE N'ONT PAS ÉTÉ MESURÉES
+  AUJOURD'HUI, ET C'EST DÉLIBÉRÉ** : leur échéance est au **30/10** et la série
+  hebdomadaire ne vaut que si la cadence est tenue. ⚠️ **Les requêtes de
+  quartier du brief restent écartées** : « Charpennes » (11/09) et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents** — le nom du
+  quartier est leur nom commercial.
+- ✅ **DÉPLOIEMENT CONFIRMÉ EN PRODUCTION, APRÈS LE PUSH — vérifié, pas supposé.**
+  Commit `7f46bc0` ; l'ancienne page a été servie pendant **~78 s** (137 555 o)
+  puis la nouvelle à **160 958 o**. **Parité revérifiée SUR LE HTML DE
+  PRODUCTION : 8 Q/R, 0 écart.** `liste A` ×3, `liste B` ×2,
+  « 16 octobre 2026 » ×5, **ancienne cellule absente**,
+  `"dateModified":"2026-10-29"`. `preavis…` : **`F31269` ×6, `F39713` ×0**.
+  `/llms.txt` **`F31269` ×1, `F39713` ×0**. **Sitemap de production : 54 URL,
+  dont exactement 2 au `lastmod` 2026-10-29.** ⚠️ **`/llms.txt` est passé de
+  35 606 à 34 259 o et ce n'est PAS notre fait** : la substitution était de
+  longueur identique, et le bloc « Annonces » est dynamique (**6 annonces
+  aujourd'hui**). **Les six sections du fichier sont toutes présentes.**
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` sans erreur, `eslint` sans
+  erreur, **`npm run build` vert**, parité FAQ/JSON-LD **8/8 et 0 écart en local
+  comme en production**, **aucun markdown brut** dans la page rendue
+  (`**` ×0, `](` ×0), **9 `<h2>`**, aucun mot collé (trois faux positifs, tous
+  des identifiants de code).
+
 **Au 2026-10-28 (mercredi)**
 
 - ⚠️ **`origin/main` RETARDAIT DE DEUX COMMITS — CINQUIÈME OCCURRENCE.** Relevé
@@ -3820,6 +3935,90 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-29 — Le contrôle de fraîcheur passé sur les 29 fiches officielles du corpus (le backlog n'en listait que 20) : une fiche a été revue et la règle que nous publiions en a été retirée, et un numéro de fiche publié la veille n'était qu'un onglet dont l'URL mène ailleurs
+
+**Angle : NON-CONTENU.** Candidat n°1 du backlog, inscrit le 27/10, reporté le
+28/10, **consommé aujourd'hui**.
+
+**Ce qui a été mesuré (le chantier EST la mesure).** Les 29 fiches
+`service-public.gouv.fr` citées par le corpus téléchargées une par une, puis
+pour chacune : la date « Vérifié le … » **affichée aujourd'hui**, la présence
+d'un **encadré d'évolutions**, les **numéros de texte** cités, et — détecteur
+ajouté en cours de run — le **nombre de redirections** de son URL.
+
+| Contrôle | Résultat |
+|---|---|
+| Fiches citées par le corpus | **29** (le backlog en listait 20) |
+| Date de vérification identique à celle que nous publions | **27 sur 28** mesurables |
+| Date changée depuis notre relevé | **1 — `F742`**, 6 déc. 2024 → **16 oct. 2026** |
+| Encadré d'évolutions présent | **1 — `F16096`** (1er janv. 2027, déjà traité le 27/10) |
+| URL qui redirige | **1 — `F39713`** → `N349` |
+| Fiche sans date de vérification | **1 — `F39713`** (la même) |
+| Échéance future non publiée, jugée hors sujet | **1 — `F1142`**, 1er avril 2027 |
+
+**Défaut n°1 — `F742` (amiante), et il était en production.** La fiche donne
+désormais au diagnostic une **durée de validité illimitée, sans date butoir**,
+avec une seule réserve, et c'est une **recommandation** et non une obligation :
+un nouveau diagnostic **si des travaux de rénovation** ont eu lieu depuis,
+« parce que ces travaux peuvent révéler des matériaux … qui n'étaient pas
+visibles lors de la réalisation du diagnostic précédent ». **Le mot « 2013 »
+n'apparaît plus une seule fois dans la fiche** (`grep -c` = 0), alors que notre
+tableau publiait « illimitée s'il a été réalisé à partir du 1er avril 2013 ;
+à refaire avant la vente s'il est antérieur ».
+
+**La SERP mesurée avant d'écrire est dans la configuration du 28/10 — unanime
+et fausse.** 18 résultats, **site absent, aucune agence locale**, et le résumé
+du moteur répond lui-même « il faut sans doute le refaire » en invoquant le
+**1er avril 2013**, plus un « diagnostic positif valable 3 ans ». **Aucune des
+deux règles n'est dans la fiche.**
+
+**Ce qui a été publié à la place, et personne d'autre ne le publie :**
+- les « 3 ans » ne sont **pas une durée de validité** mais l'**intervalle
+  maximal entre deux évaluations de l'état de conservation**, et ils ne valent
+  que pour les matériaux de la **liste A classés en surveillance périodique** ;
+- pour la **liste B**, « la réglementation ne fixe pas de périodicité
+  obligatoire » — le suivi dépend de l'état et des dégradations constatées ;
+- les trois familles de mesures que le rapport peut prévoir (évaluation
+  périodique, analyse de risque approfondie avec prélèvements d'air, actions
+  correctives jusqu'au confinement ou retrait par une entreprise qualifiée) ;
+- **la conséquence côté acquéreur** : informé et achetant en l'état, il ne peut
+  pas demander l'annulation pour ce seul motif, **mais il reprend à ses frais
+  les obligations liées à la présence d'amiante**.
+
+**Modifications sur `diagnostics-obligatoires-vente`** (`lib/blog.ts`) :
+- cellule « Amiante » du tableau réécrite ;
+- **note de source du tableau** réécrite : relevé du **29 octobre 2026**,
+  `F742` au **16 octobre 2026**, et **la mention explicite que les huit autres
+  fiches portent la même date qu'au relevé du 12 octobre** — une mesure qui se
+  lit, pas seulement une date qui avance ;
+- **2 `<h2>` neufs, formulés comme des questions posées à voix haute**, réponse
+  directe de 2-3 phrases en tête de chacun (« Un diagnostic amiante réalisé
+  avant 2013 est-il encore valable pour vendre ? » → **« Oui »** ; « Le
+  diagnostic a révélé de l'amiante : que doit faire le vendeur ensuite ? ») ;
+- **2 Q/R de FAQ** en texte brut (règle du 28/10 : pas de markdown dans `f.a`) ;
+- `updated` → **2026-10-29**. **628 mots ajoutés, 3 311 au total, 9 `<h2>`,
+  8 Q/R.**
+
+**Défaut n°2 — `F39713` n'est pas une fiche.** Son URL **redirige vers `N349`**,
+un carrefour thématique sans date de vérification et sans le contenu du dépôt de
+garantie : **le lien publié hier menait à une page générique.** La fiche
+citable est **`F31269`**, vérifiée le **9 juin 2026** — même date que celle que
+nous publiions, mêmes onglets, et les trois faits que nous en tirons vérifiés
+sur son HTML. Corrigé aux **trois** emplacements : citation du tableau et lien
+de la liste de sources dans `preavis-depot-garantie-location-villeurbanne`, et
+le bloc `/gestion-locative` de `llms.txt`. `updated` de l'article → 2026-10-29.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi :**
+- **ne pas affirmer que la règle du 1er avril 2013 est abrogée.** Je n'ai pas pu
+  lire la version antérieure de `F742` (`web.archive.org` **403** depuis ce
+  conteneur, `legifrance.gouv.fr` **403** re-testé ce jour). La page dit donc
+  seulement, et c'est vérifiable : **cette règle ne figure pas dans la fiche
+  dans sa version vérifiée le 16 octobre 2026**. Hypothèse consignée ;
+- **ne pas publier l'échéance du 1er avril 2027 de `F1142`** : elle vise
+  l'appareil du diagnostiqueur, pas le vendeur ;
+- **ne pas mesurer les deux SERP commerciales** (échéance au 30/10) ;
+- **ne rien réécrire sur les 27 fiches saines** : la mesure suffit.
 
 ### 2026-10-28 — `préavis` était à zéro occurrence du corpus, et la SERP qui tient la question publie l'inverse de la fiche officielle
 
@@ -7938,7 +8137,7 @@ différentes sont un signal d'alerte, pas une coïncidence. C'est le troisième
 piège d'outillage de la journée, après le `pkill` qui tuait son propre shell et
 le moteur de recherche sans recherche exacte.
 
-### 2026-09-21### 2026-09-21 — `/gestion-locative` : l'arbitrage « déléguer ou gérer seul » chiffré, et le fait que personne ne publie — au loyer médian villeurbannais, les honoraires de gestion ne sont **pas** déductibles
+### 2026-09-21 — `/gestion-locative` : l'arbitrage « déléguer ou gérer seul » chiffré, et le fait que personne ne publie — au loyer médian villeurbannais, les honoraires de gestion ne sont **pas** déductibles
 
 **Ce qui a décidé du chantier.** Candidat ouvert le 18/09 et arrivé en tête du
 backlog : la page reçoit un lien sitewide depuis le footer, et elle servait
@@ -9591,6 +9790,106 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le contrôle de fraîcheur passé sur les
+29 fiches officielles du corpus** (29/10 : le backlog n'en listait que **20**,
+parce que sa liste avait été bâtie sur les URL `vosdroits/F…`, qui n'en
+couvrent que **7 sur 29** ; **deux défauts trouvés**, `F742` revue le
+**16 octobre 2026** avec la règle du **1er avril 2013 retirée** de la fiche
+alors que notre tableau la publiait, et `F39713` qui **n'est pas une fiche mais
+un onglet** dont l'URL redirige vers le carrefour `N349` — fiche citable
+**`F31269`**, même date du 9 juin 2026. **27 fiches saines.** SERP du chantier :
+**site absent sur 18 résultats, aucune agence locale**, et le résumé du moteur
+publie lui-même les deux règles que la fiche ne contient pas.
+**628 mots ajoutés**, 9 `<h2>`, 8 Q/R, parité 8/8.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (30/10) DOIT ÊTRE DU CONTENU**
+(alternance : 27/10 non-contenu → 28/10 contenu → 29/10 non-contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 **`/vendre` SUR SA PROPRE REQUÊTE — candidat n°1 depuis le 27/10, non
+     consommé deux runs de suite.** L'angle ouvert est **« vendre appartement
+     Villeurbanne »** (SERP éditoriale, 3 sur 9 éditoriaux aux relevés des 13,
+     20 et 27/10, place tenue par du **périmé que le moteur signale lui-même** :
+     « Villeurbanne en 2024 », transactions de **2019**, 3 258 €/m² donnés pour
+     actuels). ⚠️ **Ce n'est PAS la requête « net vendeur » mesurée le 28/10**,
+     tenue par six listings `capifrance` et deux concurrents locaux
+     (`calcunet.fr`, `orpi.com/orpicetrim`) — **celle-là, ne pas y réinvestir.**
+     📌 **Angle à tenir : le net vendeur et la fraîcheur datée, pas le prix du
+     marché.** ⚠️ **Remesurer la SERP avant d'écrire** : trois relevés datent du
+     13, 20 et 27/10, le prochain est dû.
+  2. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. Voisine mesurée le 28/10 : sur la requête net vendeur, le moteur
+     complète par « **d'après mes connaissances générales (non vérifiées par la
+     recherche)** » sur le **solde de prêt, l'indemnité de remboursement
+     anticipé et les diagnostics**.
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). ⚠️ **Ne pas en prendre un « parce qu'il
+     est court » : mesurer d'abord s'il existe une SERP où le site est absent.**
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (31/10), par ordre d'impact :**
+  1. 🔴 🆕 **PASSER LE DÉTECTEUR DE REDIRECTION SUR TOUTES LES URL EXTERNES DU
+     CORPUS, PAS SEULEMENT SUR LES FICHES.** Le chantier du 29/10 a trouvé un
+     lien publié qui mène à une page générique, et il ne l'a trouvé que parce
+     qu'il regardait les fiches. **Le corpus cite aussi `anil.org`,
+     `bofip.impots.gouv.fr`, `rt-re-batiment…`, `justice.fr`, `ademe`,
+     `georisques`, `immobilier.notaires.fr`, des simulateurs et des PDF.**
+     Recette en « Techniques apprises » (`%{num_redirects}` + absence de
+     marqueur attendu). ⚠️ **Travail de mesure ; corriger seulement ce qui
+     ressort.**
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE.**
+     Six mesures concordantes, **toutes COMMUNALES**, alors que `/acheter` et
+     `/llms.txt` affirment un écart **de 16,1 à 45,3 % PAR QUARTIER**.
+     **Reformuler — « l'écart par QUARTIER a-t-il disparu ? » — et trancher avec
+     un relevé DVF 2026 par quartier** (recette du 14/10), **pas avec les SERP.
+     Ne RIEN réécrire avant.**
+  3. 🟡 **AJOUTER LE PRÉAVIS D'UN MOIS À LA LISTE D'OBLIGATIONS DE
+     `/gestion-locative`** — inscrit le 28/10, **toujours non fait**. La liste
+     (`app/gestion-locative/page.tsx`, autour de la ligne 477) énumère ce que
+     doit faire le bailleur qui gère seul et **ne dit pas que son locataire peut
+     partir en un mois**. ⚠️ **Ajout d'une seule puce dans un tableau de
+     chaînes ; relire la parité FAQ de la page après (10 Q/R au 28/10).**
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **non fait**) : premier concurrent mesuré qui publie du **DVF par
+     quartier**. Établir **ce que nous publions qu'il ne publie pas**. **Ne RIEN
+     réécrire sur la foi d'un seul relevé.**
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Aucun défaut connu :
+     prévention.**
+  6. 🟢 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** (inscrit
+     le 26/10, **non fait**, **volontairement déclassé**) : travail de journal,
+     **zéro effet sur les positions**. **À faire un jour creux.**
+
+🔴 **ÉCHÉANCE AJOUTÉE PAR LE RUN DU 29/10 :**
+- 🆕 **« mon diagnostic amiante date de 2010 est-il encore valable pour vendre
+  mon appartement »** (29/10, site absent, 18 résultats sans aucune agence
+  locale) → **vers le 12/11**. 📌 **Repère de contrôle** : les pages en place
+  affirment le **1er avril 2013** et les « 3 ans de validité ». **Si ces deux
+  affirmations disparaissent des résultats, la place s'est refermée ; si elles
+  persistent, notre page a un avantage de justesse et il faut vérifier si elle
+  est entrée.** ⚠️ **Et vérifier aussi `F742` à cette date** : si la fiche
+  réintroduit la règle de 2013, notre page doit bouger le jour même.
+
+⚠️ **FICHES À RECONTRÔLER — cadence proposée : une passe toutes les deux
+semaines, soit vers le 12/11.** Les 29 fiches et leur date au 29/10/2026 :
+`F742` **16/10/2026**, `F2066` 01/10/2026, `F12239` 28/09/2026, `F17337` et
+`F18692` 17/09/2026, `F1669` 16/09/2026, `F37110` 14/09/2026, `F1142`
+17/08/2026, `F1310` et `F1314` 01/08/2026, `F2608` 08/07/2026, `F31269`
+09/06/2026, `F929` 01/06/2026, `F1168` 16/04/2026, `F10864` 15/04/2026,
+`F2965` 10/04/2026, `F3150` 26/02/2026, `F33463` 20/02/2026, `F2590` et
+`F37294` 18/02/2026, `F32920` 13/02/2026, `F16096` 01/01/2026, `F37190`
+19/09/2025, `F2604` 21/08/2025, `F947` 15/04/2025, `F31267` 10/04/2025,
+`F2042` 21/03/2025, `F10798` 07/03/2025, `F31685` 26/02/2025. 📌 **Les trois
+plus anciennes sont `F31685` (assainissement, 26/02/2025), `F10798` (liste des
+diagnostics, 07/03/2025) et `F2042` (logement décent, 21/03/2025) — donc les
+plus susceptibles d'être revues ensuite, et ce sont celles sur lesquelles
+reposent la liste des diagnostics de vente et la décence du logement.**
+
 **Angle du dernier run : CONTENU — le préavis et le dépôt de garantie en zone
 tendue** (28/10 : `préavis` était à **zéro occurrence** du corpus ; SERP mesurée
 **sans aucune agence locale sur 19 résultats**, Laforêt y tenant trois positions
@@ -11189,6 +11488,47 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-10-29 — Quatre points laissés ouverts par le contrôle de fraîcheur des fiches
+
+**1. 🔴 LA RÈGLE DU 1ᵉʳ AVRIL 2013 EST-ELLE ABROGÉE, OU LA FICHE A-T-ELLE
+SEULEMENT SIMPLIFIÉ ?** C'est la question la plus importante du run, et elle
+est **ouverte**. **Établi** : `F742` vérifiée le **16 octobre 2026** ne contient
+**pas une seule occurrence de « 2013 »** et donne une validité **illimitée** ;
+la page d'ANIL « Les différents diagnostics pour devenir propriétaire » dit la
+même chose (« la durée de validité de l'état mentionnant l'absence de matériaux
+… est illimitée ») **sans réserve de date**. **Non établi** : la version
+antérieure de `F742`, que je n'ai pas pu lire. ⚠️ **La page publiée ne dit donc
+PAS que la règle est abrogée** : elle dit qu'elle **ne figure pas dans la fiche
+dans sa version vérifiée le 16/10/2026**. **Ne pas durcir cette formulation sans
+avoir lu soit le texte, soit une version archivée.** 📌 **Un résultat de
+recherche mentionnait un tableau d'ANIL portant encore « à moins qu'il n'ait
+été réalisé avant 2013 » : je ne l'ai PAS retrouvé sur la page lue, donc je ne
+l'ai pas publié ni invoqué.** À chercher au recontrôle du 12/11.
+
+**2. 🟡 LE DOSSIER TECHNIQUE AMIANTE (DTA) DES PARTIES COMMUNES EST-IL UN TROU DE
+NOTRE CORPUS ?** Un résultat de la SERP du jour affirme qu'en copropriété il
+faut, **en plus** de l'état d'amiante du lot, le **DTA des parties communes**
+fourni par le syndic. **`DTA` est à zéro occurrence de tout le corpus.** ⚠️
+**Non publié, parce que non vérifié sur une fiche officielle** — mais le signal
+« zéro occurrence » est le plus rentable de ce journal (24, 26, 27 et 28/10).
+**À trancher sur `F2590` / `F2604` / `F37190` avant d'écrire quoi que ce soit.**
+
+**3. 🟡 LA CELLULE « PLOMB » DU MÊME TABLEAU SUIT-ELLE ENCORE SA FICHE ?** Notre
+cellule plomb distingue déjà selon le **résultat** (« illimitée si absence …
+moins d'1 an si la concentration dépasse 1 mg/cm² »), **ce que la cellule
+amiante ne faisait pas** — **c'est cette asymétrie interne au tableau qui aurait
+dû alerter des semaines plus tôt, et c'est un détecteur à garder** (voir
+« Techniques apprises »). ⚠️ **À vérifier que la distinction publiée est encore
+celle de `F1142`.**
+
+**4. 🟢 `web.archive.org` EST-IL DÉFINITIVEMENT HORS D'ATTEINTE ICI ?** L'**API**
+`archive.org/wayback/available` répond **200** et désigne bien un instantané
+(9 mai 2026 pour `F742`), mais le **contenu** de l'instantané rend **403**, en
+`curl` **et** en WebFetch. ⚠️ **Conséquence de méthode : dans ce conteneur, on
+ne peut pas prouver ce qu'une source disait HIER.** Toute affirmation sur
+l'évolution d'une source doit donc reposer sur ce que **ce journal** a
+lui-même consigné, ou rester une non-affirmation.
+
 ### 2026-10-27 — Trois points laissés ouverts par le chantier des calendriers énergétiques
 
 🆕 🟡 **Faut-il aligner les formulations « de marché » sur le calendrier précis,
@@ -11418,8 +11758,6 @@ entre **5 % et 10 %** du prix de vente. » 🟢 **Nous publions « en général 
 respectée). 📌 **À savoir pour la suite : une contradiction entre deux fiches
 service-public sur le même chiffre est possible. Préférer la fourchette, et
 celle qui s'accorde avec le reste du corpus.**
-
-### 2026-10-20## Hypothèses à vérifier
 
 ### 2026-10-20
 
@@ -12382,6 +12720,76 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-29 — La liste de fiches du backlog était incomplète d'un tiers parce qu'elle avait été bâtie sur les URL, et c'est une des fiches manquantes qui portait le défaut du jour
+
+🔴 **L'ERREUR, ET ELLE A PRESQUE COÛTÉ LE CHANTIER.** Le backlog du 27/10
+listait « les fiches citées par le corpus » : **20 numéros**. Le corpus en cite
+**29**. Les neuf manquantes sont `F742`, `F1142`, `F1669`, `F3150`, `F10798`,
+`F12239`, `F17337`, `F18692`, `F31685` — et **`F742` est celle qui portait le
+seul vrai défaut de fraîcheur du run.** 📌 **En suivant le backlog à la lettre,
+je serais passé à côté.**
+
+✅ **LA CAUSE, ET ELLE EST MÉCANIQUE.** La liste avait été construite en
+cherchant les **URL** `vosdroits/F…`. Or le corpus cite **7 fiches par un lien
+et 22 par leur seul numéro en texte**, avec leur date de vérification — forme
+qui est précisément celle des notes de source de tableau.
+
+```bash
+# INSUFFISANT — ne voit que 7 fiches sur 29
+grep -rho "vosdroits/F[0-9]\{3,5\}" app components data lib | sort -u
+
+# SUFFISANT — le numéro, où qu'il soit
+grep -rno "F[0-9]\{3,5\}" app components data lib \
+  --include=*.ts --include=*.tsx | awk -F: '{print $3}' | sort | uniq -c | sort -rn
+```
+
+⚠️ **RÈGLE GÉNÉRALE À EN TIRER, et c'est la troisième fois en trois runs qu'un
+instrument de recherche est le fautif** (27/10 : `grep` sans `-i` ; 28/10 :
+« mise à jour » contre « Mis à jour » ; 29/10 : l'URL contre le numéro).
+**Quand on dresse l'inventaire de ce que le corpus cite, chercher la forme la
+plus NUE de la référence — jamais sa forme la plus complète.** Un lien est une
+forme complète ; un numéro est la forme nue. **Et contrôler l'inventaire par un
+compte : si le total surprend, c'est l'inventaire qui a tort, pas le corpus.**
+
+### 2026-10-29 — Trois défauts de ma propre plume, attrapés avant le push, dont une généralité locale que rien ne démontre (récidive du 27/10)
+
+🔴 **1. UNE GÉNÉRALITÉ LOCALE INVENTÉE — ET LA MÊME FAUTE ÉTAIT CONSIGNÉE LE
+27/10.** J'avais écrit : « La prudence reste de mise dans un cas précis, **et il
+est fréquent sur le parc villeurbannais** : un repérage ancien réalisé avant
+des travaux… ». **Rien ne mesure la fréquence des rénovations antérieures à un
+diagnostic sur le parc de la commune** : ni la base ADEME, ni aucune source du
+run. ✅ **Corrigé avant le push** : la phrase ne garde que le fait
+(« un repérage réalisé avant des travaux ne dit rien des matériaux que ces
+travaux ont pu mettre au jour »). 📌 **C'est la deuxième fois en trois runs** :
+la tentation est toujours la même — **ancrer localement un fait national en
+ajoutant un adjectif de fréquence.** **Un adjectif de fréquence est un chiffre
+déguisé : s'il n'est pas mesuré, il ne s'écrit pas.**
+
+🟡 **2. UN PRONOM SANS ANTÉCÉDENT.** « Elle n'**y** attache qu'une réserve » :
+le « y » ne renvoyait à rien de nommable dans la phrase précédente. Corrigé en
+« Elle n'assortit **cette validité** que d'une seule réserve ». ⚠️ **Un passage
+dont le sujet n'est pas nommé explicitement ne se fait pas citer par un LLM** :
+c'est la règle « réponse autonome » du brief, et un pronom flottant la viole.
+
+🟡 **3. 54 APOSTROPHES COURBES LÀ OÙ LE DÉPÔT EN COMPTE 2 237 DE DROITES.**
+Tout mon texte neuf était écrit avec `’` (U+2019) quand `lib/blog.ts` utilise
+l'apostrophe droite partout. **Défaut invisible à `tsc`, à `eslint` et à la
+parité FAQ — mais visible à l'œil sur la page.** ✅ Normalisé avant le push.
+
+```python
+# le détecteur, à repasser sur tout fichier où l'on a écrit du texte
+s=open('lib/blog.ts',encoding='utf-8').read()
+print("droite", s.count("'"), "| courbe", s.count("\u2019"))
+# si le courbe est NON NUL et que le total du fichier avant le run l'était,
+# tout le courbe est de la plume du run : substitution globale sans risque
+```
+
+⚠️ **Et le contrôle « mots collés » a de nouveau rendu des faux positifs** :
+`taDes`, `alHre`, `alLab` — tous trois des **identifiants de code**
+(`metaDescription`, `internalHref`, `internalLabel`), pas du texte publié.
+**Confirmation de la mise en garde du 23/10 : ce détecteur ne doit tourner que
+sur le TEXTE RENDU, pas sur le source.**
 
 ### 2026-10-28 — J'ai refait l'erreur de grep du 27/10, le jour même où elle était consignée, et en cherchant exactement la même chose
 
@@ -14021,6 +14429,109 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-29 — L'absence de « Vérifié le » est le marqueur qu'un numéro de fiche désigne un ONGLET et non une fiche : un détecteur à deux signaux qui en a attrapé un sur 29
+
+🔴 **LE CAS.** `F39713`, publiée la veille comme « fiche « Dépôt de garantie
+dans un bail d'habitation », vérifiée le 9 juin 2026 », **n'est pas une
+fiche** : c'est l'**onglet** « Logement vide » de la fiche **`F31269`**. Son URL
+canonique **redirige vers le carrefour thématique `N349`** (« Location
+immobilière : bail d'habitation »), qui ne porte **ni le contenu du dépôt de
+garantie ni aucune date de vérification**. **Le lien publié menait donc à une
+page générique, tout en répondant 200.**
+
+✅ **LE DÉTECTEUR, ET IL REPOSE SUR DEUX SIGNAUX QUI SE CONFIRMENT.** Sur
+29 fiches, **une seule redirige** et **une seule est sans date de
+vérification** — **et c'est la même.** Chacun des deux signaux suffit ; les deux
+ensemble donnent la certitude.
+
+```bash
+# signal 1 : la redirection (une fiche réelle rend num_redirects=0)
+curl -sL -o /dev/null -w "%{num_redirects} %{url_effective}\n" \
+  --cacert /root/.ccr/ca-bundle.crt \
+  "https://www.service-public.gouv.fr/particuliers/vosdroits/F39713"
+# -> 1 .../vosdroits/N349      (un N... est un carrefour, pas une fiche)
+
+# signal 2 : l'absence de date de vérification sur la page servie
+python3 -I h2t.py F39713.html | grep -o "Vérifié le [0-9A-Za-zéûà ]\{6,30\}"
+# -> (rien)  ===> ce n'est pas une fiche datée, donc pas une référence citable
+```
+
+📌 **ET LA MANIÈRE DE RETROUVER LA BONNE RÉFÉRENCE.** L'onglet reste atteignable
+en `F39713/0?idFicheParent=F31269` : **le paramètre `idFicheParent` nomme la
+fiche mère**, qui est la référence à publier. Une recherche restreinte à
+`service-public.gouv.fr` la fait remonter directement. **Contrôle à faire avant
+de substituer** : télécharger la fiche mère et vérifier qu'elle porte **la même
+date** et **les mêmes faits** que ceux déjà publiés — ici 9 juin 2026, plafond
+d'1 mois HC, provision plafonnée à 20 %, pénalité de 10 % par mois entamé : **la
+substitution ne déplace alors aucun fait, seulement la référence.**
+
+### 2026-10-29 — Le piège du 27/10 a un SYMÉTRIQUE, et il est plus dangereux : la date de vérification bouge et c'est du CONTENU QUI A ÉTÉ RETIRÉ
+
+🔴 **LES DEUX MOITIÉS DU PIÈGE, À TENIR ENSEMBLE DÉSORMAIS.**
+
+| | Date de vérification | Ce qui change | Mesuré le |
+|---|---|---|---|
+| Moitié A | **ne bouge pas** | la fiche annonce un changement **futur** dans un encadré | 27/10 (`F16096`) |
+| Moitié B 🆕 | **bouge** | une règle a été **retirée** du corps de la fiche | 29/10 (`F742`) |
+
+**Un contrôle qui compare des dates attrape B et rate A. Un contrôle qui lit
+l'encadré d'évolutions attrape A et rate B** — parce qu'un retrait ne
+s'annonce dans aucun encadré. ✅ **Donc : quand une date a bougé, RELIRE la
+section que la page cite, et chercher la disparition, pas l'ajout.**
+
+```bash
+# le test qui a tranché, et il tient en une ligne : chercher le mot-clé de
+# NOTRE affirmation dans la fiche d'aujourd'hui
+grep -c "2013" F742.txt      # -> 0   alors que notre cellule publiait « 2013 »
+```
+
+📌 **Le marqueur est le CHIFFRE ou la DATE de notre propre phrase, pas le sujet
+de la fiche.** Une règle retirée laisse un **zéro** là où notre page affirme
+quelque chose : c'est le seul signal disponible, et il est binaire.
+⚠️ **Il faut donc avoir noté quelle phrase de la page repose sur quelle fiche** —
+ce que fait la note de source d'un tableau, à condition qu'elle cite la **date
+de vérification** et pas seulement le numéro.
+
+🟢 **ET UNE DEUXIÈME LECTURE QUI VAUT POUR TOUT LE CORPUS : L'ASYMÉTRIE INTERNE
+À UN TABLEAU EST UN DÉTECTEUR GRATUIT.** Dans le même tableau, la cellule
+« Plomb » distinguait déjà selon le **résultat** du diagnostic (absence →
+illimitée ; dépassement du seuil → moins d'1 an) alors que la cellule
+« Amiante » donnait une règle de **date**. **Deux lignes du même tableau
+répondant à la même question selon deux logiques différentes : au moins une des
+deux a vieilli.** 📌 **À passer sur les tableaux du corpus — c'est un contrôle
+qui ne demande aucune source, seulement de relire ses propres colonnes.**
+
+### 2026-10-29 — Trois constats d'outillage : Wayback inatteignable, Legifrance toujours 403, et une place vide se mesure aussi sur les réserves du moteur
+
+⚠️ **1. `web.archive.org` : L'API RÉPOND, LE CONTENU NON.**
+`archive.org/wayback/available?url=…` rend **200** et désigne un instantané,
+mais la récupération de l'instantané rend **403**, en `curl --cacert` **comme**
+en WebFetch (« unable to fetch from web.archive.org »). 📌 **Conséquence de
+méthode, et elle est structurante : dans ce conteneur, on ne peut pas prouver ce
+qu'une source disait HIER.** Toute affirmation sur l'évolution d'une source doit
+donc reposer sur ce que **ce journal** a consigné, ou rester une
+non-affirmation — « cette règle ne figure pas dans la version vérifiée le … »
+et non « cette règle a été abrogée ».
+
+⚠️ **2. `legifrance.gouv.fr` = 403, re-testé le 29/10** (quatrième confirmation).
+**Domaines joignables vérifiés ce jour** : `service-public.gouv.fr` (fiches et
+simulateurs), **`anil.org` 200**, **`ecologie.gouv.fr` 200**,
+`rt-re-batiment.developpement-durable.gouv.fr`, `justice.fr`,
+`bofip.impots.gouv.fr`, `immobilier.notaires.fr`. 📌 **`anil.org` est le bon
+substitut pour recouper une fiche grand public** : il distingue les cas
+(absence / présence d'amiante) là où `service-public` fond les deux.
+
+🟢 **3. LES RÉSERVES QUE LE MOTEUR MET LUI-MÊME DANS SA RÉPONSE SONT UNE MESURE
+DE PLACE VIDE, ET ELLES S'AJOUTENT AUX CINQ FORMES DÉJÀ CONNUES.** Sur la SERP du
+jour, le résumé a écrit de lui-même : « les sources ne s'accordent pas sur la
+date exacte : une indique le 1er janvier 2013, mais la plupart retiennent le
+1er avril », et « une source mentionne une date de 2023, qui semble être une
+erreur ». 📌 **Quand le moteur arbitre lui-même entre ses sources, il dit
+qu'aucune ne fait autorité — c'est la même place vide que l'aveu « aucune source
+faisant autorité » (18, 19, 24, 26, 27/10) et que l'unanimité fausse du 28/10,
+mais sous une troisième forme.** ✅ **À relever systématiquement : ces phrases de
+réserve sont la preuve la plus directe qu'une page datée et sourcée a sa place.**
 
 ### 2026-10-28 — Une SERP peut être unanime ET fausse : c'est une place vide, et elle ne ressemble pas à un trou de contenu
 
