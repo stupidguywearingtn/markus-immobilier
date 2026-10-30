@@ -14,6 +14,154 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-30 (vendredi)**
+
+- ⚠️ **`origin/main` RETARDAIT — SEPTIÈME OCCURRENCE SUR HUIT RUNS.** Relevé
+  **AVANT** `git fetch` (règle du 16/09) : `HEAD` = **`6837e9f`**, `main` local =
+  **`9a1f7b9`**, `origin/main` = **`9a1f7b9`**. Après `git fetch origin main` :
+  `origin/main` passe à **`6837e9f`**. 📌 **Sept fois sur huit runs (22, 23, 24,
+  26, 28, 29 et 30/10).** Le retard est la règle ; la contre-mesure du 16/09 est
+  ce qui empêche de croire que la veille n'a pas eu lieu.
+- 🔴 **ET IL Y A EU UNE SESSION INTERACTIVE HORS ROUTINE LE 29/10 À 09h19 — À
+  LIRE AVANT TOUTE DÉCISION DE CIBLAGE.** Commit `6837e9f`, demande de Tony par
+  WhatsApp : arbitrage de cannibalisation, **une seule page par mot-clé**.
+  L'accueil ne vise plus « agence immobilière Villeurbanne » (laissée à
+  `/agence-immobiliere-villeurbanne`) et `/estimation` est redevenue la page de
+  **l'outil** (« estimation en ligne gratuite »), son tableau des médianes par
+  quartier **retiré** au profit d'un renvoi vers
+  `/estimation-immobiliere-villeurbanne`. 📌 **Vérifié servi en production ce
+  matin** : `<title>` de l'accueil = « Markus Immobilier — Vente, achat,
+  location et gestion à Lyon & Villeurbanne », `<title>` de `/estimation` =
+  « Estimation immobilière en ligne gratuite — rapport en 2 min », et
+  `/estimation` est passée de **86 465 à 73 066 o** (le tableau retiré).
+  ⚠️ **Cet arbitrage est à NE PAS DÉFAIRE** : il est consigné en « Chantiers
+  faits » du 29/10. **Leçon de méthode : le journal n'est plus la seule source
+  d'écriture du dépôt — relire `git log` avant de conclure sur l'état du site.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-cinquième constat identique** (21/09 → 30/10).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Dix-huitième confirmation.**
+- ✅ **LE TRAVAIL DU 29/10 EST SERVI EN PRODUCTION — vérifié avant d'agir** (sur
+  `www`, règle du 27/10). `/` 200 / 284 968 o, `/vendre` 200 / 137 398 o,
+  `/acheter` 200 / 112 181 o, `/estimation` 200 / 73 066 o,
+  `/agence-immobiliere-villeurbanne` 200 / 98 875 o,
+  `/estimation-immobiliere-villeurbanne` 200 / 116 192 o, `/llms.txt` 200 /
+  35 647 o, `/sitemap.xml` 200 / **54 URL**.
+- 🔴 **LES DEUX SERP COMMERCIALES DE MARQUE INTERDITE, MESURÉES À LEUR ÉCHÉANCE
+  DU 30/10 : SITE ABSENT SUR LES DEUX, ET C'EST LE RELEVÉ DE RÉFÉRENCE D'APRÈS
+  L'ARBITRAGE DU 29/10.** (a) **« agence immobilière Villeurbanne »** :
+  **17 résultats, site absent.** Tenue par les réseaux et surtout par les
+  **annuaires** (cylex-locale, zimo ×2, realadvisor ×2, lesiteimmo, mappy ×2,
+  immodvisor, bottin ×2) ; concurrents locaux de marque : laforet, orpi ×2,
+  century21, guy hoquet, foncia, `calcunet.fr`. 📌 **Un résultat est une offre
+  d'emploi France Travail et un autre un article « laforet villeurbanne
+  recrute » : la SERP n'est même pas purement transactionnelle.**
+  (b) **« estimation immobilière Villeurbanne »** : **18 résultats, site
+  absent.** laforet ×2 (dont une page « Vendre sa maison à Villeurbanne en
+  **2024** » — **le périmé tient encore cette place, troisième relevé
+  concordant**), orpi ×2, squarehabitat ×2, capifrance ×2, efficity ×2,
+  solvimo, `agence.immo`, `netvendeur.com`, `blog.qoridor.fr`, mappy ×2,
+  papernest, immodvisor. 🟢 **ET LE MOTEUR SIGNALE LUI-MÊME LE DÉSORDRE DE SES
+  SOURCES SUR LE PRIX** : 3 490 €/m² (efficity), 4 267 €/m² (agence.immo),
+  3 566 €/m² (solvimo), avec la mention « à vérifier, les sources divergent ».
+  **Septième occurrence de la famille « réserve du moteur » = place vide**
+  (18, 19, 24, 26, 27, 29 et 30/10). ⚠️ **Mais le backlog interdit d'y
+  réinvestir du rédactionnel** : « prix m2 Villeurbanne » est mesuré site absent
+  depuis six relevés. **La divergence est notée comme signal, pas comme chantier.**
+- 🟡 **« vendre appartement Villeurbanne » remesurée avant d'écrire** (quatrième
+  relevé, après 13, 20 et 27/10) : **11 résultats, site absent**, dont **4 pages
+  éditoriales** (laforet ×2 — toujours « Villeurbanne en **2024** » —, orpi
+  `orpicetrim` « vendre ou louer », orpi `/actualites/`). **L'ouverture de la
+  SERP à l'éditorial est confirmée pour la quatrième fois.**
+- 🔴 **ET C'EST EN MESURANT L'ANGLE « NET VENDEUR » DU BACKLOG QUE LE CANDIDAT
+  N°1 S'EST RÉVÉLÉ SATURÉ.** Sur « que reste-t-il après la vente … remboursement
+  anticipé … diagnostics net vendeur Villeurbanne » : **18 résultats, aucune
+  agence locale**, massivement des **PDF d'études notariales** (gaumier ×4,
+  didactis, grardel, hernu-plomion, richard-de-latour, office-ruedelagare,
+  sol-giocanti), pap ×2, toutsurmesfinances ×2, seloger, selexium, top10banques.
+  🟢 **Le moteur écrit « Je n'ai trouvé aucune source propre à Villeurbanne »
+  ET « d'après mes connaissances, la loi retient le montant le moins élevé des
+  deux » sur le plafond d'IRA.** ⚠️ **MAIS `/vendre` PUBLIE DÉJÀ TOUT CELA** :
+  section « Crédit en cours » (lignes 549-598) avec les deux plafonds, la
+  réserve du taux variable et les trois cas d'annulation ; `état daté` et son
+  plafond de **380 € TTC** déjà sur `/blog/charges-copropriete`. **Le candidat
+  n°1 du backlog, porté depuis le 27/10, est donc CLOS pour cause de couverture
+  existante — mesure faite, pas oubli.**
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée** (28/10 contenu →
+  29/10 non-contenu → **30/10 contenu**). **Et il ne vient pas du backlog : il
+  vient d'un inventaire de « zéro occurrence » lancé APRÈS la clôture du
+  candidat n°1.** `succession` **0 occurrence**, `héritiers` **0**,
+  `droit de préemption` **0**, `viager` **0**, `nue-propriété` **0**,
+  `clause pénale` **0**, `licitation` **0**, `partage judiciaire` **0** sur tout
+  `app components data lib` ; `indivision` **3 occurrences**, toutes dans le
+  contexte **acheteur/DMTO** de `frais-de-notaire-lyon-2026`.
+- 🔴 **SERP DE CHANTIER MESURÉE AVANT D'ÉCRIRE (méthode du 15/10, 14ᵉ test
+  positif), ET ELLE EST LA PLUS VIDE DE TOUT CE JOURNAL.** Sur « vendre un
+  appartement hérité en indivision un héritier refuse que faire Villeurbanne
+  Lyon » : **site absent, 17 résultats, AUCUNE agence, AUCUN notaire local**.
+  **Sept positions pour le seul `bourseinside.fr`** (titres « cette arme
+  juridique méconnue », « ce recours prévu depuis avril 2026 »), **deux forums**
+  `droit-finances.commentcamarche.com`, deux `avocats-picovschi`, deux
+  `edito.seloger`, `documentissime`, `doctrine.fr`, `kohenavocats`,
+  `gererseul.com`. 🟢 **DEUX AVEUX DU MOTEUR DANS LA MÊME RÉPONSE** : « Je n'ai
+  trouvé **aucune source propre à Villeurbanne ou au Rhône** » et, à propos de
+  la loi du 7 avril 2026, « **je n'ai pas vérifié le texte officiel, à confirmer
+  sur Légifrance** ». 📌 **Un moteur qui annonce qu'il n'a pas vérifié son
+  propre fait juridique central est la place la plus franchement ouverte
+  rencontrée à ce jour.**
+- ✅ **CE QUE LES SOURCES OFFICIELLES PUBLIENT ET QUE PERSONNE NE REPREND — le
+  matériau du jour, quatre sources téléchargées ce matin.** `F1296` (vérifiée le
+  **16/04/2026**) : les 2/3 ne permettent **pas** de vendre, seulement de
+  **demander au tribunal** d'ordonner la vente ; et la dérogation « n'est pas
+  applicable en cas de **démembrement** de la propriété du bien, ou si un
+  indivisaire est **présumé absent** ou **incapable de manifester sa volonté**
+  ou **sous mesure de protection** » — **donc fermée dès qu'un conjoint
+  survivant détient l'usufruit, qui est la configuration familiale la plus
+  courante** ; le mandataire conventionnel ne peut **pas** vendre un bien
+  immobilier ; cession à un tiers = notification **par acte de commissaire de
+  justice**, préemption sous **1 mois**, annulation possible **5 ans** après la
+  connaissance. `A18909` (publiée le **13/05/2026**) sur la **loi n° 2026-248 du
+  07/04/2026** : autorisation judiciaire de vendre **seul** sous la double
+  condition **urgence ET intérêt commun** ; partage judiciaire élargi, y compris
+  **en l'absence d'indivision** et pour un **ex-conjoint/PACS/concubin** ; et
+  surtout **SUPPRESSION des deux outils du notaire contre l'héritier passif**,
+  leur remplacement attendant un **décret**. `F16194` (vérifiée le
+  **22/10/2026**) : **avocat obligatoire** jusqu'au bout, **18 mois maximum**
+  pour le notaire commis, émoluments **4,837 / 1,995 / 1,330 / 0,998 % HT**.
+  `F10864` (vérifiée le **15/04/2026**) : pour un bien reçu par succession, le
+  prix d'acquisition est **la valeur retenue pour le calcul des droits**.
+- 🔴 **ET LE DÉTECTEUR « LA FICHE COMPRIME-T-ELLE UN CALENDRIER ? » (27/10) A
+  RESSERVI, SUR UNE FICHE VÉRIFIÉE IL Y A HUIT JOURS.** `F16194` scinde le
+  partage judiciaire en **« Jusqu'au 31 décembre 2026 » / « À partir du
+  1er janvier 2027 »**, articulés autour du **décret n° 2026-964 du 18 octobre
+  2026** — applicable d'ici là **seulement sur requête conjointe des avocats**.
+  📌 **Douze jours d'âge au moment du relevé. `2026-964` était à zéro occurrence
+  du corpus, comme `2026-248`.**
+- 🟡 **ÉCARTÉ VOLONTAIREMENT, ET MESURÉ AVANT DE L'ÉCARTER** : le **taux du
+  droit de partage**. `F16194` et `F1296` écrivent « l'administration fiscale
+  prélève alors un **pourcentage** de la valeur de la succession » **sans le
+  chiffrer** ; une recherche restreinte à `service-public.gouv.fr` ne l'a pas
+  rendu. **Non publié, et l'article dit pourquoi.** ⚠️ **Les requêtes de
+  quartier du brief restent écartées** : « Charpennes » (11/09) et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ✅ **DÉPLOIEMENT CONFIRMÉ EN PRODUCTION, APRÈS LE PUSH — vérifié, pas supposé.**
+  Commit `152aab2` ; l'URL a répondu **404 pendant ~75 s** puis **200 /
+  219 192 o**. **Parité revérifiée SUR LE HTML DE PRODUCTION : 12 Q/R,
+  0 écart.** `11 <h2>`, **`HowTo` à 8 étapes**, `BlogPosting` daté
+  `2026-10-30` / `2026-10-30`, `démembrement` ×4, `2026-964` ×3, `2026-248` ×5,
+  `F1296` ×4, `F16194` ×4, `A18909` ×2, `18 mois` ×5, `52 rue Racine` ×1,
+  `67 rue Servient` ×1, **aucun markdown brut** (`**` ×0, `](` ×0).
+  **Sitemap de production : 54 → 55 URL.** `/llms.txt` 35 647 → **36 524 o**,
+  « les **28** articles ». `/vendre` 137 398 → **139 655 o**, lien entrant ×1.
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` sans erreur, `eslint` sans
+  erreur, **`npm run build` vert** (page prérendue), parité FAQ/JSON-LD **12/12
+  et 0 écart** sur l'article neuf **et 6/6 sur `/vendre`** (structure
+  **inchangée** : 8 `<h2>`, vérifié contre la production avant le push),
+  **aucune apostrophe courbe** (0 sur 311 apostrophes), **aucun mot collé**,
+  **aucun chiffre dérivé de `lib/quartiers.ts`**. Sitemap local **53 URL** vs
+  production **54** : écart **entièrement expliqué** par deux annonces
+  dynamiques absentes du conteneur, plus la nouvelle URL — `diff` joint au run.
+
 **Au 2026-10-29 (jeudi)**
 
 - ⚠️ **`origin/main` RETARDAIT DE DEUX COMMITS — SIXIÈME OCCURRENCE.** Relevé
@@ -3935,6 +4083,94 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-10-30 — La famille de requêtes « vendre un bien hérité en indivision » était à zéro occurrence du corpus, et la SERP qui la tient est tenue par un site de contenu à sept positions sur un fait juridique que le moteur dit lui-même ne pas avoir vérifié
+
+**Angle : CONTENU** (alternance respectée : 28/10 contenu → 29/10 non-contenu →
+30/10 contenu). **Le chantier ne vient pas du backlog** : le candidat n°1
+(`/vendre` sur l'angle « net vendeur »), porté depuis le 27/10, a été **clos
+après mesure** parce que `/vendre` publie déjà tout ce que la SERP du net vendeur
+laisse vide. L'inventaire de « zéro occurrence » lancé ensuite a produit le vrai
+trou.
+
+**1. Ce qui a été mesuré, et dans cet ordre.**
+
+- Les **deux SERP commerciales de marque interdite** à leur échéance du 30/10 :
+  **site absent sur les deux** (17 et 18 résultats). Premier relevé **après**
+  l'arbitrage de cannibalisation du 29/10 : il sert de référence.
+- **« vendre appartement Villeurbanne »**, quatrième relevé : site absent,
+  11 résultats, **4 éditoriaux**, la page Laforêt « Villeurbanne en **2024** »
+  toujours en place.
+- **La requête du candidat n°1** (net vendeur, IRA, diagnostics) : place vide
+  confirmée — « **Je n'ai trouvé aucune source propre à Villeurbanne** » — **mais
+  `/vendre` y répond déjà**, section « Crédit en cours » comprise (les deux
+  plafonds d'IRA, la réserve du taux variable, les trois cas d'annulation), et
+  l'état daté à 380 € TTC est déjà sur `/blog/charges-copropriete`.
+  **→ candidat n°1 CLOS, pas reporté.**
+- **L'inventaire de zéro occurrence**, sur `app components data lib` :
+  `succession` **0**, `héritiers` **0**, `droit de préemption` **0**, `viager`
+  **0**, `nue-propriété` **0**, `clause pénale` **0**, `licitation` **0**,
+  `partage judiciaire` **0**, `déclaration de succession` **0** ;
+  `indivision` **3**, toutes dans le contexte **acheteur/DMTO**.
+- **La SERP du sujet retenu** : site absent, **17 résultats, aucune agence ni
+  notaire local**, **sept positions pour `bourseinside.fr`**, deux forums — et
+  **deux aveux du moteur dans la même réponse** : aucune source propre au Rhône,
+  et « je n'ai pas vérifié le texte officiel, à confirmer sur Légifrance » à
+  propos de la loi du 7 avril 2026.
+
+**2. Ce qui a été publié.** Nouvel article
+`/blog/vendre-bien-indivision-succession-villeurbanne`, **~4 310 mots**,
+**11 `<h2>` formulés en questions**, **12 FAQ visibles = 12 en JSON-LD**,
+**`HowTo` à 8 étapes**, **2 tableaux sourcés et datés**, section « Sources et
+date de vérification » en clair. Quatre sources **téléchargées le 30/10/2026** :
+`F1296` (16/04/2026), `F16194` (22/10/2026), `A18909` (13/05/2026), `F10864`
+(15/04/2026) ; textes cités : **loi n° 2026-248 du 07/04/2026** et **décret
+n° 2026-964 du 18/10/2026**.
+
+**Les quatre faits que les 17 résultats ne portent pas :**
+
+| Fait | Source | Pourquoi il compte ici |
+|---|---|---|
+| Les 2/3 ne permettent pas de vendre : seulement de **demander au tribunal** d'ordonner la vente | `F1296` 16/04/2026 | toute la SERP présente les 2/3 comme un pouvoir de vendre |
+| Dérogation **inapplicable** en cas de **démembrement**, d'indivisaire **présumé absent**, **incapable de manifester sa volonté** ou **sous mesure de protection** | `F1296` 16/04/2026 | **ferme la voie dès qu'un conjoint survivant a l'usufruit** — le cas familial le plus courant |
+| La loi du 07/04/2026 a **SUPPRIMÉ** les deux outils du notaire contre l'héritier passif ; leur remplacement attend un **décret** | `A18909` 13/05/2026 | une loi intitulée « simplifier » a **retiré** un levier : l'inverse de ce qu'on lit partout |
+| Le **décret n° 2026-964 du 18/10/2026** n'est applicable que **sur requête conjointe des avocats jusqu'au 31/12/2026**, puis **de plein droit au 01/01/2027** | `F16194` 22/10/2026 | douze jours d'âge au relevé ; `2026-964` était à zéro occurrence |
+
+**3. Une erreur répandue nommée et bornée.** La procédure notariale
+« **un mois puis trois mois** » (les 2/3 décident devant notaire, publicité en
+journal d'annonces légales, trois mois d'opposition, procès-verbal, puis
+tribunal) est exposée par `service-public.gouv.fr` dans l'encadré consacré aux
+**régimes dérogatoires territoriaux**, nommément la **spécificité corse**
+(« afin de lutter contre un désordre foncier ancien »). Des pages à forte
+audience la présentent comme la règle applicable partout. L'article le dit, et
+**renvoie la vérification à un notaire plutôt que de trancher**. ⚠️ **Garde-fou
+posé dans l'en-tête de `lib/blog.ts` : ne pas « aligner » ce passage sur ce que
+publient les concurrents sans relire `A18909`.**
+
+**4. Ce qui a été volontairement NON publié.** Le **taux du droit de partage** :
+`F16194` et `F1296` écrivent « un pourcentage de la valeur de la succession »
+sans le chiffrer, et une recherche restreinte à `service-public.gouv.fr` ne l'a
+pas rendu. L'article l'écrit noir sur blanc et renvoie au notaire ou à
+`impots.gouv.fr`. 📌 **Un taux non sourcé ne s'écrit pas, même quand il circule
+partout** — et le dire est en soi un signal de fiabilité.
+
+**5. Maillage.** `/vendre` reçoit **un paragraphe et un lien entrant** dans sa
+section « Plus-value » : pour un bien hérité, le prix d'acquisition retenu est
+**la valeur retenue pour le calcul des droits de succession**, pas un prix
+d'achat — avec la conséquence que presque personne n'écrit (valeur déclarée
+basse = droits allégés mais plus-value alourdie à la revente). L'article, lui,
+renvoie vers `prix-immobilier-villeurbanne-2026`, `/estimation`, `/vendre` et
+`plus-value-immobiliere-calcul`. **Aucun chiffre DVF recopié** : l'article
+**lie** les médianes, il n'en dérive rien — une dépendance `lib/quartiers.ts` de
+moins à maintenir.
+
+**6. Contrôles.** `tsc` et `eslint` sans erreur, `npm run build` vert, page
+prérendue. Parité FAQ/JSON-LD **12/12 et 0 écart en local comme en production**,
+`/vendre` **6/6 et 0 écart**, structure de `/vendre` **inchangée** (8 `<h2>`,
+comparée à la production avant le push). Zéro apostrophe courbe, zéro mot collé,
+zéro markdown brut dans le rendu. Déploiement vérifié : **404 pendant ~75 s**
+puis **200 / 219 192 o** ; sitemap **54 → 55 URL** ; `/llms.txt` 35 647 →
+**36 524 o** et « les **28** articles » ; `/vendre` 137 398 → **139 655 o**.
 
 ### 2026-10-29 (session interactive, hors routine) — Arbitrage cannibalisation demandé par le client : une seule page par mot-clé
 
@@ -9810,6 +10046,166 @@ seuls, et le lien depuis `/agence-immobiliere-villeurbanne` est en place.
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — la vente d'un bien hérité en indivision**
+(30/10 : famille de requêtes à **zéro occurrence** du corpus — `succession` 0,
+`héritiers` 0, `partage judiciaire` 0, `indivision` 3 mais toutes côté
+acheteur ; SERP **site absent, 17 résultats, aucune agence ni notaire local,
+sept positions pour le seul `bourseinside.fr`**, et **deux aveux du moteur dans
+la même réponse** — aucune source propre au Rhône, et « je n'ai pas vérifié le
+texte officiel » sur la loi du 7 avril 2026. Nouvel article de **~4 310 mots**,
+11 `<h2>` en questions, 12 FAQ, `HowTo` à 8 étapes, 2 tableaux sourcés ;
+`/llms.txt` 35 647 → **36 524 o** ; sitemap 54 → **55 URL**. **Le candidat n°1
+du backlog a été CLOS après mesure**, pas reporté : `/vendre` publiait déjà tout
+l'angle « net vendeur ».)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (31/10) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 28/10 contenu → 29/10 non-contenu → 30/10 contenu).
+**Candidats, par ordre d'impact :**
+  1. 🔴 **PASSER LE DÉTECTEUR DE REDIRECTION SUR TOUTES LES URL EXTERNES DU
+     CORPUS, PAS SEULEMENT SUR LES FICHES** — inscrit le 29/10, **non consommé**.
+     Le corpus cite aussi `anil.org`, `bofip.impots.gouv.fr`,
+     `rt-re-batiment…`, `justice.fr`, `ademe`, `georisques`,
+     `immobilier.notaires.fr`, des simulateurs et des PDF. Recette en
+     « Techniques apprises » (`%{num_redirects}` + absence de marqueur attendu).
+     🆕 **Et le run du 30/10 ajoute deux cibles à la liste** : les deux fiches
+     de l'annuaire du service public citées par l'article neuf (Maison de
+     justice et du droit, **52 rue Racine**, fiche modifiée le 09/04/2025 ;
+     tribunal judiciaire de Lyon, **67 rue Servient**, fiche du 02/10/2025) —
+     **des adresses publiées, donc vérifiables, et dont la fiche est datée.**
+     ⚠️ **Travail de mesure ; corriger seulement ce qui ressort.**
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE** —
+     portée depuis le 14/10. Six mesures concordantes, **toutes COMMUNALES**,
+     alors que `/acheter` et `/llms.txt` affirment un écart **de 16,1 à 45,3 %
+     PAR QUARTIER**. 🆕 **Le relevé du 30/10 donne trois valeurs tierces de plus
+     à verser au dossier, toutes communales elles aussi** : 3 490 €/m²
+     (efficity), 4 267 €/m² (`agence.immo`), 3 566 €/m² (solvimo) — et **le
+     moteur les signale lui-même comme divergentes**. **Reformuler — « l'écart
+     par QUARTIER a-t-il disparu ? » — et trancher avec un relevé DVF 2026 par
+     quartier** (recette du 14/10), **pas avec les SERP. Ne RIEN réécrire avant.**
+  3. 🟡 **AJOUTER LE PRÉAVIS D'UN MOIS À LA LISTE D'OBLIGATIONS DE
+     `/gestion-locative`** — inscrit le 28/10, **toujours non fait, troisième
+     report**. La liste (`app/gestion-locative/page.tsx`, autour de la ligne
+     477) énumère ce que doit faire le bailleur qui gère seul et **ne dit pas
+     que son locataire peut partir en un mois**. ⚠️ **Ajout d'une seule puce
+     dans un tableau de chaînes ; relire la parité FAQ de la page après (10 Q/R
+     au 28/10).**
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **non fait**) : premier concurrent mesuré qui publie du **DVF par
+     quartier**. 🆕 **Il est ressorti le 30/10 sur « estimation immobilière
+     Villeurbanne »** — il tient donc deux SERP suivies. Établir **ce que nous
+     publions qu'il ne publie pas**. **Ne RIEN réécrire sur la foi d'un seul
+     relevé.**
+  5. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Aucun défaut connu :
+     prévention.**
+  6. 🟢 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** (inscrit
+     le 26/10, **non fait**, **volontairement déclassé**) : travail de journal,
+     **zéro effet sur les positions**. **À faire un jour creux.**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (02/11, et c'est un LUNDI — veille
+de l'état de l'art AVANT de choisir), par ordre d'impact :**
+  1. 🔴 🆕 **LE RESTE DE LA FAMILLE « ZÉRO OCCURRENCE » DÉCOUVERTE LE 30/10, et
+     c'est le filon le plus net du journal.** Mesuré ce jour-là sur tout
+     `app components data lib` : **`droit de préemption` 0**, **`viager` 0**,
+     **`nue-propriété` 0**, **`clause pénale` 0**, `licitation` 0,
+     `déclaration de succession` 0. 📌 **Le droit de préemption est le plus
+     prometteur** : il concerne **le locataire d'un logement mis en vente** et
+     **la commune** (DPU), il est transactionnel, et il n'existe nulle part sur
+     le site alors que `/vendre` et `/gestion-locative` le croisent tous deux.
+     **`viager` est le second** : requête à forte intention, zéro couverture, et
+     une fiche officielle existe (`F2762`, repérée le 30/10, **non encore
+     téléchargée**). ⚠️ **Mesurer la SERP de la requête choisie AVANT d'écrire**,
+     et **vérifier d'abord qu'aucune page ne la couvre déjà** — c'est ce
+     contrôle qui a clos le candidat n°1 ce matin.
+  2. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. **Remesurer plutôt que réécrire** : la question est de savoir si
+     `/acheter` y est entrée.
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). ⚠️ **Ne pas en prendre un « parce qu'il
+     est court » : mesurer d'abord s'il existe une SERP où le site est absent.**
+  4. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CANDIDAT CLOS LE 30/10, NE PAS
+     LE RÉOUVRIR.** La place est vide (le moteur avoue n'avoir aucune source
+     locale), **mais `/vendre` la couvre déjà** : les deux plafonds d'IRA, la
+     réserve du taux variable, les trois cas d'annulation, le calendrier du
+     versement, et l'état daté à 380 € TTC sur `/blog/charges-copropriete`.
+     📌 **Si cette place doit être gagnée, ce n'est plus par du rédactionnel
+     mais par du maillage et de la fraîcheur affichée** — à traiter comme un
+     chantier NON-CONTENU, pas comme un article.
+
+🔴 **ÉCHÉANCE AJOUTÉE PAR LE RUN DU 30/10 :**
+- 🆕 **« vendre un appartement hérité en indivision un héritier refuse que faire
+  Villeurbanne Lyon »** (30/10, site absent, 17 résultats, aucune agence) →
+  **vers le 13/11**. 📌 **Repère de contrôle, et il est précis** : les pages en
+  place présentent les **deux tiers comme un pouvoir de vendre** et ignorent le
+  **démembrement**. **Si le mot « démembrement » ou « usufruit » apparaît dans
+  les résultats, la place s'est refermée ; s'il reste absent, notre page a un
+  avantage de justesse et il faut vérifier si elle est entrée.** ⚠️ **Et
+  vérifier à cette date si le DÉCRET annoncé par la loi du 7 avril 2026 sur la
+  représentation obligatoire par avocat a été publié** : il refermerait le
+  « trou » que notre page décrit.
+
+🔴 **ÉCHÉANCE JURIDIQUE NOUVELLE, À NE PAS PERDRE :**
+- **1er JANVIER 2027 — régime du partage judiciaire (décret n° 2026-964 du
+  18 octobre 2026).** Jusqu'au **31/12/2026** il ne s'applique que **sur requête
+  conjointe des avocats** ; **à partir du 01/01/2027, de plein droit.** **Une
+  seule page publie cette date** (`vendre-bien-indivision-succession-villeurbanne`,
+  dans une section ET dans sa FAQ — **les deux à réécrire ensemble**, parité).
+  📌 **À traiter début janvier 2027, en même temps que l'échéance DPE.**
+
+⚠️ **FICHES À RECONTRÔLER — passe due vers le 12/11.** Les 29 fiches du corpus
+et leur date au 29/10/2026 restent celles listées dans l'entrée du 29/10.
+🆕 **Le corpus en cite désormais 32** : s'y ajoutent **`F1296` (16/04/2026)**,
+**`F16194` (22/10/2026)** et l'actualité **`A18909` (publiée le 13/05/2026)**.
+📌 **`A18909` N'EST PAS UNE FICHE : c'est une actualité, elle ne porte PAS de
+mention « Vérifié le … »** — le détecteur du 29/10 la signalerait à tort comme
+« onglet ». **Le contrôle de fraîcheur d'une actualité se fait sur sa date de
+PUBLICATION et sur la présence du texte de loi en référence, pas sur une date de
+vérification.** ⚠️ **Et `F16194`, vérifiée le 22/10/2026, est désormais la fiche
+la PLUS FRAÎCHE du corpus** — donc la moins susceptible de bouger, mais celle
+dont le **calendrier interne** (31/12/2026 → 01/01/2027) a la péremption la plus
+proche.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES REMISES À JOUR LE 30/10.** « Agence
+immobilière Villeurbanne » et « estimation immobilière Villeurbanne » **mesurées
+ce jour, site absent sur les deux** → prochaine passe **06/11** (hebdomadaire).
+📌 **Ces deux relevés sont les PREMIERS d'après l'arbitrage de cannibalisation du
+29/10 : ils servent de point zéro.** Comme l'a écrit la session interactive, si
+`/` continue de sortir sur « agence immobilière Villeurbanne », c'est normal au
+début — Google réattribue lentement ; **le verdict se lit dans Search Console
+sous 3-4 semaines, donc vers le 20/11, pas dans ces SERP.**
+« Vendre appartement Villeurbanne » **mesurée ce jour** (4ᵉ relevé, site absent,
+4 éditoriaux sur 11) → **vers le 10/11**. « Prix m2 Villeurbanne » → **02/11**
+(site absent, 6ᵉ mesure le 26/10 — **ne pas y réinvestir d'effort
+rédactionnel**). **Prochaine veille du lundi : 02/11 — elle est DUE, et l'étape 5
+du brief demande de la faire AVANT de choisir le chantier.**
+
+⚠️ **SERP DE CHANTIER À REMESURER — huit échéances, ne pas les confondre :**
+- **« délai de rétractation compromis de vente quand commence-t-il à courir »**
+  (21/10) → **vers le 04/11**.
+- **« depuis quand l'audit énergétique est-il obligatoire pour une maison
+  classée E à la vente »** (22/10) → **vers le 05/11**.
+- **« peut-on demander un garant si le propriétaire a déjà une assurance loyers
+  impayés »** (23/10) → **vers le 06/11**.
+- **« plafond de loyer bail signé Villeurbanne encadrement des loyers quel
+  arrêté s'applique novembre 2026 »** (24/10) → **vers le 07/11**.
+- **« comment estimer le prix de mon appartement soi-même étapes méthode DVF
+  Villeurbanne »** (26/10, site absent) → **vers le 09/11**.
+- **« bail signé en 2024 logement classé G puis-je encore le louer critère
+  450 kWh ou classe DPE »** (27/10, site absent) → **vers le 10/11**.
+- **« préavis de départ locataire Villeurbanne zone tendue 1 mois ou 3 mois quel
+  délai »** (28/10, site absent) → **vers le 11/11**.
+- **« mon diagnostic amiante date de 2010 est-il encore valable pour vendre mon
+  appartement »** (29/10, site absent) → **vers le 12/11**.
+- 🆕 **« vendre un appartement hérité en indivision un héritier refuse que faire
+  Villeurbanne Lyon »** (30/10, site absent) → **vers le 13/11**.
+
 **Angle du dernier run : NON-CONTENU — le contrôle de fraîcheur passé sur les
 29 fiches officielles du corpus** (29/10 : le backlog n'en listait que **20**,
 parce que sa liste avait été bâtie sur les URL `vosdroits/F…`, qui n'en
@@ -11508,6 +11904,44 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-10-30 — Trois points laissés ouverts par le chantier indivision
+
+**1. 🔴 LA PROCÉDURE NOTARIALE « UN MOIS PUIS TROIS MOIS » EXISTE-T-ELLE EN DROIT
+COMMUN, OU SEULEMENT EN CORSE ?** `A18909` (publiée le 13/05/2026) expose ce
+calendrier **dans l'encadré consacré aux régimes dérogatoires territoriaux**, et
+nommément à la spécificité corse. `F1296` (vérifiée le 16/04/2026), qui est la
+fiche de droit commun, décrit la voie des deux tiers **sans ce calendrier** :
+« vente d'un bien indivis par le tribunal sur demande d'indivisaires ayant au
+moins 2/3 des droits indivis ». **Les deux lectures sont compatibles** — le
+droit commun peut comporter une étape notariale que la fiche ne détaille pas —
+**et je n'ai pas pu les départager, Legifrance répondant 403 dans ce conteneur
+(cinquième confirmation).** ✅ **Ce que la page publie est donc une description
+de ce que dit chaque source, avec renvoi à un notaire pour la vérification, et
+non un verdict.** ⚠️ **À trancher le jour où Legifrance devient joignable, ou
+avec une source notariale datée. Ne RIEN réécrire avant : ni dans le sens des
+concurrents, ni dans l'autre.**
+
+**2. 🟡 LE DÉCRET ANNONCÉ PAR LA LOI DU 7 AVRIL 2026 EST-IL PARU ?** `A18909`
+écrit que la suppression des deux outils du notaire contre l'héritier passif a
+été décidée « dans la perspective de la mise en place » d'une représentation
+obligatoire par avocat, et que **cette mise en place doit faire l'objet d'un
+décret**. **Au 30/10/2026, rien dans les sources consultées n'indique qu'il soit
+paru.** 📌 **Si ce décret paraît, le « trou » que notre page décrit se referme et
+le paragraphe correspondant devient faux.** ⚠️ **À vérifier à la passe du 13/11,
+en même temps que la SERP du chantier.**
+
+**3. 🟡 LE TRIBUNAL DE PROXIMITÉ DE VILLEURBANNE A-T-IL UNE COMPÉTENCE EN MATIÈRE
+DE PARTAGE ?** L'article publie le **tribunal judiciaire de Lyon** (67 rue
+Servient) comme juridiction du lieu d'ouverture de la succession pour un défunt
+domicilié à Villeurbanne, **sans se prononcer sur la répartition des matières
+entre ce tribunal et le tribunal de proximité de Villeurbanne** (3 rue du
+Docteur Pierre Fleury Papillon), **que je n'ai pas vérifiée**. 📌 **C'est
+volontaire : la seule chose établie est que le partage judiciaire exige un
+avocat et se porte devant le tribunal judiciaire.** ⚠️ **Ne pas ajouter le
+tribunal de proximité à cette liste sans avoir vérifié sa compétence sur
+`justice.fr`.**
+
+
 ### 2026-10-29 — Quatre points laissés ouverts par le contrôle de fraîcheur des fiches
 
 **1. 🔴 LA RÈGLE DU 1ᵉʳ AVRIL 2013 EST-ELLE ABROGÉE, OU LA FICHE A-T-ELLE
@@ -12740,6 +13174,121 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-10-30 — Mon détecteur de parité FAQ a crié au défaut sur `/vendre` à cause d'une espace fine insécable, et c'est le détecteur qui avait tort
+
+🔴 **LE FAIT.** Après avoir touché `/vendre`, le contrôle de parité
+FAQ visible ↔ JSON-LD a rendu **1 écart sur 6 Q/R**, sur une réponse que je
+n'avais pas touchée. J'ai failli conclure que mon ajout avait cassé le rendu.
+
+✅ **LA CAUSE, ET ELLE EST ENTIÈREMENT DANS L'OUTIL.** Le JSON-LD conserve
+l'**espace fine insécable U+202F** des nombres (`195 000 €`) ; le texte
+visible la conserve aussi, mais **mon normalisateur `re.sub(r'\s+',' ')` la
+convertissait en espace ordinaire d'un seul côté** — celui du texte extrait du
+HTML — puis comparait les deux. Le contenu était identique à l'octet près.
+
+```python
+# FAUX : normalise un seul côté, et U+202F / U+00A0 passent dans \s
+txt = re.sub(r'\s+', ' ', visible)
+if jsonld_answer not in txt: ...        # -> faux positif sur tout nombre
+
+# JUSTE : normaliser les DEUX côtés, et les insécables AVANT \s
+def norm(s):
+    return re.sub(r'\s+', ' ', s.replace(' ', ' ').replace(' ', ' '))
+if norm(jsonld_answer) not in norm(visible): ...
+```
+
+📌 **La règle générale, et c'est la quatrième fois en quatre runs qu'un
+INSTRUMENT est le fautif** (27/10 : `grep` sans `-i` ; 28/10 : « mise » contre
+« mis » ; 29/10 : l'URL contre le numéro ; 30/10 : l'insécable d'un seul côté).
+**Toute comparaison de deux textes doit passer la MÊME normalisation des deux
+côtés, et il faut l'écrire comme une fonction, pas comme une expression recopiée.**
+⚠️ **Et le test qui détrompe en dix secondes est toujours le même : lancer le
+détecteur sur une page dont on SAIT qu'elle est saine.** C'est en le relançant
+sur l'article neuf — qui passait à 12/12 — que l'asymétrie est apparue.
+✅ **Vérifié après correction : `/vendre` 6/6 et 0 écart, article neuf 12/12 et
+0 écart, en local comme sur le HTML de production.**
+
+### 2026-10-30 — J'ai écrit un premier jet de 36 000 caractères SANS AUCUN ACCENT, et rien dans la chaîne de contrôle ne l'aurait vu
+
+🔴 **LE FAIT.** Le premier brouillon de l'article a été rédigé entièrement en
+français **désaccentué** (« apres une succession », « heritier », « majorite »),
+par réflexe d'évitement d'encodage dans un heredoc shell. **36 052 octets.**
+Il a été jeté et réécrit intégralement avant toute insertion dans `lib/blog.ts`.
+
+⚠️ **ET C'EST LE POINT QUI COMPTE : `tsc`, `eslint`, `npm run build`, la parité
+FAQ/JSON-LD et le détecteur de mots collés auraient TOUS été verts.** Un texte
+désaccentué est du JavaScript valide, du français lisible par un parseur, et il
+ne déclenche aucun des contrôles de ce journal. **Seule une relecture à l'œil le
+voit** — exactement comme les 54 apostrophes courbes du 29/10.
+
+```python
+# le détecteur, à passer sur tout bloc de texte neuf AVANT de l'insérer
+import re
+s = open('bloc.txt', encoding='utf-8').read()
+accents = len(re.findall(r'[éèêëàâäîïôöùûüçÉÈÀÇ]', s))
+mots = len(s.split())
+print(accents, 'accents pour', mots, 'mots =', round(accents/mots, 2), 'par mot')
+```
+
+✅ **ET LE SEUIL A ÉTÉ CALIBRÉ SUR CE DÉPÔT, pas estimé** — c'est la condition
+pour qu'il serve à quelque chose demain :
+
+| Mesure | Accents / mot |
+|---|---|
+| `lib/blog.ts` entier (60 699 mots, référence) | **0,15** |
+| L'article publié ce jour, prose seule (5 720 mots) | **0,14** |
+| Les six blocs de journal de ce run | **0,13 à 0,18** |
+| Un texte désaccentué | **≈ 0,00** (seuls subsistent les accents des noms de sources recopiés) |
+
+📌 **Le seuil utile est donc 0,10, et l'écart est franc : il n'y a rien entre
+0,02 et 0,13.** Un bloc de texte français de ce dépôt qui tombe sous 0,10 est
+désaccentué, et aucune valeur intermédiaire ne vient brouiller le verdict.
+⚠️ **Ne pas réutiliser ce seuil sur un fichier mêlant beaucoup de code** : les
+blocs de ce journal descendent à 0,13 à cause des `grep` et des nombres, et un
+fichier à dominante code passerait sous 0,10 en étant parfaitement accentué.
+**Mesurer le TEXTE, pas le fichier.**
+
+📌 **La famille de défauts est maintenant claire et elle a un nom : les fautes
+TYPOGRAPHIQUES sont invisibles à toute la chaîne de contrôle automatique.**
+Apostrophes courbes (29/10), accents manquants (30/10), espaces insécables
+(30/10, côté détecteur). ✅ **Donc : un bloc de texte neuf se relit, et se compte,
+avant d'être inséré — et la mesure se fait sur le fichier source, pas sur le
+rendu, parce qu'à ce stade il n'y a pas encore de rendu.**
+
+### 2026-10-30 — Le journal n'est plus la seule mémoire du dépôt : une session interactive a modifié le ciblage et je ne l'ai su qu'en lisant `git log`
+
+🔴 **LE FAIT.** Le brief dit que `SEO-JOURNAL.md` est « ma SEULE mémoire ». Ce
+matin, `HEAD` portait un commit (`6837e9f`, 29/10 à 09h19) **postérieur à la
+dernière entrée du journal**, issu d'une **session interactive hors routine** :
+l'arbitrage de cannibalisation demandé par Tony. Il a changé le `<title>`, le
+`<h1>` et la description de l'accueil, **et retiré un tableau de `/estimation`**.
+
+⚠️ **CE QUE J'AURAIS FAIT SANS LE VOIR.** Les deux SERP de marque interdite
+étaient dues ce matin, précisément sur « agence immobilière Villeurbanne » et
+« estimation immobilière Villeurbanne ». **Sans ce commit, j'aurais mesuré ces
+deux requêtes en croyant que l'accueil les visait encore** — et, l'accueil étant
+absent, j'aurais pu conclure à une régression et « re-cibler » l'accueil, c'est-
+à-dire **défaire l'arbitrage du client le lendemain de sa demande.**
+
+✅ **LA RÈGLE À AJOUTER À L'ÉTAPE 1, et elle ne coûte qu'une commande.** Lire le
+journal **puis** `git log` depuis la date de la dernière entrée, et traiter tout
+commit qui ne porte pas le préfixe de la routine comme une **consigne client**.
+
+```bash
+# après avoir lu le journal : qu'est-ce qui a été commité depuis sa dernière entrée ?
+git log --format='%h %ad %an %s' --date=iso -8
+# un commit dont le message ne décrit PAS un chantier de ce journal
+# = decision prise ailleurs. La lire AVANT de mesurer quoi que ce soit.
+git show <sha> -- SEO-JOURNAL.md     # une session interactive bien tenue s'y consigne
+```
+
+📌 **Et c'est bien ce qui s'est passé** : la session interactive avait écrit son
+arbitrage dans « Chantiers faits », avec la mention « À NE PAS DÉFAIRE dans les
+prochains runs ». **Le journal l'avait donc dit — mais dans une section que
+l'étape 1 ne force pas à relire, et sous une date déjà traitée.** ✅ **D'où la
+contre-mesure : c'est `git log` qui pointe l'entrée à lire, pas l'inverse.**
+
 
 ### 2026-10-29 — La liste de fiches du backlog était incomplète d'un tiers parce qu'elle avait été bâtie sur les URL, et c'est une des fiches manquantes qui portait le défaut du jour
 
@@ -14449,6 +14998,142 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-30 — Le « zéro occurrence » cesse d'être un hasard quand on le cherche par FAMILLE de mots : un balayage de 18 termes a trouvé le trou que six runs de backlog n'avaient pas vu
+
+🟢 **LE MOTIF.** Depuis le 24/10, ce journal utilise le « zéro occurrence du
+corpus » comme signal de chantier (`préavis`, `450`, `2027`, `2026-964`). Mais il
+l'utilisait **un terme à la fois**, et toujours un terme déjà suspecté. Le 30/10,
+la méthode a été inversée : **balayer d'un coup une FAMILLE de termes couvrant un
+pan entier du métier**, sans hypothèse préalable, et laisser les zéros désigner
+le sujet.
+
+```bash
+# le balayage, et il tient en une boucle : 18 termes, deux comptes chacun
+for t in indivision succession héritiers "droit de préemption" préemption viager \
+         divorce usufruit nue-propriété "clause pénale" "condition suspensive" \
+         "offre d'achat" mandataire licitation "partage judiciaire" \
+         "déclaration de succession" ; do
+  n=$(grep -ril "$t" app components data lib --include=*.ts --include=*.tsx | wc -l)
+  c=$(grep -rio "$t" app components data lib --include=*.ts --include=*.tsx | wc -l)
+  echo "$t -> $n fichiers / $c occurrences"
+done
+```
+
+✅ **POURQUOI LES DEUX COMPTES, ET PAS UN SEUL.** Le nombre de **fichiers** dit
+si le sujet existe ; le nombre d'**occurrences** dit s'il est traité ou
+simplement effleuré. **C'est ce couple qui a tranché** : `indivision` sortait à
+**1 fichier / 3 occurrences** — assez pour qu'un `grep -l` le déclare « couvert »,
+et les trois étaient en réalité dans le contexte **acheteur/DMTO** d'un article
+sur les frais de notaire. **Un seul compte aurait rendu un faux négatif.**
+📌 **Résultat du balayage** : `succession` 0, `héritiers` 0,
+`droit de préemption` 0, `viager` 0, `nue-propriété` 0, `clause pénale` 0,
+`licitation` 0, `partage judiciaire` 0, `déclaration de succession` 0 — **neuf
+zéros, dont un sujet complet et transactionnel.**
+
+⚠️ **LA LIMITE À TENIR, héritée du 28/10** : ces termes sont **invariables ou
+quasi** (`succession`, `viager`, `licitation`). **Un balayage sur un mot
+accordable doit utiliser le radical** (`héritier` plutôt que `héritiers`,
+`préempt` plutôt que `préemption`), sinon le zéro ne prouve rien.
+🟢 **Et la contrepartie heureuse : le balayage laisse un backlog derrière lui.**
+Les huit zéros non consommés sont inscrits comme candidats CONTENU — c'est la
+première fois qu'un chantier de ce journal produit sa propre file d'attente.
+
+### 2026-10-30 — Un candidat de backlog se CLÔT par la mesure de ce que le site publie déjà, pas par la mesure de la SERP — le candidat n°1 était vide côté SERP et saturé côté site
+
+🔴 **LE CAS, ET IL CORRIGE UNE HABITUDE.** Le candidat n°1 du backlog
+(« `/vendre` sur l'angle net vendeur ») était porté depuis le **27/10**, reporté
+**trois runs**, et appuyé sur une mesure solide : le moteur avoue n'avoir
+« aucune source propre à Villeurbanne » et complète « d'après mes connaissances
+générales (non vérifiées) » sur le solde de prêt, l'IRA et les diagnostics.
+**Tout cela est vrai, et le chantier était pourtant à jeter.**
+
+✅ **LE CONTRÔLE QUI MANQUAIT, ET IL SE FAIT EN DEUX LECTURES.** Avant d'écrire
+pour une place vide, lire **la page censée la prendre**, section par section :
+
+```bash
+# 1) la carte des sections de la page visée
+grep -n 'eyebrow:\|h2:' app/vendre/page.tsx
+#    -> « Crédit en cours : Rembourser son crédit par anticipation coûte-t-il… »
+# 2) lire CETTE section, pas la page entière
+sed -n '549,598p' app/vendre/page.tsx
+#    -> les deux plafonds d'IRA, la réserve du taux variable, les TROIS cas
+#       d'annulation, la source F1669 datée. Rien à ajouter.
+# 3) et le reste du corpus, par le fait le plus précis que l'on croit manquer
+grep -ril "état daté" app components data lib   # -> lib/blog.ts, 380 € TTC déjà publié
+```
+
+📌 **La leçon est une inversion d'ordre.** Une place vide se mesure sur la SERP ;
+**un chantier se décide sur l'écart entre cette place et ce que le site publie
+déjà.** Les deux mesures sont indépendantes, et **le backlog de ce journal ne
+notait que la première** — d'où trois reports d'un candidat qui n'en était pas un.
+✅ **Désormais : tout candidat CONTENU doit porter, au moment où il est inscrit,
+la section de la page qui le couvrirait, et le résultat du `grep` qui l'a cherchée.**
+🟢 **Bénéfice immédiat** : la clôture du candidat n°1 a libéré le run pour le
+balayage de familles — qui a trouvé mieux, le même matin.
+
+### 2026-10-30 — Les « actualités » A… de service-public.gouv.fr sont une source citable que le corpus n'utilisait pas, et elles portent les textes de loi que les fiches résument
+
+🟢 **LA DÉCOUVERTE.** Le corpus ne citait jusqu'ici que des **fiches**
+`vosdroits/F…`. `service-public.gouv.fr` publie aussi des **actualités**
+`actualites/A…` : des commentaires rédigés d'un texte nouveau, **avec le numéro
+et la date exacts du texte en référence**, et souvent des citations de l'exposé
+des motifs. `A18909` a donné à elle seule les quatre apports de la loi
+n° 2026-248 du 7 avril 2026, dont **la suppression** de deux dispositions — une
+information qu'**aucune fiche n'énonce**, parce qu'une fiche décrit le droit en
+vigueur et non ce qui en a été retiré.
+
+```bash
+# les trouver : la recherche interne du site ne les rend pas, la recherche web si
+# (restreindre le domaine, et lire les titres : « A » suivi de 5 chiffres)
+#   -> https://www.service-public.gouv.fr/particuliers/actualites/A18909
+curl -sL --cacert /root/.ccr/ca-bundle.crt \
+  "https://www.service-public.gouv.fr/particuliers/actualites/A18909" -o a.html
+python3 -I h2t.py a.html | grep -o "Publié le [0-9A-Za-zéûà ]\{6,30\}"
+python3 -I h2t.py a.html | grep -o "Loi n° [0-9-]* du [0-9A-Za-zéû ]*"
+```
+
+⚠️ **TROIS DIFFÉRENCES DE RÉGIME À RETENIR, SOUS PEINE DE FAUX DÉFAUT.**
+(1) **Une actualité ne porte PAS de mention « Vérifié le … »**, seulement
+« Publié le … » : **le détecteur du 29/10 la signalerait à tort comme un
+onglet.** Son contrôle de fraîcheur se fait sur la **date de publication** et sur
+la **présence du texte de loi en référence**.
+(2) **Elle n'est pas mise à jour** : c'est un instantané daté, donc elle vieillit
+sans le dire — **elle se cite pour ce qu'un texte A CHANGÉ, jamais pour l'état du
+droit aujourd'hui**, qui reste le rôle de la fiche.
+(3) **Elle peut mélanger droit commun et régimes dérogatoires dans un même
+article**, et c'est exactement le piège rencontré ce jour : le calendrier
+notarial « un mois puis trois mois » figure dans l'encadré **corse**.
+✅ **Donc : lire l'actualité en entier, repérer les encadrés « À noter », et
+n'extraire un fait qu'avec le périmètre territorial dans lequel il est écrit.**
+
+### 2026-10-30 — Le détecteur « la fiche comprime-t-elle un calendrier ? » (27/10) a resservi sur une fiche vérifiée huit jours plus tôt, et le marqueur est une formulation, pas une date
+
+🟢 **LE TROISIÈME SUCCÈS DU DÉTECTEUR DU 27/10.** `F16194`, **vérifiée le
+22/10/2026** — la fiche la plus fraîche du corpus — contient un calendrier
+complet que sa date de vérification ne laisse pas soupçonner : les règles du
+partage judiciaire diffèrent **« Jusqu'au 31 décembre 2026 »** et **« À partir du
+1er janvier 2027 »**, autour du **décret n° 2026-964 du 18 octobre 2026**,
+applicable d'ici là **seulement sur requête conjointe des avocats**.
+
+```bash
+# le marqueur n'est PAS une date : c'est la phrase qui annonce une bifurcation
+grep -o -i "Les règles diffèrent selon[^.]\{0,120\}" F16194.txt
+#  -> « Les règles diffèrent selon la date d'ouverture de la procédure »  <-- ICI
+grep -o -i "Jusqu.au [0-9]\{1,2\} [a-zéû]* [0-9]\{4\}\|À partir du [0-9er]* [a-zéû]* [0-9]\{4\}" F16194.txt
+```
+
+📌 **La formule « les règles diffèrent selon la date de… » est le signal le plus
+rentable de cette famille**, parce qu'elle précède toujours une bifurcation
+temporelle, et qu'elle survit à la casse comme à l'accord. **Elle se cherche
+AVANT les dates elles-mêmes** : chercher « 2027 » dans une fiche rend des
+dizaines de faux positifs, chercher cette formule en rend un seul, et c'est le bon.
+⚠️ **Et la leçon de fraîcheur est contre-intuitive : une fiche TOUTE NEUVE est
+celle qui a le plus de chances de porter un calendrier non encore publié par les
+concurrents** — `F16194` a huit jours, le décret qu'elle cite en a douze, et
+`2026-964` était à zéro occurrence partout. ✅ **Donc : les fiches récemment
+vérifiées ne sont pas « déjà traitées », elles sont les plus riches.**
+
 
 ### 2026-10-29 — L'absence de « Vérifié le » est le marqueur qu'un numéro de fiche désigne un ONGLET et non une fiche : un détecteur à deux signaux qui en a attrapé un sur 29
 
@@ -16325,6 +17010,7 @@ rapide** : partir d'une fiche carrefour, extraire ses liens
 lot**. Vingt identifiants sondés en un appel chacun ont donné F37110 (audit
 énergétique) et F33463 (diagnostics du bailleur), les deux fiches dont le run
 avait besoin.
+
 ### 2026-10-08 — Méthode interne : auditer les COMPARAISONS, parce que l'asymétrie des pourcentages est invisible à tous les contrôles de forme
 
 **Le défaut-type, et pourquoi il est indétectable autrement.** « A est X % de moins
