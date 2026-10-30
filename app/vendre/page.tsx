@@ -536,11 +536,36 @@ export default function VendrePage() {
                   publie ce chiffre pour les sept quartiers villeurbannais, avec
                   le calcul déroulé étape par étape.
                 </p>
+                <p>
+                  <strong>
+                    Et si le bien a été hérité, le prix d&apos;acquisition
+                    n&apos;est pas un prix d&apos;achat : c&apos;est la valeur
+                    retenue pour le calcul des droits de succession.
+                  </strong>{" "}
+                  La plus-value se mesure donc par rapport à la valeur déclarée
+                  au moment de la succession, et non par rapport à ce que le
+                  défunt avait payé son logement — ce qui fait de la valeur
+                  déclarée un arbitrage à part entière, puisqu&apos;une valeur
+                  basse allège les droits de succession mais alourdit d&apos;autant
+                  l&apos;impôt à la revente. Lorsque plusieurs héritiers sont
+                  concernés, la vente suppose en outre de sortir de
+                  l&apos;indivision :{" "}
+                  <Link
+                    href="/blog/vendre-bien-indivision-succession-villeurbanne"
+                    className={A}
+                  >
+                    ce que la loi permet quand un héritier refuse de vendre
+                  </Link>{" "}
+                  détaille les majorités requises, les quatre cas où la
+                  dérogation des deux tiers est fermée et le calendrier du
+                  partage judiciaire.
+                </p>
                 <p className="text-[13px] text-[#6b7276]">
                   Source : service-public.gouv.fr, fiche F10864
                   « Impôt sur le revenu — Plus-value immobilière », consultée le
-                  30 septembre 2026. La plus-value est calculée et prélevée par
-                  le notaire le jour de l&apos;acte.
+                  30 septembre 2026 et revérifiée le 30 octobre 2026 (fiche
+                  vérifiée le 15 avril 2026). La plus-value est calculée et
+                  prélevée par le notaire le jour de l&apos;acte.
                 </p>
               </>
             ),

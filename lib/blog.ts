@@ -232,6 +232,34 @@
  * sur 2 065 (84,5 %) ont un compteur légal inférieur à leur total. Ne jamais
  * substituer `nombre_total_lots` à `nombre_lots_habitation_bureaux_commerces`
  * pour classer une copropriété dans un palier d'obligation.
+ *
+ * Depuis le 30/10/2026, « vendre-bien-indivision-succession-villeurbanne » couvre
+ * la vente d'un bien hérité en indivision — sujet qui était à ZÉRO occurrence de
+ * tout le corpus (« succession » et « héritiers » : 0 ; « indivision » : 3, toutes
+ * dans le contexte acheteur/DMTO de « frais-de-notaire-lyon-2026 »).
+ * ⚠️ Il ne DÉRIVE AUCUN chiffre de lib/quartiers.ts : il se contente de LIER
+ * « prix-immobilier-villeurbanne-2026 » et /estimation. Ne pas y introduire de
+ * médiane recopiée — ce serait une dépendance DVF de plus à maintenir.
+ * ⚠️ Ses affirmations de droit sont dérivées de fiches datées, téléchargées le
+ * 30/10/2026 : service-public F1296 (indivision entre héritiers, vérifiée le
+ * 16/04/2026), F16194 (partage des biens de la succession, 22/10/2026), F10864
+ * (plus-value, 15/04/2026), et l'actualité A18909 (publiée le 13/05/2026) qui
+ * commente la loi n° 2026-248 du 07/04/2026. À REVÉRIFIER fiche par fiche, jamais
+ * de mémoire ; la date affichée dans la section « Sources » doit bouger avec.
+ * 🔴 ÉCHÉANCE PROPRE À CET ARTICLE, indépendante des fiches : le décret
+ * n° 2026-964 du 18/10/2026 n'est applicable que sur requête conjointe des avocats
+ * JUSQU'AU 31/12/2026, puis de plein droit À PARTIR DU 01/01/2027. La formulation
+ * « jusqu'au 31 décembre 2026 / à partir du 1er janvier 2027 » devra donc être
+ * réécrite au passage de 2027, et la section ET la FAQ ensemble (parité).
+ * 🔴 ET UN POINT À NE PAS « CORRIGER » PAR MÉGARDE : l'article affirme que la
+ * procédure notariale « un mois puis trois mois » est exposée par
+ * service-public.gouv.fr dans l'encadré du RÉGIME DÉROGATOIRE CORSE, et non comme
+ * la règle de droit commun. C'est ce que dit A18909 relevée le 30/10/2026, et
+ * c'est le point sur lequel les pages concurrentes se trompent. Ne pas l'aligner
+ * sur ce que publient les autres sites sans relire A18909.
+ * ⚠️ Le TAUX du droit de partage est VOLONTAIREMENT absent : F16194 et F1296
+ * écrivent « un pourcentage de la valeur de la succession » sans le chiffrer.
+ * Ne pas l'ajouter de mémoire — il faudrait une source impots.gouv.fr datée.
  */
 
 export type Block =
@@ -2536,6 +2564,182 @@ export const ARTICLES: Article[] = [
       ] },
       { type: "h2", text: "L'intérêt" },
       { type: "p", text: "Bien optimisé, le LMNP permet de réduire fortement (voire d'annuler) l'impôt sur les loyers pendant des années." },
+    ],
+  },
+  {
+    slug: "vendre-bien-indivision-succession-villeurbanne",
+    title: "Vendre un bien en indivision après une succession, à Villeurbanne",
+    metaDescription:
+      "Un héritier refuse de vendre l'appartement familial ? Ce que l'unanimité, la majorité des deux tiers et l'autorisation judiciaire permettent vraiment, les quatre cas où les deux tiers ne suffisent pas, et ce qu'a changé la loi du 7 avril 2026.",
+    h1: "Vendre un appartement hérité en indivision : ce que la loi permet quand un héritier refuse",
+    excerpt:
+      "La vente d'un bien indivis se décide à l'unanimité, et la majorité des deux tiers ne permet PAS de vendre directement : elle permet seulement de demander au tribunal d'ordonner la vente. Cette dérogation est par ailleurs fermée dans quatre cas que presque personne ne publie, dont le plus fréquent dans une famille : dès que la propriété est démembrée entre un usufruitier et des nus-propriétaires. La loi n° 2026-248 du 7 avril 2026 a ouvert une autre voie — un seul indivisaire autorisé à vendre seul, à la double condition de l'urgence et de l'intérêt commun — et a supprimé les deux outils dont le notaire disposait contre un héritier passif, leur remplacement attendant encore un décret.",
+    date: "2026-10-30",
+    internalHref: "/vendre",
+    internalLabel: "Voir ce qui reste au vendeur",
+    blocks: [
+      { type: "p", text: "**Non, la majorité ne suffit pas : la vente d'un appartement indivis se décide à l'unanimité des héritiers.** La majorité des deux tiers des droits indivis ne permet pas de vendre — elle permet seulement de **demander au tribunal** d'ordonner la vente. Et cette dérogation est elle-même fermée dans quatre situations, dont la plus courante dans une famille : dès que la propriété est démembrée entre un usufruitier et des nus-propriétaires, c'est-à-dire la configuration typique d'un conjoint survivant et de ses enfants." },
+      { type: "p", text: "Cette page rassemble ce que disent les sources officielles au 30 octobre 2026 : la fiche service-public.gouv.fr **F1296 « Succession : indivision entre les héritiers », vérifiée le 16 avril 2026**, la fiche **F16194 « Partage des biens de la succession », vérifiée le 22 octobre 2026**, et l'actualité **A18909 publiée le 13 mai 2026** qui commente la **loi n° 2026-248 du 7 avril 2026**. Elle signale aussi, nommément, deux points sur lesquels les pages les mieux classées sur cette question se trompent." },
+
+      { type: "h2", text: "Peut-on vendre un appartement hérité si un seul héritier refuse ?" },
+      { type: "p", text: "**Non, pas directement.** La vente d'un bien immobilier est un acte de disposition : elle relève du principe de l'unanimité des indivisaires, et un seul refus suffit à la bloquer. Il existe des voies de contournement, mais toutes passent par un juge, et aucune ne consiste à passer outre par un simple vote." },
+      { type: "p", text: "L'indivision naît automatiquement au décès : avant le partage, les biens de la succession appartiennent indistinctement à tous les héritiers, aucun n'ayant de droit exclusif sur le logement. Chaque héritier, appelé indivisaire, détient une quote-part, perçoit les bénéfices du bien et en supporte les pertes à proportion de ses droits. La situation dure jusqu'au partage — et elle peut durer très longtemps : l'exposé des motifs de la loi du 7 avril 2026 relève que « certaines indivisions successorales litigieuses durent depuis 20, 30 ou 40 ans »." },
+      { type: "p", text: "Trois exceptions seulement écartent l'unanimité, et elles sont limitatives : lorsqu'un indivisaire est **incapable de manifester sa volonté** ; lorsqu'un indivisaire **met en péril l'intérêt commun** (les autres peuvent alors saisir le tribunal) ; et lorsque la vente est **ordonnée par le tribunal à la demande d'indivisaires détenant au moins deux tiers des droits indivis**. La troisième est celle que tout le monde cite — et c'est celle qui est le plus souvent mal décrite." },
+
+      { type: "h2", text: "La majorité des deux tiers suffit-elle pour vendre un bien indivis ?" },
+      { type: "p", text: "**Non. Les deux tiers ne permettent pas de vendre, ils permettent de demander au tribunal d'ordonner la vente.** La différence est décisive : le juge conserve son appréciation, et la vente peut lui être refusée. La majorité des deux tiers suffit en revanche, et sans juge, pour les actes de gestion courante du bien." },
+      { type: "p", text: "Ce que la majorité des deux tiers permet seule, c'est de conclure ou de renouveler un bail d'habitation, et de vendre des biens **meubles** indivis pour payer les dettes et les charges de l'indivision. Dans ces deux cas, la décision doit être communiquée aux autres indivisaires, faute de quoi elle ne leur est pas opposable. Un seul indivisaire, enfin, peut prendre seul les mesures nécessaires à la **conservation** du bien — refaire une toiture, remplacer une chaudière — même en l'absence d'urgence." },
+      {
+        type: "table",
+        caption: "Qui décide quoi dans une indivision successorale",
+        source: "service-public.gouv.fr, fiche F1296 « Succession : indivision entre les héritiers », vérifiée le 16 avril 2026. Relevé du 30 octobre 2026.",
+        headers: ["Décision", "Majorité requise", "Juge nécessaire ?"],
+        rows: [
+          ["Travaux de conservation du bien (toiture, chaudière)", "Un seul indivisaire", "Non"],
+          ["Conclure ou renouveler un bail d'habitation", "2/3 des droits indivis", "Non, mais décision à communiquer aux autres"],
+          ["Vendre des biens meubles pour payer les dettes de l'indivision", "2/3 des droits indivis", "Non, mais décision à communiquer aux autres"],
+          ["Vendre ou donner le bien immobilier", "Unanimité", "Non si unanimité"],
+          ["Vendre le bien immobilier malgré un refus", "2/3 des droits indivis pour saisir le tribunal", "Oui — le tribunal ordonne ou refuse"],
+          ["Vendre seul, sans l'accord des autres", "Un seul indivisaire", "Oui — urgence ET intérêt commun exigés"],
+          ["Désigner un mandataire pour gérer l'indivision", "Unanimité", "Non"],
+          ["Faire nommer un mandataire judiciaire en cas de mésentente", "Un seul indivisaire", "Oui"],
+        ],
+      },
+      { type: "p", text: "⚠️ **Et « deux tiers » ne veut pas dire « deux héritiers sur trois ».** Le seuil porte sur les **droits indivis**, pas sur le nombre de têtes, et la fiche officielle donne elle-même l'exemple qui le montre : s'il y a quatre indivisaires à parts égales, l'accord de trois d'entre eux est nécessaire ; mais si l'un des quatre détient la moitié des droits et que les trois autres se partagent l'autre moitié (16,66 % chacun), **celui qui détient 50 % n'a plus qu'un seul des trois autres à convaincre**. Dans une famille recomposée, ou après une donation antérieure, les quote-parts sont rarement égales : c'est le premier chiffre à établir, avant toute discussion." },
+
+      { type: "h2", text: "Dans quels cas la voie des deux tiers est-elle fermée ?" },
+      { type: "p", text: "**Dans quatre cas, et le premier est le plus fréquent dans une succession de famille : dès que la propriété du bien est démembrée.** La fiche officielle est explicite : la dérogation à l'unanimité « n'est pas applicable en cas de démembrement de la propriété du bien, ou si un indivisaire est présumé absent ou incapable de manifester sa volonté ou sous mesure de protection »." },
+      { type: "p", text: "Le démembrement, c'est la séparation entre l'**usufruit** — le droit d'utiliser le bien et d'en percevoir les loyers — et la **nue-propriété** — le droit d'en disposer, donc de le vendre. C'est exactement ce que produit la succession la plus ordinaire : le conjoint survivant recueille l'usufruit du logement, les enfants la nue-propriété. **Dans cette configuration, les deux tiers ne servent à rien** : la voie est fermée par le texte lui-même, quel que soit le nombre d'enfants d'accord pour vendre." },
+      { type: "p", text: "Les trois autres fermetures visent la protection d'un indivisaire vulnérable ou introuvable : un indivisaire **présumé absent**, un indivisaire **incapable de manifester sa volonté**, un indivisaire **sous mesure de protection** (tutelle, curatelle, habilitation familiale). La logique est la même dans les trois cas : on ne force pas la vente du patrimoine de celui qui n'est pas en mesure de se défendre. 📌 **Et c'est le point que les pages les mieux classées sur cette question omettent le plus souvent** : elles présentent les deux tiers comme la solution générale au blocage, sans dire qu'une seule tutelle, ou un seul usufruit, la rend indisponible." },
+      { type: "p", text: "À noter que ces fermetures concernent la seule dérogation des deux tiers. Elles ne ferment ni le partage judiciaire, ni l'autorisation de vendre seul, ni la cession de sa propre quote-part — trois voies examinées plus bas." },
+
+      { type: "h2", text: "Un seul héritier peut-il être autorisé à vendre seul le bien indivis ?" },
+      { type: "p", text: "**Oui, depuis la loi n° 2026-248 du 7 avril 2026, mais à deux conditions cumulatives : l'urgence et l'intérêt commun.** Le tribunal peut autoriser un indivisaire à conclure seul l'acte de vente d'un bien de l'indivision, sans l'accord des autres. Cette possibilité consacre dans le Code civil une jurisprudence de la Cour de cassation." },
+      { type: "p", text: "Les deux conditions ne sont pas interchangeables et elles s'additionnent. L'**urgence** n'est pas la lassitude de l'indivision, ni la volonté de solder un conflit ancien : la source officielle parle d'une vente « justifiée par une situation d'urgence ». L'**intérêt commun** suppose que la vente serve l'ensemble des indivisaires, pas seulement celui qui la demande. Un bien qui se dégrade faute de pouvoir financer les travaux, des charges que l'indivision ne couvre plus, un péril pour le bâti : ce sont les situations que ce texte vise." },
+      { type: "p", text: "🟢 **C'est la voie à connaître quand les deux tiers sont fermés.** Un enfant nu-propriétaire face à un usufruit, un héritier minoritaire face à un bien qui s'abîme : la dérogation des deux tiers lui est interdite, mais l'autorisation de vendre seul, elle, ne suppose aucun seuil de droits. Elle suppose de démontrer l'urgence, ce qui est une tout autre démonstration — et elle se prépare avec des pièces, pas avec des arguments." },
+
+      { type: "h2", text: "Que change exactement la loi du 7 avril 2026 pour une succession bloquée ?" },
+      { type: "p", text: "**Quatre choses, et l'une d'elles retire un outil au lieu d'en ajouter un.** La loi n° 2026-248 du 7 avril 2026 s'intitule « loi visant à simplifier la sortie de l'indivision et la gestion des successions vacantes ». Elle ouvre l'autorisation de vendre seul, élargit le partage judiciaire, précise le régime dérogatoire corse, et **supprime deux dispositions** qui permettaient au notaire de passer outre l'inertie d'un héritier." },
+      { type: "ul", items: [
+        "**Vendre seul sur autorisation du juge** : un indivisaire peut désormais obtenir l'autorisation judiciaire de conclure seul l'acte de vente, lorsque l'urgence et l'intérêt commun le justifient.",
+        "**Partage judiciaire élargi** : la procédure peut être déclenchée même **en l'absence d'indivision** entre les parties, lorsque la complexité des opérations de liquidation le justifie ou lorsque cette absence apparaît en cours d'instance. Elle peut en outre être demandée pour liquider et partager les intérêts patrimoniaux détenus avec un **ex-époux, un ex-partenaire de PACS ou un ex-concubin**.",
+        "**Deux outils supprimés contre l'héritier passif** : jusque-là, le notaire chargé du partage qui se heurtait à l'inertie d'un indivisaire pouvait le mettre en demeure de se faire représenter, puis, à défaut de réaction, demander au juge de désigner un mandataire pour le représenter. **Ces deux dispositions ont été supprimées.** Leur remplacement — une représentation obligatoire par un avocat à tous les stades de la procédure — doit faire l'objet d'un **décret** qui en précisera les modalités.",
+        "**Biens abandonnés** : lorsqu'un bien relève d'une succession ouverte depuis plus de **30 ans** et qu'aucun héritier ne s'est manifesté, l'administration fiscale doit transmettre au maire, ou au président d'EPCI qui le demande, les informations nécessaires à une procédure d'acquisition — à condition qu'il existe un doute légitime sur l'identité ou le décès du propriétaire.",
+      ] },
+      { type: "p", text: "⚠️ **Le point de vigilance du moment est le troisième.** Les deux leviers que le notaire pouvait actionner contre un héritier qui ne répond pas ont disparu, et le dispositif qui doit les remplacer attend son décret d'application. Une succession bloquée par un héritier simplement silencieux se trouve donc, à la date de cette page, dans une situation moins outillée qu'avant le 7 avril 2026 — et c'est l'inverse de ce que laisse entendre le titre de la loi." },
+      { type: "p", text: "🔴 **Et une confusion à écarter, parce qu'elle circule largement : la procédure notariale « un mois puis trois mois » n'est pas présentée comme la règle de droit commun.** Les deux tiers qui décident **devant notaire**, le notaire qui signale l'intention aux autres indivisaires sous un mois et en assure la publicité dans un journal d'annonces légales, par affichage et sur un site internet, les trois mois laissés aux autres pour s'y opposer, le procès-verbal d'opposition puis le tribunal qui autorise « à condition que cela ne porte pas une atteinte excessive aux droits des autres indivisaires » : service-public.gouv.fr expose ce calendrier dans l'encadré consacré aux **régimes dérogatoires territoriaux**, et nommément à la **spécificité corse**, mise en place « afin de lutter contre un désordre foncier ancien ». Des pages à forte audience le présentent comme le mécanisme applicable partout. Avant de s'engager sur ce calendrier pour un bien situé à Villeurbanne, il faut le faire vérifier par un notaire." },
+
+      { type: "h2", text: "Comment se passe un partage judiciaire, et combien de temps prend-il ?" },
+      { type: "p", text: "**Le partage judiciaire se demande au tribunal judiciaire du lieu d'ouverture de la succession, avec un avocat obligatoire jusqu'à la fin de la procédure.** Le tribunal peut désigner un notaire commis pour réaliser les opérations et un juge commis pour les surveiller. Le délai fixé au notaire commis est de **18 mois maximum**." },
+      { type: "p", text: "La demande doit comporter un descriptif du patrimoine à partager et préciser les intentions du demandeur sur la répartition des biens. Si l'affaire est en état d'être jugée, le tribunal ordonne le partage ; sinon, il désigne le juge commis et le notaire commis, et le juge commis prend en charge la mise en état. À tout moment, les héritiers peuvent abandonner la procédure judiciaire et reprendre un partage amiable si les conditions sont réunies." },
+      {
+        type: "steps",
+        name: "Sortir d'une indivision successorale quand un héritier bloque la vente",
+        items: [
+          { name: "Établissez les quote-parts avant toute discussion", text: "Le seuil des deux tiers porte sur les droits indivis, pas sur le nombre d'héritiers. Demandez au notaire chargé de la succession l'état exact des quote-parts : c'est lui qui détermine quelles voies vous sont ouvertes." },
+          { name: "Vérifiez si la propriété est démembrée", text: "Si un usufruit a été recueilli — par le conjoint survivant, le plus souvent — la dérogation des deux tiers est fermée par le texte. Inutile de la préparer : il faut viser le partage judiciaire ou l'autorisation de vendre seul." },
+          { name: "Tentez le partage amiable, et formalisez le refus", text: "Le partage amiable suppose l'accord de tous. Si un héritier refuse d'y participer, les autres peuvent lui exiger, **par acte de commissaire de justice**, de désigner une personne de son choix pour participer à sa place. Si un héritier ne donne pas signe de vie, le juge des tutelles peut être saisi pour faire désigner un représentant de l'héritier absent : le partage se fait alors à l'amiable, mais il doit être validé par le juge." },
+          { name: "Passez par le notaire dès qu'il y a un bien immobilier", text: "La présence d'un bien immobilier rend le notaire obligatoire, pour le partage comme pour une éventuelle convention d'indivision. C'est aussi lui qui chiffrera la valeur retenue et les émoluments." },
+          { name: "Choisissez votre voie judiciaire", text: "Trois sont possibles selon votre situation : la vente ordonnée par le tribunal à la demande des deux tiers des droits (fermée en cas de démembrement, d'absence présumée, d'incapacité ou de mesure de protection) ; l'autorisation donnée à un seul indivisaire de vendre seul, si l'urgence et l'intérêt commun le justifient ; ou la demande de partage judiciaire, ouverte à tout indivisaire." },
+          { name: "Prenez un avocat pour la voie judiciaire", text: "La représentation par avocat est obligatoire jusqu'à la fin de la procédure de partage judiciaire. Elle l'est aussi pour demander l'annulation d'un partage ou un complément de lot." },
+          { name: "Comptez le temps du notaire commis", text: "Lorsque le tribunal désigne un notaire commis, il fixe le délai dans lequel celui-ci doit remplir sa mission : **18 mois au maximum**. S'y ajoutent les délais propres à la procédure elle-même." },
+          { name: "Faites estimer le bien avant de partager, pas après", text: "Le partage attribue à chaque héritier des biens pour une valeur égale à ses droits, avec une soulte en argent si les lots sont inégaux. Un lot inférieur de plus d'un quart à ce qui était dû ouvre droit à un complément, mais seulement dans les deux ans. Les [prix réellement signés à Villeurbanne, quartier par quartier](/blog/prix-immobilier-villeurbanne-2026) sont le point de départ le plus difficile à contester." },
+        ],
+      },
+      { type: "p", text: "🔴 **Une échéance à connaître, et elle est à deux mois de cette page.** Les règles du partage judiciaire **changent selon la date d'ouverture de la procédure**. Jusqu'au **31 décembre 2026**, le régime applicable dépend de la désignation ou non d'un juge commis et d'un notaire commis, et de l'état de l'ordonnance de clôture — mais les avocats des héritiers peuvent demander au tribunal, **par requête conjointe**, l'application anticipée du **décret n° 2026-964 du 18 octobre 2026**. **À partir du 1er janvier 2027**, le régime de ce décret s'applique de plein droit : avocat obligatoire jusqu'au bout, partage ordonné si l'affaire est en état d'être jugée, désignation d'un juge commis et d'un notaire commis dans le cas contraire, 18 mois maximum pour le notaire commis. Une procédure engagée en novembre ou en décembre 2026 n'est donc pas gouvernée par les mêmes règles qu'une procédure engagée en janvier, sauf requête conjointe des avocats." },
+
+      { type: "h2", text: "Peut-on vendre seulement sa part, sans vendre l'appartement ?" },
+      { type: "p", text: "**Oui, et c'est la seule voie qui ne dépend ni d'une majorité ni d'un juge.** Un indivisaire peut vendre ses droits dans l'indivision. Mais s'il les cède à une personne étrangère à l'indivision, il doit d'abord notifier son intention aux autres indivisaires **par acte de commissaire de justice**, et ceux-ci sont prioritaires pour racheter la part." },
+      { type: "p", text: "La notification doit indiquer le prix, les conditions de la cession projetée, et les nom, domicile et profession de l'acquéreur pressenti. Chaque indivisaire dispose alors d'**un mois** à compter de cette notification pour faire savoir qu'il reprend la part aux prix et conditions notifiés. Une lettre, même recommandée, ne remplace pas l'acte de commissaire de justice : c'est la forme exigée par le texte." },
+      { type: "p", text: "⚠️ **Et le risque se prolonge bien au-delà de la vente.** Les coïndivisaires, ou leurs héritiers, peuvent demander l'**annulation de la vente dans les cinq ans** à partir du jour où ils en ont eu connaissance. Le délai ne court pas de la vente, mais de sa connaissance : une cession faite sans notification régulière reste attaquable longtemps, et c'est l'acquéreur qui en porte le risque." },
+      { type: "p", text: "À noter enfin ce que le mandataire désigné par convention ne peut pas faire. Les indivisaires peuvent nommer l'un d'entre eux, ou un tiers, pour gérer l'indivision, et cette désignation suppose l'accord de tous. Mais le mandataire **ne peut pas transmettre la propriété d'un bien** : la fiche officielle précise qu'« il lui est interdit de vendre un bien immobilier ». Confier la gestion à un héritier ne lui donne donc jamais le pouvoir de vendre le logement." },
+
+      { type: "h2", text: "Combien coûte la sortie d'indivision ?" },
+      { type: "p", text: "**Les émoluments du notaire sont réglementés et dégressifs : de 4,837 % HT sur la première tranche à 0,998 % HT au-delà de 60 000 €.** S'y ajoutent des honoraires et débours, un impôt appelé droit de partage dans certains partages entre cohéritiers, et, dans la voie judiciaire, les frais d'avocat et de justice." },
+      {
+        type: "table",
+        caption: "Émoluments proportionnels du notaire en matière de partage de succession",
+        source: "service-public.gouv.fr, fiche F16194 « Partage des biens de la succession », vérifiée le 22 octobre 2026 — barème en vigueur depuis janvier 2021. Relevé du 30 octobre 2026.",
+        headers: ["Tranche d'assiette", "Taux appliqué à l'actif brut"],
+        rows: [
+          ["De 0 € à 6 500 €", "4,837 % HT"],
+          ["De 6 500 € à 17 000 €", "1,995 % HT"],
+          ["De 17 000 € à 60 000 €", "1,330 % HT"],
+          ["Plus de 60 000 €", "0,998 % HT"],
+        ],
+      },
+      { type: "p", text: "Le barème est le même pour un partage amiable et pour un partage judiciaire : c'est la voie choisie qui change le reste. Le partage judiciaire ajoute les frais d'avocat — obligatoires jusqu'à la fin de la procédure — et les autres frais de justice, auxquels s'ajoute le temps : jusqu'à 18 mois pour la seule mission du notaire commis." },
+      { type: "p", text: "⚠️ **Un chiffre que cette page ne publie pas, volontairement.** Les deux fiches officielles mentionnent le droit de partage sans en donner le taux : elles écrivent que « l'administration fiscale prélève alors un pourcentage de la valeur de la succession ». Ce taux circule largement en ligne, mais il ne figure pas dans les sources que nous avons consultées le 30 octobre 2026 : demandez-le au notaire chargé du dossier, ou vérifiez-le sur impots.gouv.fr. Nous préférons écrire ce que nous avons vérifié." },
+
+      { type: "h2", text: "Quel impôt sur la plus-value quand on vend un bien hérité ?" },
+      { type: "p", text: "**Le prix d'acquisition retenu n'est pas un prix d'achat : c'est la valeur retenue pour le calcul des droits de succession.** La plus-value imposable se mesure donc par rapport à la valeur déclarée lors de la succession, et non par rapport à ce que le défunt avait payé son logement, parfois des décennies plus tôt." },
+      { type: "p", text: "La conséquence est importante et souvent mal anticipée : une valeur déclarée basse réduit les droits de succession, mais augmente d'autant la plus-value imposable à la revente. À l'inverse, une valeur déclarée proche du marché réel protège la revente. C'est un arbitrage qui se fait au moment de la déclaration de succession, pas au moment de la vente — et il est alors trop tard. Le détail du calcul, les abattements de durée de détention et les forfaits de frais sont sur notre page consacrée au [calcul de la plus-value immobilière](/blog/plus-value-immobiliere-calcul)." },
+      { type: "p", text: "Rappel qui vaut pour tous les héritiers : la fin de l'indivision a un **effet rétroactif**. L'héritier qui reçoit sa part en est réputé propriétaire **depuis le jour du décès**, et les autres sont réputés n'avoir jamais été propriétaires. Le partage ne crée pas une mutation nouvelle : il réécrit la propriété à la date du décès." },
+
+      { type: "h2", text: "À Villeurbanne, à qui s'adresser et dans quel ordre ?" },
+      { type: "p", text: "**D'abord le notaire chargé de la succession, parce que sa présence est obligatoire dès qu'il y a un bien immobilier ; ensuite, si le blocage persiste, un avocat, parce que la voie judiciaire l'exige.** Entre les deux, la Maison de justice et du droit de Villeurbanne donne une information juridique gratuite, utile pour comprendre sa situation avant d'engager des frais." },
+      { type: "ul", items: [
+        "**Notaire** : obligatoire si la succession comporte un bien immobilier, pour le partage comme pour une convention d'indivision. C'est lui qui établit les quote-parts, chiffre les émoluments et vérifie quelle voie est ouverte.",
+        "**Maison de justice et du droit de Villeurbanne**, 52 rue Racine, 69100 Villeurbanne — 04 78 85 42 40. Information juridique gratuite (fiche de l'annuaire du service public modifiée le 9 avril 2025, relevée le 30 octobre 2026).",
+        "**Tribunal judiciaire** : la demande de partage se porte devant le tribunal judiciaire du **lieu d'ouverture de la succession**, c'est-à-dire du dernier domicile du défunt. La demande de maintien dans l'indivision, elle, se porte devant le tribunal du **lieu où le bien est situé**. Pour un logement villeurbannais, le tribunal judiciaire est celui de Lyon, 67 rue Servient, 69003 Lyon — 04 72 60 70 12 (fiche de l'annuaire du service public mise à jour le 2 octobre 2025, relevée le 30 octobre 2026).",
+        "**Avocat** : obligatoire jusqu'à la fin de la procédure de partage judiciaire, ainsi que pour demander l'annulation d'un partage ou un complément de lot.",
+      ] },
+      { type: "p", text: "Une agence n'arbitre pas un conflit successoral et ne s'y substitue pas. Ce qu'elle apporte est plus étroit, et plus utile qu'il n'y paraît : une valeur défendable. Un partage se discute sur des chiffres, et un lot contesté se conteste sur une valeur. Les [prix réellement signés à Villeurbanne quartier par quartier](/blog/prix-immobilier-villeurbanne-2026) et notre [outil d'estimation gratuit](/estimation) donnent cette base ; le [décompte de ce qui reste au vendeur](/vendre) dit ensuite ce que chaque héritier percevra réellement, honoraires et remboursement de crédit déduits." },
+      { type: "p", text: "Enfin, deux possibilités à garder en tête lorsque la vente n'est pas souhaitée par tous. Les indivisaires peuvent conclure une **convention d'indivision** — écrite, listant les biens et précisant les droits de chacun, notariée s'il y a un bien immobilier, pour une durée déterminée de cinq ans renouvelable ou indéterminée. Et le tribunal peut, à l'inverse, **maintenir l'indivision** pour protéger les intérêts des indivisaires, notamment pour le local d'habitation utilisé par le défunt ou son époux au moment du décès : ce maintien ne peut pas dépasser cinq ans, renouvelable dans certains cas." },
+
+      { type: "h2", text: "Sources et date de vérification" },
+      { type: "p", text: "Les éléments de cette page ont été vérifiés le **30 octobre 2026** en téléchargeant chaque source ce jour-là : la fiche service-public.gouv.fr **F1296 « Succession : indivision entre les héritiers », vérifiée le 16 avril 2026** ; la fiche **F16194 « Partage des biens de la succession », vérifiée le 22 octobre 2026** ; l'actualité **A18909 « Successions : de nouvelles règles pour faciliter la résolution des conflits », publiée le 13 mai 2026** ; et la fiche **F10864 « Plus-value immobilière », vérifiée le 15 avril 2026** pour le prix d'acquisition d'un bien reçu par succession. Les textes cités par ces sources sont la **loi n° 2026-248 du 7 avril 2026** visant à simplifier la sortie de l'indivision et la gestion des successions vacantes, le **décret n° 2026-964 du 18 octobre 2026** sur le partage judiciaire, et les articles **813 à 815-1** et **1873-1** du Code civil. Les coordonnées des juridictions et de la Maison de justice et du droit proviennent de l'annuaire du service public, relevées le 30 octobre 2026." },
+      { type: "p", text: "Cette page expose le droit applicable ; elle ne remplace pas la consultation d'un notaire ou d'un avocat sur une situation particulière. Si une de ces fiches est revue, les règles exposées ici doivent être relues avant d'être reprises : c'est la raison pour laquelle chaque date de vérification est affichée." },
+    ],
+    faq: [
+      {
+        q: "Un seul héritier peut-il empêcher la vente d'un appartement hérité ?",
+        a: "Oui. La vente d'un bien immobilier indivis est un acte de disposition : elle se décide à l'unanimité des indivisaires, et un seul refus la bloque. Trois exceptions seulement écartent l'unanimité : l'indivisaire incapable de manifester sa volonté, l'indivisaire qui met en péril l'intérêt commun, et la vente ordonnée par le tribunal à la demande d'indivisaires détenant au moins deux tiers des droits indivis. Toutes passent par un juge. Source : service-public.gouv.fr, fiche F1296, vérifiée le 16 avril 2026.",
+      },
+      {
+        q: "La majorité des deux tiers permet-elle de vendre un bien en indivision ?",
+        a: "Non, pas directement. Les deux tiers des droits indivis permettent de demander au tribunal d'ordonner la vente, pas de la conclure : le juge garde son appréciation. La majorité des deux tiers suffit en revanche, sans juge, pour conclure ou renouveler un bail d'habitation et pour vendre des biens meubles afin de payer les dettes et les charges de l'indivision — la décision devant alors être communiquée aux autres indivisaires, faute de quoi elle ne leur est pas opposable.",
+      },
+      {
+        q: "Deux tiers des héritiers, est-ce la même chose que deux tiers des droits ?",
+        a: "Non, et la différence peut tout changer. Le seuil porte sur les droits indivis, pas sur le nombre d'héritiers. Avec quatre indivisaires à parts égales, il faut l'accord de trois d'entre eux. Mais si l'un des quatre détient la moitié des droits et que les trois autres se partagent l'autre moitié, celui qui détient 50 % n'a plus qu'un seul des trois autres à convaincre pour atteindre les deux tiers.",
+      },
+      {
+        q: "La vente à la majorité des deux tiers est-elle possible quand il y a un usufruit ?",
+        a: "Non. La dérogation à l'unanimité n'est pas applicable en cas de démembrement de la propriété du bien — donc dès qu'un usufruit et une nue-propriété coexistent, ce qui est la configuration la plus courante entre un conjoint survivant et ses enfants. Elle est également fermée si un indivisaire est présumé absent, incapable de manifester sa volonté, ou sous mesure de protection. Dans ces quatre cas, il faut viser le partage judiciaire ou l'autorisation de vendre seul.",
+      },
+      {
+        q: "Un héritier peut-il obtenir du juge l'autorisation de vendre seul le bien ?",
+        a: "Oui, depuis la loi n° 2026-248 du 7 avril 2026, mais à deux conditions cumulatives : l'urgence et l'intérêt commun. Le tribunal peut alors autoriser un indivisaire à conclure seul l'acte de vente, sans l'accord des autres. Cette voie ne suppose aucun seuil de droits indivis : elle est donc ouverte à un héritier minoritaire, y compris lorsque la dérogation des deux tiers lui est fermée.",
+      },
+      {
+        q: "Qu'a changé la loi du 7 avril 2026 pour les successions bloquées ?",
+        a: "Quatre choses. Elle ouvre l'autorisation judiciaire de vendre seul en cas d'urgence et d'intérêt commun. Elle élargit le partage judiciaire, désormais possible même en l'absence d'indivision lorsque la complexité des opérations de liquidation le justifie, et utilisable pour liquider les intérêts patrimoniaux détenus avec un ex-époux, un ex-partenaire de PACS ou un ex-concubin. Elle supprime les deux dispositions qui permettaient au notaire de pallier l'inertie d'un indivisaire — mise en demeure de se faire représenter, puis désignation judiciaire d'un mandataire — leur remplacement par une représentation obligatoire par avocat attendant un décret. Et elle facilite l'acquisition par une commune ou un EPCI d'un bien relevant d'une succession ouverte depuis plus de 30 ans sans héritier manifesté.",
+      },
+      {
+        q: "Combien de temps prend un partage judiciaire ?",
+        a: "Le texte ne fixe pas de durée totale, mais il plafonne une étape : lorsque le tribunal désigne un notaire commis pour réaliser les opérations de partage, il fixe le délai dans lequel celui-ci doit remplir sa mission, et ce délai est de 18 mois au maximum. S'y ajoutent les délais propres à la procédure. La représentation par avocat est obligatoire jusqu'à la fin. Source : service-public.gouv.fr, fiche F16194, vérifiée le 22 octobre 2026.",
+      },
+      {
+        q: "Les règles du partage judiciaire changent-elles au 1er janvier 2027 ?",
+        a: "Oui. Jusqu'au 31 décembre 2026, le régime applicable dépend de la désignation ou non d'un juge commis et d'un notaire commis, et de l'état de l'ordonnance de clôture, mais les avocats des héritiers peuvent demander au tribunal, par requête conjointe, l'application anticipée du décret n° 2026-964 du 18 octobre 2026. À partir du 1er janvier 2027, ce régime s'applique de plein droit. Une procédure engagée en novembre ou décembre 2026 n'est donc pas gouvernée par les mêmes règles qu'une procédure engagée en janvier 2027, sauf requête conjointe des avocats.",
+      },
+      {
+        q: "Peut-on vendre sa part d'indivision sans l'accord des autres héritiers ?",
+        a: "Oui, mais la forme est imposée et les autres sont prioritaires. Avant de céder ses droits à une personne étrangère à l'indivision, il faut notifier son intention aux autres indivisaires par acte de commissaire de justice, en indiquant le prix, les conditions de la cession projetée et les nom, domicile et profession de l'acquéreur pressenti. Chaque indivisaire a un mois à compter de cette notification pour reprendre la part aux prix et conditions notifiés. Attention : les coïndivisaires ou leurs héritiers peuvent demander l'annulation de la vente dans les cinq ans à partir du jour où ils en ont eu connaissance.",
+      },
+      {
+        q: "Combien coûte le partage d'une succession chez le notaire ?",
+        a: "Les émoluments proportionnels sont réglementés et dégressifs, en vigueur depuis janvier 2021 : 4,837 % HT de l'actif brut de 0 à 6 500 €, 1,995 % de 6 500 à 17 000 €, 1,330 % de 17 000 à 60 000 €, puis 0,998 % au-delà de 60 000 €. S'y ajoutent des honoraires et débours, les frais d'avocat et de justice dans la voie judiciaire, et, dans certains partages entre cohéritiers, un impôt appelé droit de partage dont les fiches officielles ne donnent pas le taux : il est à demander au notaire ou à vérifier sur impots.gouv.fr.",
+      },
+      {
+        q: "Un mandataire désigné par les héritiers peut-il vendre le logement ?",
+        a: "Non. Les indivisaires peuvent nommer l'un d'entre eux ou un tiers pour gérer l'indivision, et cette désignation suppose l'accord de tous les héritiers. Mais le mandataire ne peut pas transmettre la propriété d'un bien : la fiche officielle précise qu'il lui est interdit de vendre un bien immobilier. Confier la gestion à un héritier ne lui donne donc aucun pouvoir de vendre.",
+      },
+      {
+        q: "Sur quelle valeur calcule-t-on la plus-value d'un bien reçu en héritage ?",
+        a: "Sur la valeur retenue pour le calcul des droits de succession, et non sur le prix que le défunt avait payé. Une valeur déclarée basse réduit les droits de succession mais augmente la plus-value imposable à la revente : l'arbitrage se joue au moment de la déclaration de succession, pas au moment de la vente. Source : service-public.gouv.fr, fiche F10864, vérifiée le 15 avril 2026.",
+      },
     ],
   },
 ];
