@@ -14,6 +14,149 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-10-31 (samedi)**
+
+- ✅ **`origin/main` NE RETARDAIT PAS — DEUXIÈME FOIS SEULEMENT EN NEUF RUNS.**
+  Relevé **AVANT** `git fetch` (règle du 16/09) : `HEAD` = `main` local =
+  `origin/main` = **`768ada6`**. Après `git fetch origin main` : **inchangé**.
+  📌 **Seuls le 27/10 et le 31/10 ne retardaient pas** (contre 22, 23, 24, 26, 28,
+  29 et 30/10 qui retardaient). La règle du 16/09 reste payante : elle décrit un
+  aléa, pas une constante.
+- ⚠️ **Conteneur démarré sur la branche `claude/dazzling-feynman-7qhdsb`**, pas sur
+  `main`. Rebasculé par `git checkout main` avant tout contrôle. **Premier constat
+  de ce genre** — à revérifier au prochain run.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-sixième constat identique** (21/09 → 31/10).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Dix-neuvième confirmation.**
+- ✅ **LE TRAVAIL DU 30/10 EST SERVI EN PRODUCTION — vérifié avant d'agir** (sur
+  `www`, règle du 27/10). **Cinq tailles concordent à l'octet** avec les relevés
+  d'après-déploiement du 30/10 : `/vendre` 139 655 o, `/acheter` 112 181 o,
+  `/estimation` 73 066 o, `/agence-immobiliere-villeurbanne` 98 875 o,
+  `/estimation-immobiliere-villeurbanne` 116 192 o. **Sitemap de production :
+  55 URL**, inchangé. `/blog/vendre-bien-indivision-succession-villeurbanne`
+  200 / 221 745 o (219 192 o au déploiement — +2 553 o, blocs dynamiques).
+  `/llms.txt` 36 897 o (36 524 o — bloc « Annonces » dynamique). Rien à réauditer
+  sur l'indivision.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée** (29/10
+  non-contenu → 30/10 contenu → **31/10 non-contenu**). **Candidat n°1 du backlog
+  consommé après deux reports** (inscrit le 29/10, non consommé le 30/10) : le
+  détecteur de redirection passé sur **toutes** les URL externes du corpus, pas
+  seulement sur les fiches.
+- 🔴 🆕 **DÉFAUT N°1, ET IL A UN POIDS JURIDIQUE : LE LIEN DU MÉDIATEUR DE LA
+  CONSOMMATION, QUE LA PAGE ORDONNE D'UTILISER, NE RÉPOND PAS.**
+  `/mentions-legales` publiait `https://www.medimmoconso.fr` et ajoutait « Le
+  consommateur peut saisir directement le médiateur via son site internet ».
+  **L'hôte `www` ne sert pas** (`000` en `curl` sur trois essais, **503** en
+  fetch), alors que **l'apex `https://medimmoconso.fr` rend 200** — même IP
+  (`135.125.181.238`), et l'apex porte bien le service (titre « Médiateur de la
+  consommation CECMC — Médiation Immobilière », **saisine en ligne** via
+  `recevabilite-mediations.medimmoconso.fr`). 📌 **C'est l'INVERSE exact de notre
+  propre site** (`markusimmobilier.fr` exige `www`, règle du 27/10) : **le réflexe
+  « ajouter www » est précisément ce qui casse ce lien-là.** ✅ **CORRIGÉ** :
+  `href` **et** texte visible passés à `medimmoconso.fr`. ⚠️ **Le NOM et
+  l'ADRESSE du médiateur n'ont PAS été touchés** (GIE MEDIMMOCONSO, 1 Allée du
+  Parc de Mesemena – Bât A – CS 25222, 44505 La Baule Cedex) : **aucune source ne
+  les contredit, et une adresse légale ne se réécrit pas sans source.**
+- 🔴 🆕 **DÉFAUT N°2, PLUS GRAVE ENCORE, ET JE NE PEUX PAS LE CORRIGER SEUL :
+  L'INVITATION DISCORD PUBLIÉE PARTOUT EST MORTE.** `discord.gg/fSyn28G5U` rend
+  **200 avec une redirection** — donc **le détecteur par code HTTP la déclare
+  saine** — mais l'API publique de Discord répond
+  **`{"message": "Unknown Invite", "code": 10006}`**. ✅ **MÉTHODE VALIDÉE PAR
+  DEUX CONTRÔLES** : une invitation connue-valide (`discord-developers`) rend
+  l'objet `guild` complet, et une invitation bidon (`zzzzzzzz`) rend **exactement
+  la même réponse que la nôtre**. 📌 **Portée : `components/layout/site-footer.tsx`
+  (ligne 67) ET `components/home/social.tsx` (ligne 130) — donc le footer de TOUT
+  le site et la section « Suivez-nous + Discord » de la home.** Et le Discord est
+  un **élément de marque imposé** (`design-system.md` § 10 : « Mettre en avant …
+  le Discord communautaire »), repris dans `design-system.md` § 11.
+  ⚠️ **RIEN N'A ÉTÉ MODIFIÉ, ET C'EST VOLONTAIRE** : je ne peux pas fabriquer une
+  invitation (seul Tony peut en générer une, et **permanente** — une invitation
+  Discord expire par défaut au bout de 7 jours), et retirer le CTA serait une
+  modification de rendu sur un élément imposé par le client. **Remonté à Tony par
+  notification.**
+- 🟢 🆕 **ET LE CHANTIER A SURTOUT TROUVÉ POURQUOI LE DÉTECTEUR PAR CODE HTTP NE
+  SUFFIT PAS : TROIS FAMILLES DE FAUX VERDICTS, DANS LES DEUX SENS.**
+  **(a) FAUX SAIN — 200 sans redirection, mais page de maintenance** :
+  `www.justice.fr` rend **200 / 15 139 o** et le corps est
+  « **Site en cours de maintenance | Justice.fr** ». **Tout le domaine est
+  concerné** (la fiche « DPE collectif » que cite `lib/blog.ts:857` comme l'annuaire
+  du tribunal judiciaire). **Seul le contrôle de MARQUEUR l'attrape.**
+  **(b) FAUX DÉFAUT — 403 d'un pare-feu applicatif** :
+  `observatoire-dpe-audit.ademe.fr` rend **403 avec 318 921 o de corps**, et ce
+  corps porte « **Access denied** » + marqueurs **WAF** : c'est notre IP de
+  centre de données qui est refusée, **pas un lien mort**. **Non modifié.**
+  **(c) FAUX DÉFAUT — codes anti-robot des réseaux** : `linkedin.com` rend
+  **999** (code maison), et `x.com/markusimmo_` rend **404** — mais le contrôle
+  d'étalonnage interdit d'en conclure quoi que ce soit : **`orpi_immo` rend 404
+  lui aussi** alors que `laforet_france` rend 200. **Non modifié, versé en
+  « Hypothèses à vérifier ».**
+- ✅ **LES 22 AUTRES URL D'AUTORITÉ SONT SAINES, MARQUEURS COMPRIS — et c'est un
+  résultat, pas un non-événement.** Contrôle en deux temps (code + redirection,
+  **puis présence du marqueur que NOUS affirmons**) : `anil.org/aj-dpe`
+  (« 29 août 2025 », « 1er janvier 2013 », « loi du 22.8.21 : art. 158 VI »,
+  « L.126-31 » — **les 4 présents**), `anil.org/aj-audit-energetique`
+  (« 12 mars 2025 », `2022-780`, 1er avril 2023 / 1er janvier 2025 /
+  1er janvier 2034, décret du 9 août 2022 — **les 6 présents**),
+  `rt-re-batiment…a1021` (2,58 / 2,3 / 1,9 / 1,7 et « 1er janvier 2027 » — **les
+  5 présents**), `lyon.tribunal-administratif.fr` (« 14 octobre 2025 » et
+  « 29 septembre 2023 » — **présents**), `rhone.gouv.fr`, `app.dvf.etalab.gouv.fr`,
+  `data.gouv.fr/datasets/demandes-de-valeurs-foncieres` (**dernière mise à jour
+  12 octobre 2026**, aucun avis de dépréciation), le simulateur
+  `delaiPreavisLocataire` (`2025-1267`, « 20 janvier 2026 », « 22 décembre 2025 »),
+  et les **8 fiches `vosdroits/F…`** liées (F1168, F1314, F16096, F31269, F33463,
+  F37110, F929) toutes en **200 / 0 redirection**.
+- ✅ 🆕 **UN CONTRÔLE QUI AURAIT PU FAIRE RÉÉCRIRE UNE ÉCHÉANCE À 23 JOURS, ET LA
+  PAGE AVAIT RAISON.** `rentabilite-locative-lyon` publie que l'encadrement des
+  loyers « arrive à son terme le **23 novembre 2026** » et qu'une prolongation de
+  **deux ans à périmètre constant** a été « adoptée par le Sénat en première
+  lecture le 21 octobre 2026 — **texte non définitif**, qui doit retourner devant
+  l'Assemblée nationale ». **Vérifié sur la page du Sénat ce matin : statut
+  « En cours », adoption en première lecture le mercredi 21 octobre 2026 (scrutin
+  public n° 25), prolongation « de deux années supplémentaires à périmètre
+  constant », aucune lecture à l'Assemblée annoncée.** 📌 **Notre formulation est
+  exacte ET toujours à jour, hedge comprise. Rien à corriger.** ⚠️ **Mais
+  l'échéance est à 23 jours : à resurveiller avant le 23/11.**
+- ✅ **L'ADRESSE DE LA MAISON DE JUSTICE ET DU DROIT EST CORROBORÉE** (cible
+  ajoutée au backlog le 30/10) : « 52 rue Racine, 69100 Villeurbanne —
+  04 78 85 42 40 » **confirmée par deux sources indépendantes**
+  (`acceslibre.beta.gouv.fr`, et la liste des conciliateurs de
+  `cours-appel.justice.fr` de février 2026), **adresse ET téléphone**. ⚠️ **Un
+  agrégateur (`dossierjuridique.fr`) publie deux adresses différentes et se
+  contredit lui-même : écarté.** 🟡 **L'adresse du tribunal judiciaire de Lyon
+  (67 rue Servient) n'a PAS pu être revérifiée** : `justice.fr` est en
+  maintenance. **Reporté, pas oublié.**
+- 🔴 **« PRIX M2 VILLEURBANNE » REMESURÉE (7ᵉ relevé) : SITE TOUJOURS ABSENT,
+  15 RÉSULTATS.** efficity ×2, orpi, realadvisor, moneyvox ×2, squarehabitat,
+  netvendeur, solvimo ×2, **`blog.qoridor.fr` ×2**, lapporteurdimmo ×2, bottin.
+  📌 **La lecture du 26/10 est confirmée une fois de plus : la SERP est tenue par
+  des agrégateurs et des simulateurs, un TYPE de page que du rédactionnel ne
+  déloge pas. Ne pas y réinvestir d'effort rédactionnel.** 🆕 **Et `blog.qoridor.fr`
+  y sort avec une PAGE DE QUARTIER** (`/prix-immobilier/villeurbanne/quartier/charpennes/`,
+  « Prix m2 Charpennes ») **en plus de sa page communale** (3 544 €/m² au
+  1er juillet 2026, 3 506 €/m² pour les appartements) : **c'est exactement le
+  candidat n°4 du backlog, et il tient maintenant trois SERP suivies.**
+- ⚠️ **LES DEUX SERP COMMERCIALES DE MARQUE INTERDITE N'ONT PAS ÉTÉ MESURÉES
+  AUJOURD'HUI, ET C'EST DÉLIBÉRÉ** : leur échéance est au **06/11** et la série
+  hebdomadaire ne vaut que si la cadence est tenue. ⚠️ **Les requêtes de quartier
+  du brief restent écartées** : « Charpennes » (11/09) et « Gratte-Ciel » sont des
+  **requêtes de marque de concurrents**.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES CONSTATÉES SUR `/mentions-legales`,
+  NON CORRIGÉES ET C'EST VOLONTAIRE** : lignes 199 et 230,
+  `@next/next/no-html-link-for-pages` (`<a href="/confidentialite/">` et
+  `<a href="/cookies/">` au lieu de `<Link>`). **Vérifié par `git stash` qu'elles
+  sont IDENTIQUES sur `main` intouché** — mon changement n'en ajoute aucune.
+  **Hors périmètre du jour** (règle « ne corrige rien qui fonctionne ») :
+  versé au backlog non-contenu.
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` **sans erreur**,
+  `npm run build` **vert** (`/mentions-legales` prérendue en statique),
+  `eslint` **sans erreur NEUVE** (les 2 erreurs sont préexistantes, prouvé par
+  `git stash`). **Fix vérifié dans le HTML PRÉRENDU** :
+  `href="https://medimmoconso.fr"` ×1, texte visible `medimmoconso.fr`,
+  **`www.medimmoconso` à 0 occurrence**, et `GIE MEDIMMOCONSO` / `Mesemena` /
+  `44505 La Baule Cedex` **intacts**. **Aucune autre URL `https://www.` du corpus
+  n'a ce défaut** (les 18 autres hôtes `www.` répondent).
+
 **Au 2026-10-30 (vendredi)**
 
 - ⚠️ **`origin/main` RETARDAIT — SEPTIÈME OCCURRENCE SUR HUIT RUNS.** Relevé
@@ -4084,6 +4227,70 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-10-31 (samedi) — Le détecteur de redirection passé sur TOUTES les URL externes : le lien du médiateur de la consommation était cassé par un `www`, et l'invitation Discord est morte sans que rien ne le signale
+
+**Angle : NON-CONTENU** (alternance respectée : 29/10 non-contenu → 30/10 contenu
+→ 31/10 non-contenu). **Candidat n°1 du backlog, inscrit le 29/10 et non consommé
+le 30/10.**
+
+**Périmètre réellement balayé.** 185 URL extraites de `app components data lib
+public/llms.txt`, ramenées à **24 URL d'autorité** après retrait des images
+d'annonces (`img.leboncoin.fr` ×100, dynamiques), des espaces de noms JSON-LD
+(`schema.org`, `purl.org`, `w3.org` — **non navigables, donc hors périmètre**),
+des URL internes et des gabarits de code (`${year}`, `${vm[1]}`, `${yt[1]}` —
+**faux positifs de l'extracteur, à filtrer d'office la prochaine fois**). Plus
+**18 URL de réseaux sociaux et de pages d'aide**, testées séparément.
+
+**Ce qui a été corrigé (1 fichier, 2 lignes).**
+- `app/mentions-legales/page.tsx` : `https://www.medimmoconso.fr` →
+  `https://medimmoconso.fr`, dans le `href` **et** dans le texte visible (pour
+  qu'ils concordent — c'est aussi ce que les LLM extraient).
+- **Pourquoi c'est sérieux** : c'est le lien du **médiateur de la consommation**,
+  obligatoire au titre des articles L.611-1 et R.612-1 du Code de la
+  consommation, et la page écrit « Le consommateur peut saisir directement le
+  médiateur via son site internet ». **Un consommateur qui cliquait n'arrivait
+  nulle part.**
+- **Preuve du défaut** : `www` → `000` en `curl` (trois essais) et **503** en
+  fetch ; apex → **200**, même IP `135.125.181.238`. L'apex porte le service
+  (« Médiateur de la consommation CECMC — Médiation Immobilière ») et la
+  **saisine en ligne** (`recevabilite-mediations.medimmoconso.fr`).
+- **Ce qui n'a PAS été touché, volontairement** : le nom (`GIE MEDIMMOCONSO`) et
+  l'adresse postale (1 Allée du Parc de Mesemena – Bât A – CS 25222, 44505 La
+  Baule Cedex). **Aucune source ne les contredit** ; l'apex ne republie pas
+  d'adresse postale. **Une mention légale ne se réécrit pas sans source.**
+
+**Ce qui a été trouvé mais NON corrigé, et pourquoi.**
+- 🔴 **Invitation Discord morte** : `discord.gg/fSyn28G5U` →
+  `{"message": "Unknown Invite", "code": 10006}`. **Publiée dans
+  `components/layout/site-footer.tsx:67` et `components/home/social.tsx:130`**, et
+  listée dans `design-system.md` § 11. **Non modifié** : fabriquer une invitation
+  est impossible, et retirer un CTA imposé par le client (`design-system.md` § 10)
+  serait une modification de rendu hors mandat. **Remonté à Tony.**
+- 🟡 `x.com/markusimmo_` → 404 et `linkedin.com/company/markusimmobilier/` → 999 :
+  **étalonnage non concluant** (`orpi_immo` rend 404 lui aussi). **Non modifié.**
+- 🟡 `observatoire-dpe-audit.ademe.fr` → 403 **WAF** (« Access denied ») : lien
+  valide, IP refusée. **Non modifié.**
+- 🟡 `www.justice.fr` → **200 mais page de maintenance** sur tout le domaine.
+  **Lien valide, à revérifier.** C'est aussi ce qui a empêché de recontrôler
+  l'adresse du tribunal judiciaire de Lyon.
+- 🟡 Deux erreurs `eslint` **préexistantes** sur `/mentions-legales` (lignes 199 et
+  230, `<a>` interne au lieu de `<Link>`), **prouvées identiques sur `main`
+  intouché par `git stash`**. **Hors périmètre.**
+
+**Ce qui a été vérifié sain, marqueurs compris** — contrôle en **deux temps**
+(code + redirection, **puis présence du marqueur que NOUS affirmons**) : les
+8 fiches `vosdroits/F…` liées, `anil.org` ×2 (10 marqueurs sur 10),
+`rt-re-batiment` (5/5), `lyon.tribunal-administratif.fr` (2/2),
+`rhone.gouv.fr`, `app.dvf.etalab.gouv.fr`, `data.gouv.fr` (dataset toujours
+publié, dernière mise à jour **12 octobre 2026**), simulateur
+`delaiPreavisLocataire` (3/3), `senat.fr` (**échéance du 23 novembre 2026 et
+prolongation de deux ans confirmées, texte toujours non définitif**), et les
+réseaux/pages d'aide (Discord excepté).
+
+**Contrôles avant push** : `tsc` sans erreur, `build` vert, `eslint` sans erreur
+neuve, fix vérifié **dans le HTML prérendu** (`www.medimmoconso` à **0
+occurrence**, nom et adresse du médiateur **intacts**).
+
 ### 2026-10-30 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h24
 
 - **Déclenchement en double** : le run du jour (indivision, `152aab2` + `0963215`)
@@ -7648,6 +7855,132 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le détecteur de redirection passé sur
+TOUTES les URL externes du corpus** (31/10 : candidat n°1 du backlog, inscrit le
+29/10 et non consommé le 30/10. **185 URL extraites, 24 d'autorité + 18
+sociales/aide réellement testées, en DEUX temps** — code/redirection, puis
+présence du marqueur que nous affirmons. **Deux défauts réels.** (a) **Le lien du
+médiateur de la consommation était cassé par un `www`** :
+`www.medimmoconso.fr` ne sert pas (000/503) quand l'apex rend 200, et
+`/mentions-legales` ordonnait au consommateur de l'utiliser — **corrigé**, nom et
+adresse du médiateur **non touchés**. (b) **L'invitation Discord
+`discord.gg/fSyn28G5U` est morte** (`Unknown Invite`, méthode validée par deux
+témoins) alors qu'elle rend **200 en HTTP** — **non corrigeable sans Tony,
+remontée par notification**. **22 autres URL saines, marqueurs compris**, dont
+l'échéance du **23 novembre 2026** sur l'encadrement des loyers, **vérifiée
+exacte et toujours non définitive**. **Trois familles de faux verdicts
+documentées** en « Techniques apprises ».)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (01/11, dimanche) DOIT ÊTRE DU CONTENU**
+(alternance : 29/10 non-contenu → 30/10 contenu → 31/10 non-contenu).
+⚠️ **ET LA VEILLE DU LUNDI EST DUE AU RUN SUIVANT (02/11)** : l'étape 5 du brief
+demande de la faire **AVANT** de choisir le chantier de ce jour-là.
+**Candidats CONTENU, par ordre d'impact :**
+  1. 🔴 **LE RESTE DE LA FAMILLE « ZÉRO OCCURRENCE » DÉCOUVERTE LE 30/10, et
+     c'est le filon le plus net du journal.** Mesuré sur tout
+     `app components data lib` : **`droit de préemption` 0**, **`viager` 0**,
+     **`nue-propriété` 0**, **`clause pénale` 0**, `licitation` 0,
+     `déclaration de succession` 0. 📌 **Le droit de préemption est le plus
+     prometteur** : il concerne **le locataire d'un logement mis en vente** et
+     **la commune** (DPU), il est transactionnel, et `/vendre` comme
+     `/gestion-locative` le croisent sans le nommer. **`viager` est le second**
+     (fiche `F2762` repérée le 30/10, **toujours non téléchargée**).
+     ⚠️ **Mesurer la SERP AVANT d'écrire**, et **vérifier d'abord qu'aucune page
+     ne couvre déjà l'angle** — c'est ce contrôle qui a clos le candidat « net
+     vendeur » le 30/10.
+  2. 🟢 **La place GEO la plus vide mesurée à ce jour** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. **Remesurer plutôt que réécrire** : la question est de savoir si
+     `/acheter` y est entrée.
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). ⚠️ **Ne pas en prendre un « parce qu'il
+     est court » : mesurer d'abord s'il existe une SERP où le site est absent.**
+  4. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CANDIDAT CLOS LE 30/10, NE PAS
+     LE RÉOUVRIR** (couverture déjà complète ; à gagner par maillage et
+     fraîcheur, donc en non-contenu).
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🔴 🆕 **RELANCER LE CONTRÔLE SUR `justice.fr`, QUI ÉTAIT EN MAINTENANCE LE
+     31/10.** Deux affirmations en dépendent et **aucune n'a pu être vérifiée** :
+     la fiche « DPE collectif » (`lib/blog.ts:857`, « mise à jour le 1er janvier
+     2026 ») et **l'adresse du tribunal judiciaire de Lyon** (`lib/blog.ts:2684`,
+     67 rue Servient, 04 72 60 70 12). **Recette du 31/10, contrôle à deux temps.**
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE** —
+     portée depuis le 14/10. Sept mesures concordantes, **toutes COMMUNALES**,
+     alors que `/acheter` et `/llms.txt` affirment un écart **de 16,1 à 45,3 %
+     PAR QUARTIER**. 🆕 **Le relevé du 31/10 ajoute `blog.qoridor.fr` à
+     3 544 €/m² communal et 3 506 €/m² appartement au 1er juillet 2026.**
+     **Reformuler — « l'écart par QUARTIER a-t-il disparu ? » — et trancher avec
+     un relevé DVF 2026 par quartier** (recette du 14/10), **pas avec les SERP.
+     Ne RIEN réécrire avant.**
+  3. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **non fait, quatrième report**). 🆕 **Il tient maintenant TROIS SERP suivies**
+     (« estimation immobilière Villeurbanne » le 30/10 ; « prix m2 Villeurbanne »
+     le 31/10 **avec une page de quartier Charpennes en plus de sa page
+     communale**). **C'est le seul concurrent mesuré qui publie du DVF par
+     quartier, donc le seul comparable direct de notre angle.** Établir **ce que
+     nous publions qu'il ne publie pas**. **Ne RIEN réécrire sur un seul relevé.**
+     📌 **Ce candidat sert aussi le n°2 ci-dessus.**
+  4. 🟡 **AJOUTER LE PRÉAVIS D'UN MOIS À LA LISTE D'OBLIGATIONS DE
+     `/gestion-locative`** — inscrit le 28/10, **toujours non fait, quatrième
+     report**. La liste (`app/gestion-locative/page.tsx`, autour de la ligne 477)
+     énumère ce que doit faire le bailleur qui gère seul et **ne dit pas que son
+     locataire peut partir en un mois**. ⚠️ **Ajout d'une seule puce dans un
+     tableau de chaînes ; relire la parité FAQ de la page après (10 Q/R au 28/10).**
+  5. 🟢 🆕 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (constaté le
+     31/10) : lignes 199 et 230, `<a href="/confidentialite/">` et
+     `<a href="/cookies/">` au lieu de `<Link>` — **2 erreurs `eslint`
+     préexistantes**, prouvées identiques sur `main` intouché. 📌 **Effet SEO
+     réel mais faible** (navigation client perdue, pas de perte de lien) :
+     **à faire un jour creux, et vérifier qu'aucune autre page n'a le même
+     défaut** (`grep -rn '<a href="/' app`).
+  6. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Aucun défaut connu :
+     prévention.**
+  7. 🟢 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** (inscrit
+     le 26/10, **non fait**, **volontairement déclassé**) : travail de journal,
+     **zéro effet sur les positions**. **À faire un jour creux.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🆕 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`, constaté le 31/10,
+  méthode validée par deux témoins). **Publiée dans le footer de tout le site
+  (`components/layout/site-footer.tsx:67`) et dans la section « Suivez-nous +
+  Discord » de la home (`components/home/social.tsx:130`)**, plus
+  `design-system.md` § 11. ⚠️ **Il faut une invitation PERMANENTE** (sans
+  expiration) : une invitation Discord expire par défaut au bout de 7 jours, ce
+  qui est très probablement ce qui s'est passé. 📌 **Dès que Tony fournit le
+  nouveau code : substituer dans les DEUX fichiers + `design-system.md`, puis
+  revérifier par l'API.** **Ne pas retirer le CTA entre-temps** (élément de marque
+  imposé, `design-system.md` § 10).
+- 🆕 **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**. Publié
+  dans le `sameAs` du JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres
+  fichiers. **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES REMISES À JOUR LE 31/10** (elles remplacent
+celles du bloc du 30/10 ci-dessous) :
+- **« agence immobilière Villeurbanne »** et **« estimation immobilière
+  Villeurbanne »** : mesurées le **30/10**, **site absent sur les deux** →
+  prochaine passe **06/11** (hebdomadaire). ⚠️ **NON mesurées le 31/10, et c'est
+  délibéré** : la série hebdomadaire ne vaut que si la cadence est tenue.
+  📌 **Les relevés du 30/10 sont le POINT ZÉRO d'après l'arbitrage de
+  cannibalisation du 29/10 ; le verdict se lira dans Search Console vers le
+  20/11, pas dans ces SERP.**
+- **« prix m2 Villeurbanne »** : **mesurée le 31/10** (7ᵉ relevé, **site absent**,
+  15 résultats) → prochaine passe **vers le 07/11**. ⚠️ **Ne pas y réinvestir
+  d'effort rédactionnel** : SERP tenue par des agrégateurs et des simulateurs.
+- **« vendre appartement Villeurbanne »** : mesurée le 30/10 (4ᵉ relevé, site
+  absent, 4 éditoriaux sur 11) → **vers le 10/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes »
+  (11/09) et « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- 🔴 **Prochaine veille du lundi : 02/11 — DUE**, et l'étape 5 du brief demande de
+  la faire **AVANT** de choisir le chantier de ce jour-là.
+
 **Angle du dernier run : CONTENU — la vente d'un bien hérité en indivision**
 (30/10 : famille de requêtes à **zéro occurrence** du corpus — `succession` 0,
 `héritiers` 0, `partage judiciaire` 0, `indivision` 3 mais toutes côté
@@ -9505,6 +9838,38 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-10-31 — Trois points laissés ouverts par le balayage des URL externes
+
+**1. 🔴 LE COMPTE X `markusimmo_` EXISTE-T-IL ENCORE ?** `x.com/markusimmo_` rend
+**404**, et il est publié dans **trois fichiers** (`app/layout.tsx:127` — donc
+dans le JSON-LD `Organization` `sameAs` —, `components/layout/site-footer.tsx:51`,
+`components/home/social.tsx:27`) plus `design-system.md` § 11. ⚠️ **L'étalonnage
+interdit de conclure** : `x.com/orpi_immo` rend 404 lui aussi, `laforet_france`
+rend 200 — X répond mal aux requêtes non authentifiées venant d'un centre de
+données. **Enjeu réel côté GEO** : un `sameAs` qui pointe vers un profil
+inexistant est un signal d'entité faux. 📌 **À trancher par Tony (il sait si le
+compte existe), pas par un `curl`.** **NE RIEN RETIRER avant sa réponse.**
+
+**2. 🟡 LA FICHE « DPE COLLECTIF » DE `justice.fr` DIT-ELLE TOUJOURS CE QUE NOUS
+LUI PRÊTONS ?** `lib/blog.ts:857` affirme « fiche mise à jour le 1er janvier
+2026 : bâtiments assujettis, calendrier par nombre de lots, durée de validité et
+exception des classes A, B ou C ». **Invérifiable le 31/10 : tout `justice.fr` est
+en maintenance.** 📌 **Même chose pour l'adresse du tribunal judiciaire de Lyon
+(67 rue Servient, 04 72 60 70 12) publiée en `lib/blog.ts:2684`.**
+**À reprendre dès que le domaine répond — à tenter au prochain run.**
+
+**3. 🟡 L'ADRESSE POSTALE DU MÉDIATEUR EST-ELLE À JOUR ?** Nous publions « 1 Allée
+du Parc de Mesemena – Bât A – CS 25222, 44505 La Baule Cedex ». **L'apex
+`medimmoconso.fr` ne republie aucune adresse postale** (sa page de réclamation
+redirige en 301 vers le formulaire en ligne
+`recevabilite-mediations.medimmoconso.fr`), et renvoie à « l'adresse indiquée sur
+notre site ». ⚠️ **Rien ne contredit notre adresse, donc rien n'a été touché.**
+📌 **Le contrôle qui trancherait est la liste officielle des médiateurs référencés
+par la CECMC** — à faire un jour creux, et **seulement** avec cette source.
+🆕 **Noté au passage** : l'apex affiche `contact@medimmoconso.fr` en texte mais
+`contact@medimoconso.fr` (un seul `m`) dans le `mailto` — **coquille chez le
+médiateur, pas chez nous. Nous ne publions pas cet email : rien à faire.**
 
 ### 2026-10-30 — Trois points laissés ouverts par le chantier indivision
 
@@ -12600,6 +12965,77 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-10-31 — Un lien mort ne se voit pas dans son code HTTP : il faut un détecteur à DEUX temps, et trois familles de faux verdicts à connaître avant de l'écrire
+
+🟢 **LE MOTIF.** Le détecteur du 29/10 reposait sur `%{num_redirects}` plus
+l'absence du marqueur attendu, mais il n'avait tourné que sur les **fiches**
+`service-public`. Passé le 31/10 sur **toutes** les URL externes du corpus, il a
+montré que **le code HTTP seul se trompe dans les deux sens** — et les deux
+défauts trouvés ce jour-là sont précisément ceux qu'un contrôle par code HTTP
+laisse passer.
+
+🔴 **FAMILLE 1 — LE FAUX SAIN : 200, ZÉRO REDIRECTION, ET POURTANT RIEN DU
+CONTENU ATTENDU.** `www.justice.fr` rend **200 / 15 139 o** : c'est une page
+« Site en cours de maintenance ». Un détecteur par code la déclare saine.
+**Seul le contrôle de marqueur l'attrape** — d'où le deuxième temps, obligatoire.
+Le signe de reconnaissance est la **taille** : 15 ko pour une fiche juridique,
+c'est trop peu.
+
+```bash
+# le contrôle à DEUX temps, et le second n'est pas optionnel
+curl -sL -o p.html -w "%{http_code}|%{num_redirects}|%{url_effective}|%{size_download}" "$URL"
+# puis, sur p.html, le marqueur que NOUS affirmons (date, n° de décret, n° d'article)
+# et le marqueur de maintenance, qui ne se devine pas depuis le code HTTP :
+grep -qi "en cours de maintenance" p.html && echo "FAUX SAIN : page de maintenance"
+```
+
+🔴 **FAMILLE 2 — LE FAUX DÉFAUT PAR PARE-FEU : un 403 avec un GROS corps n'est
+pas un lien mort.** `observatoire-dpe-audit.ademe.fr` rend **403 avec 318 921 o**,
+et ce corps porte « Access denied » + marqueurs **WAF** : c'est l'IP du conteneur
+qui est refusée. **Le discriminant est la taille du corps et son contenu, pas le
+code** : un vrai 404 rend une page courte, un WAF rend une page lourde.
+⚠️ **Et ne JAMAIS tenter de passer outre** (changer l'`User-Agent` pour imiter un
+navigateur a été refusé par le classifieur, à juste titre) : on **note** le
+verdict « indéterminé », on ne le force pas.
+
+🔴 **FAMILLE 3 — LES CODES MAISON DES RÉSEAUX, ET L'ÉTALONNAGE QUI SEUL PERMET
+DE LES LIRE.** `linkedin.com` rend **999**, `x.com/markusimmo_` rend **404**.
+📌 **La seule façon honnête de conclure est d'étalonner sur un témoin connu** —
+et ici l'étalonnage INTERDIT de conclure : `x.com/orpi_immo` rend **404** lui
+aussi, quand `x.com/laforet_france` rend 200. **Verdict : indéterminé, rien ne
+bouge.**
+
+✅ **ET LA RECETTE QUI A VRAIMENT TRANCHÉ, POUR DISCORD : INTERROGER L'API DU
+SERVICE, PAS SA PAGE WEB — AVEC UN TÉMOIN VALIDE ET UN TÉMOIN BIDON.**
+`discord.gg/XXXX` rend **200 + 1 redirection même quand l'invitation est morte**
+(c'est la page d'atterrissage de Discord). La page web ne dit donc rien.
+
+```bash
+# mort ou vivant : c'est l'API publique qui répond, et elle est sans ambiguïté
+curl -s "https://discord.com/api/v10/invites/$CODE"
+# vivant -> {"type":0,"code":"...","guild":{...}}
+# mort   -> {"message": "Unknown Invite", "code": 10006}
+# TOUJOURS encadrer par deux témoins, sinon on ne sait pas ce que la réponse vaut :
+#   témoin valide : discord-developers  -> objet guild complet
+#   témoin bidon  : zzzzzzzz            -> MÊME réponse que l'invitation testée
+```
+
+📌 **Le principe général, et il vaut au-delà de Discord** : pour un service dont
+la page web est une coquille (invitation, raccourcisseur, lien de partage),
+**le verdict est dans son API, encadré par un témoin valide et un témoin bidon.**
+
+⚠️ **DEUX PIÈGES DE NORMALISATION QUI FONT CRIER AU DÉFAUT À TORT**, tous deux
+rencontrés ce jour-là sur des pages pourtant saines :
+1. **`1<sup>er</sup>` devient « 1 er » après retrait des balises.** Chercher
+   « 1er janvier 2013 » rend **ABSENT** sur une page qui l'affiche. **Normaliser
+   `'1 er ' -> '1er '` après le `sed` de dé-balisage**, en plus des insécables
+   (`U+202F`, `U+00A0`) de la règle du 30/10.
+2. **Choisir comme marqueur un TOKEN DISTINCTIF, jamais une forme paraphrasable.**
+   « deux ans » rend ABSENT sur la page du Sénat, qui écrit « deux **années**
+   supplémentaires » ; « L126-31 » rend ABSENT chez ANIL, qui écrit « L.126-31 »
+   **avec le point**. **Les bons marqueurs sont les dates, les numéros de décret
+   et les numéros d'article** — ils ne se paraphrasent pas.
 
 ### 2026-10-30 — Le « zéro occurrence » cesse d'être un hasard quand on le cherche par FAMILLE de mots : un balayage de 18 termes a trouvé le trou que six runs de backlog n'avaient pas vu
 
