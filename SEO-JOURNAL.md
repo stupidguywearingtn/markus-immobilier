@@ -4244,6 +4244,34 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-10-31 (2e déclenchement, 06h42 UTC) — L'accueil a été republié depuis l'éditeur le 30/10 à 08h53 UTC, SANS la section « Qui sommes-nous » ; signalé, pas corrigé
+
+- **Déclenchement en double** : le run du jour (médiateur, `b858589`) était déjà
+  poussé. Aucun chantier, c'est voulu.
+- **Changements du client** : sitemap = 56 URL, aucune sans dossier de route →
+  pas de nouvelle page éditeur. MAIS le `lastmod` de `/` vaut
+  **2026-10-30T08:53:20Z** alors que `/annonces` (aussi piloté par les annonces)
+  vaut `2026-10-30T00:00` → c'est `builtHome.publishedAt` (`app/sitemap.ts`) :
+  **Tony a publié une version de l'accueil depuis l'éditeur**, après le run du
+  30/10 06h42. Le `<title>` identique à `DEFAULT_TITLE` ne le prouvait PAS (champ
+  SEO vide → valeur par défaut) : **le contrôle « title ≠ DEFAULT_TITLE » de
+  l'étape 0 rate ce cas, il faut lire aussi le lastmod de `/`.**
+- **Ce que la home en ligne contient** : h1, title, description, canonical,
+  JSON-LD (RealEstateAgent + FAQPage 8 Q) inchangés ; sections Hero → Biens →
+  Équipe → Vendus → Estimation → Avis → FAQ → Réseaux → Agence.
+  **Manque le bloc `MaisonAPropos`** (« Qui sommes-nous » : texte d'intro + chiffres
+  7 ans / 250+ / 40 M€ / 300+) — 0 occurrence de « Qui sommes », « histoire de
+  confiance », « 40 M ».
+
+#### Changements du client à valider
+- **Accueil sans « Qui sommes-nous »** : perte du texte de présentation et des
+  chiffres validés sur la page la plus forte, ordre de la trame client rompu,
+  probable fausse manip. **Non corrigé (page de Tony)**. Email envoyé à Yanis
+  (+ WhatsApp prêt pour Tony ; un 2e email corrige « jeudi » → « hier »). Le mail
+  rappelle aussi l'**invitation Discord morte** trouvée ce matin.
+- **Règle des 90 jours** : l'accueil est modifié le 30/10 → pas de retouche
+  côté code avant fin janvier 2027, hors panne.
+
 ### 2026-10-31 (samedi) — Le détecteur de redirection passé sur TOUTES les URL externes : le lien du médiateur de la consommation était cassé par un `www`, et l'invitation Discord est morte sans que rien ne le signale
 
 **Angle : NON-CONTENU** (alternance respectée : 29/10 non-contenu → 30/10 contenu
