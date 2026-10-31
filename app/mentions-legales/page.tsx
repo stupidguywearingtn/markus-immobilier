@@ -139,11 +139,11 @@ export default function MentionsLegalesPage() {
               <br />
               Site internet :{" "}
               <a
-                href="https://www.medimmoconso.fr"
+                href="https://medimmoconso.fr"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                www.medimmoconso.fr
+                medimmoconso.fr
               </a>
             </p>
             <p>
