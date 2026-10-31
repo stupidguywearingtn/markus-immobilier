@@ -148,6 +148,23 @@
   sont IDENTIQUES sur `main` intouché** — mon changement n'en ajoute aucune.
   **Hors périmètre du jour** (règle « ne corrige rien qui fonctionne ») :
   versé au backlog non-contenu.
+- ✅ **DÉPLOIEMENT CONFIRMÉ EN PRODUCTION, APRÈS LE PUSH — vérifié, pas supposé.**
+  Commits `b858589` (fix) + `95f6f21` (journal) ; l'ancienne version a été servie
+  **~120 s** (`x-vercel-cache: HIT` sur l'ancien `etag`), puis la nouvelle.
+  **Contrôlé sur le HTML de production** : `https://medimmoconso.fr` **×2**
+  (`href` + texte visible concordants), **`www.medimmoconso.fr` à 0 occurrence**,
+  et `GIE MEDIMMOCONSO` ×1 / `Mesemena` ×1 / `44505 La Baule Cedex` ×1 /
+  `L.611-1` ×1 / `R.612-1` ×1 **tous intacts**. `/mentions-legales` 200 /
+  **65 184 o** (65 199 o avant — **−15 o, soit exactement les deux `www.`
+  retirés**). 🟢 **Et le lien corrigé répond : `medimmoconso.fr` → 200,
+  0 redirection.** **Sitemap de production : 55 URL, inchangé** (aucune page
+  ajoutée aujourd'hui, c'est un run non-contenu).
+- ✅ **CONTRÔLE DE COHÉRENCE DU RÉFÉRENTIEL, FAIT AU PASSAGE ET SANS DÉFAUT** :
+  les liens sociaux livrés (`components/layout/site-footer.tsx`) **concordent un
+  à un** avec `design-system.md` § 11 (YouTube, X, LinkedIn, Discord).
+  📌 **Donc le code Discord mort est le MÊME dans le référentiel et dans le code :
+  quand Tony fournira la nouvelle invitation, il faudra la substituer aux TROIS
+  endroits** (`site-footer.tsx:67`, `social.tsx:130`, `design-system.md:114`).
 - ✅ **Contrôles avant push** : `npx tsc --noEmit` **sans erreur**,
   `npm run build` **vert** (`/mentions-legales` prérendue en statique),
   `eslint` **sans erreur NEUVE** (les 2 erreurs sont préexistantes, prouvé par
