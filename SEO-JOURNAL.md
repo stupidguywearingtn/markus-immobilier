@@ -14,6 +14,96 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-01 (dimanche)**
+
+- ⚠️ **`origin/main` RETARDAIT — HUITIÈME OCCURRENCE SUR DIX RUNS.** Relevé
+  **AVANT** `git fetch` (règle du 16/09) : `HEAD` = **`1b127b2`**, `main` local =
+  `origin/main` = **`768ada6`**, soit **quatre commits de retard** sur ce que le
+  conteneur portait déjà. Après `git fetch origin main` : `origin/main` =
+  **`1b127b2`** = `HEAD`. 📌 **Seuls le 27/10 et le 31/10 ne retardaient pas.**
+  La règle du 16/09 reste payante.
+- ⚠️ **Conteneur démarré sur la branche `claude/dazzling-feynman-y8s1en`**, pas sur
+  `main`. **Deuxième constat de ce genre** (le 31/10, c'était
+  `claude/dazzling-feynman-7qhdsb` — donc un nom différent à chaque fois).
+  Rebasculé par `git checkout main` + `git reset --hard origin/main` avant tout
+  contrôle. 📌 **À considérer désormais comme le comportement normal du
+  conteneur, pas comme un incident** : relever `HEAD` avant `fetch`, puis
+  réaligner sur `origin/main`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-septième constat identique** (21/09 → 01/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingtième confirmation.**
+- ✅ **AUCUN CHANGEMENT DU CLIENT DEPUIS LE 31/10, ET C'EST MESURÉ, PAS SUPPOSÉ.**
+  Sitemap de production **56 URL** avant le push, et surtout le `lastmod` de `/`
+  vaut **toujours `2026-10-30T08:53:20.821Z`** — identique au relevé du
+  2ᵉ déclenchement du 31/10. 📌 **C'est ce champ, et non le `<title>`, qui
+  signale une republication depuis l'éditeur** (leçon du 31/10) : il n'a pas
+  bougé, donc Tony n'a rien republié.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS »**
+  (constat du 31/10, 2ᵉ déclenchement). **Non corrigé, et c'est volontaire** :
+  c'est une page de Tony, modifiée depuis l'éditeur le 30/10. **Toujours en
+  attente de sa réponse.**
+- 🔴 **L'INVITATION DISCORD EST TOUJOURS MORTE — RECONTRÔLÉE CE MATIN.**
+  `discord.gg/fSyn28G5U` → `{"message": "Unknown Invite", "code": 10006}`, et
+  **les deux témoins confirment la méthode** (`discord-developers` rend l'objet
+  `guild` complet, `zzzzzzzz` rend exactement la même réponse que la nôtre).
+  **Rien n'a été modifié** : il faut une invitation permanente de Tony, et le
+  CTA est un élément de marque imposé. **Relancé par notification.**
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée** (30/10 contenu →
+  31/10 non-contenu → **01/11 contenu**). **Candidat n°1 du backlog contenu
+  consommé** : la famille « zéro occurrence » découverte le 30/10, branche
+  **droit de préemption**.
+- ✅ **LA FAMILLE « ZÉRO OCCURRENCE » REMESURÉE AVANT D'ÉCRIRE, ET ELLE TENAIT.**
+  Sur tout `app components data lib` : **`droit de préemption` 0**,
+  **`congé pour vendre` 0**, **`offre de vente au locataire` 0**, **`viager` 0**,
+  **`clause pénale` 0**, **`DPU` 0**, `préemption` **2 seulement** — et ces deux
+  occurrences sont des **mentions de passage** dans une réponse de FAQ de
+  `/acheter` sur le calendrier du notaire (`app/acheter/page.tsx:180` et `:485`,
+  « purges de droits de préemption »). 📌 **Aucune page ne couvrait l'angle :
+  le contrôle qui avait clos le candidat « net vendeur » le 30/10 a, cette
+  fois, validé le candidat.**
+- 🔴 **DEUX SERP DE SUJET MESURÉES AVANT D'ÉCRIRE : SITE ABSENT SUR LES DEUX, ET
+  LE MOTEUR AVOUE LUI-MÊME N'AVOIR AUCUNE SOURCE LOCALE.**
+  (a) « droit de préemption urbain Villeurbanne vendre appartement déclaration
+  d'intention d'aliéner » : **aucun résultat ne décrit la procédure propre à
+  Villeurbanne** — des arrêtés de la Métropole, des questions parlementaires,
+  des cabinets d'avocats, un glossaire. (b) « vendre un appartement loué
+  locataire droit de préemption congé pour vendre Villeurbanne » : **aucun
+  résultat ne mentionne Villeurbanne**, et le résumé renvoie l'internaute vers
+  « un notaire ou l'ADIL du Rhône ». 📌 **Ni agence ni notaire local sur ces
+  deux places. C'est la place GEO la plus vide mesurée depuis celle du
+  18/10 sur le budget d'achat.**
+- ✅ **ARTICLE PUBLIÉ ET SERVI EN PRODUCTION, VÉRIFIÉ APRÈS LE PUSH.**
+  `/blog/vendre-logement-loue-droit-preemption-villeurbanne` → **200 /
+  235 417 o**, **14 `<h2>` en questions**, **3 tableaux sourcés**, **bloc `steps`
+  à 8 étapes**, **14 Q/R de FAQ**. **Cinq blocs JSON-LD** (`RealEstateAgent`,
+  `BlogPosting` avec `datePublished`/`dateModified` au 2026-11-01, `HowTo` à
+  8 étapes, `FAQPage` à 14 questions, `BreadcrumbList`), et **les 14 questions
+  comme les 14 réponses du `FAQPage` retrouvées mot pour mot dans le HTML
+  visible de production** — parité contrôlée sur le prérendu ET sur la prod.
+  **Sitemap de production 56 → 57 URL**, `/llms.txt` 36 897 → **38 138 o**,
+  `/vendre` 139 655 → **141 612 o** (lien entrant présent).
+  ⏱ **L'ancienne version a été servie ~75 s** (trois 404 à 25 s d'intervalle,
+  puis 200 au 4ᵉ essai).
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES** (backlog non-contenu, inscrit le 31/10). **Total `eslint` :
+  35 problèmes / 24 erreurs AVANT comme APRÈS mon changement, prouvé par
+  `git stash`.** Aucune erreur neuve.
+- ⚠️ **LES QUATRE SERP COMMERCIALES SUIVIES N'ONT PAS ÉTÉ MESURÉES AUJOURD'HUI,
+  ET C'EST DÉLIBÉRÉ** : leurs échéances sont au **06/11** (« agence immobilière
+  Villeurbanne », « estimation immobilière Villeurbanne »), **07/11** (« prix m2
+  Villeurbanne ») et **10/11** (« vendre appartement Villeurbanne »). La série
+  hebdomadaire ne vaut que si la cadence est tenue.
+- 🔴 **LA VEILLE DU LUNDI EST DUE AU PROCHAIN RUN (02/11)**, et l'étape 5 du
+  brief demande de la faire **AVANT** de choisir le chantier de ce jour-là.
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` **sans erreur**,
+  `npm run build` **vert** (article prérendu en statique, `●` SSG),
+  `eslint` **sans erreur neuve**, **0 apostrophe courbe / 0 insécable** dans les
+  trois fichiers touchés, **aucun nom de personne ni numéro de rue** repris de
+  l'acte administratif cité (vérifié par `grep` sur quatre patronymes).
+  **Outil d'estimation non touché** (`git diff --stat` : 3 fichiers,
+  +269 / −1).
+
 **Au 2026-10-31 (samedi)**
 
 - ✅ **`origin/main` NE RETARDAIT PAS — DEUXIÈME FOIS SEULEMENT EN NEUF RUNS.**
@@ -4244,6 +4334,155 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-01 (dimanche) — Les deux droits de préemption d'une vente villeurbannaise : un article neuf sur une place que ni agence ni notaire local n'occupe
+
+**Angle : CONTENU** (alternance respectée : 30/10 contenu → 31/10 non-contenu →
+01/11 contenu). **Candidat n°1 du backlog contenu, consommé après mesure.**
+
+#### Pourquoi ce chantier plutôt qu'un autre
+Le filon « zéro occurrence » repéré le 30/10 était le candidat n°1, et sa
+branche la plus transactionnelle était le **droit de préemption**. Trois
+mesures l'ont confirmé avant d'écrire une ligne :
+1. **Le corpus ne le couvrait pas.** `droit de préemption` 0, `congé pour
+   vendre` 0, `offre de vente au locataire` 0, `DPU` 0 sur tout
+   `app components data lib`. Les **2 seules** occurrences de `préemption`
+   sont des mentions de passage dans une FAQ de `/acheter`
+   (`app/acheter/page.tsx:180` et `:485`) sur le calendrier du notaire.
+2. **La SERP était vide de local.** Deux requêtes mesurées, **site absent sur
+   les deux**, et surtout **aucune agence ni aucun notaire du Rhône** : des
+   arrêtés de la Métropole, des questions parlementaires, des cabinets
+   d'avocats et des assureurs nationaux. Sur la seconde, le moteur **renvoie
+   l'internaute vers « un notaire ou l'ADIL du Rhône »** — l'aveu qu'il n'a pas
+   de source locale.
+3. **Le sujet est à double intention** : il concerne le bailleur qui veut
+   vendre (notre cible vendeur) **et** le propriétaire occupant qui découvre la
+   DIA. Il croise `/vendre` et `/gestion-locative` sans qu'aucune ne le nomme.
+
+#### Ce qui a été fait, précisément
+- **Nouvel article** `blog/vendre-logement-loue-droit-preemption-villeurbanne`,
+  `date: 2026-11-01`, `internalHref: /vendre` : **14 `<h2>` tous formulés en
+  questions**, chacun ouvert par une réponse autonome en gras de 2 à 3 phrases
+  (règle GEO) ; **3 tableaux sourcés** (calendrier légal du congé ; seuils de
+  revenus du locataire protégé ; les deux procédures bout à bout) ; **un bloc
+  `steps` à 8 étapes** (« Donner un congé pour vendre valable à Villeurbanne »,
+  repris en `HowTo`) ; **14 Q/R de FAQ** visibles et reprises à l'identique en
+  `FAQPage`.
+- **Maillage** : un **lien entrant** ajouté dans la section « Calendrier » de
+  `/vendre` (un `<p>` neuf, aucune reprise du texte existant) ; la **ligne
+  `/vendre` de `/llms.txt`** complétée des deux délais. L'article entre
+  automatiquement dans le sitemap, dans la liste `/llms.txt` et dans les
+  articles liés (`getRelatedArticles` sur le groupe `/vendre`).
+- **Documentation en tête de `lib/blog.ts`** : sources et dates, dépendance DVF
+  minimale, et les deux points « à ne pas compléter par mégarde ».
+
+#### Les sources, toutes téléchargées le 01/11/2026
+- **service-public.gouv.fr F929** « Préavis et formalités du congé donné par le
+  propriétaire (bailleur) », **vérifiée le 1er juin 2026** : le congé pour
+  vendre vaut offre de vente ; réception **6 mois** au moins avant l'échéance
+  (3 mois en meublé, **sans droit de préemption**) ; offre valable les
+  **2 premiers mois du préavis** ; **2 mois** pour signer à compter de l'envoi
+  de la réponse, **4 mois** avec prêt, préavis prolongé d'autant ; **3 cas de
+  refus** ; pas de préemption si un **parent jusqu'au 3ᵉ degré** achète pour y
+  habiter 2 ans ; **le locataire qui préempte ne paie aucune commission
+  d'agence** ; **8 motifs de contestation** ; **congé frauduleux = amende de
+  6 000 € (30 000 € pour une personne morale) + dommages et intérêts** ;
+  moyens admis (LRAR, commissaire de justice, remise en main propre) et
+  **courriel invalide** ; congé à tous les signataires, époux et partenaires de
+  PACS compris.
+- **service-public.gouv.fr F16** « Vente d'un bien immobilier situé dans une
+  zone de préemption », **vérifiée le 23 décembre 2025** : **DIA établie
+  exclusivement par le propriétaire** (nulle si signée par l'acquéreur, l'agent
+  ou un tiers), **Cerfa 10072*04**, adressée à la **mairie** ; promesse possible
+  sous **condition suspensive de non-exercice**, acte authentique impossible
+  avant la renonciation ; **2 mois**, silence = renonciation tacite ;
+  préemption avec réserve → **2 mois** pour répondre, **15 jours** pour saisir
+  le juge de l'expropriation, qui **ne tranche que le prix** ; après fixation,
+  **2 mois** de part et d'autre, silence = acceptation, **consignation de
+  15 %** sous 3 mois ; **nullité demandable par la collectivité pendant 5 ans**,
+  et **ni le vendeur ni l'acquéreur privé ne peuvent invoquer l'irrégularité** ;
+  textes : **L 210-1, L 211-1 à L 211-7, L 213-2, L 213-2-1**.
+- **Actes de la Métropole de Lyon** : **délibération du Conseil n° 2019-3507 du
+  13 mai 2019** approuvant la révision du PLU-H et **renouvelant l'institution
+  du droit de préemption urbain dans les zones urbaines ou à urbaniser du
+  PLU-H** ; **PLU-H opposable aux tiers depuis le 18 juin 2019** ;
+  **délibération n° 2020-0005 du 2 juillet 2020, article 1.4**, déléguant au
+  Président l'exercice des droits de préemption ; **arrêté
+  n° 2022-08-01-R-0631 du 1er août 2022**, publié au **recueil des actes
+  administratifs d'août 2022**.
+
+#### Les trois apports qu'aucune page concurrente mesurée ne publie
+1. 🟢 **Les seuils du locataire protégé de la colonne « AUTRE RÉGION », pas
+   ceux de Paris.** 23 403 € pour une personne seule hors Île-de-France contre
+   **26 920 €** à Paris, puis 31 254 / 37 584 / 45 374 / 53 376 / 60 156 € et
+   **+ 6 710 €** par personne supplémentaire. Les pages nationales publient
+   majoritairement la colonne parisienne : pour un bailleur villeurbannais,
+   c'est une erreur de 3 517 € sur le premier seuil.
+2. 🟢 **Le délai de deux mois de la préemption urbaine n'en fait pas toujours
+   deux, et on peut le prouver avec des dates.** Il est **suspendu et prolongé**
+   par une demande de pièces complémentaires (**L 213-2**). Sur le dossier
+   villeurbannais de l'arrêté cité : **DIA reçue en mairie le 30 mars 2022**,
+   demande de pièces le 25 avril, **pièces reçues le 22 juillet**, **arrêté le
+   1er août 2022** — soit **quatre mois** au lieu de deux. Conséquence
+   opérationnelle écrite dans l'article : **ne jamais promettre une date d'acte
+   à deux mois du dépôt de la DIA.**
+3. 🟢 **La répartition réelle des rôles, que toutes les pages génériques
+   ratent en parlant de « la mairie ».** La **DIA se dépose à la mairie de
+   Villeurbanne**, mais le titulaire qui examine et préempte est la
+   **Métropole de Lyon** ; quand un bien intéresse la Ville, **celle-ci demande
+   à la Métropole de préempter et s'engage à le lui racheter et à préfinancer
+   l'acquisition** (courrier du 26 juillet 2022 dans l'arrêté cité).
+   📌 **Et le signal public à vérifier avant de mettre en vente** : les
+   **emplacements réservés du PLU-H** — dans ce dossier, la copropriété était
+   inscrite en emplacement réservé pour équipements municipaux et espaces
+   verts, près d'un groupe scolaire en extension, et la Métropole avait déjà
+   acquis d'autres tènements du même îlot.
+
+#### Ce que j'ai décidé de NE PAS faire, et pourquoi
+- ⛔ **Ne pas publier les délais du droit de préemption de la loi n° 75-1351 du
+  31 décembre 1975** (première vente après division en lots). Son existence et
+  son déclencheur sont mentionnés, avec le texte, **mais pas ses délais** : les
+  analyses trouvées ce matin (ANIL) datent de **2006 à 2014**, donc d'avant la
+  loi ALUR, et je n'ai pas pu lire une source datée de 2026. **L'article écrit
+  noir sur blanc pourquoi il ne les publie pas et renvoie au notaire.**
+  📌 **Ne pas « compléter » ce passage de mémoire.**
+- ⛔ **Ne pas ajouter de lien entrant depuis `/gestion-locative`**, bien que ce
+  soit la page du bon public. Sa liste d'obligations du bailleur
+  (`app/gestion-locative/page.tsx`, autour de la ligne 477) porte **déjà un
+  chantier en attente** depuis le 28/10 (ajouter le préavis d'un mois) : y
+  toucher aujourd'hui aurait mélangé deux chantiers dans le même diff.
+  **Versé au backlog non-contenu, à faire avec l'autre.**
+- ⛔ **Ne pas toucher à l'accueil** ni aux deux `<a>` de `/mentions-legales`
+  (backlog non-contenu du 31/10) : hors angle du jour.
+- ⛔ **Ne pas mesurer les quatre SERP commerciales suivies** : leurs échéances
+  sont au 06, 07 et 10/11, et la série hebdomadaire ne vaut que si la cadence
+  est tenue.
+- ⚠️ **Ne reprendre AUCUN nom de personne ni numéro de rue de l'arrêté
+  administratif cité**, bien qu'il soit publié. L'acte nomme la propriétaire,
+  l'acquéreur, l'étude notariale et l'adresse exacte, avec le prix : l'article
+  ne garde que **le numéro de l'arrêté, la surface arrondie, les dates et les
+  deux prix**, ce qui suffit à la vérifiabilité. **Vérifié par `grep` sur quatre
+  patronymes : 0 occurrence.**
+
+#### Contrôles
+`npx tsc --noEmit` sans erreur. `npm run build` vert, article **prérendu en
+statique** (`●` SSG, 29 chemins de blog). `eslint` : **35 problèmes / 24 erreurs
+avant comme après**, prouvé par `git stash` — aucune erreur neuve. **0
+apostrophe courbe, 0 espace insécable** dans les trois fichiers touchés.
+**Parité `FAQPage` ↔ visible contrôlée deux fois** : sur le HTML prérendu, puis
+sur le HTML de production — **14 questions et 14 réponses retrouvées mot pour
+mot**. `git diff --stat` : **3 fichiers, +269 / −1**. **Outil d'estimation non
+touché.**
+
+#### Une correction faite en cours de rédaction, et elle valait le détour
+J'avais écrit « deux cas » de locataire protégé, en me fiant à une lecture
+linéaire de F929. **La fiche annonce pourtant « 3 cas de figure »**, et le
+troisième — **le locataire percevant une allocation de présence parentale** —
+n'apparaît que si l'on va chercher les étiquettes des branches du
+questionnaire. Particularité de ce troisième cas : **l'âge et les revenus du
+propriétaire n'entrent pas en compte**, seule une offre de relogement à
+proximité lève la protection. **Corrigé dans le corps, dans le bloc `steps` et
+dans la FAQ avant le push**, et consigné en « Techniques apprises ».
+
 ### 2026-10-31 (2e déclenchement, 06h42 UTC) — L'accueil a été republié depuis l'éditeur le 30/10 à 08h53 UTC, SANS la section « Qui sommes-nous » ; signalé, pas corrigé
 
 - **Déclenchement en double** : le run du jour (médiateur, `b858589`) était déjà
@@ -7900,6 +8139,150 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — les deux droits de préemption d'une vente
+villeurbannaise** (01/11 : candidat n°1 du backlog contenu, **consommé après
+mesure** — la famille « zéro occurrence » tenait encore (`droit de préemption`
+0, `congé pour vendre` 0, `DPU` 0 ; `préemption` 2, deux mentions de passage
+dans une FAQ de `/acheter`), et **les deux SERP de sujet ne portaient ni agence
+ni notaire local**, le moteur renvoyant lui-même vers « un notaire ou l'ADIL du
+Rhône ». Nouvel article : 14 `<h2>` en questions, 3 tableaux sourcés, `HowTo` à
+8 étapes, 14 Q/R ; sitemap 56 → **57 URL**, `/llms.txt` 36 897 → **38 138 o**.
+**Trois apports propres** : les seuils du locataire protégé en colonne « autre
+région » et non parisienne, la **suspension du délai de deux mois de la DIA**
+prouvée par des dates (4 mois au lieu de 2 sur un dossier villeurbannais), et
+la répartition **mairie dépose / Métropole décide**.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (02/11, lundi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 30/10 contenu → 31/10 non-contenu → 01/11 contenu).
+⚠️ **ET LA VEILLE DU LUNDI EST DUE : l'étape 5 du brief demande de la faire
+AVANT de choisir le chantier.** Elle n'a pas été faite depuis le 26/10.
+**Candidats NON-CONTENU, par ordre d'impact :**
+  1. 🔴 **RELANCER LE CONTRÔLE SUR `justice.fr`, EN MAINTENANCE LE 31/10** —
+     inscrit le 31/10, **non consommé le 01/11** (jour de contenu). Deux
+     affirmations en dépendent : la fiche « DPE collectif » (`lib/blog.ts:857`,
+     « mise à jour le 1er janvier 2026 ») et **l'adresse du tribunal judiciaire
+     de Lyon** (67 rue Servient, 04 72 60 70 12). **Recette du 31/10, contrôle à
+     deux temps** (code + redirection, puis marqueur).
+  2. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE** —
+     portée depuis le 14/10. Sept mesures concordantes, **toutes COMMUNALES**,
+     alors que `/acheter` et `/llms.txt` affirment un écart **de 16,1 à 45,3 %
+     PAR QUARTIER**. **Reformuler — « l'écart par QUARTIER a-t-il disparu ? » —
+     et trancher avec un relevé DVF 2026 par quartier** (recette du 14/10),
+     **pas avec les SERP. Ne RIEN réécrire avant.**
+  3. 🟡 **DEUX CHANTIERS À FAIRE DANS LE MÊME DIFF SUR `/gestion-locative`**,
+     parce qu'ils touchent la même zone du fichier :
+     (a) **ajouter le préavis d'un mois à la liste d'obligations du bailleur**
+     (`app/gestion-locative/page.tsx`, autour de la ligne 477) — inscrit le
+     28/10, **cinquième report** ; la liste dit ce que doit faire le bailleur
+     qui gère seul et **ne dit pas que son locataire peut partir en un mois** ;
+     (b) 🆕 **ajouter un lien entrant vers
+     `/blog/vendre-logement-loue-droit-preemption-villeurbanne`** — écarté
+     volontairement le 01/11 pour ne pas mélanger deux chantiers, alors que
+     c'est la page du bon public (les bailleurs).
+     ⚠️ **Relire la parité FAQ de la page après (10 Q/R au 28/10).**
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **cinquième report**). Il tient **trois SERP suivies**. **C'est le seul
+     concurrent mesuré qui publie du DVF par quartier**, donc le seul comparable
+     direct de notre angle, et il sert aussi le candidat n°2. **Ne RIEN
+     réécrire sur un seul relevé.**
+  5. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (constaté le
+     31/10, non fait le 01/11) : lignes 199 et 230, `<a href="/confidentialite/">`
+     et `<a href="/cookies/">` au lieu de `<Link>`. **2 erreurs `eslint`
+     préexistantes**, reconfirmées identiques le 01/11 par `git stash`.
+     📌 **Effet SEO réel mais faible** : à faire un jour creux, en vérifiant
+     qu'aucune autre page n'a le même défaut (`grep -rn '<a href="/' app`).
+  6. 🟢 🆕 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE
+     13 MAI 2019.** Le nouvel article s'appuie sur la délibération
+     **n° 2019-3507** et sur un arrêté de **2022** : ce sont des actes datés,
+     donc ils ne périment pas, **mais le PLU-H a pu être modifié depuis**.
+     ⚠️ **Le chemin d'accès a changé** : les PDF `grandlyon.com/delibs/*` sont
+     morts (301 vers `agora.grandlyon.com`) et le motif de recueil
+     `…/raad/AAAA/AAAAMM00_raad.pdf` **ne répond plus après 2022** (testé :
+     2025-10, 2026-03, 2026-06, 2026-09 → 404). **Passer par
+     `agora.grandlyon.com`.** Objectif : trouver **un arrêté de préemption
+     villeurbannais de 2025 ou 2026** et vérifier qu'il vise toujours la même
+     délibération.
+  7. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Aucun défaut connu :
+     prévention.**
+  8. 🟢 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** (inscrit
+     le 26/10, **non fait**, **volontairement déclassé**) : travail de journal,
+     **zéro effet sur les positions**. **À faire un jour creux.**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🔴 **LA SUITE DE LA FAMILLE « ZÉRO OCCURRENCE », ET ELLE A ENCORE DEUX
+     BRANCHES.** Après le droit de préemption (consommé le 01/11), restent
+     **`viager` 0** (requête à forte intention, fiche officielle **F2762**
+     repérée le 30/10, **toujours non téléchargée**), **`clause pénale` 0**, et
+     **`nue-propriété` 3 occurrences seulement**, toutes dans l'article
+     d'indivision (`lib/blog.ts:2612` et `:2709`), donc **jamais traitée pour
+     elle-même**. ⚠️ **Mesurer la SERP AVANT d'écrire**, et **vérifier d'abord
+     qu'aucune page ne couvre l'angle** — c'est ce contrôle qui a clos « net
+     vendeur » le 30/10 et validé « droit de préemption » le 01/11.
+  2. 🟢 **La place GEO la plus vide mesurée avant le 01/11** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. **Remesurer plutôt que réécrire** : la question est de savoir si
+     `/acheter` y est entrée.
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). ⚠️ **Ne pas en prendre un « parce qu'il
+     est court » : mesurer d'abord s'il existe une SERP où le site est absent.**
+  4. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CANDIDAT CLOS LE 30/10, NE PAS
+     LE RÉOUVRIR** (couverture déjà complète ; à gagner par maillage et
+     fraîcheur, donc en non-contenu).
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS »** (constaté le 31/10, 2ᵉ
+  déclenchement ; **toujours vrai au 01/11**, `lastmod` de `/` inchangé à
+  `2026-10-30T08:53:20.821Z`). Perte du texte de présentation et des chiffres
+  validés (7 ans / 250+ / 40 M€ / 300+) sur la page la plus forte, et ordre de
+  la trame client rompu. **Non corrigé : c'est une page de Tony, republiée
+  depuis l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant
+  fin janvier 2027, hors panne.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). **Recontrôlée le
+  01/11 : toujours `{"message": "Unknown Invite", "code": 10006}`**, et les
+  **deux témoins confirment la méthode** (`discord-developers` → objet `guild`
+  complet ; `zzzzzzzz` → même réponse que la nôtre). Publiée dans
+  `components/layout/site-footer.tsx:67`, `components/home/social.tsx:130` et
+  `design-system.md` § 11. ⚠️ **Il faut une invitation PERMANENTE.** 📌 **Dès
+  que Tony fournit le code : substituer aux TROIS endroits, puis revérifier par
+  l'API.** **Ne pas retirer le CTA entre-temps** (élément de marque imposé).
+- 🆕 **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs`
+  du JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 01/11** (elles remplacent celles du bloc
+du 31/10 ci-dessous) :
+- **« agence immobilière Villeurbanne »** et **« estimation immobilière
+  Villeurbanne »** : mesurées le **30/10**, **site absent sur les deux** →
+  prochaine passe **06/11**. 📌 **Les relevés du 30/10 sont le POINT ZÉRO
+  d'après l'arbitrage de cannibalisation du 29/10 ; le verdict se lira dans
+  Search Console vers le 20/11, pas dans ces SERP.**
+- **« prix m2 Villeurbanne »** : mesurée le **31/10** (7ᵉ relevé, **site
+  absent**, 15 résultats) → **07/11**. ⚠️ **Ne pas y réinvestir d'effort
+  rédactionnel** : SERP tenue par des agrégateurs et des simulateurs.
+- **« vendre appartement Villeurbanne »** : mesurée le **30/10** (4ᵉ relevé,
+  site absent) → **10/11**.
+- 🆕 **DEUX SERP DE SUJET OUVERTES LE 01/11, À REMESURER POUR SAVOIR SI
+  L'ARTICLE NEUF Y ENTRE** : « droit de préemption urbain Villeurbanne vendre
+  appartement déclaration d'intention d'aliéner » et « vendre un appartement
+  loué locataire droit de préemption congé pour vendre Villeurbanne ».
+  **Point zéro au 01/11 : site absent sur les deux, aucune agence ni notaire
+  local.** → **première remesure vers le 15/11** (laisser le temps à
+  l'indexation), puis mensuellement. 📌 **C'est la seule place mesurée où le
+  moteur renvoie l'internaute vers l'ADIL faute de source locale : si le site
+  n'y entre pas, c'est que le problème n'est pas le contenu.**
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes »
+  (11/09) et « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- 🔴 **Prochaine veille du lundi : 02/11 — DUE**, et l'étape 5 du brief demande
+  de la faire **AVANT** de choisir le chantier de ce jour-là.
+
 **Angle du dernier run : NON-CONTENU — le détecteur de redirection passé sur
 TOUTES les URL externes du corpus** (31/10 : candidat n°1 du backlog, inscrit le
 29/10 et non consommé le 30/10. **185 URL extraites, 24 d'autorité + 18
@@ -9884,6 +10267,35 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-01 — L'institution du DPU dans la Métropole de Lyon a-t-elle bougé depuis le 13 mai 2019 ?
+
+**🟡 CE QUE NOUS PUBLIONS DEPUIS LE 01/11, ET CE QUI EST PROUVÉ.**
+`/blog/vendre-logement-loue-droit-preemption-villeurbanne` affirme que le droit
+de préemption urbain est institué sur les **zones urbaines ou à urbaniser du
+PLU-H** par la **délibération du Conseil de la Métropole n° 2019-3507 du
+13 mai 2019**, que le **PLU-H est opposable aux tiers depuis le 18 juin 2019**,
+et que les décisions sont prises par **arrêté du Président** par délégation de
+la **délibération n° 2020-0005 du 2 juillet 2020 (art. 1.4)**.
+✅ **Ces quatre faits sont lus dans les « Vu » d'un acte primaire** : l'arrêté
+**n° 2022-08-01-R-0631 du 1er août 2022**, publié au recueil des actes
+administratifs d'août 2022. Ce sont des actes **datés**, donc ils ne périment
+pas : la phrase reste vraie telle qu'elle est écrite et datée.
+
+**⚠️ CE QUI N'EST PAS PROUVÉ.** Que la situation soit **inchangée en 2026**. Le
+PLU-H a pu être modifié depuis 2019, et je n'ai pas pu lire d'acte postérieur à
+2022 : **le motif d'URL du recueil ne répond plus** (`…/raad/2025/20251000_raad.pdf`,
+`2026/20260300`, `2026/20260600`, `2026/20260900` → **404**), et les PDF
+`grandlyon.com/delibs/*` sont morts (301 vers `agora.grandlyon.com`, qui ne sert
+pas le fichier).
+
+**📌 COMMENT TRANCHER, ET CE QUE ÇA CHANGERAIT.** Trouver, via
+`agora.grandlyon.com`, **un arrêté de préemption villeurbannais de 2025 ou
+2026**, et vérifier qu'il vise toujours la délibération n° 2019-3507. ⚠️ **Ne
+RIEN réécrire avant** : le paragraphe actuel est exact et daté. Si un acte
+récent visait une autre délibération, il faudrait **ajouter** la nouvelle
+référence, pas remplacer l'ancienne. **Inscrit au backlog non-contenu
+(candidat n° 6).**
+
 ### 2026-10-31 — Trois points laissés ouverts par le balayage des URL externes
 
 **1. 🔴 LE COMPTE X `markusimmo_` EXISTE-T-IL ENCORE ?** `x.com/markusimmo_` rend
@@ -11186,6 +11598,48 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-01 — J'ai écrit « deux cas » là où la fiche officielle annonce « 3 cas de figure », et seule la relecture du compte annoncé l'a rattrapé
+
+🔴 **LE FAIT.** Le paragraphe du locataire protégé du nouvel article disait
+« **Du côté du locataire, deux cas** » : plus de 65 ans, ou moins de 65 ans avec
+une personne de plus de 65 ans à charge. **C'était faux**, et faux dans un
+article destiné à être cité.
+
+✅ **LA CAUSE : une lecture LINÉAIRE d'une fiche à QUESTIONNAIRE.** F929 écrit
+« **Il existe 3 cas de figure, selon la situation du locataire** » puis bascule
+dans un questionnaire interactif. Le texte aplati ne montre à la suite que
+**deux étiquettes de branche**. La troisième — « **Locataire recevant une
+allocation de présence parentale** » — n'existe que comme étiquette d'une
+branche qu'il faut aller chercher.
+
+✅ **ET LE TROISIÈME CAS NE SUIT PAS LA MÊME RÈGLE**, ce qui rendait le
+paragraphe faux une seconde fois : dans les deux premiers cas, la protection
+tombe si le **propriétaire** a plus de 65 ans, a des revenus sous les mêmes
+plafonds, ou propose un relogement à proximité. **Dans le cas de l'allocation
+de présence parentale, l'âge et les revenus du propriétaire n'entrent pas en
+compte** : seule l'offre de relogement lève la protection.
+
+```bash
+# le contrôle qui l'attrape — partir du nombre que la fiche ANNONCE,
+# pas de ce que la lecture rend
+python3 -c "
+import re
+t=open('f929.txt',encoding='utf-8').read()
+i=t.find('Il existe')
+print(t[i:i+90])                                   # « Il existe 3 cas de figure »
+for m in re.finditer(r'(Locataire [^,.:]{0,70})', t[i:i+30000]):
+    print('*', m.group(1)[:80])                    # -> la 3e étiquette apparaît
+"
+```
+
+📌 **LA RÈGLE À APPLIQUER DÉSORMAIS À TOUTE FICHE À QUESTIONNAIRE** : chercher
+« Il existe N cas » / « N situations », **compter les branches réellement lues**,
+et si le compte ne tombe pas, énumérer les étiquettes. La branche manquante est
+presque toujours la plus rare — donc **celle que personne d'autre ne publie**,
+donc celle qui a le plus de valeur GEO. ✅ **Corrigé dans le corps, dans le bloc
+`steps` et dans la FAQ AVANT le push**, et documenté en tête de `lib/blog.ts`
+pour qu'un run futur ne « simplifie » pas le passage en deux cas.
 
 ### 2026-10-30 — Mon détecteur de parité FAQ a crié au défaut sur `/vendre` à cause d'une espace fine insécable, et c'est le détecteur qui avait tort
 
@@ -13010,6 +13464,90 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-01 — Une fiche service-public qui annonce « 3 cas de figure » n'en montre que deux à la lecture linéaire
+
+Le piège a failli passer dans un article publié. F929 écrit, noir sur blanc :
+« **Il existe 3 cas de figure, selon la situation du locataire** », puis bascule
+dans un **questionnaire interactif** (« Répondez aux questions successives »).
+Le texte aplati ne rend ensuite que **deux étiquettes de branche** visibles —
+« Locataire de moins de 65 ans » et « Locataire de plus de 65 ans ». La
+troisième, **« Locataire recevant une allocation de présence parentale »**,
+n'apparaît qu'en cherchant toutes les étiquettes, pas en lisant à la suite.
+
+```bash
+# le contrôle qui l'attrape, et il part du nombre que la fiche ANNONCE
+python3 -c "
+import re
+t=open('f929.txt',encoding='utf-8').read()
+i=t.find('Il existe')
+print(t[i:i+90])                      # -> « Il existe 3 cas de figure »
+# puis ÉNUMÉRER les étiquettes, au lieu de lire la suite du texte
+for m in re.finditer(r'(Locataire [^,.:]{0,70})', t[i:i+30000]):
+    print('*', m.group(1)[:80])
+"
+```
+
+**La règle à appliquer à toute fiche service-public à questionnaire** : chercher
+la formule « **Il existe N cas** » / « N situations », puis **compter les
+branches effectivement lues**. Si le compte ne tombe pas, la branche manquante
+est celle qui n'a pas d'étiquette dans le flux linéaire — et c'est presque
+toujours la plus rare, donc **celle qui n'est publiée nulle part ailleurs**,
+donc celle qui a le plus de valeur GEO.
+
+📌 **Et le troisième cas avait sa propre particularité, qui aurait rendu le
+paragraphe faux** : dans le cas de l'allocation de présence parentale, **l'âge
+et les revenus du PROPRIÉTAIRE n'entrent pas en compte**, alors qu'ils lèvent
+la protection dans les deux autres cas. Seule une offre de relogement à
+proximité la lève. Un paragraphe écrit « deux cas » aurait donc été faux deux
+fois : sur le nombre, et sur la condition.
+
+### 2026-11-01 — Un acte administratif daté vaut mieux qu'une page institutionnelle, et il dit ce que la page ne dit pas
+
+Pour établir **qui** exerce le droit de préemption urbain à Villeurbanne,
+aucune page institutionnelle n'a répondu : `villeurbanne.fr/mes-demarches/urbanisme`
+rend **404**, `grandlyon.com/services/droit-de-preemption` rend **404**, et tous
+les PDF `grandlyon.com/delibs/*` sont **morts** (301 vers `agora.grandlyon.com`,
+qui ne sert pas le fichier). C'est **le recueil des actes administratifs** qui a
+tranché, et il a donné bien plus que la réponse cherchée.
+
+```bash
+# le motif d'URL qui marche encore (jusqu'à 2022 inclus)
+curl -sS -o raad.pdf "https://www.grandlyon.com/fileadmin/user_upload/media/pdf/institution/raad/2022/20220800_raad.pdf"
+pdftotext -layout raad.pdf raad.txt            # pdftotext est présent dans le conteneur
+grep -n "Villeurbanne" raad.txt | grep -i "préemption"
+grep -n "13 mai 2019" raad.txt                 # -> la délibération qui institue le DPU
+```
+
+Ce qu'un arrêté de préemption porte, et qu'aucune page de vulgarisation
+n'écrit : les **« Vu »** (donc la base légale exacte et sa date), les **dates
+réelles de la procédure** (DIA reçue, demande de pièces, pièces reçues, arrêté
+— d'où la **durée vraie** du délai), les **deux prix** (déclaré et offert), le
+**rôle de chaque collectivité**, et le **motif d'urbanisme** (ici un emplacement
+réservé au PLU-H, qui est un signal public vérifiable par le vendeur).
+
+⚠️ **Deux limites à retenir.**
+1. **Le motif d'URL ne répond plus après 2022** (`2025-10`, `2026-03`,
+   `2026-06`, `2026-09` → 404) : pour un acte récent, il faut passer par
+   `agora.grandlyon.com`. **Donc un arrêté de 2022 prouve une base légale de
+   2019, pas la pratique de 2026** — l'article le dit en datant sa source, et
+   la vérification d'un acte récent est inscrite au backlog.
+2. **Ces actes nomment des personnes privées** (propriétaire, acquéreur, étude
+   notariale) **avec l'adresse exacte et le prix**. Ils sont publics, mais les
+   reprendre publierait une transaction identifiable. **Règle appliquée le
+   01/11, à garder : ne reprendre que le NUMÉRO de l'arrêté, les dates, la
+   surface arrondie et les montants** — c'est suffisant pour que n'importe qui
+   vérifie, et le contrôle avant push est un `grep` sur les patronymes lus.
+
+### 2026-11-01 — Une recherche qui ne trouve « rien de local » est un résultat, pas un échec
+
+Sur les deux SERP mesurées avant d'écrire, le moteur a produit lui-même la
+phrase la plus utile du run : « **aucun ne décrit la procédure propre à
+Villeurbanne** », et, sur la seconde, un renvoi vers « **un notaire ou l'ADIL du
+Rhône** ». 📌 **C'est le même signal que le 18/10 sur le budget d'achat : quand
+le résumé renvoie vers un tiers institutionnel au lieu de citer une page, la
+place est vide.** À traiter comme une mesure positive — et à consigner avec la
+requête exacte, pour pouvoir la remesurer et savoir si le contenu neuf y entre.
 
 ### 2026-10-31 — Un lien mort ne se voit pas dans son code HTTP : il faut un détecteur à DEUX temps, et trois familles de faux verdicts à connaître avant de l'écrire
 
