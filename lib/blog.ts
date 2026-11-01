@@ -260,6 +260,46 @@
  * ⚠️ Le TAUX du droit de partage est VOLONTAIREMENT absent : F16194 et F1296
  * écrivent « un pourcentage de la valeur de la succession » sans le chiffrer.
  * Ne pas l'ajouter de mémoire — il faudrait une source impots.gouv.fr datée.
+ *
+ * Depuis le 01/11/2026, « vendre-logement-loue-droit-preemption-villeurbanne »
+ * traite les DEUX droits de préemption d'une vente villeurbannaise. Ses
+ * affirmations de droit viennent de deux fiches datées, téléchargées le
+ * 01/11/2026 : service-public.gouv.fr F929 « Préavis et formalités du congé
+ * donné par le propriétaire (bailleur) », vérifiée le 01/06/2026 (congé pour
+ * vendre, offre de vente, délais 2/4 mois, motifs de contestation, amende du
+ * congé frauduleux 6 000 / 30 000 €, seuils du locataire protégé) et F16
+ * « Vente d'un bien immobilier situé dans une zone de préemption », vérifiée le
+ * 23/12/2025 (DIA, délai de 2 mois, nullité à 5 ans). À REVÉRIFIER fiche par
+ * fiche, jamais de mémoire ; la date affichée dans « Sources » doit bouger avec.
+ * 🔴 LES SEUILS DU LOCATAIRE PROTÉGÉ SONT CEUX DE LA COLONNE « AUTRE RÉGION »
+ * (hors Île-de-France) : 23 403 / 31 254 / 37 584 / 45 374 / 53 376 / 60 156 €
+ * et + 6 710 € par personne supplémentaire, les montants parisiens n'étant
+ * cités qu'en regard. Ils sont RÉÉVALUÉS chaque année : ne pas les reprendre
+ * sans retélécharger F929, et corriger les DEUX tableaux (corps + FAQ) ensemble.
+ * ⚠️ TROIS cas de locataire protégé, pas deux : > 65 ans ; < 65 ans avec une
+ * personne de plus de 65 ans à charge ; et ALLOCATION DE PRÉSENCE PARENTALE —
+ * ce dernier cas ne se lève QUE par une offre de relogement à proximité, l'âge
+ * et les revenus du propriétaire n'y entrant pas. Corrigé le 01/11/2026 après
+ * relecture du questionnaire de F929, qui annonce « 3 cas de figure ».
+ * ⚠️ Les éléments propres à Villeurbanne viennent d'actes de la Métropole de
+ * Lyon relevés le 01/11/2026 : délibération n° 2019-3507 du 13/05/2019 (PLU-H,
+ * institution du DPU sur les zones urbaines ou à urbaniser), PLU-H opposable au
+ * 18/06/2019, délibération n° 2020-0005 du 02/07/2020 (délégation au Président)
+ * et arrêté n° 2022-08-01-R-0631 du 01/08/2022, publié au recueil des actes
+ * administratifs d'août 2022 — d'où sont tirés le déroulé réel (DIA reçue en
+ * mairie le 30/03/2022, pièces complémentaires, arrêté le 01/08/2022 = 4 mois),
+ * l'écart de prix 152 000 → 120 000 € et le rôle respectif de la Ville et de la
+ * Métropole. ⚠️ AUCUN NOM DE PERSONNE N'EST REPRIS DE CET ACTE, ni le numéro de
+ * rue : volontaire, et à ne pas « compléter ».
+ * ⚠️ DÉPENDANCE DVF, VOLONTAIREMENT MINIMALE : l'article ne cite que
+ * LOYER_MEDIAN_HC (14,60 €/m² HC) et COMMUNE.surfaceMediane (62 m²), et les 905 €
+ * mensuels qui s'en déduisent, dans le seul arbitrage « vendre libre ou vendre
+ * occupé ». Si les médianes bougent, c'est le SEUL passage à reprendre ici.
+ * ⚠️ LE DROIT DE PRÉEMPTION DE LA LOI DU 31/12/1975 (première vente après
+ * division en lots) EST MENTIONNÉ SANS SES DÉLAIS, ET C'EST VOLONTAIRE : les
+ * analyses trouvées le 01/11/2026 sont antérieures aux dernières réformes.
+ * Ne pas les ajouter sans une source datée — l'article dit noir sur blanc
+ * pourquoi il ne les publie pas.
  */
 
 export type Block =
@@ -2739,6 +2779,212 @@ export const ARTICLES: Article[] = [
       {
         q: "Sur quelle valeur calcule-t-on la plus-value d'un bien reçu en héritage ?",
         a: "Sur la valeur retenue pour le calcul des droits de succession, et non sur le prix que le défunt avait payé. Une valeur déclarée basse réduit les droits de succession mais augmente la plus-value imposable à la revente : l'arbitrage se joue au moment de la déclaration de succession, pas au moment de la vente. Source : service-public.gouv.fr, fiche F10864, vérifiée le 15 avril 2026.",
+      },
+    ],
+  },
+  {
+    slug: "vendre-logement-loue-droit-preemption-villeurbanne",
+    title: "Vendre un logement loué à Villeurbanne : les deux droits de préemption",
+    metaDescription:
+      "Votre locataire et la Métropole de Lyon peuvent passer devant votre acheteur. Le congé pour vendre vaut offre de vente, les seuils de revenus du locataire protégé hors Île-de-France, et pourquoi le délai de deux mois de la DIA n'en fait pas toujours deux.",
+    h1: "Vendre un appartement loué à Villeurbanne : qui peut passer devant votre acheteur",
+    excerpt:
+      "Deux droits de préemption se superposent sur une vente villeurbannaise. Celui du locataire ne s'ouvre que si vous donnez congé pour vendre le logement libre : le congé vaut alors offre de vente, et le locataire a les deux premiers mois du préavis pour l'accepter. Celui de la Métropole de Lyon s'applique à la vente elle-même, locataire ou pas, parce que le droit de préemption urbain couvre les zones urbaines et à urbaniser du PLU-H — et son délai de deux mois peut être suspendu par une simple demande de pièces, ce qui l'a porté à quatre mois sur un dossier villeurbannais de 2022.",
+    date: "2026-11-01",
+    internalHref: "/vendre",
+    internalLabel: "Préparer la vente de mon logement loué",
+    blocks: [
+      { type: "p", text: "**Deux droits de préemption peuvent faire passer quelqu'un d'autre devant votre acheteur quand vous vendez à Villeurbanne : celui de votre locataire, et celui de la Métropole de Lyon.** Le premier ne s'ouvre que si vous donnez congé pour vendre le logement libre — si vous vendez occupé, votre locataire n'est pas prioritaire et vous n'avez même pas à l'informer. Le second s'applique à la vente elle-même, locataire ou pas, parce que le droit de préemption urbain couvre les zones urbaines et à urbaniser du PLU-H. Aucun des deux ne vous empêche de vendre. Les deux décident de votre calendrier." },
+      { type: "p", text: "Cette page expose ce que disent les sources officielles au 1er novembre 2026 : la fiche service-public.gouv.fr **F929 « Préavis et formalités du congé donné par le propriétaire (bailleur) », vérifiée le 1er juin 2026**, la fiche **F16 « Vente d'un bien immobilier situé dans une zone de préemption », vérifiée le 23 décembre 2025**, et les actes de la **Métropole de Lyon** qui fondent et appliquent le droit de préemption urbain à Villeurbanne. Elle donne aussi les deux chiffres que les pages nationales publient le plus mal : les seuils de revenus du locataire protégé **hors Île-de-France**, et la durée réelle de la procédure de préemption urbaine." },
+
+      { type: "h2", text: "Votre locataire est-il prioritaire pour acheter l'appartement qu'il occupe ?" },
+      { type: "p", text: "**Seulement si vous lui donnez congé pour vendre le logement libre.** Le congé pour vendre vaut offre de vente au locataire, qui devient alors prioritaire sur tous les autres acheteurs. En revanche, vous pouvez vendre le logement pendant que le locataire l'occupe, sans l'en informer et sans lui donner congé : dans ce cas, il n'a aucun droit de préemption et le bail se poursuit avec l'acquéreur." },
+      { type: "p", text: "C'est la confusion la plus répandue chez les bailleurs, et elle se joue sur un seul mot : le congé. Tant que vous ne mettez pas fin au bail, votre locataire est un occupant, pas un candidat prioritaire. Dès que vous lui notifiez un congé pour vendre, la loi transforme ce congé en offre de vente qui lui est adressée, au prix et aux conditions que vous y inscrivez." },
+      { type: "p", text: "⚠️ **Et ce droit ne joue que pour un logement vide.** En location meublée, la fiche officielle est explicite : le locataire n'a pas de droit de préemption pour acheter le logement, et le préavis du bailleur tombe de six à **trois mois** avant l'échéance du bail. Un studio meublé et un studio vide, dans le même immeuble villeurbannais, ne se vendent donc pas selon le même calendrier." },
+      { type: "p", text: "🟢 **Un point qui compte pour votre prix net : le locataire qui exerce son droit de préemption n'a pas à payer de commission d'agence.** C'est la fiche officielle qui le précise. Une vente à votre locataire n'est donc pas une vente comme une autre côté honoraires — [notre barème](/honoraires) les met à la charge du vendeur de toute façon, mais le calcul de votre net change selon l'acheteur." },
+
+      { type: "h2", text: "Faut-il donner congé pour vendre, ou vendre avec le locataire en place ?" },
+      { type: "p", text: "**Les deux sont légaux, et le choix n'est pas juridique : c'est un arbitrage entre le calendrier et le prix.** Vendre occupé se décide tout de suite et ne demande aucun congé, mais l'acheteur est alors un investisseur, pas une famille. Vendre libre ouvre le marché à tous les acheteurs, au prix d'un minimum de six mois de calendrier avant de pouvoir remettre les clés." },
+      { type: "p", text: "Pendant les six mois de préavis, le loyer reste dû jusqu'à la remise des clés : vous ne perdez pas de revenu locatif, vous perdez du temps. Au loyer médian villeurbannais de 14,60 €/m² hors charges, un appartement de 62 m² — la surface médiane des ventes de la commune — rapporte environ 905 € par mois, soit de l'ordre de 5 400 € encaissés sur la durée d'un préavis de six mois. Le coût réel du congé n'est pas là : il est dans les six mois pendant lesquels votre bien n'est pas disponible, et dans le risque que le marché bouge entre-temps." },
+      { type: "p", text: "Le sens de l'arbitrage dépend donc de ce que vous vendez et à qui. Un T1 ou un T2 bien placé trouve un investisseur sans difficulté et peut partir occupé, bail en cours, sans aucun congé. Un T3 ou un T4 familial se vend presque toujours mieux libre, parce que l'acheteur qui paie le prix d'un logement familial veut y habiter. [Faites estimer les deux hypothèses](/estimation) avant de notifier quoi que ce soit : un congé pour vendre ne se retire pas." },
+
+      { type: "h2", text: "Quand faut-il envoyer le congé pour vendre, et par quel moyen ?" },
+      { type: "p", text: "**La lettre de congé doit être reçue par le locataire au moins six mois avant la date d'échéance du bail — trois mois pour un meublé — et par l'un des trois moyens admis seulement : lettre recommandée avec accusé de réception, acte de commissaire de justice, ou remise en main propre contre émargement ou récépissé signé.** Un congé donné par simple courriel n'est pas valable, même si le locataire y répond par retour de mail." },
+      { type: "p", text: "Deux précisions de calendrier que presque personne n'écrit. D'abord, le congé ne peut prendre effet qu'à la date d'échéance du bail : il ne permet pas de récupérer le logement en cours de bail. Ensuite, un congé envoyé trop tôt n'est pas nul : s'il est donné bien avant le délai de six mois, il reste valable mais prend effet à la date à laquelle il aurait dû être donné. L'erreur fatale est inverse : une lettre reçue en retard, ne serait-ce que d'un jour, rend le congé invalide et renvoie la vente libre à l'échéance suivante du bail." },
+      { type: "p", text: "Le délai se compte en mois, week-ends et jours fériés inclus. Et s'il se termine un dimanche, il se termine ce dimanche-là — ni le vendredi précédent, ni le lundi suivant. Pour une échéance de bail au 20 septembre, le locataire doit avoir eu connaissance du congé au plus tard le 20 mars." },
+      { type: "p", text: "⚠️ **Le congé doit être adressé à tous les signataires du bail, et parfois au-delà.** Si un seul des époux a signé mais que vous avez été informé du mariage, la lettre doit être adressée aux deux. Même règle pour deux partenaires de PACS qui ont demandé conjointement que leurs deux noms figurent au bail. Un congé adressé à un seul des deux conjoints est contestable — c'est l'un des motifs d'annulation que la fiche officielle énumère." },
+      {
+        type: "steps",
+        name: "Donner un congé pour vendre valable à Villeurbanne",
+        items: [
+          { name: "Repérez la date d'échéance exacte du bail", text: "Le congé pour vendre ne peut prendre effet qu'à cette date, et la lettre doit être reçue six mois avant (trois mois en meublé). C'est cette date, pas la date de votre décision de vendre, qui commande tout le calendrier." },
+          { name: "Vérifiez si votre locataire est protégé avant d'écrire", text: "Un locataire de plus de 65 ans, un locataire qui héberge une personne de plus de 65 ans à sa charge, ou un locataire percevant une allocation de présence parentale, dont les revenus sont sous les seuils légaux, voit son bail se renouveler automatiquement. Un congé délivré à un locataire protégé est contestable : cette vérification se fait avant, pas après." },
+          { name: "Faites établir le prix avant de rédiger la lettre", text: "Le congé vaut offre de vente : le prix que vous y inscrivez est celui auquel votre locataire peut acheter. Un prix gonflé pour le décourager est précisément ce que la loi qualifie de congé frauduleux." },
+          { name: "Rédigez la lettre avec les mentions obligatoires", text: "Motif du congé (vendre), prix et conditions de la vente projetée, et, si le congé est délivré par une agence, un administrateur de biens ou un notaire, le nom ou la dénomination sociale du propriétaire." },
+          { name: "Adressez-la à tous les signataires, par un moyen admis", text: "Lettre recommandée avec accusé de réception, acte de commissaire de justice, ou remise en main propre contre émargement. Jamais par courriel. Et aux deux époux ou partenaires de PACS lorsque la règle l'impose." },
+          { name: "Attendez les deux premiers mois du préavis", text: "C'est la fenêtre pendant laquelle le locataire peut accepter l'offre, par lettre recommandée avec avis de réception, en indiquant s'il demande un prêt. Passé ce délai sans réponse, l'offre est refusée." },
+          { name: "Ne signez rien d'irréversible avec un autre acheteur pendant cette fenêtre", text: "Si le locataire accepte l'offre dans le délai, toute promesse de vente signée entre-temps avec un autre acheteur est annulée. Une promesse signée pendant ces deux mois est un risque, pas une sécurité." },
+          { name: "Déposez la déclaration d'intention d'aliéner dès que l'acheteur et le prix sont fixés", text: "La DIA est une procédure distincte, qui ouvre un nouveau délai de deux mois au moins. Elle se dépose à la mairie de Villeurbanne et doit être établie par le propriétaire." },
+        ],
+      },
+
+      { type: "h2", text: "Que doit contenir la lettre de congé pour vendre ?" },
+      { type: "p", text: "**Le motif du congé, puis le prix et les conditions de la vente projetée — puisque le congé est l'offre de vente elle-même.** S'y ajoute, lorsque le congé est délivré par une agence immobilière, un administrateur de biens ou un notaire, le nom ou la dénomination sociale du propriétaire. L'absence d'une seule de ces informations obligatoires est un motif de contestation." },
+      { type: "p", text: "La fiche officielle énumère huit motifs sur lesquels un locataire peut contester un congé : une information obligatoire manquante, un congé non délivré par le propriétaire ou son représentant, une lettre qui n'a pas été adressée à l'ensemble des locataires, un envoi par lettre simple, un préavis inférieur à six mois, un congé délivré à un locataire protégé, l'absence d'information du locataire sur une proposition de vente à des conditions ou à un prix plus avantageux, et le congé pour vendre frauduleux." },
+      { type: "p", text: "🔴 **Et le congé frauduleux a une définition précise, qui vise exactement la tentation du bailleur pressé : fixer un prix de vente très élevé afin de décourager tout acheteur.** La sanction n'est pas seulement l'annulation : le propriétaire encourt une **amende pénale de 6 000 € au maximum**, portée à **30 000 €** s'il s'agit d'une personne morale, et peut en outre être condamné à des dommages et intérêts envers le locataire. C'est la raison la plus concrète de faire établir le prix par un professionnel avant d'écrire la lettre, et non après : le prix du congé est un acte juridique, pas une position de négociation." },
+
+      { type: "h2", text: "Combien de temps le locataire a-t-il pour répondre, puis pour signer ?" },
+      { type: "p", text: "**Les deux premiers mois du préavis pour accepter l'offre, puis deux mois pour signer l'acte — quatre mois s'il demande un prêt immobilier.** L'acceptation se fait par lettre recommandée avec avis de réception, et le locataire doit y indiquer s'il va demander un prêt. Le délai de préavis est alors prolongé jusqu'à la fin du délai de réalisation de la vente." },
+      { type: "p", text: "Le point de départ du second délai n'est pas la fin des deux mois d'option : c'est la **date d'envoi de la réponse** du locataire. Un locataire qui accepte dès la troisième semaine fait donc démarrer tout de suite son délai de signature. Et si son acceptation arrive dans les délais, toute promesse de vente que vous auriez signée entre-temps avec un autre acheteur est **annulée** : c'est la raison pour laquelle on n'engage personne d'autre pendant cette fenêtre." },
+      {
+        type: "table",
+        caption: "Congé pour vendre : le calendrier légal, pour une échéance de bail au 20 septembre",
+        source: "service-public.gouv.fr, fiche F929 « Préavis et formalités du congé donné par le propriétaire (bailleur) », vérifiée le 1er juin 2026. Relevé du 1er novembre 2026.",
+        headers: ["Étape", "Délai légal", "Dans cet exemple"],
+        rows: [
+          ["Réception du congé par le locataire", "6 mois au moins avant l'échéance du bail", "Au plus tard le 20 mars"],
+          ["Fenêtre d'acceptation de l'offre de vente", "Les 2 premiers mois du préavis", "Jusqu'au 20 mai"],
+          ["Signature de l'acte, sans prêt", "2 mois à partir de l'envoi de la réponse", "Vers le 20 juillet si réponse le 20 mai"],
+          ["Signature de l'acte, avec prêt immobilier", "4 mois à partir de l'envoi de la réponse", "Vers le 20 septembre si réponse le 20 mai"],
+          ["Départ du locataire en cas de refus", "Au plus tard le dernier jour du préavis", "Le 20 septembre"],
+          ["Préavis en location meublée", "3 mois au moins avant l'échéance, sans droit de préemption", "Au plus tard le 20 juin"],
+        ],
+      },
+      { type: "p", text: "Il y a refus de l'offre dans trois cas : le locataire adresse un refus, il ne répond pas dans les deux premiers mois du préavis, ou il fait une contre-proposition que vous refusez. Il doit alors quitter les lieux au plus tard le dernier jour du préavis, et ne paie loyer et charges que jusqu'à la remise des clés s'il part plus tôt. Le détail des préavis et de la restitution du dépôt de garantie, côté locataire villeurbannais, est sur [notre page consacrée aux préavis et au dépôt de garantie](/blog/preavis-depot-garantie-location-villeurbanne)." },
+
+      { type: "h2", text: "Si le locataire refuse et que vous baissez ensuite le prix, devez-vous le reprévenir ?" },
+      { type: "p", text: "**Oui. Ne pas informer le locataire d'une proposition de vente à des conditions ou à un prix plus avantageux figure parmi les motifs pour lesquels il peut contester le congé.** Un refus à 260 000 € ne vaut donc pas acceptation d'une vente à 240 000 € à un tiers : la baisse de prix rouvre le sujet." },
+      { type: "p", text: "La fiche officielle énonce l'obligation et la sanction, mais ne détaille pas la forme de cette seconde information — c'est le notaire qui la met en forme au moment de préparer l'acte. Ce qu'il faut en retenir côté vendeur est simple et tient en une ligne : **toute baisse de prix après un refus du locataire se traite avec le notaire avant d'être annoncée à un autre acheteur**, et la trace écrite de l'information se conserve." },
+      { type: "p", text: "C'est aussi l'argument le plus solide pour ne pas sur-évaluer le prix du congé « quitte à baisser ensuite ». Un prix gonflé expose à l'amende du congé frauduleux ; un prix baissé ensuite rouvre un droit au locataire. Les deux erreurs se neutralisent en une seule décision : partir du prix réel du marché. Les médianes réellement signées quartier par quartier sont publiées sur [notre relevé des prix villeurbannais](/blog/prix-immobilier-villeurbanne-2026)." },
+
+      { type: "h2", text: "Votre locataire peut-il rester malgré le congé ?" },
+      { type: "p", text: "**Oui, s'il est un « locataire protégé » : son bail se renouvelle alors automatiquement à l'échéance, et le congé pour vendre est contestable.** La protection suppose deux conditions simultanées : une situation d'âge et de revenus du côté du locataire, et l'absence de situation équivalente du côté du propriétaire." },
+      { type: "p", text: "Du côté du locataire, **trois cas** et non deux. Premier cas : il a **plus de 65 ans** à la date d'échéance du bail et ses revenus des douze mois précédant la notification du congé sont inférieurs aux seuils légaux. Deuxième cas : il a **moins de 65 ans mais une personne de plus de 65 ans à sa charge**, et le total des revenus des habitants du logement est inférieur à ces mêmes seuils. Troisième cas, celui que presque aucune page ne cite : il **reçoit une allocation de présence parentale** à la date d'échéance du bail et ses revenus sont sous les mêmes seuils." },
+      { type: "p", text: "📌 **Et voici les seuils que les pages nationales publient le plus souvent dans leur version parisienne : pour Villeurbanne, c'est la colonne « autre région » qui s'applique.** L'écart est loin d'être anecdotique — 23 403 € pour une personne seule hors Île-de-France, contre 26 920 € à Paris." },
+      {
+        type: "table",
+        caption: "Locataire protégé : revenus à ne pas atteindre sur les 12 mois précédant la notification du congé — colonne applicable à Villeurbanne",
+        source: "service-public.gouv.fr, fiche F929, vérifiée le 1er juin 2026, colonne « autre région » (hors Île-de-France). Relevé du 1er novembre 2026.",
+        headers: ["Nombre de personnes dans le logement", "Plafond hors Île-de-France", "Rappel : Paris et communes limitrophes"],
+        rows: [
+          ["1 personne seule", "23 403 €", "26 920 €"],
+          ["2 personnes", "31 254 €", "40 233 €"],
+          ["3 personnes", "37 584 €", "52 740 €"],
+          ["4 personnes", "45 374 €", "62 968 €"],
+          ["5 personnes", "53 376 €", "74 919 €"],
+          ["6 personnes et plus", "60 156 €", "84 304 €"],
+          ["Par personne supplémentaire", "+ 6 710 €", "+ 9 394 €"],
+        ],
+      },
+      { type: "p", text: "Dans les **deux premiers cas**, la protection tombe si vous vous trouvez vous-même dans l'une de ces trois situations : vous avez **plus de 65 ans** à la date d'échéance du bail ; vos revenus, à la date où le locataire prend possession de la lettre de congé, sont inférieurs à ces mêmes montants ; ou vous **signalez au locataire, pendant le préavis, une solution de relogement** correspondant à ses besoins et à ses possibilités, située à proximité. ⚠️ **Dans le troisième cas, celui de l'allocation de présence parentale, votre âge et vos revenus n'entrent pas en compte** : seule l'offre de relogement à proximité lève la protection." },
+      { type: "p", text: "La notion de proximité est définie, et dans cet ordre : le même arrondissement ou un arrondissement limitrophe si la commune en compte ; le même canton ou un canton limitrophe si la commune est divisée en cantons ; et, dans les autres cas, un **rayon de 5 km**. La solution de relogement doit être une offre de logement en location, pas une intention." },
+
+      { type: "h2", text: "La Métropole de Lyon peut-elle acheter votre bien avant votre acquéreur ?" },
+      { type: "p", text: "**Oui, et c'est bien la Métropole de Lyon qui décide, pas la Ville de Villeurbanne.** Le droit de préemption urbain a été institué sur les **zones urbaines ou à urbaniser du PLU-H** par la délibération du Conseil de la Métropole de Lyon **n° 2019-3507 du 13 mai 2019**, celle qui approuve la révision du plan local d'urbanisme et de l'habitat ; le PLU-H est opposable aux tiers depuis le **18 juin 2019**. Les décisions de préemption sont prises par arrêté du Président de la Métropole, par délégation du Conseil du 2 juillet 2020." },
+      { type: "p", text: "Cette répartition des rôles est la source d'erreur la plus courante dans les pages génériques, qui parlent systématiquement de « la mairie ». À Villeurbanne, la **déclaration d'intention d'aliéner se dépose bien à la mairie**, mais le titulaire qui l'examine et qui préempte est la Métropole. La Ville, quand un bien l'intéresse, demande à la Métropole d'exercer le droit de préemption et s'engage à le lui racheter." },
+      { type: "p", text: "Ce n'est pas une hypothèse : c'est la mécanique décrite dans l'arrêté **n° 2022-08-01-R-0631 du 1er août 2022**, publié au recueil des actes administratifs de la Métropole, qui préempte un logement de 48 m² dans une copropriété villeurbannaise. On y lit que la Ville de Villeurbanne a demandé à la Métropole d'exercer le droit de préemption par un courrier du 26 juillet 2022, en s'engageant à racheter le bien et à préfinancer l'acquisition et les frais de procédure." },
+      { type: "p", text: "🟢 **Le signal à vérifier avant de mettre en vente, et il est public : les emplacements réservés du PLU-H.** Dans ce dossier, la copropriété était inscrite en **emplacement réservé pour équipements municipaux et espaces verts** au bénéfice de la commune, à proximité d'un groupe scolaire dont l'extension était programmée, et la Métropole avait déjà acquis d'autres tènements du même îlot. Un bien inscrit dans un emplacement réservé, ou voisin d'acquisitions publiques récentes, n'est pas un bien ordinaire au regard de la préemption. Cela se vérifie parcelle par parcelle sur le PLU-H, auprès du service urbanisme." },
+
+      { type: "h2", text: "Comment se passe la déclaration d'intention d'aliéner, et qui doit la signer ?" },
+      { type: "p", text: "**La DIA doit être établie exclusivement par le propriétaire du bien : une déclaration signée par l'acquéreur, par l'agent immobilier ou par un tiers n'est pas valable.** Elle se fait sur le formulaire « Déclaration d'intention d'aliéner ou demande d'acquisition d'un bien soumis à un droit de préemption » (Cerfa n° 10072*04), et s'adresse à la mairie de la commune où se situe le bien — donc à la mairie de Villeurbanne —, par lettre recommandée avec accusé de réception ou par voie électronique lorsque la commune le permet." },
+      { type: "p", text: "En pratique, c'est le notaire chargé de la vente qui la rédige et la dépose, sur mandat du propriétaire : c'est exactement ce que décrit l'arrêté villeurbannais de 2022, où la DIA est souscrite par une étude notariale mandatée par la propriétaire, et reçue en mairie de Villeurbanne le 30 mars 2022. Mandater n'est pas déléguer la signature : la déclaration reste celle du propriétaire." },
+      { type: "p", text: "La déclaration doit porter le prix de vente, les conditions de la transaction, la description précise du bien — superficie, dépendances —, l'existence éventuelle de servitudes ou de contraintes particulières, ainsi que les **frais d'agence lorsqu'ils sont à la charge de l'acquéreur**. Vous pouvez signer une promesse de vente avec l'acheteur de votre choix, à condition qu'elle comporte une **condition suspensive de non-exercice du droit de préemption** ; en revanche, l'acte authentique ne peut pas être signé tant que le titulaire n'a pas renoncé." },
+      { type: "p", text: "⚠️ **Et la sanction de l'oubli ne se prescrit pas en quelques mois.** Une vente réalisée sans DIA, ou sur la base d'une déclaration incomplète, peut être annulée à la demande de la collectivité pendant **cinq ans à partir de la publication de l'acte de vente**. Détail qui surprend : ni le vendeur ni l'acquéreur privé ne peuvent invoquer cette irrégularité — elle n'appartient qu'à la collectivité. Une vente irrégulière est donc un risque qui pèse sur l'acheteur sans qu'il puisse s'en servir." },
+
+      { type: "h2", text: "Le délai de deux mois de la préemption urbaine est-il vraiment de deux mois ?" },
+      { type: "p", text: "**Non, pas toujours — et c'est le point que presque aucune page ne publie.** Le titulaire du droit de préemption a deux mois à compter de la réception de la DIA pour renoncer expressément, garder le silence (ce qui vaut renonciation tacite) ou préempter. Mais ce délai est **suspendu et prolongé** lorsqu'il demande des pièces complémentaires, conformément à l'article L 213-2 du code de l'urbanisme." },
+      { type: "p", text: "Le dossier villeurbannais de 2022 en donne la mesure exacte, dates à l'appui : DIA reçue en mairie le **30 mars 2022**, demande de pièces complémentaires le 25 avril, pièces reçues par la Métropole le **22 juillet**, arrêté de préemption le **1er août 2022**. Soit **quatre mois** entre le dépôt et la décision, au lieu des deux mois annoncés partout. Le titulaire avait en outre demandé à visiter les lieux, visite effectuée le 20 mai." },
+      { type: "p", text: "📌 **Conséquence pratique, et elle vaut pour tout compromis signé à Villeurbanne : ne promettez pas une date d'acte authentique à deux mois du dépôt de la DIA.** La condition suspensive de non-exercice du droit de préemption doit laisser de la marge, et le compromis doit prévoir ce qui se passe si le délai s'allonge. C'est une clause à voir avec le notaire dès la rédaction, pas une fois le délai dépassé." },
+      { type: "p", text: "Un seuil utile à connaître au passage : la direction de l'immobilier de l'État n'est consultée par la collectivité qu'au-delà de **180 000 €** d'acquisition, en application de l'arrêté ministériel du 5 décembre 2016. En dessous, l'étape n'existe pas — c'est le cas dans l'arrêté villeurbannais cité, où l'acquisition se réalisait sous ce seuil." },
+
+      { type: "h2", text: "Que faire si la Métropole préempte à un prix inférieur au vôtre ?" },
+      { type: "p", text: "**Vous avez deux mois à compter de la réception de l'offre pour répondre par lettre recommandée avec avis de réception, et deux options seulement : accepter le prix proposé, sans aucune réserve, ou maintenir votre prix et accepter que le juge de l'expropriation le fixe.** Si vous maintenez votre prix, le titulaire doit saisir ce juge dans les quinze jours suivant votre refus." },
+      { type: "p", text: "L'écart peut être substantiel. Dans l'arrêté villeurbannais de 2022, le prix de **152 000 €** figurant dans la DIA n'est pas accepté : la Métropole propose **120 000 €**, soit **21 % de moins**. L'arrêté précise les suites réglementaires : en cas d'acceptation sans réserve, le titulaire dispose de **quatre mois pour payer** (article L 213-14 du code de l'urbanisme), et la vente est régularisée par acte authentique." },
+      { type: "p", text: "Si le prix passe devant le juge, trois règles encadrent la suite. Le juge **ne tranche que le prix**, jamais la légalité de la décision de préempter. Une fois le prix fixé, vous et le titulaire avez **deux mois** pour accepter ou renoncer à la vente, et le silence de l'une ou l'autre partie pendant ces deux mois vaut acceptation : le transfert de propriété intervient alors automatiquement. Enfin, le titulaire qui choisit d'acheter après fixation judiciaire doit **consigner 15 % du prix** dans les trois mois de la saisine." },
+      { type: "p", text: "Dit autrement : la préemption à prix réduit n'est pas une expropriation à laquelle on ne peut rien, mais elle n'est pas non plus une négociation ordinaire. Le délai de réponse est court, la forme est imposée, et le silence vous engage. C'est une situation où l'on consulte le notaire le jour où la notification arrive, pas la semaine suivante." },
+
+      { type: "h2", text: "Combien de temps faut-il, en tout, pour vendre libre un logement loué à Villeurbanne ?" },
+      { type: "p", text: "**Comptez au minimum huit mois entre la décision de vendre libre et la remise des clés, et ce n'est pas une moyenne : c'est un plancher.** Six mois de préavis au moins, puis le délai de la déclaration d'intention d'aliéner — deux mois en théorie, davantage si le titulaire demande des pièces —, puis le temps de signer l'acte. Les deux délais ne courent pas en parallèle : le congé vient d'abord, la DIA ensuite, quand l'acheteur et le prix sont arrêtés." },
+      {
+        type: "table",
+        caption: "Vendre libre un logement loué à Villeurbanne : les deux procédures bout à bout",
+        source: "Délais légaux : service-public.gouv.fr, fiches F929 (vérifiée le 1er juin 2026) et F16 (vérifiée le 23 décembre 2025). Durée réelle observée : arrêté de la Métropole de Lyon n° 2022-08-01-R-0631 du 1er août 2022.",
+        headers: ["Phase", "Durée légale", "Ce qui peut l'allonger"],
+        rows: [
+          ["Préavis du congé pour vendre (logement vide)", "6 mois minimum, jusqu'à l'échéance du bail", "Une échéance de bail éloignée : le congé ne prend effet qu'à cette date"],
+          ["Option du locataire sur l'offre de vente", "Les 2 premiers mois du préavis", "Rien — le délai est ferme"],
+          ["Signature si le locataire préempte", "2 mois, ou 4 mois avec prêt", "Le préavis est prolongé jusqu'à la fin de ce délai"],
+          ["Déclaration d'intention d'aliéner", "2 mois à compter de la réception en mairie", "Une demande de pièces complémentaires suspend et prolonge le délai (4 mois constatés en 2022)"],
+          ["Préemption à prix réduit", "2 mois pour répondre, 15 jours pour saisir le juge", "La fixation judiciaire du prix, puis 2 mois de part et d'autre"],
+        ],
+      },
+      { type: "p", text: "Si vous vendez occupé, en revanche, le congé disparaît du calendrier et il ne reste que la DIA. C'est la différence la plus souvent sous-estimée entre les deux stratégies : elle ne porte pas sur le prix de quelques milliers d'euros, elle porte sur six mois. Notre arbitrage chiffré entre gestion déléguée, vente occupée et vente libre est détaillé sur [la page gestion locative](/gestion-locative)." },
+
+      { type: "h2", text: "Un troisième droit de préemption peut-il encore s'ajouter ?" },
+      { type: "p", text: "**Oui, dans un cas précis : la première vente d'un logement qui suit la division d'un immeuble en lots.** Le locataire ou l'occupant de bonne foi bénéficie alors d'un droit de préemption propre, fondé sur l'article 10 de la loi n° 75-1351 du 31 décembre 1975, et ce droit est **indépendant** de celui attaché au congé pour vendre." },
+      { type: "p", text: "Ce cas est rare mais pas théorique à Villeurbanne, où des immeubles anciens sont régulièrement divisés avant d'être revendus lot par lot. Nous ne détaillons pas ici ses délais : les analyses disponibles sur ce régime sont antérieures aux dernières réformes, et nous ne publions pas une règle de droit que nous n'avons pas pu vérifier sur une source datée. **Si votre immeuble a été divisé ou subdivisé récemment, c'est un point à faire trancher par votre notaire avant de notifier un congé** — le risque étant un droit de préemption oublié, donc une vente fragilisée." },
+
+      { type: "h2", text: "Sources et date de vérification" },
+      { type: "p", text: "Les éléments de cette page ont été vérifiés le **1er novembre 2026** en téléchargeant chaque source ce jour-là. Droit du bail : fiche service-public.gouv.fr **F929 « Préavis et formalités du congé donné par le propriétaire (bailleur) », vérifiée le 1er juin 2026** — congé pour vendre, offre de vente, délais d'acceptation et de signature, motifs de contestation, amende du congé frauduleux, seuils du locataire protégé. Préemption urbaine : fiche **F16 « Vente d'un bien immobilier situé dans une zone de préemption », vérifiée le 23 décembre 2025**, qui cite les articles **L 210-1, L 211-1 à L 211-7, L 213-2 et L 213-2-1** du code de l'urbanisme." },
+      { type: "p", text: "Les éléments propres à Villeurbanne proviennent des actes de la Métropole de Lyon : la **délibération du Conseil n° 2019-3507 du 13 mai 2019** approuvant la révision du PLU-H et renouvelant l'institution du droit de préemption urbain dans les zones urbaines ou à urbaniser, le PLU-H **opposable aux tiers depuis le 18 juin 2019**, la **délibération n° 2020-0005 du 2 juillet 2020** déléguant au Président l'exercice des droits de préemption, et l'**arrêté n° 2022-08-01-R-0631 du 1er août 2022** publié au recueil des actes administratifs de la Métropole (août 2022), dont sont tirés le déroulé réel de la procédure, les dates, l'écart de prix et le rôle respectif de la Ville et de la Métropole. Les textes qu'il vise sont les articles **L 211-1 et suivants, L 213-2, L 213-4, L 213-14, R 213-10 et R 213-12** du code de l'urbanisme et la **loi n° 2014-58 du 27 janvier 2014** instituant la Métropole de Lyon." },
+      { type: "p", text: "Le loyer médian hors charges de 14,60 €/m² et la surface médiane de 62 m² utilisés dans l'arbitrage « vendre libre ou vendre occupé » viennent de nos propres relevés publiés sur [prix immobilier à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026). Cette page expose le droit applicable ; elle ne remplace pas la consultation d'un notaire sur une situation particulière. Si l'une de ces fiches est revue, les règles exposées ici doivent être relues avant d'être reprises : c'est la raison pour laquelle chaque date de vérification est affichée." },
+    ],
+    faq: [
+      {
+        q: "Mon locataire est-il prioritaire pour acheter l'appartement qu'il loue ?",
+        a: "Seulement si vous lui donnez congé pour vendre le logement libre. Dans ce cas, le congé vaut offre de vente et le locataire est prioritaire sur tous les autres acheteurs. Si vous vendez avec le locataire en place, il n'a aucun droit de préemption : vous pouvez même vendre sans l'en informer et sans lui donner congé, et le bail se poursuit avec l'acquéreur. Source : service-public.gouv.fr, fiche F929, vérifiée le 1er juin 2026.",
+      },
+      {
+        q: "Un locataire en meublé a-t-il un droit de préemption ?",
+        a: "Non. En location meublée, la fiche officielle indique expressément que le locataire n'a pas de droit de préemption pour acheter le logement. Le préavis du bailleur est par ailleurs plus court : la lettre de congé doit être reçue au moins trois mois avant l'échéance du bail, contre six mois en logement vide.",
+      },
+      {
+        q: "Combien de temps avant la fin du bail faut-il envoyer un congé pour vendre ?",
+        a: "La lettre doit être reçue par le locataire au moins six mois avant la date d'échéance du bail pour un logement vide, trois mois pour un meublé. Une lettre reçue en retard rend le congé invalide. Un congé envoyé très en avance reste valable, mais il prend effet à la date à laquelle il aurait dû être donné. Le délai se compte en mois, week-ends et jours fériés inclus.",
+      },
+      {
+        q: "Peut-on donner un congé pour vendre par e-mail ?",
+        a: "Non. Le congé doit parvenir au locataire par lettre recommandée avec accusé de réception, par acte de commissaire de justice, ou par remise en main propre contre émargement ou récépissé signé. Un congé donné par simple courriel n'est pas valable, même si le locataire y répond par retour de mail. Il doit en outre être adressé à tous les signataires du bail.",
+      },
+      {
+        q: "Quel prix faut-il inscrire dans un congé pour vendre ?",
+        a: "Le prix réel auquel vous êtes prêt à vendre, car le congé vaut offre de vente à votre locataire. Fixer un prix très élevé pour décourager tout acheteur est précisément la définition du congé pour vendre frauduleux : le propriétaire encourt alors une amende pénale de 6 000 € au maximum, 30 000 € s'il s'agit d'une personne morale, et peut être condamné à des dommages et intérêts envers le locataire.",
+      },
+      {
+        q: "Combien de temps mon locataire a-t-il pour accepter l'offre de vente ?",
+        a: "Les deux premiers mois du préavis, par lettre recommandée avec avis de réception, en indiquant s'il demande un prêt immobilier. Il a ensuite deux mois pour signer l'acte à compter de l'envoi de sa réponse, quatre mois s'il demande un prêt, et le préavis est prolongé jusqu'à la fin de ce délai. S'il accepte dans les délais, toute promesse de vente signée entre-temps avec un autre acheteur est annulée.",
+      },
+      {
+        q: "À partir de quels revenus mon locataire est-il protégé contre un congé pour vendre, à Villeurbanne ?",
+        a: "Villeurbanne relève de la colonne « autre région », hors Île-de-France : les plafonds sont de 23 403 € pour une personne seule, 31 254 € pour deux personnes, 37 584 € pour trois, 45 374 € pour quatre, 53 376 € pour cinq, 60 156 € pour six et plus, puis 6 710 € de plus par personne supplémentaire. Ces montants portent sur les revenus des douze mois précédant la notification du congé. Beaucoup de pages nationales publient par erreur les plafonds parisiens, plus élevés.",
+      },
+      {
+        q: "Un locataire protégé empêche-t-il totalement la vente ?",
+        a: "Il empêche le congé, pas la vente. Lorsque le locataire est protégé, le bail se renouvelle automatiquement à l'échéance et le congé pour vendre est contestable ; vous pouvez en revanche vendre le logement occupé, bail en cours. Trois situations de locataire ouvrent cette protection : plus de 65 ans et revenus sous les plafonds, moins de 65 ans avec une personne de plus de 65 ans à charge et revenus du logement sous les plafonds, ou perception d'une allocation de présence parentale avec des revenus sous les plafonds. Dans les deux premières, la protection tombe si vous avez vous-même plus de 65 ans à l'échéance du bail, si vos revenus sont sous les mêmes plafonds, ou si vous signalez au locataire pendant le préavis une solution de relogement correspondant à ses besoins et située à proximité ; dans la troisième, seule l'offre de relogement la lève.",
+      },
+      {
+        q: "Qui exerce le droit de préemption urbain à Villeurbanne, la Ville ou la Métropole ?",
+        a: "La Métropole de Lyon. Le droit de préemption urbain a été institué sur les zones urbaines ou à urbaniser du PLU-H par la délibération du Conseil de la Métropole n° 2019-3507 du 13 mai 2019, et les décisions sont prises par arrêté du Président de la Métropole. La déclaration d'intention d'aliéner se dépose néanmoins à la mairie de Villeurbanne. Quand un bien intéresse la Ville, celle-ci demande à la Métropole de préempter et s'engage à lui racheter le bien.",
+      },
+      {
+        q: "Qui doit signer la déclaration d'intention d'aliéner ?",
+        a: "Le propriétaire, et lui seul : une DIA signée par l'acquéreur, par l'agent immobilier ou par un tiers n'est pas valable. Elle se fait sur le formulaire Cerfa n° 10072*04 et s'adresse à la mairie de la commune où se situe le bien. En pratique, le notaire la rédige et la dépose sur mandat du propriétaire, ce qui ne change pas le fait que la déclaration reste celle du propriétaire.",
+      },
+      {
+        q: "La mairie a-t-elle vraiment deux mois seulement pour se prononcer ?",
+        a: "Non, pas toujours. Le délai est bien de deux mois à compter de la réception de la déclaration, et le silence vaut renonciation tacite, mais il est suspendu et prolongé lorsque le titulaire demande des pièces complémentaires (article L 213-2 du code de l'urbanisme). Sur un dossier villeurbannais de 2022, la DIA reçue en mairie le 30 mars a donné lieu à un arrêté de préemption le 1er août, soit quatre mois. Un compromis ne doit donc pas promettre une date d'acte à deux mois du dépôt de la DIA.",
+      },
+      {
+        q: "Que se passe-t-il si je vends sans avoir déposé de déclaration d'intention d'aliéner ?",
+        a: "La collectivité peut demander l'annulation de la vente pendant cinq ans à partir de la publication de l'acte de vente, qu'il s'agisse d'une absence de déclaration ou d'une déclaration incomplète. Particularité : ni le vendeur ni l'acquéreur privé ne peuvent invoquer eux-mêmes cette irrégularité — elle n'appartient qu'à la collectivité.",
+      },
+      {
+        q: "La Métropole peut-elle préempter à un prix inférieur à mon prix de vente ?",
+        a: "Oui. Elle notifie alors une offre à un prix inférieur, et vous avez deux mois à compter de la réception pour répondre par lettre recommandée : soit accepter ce prix sans aucune réserve, soit maintenir votre prix et accepter que le juge de l'expropriation le fixe, le titulaire devant alors le saisir dans les quinze jours. Sur le dossier villeurbannais de 2022, l'offre était de 120 000 € contre 152 000 € déclarés, soit 21 % de moins. Le juge ne tranche que le prix, pas la légalité de la préemption.",
+      },
+      {
+        q: "Combien de temps faut-il, au total, pour vendre libre un logement loué à Villeurbanne ?",
+        a: "Au minimum huit mois entre la décision et la remise des clés, et c'est un plancher. Six mois de préavis au moins, puis au moins deux mois pour la déclaration d'intention d'aliéner, puis le temps de signer l'acte. Les deux délais ne se superposent pas : le congé d'abord, la DIA ensuite, une fois l'acheteur et le prix arrêtés. Si vous vendez occupé, le congé disparaît du calendrier et il ne reste que la DIA.",
       },
     ],
   },

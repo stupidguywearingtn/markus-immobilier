@@ -667,6 +667,28 @@ export default function VendrePage() {
                   propre calendrier — relogement, achat suivant, montant
                   attendu — avant de signer plutôt qu&apos;après.
                 </p>
+                <p>
+                  <strong>
+                    Deux délais peuvent s&apos;ajouter à ce calendrier, et ils
+                    ne dépendent ni du notaire ni de l&apos;acheteur.
+                  </strong>{" "}
+                  Si le logement est loué et que vous voulez le vendre libre, le
+                  congé pour vendre doit être reçu six mois au moins avant
+                  l&apos;échéance du bail et vaut offre de vente à votre
+                  locataire. Et toute vente située dans une zone de préemption
+                  ouvre au titulaire du droit de préemption urbain un délai de
+                  deux mois à compter de la déclaration d&apos;intention
+                  d&apos;aliéner, délai qui peut être suspendu s&apos;il demande
+                  des pièces complémentaires :{" "}
+                  <Link
+                    href="/blog/vendre-logement-loue-droit-preemption-villeurbanne"
+                    className={A}
+                  >
+                    qui peut passer devant votre acheteur à Villeurbanne
+                  </Link>{" "}
+                  détaille les deux procédures, leurs délais et le rôle
+                  respectif de la mairie et de la Métropole de Lyon.
+                </p>
                 <p className="text-[13px] text-[#6b7276]">
                   Source : service-public.gouv.fr, fiche F2965 « Promesse de
                   vente d&apos;un logement existant : promesse unilatérale ou
