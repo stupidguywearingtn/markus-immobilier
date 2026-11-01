@@ -4334,6 +4334,23 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-01 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h26
+
+- **Déclenchement en double** : l'article préemption (`4c10d4c` + `43ec8ee`) est
+  poussé depuis 16 min. Un chantier par jour et une page par semaine → **rien
+  publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap de production = **57 URL** (56 +
+  l'article du jour), toutes ont une route dans `app/` ou un slug du code →
+  **aucune page de l'éditeur**. `lastmod` de `/` toujours
+  `2026-10-30T08:53:20.821Z` et `<title>` = `DEFAULT_TITLE` → **Tony n'a rien
+  republié**. Aucun commit tiers depuis `43ec8ee`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, l'article préemption (200, sans `noindex`),
+  `/llms.txt` (le contient), `/robots.txt`, `/sitemap.xml` → 200.
+- **Toujours ouvert, déjà signalé, non touché** : accueil sans « Qui sommes-nous »
+  (page de Tony) et invitation Discord morte. Pas de nouvelle relance.
+- `GEO-SUIVI.md` toujours absent du dépôt. Pas de mesure de SERP (faites ce matin).
+
 ### 2026-11-01 (dimanche) — Les deux droits de préemption d'une vente villeurbannaise : un article neuf sur une place que ni agence ni notaire local n'occupe
 
 **Angle : CONTENU** (alternance respectée : 30/10 contenu → 31/10 non-contenu →
