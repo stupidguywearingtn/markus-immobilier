@@ -4427,6 +4427,25 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-02 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h18
+
+- **Déclenchement en double** : le maillage des pages bailleur (`c3bf8df` +
+  `4924d73`) est poussé depuis 20 min. Un chantier par jour → **rien publié**,
+  c'est voulu.
+- **Changements du client (étape 0)** : sitemap de production = **57 URL**,
+  inchangé, toutes avec une route dans `app/` ou un slug du code → **aucune page
+  de l'éditeur**. `lastmod` de `/` toujours `2026-10-30T08:53:20.821Z`, `<title>`
+  = `DEFAULT_TITLE` → **Tony n'a rien republié**. Aucun commit tiers depuis
+  `4924d73`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/gestion-locative` (lastmod 02/11, lien
+  vers l'article préavis bien servi), `/faire-gerer`, `/llms.txt`, `/robots.txt`
+  → 200. Le chantier du matin est en ligne.
+- **Toujours ouvert, déjà signalé, non touché** : accueil sans « Qui sommes-nous »
+  (page de Tony) et invitation Discord morte. Pas de nouvelle relance.
+- `GEO-SUIVI.md` toujours absent du dépôt. Pas de mesure de SERP ni de veille
+  (faites ce matin).
+
 ### 2026-11-02 (lundi) — Les deux pages bailleur du site ne liaient aucun des trois articles écrits pour les bailleurs, et la liste des obligations taisait le préavis d'un mois
 
 **Pourquoi ce chantier plutôt que le candidat n°1 du backlog.** Le candidat n°1
