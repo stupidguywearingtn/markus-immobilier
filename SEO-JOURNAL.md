@@ -14,6 +14,99 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-02 (lundi)**
+
+- 🔴 **LA RÈGLE DU 16/09 SUR LE RETARD DE `origin/main` A PRODUIT UN FAUX
+  VERDICT HUIT FOIS, ET C'EST MA COMMANDE QUI MENTAIT.** Relevé avant `fetch` :
+  `HEAD` = **`ce76913`**, `origin/main` local = **`768ada6`**, sept commits de
+  retard — exactement le motif que ce journal consigne depuis dix runs. Sauf
+  que `git ls-remote origin` donne **`refs/heads/main` = `ce76913`**, soit
+  **aucun retard réel**. Le coupable : j'avais lancé
+  `git fetch origin main claude/dazzling-feynman-yldw21`, la branche n'existe
+  pas côté distant, **et un `fetch` multi-refs échoue EN BLOC dès qu'un seul
+  ref est introuvable** — `main` n'a donc jamais été rafraîchi. Un
+  `git fetch origin +refs/heads/main:refs/remotes/origin/main` l'a aligné sur
+  `ce76913` en une ligne. 📌 **Détail à retenir : la branche de travail du
+  conteneur n'est pas poussée. Seul `main` l'est.** Voir « Erreurs commises ».
+- ⚠️ **Conteneur démarré sur la branche `claude/dazzling-feynman-yldw21`**, pas
+  sur `main`. **Troisième constat consécutif** (31/10, 01/11, 02/11), nom
+  différent chaque fois. Confirmé comme comportement normal du conteneur.
+  `git ls-remote --heads origin` compte **29 branches `claude/*`** : ce sont les
+  branches de travail des runs précédents, **jamais poussées** pour la plupart.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-huitième constat identique** (21/09 → 02/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-et-unième confirmation.**
+- ✅ **AUCUN CHANGEMENT DU CLIENT DEPUIS LE 30/10, MESURÉ ET NON SUPPOSÉ.**
+  Sitemap de production **57 URL** avant le push, et le `lastmod` de `/` vaut
+  **toujours `2026-10-30T08:53:20.821Z`** — troisième relevé identique (31/10,
+  01/11, 02/11). C'est ce champ, et non le `<title>`, qui signale une
+  republication depuis l'éditeur.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  QUATRIÈME JOUR, ET LA MESURE EST PLUS DURE QU'AU 31/10.** Les `<h2>` servis
+  sont : Nos biens disponibles · Notre équipe · Nos biens vendus · Estimez votre
+  bien · Nos avis clients · Vos questions · Nos réseaux · Notre agence.
+  **Et les quatre chiffres validés sont absents de TOUT le HTML de la page**
+  (`7 ans` 0, `250` 0, `40 M` 0, `300+` 0). **Non corrigé, et c'est volontaire**
+  (page de Tony, règle des 90 jours). **Renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE — RECONTRÔLÉE CE MATIN.**
+  `discord.gg/fSyn28G5U` → `{"message": "Unknown Invite", "code": 10006}`.
+  Le code est publié **4 fois dans le HTML de l'accueil seul**. **Renotifié.**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée** (31/10
+  non-contenu → 01/11 contenu → **02/11 non-contenu**). **Mais ce n'est PAS le
+  candidat n°1 du backlog, et c'est une mesure qui a décidé** : le candidat n°1
+  (`justice.fr`) n'était pas un chantier, c'était un contrôle de dix minutes, et
+  son résultat est négatif par indisponibilité de l'hôte (voir ci-dessous).
+- 🔴 **`justice.fr` EST EN MAINTENANCE DEPUIS AU MOINS TROIS JOURS, ET IL REND
+  HTTP 200.** Candidat n°1 du backlog, relancé comme prévu. `curl` sur la fiche
+  « DPE collectif » : **200 / 15 139 o, zéro redirection** — et la **racine
+  `justice.fr` rend exactement 15 139 o aussi**. `<title>` =
+  **« Site en cours de maintenance | Justice.fr »**, `DPE` **0 occurrence**,
+  `1er janvier 2026` **0 occurrence**. 📌 **C'est la famille de faux verdicts du
+  31/10 dans sa forme la plus pure : un lien « sain » au code HTTP qui ne
+  délivre rien.** **Rien n'a été modifié** : une maintenance n'est pas une URL
+  morte, et retirer la source serait pire que l'attendre. **Candidat reporté.**
+- ✅ **L'ADRESSE DU TRIBUNAL JUDICIAIRE DE LYON NE DÉPENDAIT PAS DE
+  `justice.fr`** — le backlog se trompait de source. `lib/blog.ts:2724` la
+  source sur **l'annuaire du service public**, pas sur `justice.fr`. Point
+  détaché du candidat n°1.
+- ✅ **FICHE F1168 RELUE EN LIGNE AVANT D'ÉCRIRE : INCHANGÉE, ET NOTRE TEXTE EST
+  EXACT AU MOT.** `service-public.gouv.fr/particuliers/vosdroits/F1168` → 200 /
+  191 624 o, **« Vérifié le 16 avril 2026 »** (valeur identique au relevé du
+  28/10), et la phrase de la branche « Logement en zone tendue » est **mot pour
+  mot** celle que publie `lib/blog.ts:2125`. 📌 **Contrôle de fausse alerte
+  passé au passage** : la page contient « sera mise à jour significativement »,
+  qui ressemble à l'annonce d'une refonte — c'est en réalité le texte du
+  **formulaire d'abonnement aux alertes**, présent sur toutes les fiches.
+- 🟢 **LE FACTEUR DE CITATION LE MIEUX ÉTAYÉ DE LA VEILLE EST DÉJÀ SAIN ICI, ET
+  C'EST REMESURÉ AUJOURD'HUI.** Six agents sur le dernier article publié
+  (navigateur, Googlebot, GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot) :
+  **200 / 239 053 o pour les six, à l'octet près**, **aucun en-tête
+  `X-Robots-Tag`**, `robots.txt` en `Allow: /` sauf `/api/`, `/espace-client`,
+  `/radar`, `/admin`. Premier relevé depuis le 22/09, **aucune dérive**.
+- ✅ **CHANTIER LIVRÉ ET SERVI EN PRODUCTION, VÉRIFIÉ APRÈS LE PUSH.**
+  `/gestion-locative` **3 → 5 liens éditoriaux** (170 117 → **174 554 o**),
+  `/faire-gerer` **2 → 3** (155 100 → **156 001 o**), `dateModified`
+  **2026-11-02** sur la première et **2026-10-24 inchangé** sur la seconde,
+  `lastmod` du sitemap concordant au jour. **Sitemap 57 URL, inchangé** (aucune
+  page neuve). ⏱ **Ancienne version servie ~75 s** (3 relevés à 25 s puis bascule).
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs AVANT comme APRÈS**, prouvé par
+  `git stash`. Aucune erreur neuve.
+- ⚠️ **LES QUATRE SERP COMMERCIALES SUIVIES N'ONT PAS ÉTÉ MESURÉES, ET C'EST
+  DÉLIBÉRÉ** : échéances au **06/11** (« agence immobilière Villeurbanne »,
+  « estimation immobilière Villeurbanne »), **07/11** (« prix m2 Villeurbanne »),
+  **10/11** (« vendre appartement Villeurbanne »). La série hebdomadaire ne vaut
+  que si la cadence est tenue.
+- ✅ **VEILLE DU LUNDI FAITE AVANT LE CHOIX DU CHANTIER** (elle était due depuis
+  le 26/10). **Trois acquis, dont un qui dévalue un travail que ce journal
+  comptait comme du GEO** — voir « Techniques apprises ».
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` **sans erreur**,
+  `npm run build` **vert** (les deux pages toujours `○ Static`), **parité FAQ
+  relue après coup : 10/10 sur `/gestion-locative` et 8/8 sur `/faire-gerer`**,
+  **0 apostrophe courbe / 0 insécable / 45 accents** dans le texte ajouté,
+  **outil d'estimation non touché** (`git diff --stat` : 3 fichiers, +48 / −9).
+
 **Au 2026-11-01 (dimanche)**
 
 - ⚠️ **`origin/main` RETARDAIT — HUITIÈME OCCURRENCE SUR DIX RUNS.** Relevé
@@ -4334,6 +4427,124 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-02 (lundi) — Les deux pages bailleur du site ne liaient aucun des trois articles écrits pour les bailleurs, et la liste des obligations taisait le préavis d'un mois
+
+**Pourquoi ce chantier plutôt que le candidat n°1 du backlog.** Le candidat n°1
+était « relancer le contrôle sur `justice.fr` ». Il a été relancé **en premier**,
+et il a rendu un résultat en dix minutes : l'hôte est **toujours en maintenance**
+(voir « État des lieux »), donc **aucune des deux affirmations ne peut être
+vérifiée aujourd'hui**, et l'une des deux ne dépendait de toute façon pas de
+`justice.fr`. Ce n'était pas un chantier, c'était un contrôle. Il restait donc à
+choisir un vrai chantier non-contenu, et je ne l'ai pas pris dans la liste : je
+l'ai mesuré.
+
+**La mesure qui a décidé, et elle est neuve dans ce journal.** Les **57 URL du
+sitemap** ont été téléchargées en production et le graphe de liens internes
+reconstruit à partir du HTML **rendu**, comme le 22/09. Deux lectures en sont
+sorties.
+
+*Côté réception*, aucune page n'est orpheline (le correctif de `getRelatedArticles`
+du 22/09 tient : minimum 2 pages entrantes), **mais les deux articles les plus
+récents et les plus lourds du site sont parmi les moins liés du corpus
+éditorial** : `vendre-logement-loue-droit-preemption-villeurbanne` (01/11) et
+`vendre-bien-indivision-succession-villeurbanne` (30/10) à **4 pages entrantes
+chacun**, contre **24** pour `prix-immobilier-villeurbanne-2026`.
+
+*Côté émission*, et c'est là qu'était le trou : **les pages commerciales
+n'émettent presque rien vers le fonds éditorial, et elles sont très inégales.**
+
+| Page (toutes dans la navigation de tout le site) | Liens internes | dont vers un article |
+|---|---|---|
+| `/vendre` | 28 | **10** |
+| `/gestion-locative` | 19 | **3** |
+| `/faire-gerer` | 18 | **2** |
+| `/agence-immobiliere-villeurbanne` | 20 | **1** |
+| `/estimation` | 19 | **1** |
+| `/honoraires` | 17 | **1** |
+
+📌 **`/vendre` est le modèle, et il est seul.** Et le trou le plus net n'est pas
+une statistique : **les trois articles de fond écrits pour un bailleur** —
+`preavis-depot-garantie-location-villeurbanne` (28/10, 3 655 mots),
+`vendre-logement-loue-droit-preemption-villeurbanne` (01/11) et
+`vendre-bien-indivision-succession-villeurbanne` (30/10) — **ne recevaient aucun
+lien depuis `/gestion-locative` ni depuis `/faire-gerer`**, qui sont précisément
+les deux pages du bon public et qui portent l'autorité du site.
+
+**Le défaut de contenu trouvé en chemin, et il est plus grave que le maillage.**
+La section « Que doit faire, concrètement, un propriétaire qui gère seul son
+logement ? » de `/gestion-locative` énumérait **9 obligations** — bail, DDT,
+états des lieux, quittance, révision IRL, charges, décence, restitution du dépôt,
+PNO — et **ne disait nulle part que son locataire peut partir en un mois**. Or
+`/llms.txt` **annonçait déjà ce contenu sur cette URL** : son entrée
+`/gestion-locative` décrit le préavis de zone tendue, ses conditions et son coût
+sur plus de dix lignes. **Le fichier promettait donc à un LLM un contenu que la
+page ne portait pas.** Inscrit au backlog depuis le **28/10**, reporté cinq fois.
+
+**Ce qui a été fait (3 fichiers, +48 / −9).**
+
+1. **`/gestion-locative`, 10ᵉ puce** : « Compter le préavis au bon délai quand le
+   locataire donne congé… » — le préavis d'un logement vide est d'un mois à
+   Villeurbanne (zone tendue) **mais pas automatiquement** : la lettre de congé
+   doit indiquer **l'adresse du logement loué** et **le fait de bénéficier d'un
+   délai réduit à un mois**, sinon le délai **reste de trois mois** (article 15
+   de la loi n° 89-462 ; fiche **F1168**, vérifiée le 16 avril 2026, relevée le
+   2 novembre 2026). Puce fermée par la nuance qui manque partout ailleurs :
+   **en meublé, le préavis est d'un mois quelle que soit la commune**, la zone
+   tendue n'y change rien.
+2. **`/gestion-locative`, section « Gérer seul »** : un second paragraphe qui
+   nomme les deux obligations à délai court du départ (préavis + dépôt) et lie
+   le guide. **Lien posé là où la page parle déjà du sujet**, pas en « à lire
+   aussi ».
+3. **`/gestion-locative`, section « À la carte »** : lien vers
+   `vendre-logement-loue-droit-preemption-villeurbanne`, à l'endroit exact où la
+   page évoque « un bailleur qui a déjà un locataire en place ». Trois faits
+   énoncés avant le lien pour qu'il se justifie : congé pour vendre **reçu six
+   mois** avant l'échéance du bail, **offre de vente au locataire**,
+   **déclaration d'intention d'aliéner à déposer avant de signer**.
+4. **`/faire-gerer`** : lien vers le guide du dépôt de garantie, à l'endroit où
+   la page explique déjà que **le dépôt n'est pas un cautionnement** — annoncé
+   sur ce qu'il apporte (le plafond, **les deux situations où il est interdit
+   d'en demander un**, le délai de restitution).
+5. **`lib/seo/lastmod.ts`** : `/gestion-locative` au **2026-11-02**, parce que la
+   puce est un ajout de contenu réel. **`/faire-gerer` N'EST PAS avancé** : la
+   page n'a reçu qu'un lien, et la règle d'entretien écrite en tête de la table
+   dit noir sur blanc qu'« un lien ajouté ne la bouge pas », l'avancer à tort
+   étant « le défaut coûteux ».
+
+**Vérifié avant le push** : fiche F1168 relue en ligne (inchangée, texte
+identique au mot près à ce que publie déjà `lib/blog.ts:2125` — pas de
+contradiction interne, la famille de défauts du 21/10) ; `tsc` sans erreur ;
+`build` vert, les deux pages toujours `○ Static` ; **parité FAQ relue après coup,
+10/10 et 8/8 paires du `FAQPage` retrouvées mot pour mot dans le HTML visible** ;
+`eslint` **35 problèmes / 24 erreurs avant comme après**, prouvé par `git stash` ;
+0 apostrophe courbe, 0 insécable, 45 accents dans le texte ajouté ; outil
+d'estimation non touché.
+
+**Vérifié après le push, en production** : `/gestion-locative` **3 → 5 liens
+éditoriaux** (170 117 → 174 554 o), `/faire-gerer` **2 → 3** (155 100 →
+156 001 o), `dateModified` **2026-11-02** et **2026-10-24** respectivement,
+`lastmod` du sitemap concordant, **sitemap 57 URL inchangé**.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+
+- **Ne pas toucher `/llms.txt`.** Il décrivait déjà le préavis sur
+  `/gestion-locative` : c'est la page qui le rejoint, pas l'inverse. **Et la
+  veille du jour dit de ne plus y investir** (voir « Techniques apprises »).
+- **Ne pas lier `vendre-bien-indivision-succession-villeurbanne` depuis ces deux
+  pages.** Son public est un héritier, pas un bailleur. `/vendre` le lie déjà.
+  **Un lien qui ne se justifie pas par le texte d'accueil est un lien de
+  remplissage.**
+- **Ne pas remonter `/estimation`, `/honoraires` et
+  `/agence-immobiliere-villeurbanne` à 1 lien éditorial.** Le trou est réel et
+  mesuré, mais l'arbitrage de cannibalisation du 29/10 porte précisément sur ces
+  pages : **y ajouter des liens sortants sans rouvrir cet arbitrage serait
+  imprudent.** Inscrit au backlog.
+- **Ne pas retirer la source `justice.fr`.** Une maintenance n'est pas une URL
+  morte.
+- **Ne pas corriger les deux `<a href="/">` de `/mentions-legales`.** Deux
+  erreurs `eslint` préexistantes, effet SEO faible, et mélanger deux chantiers
+  dans un diff rend la mesure illisible.
+
 ### 2026-11-01 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h26
 
 - **Déclenchement en double** : l'article préemption (`4c10d4c` + `43ec8ee`) est
@@ -8156,6 +8367,144 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le maillage des deux pages bailleur vers
+le fonds éditorial bailleur** (02/11 : **candidat n°1 relancé en premier et
+clos par la mesure** — `justice.fr` toujours en maintenance, HTTP 200 sur une
+page de maintenance, et l'adresse du tribunal ne dépendait pas de cette source.
+**Chantier choisi sur une mesure neuve, pas dans la liste** : graphe de liens
+reconstruit sur les 57 URL de production. `/vendre` émet 10 liens éditoriaux,
+`/gestion-locative` 3 et `/faire-gerer` 2, et **les trois articles écrits pour un
+bailleur n'en recevaient aucun depuis ces deux pages**. Défaut de contenu trouvé
+en chemin : la liste des 9 obligations du bailleur **taisait le préavis d'un
+mois**, que `/llms.txt` annonçait pourtant déjà sur cette URL. Résultat :
+`/gestion-locative` 3 → **5**, `/faire-gerer` 2 → **3**, 10ᵉ puce sourcée F1168,
+`dateModified` avancé sur la première seulement.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (03/11, mardi) DOIT ÊTRE DU CONTENU**
+(alternance : 31/10 non-contenu → 01/11 contenu → 02/11 non-contenu).
+✅ **La veille du lundi est faite** (02/11) ; **prochaine veille due le 09/11**.
+**Candidats CONTENU, par ordre d'impact :**
+  1. 🔴 **LA SUITE DE LA FAMILLE « ZÉRO OCCURRENCE », DEUX BRANCHES RESTANTES.**
+     **`viager` 0** (fiche officielle **F2762** repérée le 30/10, **toujours non
+     téléchargée**), **`clause pénale` 0**, et **`nue-propriété` 3 occurrences
+     seulement**, toutes dans l'article d'indivision (`lib/blog.ts:2612`
+     et `:2709`), donc **jamais traitée pour elle-même**. ⚠️ **Remesurer la
+     famille sur `app components data lib` AVANT d'écrire** (elle a bougé : le
+     corpus porte maintenant `droit de préemption`), **mesurer la SERP**, et
+     **vérifier qu'aucune page ne couvre déjà l'angle** — ce triple contrôle a
+     clos « net vendeur » le 30/10 et validé « droit de préemption » le 01/11.
+  2. 🟢 **La place GEO la plus vide mesurée avant le 01/11** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. **Remesurer plutôt que réécrire.**
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). 🆕 **Le graphe du 02/11 ajoute un
+     critère de choix** : six d'entre eux sont à **3 pages entrantes**, le
+     plancher du site (`achat-immobilier-lyon-checklist`,
+     `home-staging-vendre-plus-cher`, `lmnp-location-meublee`,
+     `mandat-simple-ou-exclusif`, `vendre-appartement-lyon-etapes`,
+     `vendre-vite-lyon`). ⚠️ **Ne pas en prendre un « parce qu'il est court » :
+     mesurer d'abord s'il existe une SERP où le site est absent.**
+  4. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CLOS LE 30/10, NE PAS LE
+     RÉOUVRIR.**
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE** —
+     portée depuis le **14/10, huit reports**. Sept mesures concordantes,
+     **toutes COMMUNALES**, alors que `/acheter` et `/llms.txt` affirment un
+     écart **de 16,1 à 45,3 % PAR QUARTIER**. **Reformuler — « l'écart par
+     QUARTIER a-t-il disparu ? » — et trancher avec un relevé DVF 2026 par
+     quartier** (recette du 14/10), **pas avec les SERP. Ne RIEN réécrire
+     avant.** 📌 **C'est le plus vieux point ouvert du journal : il devrait
+     passer avant tout nouveau candidat non-contenu.**
+  2. 🔴 🆕 **LES TROIS PAGES COMMERCIALES À 1 SEUL LIEN ÉDITORIAL**
+     (`/estimation`, `/honoraires`, `/agence-immobiliere-villeurbanne`, mesuré
+     le 02/11). Même trou que celui corrigé aujourd'hui, mais **il croise
+     l'arbitrage de cannibalisation du 29/10**, qui porte précisément sur ces
+     URL. ⚠️ **Ne pas y poser de lien sans avoir relu cet arbitrage** : le
+     chantier commence par la relecture, pas par le lien.
+  3. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11). **Une
+     seule affirmation en dépend** : la fiche « DPE collectif »
+     (`lib/blog.ts:897`, « mise à jour le 1er janvier 2026 »). **L'adresse du
+     tribunal n'en dépend pas** (`lib/blog.ts:2724`, sourcée sur l'annuaire du
+     service public) — le backlog se trompait de source, c'est corrigé ici.
+     📌 **Contrôle à deux temps obligatoire** (code/redirection, **puis**
+     marqueur) : l'hôte rend **200** sur sa page de maintenance.
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **sixième report**). Il tient **trois SERP suivies** et c'est **le seul
+     concurrent mesuré qui publie du DVF par quartier**, donc le seul comparable
+     direct de notre angle. **Il sert aussi le candidat n°1.** **Ne RIEN
+     réécrire sur un seul relevé.**
+  5. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ **Le chemin a changé** : les PDF
+     `grandlyon.com/delibs/*` sont morts (301 vers `agora.grandlyon.com`) et le
+     motif `…/raad/AAAA/AAAAMM00_raad.pdf` **ne répond plus après 2022**.
+     **Passer par `agora.grandlyon.com`**, objectif : **un arrêté de préemption
+     villeurbannais de 2025 ou 2026** visant la même délibération.
+  6. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230, `<a href="/confidentialite/">` et `<a href="/cookies/">` au lieu de
+     `<Link>`). **2 des 24 erreurs `eslint`**, reconfirmées identiques le 02/11
+     par `git stash`. **Effet SEO réel mais faible** : jour creux, et vérifier
+     qu'aucune autre page n'a le même défaut (`grep -rn '<a href="/' app`).
+  7. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+  8. ⛔ 🆕 **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE —
+     DÉFINITIVEMENT DÉCLASSÉ**, et la veille du 02/11 tranche : le `FAQPage`
+     n'est plus un rich result mais **la parité JSON-LD / visible reste la seule
+     garantie contre un mismatch sanctionnable**, et Google a étendu le 01/10 son
+     exigence de relecture humaine **aux métadonnées, balisage Schema.org
+     compris**. **Le contrôle de parité se garde ; le recomptage ne sert à rien.**
+  9. ⛔ 🆕 **NE PLUS INVESTIR DANS `/llms.txt` AU-DELÀ DE SA JUSTESSE.** La
+     veille du 02/11 : aucune corrélation mesurée avec les citations sur
+     ~300 000 domaines, 1 seul des 50 domaines les plus cités en a un, et Google
+     déclare l'ignorer. **On le maintient exact quand on ajoute une page — on
+     ne le compte plus comme un gain GEO.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — QUATRIÈME JOUR.** Constaté
+  le 31/10, **toujours vrai au 02/11**, `lastmod` de `/` figé à
+  `2026-10-30T08:53:20.821Z`. 🆕 **Mesure durcie ce jour : les quatre chiffres
+  validés sont absents de TOUT le HTML de l'accueil** (`7 ans` 0, `250` 0,
+  `40 M` 0, `300+` 0), et les `<h2>` servis sautent de « Nos biens vendus » à
+  « Estimez votre bien ». **Non corrigé : page de Tony, republiée depuis
+  l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant fin
+  janvier 2027, hors panne.** **Renotifié le 02/11.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). **Recontrôlée le
+  02/11 : `{"message": "Unknown Invite", "code": 10006}`.** 🆕 **Le code est
+  publié 4 fois dans le seul HTML de l'accueil.** Source :
+  `components/layout/site-footer.tsx:67`, `components/home/social.tsx:130`,
+  `design-system.md` § 11. ⚠️ **Il faut une invitation PERMANENTE.** 📌 **Dès
+  que Tony fournit le code : substituer aux TROIS endroits, puis revérifier par
+  l'API.** **Ne pas retirer le CTA entre-temps** (élément de marque imposé).
+  **Renotifié le 02/11.**
+- 🆕 **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs` du
+  JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 02/11** (elles remplacent celles du bloc
+du 01/11 ci-dessous) :
+- **« agence immobilière Villeurbanne »** et **« estimation immobilière
+  Villeurbanne »** : mesurées le **30/10**, **site absent sur les deux** →
+  prochaine passe **06/11**. 📌 **Les relevés du 30/10 sont le POINT ZÉRO
+  d'après l'arbitrage de cannibalisation du 29/10 ; le verdict se lira dans
+  Search Console vers le 20/11, pas dans ces SERP.**
+- **« prix m2 Villeurbanne »** : mesurée le **31/10** (7ᵉ relevé, site absent) →
+  **07/11**. ⚠️ **Ne pas y réinvestir d'effort rédactionnel.**
+- **« vendre appartement Villeurbanne »** : mesurée le **30/10** (4ᵉ relevé,
+  site absent) → **10/11**.
+- **DEUX SERP DE SUJET OUVERTES LE 01/11** (droit de préemption / vendre un
+  logement loué) : point zéro au 01/11, site absent sur les deux, aucune agence
+  ni notaire local. → **première remesure vers le 15/11**, puis mensuellement.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ✅ **Veille du lundi : faite le 02/11. Prochaine le 09/11.**
+
 **Angle du dernier run : CONTENU — les deux droits de préemption d'une vente
 villeurbannaise** (01/11 : candidat n°1 du backlog contenu, **consommé après
 mesure** — la famille « zéro occurrence » tenait encore (`droit de préemption`
@@ -10284,6 +10633,41 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-02 — Quatre points laissés ouverts par le chantier du maillage
+
+1. 🔴 **`justice.fr` revient-il, et dans quel état ?** L'hôte sert une page de
+   maintenance **en HTTP 200** le 31/10 **et** le 02/11, pour toutes les URL
+   (la fiche et la racine rendent **15 139 o identiques**). Une affirmation en
+   dépend (`lib/blog.ts:897`, fiche « DPE collectif » « mise à jour le 1er
+   janvier 2026 »). ⚠️ **Deux issues possibles, qui ne se traitent pas de la
+   même façon** : (a) maintenance passagère → rien à faire, recontrôler ;
+   (b) **refonte avec changement d'URL** → la fiche serait à retrouver, et
+   l'ancre serait à changer. **Rien ne permet aujourd'hui de distinguer les
+   deux**, et le site ne publie aucune date de retour. **À recontrôler à chaque
+   run jusqu'à résolution, par le contrôle à deux temps.**
+2. 🟡 **Le nouveau lien entrant suffit-il à faire indexer et classer les deux
+   articles les plus récents ?** `/gestion-locative` et `/faire-gerer` sont dans
+   la navigation de tout le site, donc elles portent de l'autorité, mais **un
+   lien n'est pas une position**. 📌 **La mesure honnête n'est pas le compte de
+   liens, c'est la remesure des deux SERP de sujet prévue vers le 15/11.** **Ne
+   pas en ajouter d'autres entre-temps pour « aider »** : on ne saurait plus ce
+   qui a produit l'effet.
+3. 🟡 **L'arbitrage de cannibalisation du 29/10 interdit-il réellement d'ajouter
+   des liens sortants depuis `/estimation` et
+   `/agence-immobiliere-villeurbanne` ?** Ces deux pages n'émettent **qu'un seul
+   lien éditorial** (mesuré le 02/11), ce qui est le même défaut que celui
+   corrigé aujourd'hui. Mais l'arbitrage portait sur **le ciblage** de ces URL,
+   pas sur leurs liens sortants — **et je ne l'ai pas relu avant de l'invoquer
+   pour m'abstenir.** ⚠️ **Le relire AVANT de décider, et consigner la réponse :
+   un lien sortant ne déplace pas une cible de mot-clé, donc l'abstention
+   d'aujourd'hui est peut-être excessive.**
+4. 🟢 **La nuance « en meublé, un mois quelle que soit la commune » est-elle
+   complète ?** Elle est exacte et sourcée, mais la fiche F1168 traite aussi le
+   **bail mobilité** et la **colocation**, que notre puce ne mentionne pas.
+   📌 **Ce n'est pas un défaut** : une puce de liste d'obligations n'a pas à
+   épuiser le sujet, et l'article lié le fait. **À ne rouvrir que si une mesure
+   montre une requête sur ces deux cas.**
+
 ### 2026-11-01 — L'institution du DPU dans la Métropole de Lyon a-t-elle bougé depuis le 13 mai 2019 ?
 
 **🟡 CE QUE NOUS PUBLIONS DEPUIS LE 01/11, ET CE QUI EST PROUVÉ.**
@@ -11615,6 +11999,62 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-02 — Huit entrées de ce journal affirment que `origin/main` retardait, et c'est ma commande de `fetch` qui échouait en silence
+
+**Ce que le journal répète depuis dix runs.** « `origin/main` RETARDAIT —
+HUITIÈME OCCURRENCE SUR DIX RUNS », avec à chaque fois le même protocole :
+relever `HEAD` et `origin/main` **avant** `git fetch`, constater l'écart,
+fetcher, constater l'alignement. La règle date du 16/09 et elle était présentée
+comme « payante ».
+
+**Ce qui s'est passé ce matin.** Même relevé, même écart apparent — `HEAD` =
+`ce76913`, `origin/main` = `768ada6`, **sept commits**. Puis un
+`git ls-remote origin` a donné **`refs/heads/main` = `ce76913`** : le dépôt
+distant était **exactement à jour**, et il n'y avait **aucun retard**.
+
+**La cause, et elle est entièrement de mon côté.** La commande lancée était :
+
+```bash
+git fetch origin main claude/dazzling-feynman-yldw21
+# fatal: couldn't find remote ref claude/dazzling-feynman-yldw21
+```
+
+La branche de travail du conteneur **n'existe pas côté distant** (le conteneur
+pré-crée un ref de suivi local qui ressemble à un ref distant, et `git rev-parse
+origin/<branche>` le résout sans broncher). **Et `git fetch` avec plusieurs refs
+échoue EN BLOC dès qu'un seul est introuvable** : `main` n'a donc jamais été
+rafraîchi, et le ref de suivi est resté figé sur l'instantané du conteneur.
+
+```bash
+# FAUX — un seul ref manquant annule le rafraîchissement de TOUS les autres,
+# et le code de sortie est le seul indice (le message parle de l'autre ref)
+git fetch origin main une-branche-qui-n-existe-pas
+
+# JUSTE — un ref par commande, refspec explicite, et on relit la valeur
+git fetch origin '+refs/heads/main:refs/remotes/origin/main'
+git rev-parse --short origin/main
+
+# ET le contrôle qui tranche sans dépendre d'aucun ref de suivi local :
+git ls-remote origin refs/heads/main
+```
+
+**Ce que ça change pour les prochains runs.**
+
+1. 🔴 **`git ls-remote origin refs/heads/main` est désormais le seul juge du
+   retard de `main`.** Un ref de suivi local ne prouve rien : dans ce conteneur
+   il est pré-rempli et peut être arbitrairement vieux.
+2. 🔴 **Ne jamais passer plusieurs refs à un `git fetch`** dont on va lire le
+   résultat. Un ref par commande.
+3. ⚠️ **Les huit « retards » consignés ne sont pas tous faux pour autant** :
+   ceux des runs où le `fetch` a réussi (message `768ada6..xxxxxxx main ->
+   origin/main`) étaient réels. **Mais aucun n'est fiable sans la trace de la
+   commande**, et ce journal ne la consignait pas. **Le compteur « huit sur
+   dix » est donc à considérer comme non établi**, et il ne sera plus incrémenté
+   que sur un `ls-remote`.
+4. 📌 **Leçon de forme, la même que le 30/10 sur le détecteur de parité FAQ** :
+   un contrôle qui ne vérifie pas que sa propre commande a réussi mesure son
+   propre échec et l'attribue au site.
 
 ### 2026-11-01 — J'ai écrit « deux cas » là où la fiche officielle annonce « 3 cas de figure », et seule la relecture du compte annoncé l'a rattrapé
 
@@ -13481,6 +13921,70 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-02 — Veille du lundi : le facteur de citation le mieux étayé est technique, et `llms.txt` ne mesure rien
+
+Veille due depuis le 26/10, faite **avant** le choix du chantier comme le
+demande l'étape 5. Trois acquis, dont un qui **dévalue un travail que ce journal
+comptait comme du GEO**.
+
+**1. 🔴 Le facteur de citation le mieux étayé n'est pas éditorial, il est
+d'accès.** Une méta-analyse de **54 études** (Cyrus Shepard / Zyppy, mai 2026)
+note 23 facteurs par force de preuve. Les cinq premiers : **accessibilité de
+l'URL (9,5/10)**, **classement organique (9,4/10)**, rang de *fan-out* (9,3/10),
+**contrôle de la prévisualisation (9,2/10)**, correspondance question-réponse
+(9,2/10). `llms.txt` arrive **dernier**. ✅ **Applicable et appliqué le jour
+même** : les deux premiers facteurs ont été remesurés sur le dernier article
+publié — **six agents** (navigateur, Googlebot, GPTBot, OAI-SearchBot,
+PerplexityBot, ClaudeBot) rendent **200 / 239 053 o à l'octet près**, **aucun
+`X-Robots-Tag`**, `robots.txt` permissif. Premier relevé depuis le 22/09,
+**aucune dérive**. 📌 **Et le « contrôle de la prévisualisation » explique
+pourquoi le `data-nosnippet` de `app/annonces/page.tsx:78` doit rester** : il
+interdit la citation d'un bloc **de biens fictifs**, c'est un usage juste du
+mécanisme, pas une perte. **Recette à refaire mensuellement**, parce qu'un
+blocage de ce type est invisible dans le contenu et annule tout le reste.
+
+**2. ⛔ `llms.txt` : aucune corrélation mesurée avec les citations.** SE Ranking
+sur **~300 000 domaines** : **aucune corrélation** entre la présence du fichier
+et la fréquence de citation ; **un seul des 50 domaines les plus cités** en
+possède un ; adoption ~10 % ; Ahrefs sur **137 000 sites** : **97 % des fichiers
+n'ont reçu aucune requête** en mai 2026 ; et **Google déclare l'ignorer pour
+Search** (ni aide, ni pénalité, AI Overviews et AI Mode compris). Contrepoint
+honnête : Profound observe que les crawlers de Microsoft et d'OpenAI **vont
+réellement chercher** `llms.txt` et `llms-full.txt` — un signal de crawl, pas
+une preuve de citation. ⚠️ **Conséquence pour ce journal** : les runs du 18/10
+et du 01/11 comptaient la mise à jour de `/llms.txt` parmi les acquis GEO.
+**C'est à requalifier : le fichier se maintient EXACT quand on ajoute une page,
+il ne se compte plus comme un gain.** Les 157 montants recopiés à la main qu'il
+porte sont un **risque d'incohérence** à surveiller, pas un actif à étendre.
+📌 **Il n'est pas retiré pour autant** : il est déjà écrit, il coûte zéro à
+maintenir juste, et deux laboratoires le lisent.
+
+**3. 🟡 Google a étendu le 1er octobre 2026 son exigence de relecture humaine aux
+MÉTADONNÉES, balisage Schema.org compris.** Le guide « contenu généré par IA » a
+été réécrit à partir des consignes aux évaluateurs de qualité, et le périmètre
+couvre désormais explicitement les données structurées : elles doivent respecter
+les règles de chaque fonctionnalité **et être validées**. ✅ **Déjà la pratique
+ici** (parité `FAQPage` / HTML visible contrôlée à chaque run, 10/10 et 8/8
+aujourd'hui), **mais ça change le statut du contrôle** : ce n'était qu'une
+hygiène interne, c'est maintenant adossé à une consigne publiée. 📌 **Et ça
+tranche le point 8 du backlog** : recompter ce que la dépréciation du rich
+result FAQ change ne sert à rien, **la parité reste obligatoire pour une autre
+raison que le rich result**.
+
+**4. ⚠️ Ce que la veille n'a PAS donné, et c'est à dire.** Aucun nouveau type de
+données structurées en octobre 2026 : le journal des mises à jour de Google
+Search Central, **lu directement** (6 entrées d'octobre : spam UGC le 26,
+structure d'URL le 23, contrôle du partage le 21, quota de l'API d'indexation le
+16, programme UGC Fresh Data le 8, contenu IA le 1er), **n'en mentionne aucun**,
+et aucune entrée de novembre n'était publiée au 02/11. 📌 **Les chiffres de
+citation qui circulent (38 % des citations hors top 10, +35 % de clics pour une
+marque citée) viennent tous de blogs d'éditeurs d'outils** et n'ont pas été
+vérifiés sur la source primaire : **ne pas les reprendre dans une décision.**
+Sources : journal des mises à jour de Google Search Central (lu le 02/11) ;
+méta-analyse Zyppy de 54 études (mai 2026) ; SE Ranking ~300 000 domaines ;
+Ahrefs 137 000 sites ; guide Google « contenu généré par IA » révisé le
+01/10/2026.
 
 ### 2026-11-01 — Une fiche service-public qui annonce « 3 cas de figure » n'en montre que deux à la lecture linéaire
 
