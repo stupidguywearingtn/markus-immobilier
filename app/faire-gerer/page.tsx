@@ -528,7 +528,16 @@ export default function FaireGererPage() {
                     étudiant ou apprenti ». Deux précisions qui évitent les
                     confusions courantes : le{" "}
                     <strong>dépôt de garantie n&apos;est pas un cautionnement</strong>{" "}
-                    et reste dû dans tous les cas ; la garantie{" "}
+                    et reste dû dans tous les cas — son plafond, les deux
+                    situations où il est interdit d&apos;en demander un et le
+                    délai de restitution sont détaillés dans notre{" "}
+                    <Link
+                      href="/blog/preavis-depot-garantie-location-villeurbanne"
+                      className={A}
+                    >
+                      guide du préavis et du dépôt de garantie
+                    </Link>
+                    {" "}; la garantie{" "}
                     <strong>Visale</strong> d&apos;Action Logement est, elle,
                     un cautionnement — elle ne se cumule donc pas davantage avec
                     une GLI.

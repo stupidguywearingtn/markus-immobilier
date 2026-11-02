@@ -463,13 +463,30 @@ export default function GestionLocativePage() {
             eyebrow: "Gérer seul",
             h2: "Que doit faire, concrètement, un propriétaire qui gère seul son logement ?",
             body: (
-              <p>
-                Gérer seul, ce n&apos;est pas « encaisser un loyer » : c&apos;est
-                tenir une liste d&apos;obligations dont chacune a son texte et son
-                délai. Aucune n&apos;est optionnelle, et leur oubli se paie soit
-                en contentieux, soit en somme à restituer. Voici celles qui
-                reviennent chaque année ou à chaque changement de locataire.
-              </p>
+              <>
+                <p>
+                  Gérer seul, ce n&apos;est pas « encaisser un loyer » :
+                  c&apos;est tenir une liste d&apos;obligations dont chacune a
+                  son texte et son délai. Aucune n&apos;est optionnelle, et leur
+                  oubli se paie soit en contentieux, soit en somme à restituer.
+                  Voici celles qui reviennent chaque année ou à chaque changement
+                  de locataire.
+                </p>
+                <p>
+                  Deux d&apos;entre elles se jouent sur des délais courts, au
+                  départ du locataire : le préavis qu&apos;il doit respecter et le
+                  dépôt de garantie que vous devez lui rendre. Les deux sont
+                  repris texte par texte, avec leurs délais et le coût d&apos;une
+                  erreur, dans notre{" "}
+                  <Link
+                    href="/blog/preavis-depot-garantie-location-villeurbanne"
+                    className={A}
+                  >
+                    guide du préavis et du dépôt de garantie à Villeurbanne
+                  </Link>
+                  .
+                </p>
+              </>
             ),
             bullets: [
               "Fixer le loyer de base dans la limite du loyer de référence majoré de l'arrêté préfectoral en vigueur à la date de signature du bail, et faire figurer au bail comme dans l'annonce le loyer de base, le loyer de référence et le loyer de référence majoré — détaillé dans la section suivante.",
@@ -479,6 +496,7 @@ export default function GestionLocativePage() {
               "Réviser le loyer une fois par an si le bail comporte une clause de révision, en appliquant l'indice de référence des loyers du trimestre prévu au contrat — SAUF si le logement est classé F ou G au DPE : réviser le loyer y est alors interdit, pour tout bail signé, renouvelé ou tacitement reconduit depuis le 24 août 2022 en métropole (service-public.fr, fiche F1310, vérifiée le 1ᵉʳ août 2026).",
               "Régulariser les charges annuellement et communiquer au locataire leur décompte par nature un mois avant la régularisation (article 23 de la loi du 6 juillet 1989 ; article 25-10 pour un meublé), puis tenir les justificatifs à sa disposition pendant les six mois qui suivent.",
               "Maintenir le logement décent, ce qui inclut un niveau de performance énergétique minimal dont le palier dépend de la DATE DU BAIL, et non de la date à laquelle vous louez : moins de 450 kWh d'énergie finale par m² et par an pour un bail signé, renouvelé ou tacitement reconduit entre 2023 et 2024, puis les classes A à F entre 2025 et 2027 (la classe G est exclue), A à E entre 2028 et 2033 et A à D à partir de 2034 — détaillé plus bas, avec les trois cas où le juge ne peut PAS ordonner les travaux.",
+              "Compter le préavis au bon délai quand le locataire donne congé, parce qu'il commande la date de libération du logement et la relocation : Villeurbanne étant en zone tendue, le préavis d'un logement vide est d'un mois — mais seulement à la condition que la lettre de congé indique l'adresse du logement loué et le fait de bénéficier d'un délai réduit à un mois ; à défaut de cette mention, le délai reste de trois mois (article 15 de la loi n° 89-462 du 6 juillet 1989 ; service-public.gouv.fr, fiche F1168, vérifiée le 16 avril 2026, relevée le 2 novembre 2026). En meublé, le préavis est d'un mois quelle que soit la commune.",
               "Restituer le dépôt de garantie dans le mois suivant la remise des clés si les deux états des lieux concordent, dans les deux mois s'ils révèlent des dégradations imputables au locataire.",
               "Souscrire au minimum une assurance de responsabilité civile propriétaire non occupant, obligatoire en copropriété (article 9-1 de la loi du 10 juillet 1965).",
             ],
@@ -772,6 +790,18 @@ export default function GestionLocativePage() {
                   className={A}
                 >
                   ce que fait une agence quand vous lui confiez la gestion
+                </Link>
+                . Et si le projet n&apos;est plus de louer mais de vendre, un
+                logement occupé ne se vend pas au calendrier d&apos;un logement
+                vide : congé pour vendre reçu six mois avant l&apos;échéance du
+                bail, offre de vente à faire au locataire, déclaration
+                d&apos;intention d&apos;aliéner à déposer avant de signer. Les
+                étapes sont détaillées dans{" "}
+                <Link
+                  href="/blog/vendre-logement-loue-droit-preemption-villeurbanne"
+                  className={A}
+                >
+                  vendre un logement loué à Villeurbanne
                 </Link>
                 .
               </p>

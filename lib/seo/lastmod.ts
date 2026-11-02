@@ -37,7 +37,7 @@ export const PAGE_LASTMOD: Record<string, string> = {
   "/estimation": "2026-09-15",
   "/vendre": "2026-10-21",
   "/acheter": "2026-10-21",
-  "/gestion-locative": "2026-10-27",
+  "/gestion-locative": "2026-11-02",
   "/estimation-immobiliere-lyon": "2026-09-08",
   "/estimation-immobiliere-villeurbanne": "2026-09-12",
   "/agence-immobiliere-villeurbanne": "2026-10-04",
