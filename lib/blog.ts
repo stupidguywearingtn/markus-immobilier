@@ -300,6 +300,34 @@
  * analyses trouvées le 01/11/2026 sont antérieures aux dernières réformes.
  * Ne pas les ajouter sans une source datée — l'article dit noir sur blanc
  * pourquoi il ne les publie pas.
+ *
+ * Depuis le 03/11/2026, « vendre-en-viager-villeurbanne » applique le barème de
+ * l'article 669, I du CGI (usufruit / nue-propriété par tranche d'âge) à DEUX
+ * montants de lib/quartiers.ts : `COMMUNE.prixMedian` (195 000 €) et le prix
+ * médian du T3 de `TYPOLOGIES` (226 250 €). Son tableau de valeurs fiscales en
+ * euros, les 58 500 € de bouquet « en général 30 % » et la lecture chiffrée du
+ * vendeur de 75 ans (67 875 € / 40 725 € / 158 375 € / 185 525 €) en DÉRIVENT
+ * tous : si ces deux montants bougent, le tableau et la FAQ doivent être
+ * RECALCULÉS (pourcentage × prix, aucun arrondi intermédiaire), jamais patchés.
+ * Il cite en outre, SANS les recalculer, trois médianes de quartier et leurs
+ * effectifs `n` (Gratte-Ciel 3 846 €/m² et 655 ventes, Charpennes – Tonkin
+ * 3 524 et 200, Cyprian – Les Brosses 2 738 et 53) et le −10,4 % de la commune
+ * depuis 2022 : ces valeurs servent un argument de LIQUIDITÉ, pas de prix.
+ * ⚠️ PÉREMPTION PROPRE, INDÉPENDANTE DE DVF : le barème vient de l'article 669
+ * du CGI via BOFiP BOI-ENR-DMTG-10-40-10-50 § 30 (version du 23/12/2013), les
+ * parts imposées de la rente (70/50/40/30 %) et la répartition des charges de
+ * service-public.gouv.fr F2762 « vérifiée le 18 août 2025 », et la charge de la
+ * taxe foncière de la réponse ministérielle n° 78392 du 07/06/2016 (art. 608 du
+ * code civil). À revérifier à chaque loi de finances.
+ * ⚠️ LES 60 % DU DROIT D'USAGE ET D'HABITATION (art. 762 bis du CGI) SONT
+ * PRÉSENTÉS COMME UN REPÈRE, PAS COMME UNE RÈGLE, ET C'EST VOLONTAIRE : ce
+ * texte est écrit pour les mutations à titre GRATUIT, pas pour une vente. Ne
+ * pas « simplifier » ce passage en règle opposable dans un viager.
+ * ⚠️ LA RÈGLE DES 20 JOURS (art. 1975 du code civil) NE DOIT PAS ÊTRE PRÉSENTÉE
+ * COMME PROTECTRICE : l'article est écarté par Cass. 1re civ. 02/03/1977
+ * n° 75-14.556 et 16/04/1996 n° 93-19.661, qui annulent pour absence d'aléa
+ * bien au-delà de ce délai dès que l'acheteur connaissait la gravité de l'état
+ * de santé du vendeur. C'est l'apport propre de l'article : ne pas le raboter.
  */
 
 export type Block =
@@ -2985,6 +3013,209 @@ export const ARTICLES: Article[] = [
       {
         q: "Combien de temps faut-il, au total, pour vendre libre un logement loué à Villeurbanne ?",
         a: "Au minimum huit mois entre la décision et la remise des clés, et c'est un plancher. Six mois de préavis au moins, puis au moins deux mois pour la déclaration d'intention d'aliéner, puis le temps de signer l'acte. Les deux délais ne se superposent pas : le congé d'abord, la DIA ensuite, une fois l'acheteur et le prix arrêtés. Si vous vendez occupé, le congé disparaît du calendrier et il ne reste que la DIA.",
+      },
+    ],
+  },
+  {
+    slug: "vendre-en-viager-villeurbanne",
+    title: "Vendre en viager à Villeurbanne : décote, rente et clauses qui protègent le vendeur",
+    metaDescription:
+      "Le barème officiel de l'article 669 du CGI appliqué aux prix réellement signés à Villeurbanne, la part de la rente qui est vraiment imposée, qui paie la taxe foncière en viager occupé, et pourquoi la règle des 20 jours ne met pas la vente à l'abri.",
+    h1: "Vendre en viager à Villeurbanne : ce que vous gardez, ce que vous touchez, ce qui vous protège",
+    excerpt:
+      "Vendre en viager, c'est céder la propriété aujourd'hui contre un bouquet et une rente à vie, en gardant le droit d'habiter. Trois chiffres décident de tout : le barème de l'article 669 du CGI, qui fixe la valeur fiscale de ce que vous conservez (30 % de la valeur du logement entre 71 et 80 ans), la part de la rente réellement imposée (30 % seulement après 69 ans), et la répartition des charges, où la taxe foncière revient au vendeur occupant à défaut de clause contraire. Appliqué au prix médian d'un T3 villeurbannais signé en 2025 (226 250 €), le droit d'usage et d'habitation d'un vendeur de 75 ans pèse 40 725 € de valeur fiscale. Et la règle des 20 jours de l'article 1975 du code civil ne met pas la vente à l'abri : la Cour de cassation l'annule pour absence d'aléa bien au-delà.",
+    date: "2026-11-03",
+    internalHref: "/vendre",
+    internalLabel: "Faire estimer mon appartement avant un viager",
+    blocks: [
+      { type: "p", text: "**Vendre en viager, c'est vendre la propriété de votre logement aujourd'hui contre un capital versé comptant — le bouquet — et une rente payée jusqu'à votre décès, tout en gardant le plus souvent le droit d'y habiter.** L'acheteur devient propriétaire à la signature. Vous, vous restez chez vous et vous touchez une rente à vie. C'est la seule vente immobilière dont le prix total n'est pas connu le jour de l'acte, puisqu'il dépend de votre longévité." },
+      { type: "p", text: "Cette page expose ce que disent les sources officielles au 3 novembre 2026 : la fiche service-public.gouv.fr **F2762 « Achat ou vente en viager : quelles sont les règles ? », vérifiée le 18 août 2025**, le **barème de l'article 669, I du code général des impôts**, les **articles 1968 à 1983 du code civil** sur le contrat de rente viagère, et la **réponse ministérielle du 7 juin 2016** qui tranche la répartition des charges. Elle applique ensuite ce barème aux prix d'appartements réellement signés à Villeurbanne en 2025, parce que c'est la seule façon de passer d'un pourcentage à un montant." },
+      { type: "p", text: "⚠️ **Deux avertissements avant d'entrer dans les chiffres.** Le premier : aucun des pourcentages de cette page n'est un prix de vente — ce sont des valeurs **fiscales**, et la différence est expliquée plus bas, parce qu'elle est à l'origine de presque tous les malentendus sur le viager. Le second : un viager est un acte notarié, et les clauses qui protègent le vendeur ne sont pas dans la loi, elles sont dans l'acte. Cette page vous dit lesquelles exiger." },
+
+      { type: "h2", text: "Comment fonctionne une vente en viager, concrètement ?" },
+      { type: "p", text: "**Vous vendez votre logement à un acheteur qui vous verse une rente viagère périodique — mensuelle, trimestrielle ou annuelle — jusqu'à votre décès, le plus souvent accompagnée d'une somme payée comptant à la signature, le bouquet.** L'acheteur s'appelle le débirentier, vous êtes le crédirentier. À votre décès, le viager cesse et l'acheteur entre en possession du bien sans aucune démarche à accomplir." },
+      { type: "p", text: "Comme toute vente immobilière, le viager passe obligatoirement par un acte authentique établi par un notaire. La rente peut être versée à une seule personne ou à plusieurs : quand deux époux vendent ensemble et que l'un décède, la rente est soit reversée intégralement au survivant — on parle de **rente réversible** — soit réduite proportionnellement, et c'est une **rente réductible**. Ce choix se fait dans l'acte, et il ne se rattrape pas après." },
+      { type: "p", text: "🔴 **Le point que presque aucune page ne met en avant : votre décès doit être imprévisible.** L'acheteur ne doit pas avoir eu connaissance d'une maladie dont vous étiez atteint au moment de la signature. Si vous décédez dans les 20 jours qui suivent l'acte, de la maladie dont vous souffriez, la vente n'est pas valable et vos héritiers peuvent en demander l'annulation devant le tribunal. La fin de cette page explique pourquoi ce délai de 20 jours est beaucoup moins protecteur qu'il n'y paraît." },
+
+      { type: "h2", text: "Viager occupé ou viager libre : laquelle des deux formules choisir ?" },
+      { type: "p", text: "**En viager occupé, vous conservez jusqu'à votre décès l'usufruit ou un droit d'usage du logement : vous restez chez vous. En viager libre, l'acheteur dispose du bien dès la signature et peut l'occuper ou le louer immédiatement.** Le viager occupé est de loin le cas le plus courant, parce que c'est précisément ce que cherche un vendeur âgé : de l'argent sans déménager." },
+      { type: "p", text: "🟢 **Et dans le viager occupé, il existe deux droits différents qu'il ne faut surtout pas confondre, parce qu'ils ne donnent pas les mêmes pouvoirs.** L'**usufruit** vous permet d'habiter le logement **ou de le louer et d'en percevoir les loyers**. Le **droit d'usage et d'habitation** ne vous ouvre que l'usage personnel : vous y habitez, vous ne pouvez pas le louer. C'est une différence de valeur, et aussi une différence de sécurité si votre santé vous conduit un jour en établissement : avec un usufruit, vous pouvez louer le logement que vous n'occupez plus et garder ce revenu en plus de la rente." },
+      { type: "p", text: "Cette distinction a une seconde conséquence, fiscale, traitée plus bas : elle change le nom qui figure sur l'avis de taxe foncière. Elle mérite donc d'être tranchée avec le notaire **avant** de fixer le prix, et pas après." },
+
+      { type: "h2", text: "Combien vaut ce que vous gardez ? Le barème officiel, chiffré sur les prix de Villeurbanne" },
+      { type: "p", text: "**La valeur de ce que vous conservez dépend de votre âge, et elle est fixée par un barème légal : l'article 669, I du code général des impôts. Entre 71 et 80 ans, l'usufruit vaut 30 % de la valeur du logement et la nue-propriété 70 %.** Ce barème sert à la liquidation des droits d'enregistrement et de la taxe de publicité foncière : c'est lui que le notaire applique pour calculer l'assiette des droits." },
+      {
+        type: "table",
+        caption: "Barème légal de répartition entre usufruit et nue-propriété, selon l'âge du vendeur",
+        source: "Article 669, I du code général des impôts, reproduit par le BOFiP BOI-ENR-DMTG-10-40-10-50 § 30 (version du 23 décembre 2013, toujours en vigueur). Relevé du 3 novembre 2026.",
+        headers: ["Âge du vendeur", "Valeur de l'usufruit", "Valeur de la nue-propriété"],
+        rows: [
+          ["Moins de 21 ans révolus", "90 %", "10 %"],
+          ["Moins de 31 ans révolus", "80 %", "20 %"],
+          ["Moins de 41 ans révolus", "70 %", "30 %"],
+          ["Moins de 51 ans révolus", "60 %", "40 %"],
+          ["Moins de 61 ans révolus", "50 %", "50 %"],
+          ["Moins de 71 ans révolus", "40 %", "60 %"],
+          ["Moins de 81 ans révolus", "30 %", "70 %"],
+          ["Moins de 91 ans révolus", "20 %", "80 %"],
+          ["Plus de 91 ans révolus", "10 %", "90 %"],
+        ],
+      },
+      { type: "p", text: "📌 **Pour un droit d'usage et d'habitation, le repère chiffré est différent : il vaut 60 % de la valeur de l'usufruit.** Cette règle est écrite à l'article 762 bis du code général des impôts. ⚠️ **Mais elle est écrite pour les mutations à titre gratuit — donations et successions — pas pour une vente.** Dans un viager, qui est une vente, elle n'est donc pas une règle opposable : c'est un repère, et un repère utile, parce que c'est le seul chiffre officiel qui existe pour ce droit. Le prix réel, lui, se négocie et se fixe dans l'acte." },
+      { type: "p", text: "Appliqué aux prix d'appartements réellement signés à Villeurbanne en 2025, ce barème cesse d'être abstrait. Le prix médian d'un appartement villeurbannais est de **195 000 €** toutes typologies confondues, et de **226 250 €** pour un T3 — les médianes complètes, quartier par quartier, sont dans [notre relevé des prix villeurbannais](/blog/prix-immobilier-villeurbanne-2026)." },
+      {
+        type: "table",
+        caption: "Valeur fiscale de ce que le vendeur conserve, selon son âge, au prix médian villeurbannais et au prix médian d'un T3",
+        source: "Barème de l'article 669, I du CGI appliqué aux médianes de la base DVF (demandes de valeurs foncières), Etalab / data.gouv.fr — ventes d'appartements enregistrées en 2025 sur la commune de Villeurbanne (69266).",
+        headers: ["Âge du vendeur", "Usufruit conservé (195 000 €)", "Usufruit conservé (T3, 226 250 €)", "Droit d'usage et d'habitation (195 000 €)", "Droit d'usage et d'habitation (T3, 226 250 €)"],
+        rows: [
+          ["61 à 70 ans (usufruit 40 %)", "78 000 €", "90 500 €", "46 800 €", "54 300 €"],
+          ["71 à 80 ans (usufruit 30 %)", "58 500 €", "67 875 €", "35 100 €", "40 725 €"],
+          ["81 à 90 ans (usufruit 20 %)", "39 000 €", "45 250 €", "23 400 €", "27 150 €"],
+          ["91 ans et plus (usufruit 10 %)", "19 500 €", "22 625 €", "11 700 €", "13 575 €"],
+        ],
+      },
+      { type: "p", text: "Lecture de la ligne la plus courante : un vendeur de **75 ans** qui cède un T3 villeurbannais au prix médian conserve un usufruit de **67 875 €** de valeur fiscale s'il se réserve l'usufruit, ou un droit d'usage et d'habitation de **40 725 €** s'il ne garde que le droit d'y vivre. Le reste — 158 375 € dans le premier cas, 185 525 € dans le second — est la part qu'il transmet, et c'est sur elle que le prix du viager se construit." },
+
+      { type: "h2", text: "Ce barème donne-t-il le prix de vente de mon viager ?" },
+      { type: "p", text: "**Non, et c'est le malentendu le plus répandu sur le viager.** Le barème de l'article 669 est un barème **fiscal** : il sert à liquider des droits, il ne fixe pas un prix. Le prix d'un viager se calcule autrement, à partir de votre âge et de votre espérance de vie, de la valeur du bien, du montant du bouquet et du loyer que le logement rapporterait s'il était loué." },
+      { type: "p", text: "La fiche officielle est explicite sur ce point : **c'est le notaire qui calcule le montant de la rente, en fonction de barèmes** que l'on consulte auprès d'une compagnie d'assurance ou d'un notaire. Ces barèmes économiques ne figurent pas au code général des impôts et ne sont pas publics : aucune page web, celle-ci comprise, ne peut vous donner le montant de votre rente." },
+      { type: "p", text: "🟢 **Ce que vous pouvez établir vous-même, en revanche, c'est la valeur du bien en pleine propriété — et c'est le point de départ de tout le calcul.** Sans elle, aucune des trois autres variables ne sert à rien, et c'est la seule que vous pouvez vérifier avant d'entrer chez un notaire. [Faites estimer votre appartement](/estimation) et comparez le résultat aux médianes de votre quartier : un viager se négocie sur cette base, pas sur une offre reçue par courrier." },
+
+      { type: "h2", text: "Le bouquet est-il obligatoire, et combien représente-t-il ?" },
+      { type: "p", text: "**Non, le bouquet n'est pas obligatoire : le vendeur et l'acheteur peuvent convenir qu'il n'y aura qu'une rente. Quand il existe, la fiche officielle indique qu'il représente en général 30 % de la valeur totale du bien.** Son montant est librement fixé, et il joue en sens inverse de la rente : plus le bouquet est élevé, plus la rente est faible." },
+      { type: "p", text: "Au prix médian d'un appartement villeurbannais, 195 000 €, un bouquet de cet ordre représente environ **58 500 €** versés le jour de l'acte. C'est l'arbitrage central d'un viager et il ne se refait pas : un bouquet élevé sécurise un capital immédiat, une rente élevée sécurise un revenu durable. Le choix dépend de ce que vous avez à financer maintenant — des travaux, une aide à un enfant, une entrée en résidence services — et de ce dont vous avez besoin chaque mois." },
+
+      { type: "h2", text: "La rente viagère est-elle imposable, et sur quelle part ?" },
+      { type: "p", text: "**Oui, les rentes viagères sont soumises à l'impôt sur le revenu, mais une partie seulement est imposée : après 69 ans au premier versement, seuls 30 % de la rente entrent dans votre revenu imposable.** La part imposée dépend de votre âge au moment du premier versement, et elle est figée à cette date : elle ne change plus ensuite." },
+      {
+        type: "table",
+        caption: "Part de la rente viagère effectivement imposée, selon l'âge du vendeur au premier versement",
+        source: "service-public.gouv.fr, fiche F2762 « Achat ou vente en viager : quelles sont les règles ? », vérifiée le 18 août 2025. Relevé du 3 novembre 2026.",
+        headers: ["Âge au premier versement de la rente", "Part imposée", "Part non imposée"],
+        rows: [
+          ["Moins de 50 ans", "70 %", "30 %"],
+          ["De 50 à 59 ans", "50 %", "50 %"],
+          ["De 60 à 69 ans", "40 %", "60 %"],
+          ["Plus de 69 ans", "30 %", "70 %"],
+        ],
+      },
+      { type: "p", text: "⚠️ **L'âge retenu est celui du premier versement, et il n'est jamais révisé.** Un vendeur qui signe à 69 ans voit 40 % de sa rente imposée pour toute la durée du viager ; le même vendeur qui signe quelques mois plus tard, après son soixante-dixième anniversaire, n'en voit imposer que 30 %. Sur une rente servie pendant quinze ou vingt ans, l'écart n'est pas anecdotique — et c'est l'un des rares éléments de calendrier qui joue franchement en faveur du vendeur." },
+
+      { type: "h2", text: "Le bouquet est-il imposé lui aussi ?" },
+      { type: "p", text: "**Non, le bouquet n'est pas considéré comme un revenu. Il relève du régime de la plus-value immobilière, et il en est exonéré lorsque le logement vendu en viager est votre résidence principale.** Le cas le plus fréquent — un propriétaire âgé qui vend le logement qu'il habite — est donc celui où le bouquet n'est pas imposé du tout." },
+      { type: "p", text: "Hors résidence principale, c'est le régime général de la plus-value qui s'applique, avec ses taux, ses abattements pour durée de détention et ses forfaits : le détail, avec les deux points que les autres sources tranchent mal en 2026, est sur [notre page consacrée au calcul de la plus-value](/blog/plus-value-immobiliere-calcul). 🟢 **Et un fait local vaut d'être rappelé ici : le prix médian au m² villeurbannais est inférieur de 10,4 % à son niveau de 2022.** Un bien acheté en 2022 et vendu aujourd'hui au prix médian ne dégage donc aucune plus-value imposable, viager ou pas." },
+
+      { type: "h2", text: "Qui paie la taxe foncière dans un viager occupé ?" },
+      { type: "p", text: "**À défaut de clause contraire dans l'acte, c'est le vendeur occupant qui paie la taxe foncière et la taxe d'enlèvement des ordures ménagères.** Aucune règle impérative n'impose cette répartition : le contrat peut en décider autrement. Mais s'il est muet, ce sont les règles de l'usufruit qui s'appliquent, et l'article 608 du code civil met à la charge de l'usufruitier « toutes les charges annuelles de l'héritage »." },
+      { type: "p", text: "📌 **C'est la question sur laquelle les sources se contredisent le plus, et la contradiction a une explication simple : deux questions différentes y sont mélangées.** La première est de savoir **au nom de qui** l'impôt est établi : l'article 1400 du code général des impôts impose la propriété au nom du propriétaire actuel, mais prévoit expressément que, lorsque l'immeuble est grevé d'usufruit, la taxe est établie **au nom de l'usufruitier**. La seconde est de savoir **qui en supporte la charge** entre les parties, et c'est la réponse ministérielle du 7 juin 2016 qui y répond : le vendeur, sauf convention contraire." },
+      { type: "p", text: "🟢 **La conséquence pratique découle directement de la distinction expliquée plus haut.** Si vous vous réservez l'**usufruit**, l'avis de taxe foncière arrive à votre nom : vous êtes le redevable légal. Si vous ne gardez qu'un **droit d'usage et d'habitation**, vous n'êtes pas usufruitier : l'avis part au nom de l'acheteur, propriétaire, et c'est alors la clause de l'acte qui décide si la charge vous est refacturée ou non. Deux viagers occupés identiques en apparence, deux circuits de paiement différents." },
+      { type: "p", text: "La réponse ministérielle qui fixe ce principe émane du ministère de la Justice, répond à la question écrite n° 78392 et a été publiée au Journal officiel de l'Assemblée nationale du 7 juin 2016. Elle s'appuie sur deux arrêts de la première chambre civile de la Cour de cassation, du 3 juin 1997 et du 1er décembre 2011. Elle ne traite ni des réparations ni des conditions d'occupation : c'est l'objet de la section suivante." },
+
+      { type: "h2", text: "Qui paie les travaux : le vendeur ou l'acheteur ?" },
+      { type: "p", text: "**En viager occupé et en l'absence de précision dans l'acte, le vendeur paie l'entretien courant, les réparations et les factures d'énergie ; l'acheteur paie les grosses réparations. En viager libre, tout est à la charge de l'acheteur, sans exception.** La répartition des frais d'entretien et des réparations est en principe définie dans l'acte de vente : c'est seulement à défaut de clause que cette règle par défaut s'applique." },
+      { type: "p", text: "🟢 **Et les « grosses réparations » ne sont pas une notion floue : elles sont énumérées.** Il s'agit des gros murs, des voûtes, du rétablissement des poutres et des couvertures entières, ainsi que de la réparation d'une digue, d'un mur de soutènement ou d'une clôture en entier. Tout le reste — peinture, plomberie, remplacement d'un ballon d'eau chaude, entretien courant — reste à la charge du vendeur occupant." },
+      {
+        type: "table",
+        caption: "Qui paie quoi, à défaut de clause contraire dans l'acte",
+        source: "service-public.gouv.fr, fiche F2762, vérifiée le 18 août 2025, et code civil, articles 605 et 606. Relevé du 3 novembre 2026.",
+        headers: ["Poste", "Viager occupé", "Viager libre"],
+        rows: [
+          ["Entretien courant et réparations", "Vendeur", "Acheteur"],
+          ["Grosses réparations (gros murs, voûtes, poutres, couvertures entières)", "Acheteur", "Acheteur"],
+          ["Factures d'énergie", "Vendeur", "Acheteur"],
+          ["Taxe foncière", "Vendeur", "Acheteur"],
+          ["Taxe d'enlèvement des ordures ménagères", "Vendeur", "Acheteur"],
+        ],
+      },
+      { type: "p", text: "⚠️ **En copropriété, cette ligne de partage croise une autre répartition : celle des charges courantes et des travaux votés en assemblée générale.** Les deux ne se recouvrent pas exactement, et un acte qui ne le précise pas laisse place à la discussion au premier ravalement. Le détail de ce qui se paie dans une copropriété villeurbannaise est sur [notre page consacrée aux charges de copropriété](/blog/charges-copropriete) : c'est à relire avant de signer, pas après le premier appel de fonds." },
+
+      { type: "h2", text: "Que se passe-t-il si l'acheteur arrête de payer la rente ?" },
+      { type: "p", text: "**Sans clause particulière dans l'acte, le simple défaut de paiement de la rente ne vous permet PAS de reprendre votre logement.** L'article 1978 du code civil est formel : le défaut de paiement des arrérages n'autorise pas à exiger le remboursement du capital. Votre recours, par défaut, est de faire saisir et vendre les biens de l'acheteur — pas de récupérer le bien vendu." },
+      { type: "p", text: "🔴 **C'est la raison pour laquelle deux clauses doivent figurer dans l'acte, et c'est au vendeur de les exiger.** La **clause résolutoire** vous autorise à reprendre votre bien si plusieurs rentes ne sont plus versées. La **clause pénale** vous donne le droit de conserver le bouquet déjà versé en cas de résiliation de la vente. Aucune des deux n'est automatique : elles s'écrivent, ou elles n'existent pas." },
+      { type: "p", text: "Le code civil ouvre un troisième recours, distinct des deux précédents : l'article 1977 permet au vendeur de demander la résiliation du contrat si l'acheteur **ne lui donne pas les sûretés stipulées** pour son exécution. Ce levier joue en amont du premier impayé, puisqu'il porte sur les garanties promises et non sur les versements." },
+
+      { type: "h2", text: "La rente peut-elle être revalorisée avec le temps ?" },
+      { type: "p", text: "**Oui, mais seulement si une clause d'indexation est inscrite dans l'acte de vente.** Cette clause permet la révision automatique du montant de la rente, par exemple en suivant l'indice des prix à la consommation publié par l'Insee. Sans elle, votre rente reste nominalement identique pendant toute la durée du viager." },
+      { type: "p", text: "C'est, avec la clause résolutoire, la clause dont l'absence coûte le plus cher au vendeur, et pour une raison arithmétique : un viager dure souvent quinze à vingt-cinq ans. Une rente non indexée perd sur une telle durée une part substantielle de son pouvoir d'achat, alors que les charges que vous continuez d'assumer en viager occupé — énergie, entretien, taxe foncière — suivent, elles, l'inflation." },
+
+      { type: "h2", text: "L'acheteur peut-il se libérer en remboursant le capital d'un coup ?" },
+      { type: "p", text: "**Non. L'article 1979 du code civil l'interdit : le débiteur de la rente ne peut pas se libérer du paiement en offrant de rembourser le capital.** Il doit servir la rente pendant toute la vie de la personne sur la tête de laquelle elle a été constituée, quelle que soit la durée de cette vie." },
+      { type: "p", text: "C'est la protection la plus solide du vendeur, et elle n'a pas besoin d'être stipulée : elle résulte de la loi. Elle a son symétrique, moins souvent cité : l'article 1983 prévoit que le crédirentier ne peut réclamer les arrérages qu'en justifiant de son existence. En pratique, l'acheteur ou son notaire peut demander un certificat de vie, et un vendeur qui ne répond pas à cette demande expose le versement de sa rente à une suspension légitime." },
+
+      { type: "h2", text: "La règle des 20 jours met-elle vraiment la vente à l'abri d'une annulation ?" },
+      { type: "p", text: "**Non, et c'est le point que presque toutes les pages consacrées au viager présentent de travers.** L'article 1975 du code civil prive d'effet la vente si le vendeur meurt, de la maladie dont il était atteint, dans les vingt jours de l'acte. Mais la Cour de cassation juge de longue date que cet article **n'interdit pas** d'annuler une vente en viager pour absence d'aléa sur le fondement du droit commun des contrats, **même lorsque le décès survient bien plus de vingt jours après la vente**." },
+      { type: "p", text: "🔴 **Et le critère retenu est plus large qu'on ne le croit : il n'est pas nécessaire que le vendeur soit mort de la maladie dont il souffrait à la signature.** Il suffit que l'acheteur ait eu connaissance de la gravité de l'état de santé du vendeur. Dans l'affaire jugée le 16 avril 1996 par la première chambre civile, l'acheteur était le médecin traitant de la venderesse, qui avait subi plusieurs interventions et suivait une chimiothérapie à l'époque de la vente : le contrat a été jugé dépourvu d'aléa, donc privé de cause, et annulé. Un arrêt du 2 mars 1977 avait déjà annulé une vente consentie à un familier du vendeur qui savait, le jour de l'acte, que la mort était imminente." },
+      { type: "p", text: "🟢 **La conséquence pratique est la même pour les deux parties, et elle est rassurante plutôt qu'inquiétante : le viager n'est fragile que là où il n'y a pas d'aléa réel.** Un vendeur en bonne santé au moment de l'acte, un acheteur sans lien particulier avec lui, un prix et une rente cohérents avec la valeur du bien : les trois conditions réunies, le délai de vingt jours n'est plus un sujet. C'est quand l'une manque que la vente devient contestable, et le passage du vingt-et-unième jour n'y change rien." },
+
+      { type: "h2", text: "Le viager est-il adapté à un appartement villeurbannais ?" },
+      { type: "p", text: "**Il l'est surtout pour un logement que vous occupez et que vous ne voulez pas quitter, dans un secteur où la revente ne fait pas de doute.** Un acheteur en viager achète une espérance : il accepte un prix étalé et incertain parce qu'il croit à la valeur du bien à terme. Il regarde donc la liquidité du quartier au moins autant que le prix au mètre carré." },
+      { type: "p", text: "À Villeurbanne, le volume de ventes d'appartements n'est pas uniforme d'un quartier à l'autre, et c'est cette donnée, plus que la médiane, qui compte pour un viager. Gratte-Ciel – Dedieu – Charmettes a enregistré **655 ventes exploitables en 2025** à une médiane de **3 846 €/m²**, Charpennes – Tonkin **200** à **3 524 €/m²**, et Cyprian – Les Brosses **53** seulement à **2 738 €/m²**. Un viager se monte plus facilement là où le marché est profond : un acheteur qui s'engage sur vingt ans veut un bien qui se revendra sans décote de liquidité." },
+      { type: "p", text: "⚠️ **Et un viager n'est pas la seule façon de mobiliser la valeur d'un logement que l'on habite.** Si votre objectif est de transmettre à vos enfants plutôt que d'encaisser, c'est le démembrement qui est l'outil, pas la vente — le sujet est traité sous l'angle de la succession dans [notre page sur la vente d'un bien en indivision](/blog/vendre-bien-indivision-succession-villeurbanne). Si votre objectif est un capital immédiat, une vente classique le donne en une fois, et [notre barème d'honoraires](/honoraires) vous dit exactement ce qu'il en reste." },
+      {
+        type: "steps",
+        name: "Préparer une vente en viager à Villeurbanne",
+        items: [
+          { name: "Faites établir la valeur du bien en pleine propriété", text: "C'est la seule des quatre variables du calcul que vous pouvez vérifier seul, et toutes les autres en dépendent. Comparez le résultat aux médianes réellement signées dans votre quartier avant d'écouter la moindre proposition." },
+          { name: "Tranchez entre usufruit réservé et droit d'usage et d'habitation", text: "L'usufruit vous permet de louer le logement si vous ne l'occupez plus ; le droit d'usage et d'habitation ne le permet pas. Ce choix change la valeur de ce que vous gardez et le nom qui figurera sur l'avis de taxe foncière." },
+          { name: "Fixez l'arbitrage entre bouquet et rente avant de rencontrer un acheteur", text: "Le bouquet n'est pas obligatoire et représente en général 30 % de la valeur du bien. Plus il est élevé, plus la rente est faible : décidez d'abord ce dont vous avez besoin maintenant et chaque mois, négociez ensuite." },
+          { name: "Vérifiez votre âge au premier versement de la rente", text: "La part imposée de la rente est figée à la date du premier versement et ne sera jamais révisée. Passer de 69 à 70 ans fait tomber cette part de 40 % à 30 % pour toute la durée du viager." },
+          { name: "Exigez la clause résolutoire et la clause pénale", text: "Sans elles, le défaut de paiement de la rente ne vous permet pas de reprendre le logement : l'article 1978 du code civil ne vous ouvre que la saisie des biens de l'acheteur. La clause résolutoire permet la reprise du bien, la clause pénale la conservation du bouquet." },
+          { name: "Exigez la clause d'indexation de la rente", text: "Sans clause, la rente reste nominalement identique pendant quinze à vingt-cinq ans, alors que les charges que vous continuez d'assumer suivent l'inflation. L'indice des prix à la consommation de l'Insee est l'indice le plus courant." },
+          { name: "Faites écrire la répartition des charges dans l'acte, poste par poste", text: "À défaut, le vendeur occupant paie entretien, énergie, taxe foncière et taxe d'ordures ménagères, et l'acheteur les seules grosses réparations. En copropriété, faites préciser le sort des travaux votés en assemblée générale." },
+          { name: "Vérifiez l'aléa avant de signer, dans l'intérêt des deux parties", text: "Un viager consenti à un proche ou à un soignant au courant d'un état de santé grave est annulable pour absence d'aléa, bien au-delà du délai de vingt jours. Un certificat médical au dossier et un acheteur sans lien avec le vendeur sont la meilleure sécurité pour tout le monde." },
+        ],
+      },
+      { type: "p", text: "Un viager se décide une fois et s'exécute pendant vingt ans. Les clauses énumérées ci-dessus ne coûtent rien à inscrire le jour de l'acte et sont impossibles à ajouter après. Si vous hésitez entre un viager et une vente classique, [faites estimer votre bien](/estimation) : c'est gratuit, cela prend moins de deux minutes, et cela vous donne le seul chiffre que le notaire ne calculera pas pour vous." },
+    ],
+    faq: [
+      {
+        q: "Qu'est-ce qu'un bouquet dans une vente en viager ?",
+        a: "C'est la somme payée comptant à la signature de l'acte de vente, en plus de la rente. Il n'est pas obligatoire : le vendeur et l'acheteur peuvent convenir qu'il n'y aura qu'une rente. Quand il existe, il représente en général 30 % de la valeur totale du bien, soit environ 58 500 € au prix médian d'un appartement villeurbannais. Plus le bouquet est élevé, plus la rente est faible.",
+      },
+      {
+        q: "Combien vaut le droit d'habiter que je conserve en viager occupé ?",
+        a: "Le barème de l'article 669, I du code général des impôts fixe la valeur fiscale de l'usufruit selon l'âge : 40 % de la valeur du bien entre 61 et 70 ans, 30 % entre 71 et 80 ans, 20 % entre 81 et 90 ans. Pour un simple droit d'usage et d'habitation, l'article 762 bis retient 60 % de cette valeur d'usufruit, mais il est écrit pour les donations et les successions, pas pour une vente : dans un viager c'est un repère, pas une règle opposable.",
+      },
+      {
+        q: "Le barème fiscal donne-t-il le prix de mon viager ?",
+        a: "Non. Le barème de l'article 669 sert à liquider les droits d'enregistrement et la taxe de publicité foncière, pas à fixer un prix. Le montant de la rente est calculé par le notaire à partir de barèmes consultables auprès d'une compagnie d'assurance ou d'un notaire, en fonction de l'âge et de l'espérance de vie du vendeur, de la valeur du bien, du bouquet et du loyer que le logement rapporterait s'il était loué.",
+      },
+      {
+        q: "Quelle part de la rente viagère est imposée ?",
+        a: "Une partie seulement de la rente entre dans le revenu imposable, et elle dépend de l'âge du vendeur au premier versement : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, et 30 % seulement au-delà de 69 ans. Cette part est figée à la date du premier versement et n'est jamais révisée ensuite.",
+      },
+      {
+        q: "Le bouquet est-il imposé ?",
+        a: "Non, le bouquet n'est pas considéré comme un revenu. Il relève du régime de la plus-value immobilière, dont il est exonéré lorsque le logement vendu en viager est la résidence principale du vendeur — le cas le plus fréquent. Hors résidence principale, c'est le régime général de la plus-value qui s'applique.",
+      },
+      {
+        q: "Qui paie la taxe foncière dans un viager occupé ?",
+        a: "À défaut de clause contraire dans l'acte, c'est le vendeur occupant : aucune règle impérative n'impose de répartition, et à défaut de stipulation ce sont les règles de l'usufruit qui s'appliquent, l'article 608 du code civil mettant à la charge de l'usufruitier toutes les charges annuelles du bien. À ne pas confondre avec le nom qui figure sur l'avis : l'article 1400 du code général des impôts établit la taxe au nom de l'usufruitier quand l'immeuble est grevé d'usufruit, et au nom du propriétaire sinon.",
+      },
+      {
+        q: "Qui paie les grosses réparations en viager occupé ?",
+        a: "L'acheteur. Les grosses réparations sont énumérées : gros murs, voûtes, rétablissement des poutres et des couvertures entières, réparation d'une digue, d'un mur de soutènement ou d'une clôture en entier. Tout le reste — entretien courant, réparations, factures d'énergie — reste à la charge du vendeur occupant à défaut de clause contraire. En viager libre, l'acheteur paie tout.",
+      },
+      {
+        q: "Puis-je reprendre mon logement si l'acheteur arrête de payer la rente ?",
+        a: "Pas automatiquement. L'article 1978 du code civil prévoit que le seul défaut de paiement des arrérages n'autorise pas à exiger le remboursement du capital : le recours de droit commun est de faire saisir et vendre les biens de l'acheteur. Pour pouvoir reprendre le bien, il faut une clause résolutoire inscrite dans l'acte, complétée par une clause pénale qui permet de conserver le bouquet déjà versé.",
+      },
+      {
+        q: "La rente viagère est-elle revalorisée automatiquement ?",
+        a: "Non, seulement si une clause d'indexation figure dans l'acte de vente. Cette clause permet la révision automatique de la rente, le plus souvent sur l'indice des prix à la consommation publié par l'Insee. Sans elle, la rente reste nominalement identique pendant toute la durée du viager, qui dure souvent quinze à vingt-cinq ans.",
+      },
+      {
+        q: "L'acheteur peut-il se libérer en remboursant le capital ?",
+        a: "Non. L'article 1979 du code civil interdit au débiteur de la rente de se libérer du paiement en offrant de rembourser le capital : il doit servir la rente pendant toute la vie de la personne sur la tête de laquelle elle a été constituée, quelle que soit la durée de cette vie. En contrepartie, l'article 1983 prévoit que le vendeur ne peut réclamer les arrérages qu'en justifiant de son existence.",
+      },
+      {
+        q: "La vente est-elle annulable si je décède peu après la signature ?",
+        a: "Oui, et pas seulement dans les vingt jours. L'article 1975 du code civil prive d'effet la vente si le vendeur meurt, de la maladie dont il était atteint, dans les vingt jours de l'acte. Mais la Cour de cassation juge que cet article n'interdit pas d'annuler une vente en viager pour absence d'aléa sur le fondement du droit commun, même en cas de décès bien plus tardif : il suffit que l'acheteur ait eu connaissance de la gravité de l'état de santé du vendeur (première chambre civile, 16 avril 1996, pourvoi n° 93-19.661, et 2 mars 1977, pourvoi n° 75-14.556).",
+      },
+      {
+        q: "Quelle différence entre réserver l'usufruit et un droit d'usage et d'habitation ?",
+        a: "L'usufruit permet au vendeur d'habiter le logement ou de le louer et d'en percevoir les loyers ; le droit d'usage et d'habitation ne permet que l'usage personnel, sans possibilité de louer. La différence se lit dans la valeur de ce que le vendeur conserve, et aussi sur l'avis de taxe foncière, qui est établi au nom de l'usufruitier quand un usufruit existe et au nom de l'acheteur propriétaire quand le vendeur ne garde qu'un droit d'usage.",
       },
     ],
   },
