@@ -14,6 +14,115 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-03 (mardi)**
+
+- ✅ **AUCUN RETARD DE `main`, ET C'EST `ls-remote` QUI L'A DIT — PREMIÈRE
+  APPLICATION DE LA CORRECTION DU 02/11.** Relevé avant tout `fetch` :
+  `HEAD` = **`d0e0dc2`**, ref de suivi local `origin/main` = **`768ada6`**,
+  soit l'apparence de quatre commits de retard. `git ls-remote origin
+  refs/heads/main` donne **`d0e0dc2`** : **aucun retard réel**, le ref de suivi
+  du conteneur était simplement périmé. 📌 **Deuxième confirmation que le ref de
+  suivi local de ce conteneur ne prouve rien**, et la règle du 02/11 a tenu du
+  premier coup. Le `fetch` a ensuite été lancé **avec un seul refspec explicite**
+  (`+refs/heads/main:refs/remotes/origin/main`) et il a réussi
+  (`768ada6..d0e0dc2`). ⚠️ **À retenir : l'écart apparent se reproduira à chaque
+  run — ce n'est plus une anomalie à consigner, c'est le comportement du
+  conteneur.**
+- ⚠️ **Conteneur démarré sur la branche `claude/dazzling-feynman-gbi9u3`**, pas
+  sur `main`, et à la même révision que `main`. **Quatrième constat consécutif**
+  (31/10, 01/11, 02/11, 03/11), nom différent chaque fois. Comportement normal.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Trente-neuvième constat identique** (21/09 → 03/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-deuxième confirmation.**
+- ✅ **AUCUN CHANGEMENT DU CLIENT DEPUIS LE 30/10, MESURÉ ET NON SUPPOSÉ.**
+  Sitemap de production **57 URL** avant le push, et le `lastmod` de `/` vaut
+  **toujours `2026-10-30T08:53:20.821Z`** — **quatrième relevé identique**
+  (31/10, 01/11, 02/11, 03/11).
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  CINQUIÈME JOUR.** Les huit `<h2>` servis, extraits cette fois en tenant compte
+  des balises imbriquées : Nos biens disponibles · Notre équipe · Nos biens
+  vendus · Estimez votre bien en moins de 2 minutes · Nos avis clients · Vos
+  questions, nos réponses · Nos réseaux — suivez-nous · Notre agence.
+  **`Qui sommes` 0 occurrence dans tout le HTML**, et les chiffres validés
+  restent absents (`7 ans` 0, `40 M` 0, `250 biens` 0, `300 clients` 0).
+  **Non corrigé, et c'est volontaire** (page de Tony, règle des 90 jours).
+  **Renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE — RECONTRÔLÉE AVEC SES DEUX TÉMOINS.**
+  `discord.gg/fSyn28G5U` → `{"message": "Unknown Invite", "code": 10006}`,
+  témoin bidon `zzzzzzzz` → **réponse identique**, témoin valide
+  `discord-developers` → objet `guild` complet. Le verdict est donc étalonné,
+  pas déduit. Le code est publié **4 fois dans le HTML de l'accueil seul**.
+  **Renotifié.**
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée** (31/10
+  non-contenu → 01/11 contenu → 02/11 non-contenu → **03/11 contenu**), et
+  **c'est le candidat n°1 du backlog contenu qui a été consommé** : la branche
+  `viager` de la famille « zéro occurrence ».
+- ✅ **LE TRIPLE CONTRÔLE AVANT D'ÉCRIRE A ÉTÉ PASSÉ, ET IL A VALIDÉ L'ANGLE.**
+  (1) Famille remesurée sur `app components data lib` : **`viager` 0,
+  `bouquet` 0, `rente viagère` 0, `clause pénale` 0**, et — valeurs voisines
+  qui bornent le sujet — `usufruit` **10**, `démembrement` **4**,
+  `nue-propriété` **2**. 📌 **Le backlog annonçait 3 occurrences de
+  `nue-propriété` : il y en a 2.** Dérive mineure, mais elle confirme qu'il faut
+  remesurer et non recopier. (2) Deux SERP mesurées (voir ci-dessous).
+  (3) Aucune page du site ne couvrait l'angle : **30 articles, aucun sur le
+  viager**, et les 10 occurrences d'`usufruit` sont toutes dans l'article
+  d'indivision, jamais pour elles-mêmes.
+- 🟢 **DEUX SERP NEUVES MESURÉES, SITE ABSENT SUR LES DEUX, ET LE MOTEUR AVOUE
+  LUI-MÊME SON MANQUE DE SOURCE.** « viager Villeurbanne vendre en viager
+  agence » : **aucune agence locale sur le sujet** — des portails
+  (`etreproprio.com`, `lesiteimmo.com`), des réseaux nationaux en conseil
+  générique (Orpi) et des spécialistes du viager. « vendre son logement en
+  viager Lyon comment ça marche bouquet rente » : le résumé du moteur écrit
+  noir sur blanc que **« plusieurs résultats proviennent de sites commerciaux
+  dont les chiffres 2026 ne sont pas sourcés »** et renvoie vers **« un notaire
+  lyonnais ou un simulateur officiel »**. 📌 **C'est le même signal que la place
+  GEO du 18/10 sur le budget d'achat : quand le moteur se désavoue, la place est
+  vide.** **Point zéro au 03/11 → première remesure vers le 17/11.**
+- 🟢 **UNE TROISIÈME SERP A SERVI DE PREUVE DE DÉSORDRE, PAS DE POSITION.**
+  « qui paie la taxe foncière dans un viager occupé » : le résumé du moteur
+  expose **deux lectures contradictoires** (« le vendeur la paie par défaut »
+  contre « l'acheteur la paie »), en citant Bercy d'un côté et un notariat de
+  l'autre. **C'est la question qui a décidé du contenu de l'article** : la
+  contradiction se dénoue en séparant deux questions distinctes (voir
+  « Techniques apprises »).
+- ✅ **CHANTIER LIVRÉ ET SERVI EN PRODUCTION, VÉRIFIÉ APRÈS LE PUSH.**
+  `/blog/vendre-en-viager-villeurbanne` **200 / 224 473 o**, **14 `<h2>`**,
+  **5 blocs JSON-LD** (`RealEstateAgent`, `BlogPosting`, `HowTo`, `FAQPage`,
+  `BreadcrumbList`), **« Mis à jour le » visible**. Sitemap **57 → 58 URL**,
+  `/llms.txt` **38 138 → 39 115 o**. ⏱ **404 pendant ~100 s** (4 relevés à 25 s
+  puis bascule).
+- ✅ **PARITÉ FAQ VISIBLE ↔ JSON-LD : 12/12, 0 ÉCART, EN LOCAL COMME SUR LE HTML
+  DE PRODUCTION**, les deux côtés passés par la même normalisation (insécables
+  avant `\s+`, règle du 30/10).
+- ✅ **LE FACTEUR DE CITATION N°1 DE LA VEILLE EST SAIN SUR LA PAGE NEUVE.**
+  Six agents (navigateur, Googlebot, GPTBot, OAI-SearchBot, PerplexityBot,
+  ClaudeBot) : **200 / 224 473 o pour les six, à l'octet près**, **aucun en-tête
+  `X-Robots-Tag`**. 📌 **Fait le jour de la publication, et c'est le bon
+  moment** : une page neuve est exactement là où un blocage passerait inaperçu.
+- ✅ **TOUS LES MONTANTS DÉRIVÉS RECALCULÉS DEPUIS `lib/quartiers.ts`, À
+  L'EURO.** Les **16 cellules** du tableau de valeurs fiscales, les 58 500 € de
+  bouquet et les 4 montants de la lecture du vendeur de 75 ans (67 875 /
+  40 725 / 158 375 / 185 525 €) tombent exactement sur le produit
+  pourcentage × prix médian, sans arrondi intermédiaire.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique à celui du
+  02/11. Aucune erreur neuve.
+- ⚠️ **LES QUATRE SERP COMMERCIALES SUIVIES N'ONT PAS ÉTÉ MESURÉES, ET C'EST
+  DÉLIBÉRÉ** : échéances au **06/11** (« agence immobilière Villeurbanne »,
+  « estimation immobilière Villeurbanne »), **07/11** (« prix m2 Villeurbanne »),
+  **10/11** (« vendre appartement Villeurbanne »). La série hebdomadaire ne vaut
+  que si la cadence est tenue.
+- ✅ **Pas de veille : elle a été faite le 02/11, prochaine due le 09/11.**
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` **sans erreur**,
+  `npm run build` **vert** (30 pages `/blog/[slug]`, la nouvelle en SSG),
+  **0 apostrophe courbe / 0 insécable / 705 accents pour 4 948 mots = 0,142 par
+  mot** (référence du dépôt 0,15), **outil d'estimation non touché**
+  (`git diff --stat` : **1 fichier, +231 / −0**).
+- 🔴 **UNE ERREUR DE MÉTHODE COMMISE ET RATTRAPÉE AVANT TOUTE INSERTION : LE
+  PREMIER JET ÉTAIT ENTIÈREMENT DÉSACCENTUÉ, COMME LE 30/10.** 35 164 octets
+  écrits dans un heredoc shell, jetés et réécrits. Voir « Erreurs commises ».
+
 **Au 2026-11-02 (lundi)**
 
 - 🔴 **LA RÈGLE DU 16/09 SUR LE RETARD DE `origin/main` A PRODUIT UN FAUX
@@ -4427,6 +4536,104 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-03 (mardi) — Le viager n'existait nulle part sur le site, et la règle des 20 jours que tout le monde publie n'est pas protectrice
+
+**Pourquoi ce chantier.** L'alternance imposait du contenu, et le candidat n°1 du
+backlog contenu était la suite de la famille « zéro occurrence ». Je l'ai pris
+**après** l'avoir remesuré, pas sur la foi du backlog : `viager` **0**,
+`bouquet` **0**, `rente viagère` **0**, `clause pénale` **0** sur
+`app components data lib`. Deux des trois branches restantes tombaient donc dans
+le même sujet, ce qui en faisait un article et non deux. 📌 **Et le backlog se
+trompait d'une unité sur la troisième** : il annonçait 3 occurrences de
+`nue-propriété`, il y en a **2**, toutes dans l'article d'indivision.
+
+**La mesure qui a validé l'angle.** Deux SERP, site absent sur les deux, et
+**aucune agence locale sur le sujet** : des portails d'annonces, du conseil
+générique de réseau national, des spécialistes nationaux du viager. Surtout, le
+résumé du moteur sur « vendre son logement en viager Lyon comment ça marche
+bouquet rente » **se désavoue lui-même** : « plusieurs résultats proviennent de
+sites commerciaux dont les chiffres 2026 ne sont pas sourcés », et il renvoie
+vers un notaire ou un simulateur officiel. C'est le signal de place vide déjà
+rencontré le 18/10 sur le budget d'achat.
+
+**La mesure qui a décidé du CONTENU, et c'est la plus utile.** Une troisième
+SERP — « qui paie la taxe foncière dans un viager occupé » — a rendu **deux
+lectures contradictoires** sur la même question, Bercy d'un côté et un notariat
+de l'autre. Plutôt que de choisir un camp, j'ai cherché pourquoi les deux
+existent, et la réponse tient en une phrase : **deux questions différentes sont
+confondues partout.** Voir « Techniques apprises », c'est la méthode la plus
+réutilisable de ce run.
+
+**Ce qui a été écrit.** `/blog/vendre-en-viager-villeurbanne`, **30ᵉ article**,
+groupe `/vendre` (9 → 10 articles). **14 `<h2>` en questions réelles**, chacun
+ouvrant sur une réponse autonome en gras, **4 tableaux** légendés et datés,
+**un `HowTo` de 8 étapes**, **12 Q/R**. 6 liens éditoriaux sortants
+(`/estimation`, `/honoraires`, et 4 articles), et le cycle de
+`getRelatedArticles` lui donne **2 liens entrants** sans intervention.
+
+**Les trois apports propres, tous sur source primaire.**
+
+1. 🟢 **Le barème de l'article 669, I du CGI appliqué aux prix RÉELLEMENT signés
+   à Villeurbanne.** Personne ne publie ce barème en euros sur un marché local.
+   Tableau dérivé de `COMMUNE.prixMedian` (195 000 €) et du T3 de `TYPOLOGIES`
+   (226 250 €) : un vendeur de **75 ans** conserve **67 875 €** d'usufruit ou
+   **40 725 €** de droit d'usage et d'habitation, et transmet **158 375 €** ou
+   **185 525 €**. **Et l'article dit en propre ce que ce barème n'est PAS** : un
+   prix de vente. C'est la correction du malentendu central du sujet.
+2. 🟢 **La contradiction sur la taxe foncière, tranchée.** `Article 1400 du CGI`
+   pour le **nom sur l'avis** (au nom de l'usufruitier quand l'immeuble est
+   grevé d'usufruit), **réponse ministérielle n° 78392 du 07/06/2016** pour la
+   **charge** (le vendeur à défaut de clause, par l'article 608 du code civil,
+   appuyé sur Cass. 1re civ. 03/06/1997 n° 95-16484 et 01/12/2011 n° 10-18066).
+   📌 **D'où une conséquence pratique que je n'ai lue nulle part : réserver
+   l'usufruit ou un simple droit d'usage change le nom du destinataire de
+   l'avis.**
+3. 🟢 **La règle des 20 jours n'est pas un abri, et la fiche officielle s'y
+   arrête.** `Cass. 1re civ. 02/03/1977 n° 75-14.556` et `16/04/1996
+   n° 93-19.661` annulent pour **absence d'aléa bien au-delà** du délai, et
+   **il suffit que l'acheteur ait connu la gravité de l'état de santé** — il
+   n'est **pas** nécessaire que le décès vienne de cette maladie. Dans l'affaire
+   de 1996, l'acheteur était le médecin traitant de la venderesse.
+
+**Ce que l'article porte en plus, et qui manquait au corpus.** L'article 1978 du
+code civil — **le seul défaut de paiement de la rente n'ouvre PAS la reprise du
+bien**, d'où la clause résolutoire et la clause pénale à exiger —, l'article
+1977 (sûretés), 1979 (l'acheteur ne peut pas se libérer en remboursant le
+capital), 1983 (justifier de son existence), les parts imposées de la rente
+(70/50/40/30 % selon l'âge au **premier** versement, figées à cette date), et la
+répartition des charges avec les grosses réparations des articles 605 et 606.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+
+- ⛔ **Ne pas publier de montant de rente, ni d'exemple de rente.** La fiche
+  officielle dit que le notaire la calcule sur des **barèmes d'assureur non
+  publics**. Un exemple chiffré aurait été inventé : les deux « exemples lyonnais »
+  trouvés en SERP (100 000 € de bouquet et 1 776 €/mois ; 850 à 1 400 €/mois)
+  viennent de sites commerciaux **sans source**. L'article dit explicitement
+  qu'aucune page web, lui compris, ne peut donner ce montant.
+- ⛔ **Ne pas présenter les 60 % du droit d'usage et d'habitation (art. 762 bis
+  du CGI) comme une règle.** Ce texte est écrit pour les mutations à titre
+  **gratuit**. Dans une vente, c'est un **repère** — le seul chiffre officiel
+  existant pour ce droit — et l'article le dit. **Garde-fou inscrit en tête de
+  `lib/blog.ts`** pour qu'un run futur ne « simplifie » pas le passage.
+- ⛔ **Ne pas chercher de données INSEE sur la part des 65 ans et plus à
+  Villeurbanne.** L'argument local aurait été séduisant, mais il aurait demandé
+  une source neuve non vérifiée dans le temps du run. **Remplacé par une donnée
+  que le dépôt possède déjà et qui dit mieux la même chose** : les **effectifs
+  `n` de ventes par quartier** (Gratte-Ciel 655, Charpennes – Tonkin 200,
+  Cyprian – Les Brosses 53), parce qu'un acheteur en viager regarde la
+  **liquidité** du secteur avant le prix au m².
+- ⛔ **Ne pas toucher aux pages existantes pour y poser un lien entrant.** Le
+  cycle du groupe `/vendre` en donne déjà 2. Mélanger un chantier contenu et un
+  chantier de maillage était l'erreur écartée le 01/11 ; elle reste écartée.
+
+**Contrôles.** `tsc` sans erreur ; `npm run build` vert ; `eslint` **35 problèmes
+/ 24 erreurs**, identique à l'avant ; parité FAQ **12/12 et 0 écart**, en local
+**et** sur le HTML de production ; **0 apostrophe courbe, 0 insécable, 0,142
+accent par mot** ; six agents à **200 / 224 473 o à l'octet près, sans
+`X-Robots-Tag`** ; **1 fichier modifié, +231 / −0**, outil d'estimation non
+touché.
+
 ### 2026-11-02 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h18
 
 - **Déclenchement en double** : le maillage des pages bailleur (`c3bf8df` +
@@ -8386,6 +8593,166 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — le viager, branche `viager` + `clause pénale`
+de la famille « zéro occurrence »** (03/11 : **candidat n°1 du backlog contenu,
+consommé après le triple contrôle** — famille remesurée (`viager` 0, `bouquet` 0,
+`rente viagère` 0, `clause pénale` 0 ; `nue-propriété` **2** et non 3 comme
+l'annonçait le backlog), **deux SERP sans aucune agence locale** et un résumé de
+moteur qui se désavoue lui-même, et aucune page du site sur l'angle. Nouvel
+article : 14 `<h2>` en questions, 4 tableaux sourcés, `HowTo` à 8 étapes,
+12 Q/R ; sitemap 57 → **58 URL**, `/llms.txt` 38 138 → **39 115 o**.
+**Trois apports propres** : le barème de l'article 669, I du CGI **chiffré en
+euros sur les médianes villeurbannaises**, la contradiction sur la taxe foncière
+**dénouée** en séparant le nom sur l'avis (art. 1400 du CGI) de la charge entre
+parties (RM n° 78392 du 07/06/2016, art. 608 du code civil), et la démonstration
+que **la règle des 20 jours de l'article 1975 n'est pas protectrice**
+(Cass. 1re civ. 02/03/1977 et 16/04/1996).)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (04/11, mercredi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 31/10 non-contenu → 01/11 contenu → 02/11 non-contenu →
+03/11 contenu).
+✅ **La veille du lundi est faite** (02/11) ; **prochaine veille due le 09/11**.
+**Candidats NON-CONTENU, par ordre d'impact :**
+  1. 🔴 **LA QUESTION « AFFICHÉ ≠ SIGNÉ » RESTE MAL POSÉE ET NON TRANCHÉE** —
+     portée depuis le **14/10, neuf reports**. Sept mesures concordantes,
+     **toutes COMMUNALES**, alors que `/acheter` et `/llms.txt` affirment un
+     écart **de 16,1 à 45,3 % PAR QUARTIER**. **Reformuler — « l'écart par
+     QUARTIER a-t-il disparu ? » — et trancher avec un relevé DVF 2026 par
+     quartier** (recette du 14/10), **pas avec les SERP. Ne RIEN réécrire
+     avant.** 📌 **C'est le plus vieux point ouvert du journal, et il a été
+     reporté une fois de plus : il devrait passer avant tout autre candidat
+     non-contenu.**
+  2. 🔴 **LES TROIS PAGES COMMERCIALES À 1 SEUL LIEN ÉDITORIAL**
+     (`/estimation`, `/honoraires`, `/agence-immobiliere-villeurbanne`, mesuré
+     le 02/11). 🆕 **Le run du 03/11 a réduit le trou de deux d'entre elles sans
+     y toucher** : le nouvel article émet un lien vers `/estimation` et un vers
+     `/honoraires`, donc **ces deux pages sont passées à 2 liens éditoriaux**.
+     `/agence-immobiliere-villeurbanne` reste à **1**. ⚠️ **Remesurer le graphe
+     avant d'agir** (la mesure du 02/11 est désormais fausse de deux lignes), et
+     **relire d'abord l'arbitrage de cannibalisation du 29/10**, qui porte
+     précisément sur ces URL.
+  3. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé le 03/11). **Une seule affirmation en dépend** : la fiche
+     « DPE collectif » (`lib/blog.ts`, « mise à jour le 1er janvier 2026 »).
+     📌 **Contrôle à deux temps obligatoire** (code/redirection, **puis**
+     marqueur) : l'hôte rend **200** sur sa page de maintenance.
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **septième report**). Il tient **trois SERP suivies** et c'est **le seul
+     concurrent mesuré qui publie du DVF par quartier**, donc le seul comparable
+     direct de notre angle. **Il sert aussi le candidat n°1.** **Ne RIEN
+     réécrire sur un seul relevé.**
+  5. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ **Le chemin a changé** : les PDF
+     `grandlyon.com/delibs/*` sont morts (301 vers `agora.grandlyon.com`) et le
+     motif `…/raad/AAAA/AAAAMM00_raad.pdf` **ne répond plus après 2022**.
+     **Passer par `agora.grandlyon.com`**, objectif : **un arrêté de préemption
+     villeurbannais de 2025 ou 2026** visant la même délibération.
+  6. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230, `<a href="/confidentialite/">` et `<a href="/cookies/">` au lieu de
+     `<Link>`). **2 des 24 erreurs `eslint`**, total reconfirmé identique le
+     03/11 (**35 / 24**). **Effet SEO réel mais faible** : jour creux, et
+     vérifier qu'aucune autre page n'a le même défaut (`grep -rn '<a href="/' app`).
+  7. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+  8. 🟢 🆕 **REFAIRE LE CONTRÔLE D'ACCESSIBILITÉ À SIX AGENTS SUR TOUT LE
+     SITEMAP, ET PAS SEULEMENT SUR LA DERNIÈRE PAGE PUBLIÉE.** C'est le
+     **facteur de citation n°1** de la veille du 02/11 (9,5/10), et il n'a
+     jamais été mesuré que sur une URL à la fois (22/09, 02/11, 03/11). ⚠️ **58
+     URL × 6 agents = 348 requêtes** : à étaler ou à échantillonner, mais
+     **mensuellement**, parce qu'un blocage de ce type est invisible dans le
+     contenu et annule tout le reste.
+  9. ⛔ **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE —
+     DÉFINITIVEMENT DÉCLASSÉ** (tranché par la veille du 02/11 : la parité
+     JSON-LD / visible reste obligatoire pour une autre raison que le rich
+     result).
+ 10. ⛔ **NE PLUS INVESTIR DANS `/llms.txt` AU-DELÀ DE SA JUSTESSE** (veille du
+     02/11). 🆕 **Et le run du 03/11 montre qu'il n'y a rien à y faire pour un
+     article** : les entrées de blog de `/llms.txt` sont générées depuis
+     `a.excerpt` par `articleLine()` dans `app/llms.txt/route.ts`, **et le
+     sitemap depuis `ARTICLES`**. Ajouter un article les met à jour tous les
+     deux **sans aucune recopie**. 📌 **La dérive de `/llms.txt` ne concerne donc
+     que ses blocs de pages PRINCIPALES, écrits à la main (157 montants).**
+
+→ 🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » EST PRESQUE ÉPUISÉE — LA REMESURER AVANT
+     D'EN FAIRE UN CANDIDAT.** Après le viager (03/11), `clause pénale` et
+     `bouquet` sont traités, et `nue-propriété` l'est désormais pour elle-même.
+     ⚠️ **Il n'y a plus de branche identifiée** : le prochain candidat contenu
+     demande donc **de rouvrir la famille sur des termes neufs** (pistes non
+     mesurées : `donation-partage`, `SCI familiale`, `prêt à taux zéro`,
+     `déficit foncier`, `copropriété en difficulté`), **et de mesurer la SERP
+     avant d'écrire**. Ne pas prendre un terme parce qu'il est absent : le
+     triple contrôle du 03/11 vaut toujours (famille + SERP + couverture
+     interne).
+  2. 🟢 **La place GEO la plus vide mesurée avant le 01/11** : sur « budget total
+     achat … frais de notaire compris » (18/10), le résumé du moteur **avoue
+     n'avoir aucune source faisant autorité**. `/acheter` est écrite pour cette
+     place. **Remesurer plutôt que réécrire.**
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). Six d'entre eux étaient à **3 pages
+     entrantes** au 02/11, le plancher du site. ⚠️ **Ne pas en prendre un « parce
+     qu'il est court » : mesurer d'abord s'il existe une SERP où le site est
+     absent.** 📌 **`taxe-fonciere-vente-qui-paie` est devenu le plus tentant** :
+     le nouvel article du 03/11 traite la taxe foncière en viager et **a montré
+     que la question « qui paie la taxe foncière » est un nid de contradictions
+     dans les SERP** — mais c'est un angle de vente classique (prorata), donc
+     **un sujet voisin et non le même**.
+  4. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CLOS LE 30/10, NE PAS LE
+     RÉOUVRIR.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — CINQUIÈME JOUR.** Constaté
+  le 31/10, **toujours vrai au 03/11**, `lastmod` de `/` figé à
+  `2026-10-30T08:53:20.821Z` (**quatrième relevé identique**). Les huit `<h2>`
+  servis sautent de « Nos biens vendus » à « Estimez votre bien », `Qui sommes`
+  **0 occurrence** dans tout le HTML, et les quatre chiffres validés y sont
+  absents. **Non corrigé : page de Tony, republiée depuis l'éditeur.**
+  ⚠️ **Règle des 90 jours : pas de retouche côté code avant fin janvier 2027,
+  hors panne.** **Renotifié le 03/11.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). **Recontrôlée le
+  03/11 avec ses deux témoins** : `{"message": "Unknown Invite", "code": 10006}`,
+  témoin bidon identique, témoin valide complet. **Le code est publié 4 fois dans
+  le seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:67`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps** (élément de marque imposé). **Renotifié le 03/11.**
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs` du
+  JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 03/11** (elles remplacent celles du bloc
+du 02/11 ci-dessous) :
+- **« agence immobilière Villeurbanne »** et **« estimation immobilière
+  Villeurbanne »** : mesurées le **30/10**, **site absent sur les deux** →
+  prochaine passe **06/11**. 📌 **Les relevés du 30/10 sont le POINT ZÉRO
+  d'après l'arbitrage de cannibalisation du 29/10 ; le verdict se lira dans
+  Search Console vers le 20/11, pas dans ces SERP.**
+- **« prix m2 Villeurbanne »** : mesurée le **31/10** (7ᵉ relevé, site absent) →
+  **07/11**. ⚠️ **Ne pas y réinvestir d'effort rédactionnel.**
+- **« vendre appartement Villeurbanne »** : mesurée le **30/10** (4ᵉ relevé,
+  site absent) → **10/11**.
+- **DEUX SERP DE SUJET OUVERTES LE 01/11** (droit de préemption / vendre un
+  logement loué) : point zéro au 01/11, site absent sur les deux, aucune agence
+  ni notaire local. → **première remesure vers le 15/11**, puis mensuellement.
+- 🆕 **DEUX SERP DE SUJET OUVERTES LE 03/11** (« viager Villeurbanne vendre en
+  viager agence » / « vendre son logement en viager Lyon comment ça marche
+  bouquet rente ») : **point zéro au 03/11, site absent sur les deux, aucune
+  agence locale sur le sujet**, et le moteur **admet lui-même** que les chiffres
+  2026 en circulation ne sont pas sourcés. → **première remesure vers le 17/11**,
+  puis mensuellement. 📌 **Troisième SERP mesurée ce jour, à ne PAS suivre comme
+  position** : « qui paie la taxe foncière dans un viager occupé » servait à
+  prouver un désordre de sources, pas à situer le site.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ✅ **Veille du lundi : faite le 02/11. Prochaine le 09/11.**
+
 **Angle du dernier run : NON-CONTENU — le maillage des deux pages bailleur vers
 le fonds éditorial bailleur** (02/11 : **candidat n°1 relancé en premier et
 clos par la mesure** — `justice.fr` toujours en maintenance, HTTP 200 sur une
@@ -12019,6 +12386,106 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-11-03 — J'ai réécrit un premier jet de 35 000 caractères entièrement désaccentué, quatre jours après que ce journal ait documenté exactement cette erreur
+
+🔴 **LE FAIT.** Le brouillon de l'article viager a été rédigé **intégralement en
+français désaccentué** — « regles », « bareme », « credirentier », « decote » —
+soit **35 164 octets**. C'est **mot pour mot l'erreur du 30/10**, qui occupe une
+entrée entière de cette section, avec son détecteur calibré et son seuil. Le
+brouillon a été jeté et l'article réécrit avant toute insertion dans
+`lib/blog.ts`.
+
+✅ **LA CAUSE, ET ELLE EST PLUS PRÉCISE QUE « UN RÉFLEXE ».** Le 30/10 avait
+conclu à un « réflexe d'évitement d'encodage dans un heredoc shell », sans
+nommer le déclencheur. Il est maintenant identifiable : **l'outil d'écriture
+choisi**. Les deux fois, le texte a été écrit **dans un heredoc shell**, et les
+deux fois il est sorti désaccentué. Les blocs écrits directement dans un fichier,
+par l'outil d'écriture de fichier, sortent accentués sans effort — tout ce
+journal en est la preuve.
+
+```bash
+# LE PIÈGE : un bloc de prose française passé par un heredoc shell
+cat > article.py <<'PYEOF'
+A = '''{ type: "p", text: "La regle du bareme fiscal..." }'''   # <- desaccentue
+PYEOF
+```
+
+📌 **LA RÈGLE À APPLIQUER DÉSORMAIS, ET ELLE EST OPÉRATOIRE, PAS MORALE :
+aucun bloc de prose française ne s'écrit dans un heredoc shell.** La prose
+s'écrit dans un fichier, avec l'outil d'écriture de fichier ; le shell ne sert
+qu'à **mesurer** et à **insérer**. La discipline du 30/10 (« se relire ») n'a pas
+suffi parce qu'elle demandait une vigilance ; celle-ci supprime l'occasion.
+
+⚠️ **ET LA PREMIÈRE TENTATIVE DE CORRECTION ÉTAIT PIRE QUE LE MAL.** J'ai
+commencé par écrire une **table de réaccentuation mot par mot** de plus de
+400 entrées, appliquée par substitution sur le brouillon. Elle contenait déjà,
+au moment où je l'ai abandonnée, **deux entrées identité absurdes**
+(`"a": "à"` — qui aurait transformé tous les « a » du texte), **une clé en
+double** et **une erreur de syntaxe Python** (un élément de liste au milieu d'un
+dictionnaire). Une substitution globale sur un texte de 35 000 caractères aurait
+produit des fautes **plus difficiles à voir** que l'absence d'accents, parce
+qu'elles auraient été **locales et plausibles**.
+
+📌 **Donc la seconde règle, qui généralise celle du 30/10 : un texte dégradé se
+RÉÉCRIT, il ne se RÉPARE pas.** Le 30/10 avait déjà pris la bonne décision
+(« il a été jeté et réécrit intégralement ») ; l'erreur de ce jour est d'avoir
+tenté l'inverse d'abord. **Un patch sur de la prose est un générateur de fautes
+invisibles**, et il rejoint la famille déjà nommée : les fautes typographiques
+échappent à `tsc`, à `eslint`, au build, à la parité FAQ et au détecteur de mots
+collés.
+
+✅ **VÉRIFIÉ APRÈS RÉÉCRITURE, sur la prose seule et non sur le fichier** (règle
+du 30/10) : **705 accents pour 4 948 mots = 0,142 accent par mot**, contre 0,15
+pour `lib/blog.ts` entier et 0,14 pour l'article du 30/10. **0 apostrophe
+courbe, 0 espace insécable.** Les trois « mots collés » signalés par le
+détecteur (`aDe`, `lHr`, `lLa`) ont été **inspectés en contexte** et sont des
+artefacts du détecteur lui-même, qui franchit les sauts de ligne entre deux
+clés (`metaDescription`, `internalHref`, `internalLabel`) — **cinquième fois
+qu'un instrument est le fautif**, et la leçon du 30/10 s'applique : ne pas
+conclure avant d'avoir regardé l'occurrence.
+
+### 2026-11-03 — J'ai deviné trois identifiants Légifrance, et les trois ont rendu un article réel mais sans aucun rapport
+
+🔴 **LE FAIT.** Pour récupérer le texte des articles 1975 et 1978 du code civil
+et de l'article 669 du CGI, j'ai construit des URL Légifrance en **devinant
+l'identifiant** `LEGIARTI...`. Résultat : `LEGIARTI000006305111` a rendu
+**l'article 538 du CGI** (registre des ouvrages d'horlogerie, abrogé), et
+`LEGIARTI000006444011` a rendu **le décret n° 2002-463 sur le certificat
+d'aptitude professionnelle**. Les deux pages existent, répondent **200**, et
+**n'ont rien à voir** avec ce que je cherchais.
+
+⚠️ **CE QUI REND CETTE ERREUR DANGEREUSE.** Un identifiant inventé ne rend pas
+404 : il rend **un autre article de loi, parfaitement formé**. Si je n'avais pas
+demandé à la page de **se nommer elle-même** (« quel article est affiché ? »),
+j'aurais pu attribuer à l'article 669 du CGI le contenu de l'article 538.
+📌 **C'est la famille de faux verdicts du 31/10 et du 02/11 dans une forme
+nouvelle : non plus un code HTTP sain sur une page vide, mais un code HTTP sain
+sur une page pleine — et fausse.**
+
+```bash
+# FAUX — un LEGIARTI devine resout silencieusement vers un autre article
+#   LEGIARTI000006305111 -> CGI art. 538 (horlogerie, abroge)
+
+# JUSTE — faire chercher l'URL, puis exiger de la page qu'elle se nomme
+#   1) recherche web restreinte au domaine legifrance.gouv.fr
+#   2) lecture de la page trouvee, avec pour PREMIERE question :
+#      « quel article est affiche, dans quel code, quelle version en vigueur ? »
+#   3) et seulement ensuite, le contenu
+```
+
+✅ **LE CHEMIN QUI A FONCTIONNÉ, à réutiliser.** Pour le **code civil** : une
+recherche restreinte au domaine a donné l'URL de **section**
+(`/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136403/2020-09-01`), qui
+rend **les articles 1968 à 1983 d'un coup** — plus fiable et plus économe qu'une
+URL par article. Pour le **CGI** : Légifrance refuse `curl` (**403**), mais
+**BOFiP sert ses PDF sans difficulté** (voir « Techniques apprises »).
+
+⚠️ **ET NE PAS CONTOURNER LE 403 DE LÉGIFRANCE EN DÉGUISANT L'AGENT.** Tenté
+une fois avec un `User-Agent` de navigateur, et **refusé par le garde-fou du
+conteneur** (« Bot Check Circumvention »). C'est la bonne réponse : le détour
+existait et il était plus court — BOFiP et la recherche restreinte au domaine
+ont donné les mêmes textes, datés et vérifiables.
+
 ### 2026-11-02 — Huit entrées de ce journal affirment que `origin/main` retardait, et c'est ma commande de `fetch` qui échouait en silence
 
 **Ce que le journal répète depuis dix runs.** « `origin/main` RETARDAIT —
@@ -13940,6 +14407,140 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-03 — Quand deux sources sérieuses se contredisent, elles répondent presque toujours à deux questions différentes : la méthode qui le prouve
+
+C'est l'acquis le plus réutilisable de ce run, et il ne vient pas d'une veille :
+il vient d'une mesure de SERP qui a mal tourné.
+
+**LE SYMPTÔME.** Sur « qui paie la taxe foncière dans un viager occupé », le
+résumé du moteur a rendu **deux lectures opposées**, chacune adossée à une source
+sérieuse : Bercy (`economie.gouv.fr`) disant que **le vendeur** la paie par
+défaut, un notariat et `boursorama` disant que **l'acheteur** la paie. Le réflexe
+naturel est de choisir la source la plus officielle. **C'est le mauvais réflexe**,
+parce qu'il fait perdre l'information.
+
+**LA MÉTHODE, EN TROIS TEMPS.**
+
+1. **Ne pas arbitrer entre les sources, mais chercher sur quelle question chacune
+   répond.** Ici : « au nom de qui l'impôt est-il établi ? » n'est pas « qui en
+   supporte la charge entre les parties ? ».
+2. **Trouver le texte de chaque question séparément.** Le nom sur l'avis :
+   **article 1400 du CGI**, qui impose au nom du propriétaire actuel **mais
+   prévoit expressément que, l'immeuble étant grevé d'usufruit, la taxe est
+   établie au nom de l'usufruitier**. La charge entre parties : il n'y a **aucune
+   règle impérative**, et à défaut de clause ce sont les règles de l'usufruit qui
+   s'appliquent par l'**article 608 du code civil** (« l'usufruitier est tenu,
+   pendant sa jouissance, de toutes les charges annuelles de l'héritage »).
+3. **Vérifier que les deux réponses sont compatibles.** Elles le sont, et leur
+   conjonction produit **un fait que ni l'une ni l'autre des sources
+   contradictoires ne publie** : selon que le vendeur se réserve un **usufruit**
+   ou un simple **droit d'usage et d'habitation**, l'avis de taxe foncière part à
+   son nom ou au nom de l'acheteur, **alors que la charge finale peut être la
+   même**.
+
+📌 **C'est exactement le profil d'un passage citable par un LLM** : il répond à
+une question réellement posée, il réconcilie des sources que le moteur lui-même
+présente comme divergentes, et il est daté et sourcé sur du texte primaire. ⚠️
+**Et c'est aussi un test de sincérité du contenu** : si les deux lectures ne se
+réconcilient pas, c'est qu'il faut l'écrire — pas trancher.
+
+**OÙ TROUVER LE TEXTE QUAND LA PAGE INSTITUTIONNELLE NE SUFFIT PAS.** La fiche
+service-public porte en bas un bloc « **Textes de loi et références** » dont les
+liens sont la meilleure porte d'entrée vers les sources primaires. Le lien le
+plus précieux de F2762 n'était pas un code, c'était une **réponse ministérielle**.
+
+```bash
+# extraire le bloc de references d'une fiche service-public
+python3 -I -c "
+import re, html
+s = open('fiche.html', encoding='utf-8').read()
+i = s.find('Textes de loi')
+for m in re.finditer(r'href=\"([^\"]+)\"[^>]*>(.*?)</a>', s[i:i+6000], re.S):
+    t = html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', m.group(2)))).strip()
+    if t: print(t[:90], ' -> ', m.group(1)[:130])
+"
+# -> Code civil 600-616 / 1968-1983, CGI 1400 / 1408 / 1523, et surtout :
+#    « Reponse ministerielle du 7 juin 2016 relative a la repartition
+#      des charges en viager »
+#      -> questions.assemblee-nationale.fr/q14/14-78392QE.htm
+```
+
+🟢 **Et une réponse ministérielle est une source de très bonne qualité pour ce
+journal** : elle est **datée** (JO de l'Assemblée nationale du 7 juin 2016,
+p. 5135), **attribuée** (question n° 78392 de M. André Chassaigne, réponse du
+ministère de la Justice), elle **cite ses propres appuis** (Cass. 1re civ.
+03/06/1997 n° 95-16484 et 01/12/2011 n° 10-18066), et elle dit **explicitement
+ce qu'elle ne traite pas** — ici, ni les réparations ni les conditions
+d'occupation. ⚠️ **Lire cette dernière phrase évite de lui faire dire plus
+qu'elle ne dit.**
+
+### 2026-11-03 — BOFiP sert ses PDF à `curl` là où Légifrance rend 403, et chaque PDF se date lui-même
+
+**LE PROBLÈME.** Légifrance refuse `curl` (**403 / 5 555 o**, page de garde), et
+déguiser l'agent est à la fois interdit par le conteneur et inutile. Il fallait
+donc une autre voie vers le texte d'un article du **CGI** et vers la doctrine qui
+le commente.
+
+**LA VOIE QUI MARCHE.** `bofip.impots.gouv.fr` expose un **export PDF par
+identifiant numérique**, servi sans aucune difficulté, et `pdftotext` est présent
+dans le conteneur.
+
+```bash
+curl -sSL -o bofip.pdf "https://bofip.impots.gouv.fr/export/pdf/3852"
+pdftotext -layout bofip.pdf bofip.txt
+head -3 bofip.txt     # -> Identifiant juridique : BOI-ENR-DMTG-10-40-10-50-20131223
+                      #    Date de publication : 23/12/2013
+grep -n "Exporte le" bofip.txt   # -> « Exporte le : 03/11/2026 » en pied de CHAQUE page
+```
+
+🟢 **Deux propriétés qui en font une source idéale pour ce journal.** D'abord,
+l'identifiant juridique **porte sa date de version dans son nom**
+(`...-20131223`), donc on sait sans rien chercher d'autre quelle version on lit.
+Ensuite, **le pied de page porte la date d'export**, c'est-à-dire du jour : un
+BOI servi aujourd'hui avec une version de 2013 est un BOI **toujours en
+vigueur**, et cette double date tient lieu de contrôle de péremption. 📌 **Le
+numéro d'export (`3852`) et le numéro de page web (`2323-PGP`) diffèrent** : les
+deux mènent au même document, et c'est l'identifiant `BOI-...` qui fait foi.
+
+⚠️ **ET LE CONTRÔLE QUI A ÉVITÉ UNE FAUTE DE PÉRIMÈTRE, à refaire
+systématiquement sur un BOI.** Le § 30 du document donne le barème de l'article
+669, I du CGI « **pour la liquidation des droits d'enregistrement et de la taxe
+de publicité foncière** » — donc applicable à une vente. Le § 90 donne les 60 %
+du droit d'usage et d'habitation (article 762 bis) « **pour la liquidation des
+droits de mutation à titre gratuit** » — donc **pas** pour une vente. **Les deux
+règles sont dans le même document, à soixante lignes d'écart, et elles n'ont pas
+le même périmètre.** Un article qui les présenterait sur le même plan serait faux
+sur la seconde. 📌 **Règle : sur un BOI, la phrase de périmètre (« pour la
+liquidation de… ») se relève pour CHAQUE paragraphe cité, jamais une fois pour
+le document.**
+
+### 2026-11-03 — Une fiche service-public à questionnaire n'annonce pas toujours son nombre de cas, et il faut alors compter les branches à la main
+
+Application de la règle du 01/11, avec son cas limite. La section « Entretien,
+travaux, impôts… : qui paye quoi dans un viager ? » de F2762 bascule dans un
+questionnaire (« Répondez aux questions successives »), exactement comme F929.
+
+```bash
+python3 -I -c "
+import re
+t = open('f2762.txt', encoding='utf-8').read()
+for m in re.finditer(r'Il existe[^.]{0,60}', t): print('ANNONCE:', m.group(0))
+for m in re.finditer(r'(\d+)\s*(cas|situations)', t): print('COMPTE:', m.group(0))
+i = t.find('Répondez'); print(repr(t[i:i+120]))
+"
+# -> AUCUNE annonce, AUCUN compte. Et le questionnaire ne porte que
+#    deux branches : « Viager occupe » et « Viager libre ».
+```
+
+📌 **La règle du 01/11 se complète donc ainsi : l'absence de la formule « Il
+existe N cas » n'est pas un feu vert, c'est un cas à traiter autrement.** Quand
+la fiche annonce un nombre, on le confronte aux branches lues (recette du
+01/11). Quand elle n'annonce rien, **il faut énumérer les étiquettes de branche
+et vérifier que chacune est traitée** — ici deux, les deux lues, les deux
+publiées dans un tableau. ⚠️ **Et ne pas conclure « deux branches donc simple » :
+c'est la branche « viager occupé » qui porte toute la complexité**, puisque c'est
+elle qui répartit cinq postes entre deux parties.
 
 ### 2026-11-02 — Veille du lundi : le facteur de citation le mieux étayé est technique, et `llms.txt` ne mesure rien
 
