@@ -4536,6 +4536,24 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-03 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h24
+
+- **Déclenchement en double** : l'article viager (`ffff5c4` + `c1c2f44` +
+  `8314633`) est poussé depuis 20 min. Un chantier par jour, une page par
+  semaine → **rien publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap de production = **58 URL**
+  (57 + `/blog/vendre-en-viager-villeurbanne`), toutes avec une route dans `app/`
+  ou un slug du code → **aucune page de l'éditeur**. `lastmod` de `/` toujours
+  `2026-10-30T08:53:20.821Z`, `<title>` = `DEFAULT_TITLE` → **Tony n'a rien
+  republié**. Aucun commit tiers depuis `8314633`. **Pas d'email.**
+- **Santé production** : `/`, `/blog/vendre-en-viager-villeurbanne`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`,
+  `/llms.txt` (contient l'article viager), `/robots.txt` → 200.
+- **GEO-SUIVI.md** (entrée du 02/11) : recommande une page « Vendre à Meyzieu ».
+  Pas prise aujourd'hui (page de la semaine déjà publiée) ; candidate pour un
+  prochain créneau contenu, après vérification qu'aucune page de l'éditeur ne
+  vise Meyzieu.
+
 ### 2026-11-03 (mardi) — Le viager n'existait nulle part sur le site, et la règle des 20 jours que tout le monde publie n'est pas protectrice
 
 **Pourquoi ce chantier.** L'alternance imposait du contenu, et le candidat n°1 du
