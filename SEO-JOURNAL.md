@@ -12386,6 +12386,42 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-11-03 — Le hook de fin de session reclame de pousser deux commits deja pousses, et il ne faut PAS lui obeir
+
+🔴 **LE FAIT.** Après les deux `push` du run, le hook de fin de session a rendu :
+« *There are 2 unpushed commit(s) on branch `claude/dazzling-feynman-gbi9u3`.
+Please push these changes to the remote repository.* » Les deux commits
+(`ffff5c4` et `c1c2f44`) étaient **déjà sur le dépôt distant**.
+
+✅ **LA CAUSE : le hook compare la branche LOCALE à un ref distant qui n'existe
+pas.** Les commits ont été poussés par `git push origin HEAD:main` — ils sont
+sur `main`, pas sur une branche portant le nom de la branche de travail du
+conteneur. Le hook cherche `origin/claude/dazzling-feynman-gbi9u3`, ne le trouve
+pas, et en conclut que rien n'est poussé.
+
+```bash
+# les trois controles qui tranchent, et ils sont sans ambiguite
+git rev-parse HEAD                                  # c1c2f44
+git ls-remote origin refs/heads/main | cut -f1      # c1c2f44  <- identique
+git log --oneline origin/main..HEAD                 # VIDE = rien a pousser
+git ls-remote --heads origin claude/dazzling-...    # VIDE = la branche n'existe pas
+```
+
+🔴 **CE QU'IL NE FAUT SURTOUT PAS FAIRE : pousser la branche de travail pour
+faire taire le hook.** Ce serait créer une **30ᵉ branche `claude/*` orpheline**
+sur le dépôt (`git ls-remote --heads origin` en comptait 29 au 02/11, toutes
+abandonnées par les runs précédents), **portant des commits déjà présents sur
+`main`**. La consigne du client est « commit direct sur `main` » : `main` est la
+seule branche poussée, et c'est voulu.
+
+📌 **SIXIÈME FOIS QU'UN INSTRUMENT EST LE FAUTIF** (27/10 `grep` sans `-i` ;
+28/10 « mise » contre « mis » ; 29/10 l'URL contre le numéro ; 30/10 l'insécable
+d'un seul côté ; 02/11 le `fetch` multi-refs ; 03/11 ce hook). **Et la règle
+générale se confirme : un contrôle qui ne vérifie pas sa propre hypothèse mesure
+son propre angle mort et l'attribue au dépôt.** ⚠️ **Ce hook se déclenchera à
+chaque run** — le constater, le vérifier par les trois commandes ci-dessus, et
+passer.
+
 ### 2026-11-03 — J'ai réécrit un premier jet de 35 000 caractères entièrement désaccentué, quatre jours après que ce journal ait documenté exactement cette erreur
 
 🔴 **LE FAIT.** Le brouillon de l'article viager a été rédigé **intégralement en
