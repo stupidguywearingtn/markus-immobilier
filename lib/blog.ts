@@ -1158,7 +1158,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Un site spécialisé annonce Villeurbanne à 4 380 €/m² ; les 1 875 ventes d'appartements signées en 2025 donnent 3 567 €/m². Sur un T2 de 45 m², l'écart vaut 36 585 € — et jusqu'à 71 820 € sur Charpennes. Quatre sources comparées ligne à ligne.",
     date: "2026-05-26",
-    updated: "2026-10-18",
+    updated: "2026-11-04",
     internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
@@ -1215,6 +1215,58 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Un avertissement s'impose sur la ligne Charpennes, et il joue contre notre chiffre.** Les découpages ne coïncident pas : le contour officiel « Charpennes – Tonkin » englobe le Tonkin, que cpim.fr traite à part et situe à 3 920 €/m². Comparer « Charpennes » seul à « Charpennes – Tonkin » revient donc à comparer un sous-secteur cher à un ensemble plus large, ce qui gonfle mécaniquement l'écart. Les quatre autres lignes ne souffrent pas de ce biais dans les mêmes proportions. Nous publions quand même le +45,3 %, avec cette réserve écrite : un écart de périmètre n'est pas un mensonge, encore faut-il savoir de quoi on parle." },
       { type: "p", text: "Un contre-exemple montre d'ailleurs que le problème n'est pas « les autres sites ». moninvestimmo.com, dans un article du 20 août 2026, publie des médianes explicitement tirées du DVF 2024-2025 et **tombe à quelques points des nôtres** : Cusset à environ 3 150 €/m² quand nous donnons 3 171 sur Cusset – Bonnevay, Gratte-Ciel à environ 3 940 contre 3 846, Grandclément à environ 3 460 contre 3 375 sur Perralière – Grandclément. Qui part des ventes enregistrées arrive au même endroit. La ligne de partage ne sépare pas les sites entre eux, elle sépare **les prix demandés des prix signés**." },
 
+      { type: "h2", text: "Les prix signés ont-ils rattrapé les prix affichés en 2026 ?" },
+      { type: "p", text: "**Non : l'écart s'est creusé, parce que ce sont les prix signés qui ont reculé.** Les ventes du premier semestre 2026, publiées par la DGFiP le 12 octobre 2026, donnent une médiane de **3 500 €/m²** sur Villeurbanne contre **3 551 €/m²** sur le même semestre de 2025, soit **−1,4 %**. Pendant ce temps, les prix affichés par cpim.fr n'ont pas bougé d'un euro : la page publie toujours 4 380 €/m² sur la commune et les mêmes valeurs par quartier qu'au relevé du 27 septembre 2026. L'écart entre affiché et signé passe donc de 22,8 % à **25,1 %** sur la commune." },
+      { type: "p", text: "Ce calcul demande une précision de méthode, parce que la donnée 2026 n'est pas encore là où la plupart des outils vont la chercher. Le fichier géolocalisé d'Etalab, celui que reprennent les explorateurs grand public, **s'arrête toujours à 2025** : l'année 2026 y renvoie une erreur 404 au jour de cette extraction. Les ventes de 2026 n'existent aujourd'hui que dans le fichier brut de la DGFiP, sans coordonnées — il faut rattacher chaque vente à son quartier par sa parcelle cadastrale pour obtenir des médianes par contour. C'est ce que nous avons fait, et le tableau ci-dessous compare **semestre à semestre**, jamais un semestre à une année pleine." },
+      {
+        type: "table",
+        caption:
+          "Médiane des ventes d'appartements signées, premier semestre 2025 et premier semestre 2026",
+        headers: [
+          "Quartier (contour officiel)",
+          "S1 2025",
+          "S1 2026",
+          "Évolution",
+          "Ventes S1 2026",
+        ],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "4 000 €/m²", "3 966 €/m²", "−0,8 %", "102"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 842 €/m²", "3 805 €/m²", "−1,0 %", "320"],
+          ["Charpennes – Tonkin", "3 385 €/m²", "3 440 €/m²", "+1,6 %", "104"],
+          ["Perralière – Grandclément", "3 320 €/m²", "3 312 €/m²", "−0,2 %", "149"],
+          ["Buers – Croix-Luizet", "3 333 €/m²", "3 041 €/m²", "−8,8 %", "144"],
+          ["Cusset – Bonnevay", "3 176 €/m²", "3 136 €/m²", "−1,3 %", "89"],
+          ["Cyprian – Les Brosses", "2 481 €/m²", "2 491 €/m²", "+0,4 %", "19"],
+          ["Villeurbanne, commune entière", "3 551 €/m²", "3 500 €/m²", "−1,4 %", "940"],
+        ],
+        source:
+          "Calcul Markus Immobilier, extraction du 4 novembre 2026. Fichier brut « Valeurs foncières 2026 - Premier semestre » (DGFiP, data.gouv.fr, mis en ligne le 12 octobre 2026) et « Valeurs foncières 2025 » (même source), commune 69266, ventes d'appartements à une seule ligne bâtie, surface ≥ 10 m², 800 à 12 000 €/m², médiane. Rattachement au quartier par la parcelle cadastrale (plan cadastral informatisé, millésime du 1er septembre 2026) et les contours officiels de quartiers de la Métropole de Lyon. Quartier Saint-Jean non publié : 10 ventes sur le semestre, échantillon trop mince.",
+      },
+      { type: "p", text: "Cinq quartiers sur sept reculent, deux progressent de moins de deux points. La médiane communale du semestre, 3 500 €/m², s'accompagne d'un prix médian de **187 900 €** et d'une surface médiane de **59 m²**, sur **940 ventes** exploitables — un volume en hausse de 4,7 % par rapport aux 898 ventes du premier semestre 2025. Le marché villeurbannais n'a donc pas rattrapé les prix d'annonce : il s'est échangé un peu plus souvent, un peu moins cher." },
+      { type: "p", text: "Appliqué aux prix affichés inchangés, ce recul donne les écarts suivants. Ils remplacent, pour le premier semestre 2026, les écarts calculés plus haut sur l'année 2025." },
+      {
+        type: "table",
+        caption:
+          "Prix affiché en ligne et médiane signée du premier semestre 2026, par quartier",
+        headers: [
+          "Quartier (contour officiel)",
+          "Prix affiché",
+          "Médiane S1 2026",
+          "Écart",
+          "Sur un T2 de 45 m²",
+        ],
+        rows: [
+          ["Charpennes – Tonkin", "5 120 €/m²", "3 440 €/m²", "+48,8 %", "75 600 €"],
+          ["Buers – Croix-Luizet", "3 920 €/m²", "3 041 €/m²", "+28,9 %", "39 555 €"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "4 520 €/m²", "3 805 €/m²", "+18,8 %", "32 175 €"],
+          ["Cusset – Bonnevay", "3 680 €/m²", "3 136 €/m²", "+17,3 %", "24 480 €"],
+          ["Villeurbanne, commune entière", "4 380 €/m²", "3 500 €/m²", "+25,1 %", "39 600 €"],
+        ],
+        source:
+          "Prix affichés recontrôlés le 4 novembre 2026 sur cpim.fr/villeurbanne-prix-m2-quartiers/ : identiques au relevé du 27 septembre 2026. Médianes signées : ventes d'appartements du premier semestre 2026, fichier brut DGFiP du 12 octobre 2026, calcul Markus Immobilier. Écart en euros = différence de prix au m² × 45 m².",
+      },
+      { type: "p", text: "**Deux réserves, et elles jouent toutes les deux contre nos chiffres.** La première porte sur Buers – Croix-Luizet : la page qui affiche 3 920 €/m² réserve ce prix à « Croix-Luizet et Tonkin Sud » et descend à 3 520 €/m² pour « les Buers », alors que le contour officiel réunit les deux. Comparer le contour entier au seul prix haut gonfle l'écart ; avec 3 520 €/m², il tomberait à +15,8 %. La seconde porte sur le recul de 8,8 % de ce même quartier, le plus fort du tableau : il s'accompagne d'un bond du nombre de ventes de 89 à 144, et un changement de composition des biens vendus explique une partie d'un écart de cette taille. **Un semestre n'est pas une tendance** — c'est pour cette raison que les médianes publiées ailleurs sur ce site restent celles de l'année 2025 close, et qu'elles le resteront jusqu'à la publication de l'année 2026 complète, attendue au printemps 2027." },
+
       { type: "h2", text: "Quel prix retenir pour bâtir son plan de financement ?" },
       { type: "p", text: "**La médiane des ventes signées du quartier, jamais le prix moyen affiché en ligne.** C'est le seul des deux chiffres qui décrive des transactions abouties, et c'est celui sur lequel un notaire et une banque travailleront. Le prix affiché garde une utilité, mais elle est autre : il indique ce que les vendeurs espèrent aujourd'hui, donc le point de départ d'une négociation — pas son point d'arrivée." },
       { type: "p", text: "Deux conséquences pratiques. D'abord, **l'écart de prix d'achat se répercute presque intégralement sur le rendement** : un même loyer divisé par un prix 20 % plus élevé fait perdre environ un sixième du rendement brut. C'est pour cette raison que nous calculons le [rendement locatif brut des sept quartiers de Villeurbanne](/blog/rentabilite-locative-lyon) sur les prix signés, et non sur des prix d'annonce. Ensuite, **une médiane de quartier n'est pas le prix de votre bien** : à surface égale, l'étage, l'ascenseur, l'extérieur et le DPE font varier le prix réel à l'intérieur d'un même secteur — nous avons [mesuré cette dispersion quartile par quartile](/blog/estimation-en-ligne-ou-agence)." },
@@ -1235,7 +1287,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Un prix affiché supérieur au prix signé n'est pas un prix mensonger** : c'est, le plus souvent, un prix d'annonce mesuré à un autre moment et sur un autre échantillon. Dans un marché tendu, certaines ventes se concluent d'ailleurs au-dessus du prix demandé. Trois limites doivent donc accompagner la lecture du tableau." },
       { type: "ul", items: [
         "**Les périmètres diffèrent.** Nous utilisons les contours officiels de quartiers de la Métropole de Lyon ; les sites nationaux emploient souvent un découpage maison, sous le même nom. C'est la réserve posée plus haut sur Charpennes.",
-        "**Les périodes diffèrent.** Nos médianes portent sur l'année 2025 close ; les prix affichés sont datés d'avril ou d'août 2026. Un marché qui remonte creuse une partie de l'écart sans que personne ne se trompe.",
+        "**Les périodes diffèrent.** Le tableau principal met des médianes de l'année 2025 close en regard de prix affichés datés d'avril ou d'août 2026. Un marché qui remonte entre les deux creuserait une partie de l'écart sans que personne ne se trompe — c'est l'objection la plus sérieuse, et c'est pour y répondre que nous avons mesuré le premier semestre 2026 plus haut : sur cette période, les prix signés ont reculé de 1,4 %, l'écart n'est donc pas un effet de décalage dans le temps.",
         "**Le DVF décrit le passé.** Il enregistre des ventes signées, donc négociées plusieurs mois plus tôt. C'est un point d'ancrage solide, pas une prévision.",
       ] },
       { type: "p", text: "Enfin, le prix d'entrée n'est pas le seul critère d'un investissement locatif. Le nombre de ventes d'un quartier conditionne la facilité de revente, et tous n'ont pas résisté de la même façon depuis 2022 : ces deux séries sont publiées quartier par quartier dans [notre guide des quartiers de Villeurbanne](/blog/ou-acheter-villeurbanne-quartiers)." },
@@ -1244,7 +1296,7 @@ export const ARTICLES: Article[] = [
     faq: [
       {
         q: "Pourquoi les prix au m² annoncés pour Villeurbanne sont-ils plus élevés que les prix réellement payés ?",
-        a: "Parce qu'ils ne mesurent pas la même chose. Les prix affichés par les sites d'investissement décrivent le plus souvent des prix demandés dans les annonces, à un moment donné ; les prix signés viennent de la base DVF, qui enregistre le montant réel de chaque vente passée devant notaire. Sur Villeurbanne, l'écart mesuré en septembre 2026 va de 16,1 % à 45,3 % selon le quartier, et atteint 22,8 % sur la commune entière (4 380 €/m² affichés contre 3 567 €/m² de médiane signée en 2025).",
+        a: "Parce qu'ils ne mesurent pas la même chose. Les prix affichés par les sites d'investissement décrivent le plus souvent des prix demandés dans les annonces, à un moment donné ; les prix signés viennent de la base DVF, qui enregistre le montant réel de chaque vente passée devant notaire. Sur Villeurbanne, l'écart mesuré en septembre 2026 va de 16,1 % à 45,3 % selon le quartier, et atteint 22,8 % sur la commune entière (4 380 €/m² affichés contre 3 567 €/m² de médiane signée en 2025). Recalculé sur les ventes du premier semestre 2026, il se creuse encore : 17,3 % à 48,8 % selon le quartier et 25,1 % sur la commune, les prix affichés étant restés inchangés pendant que les prix signés reculaient de 1,4 %.",
       },
       {
         q: "Quel est le prix au m² réel d'un appartement à Villeurbanne ?",
@@ -1253,6 +1305,10 @@ export const ARTICLES: Article[] = [
       {
         q: "Quel quartier de Villeurbanne présente le plus grand écart entre prix affiché et prix signé ?",
         a: "Charpennes, avec 5 120 €/m² affichés contre 3 524 €/m² de médiane signée en 2025 sur le contour officiel Charpennes – Tonkin, soit 45,3 % d'écart. Ce chiffre doit être lu avec une réserve : le contour officiel englobe le Tonkin, que la source affichant 5 120 €/m² traite séparément à 3 920 €/m². L'écart est donc en partie un effet de périmètre. Viennent ensuite Buers – Croix-Luizet (+19,8 %), Gratte-Ciel – Dedieu – Charmettes (+17,5 %) et Cusset – Bonnevay (+16,1 %).",
+      },
+      {
+        q: "Les prix immobiliers ont-ils baissé à Villeurbanne en 2026 ?",
+        a: "Oui, légèrement. Sur le premier semestre 2026, la médiane des ventes d'appartements signées à Villeurbanne s'établit à 3 500 €/m², contre 3 551 €/m² sur le premier semestre 2025, soit un recul de 1,4 % à méthode et contours identiques. Cinq quartiers sur sept reculent ; seuls Charpennes – Tonkin (+1,6 %) et Cyprian – Les Brosses (+0,4 %) progressent. Le prix médian du semestre est de 187 900 € pour une surface médiane de 59 m², sur 940 ventes. Ces chiffres viennent du fichier brut des valeurs foncières publié par la DGFiP le 12 octobre 2026 ; le fichier géolocalisé d'Etalab, plus connu, s'arrête encore à 2025. Un semestre ne fait pas une tendance : les médianes de référence de ce site restent celles de l'année 2025 close.",
       },
       {
         q: "Où consulter gratuitement le prix réellement payé pour un appartement à Villeurbanne ?",
