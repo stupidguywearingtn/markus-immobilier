@@ -4656,6 +4656,19 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-04 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h19
+
+- **Déclenchement en double** : la mise à jour DVF 2026 de `/blog/investir-locatif-lyon`
+  (`8a9d5b7` + `bcd4acc`) est poussée depuis 20 min. Un chantier par jour → **rien
+  publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap de production = **58 URL**, toutes avec
+  une route dans `app/` ou un slug du code → **aucune page de l'éditeur**. `lastmod` de
+  `/` toujours `2026-10-30T08:53:20.821Z`, `<title>` = `DEFAULT_TITLE` → **Tony n'a rien
+  republié**. Aucun commit tiers depuis `bcd4acc`. **Pas d'email.**
+- **Santé production** : `/`, `/blog/investir-locatif-lyon` (lastmod 2026-11-04 servi),
+  `/estimation`, `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`,
+  `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-04 (mercredi) — Le DVF 2026 était publié depuis trois semaines dans une distribution que ce journal n'interrogeait pas, et il dit que l'écart affiché / signé s'est creusé
 
 **Le point de départ.** « L'écart affiché ≠ signé par QUARTIER existe-t-il
