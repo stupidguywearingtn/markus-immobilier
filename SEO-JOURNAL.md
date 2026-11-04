@@ -14,6 +14,126 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-04 (mercredi)**
+
+- ✅ **AUCUN RETARD RÉEL DE `main`, TROISIÈME APPLICATION DE LA CORRECTION DU
+  02/11.** Relevé avant tout `fetch` : `HEAD` = **`cf44247`**, ref de suivi local
+  `origin/main` = **`768ada6`**, soit l'apparence de **quinze** commits de
+  retard. `git ls-remote origin refs/heads/main` donne **`cf44247`** : **aucun
+  retard**. 📌 **Troisième faux retard sur trois relevés depuis la correction**,
+  et l'écart apparent grandit (4 commits le 03/11, 15 aujourd'hui) parce que le
+  ref de suivi du conteneur est figé au même `768ada6` depuis le 01/11. **Ce
+  n'est plus un incident à consigner, c'est une constante : le ref de suivi
+  local de ce conteneur ne prouve rien.** `fetch` relancé avec le seul refspec
+  explicite, réussi (`768ada6..cf44247`).
+- ⚠️ **Conteneur démarré sur la branche `claude/dazzling-feynman-cr2f6l`**, pas
+  sur `main`, à la même révision. **Cinquième constat consécutif**, nom
+  différent chaque fois. Comportement normal.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarantième constat identique** (21/09 → 04/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-troisième confirmation.**
+- ✅ **AUCUN CHANGEMENT DU CLIENT DEPUIS LE 30/10, MESURÉ.** Sitemap de
+  production **58 URL** avant le push, `lastmod` de `/` toujours
+  **`2026-10-30T08:53:20.821Z`** — **cinquième relevé identique** (31/10 → 04/11).
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  SIXIÈME JOUR.** Les huit `<h2>` servis sont **exactement** ceux du 03/11, et
+  les quatre chiffres validés restent absents (`Qui sommes` 0, `7 ans` 0,
+  `40 M` 0, `250` 0). **Non corrigé, et c'est volontaire** (page de Tony, règle
+  des 90 jours). **Renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE.** `discord.gg/fSyn28G5U` →
+  `{"message": "Unknown Invite", "code": 10006}`, témoin valide
+  `discord-developers` → objet `guild` complet. Le code est publié **4 fois dans
+  le HTML de l'accueil seul**. **Renotifié.**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée** (01/11
+  contenu → 02/11 non-contenu → 03/11 contenu → **04/11 non-contenu**), **et
+  c'est le candidat n°1 qui a été consommé — après neuf reports.**
+- 🟢 **LE FAIT NEUF DU RUN, ET IL DÉBLOQUE LE PLUS VIEUX POINT OUVERT DU
+  JOURNAL : LE DVF 2026 EXISTE DEPUIS LE 12 OCTOBRE 2026.** Le fichier
+  géolocalisé d'Etalab, celui que la recette du 07/09 utilise, **s'arrête
+  toujours à 2025** (`geo-dvf/latest/csv/2026/communes/69/69266.csv` → **404**,
+  vérifié ce matin ; le dossier `latest` est daté du 18 mai 2026). **Mais la
+  DGFiP a publié le 12/10/2026 la ressource « Valeurs foncières 2026 - Premier
+  semestre »** sur le jeu de données brut (`last_modified`
+  `2026-10-12T17:16:52Z`). 📌 **Pendant trois semaines, la donnée était
+  disponible et ce journal la croyait inexistante, parce qu'il n'interrogeait
+  qu'une seule des deux distributions.** Voir « Techniques apprises ».
+- ✅ **TEST DE NON-RÉGRESSION PASSÉ AVANT D'EXPLOITER 2026, ET C'EST LE JOURNAL
+  QUI FOURNISSAIT LES CHIFFRES DE CONTRÔLE.** Le fichier brut n'a ni
+  `id_mutation` ni coordonnées : il a fallu (1) reconstituer les mutations par
+  **plages contiguës** et (2) rattacher chaque vente à son quartier par sa
+  **parcelle cadastrale**. Les deux règles ont été étalonnées sur 2025 avant
+  usage. Résultat sur l'année 2025 : **1 896 ventes contre 1 875 publiées** et
+  **3 562 €/m² contre 3 567**, soit **0,14 % d'écart** sur la médiane communale,
+  prix médian **195 000 €** et surface médiane **62 m²** **identiques au
+  publié**. 📌 **L'écart vient des 54 lignes que geo-dvf écarte faute de
+  géocodage** : il est constant, donc il ne biaise pas une comparaison
+  d'une année sur l'autre faite avec la même recette.
+- 🟢 **RÉPONSE À LA QUESTION PORTÉE DEPUIS LE 14/10 : L'ÉCART « AFFICHÉ ≠ SIGNÉ »
+  PAR QUARTIER N'A PAS DISPARU, IL S'EST CREUSÉ — ET C'EST LE CÔTÉ SIGNÉ QUI A
+  BOUGÉ.** À semestre comparable (S1 2025 contre S1 2026, même recette, mêmes
+  contours) : médiane communale **3 551 → 3 500 €/m², −1,4 %**, sur **940 ventes**
+  contre 898. **Cinq quartiers sur sept reculent** (Buers −8,8 %, Cusset −1,3 %,
+  Gratte-Ciel −1,0 %, Ferrandière −0,8 %, Perralière −0,2 %), **deux progressent
+  de moins de deux points** (Charpennes +1,6 %, Cyprian +0,4 %).
+- ✅ **ET L'AUTRE CÔTÉ DE L'ÉCART A ÉTÉ RECONTRÔLÉ LE MÊME JOUR, PAS SUPPOSÉ
+  STABLE.** `cpim.fr/villeurbanne-prix-m2-quartiers/` refetché ce matin :
+  **4 380 €/m² commune, Charpennes 5 120, Gratte-Ciel 4 520,
+  Croix-Luizet/Tonkin Sud 3 920, Cusset 3 680 — identiques au relevé du 27/09.**
+  L'écart passe donc de **16,1–45,3 %** à **17,3–48,8 %** par quartier et de
+  **22,8 %** à **25,1 %** sur la commune.
+- 🟡 **UNE RÉSERVE TROUVÉE EN CHEMIN, ET ELLE JOUE CONTRE NOTRE PROPRE CHIFFRE
+  PUBLIÉ.** La même page cpim.fr réserve ses 3 920 €/m² à « Croix-Luizet et
+  Tonkin Sud » et **descend à 3 520 €/m² pour « les Buers »**, alors que le
+  contour officiel `Buers – Croix-Luizet` réunit les deux. Notre tableau de
+  septembre applique le prix haut au contour entier : avec 3 520 €/m², l'écart
+  du quartier tomberait de +28,9 % à **+15,8 %**. ⚠️ **Non su au 27/09, et
+  impossible de savoir si la page le publiait déjà.** **La réserve est écrite
+  dans la section du jour**, le tableau daté de septembre n'a pas été retouché.
+- 🟢 **SERP NEUVE OUVERTE, ET LE MOTEUR AVOUE À NOUVEAU SON MANQUE DE SOURCE.**
+  « prix immobilier Villeurbanne premier semestre 2026 baisse prix au m2 ventes
+  signées » : le résumé écrit **« je n'ai trouvé aucune donnée de ventes
+  signées (notaires, DVF ou Perval) pour le premier semestre 2026 à
+  Villeurbanne »** et conclut qu'il faudrait **« consulter les publications des
+  notaires du Grand Lyon ou les données DVF de la DGFiP »** — exactement la
+  source que la page du jour exploite. Les concurrents visibles (moneyvox via
+  SeLoger/MeilleursAgents, efficity, realadvisor) publient **3 700 à
+  3 800 €/m² d'estimations d'annonces**, soit **6 à 9 % au-dessus de notre
+  médiane signée de 3 500** : la thèse « affiché ≠ signé » se vérifie sur une
+  troisième famille de sources. **Site absent. Point zéro au 04/11 → première
+  remesure vers le 18/11.**
+- ✅ **CHANTIER LIVRÉ ET SERVI EN PRODUCTION, VÉRIFIÉ APRÈS LE PUSH.**
+  `/blog/investir-locatif-lyon` **139 672 → 182 481 o**, `dateModified`
+  **2026-11-04**, « Mis à jour le 4 novembre 2026 » visible,
+  `lastmod` du sitemap concordant. **Sitemap 58 URL, inchangé** (aucune page
+  neuve). ⏱ **Ancienne version servie ~50 s** (2 relevés à 25 s puis bascule).
+- ✅ **PARITÉ FAQ VISIBLE ↔ JSON-LD : 7/7, 0 ÉCART**, en local comme sur le HTML
+  de production, les deux côtés passés par la même normalisation (insécables
+  avant `\s+`, règle du 30/10). Quatre blocs JSON-LD servis
+  (`RealEstateAgent`, `BlogPosting`, `FAQPage`, `BreadcrumbList`).
+- ✅ **FACTEUR DE CITATION N°1 RECONTRÔLÉ SUR LA PAGE MODIFIÉE.** Six agents
+  (navigateur, Googlebot, GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot) :
+  **200 / 182 481 o pour les six, à l'octet près**, **aucun en-tête
+  `X-Robots-Tag`**.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique au 02/11 et
+  au 03/11. Aucune erreur neuve.
+- 🔴 **DEUX ERREURS DE MA PROPRE PLUME ATTRAPÉES AVANT LE PUSH**, toutes deux
+  par la relecture arithmétique des chiffres annoncés : un pourcentage mal
+  arrondi et un **compte annoncé qui contredisait sa propre énumération**.
+  Voir « Erreurs commises ».
+- ⚠️ **LES QUATRE SERP COMMERCIALES N'ONT PAS ÉTÉ MESURÉES, ET C'EST DÉLIBÉRÉ** :
+  échéances au **06/11** (« agence immobilière Villeurbanne », « estimation
+  immobilière Villeurbanne »), **07/11** (« prix m2 Villeurbanne »), **10/11**
+  (« vendre appartement Villeurbanne »). La série hebdomadaire ne vaut que si
+  la cadence est tenue.
+- ✅ **Pas de veille : elle a été faite le 02/11, prochaine due le 09/11.**
+- ✅ **Contrôles avant push** : `npx tsc --noEmit` **sans erreur**,
+  `npm run build` **vert**, **0 apostrophe courbe / 0 insécable / 410 accents**
+  dans le texte ajouté, **outil d'estimation non touché** et
+  **`lib/quartiers.ts` non touché** (`git diff --stat` : **1 fichier,
+  +59 / −3**).
+
 **Au 2026-11-03 (mardi)**
 
 - ✅ **AUCUN RETARD DE `main`, ET C'EST `ls-remote` QUI L'A DIT — PREMIÈRE
@@ -4536,6 +4656,115 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-04 (mercredi) — Le DVF 2026 était publié depuis trois semaines dans une distribution que ce journal n'interrogeait pas, et il dit que l'écart affiché / signé s'est creusé
+
+**Le point de départ.** « L'écart affiché ≠ signé par QUARTIER existe-t-il
+encore ? » était le candidat non-contenu n°1 et **le plus vieux point ouvert du
+journal** : inscrit le 14/10, **reporté neuf fois**. La consigne était précise :
+**trancher par un relevé DVF 2026 par quartier, pas par les SERP, et ne RIEN
+réécrire avant.** Le blocage tenait en une ligne : le fichier géolocalisé
+d'Etalab — la source de la recette du 07/09 — s'arrête à 2025.
+
+**Ce qui a débloqué.** Le blocage était vrai mais **partiel**. DVF est distribué
+sous **deux formes** : le brut DGFiP et le géolocalisé Etalab. Seul le second
+était interrogé. Relevés du jour :
+
+| Distribution | Dernière année | Vérifié le |
+|---|---|---|
+| `files.data.gouv.fr/geo-dvf/latest/csv/` (Etalab, géolocalisé) | **2025** — 2026 rend 404 | 04/11/2026 |
+| Jeu de données brut DGFiP sur data.gouv.fr | **2026 S1**, mis en ligne le **12/10/2026** | 04/11/2026 |
+
+**Ce qu'il a fallu construire, et pourquoi.** Le fichier brut n'a **ni
+`id_mutation` ni coordonnées**. Deux règles ont donc été écrites, **et étalonnées
+sur 2025 avant tout usage** :
+
+1. **Reconstituer les mutations par plages contiguës** de
+   (`Date mutation`, `No disposition`, `Valeur fonciere`). Une clé simple ne
+   suffit pas : **55 clés de 2025 désignent deux ventes différentes** (même jour,
+   même prix). Le découpage par plages donne **2 801 mutations** contre
+   **2 775** chez geo-dvf, avec des distributions de taille quasi identiques.
+2. **Rattacher chaque vente à son quartier par sa parcelle cadastrale** :
+   `Prefixe de section` + `Section` + `No plan` → géométrie de la parcelle
+   (plan cadastral informatisé, millésime **2026-09-01**, 10 782 parcelles) →
+   centroïde → point-dans-polygone sur les **contours officiels de la Métropole
+   de Lyon**. C'est l'équivalent exact de ce que geo-dvf fait avec son point
+   géocodé.
+
+**Test de non-régression, chiffres de contrôle du journal :**
+
+| Mesure 2025 | Publié (07/09) | Recalculé depuis le brut | Écart |
+|---|---|---|---|
+| Ventes exploitables | 1 875 | 1 896 | +21 |
+| Médiane communale | 3 567 €/m² | 3 562 €/m² | **−0,14 %** |
+| Prix médian | 195 000 € | 195 000 € | **0** |
+| Surface médiane | 62 m² | 62 m² | **0** |
+
+📌 **L'écart de 21 ventes est structurel et connu** : geo-dvf écarte les lignes
+qu'il ne sait pas géocoder (6 609 lignes retenues sur 6 663). **Il est donc
+constant d'une année sur l'autre**, ce qui autorise la comparaison 2025 → 2026
+faite avec la même recette, mais **interdit** de mélanger un chiffre recalculé
+avec un chiffre publié.
+
+**Le résultat, à semestre comparable.**
+
+| Quartier (contour officiel) | S1 2025 | S1 2026 | Évolution | n S1 2026 |
+|---|---|---|---|---|
+| Ferrandière – Maisons-Neuves | 4 000 €/m² | 3 966 €/m² | −0,8 % | 102 |
+| Gratte-Ciel – Dedieu – Charmettes | 3 842 €/m² | 3 805 €/m² | −1,0 % | 320 |
+| Charpennes – Tonkin | 3 385 €/m² | 3 440 €/m² | +1,6 % | 104 |
+| Perralière – Grandclément | 3 320 €/m² | 3 312 €/m² | −0,2 % | 149 |
+| Buers – Croix-Luizet | 3 333 €/m² | 3 041 €/m² | −8,8 % | 144 |
+| Cusset – Bonnevay | 3 176 €/m² | 3 136 €/m² | −1,3 % | 89 |
+| Cyprian – Les Brosses | 2 481 €/m² | 2 491 €/m² | +0,4 % | 19 |
+| **Villeurbanne, commune** | **3 551 €/m²** | **3 500 €/m²** | **−1,4 %** | **940** |
+
+Prix médian du semestre **187 900 €**, surface médiane **59 m²**. Saint-Jean non
+publié (10 ventes), conformément à la décision du 07/09.
+
+**Et l'autre côté de l'écart, recontrôlé le même jour.** `cpim.fr` refetché :
+**aucun de ses prix n'a bougé** depuis le 27/09. L'écart se creuse donc des deux
+tableaux :
+
+| Quartier | Affiché | Signé 2025 | Écart | Signé S1 2026 | Écart |
+|---|---|---|---|---|---|
+| Charpennes – Tonkin | 5 120 €/m² | 3 524 | +45,3 % | 3 440 | **+48,8 %** |
+| Buers – Croix-Luizet | 3 920 €/m² | 3 271 | +19,8 % | 3 041 | **+28,9 %** |
+| Gratte-Ciel – Dedieu – Charmettes | 4 520 €/m² | 3 846 | +17,5 % | 3 805 | **+18,8 %** |
+| Cusset – Bonnevay | 3 680 €/m² | 3 171 | +16,1 % | 3 136 | **+17,3 %** |
+| Commune entière | 4 380 €/m² | 3 567 | +22,8 % | 3 500 | **+25,1 %** |
+
+**Ce qui a été publié.** Dans `investir-locatif-lyon`, **la page du site qui
+porte cette question** : un `<h2>` en question réelle (« Les prix signés
+ont-ils rattrapé les prix affichés en 2026 ? ») ouvert par une réponse
+autonome, les deux tableaux ci-dessus avec source et méthode complètes, **deux
+réserves écrites qui jouent contre nos propres chiffres**, une **7ᵉ question de
+FAQ**, et `updated` porté au 2026-11-04.
+
+**Un défaut de cohérence interne corrigé au passage.** La section « Que ne
+disent pas ces écarts ? » affirmait : « un marché qui remonte creuse une partie
+de l'écart sans que personne ne se trompe ». C'était **l'objection la plus
+sérieuse à notre propre thèse, et elle est maintenant mesurée et fausse** : le
+marché n'a pas remonté, il a reculé de 1,4 %. La puce a été réécrite pour
+renvoyer à la mesure au lieu de concéder une hypothèse démentie.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+- 🔴 **`lib/quartiers.ts` n'est PAS touché.** C'est la source de vérité unique
+  servie par les pages quartiers et une dizaine d'articles. Y remplacer des
+  médianes **annuelles** par un **semestre** casserait les séries `vs1an` et
+  `vs2022` partout, pour une donnée moins robuste. La mise à jour attend
+  **l'année 2026 complète**, attendue au printemps 2027.
+- 🔴 **Les tableaux datés de septembre n'ont pas été retouchés.** Un relevé daté
+  est un fait daté ; la mesure neuve s'ajoute, elle ne réécrit pas l'ancienne.
+- 🟡 **La réserve Buers n'a pas été portée dans le tableau de septembre.**
+  Impossible de savoir si `cpim.fr` publiait déjà ses 3 520 €/m² au 27/09.
+  Elle est écrite dans la section du jour, qui est datée d'aujourd'hui.
+- 🟡 **`/llms.txt` n'a pas été modifié.** Son bloc `/acheter` cite « 16,1 % à
+  45,3 % » et « 3 567 €/m² signés » : **ces valeurs restent exactes**, elles
+  décrivent 2025. La règle du 02/11 (ne plus y investir au-delà de sa justesse)
+  s'applique.
+- 🟢 **Les quatre SERP commerciales n'ont pas été mesurées** : échéances au
+  06/11, 07/11 et 10/11.
+
 ### 2026-11-03 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h24
 
 - **Déclenchement en double** : l'article viager (`ffff5c4` + `c1c2f44` +
@@ -8611,6 +8840,148 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le relevé DVF 2026 par quartier, qui
+tranche la question portée depuis le 14/10** (04/11 : **candidat n°1 consommé
+après neuf reports**. Le blocage — « le DVF 2026 n'existe pas » — était **faux
+depuis le 12 octobre** : il n'était vrai que de la distribution géolocalisée
+d'Etalab, pas du fichier brut DGFiP. Mutations reconstituées par plages
+contiguës, quartiers rattachés par parcelle cadastrale, **test de
+non-régression passé sur 2025 à 0,14 %** avant exploitation. Résultat :
+médiane communale **3 551 → 3 500 €/m² (−1,4 %)** à semestre comparable,
+**cinq quartiers sur sept en recul**, prix affichés de `cpim.fr` **inchangés** →
+**l'écart se creuse de 16,1–45,3 % à 17,3–48,8 %**. Publié dans
+`investir-locatif-lyon` : 1 `<h2>`, 2 tableaux, 2 réserves contre nos propres
+chiffres, 7ᵉ question de FAQ, puce de cohérence interne corrigée.
+`lib/quartiers.ts` **volontairement non touché**.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (05/11, jeudi) DOIT ÊTRE DU CONTENU**
+(alternance : 01/11 contenu → 02/11 non-contenu → 03/11 contenu →
+04/11 non-contenu).
+✅ **La veille du lundi est faite** (02/11) ; **prochaine veille due le 09/11**.
+**Candidats CONTENU, par ordre d'impact :**
+  1. 🔴 🆕 **LA PLACE GEO LA PLUS VIDE JAMAIS MESURÉE ICI, ET ELLE EST OUVERTE
+     DEPUIS CE MATIN.** Sur « prix immobilier Villeurbanne premier semestre 2026
+     baisse prix au m2 ventes signées », le moteur écrit **« je n'ai trouvé
+     aucune donnée de ventes signées (notaires, DVF ou Perval) pour le premier
+     semestre 2026 à Villeurbanne »** et renvoie vers **la DGFiP** — la source
+     que nous venons d'exploiter. Les concurrents visibles publient **3 700 à
+     3 800 €/m² d'estimations d'annonces**, 6 à 9 % au-dessus de notre médiane
+     signée. ⚠️ **Mais le contenu du jour est déjà DANS un article existant** :
+     le chantier serait **un article dédié au bilan du semestre**
+     (`prix-immobilier-villeurbanne-2026` est le candidat naturel d'accueil, et
+     il est déjà le plus étoffé du site). 📌 **Les chiffres sont calculés et
+     consignés ci-dessus : aucun recalcul nécessaire.** **Vérifier d'abord la
+     cannibalisation** avec `investir-locatif-lyon` (arbitrage du 29/10 :
+     une seule page par mot-clé) — c'est la seule vraie question à trancher.
+  2. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Après le viager (03/11), plus de branche identifiée. Pistes non mesurées :
+     `donation-partage`, `SCI familiale`, `prêt à taux zéro`, `déficit foncier`,
+     `copropriété en difficulté`. ⚠️ **Triple contrôle du 03/11 obligatoire**
+     (famille remesurée + SERP + couverture interne). Ne pas prendre un terme
+     parce qu'il est absent.
+  3. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). Six à **3 pages entrantes**, le plancher
+     du site. ⚠️ **Mesurer d'abord s'il existe une SERP où le site est absent.**
+  4. ⛔ **La place GEO du 18/10 (« budget total achat … frais de notaire »)** :
+     **remesurer plutôt que réécrire**, `/acheter` est déjà écrite pour elle.
+  5. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CLOS LE 30/10.**
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🔴 **LES PAGES COMMERCIALES À 1 SEUL LIEN ÉDITORIAL.**
+     `/agence-immobiliere-villeurbanne` était à **1** au 02/11 ;
+     `/estimation` et `/honoraires` sont passées à **2** grâce à l'article du
+     03/11. ⚠️ **Remesurer le graphe avant d'agir** (la mesure du 02/11 est
+     périmée de deux lignes, et le run du 04/11 n'a ajouté aucun lien sortant)
+     et **relire l'arbitrage de cannibalisation du 29/10**, qui porte
+     précisément sur ces URL. 📌 **C'est désormais le candidat non-contenu le
+     plus ancien encore ouvert.**
+  2. 🟡 **REFAIRE LE CONTRÔLE D'ACCESSIBILITÉ À SIX AGENTS SUR TOUT LE SITEMAP.**
+     **Facteur de citation n°1** de la veille du 02/11 (9,5/10), **jamais mesuré
+     que sur une URL à la fois** (22/09, 02/11, 03/11, 04/11). ⚠️ **58 URL ×
+     6 agents = 348 requêtes** : à échantillonner, mais **mensuellement**.
+     📌 **Monte d'un rang : c'est le seul contrôle du journal dont un échec
+     annulerait tout le reste, et il n'a pas de couverture systématique.**
+  3. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis). **Une seule affirmation en dépend** : la fiche
+     « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps obligatoire**
+     (code/redirection, **puis** marqueur) : l'hôte rend **200** sur sa page de
+     maintenance.
+  4. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **huitième report**). Il tient trois SERP suivies et publie du DVF par
+     quartier. 🆕 **Son avantage vient de se réduire sans qu'on y touche** :
+     ses chiffres sont datés de « juillet 2026 » sur données notariales, les
+     nôtres portent désormais sur le **semestre DVF 2026**. **Ne RIEN réécrire
+     sur un seul relevé.**
+  5. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com` (les PDF
+     `grandlyon.com/delibs/*` sont morts), objectif : **un arrêté de préemption
+     villeurbannais de 2025 ou 2026** visant la même délibération.
+  6. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     04/11. **Jour creux uniquement**, et vérifier qu'aucune autre page n'a le
+     même défaut (`grep -rn '<a href="/' app`).
+  7. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+  8. ⛔ **RECOMPTER CE QUE LA DÉPRÉCIATION DU RICH RESULT FAQ CHANGE** —
+     **définitivement déclassé** (veille du 02/11).
+  9. ⛔ **NE PLUS INVESTIR DANS `/llms.txt` AU-DELÀ DE SA JUSTESSE** (02/11).
+     Les entrées de blog y sont générées depuis `a.excerpt` ; seuls ses blocs de
+     pages PRINCIPALES sont écrits à la main.
+ 10. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11, NE PLUS LA
+     REPORTER.** Réponse : **l'écart par quartier n'a pas disparu, il s'est
+     creusé**, et c'est le côté signé qui a bougé. **Ce qui reste n'est plus une
+     question ouverte mais une cadence** : remesurer à la publication de
+     **l'année 2026 complète (printemps 2027)**, et pas avant.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — SIXIÈME JOUR.** Constaté le
+  31/10, **toujours vrai au 04/11**, `lastmod` de `/` figé à
+  `2026-10-30T08:53:20.821Z` (**cinquième relevé identique**). Les huit `<h2>`
+  servis sont exactement ceux du 03/11 ; `Qui sommes` **0 occurrence** et les
+  quatre chiffres validés absents. **Non corrigé : page de Tony, republiée
+  depuis l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant
+  fin janvier 2027, hors panne.** **Renotifié le 04/11.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). **Recontrôlée le
+  04/11** : `{"message": "Unknown Invite", "code": 10006}`, témoin valide
+  complet. **Le code est publié 4 fois dans le seul HTML de l'accueil.** Source :
+  `components/layout/site-footer.tsx:67`, `components/home/social.tsx:130`,
+  `design-system.md` § 11. ⚠️ **Il faut une invitation PERMANENTE.** 📌 **Dès que
+  Tony fournit le code : substituer aux TROIS endroits, puis revérifier par
+  l'API.** **Ne pas retirer le CTA entre-temps.** **Renotifié le 04/11.**
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs` du
+  JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 04/11** (elles remplacent les blocs plus
+bas) :
+- **« agence immobilière Villeurbanne »** et **« estimation immobilière
+  Villeurbanne »** : mesurées le **30/10**, site absent → **06/11**. 📌 Les
+  relevés du 30/10 sont le POINT ZÉRO de l'arbitrage du 29/10 ; le verdict se
+  lira dans Search Console vers le 20/11.
+- **« prix m2 Villeurbanne »** : mesurée le **31/10** (7ᵉ relevé, site absent) →
+  **07/11**. ⚠️ **Ne pas y réinvestir d'effort rédactionnel.**
+- **« vendre appartement Villeurbanne »** : mesurée le **30/10** (4ᵉ relevé,
+  site absent) → **10/11**.
+- **DEUX SERP DE SUJET DU 01/11** (droit de préemption / vendre un logement
+  loué) : point zéro au 01/11, site absent → **première remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) : point zéro au 03/11, site absent,
+  aucune agence locale → **première remesure vers le 17/11**.
+- 🆕 **UNE SERP DE SUJET OUVERTE LE 04/11** (« prix immobilier Villeurbanne
+  premier semestre 2026 baisse prix au m2 ventes signées ») : **point zéro au
+  04/11, site absent**, et le moteur **déclare n'avoir aucune donnée de ventes
+  signées pour ce semestre**. → **première remesure vers le 18/11**. 📌 **C'est
+  la SERP à surveiller en priorité** : la page du jour a été écrite exactement
+  pour elle, et la place est vide de l'aveu du moteur.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ✅ **Veille du lundi : faite le 02/11. Prochaine le 09/11.**
+
 **Angle du dernier run : CONTENU — le viager, branche `viager` + `clause pénale`
 de la famille « zéro occurrence »** (03/11 : **candidat n°1 du backlog contenu,
 consommé après le triple contrôle** — famille remesurée (`viager` 0, `bouquet` 0,
@@ -11037,6 +11408,40 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-04 — Trois points laissés ouverts par le relevé DVF 2026
+
+**1. 🟡 `cpim.fr` publiait-il déjà 3 520 €/m² pour « les Buers » au 27 septembre ?**
+C'est la seule inconnue qui touche un chiffre **déjà publié** : notre tableau de
+septembre applique les 3 920 €/m² de « Croix-Luizet et Tonkin Sud » au contour
+officiel `Buers – Croix-Luizet`, qui réunit les deux secteurs, alors que la page
+descend à 3 520 €/m² pour les Buers. Avec cette valeur, l'écart du quartier
+passerait de +19,8 % à **+7,6 % sur 2025** et de +28,9 % à **+15,8 % sur
+S1 2026**. ⚠️ **Ce qui le trancherait** : une version archivée de la page au
+27/09 (web.archive.org). **Ce qu'il ne faut pas faire** : retoucher le tableau
+de septembre sur une supposition — la réserve est écrite dans la section du
+04/11, qui est datée, et c'est suffisant tant que l'archive n'a pas parlé.
+
+**2. 🟡 Le recul de 8,8 % sur Buers – Croix-Luizet est-il un prix ou une
+composition ?** C'est le plus fort mouvement du tableau, **et il s'accompagne
+d'un bond du volume de 89 à 144 ventes** sur le même semestre. Un afflux de
+biens plus petits, plus anciens ou d'un programme particulier déplacerait la
+médiane sans qu'aucun prix ne baisse. 📌 **Ce qui le trancherait, et c'est
+calculable avec les fichiers déjà en main** : comparer les surfaces médianes et
+la répartition par nombre de pièces du quartier entre les deux semestres.
+**Non fait aujourd'hui, faute de temps après le chantier.** ⚠️ **Jusque-là, ne
+pas citer ce −8,8 % comme une baisse de prix de quartier** : la page le dit
+déjà, et c'est volontaire.
+
+**3. 🟢 Quand le DVF 2026 complet sera-t-il publié, et où ?** Le rythme observé
+est **deux publications par an** (avril : année précédente close ; octobre :
+premier semestre courant). L'année 2026 complète est donc attendue **au
+printemps 2027**, et c'est le moment où `lib/quartiers.ts` devra être recalculé.
+⚠️ **Deux choses à vérifier ce jour-là, pas avant** : (a) si le géolocalisé
+d'Etalab a rattrapé 2026 — auquel cas la recette du 07/09 redevient utilisable
+telle quelle ; (b) si les chiffres 2025 ont été **révisés rétroactivement**, ce
+que la base fait à chaque publication. 📌 **C'est la seule échéance du journal
+qui porte sur 2027.**
+
 ### 2026-11-02 — Quatre points laissés ouverts par le chantier du maillage
 
 1. 🔴 **`justice.fr` revient-il, et dans quel état ?** L'hôte sert une page de
@@ -12403,6 +12808,45 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-04 — Un compte annoncé qui contredisait sa propre énumération, et deux pourcentages mal arrondis : trois fois la même relecture qui sauve
+
+**Les trois défauts, tous de ma plume, tous attrapés avant publication.** Aucun
+n'aurait été vu par `tsc`, par `eslint` ni par le build — ils étaient
+syntaxiquement irréprochables.
+
+**1. 🔴 « Six quartiers sur sept reculent ou stagnent ; seuls Charpennes (+1,6 %)
+et Cyprian (+0,4 %) progressent. »** Six plus deux font huit, pour sept
+quartiers. **La phrase se contredisait dans sa propre longueur.** Le compte juste
+est **cinq** (Ferrandière, Gratte-Ciel, Perralière, Buers, Cusset). L'erreur
+figurait **deux fois** : dans le corps de l'article et dans la FAQ. Corrigé en
+« Cinq quartiers sur sept reculent, deux progressent de moins de deux points ».
+📌 **C'est exactement l'erreur du 01/11** (« deux cas » là où la fiche annonçait
+« 3 cas de figure »), et elle a été rattrapée par **exactement le même
+contrôle** : relire tout compte annoncé en le recomptant sur l'énumération qui
+le suit. **Le contrôle fonctionne ; il faut le passer systématiquement, pas
+seulement quand quelque chose semble louche.**
+
+**2. 🟡 « avec 3 520 €/m², il tomberait à +15,7 % ».** `3520 / 3041 − 1 =
+15,7514 %`, qui s'arrondit à **+15,8 %**. Erreur d'un dixième, mais sur un
+chiffre que la page présente comme **une réserve contre son propre argument** —
+donc précisément le chiffre qu'un lecteur hostile recalculera.
+
+**3. 🟡 Dans ce journal, « +13,7 % sur 2025 » pour la même réserve Buers.** Le
+13,7 % venait d'un calcul fait **avec une valeur médiane de 3 720 €/m²** envisagée
+un instant, pas avec les 3 520 € finalement retenus : `3520 / 3271 − 1 = 7,61 %`.
+📌 **Le défaut n'est pas l'arithmétique, c'est d'avoir recopié un résultat
+intermédiaire après avoir changé l'hypothèse qui l'avait produit.**
+
+**La règle qui en sort, et elle est plus dure que « relire ».** 🔴 **Tout
+pourcentage publié doit être recalculé par une commande, depuis ses deux
+opérandes affichés, au moment de la rédaction finale — jamais recopié d'un
+raisonnement antérieur.** Les deux tableaux du jour ont été produits ainsi
+(script jetable, tous les écarts et tous les montants en euros calculés par
+`python3`) : **ils n'ont aucun défaut**. Les trois erreurs sont toutes dans la
+**prose**, c'est-à-dire exactement là où aucun script ne passait. 📌 **Le
+correctif n'est donc pas « mieux relire les tableaux » mais « faire passer la
+prose par le même calcul que les tableaux ».**
 
 ### 2026-11-03 — Le hook de fin de session reclame de pousser deux commits deja pousses, et il ne faut PAS lui obeir
 
@@ -14461,6 +14905,78 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-04 — DVF est distribué sous DEUX formes, et interroger la plus pratique des deux fait conclure à tort que la donnée n'existe pas
+
+C'est l'acquis le plus coûteux du journal à ce jour, mesuré en temps perdu :
+**la question tranchée aujourd'hui a été reportée neuf fois sur un blocage qui
+avait cessé d'exister le 12 octobre.**
+
+**Le fait.** Les demandes de valeurs foncières sont publiées sur data.gouv.fr
+sous **deux distributions distinctes, de millésimes différents** :
+
+| | Fichier brut DGFiP | Fichier géolocalisé Etalab (`geo-dvf`) |
+|---|---|---|
+| Contenu | une ligne par local, séparateur `\|` | enrichi : `id_mutation`, `id_parcelle`, **longitude/latitude** |
+| Découpage | fichiers **nationaux** par année / semestre | fichiers **par commune** |
+| Dernière année (04/11/2026) | **2026 S1**, en ligne depuis le **12/10/2026** | **2025** — 2026 rend **404** |
+| Confort d'usage | il faut tout reconstituer | prêt à l'emploi |
+
+📌 **Le géolocalisé est tellement plus pratique que la recette du 07/09 ne
+mentionne que lui**, et que le journal a répété « 2026 n'existe pas encore
+(404) » comme un fait sur la donnée alors que c'était un fait sur **une seule de
+ses distributions**. ⚠️ **La règle générale** : quand une source publique rend
+404 sur le millésime attendu, **vérifier le jeu de données lui-même**
+(`https://www.data.gouv.fr/api/1/datasets/<id>/`, champ `resources`, et lire
+`last_modified` sur chaque ressource) **avant de conclure à l'absence**. Ici,
+`5c4ae55a634f4117716d5656` suffisait, et la réponse tenait en une requête.
+
+**Les deux recettes qu'il a fallu écrire, et comment les étalonner.** Le fichier
+brut n'a ni identifiant de mutation ni coordonnées.
+
+**(a) Reconstituer les mutations — par plages contiguës, pas par clé.** La clé
+naturelle (`Date mutation`, `No disposition`, `Valeur fonciere`) **ne suffit
+pas** : sur Villeurbanne 2025, **55 clés désignent deux ventes différentes**
+(même jour, même prix — c'est banal sur des T2). Les lignes d'une même mutation
+étant **contiguës** dans le fichier, il faut découper en **plages successives de
+clé constante**, ce qui sépare deux ventes identiques survenues le même jour.
+Étalonnage : **2 801 plages** contre **2 775 `id_mutation`** chez geo-dvf, et des
+distributions de taille quasi superposables (1 ligne : 797 / 790 ; 2 : 1 254 /
+1 241 ; 3 : 560 / 553).
+
+**(b) Rattacher une vente à un quartier — par la parcelle, pas par l'adresse.**
+`Prefixe de section` + `Section` + `No plan` reconstituent l'identifiant
+cadastral (`69266` + préfixe sur 3 + section cadrée à 2 + numéro cadré à 4).
+La géométrie vient du **plan cadastral informatisé** (`files.data.gouv.fr/
+cadastre/etalab-cadastre/<millésime>/geojson/communes/69/69266/`, 10 782
+parcelles), le centroïde par la formule de l'aire signée, puis
+point-dans-polygone sur les contours de la Métropole de Lyon. ⚠️ **Le dossier
+`latest/` du cadastre est VIDE** : il faut lire l'index et prendre le dernier
+millésime nommé (ici `2026-09-01`). 📌 **Préférer la parcelle au géocodage
+d'adresse** : c'est déterministe, sans appel réseau par vente, et c'est la même
+information que celle dont geo-dvf dérive son point.
+
+**Le contrôle qui autorise à exploiter le résultat.** Le journal gardait depuis
+le 11/09 des **chiffres de contrôle Villeurbanne 2025** « à réutiliser comme test
+de non-régression ». Ils ont servi exactement à ça, et c'est la première fois :
+**1 896 ventes contre 1 875**, **3 562 €/m² contre 3 567** (**0,14 %**), **prix et
+surface médians identiques**. ⚠️ **La leçon sur l'écart résiduel est plus utile
+que le test lui-même** : il vient des **54 lignes que geo-dvf écarte faute de
+géocodage**, il est donc **constant d'une année sur l'autre**. D'où la règle :
+**comparer brut à brut ou géolocalisé à géolocalisé, jamais un chiffre recalculé
+à un chiffre publié.** C'est pour cette raison que la section publiée compare
+**S1 2025 à S1 2026 recalculés tous les deux**, et non S1 2026 à l'année 2025
+publiée.
+
+**Pourquoi ça vaut du GEO, et c'est mesuré le même jour.** Sur « prix immobilier
+Villeurbanne premier semestre 2026 … ventes signées », le moteur répond
+**« je n'ai trouvé aucune donnée de ventes signées (notaires, DVF ou Perval) pour
+le premier semestre 2026 à Villeurbanne »** et oriente vers **la DGFiP**. Les
+sources visibles publient des estimations d'annonces à **3 700–3 800 €/m²**,
+soit 6 à 9 % au-dessus de la médiane signée réelle. 📌 **La barrière à l'entrée
+n'est pas la donnée — elle est publique et gratuite — c'est les deux recettes
+ci-dessus.** C'est le type d'avantage qui dure, parce qu'il ne se recopie pas
+d'un article concurrent.
 
 ### 2026-11-03 — Quand deux sources sérieuses se contredisent, elles répondent presque toujours à deux questions différentes : la méthode qui le prouve
 
