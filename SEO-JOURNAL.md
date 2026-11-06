@@ -4728,6 +4728,20 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-06 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h29
+
+- **Déclenchement en double** : la correction de `/blog/prix-immobilier-villeurbanne-2026`
+  (`3ec914b` + `68fb7d0`) est poussée depuis ~12 min. Un chantier par jour → **rien
+  publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap de production = **58 URL**, toutes avec
+  une route dans `app/` ou un slug du code → **aucune page de l'éditeur**. `lastmod` de
+  `/` toujours `2026-10-30T08:53:20.821Z`, `<title>` = `DEFAULT_TITLE` → **Tony n'a rien
+  republié**. Seuls `lastmod` du 06/11 : les deux URL du run de ce matin. Aucun commit
+  tiers depuis `68fb7d0`. **Pas d'email.**
+- **Santé production** : `/`, `/blog/prix-immobilier-villeurbanne-2026`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-06 (vendredi) — Notre page de référence sur les prix affirmait encore que « la baisse s'est arrêtée », deux jours après que nous ayons mesuré le contraire
 
 #### Les mesures du jour, avant toute décision
