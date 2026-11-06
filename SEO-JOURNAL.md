@@ -4967,6 +4967,23 @@ porté au 2026-11-06 pour cette page, le contenu ayant réellement changé.
 - ✅ **Sitemap : 58 URL, inchangé** — aucune page neuve, donc aucune dérive de
   `/llms.txt` à corriger à la main.
 
+#### Vérifié APRÈS le push, sur la production
+
+- ✅ **`/blog/prix-immobilier-villeurbanne-2026` : 138 642 → 171 377 o.**
+  **7 `<h2>`** servis, le nouveau en 2ᵉ position ; « **Mis à jour le 6 novembre
+  2026** » visible ; `dateModified` **2026-11-06** ; **parité FAQ visible ↔
+  JSON-LD 7/7** sur le HTML de production ; **« la baisse s'est arrêtée » :
+  0 occurrence.**
+- ✅ **`/agence-immobiliere-gratte-ciel` : « la baisse est derrière nous » :
+  0 occurrence**, nouveau passage servi.
+- ✅ **Sitemap : 58 URL, inchangé.** `lastmod` **2026-11-06** sur les **deux**
+  pages modifiées, et sur elles seules.
+- ✅ **`/llms.txt` : 39 115 → 39 198 o, mis à jour SEUL** via `a.excerpt` — il
+  sert désormais « 3 500 €/m² sur les 940 ventes du premier semestre 2026
+  (−1,4 %) ». **Aucune retouche manuelle, conformément à la règle du 02/11.**
+- ⏱ **Ancienne version servie ~75 s** après le push (4 relevés à 15 s puis
+  bascule). Cohérent avec les ~50 s du 04/11.
+
 #### Ce que j'ai appris
 
 Voir « Techniques apprises » (reproductibilité de la recette DVF brute, et le
