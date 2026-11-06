@@ -41,7 +41,7 @@ export const PAGE_LASTMOD: Record<string, string> = {
   "/estimation-immobiliere-lyon": "2026-09-08",
   "/estimation-immobiliere-villeurbanne": "2026-09-12",
   "/agence-immobiliere-villeurbanne": "2026-10-04",
-  "/agence-immobiliere-gratte-ciel": "2026-10-08",
+  "/agence-immobiliere-gratte-ciel": "2026-11-06",
   "/agence-immobiliere-charpennes": "2026-10-04",
   "/agence-immobiliere-cusset": "2026-10-08",
   "/annonces": "2026-08-27",

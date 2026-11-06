@@ -67,7 +67,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Les prix ont-ils baissé à Gratte-Ciel ?",
-    a: `Oui, mais la baisse est derrière nous. Le quartier est à ${fmtPct(Q.vs2022)} par rapport à 2022, ce qui est proche de la baisse observée sur toute la commune (${fmtPct(COMMUNE.vs2022)}). En revanche, sur la dernière année mesurée, la médiane est repartie à ${fmtPct(Q.vs1an)} — le marché s'est stabilisé plutôt qu'il ne continue de reculer.`,
+    a: `Oui. Le quartier est à ${fmtPct(Q.vs2022)} par rapport à 2022, ce qui est proche de la baisse observée sur toute la commune (${fmtPct(COMMUNE.vs2022)}). Sur la dernière année complète mesurée, la médiane est repartie à ${fmtPct(Q.vs1an)}. Cette stabilisation n'est toutefois pas confirmée sur le début de 2026 : sur le premier semestre 2026, la médiane des appartements signés à Villeurbanne recule de 1,4 % par rapport au premier semestre 2025 (3 500 contre 3 551 €/m², fichier brut des valeurs foncières de la DGFiP publié le 12 octobre 2026). Un semestre ne fait pas une tendance, mais nous préférons le dire que de l'omettre.`,
   },
   {
     q: "Le projet d'extension des Gratte-Ciel fait-il monter les prix ?",

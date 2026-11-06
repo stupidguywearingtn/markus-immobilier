@@ -485,14 +485,14 @@ export const ARTICLES: Article[] = [
   {
     slug: "prix-immobilier-villeurbanne-2026",
     title:
-      "Prix au m² à Villeurbanne : les chiffres réels par quartier (ventes 2025)",
+      "Prix au m² à Villeurbanne : les chiffres réels par quartier (2025-2026)",
     metaDescription:
-      "Prix au m² à Villeurbanne calculés sur 1 875 ventes réelles de 2025 (données DVF) : médiane par quartier, évolution depuis 2022, prix par type de bien.",
+      "Prix au m² à Villeurbanne calculés sur les ventes réelles (DVF) : 3 567 €/m² en 2025, 3 500 €/m² au 1er semestre 2026, médiane par quartier et par type.",
     h1: "Prix au m² à Villeurbanne : les chiffres réels, quartier par quartier",
     excerpt:
-      "Nous avons recalculé les prix de Villeurbanne à partir des 1 875 ventes d'appartements réellement signées en 2025 (données DVF) : 3 567 €/m² en médiane, et jusqu'à 43 % d'écart entre quartiers.",
+      "Nous avons recalculé les prix de Villeurbanne à partir des ventes d'appartements réellement signées (données DVF) : 3 567 €/m² en médiane sur les 1 875 ventes de 2025, jusqu'à 43 % d'écart entre quartiers, et 3 500 €/m² sur les 940 ventes du premier semestre 2026 (−1,4 %).",
     date: "2026-04-14",
-    updated: "2026-09-07",
+    updated: "2026-11-06",
     internalHref: "/estimation",
     internalLabel: "Estimer gratuitement mon bien à Villeurbanne",
     blocks: [
@@ -501,7 +501,7 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Quel est le prix au m² à Villeurbanne en 2026 ?" },
       { type: "p", text: "Le prix médian est de **3 567 €/m² pour un appartement** et **4 186 €/m² pour une maison**, sur les ventes de l'année 2025 (dernière année complète publiée). Le prix médian d'un appartement vendu à Villeurbanne s'établit à **195 000 €**, pour une surface médiane de 62 m²." },
-      { type: "p", text: "Après trois années de baisse, le marché s'est stabilisé : la médiane appartement remonte de **+1,5 % entre 2024 et 2025**, mais reste **10,4 % en dessous de son niveau de 2022**. Autrement dit, le point bas semble passé, sans rattrapage du recul des années précédentes." },
+      { type: "p", text: "Après trois années de baisse, le marché s'est stabilisé **sur l'année 2025** : la médiane appartement remonte de **+1,5 % entre 2024 et 2025**, mais reste **10,4 % en dessous de son niveau de 2022**. Cette stabilisation n'est pas confirmée par le premier semestre 2026, qui recule de 1,4 % : nous le mesurons dans la section suivante." },
       {
         type: "table",
         caption: "Villeurbanne — appartements anciens, prix de vente signés",
@@ -515,6 +515,30 @@ export const ARTICLES: Article[] = [
         source:
           "Source : base DVF (demandes de valeurs foncières), data.gouv.fr / Etalab — extraction du 7 septembre 2026. Calcul Markus Immobilier.",
       },
+
+      { type: "h2", text: "Les prix baissent-ils encore à Villeurbanne en 2026 ?" },
+      { type: "p", text: "Oui, légèrement. Sur le **premier semestre 2026**, la médiane des appartements vendus à Villeurbanne s'établit à **3 500 €/m²**, contre **3 551 €/m²** sur le premier semestre 2025 : un recul de **1,4 %**, à méthode et périmètre identiques. La stabilisation de l'année 2025 n'est donc pas confirmée sur le début de 2026 — sans que l'on retrouve pour autant le rythme de baisse de 2023 et 2024, qui se comptait en points et non en décimales." },
+      { type: "p", text: "Le volume, lui, continue de progresser : **940 ventes d'appartements exploitables** sur le semestre contre **898** un an plus tôt, soit **+4,7 %**. Le prix médian passe de 190 600 à **187 900 €**, et la surface médiane de 62 à **59 m²**. Au premier semestre 2026, on a donc acheté à Villeurbanne un peu plus souvent, un peu plus petit, et un peu moins cher au mètre carré." },
+      {
+        type: "table",
+        caption:
+          "Appartements vendus à Villeurbanne : premier semestre 2025 contre premier semestre 2026",
+        headers: ["Type", "€/m² S1 2025", "€/m² S1 2026", "Évolution", "Ventes S1 2026"],
+        rows: [
+          ["Studio / T1", "3 944 €", "3 975 €", "+0,8 %", "161"],
+          ["T2", "3 784 €", "3 731 €", "−1,4 %", "247"],
+          ["T3", "3 463 €", "3 434 €", "−0,8 %", "294"],
+          ["T4", "3 132 €", "3 125 €", "−0,2 %", "177"],
+          ["T5 et +", "3 041 €", "3 155 €", "+3,7 %", "61"],
+          ["**Tous appartements**", "**3 551 €**", "**3 500 €**", "**−1,4 %**", "**940**"],
+        ],
+        source:
+          "Source : fichier brut des valeurs foncières de la DGFiP, ressource « Valeurs foncières 2026 - Premier semestre » publiée le 12 octobre 2026 sur data.gouv.fr, comparée au même semestre du fichier 2025. Mutations reconstituées puis filtrées selon la méthode décrite plus bas ; calcul Markus Immobilier, extraction du 6 novembre 2026. Le fichier géolocalisé d'Etalab, plus répandu, s'arrête encore à l'année 2025.",
+      },
+      { type: "p", text: "Deux enseignements se dégagent de ce tableau. D'abord, **le recul se concentre sur les T2 et les T3**, c'est-à-dire sur les deux typologies les plus échangées de la commune (541 des 940 ventes du semestre) : −1,4 % et −0,8 % au mètre carré, −2,1 % et −1,7 % sur le prix de vente médian. Les studios tiennent (+0,8 %) et les grands appartements remontent (+3,7 %), mais sur 61 ventes seulement pour les T5 et plus." },
+      { type: "p", text: "Ensuite, **la composition des ventes s'est déplacée vers les petites surfaces** : studios et T2 représentent 43,4 % des ventes du semestre contre 39,5 % un an plus tôt. Or ce sont les biens les plus chers au mètre carré. La médiane communale recule donc malgré un déplacement qui la pousse mécaniquement vers le haut : le mouvement n'est pas un effet d'optique de typologie." },
+      { type: "p", text: "Trois réserves, qui comptent autant que les chiffres. **Un semestre ne fait pas une tendance** : les médianes de référence de ce site restent celles de l'année 2025 close, et les prix par quartier publiés ci-dessous n'ont pas été remplacés. **Les médianes par type reposent sur 61 à 294 ventes** — celle des T5 et plus est la plus mince, donc la plus instable d'un semestre à l'autre. Enfin, **ce relevé n'est pas comparable ligne à ligne avec le tableau annuel ci-dessus** : il est recalculé depuis le fichier brut de la DGFiP, qui conserve les ventes que le fichier géolocalisé écarte faute d'adresse exploitable. Sur l'année 2025, les deux chemins donnent 1 896 ventes contre 1 875, et 3 562 contre 3 567 €/m², soit 0,14 % d'écart sur la médiane communale." },
+      { type: "p", text: "L'évolution du même semestre **quartier par quartier**, et sa confrontation aux prix affichés par les sites d'estimation en ligne, sont publiées à part : [le détail du premier semestre 2026 par quartier](/blog/investir-locatif-lyon)." },
 
       { type: "h2", text: "Quel est le prix au m² par quartier à Villeurbanne ?" },
       { type: "p", text: "Les trois quartiers les plus chers sont **Ferrandière – Maisons-Neuves (3 923 €/m²)**, **Gratte-Ciel – Dedieu – Charmettes (3 846 €/m²)** et **Charpennes – Tonkin (3 524 €/m²)**. Le plus abordable est **Cyprian – Les Brosses, à 2 738 €/m²**. Chaque valeur ci-dessous est la médiane des ventes d'appartements de 2025 dans le périmètre officiel du quartier." },
@@ -554,6 +578,7 @@ export const ARTICLES: Article[] = [
         source:
           "Source : base DVF 2025 (data.gouv.fr / Etalab), ventes d'appartements à Villeurbanne. Calcul Markus Immobilier, extraction du 7 septembre 2026.",
       },
+      { type: "p", text: "Ce tableau porte sur l'**année 2025 complète**, la référence la plus robuste dont nous disposons. Les mêmes médianes recalculées sur le **premier semestre 2026** figurent plus haut : elles sont plus récentes, mais établies sur deux fois moins de ventes." },
 
       { type: "h2", text: "Comment ces prix ont-ils été calculés ?" },
       { type: "p", text: "Nous partons de la base **DVF (demandes de valeurs foncières)** publiée par l'État sur data.gouv.fr, qui recense chaque mutation immobilière enregistrée par les notaires, avec son prix réel et sa localisation. Nous ne retenons que les ventes exploitables, puis nous rattachons chaque vente à son quartier par ses coordonnées GPS." },
@@ -565,7 +590,7 @@ export const ARTICLES: Article[] = [
         "**Rattachement au quartier** par point-dans-polygone, à partir des contours officiels de quartiers publiés par la Métropole de Lyon.",
         "**Médiane et non moyenne** : la médiane n'est pas tirée vers le haut par quelques ventes exceptionnelles.",
       ] },
-      { type: "p", text: "Deux limites à connaître. D'abord, **DVF est publiée avec du décalage** : 2025 est la dernière année complète disponible en septembre 2026. Ensuite, la base ne dit rien de l'état du bien, de l'étage, de l'exposition ni du DPE — trois facteurs qui expliquent l'essentiel des écarts à l'intérieur d'un même quartier." },
+      { type: "p", text: "Deux limites à connaître. D'abord, **DVF est publiée avec du décalage** : 2025 reste la dernière **année complète** publiée, et les ventes du premier semestre 2026 ne sont disponibles que depuis le 12 octobre 2026 — celles du second semestre ne le seront pas avant 2027. Ensuite, la base ne dit rien de l'état du bien, de l'étage, de l'exposition ni du DPE — trois facteurs qui expliquent l'essentiel des écarts à l'intérieur d'un même quartier." },
 
       { type: "h2", text: "Pourquoi un prix de quartier ne suffit pas à estimer votre bien" },
       { type: "p", text: "Parce que l'écart à l'intérieur d'un quartier est presque toujours plus grand que l'écart entre quartiers. Deux appartements de même surface dans la même rue peuvent afficher 15 à 20 % de différence selon l'étage, la présence d'un ascenseur, l'exposition, l'état et le DPE. Un prix médian de quartier vous donne un ordre de grandeur, pas une valeur." },
@@ -580,15 +605,15 @@ export const ARTICLES: Article[] = [
       ] },
 
       { type: "h2", text: "Ce que ces chiffres changent si vous vendez en 2026" },
-      { type: "p", text: "La stabilisation observée en 2025 signifie qu'un bien correctement positionné se vend — mais que le marché ne rattrape plus les erreurs de prix. Un bien affiché 10 % au-dessus de sa valeur ne trouvera pas d'acheteur en attendant que le marché monte : il stagnera, puis se vendra en dessous de son prix réel après plusieurs baisses successives." },
-      { type: "p", text: "Le nombre de ventes est reparti à la hausse en 2025 (1 875 contre 1 648 en 2024, soit **+14 %**) : il y a des acheteurs. Ils comparent simplement beaucoup mieux qu'en 2021." },
+      { type: "p", text: "Un marché stable en 2025 puis en léger recul au premier semestre 2026 signifie qu'un bien correctement positionné se vend — mais que le marché ne rattrape plus les erreurs de prix. Un bien affiché 10 % au-dessus de sa valeur ne trouvera pas d'acheteur en attendant que le marché monte : il stagnera, puis se vendra en dessous de son prix réel après plusieurs baisses successives." },
+      { type: "p", text: "Le nombre de ventes est reparti à la hausse en 2025 (1 875 contre 1 648 en 2024, soit **+14 %**), et il a encore progressé de **4,7 %** au premier semestre 2026 : il y a des acheteurs. Ils comparent simplement beaucoup mieux qu'en 2021." },
       { type: "p", text: "Notre estimation en ligne applique la même méthode que cet article, mais à l'échelle de votre rue : elle croise les ventes DVF réellement conclues autour de votre adresse avec les caractéristiques précises de votre logement. Comptez moins de deux minutes, et vous recevez le rapport détaillé." },
       { type: "p", text: "Une précision utile avant de vous lancer : une médiane de quartier ne suffit jamais à elle seule à fixer un prix. Nous avons mesuré [de combien un prix au m² peut se tromper à Villeurbanne](/blog/estimation-en-ligne-ou-agence) — l'écart est plus large qu'on ne le croit, et il varie fortement d'un quartier à l'autre." },
     ],
     faq: [
       {
         q: "Quel est le prix au m² à Villeurbanne en 2026 ?",
-        a: "Le prix médian d'un appartement à Villeurbanne est de 3 567 €/m², calculé sur les 1 875 ventes signées en 2025 (base DVF, dernière année complète publiée). Pour une maison, la médiane est de 4 186 €/m².",
+        a: "Sur le premier semestre 2026, dernière période publiée, la médiane des appartements vendus à Villeurbanne est de 3 500 €/m², calculée sur 940 ventes (fichier brut des valeurs foncières de la DGFiP, publié le 12 octobre 2026). Sur l'année 2025, dernière année complète, elle était de 3 567 €/m² sur 1 875 ventes. Pour une maison, la médiane 2025 est de 4 186 €/m².",
       },
       {
         q: "Quel est le quartier le plus cher de Villeurbanne ?",
@@ -596,11 +621,19 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Les prix de l'immobilier baissent-ils encore à Villeurbanne ?",
-        a: "Non, la baisse s'est arrêtée. Le prix médian au m² des appartements remonte de 1,5 % entre 2024 et 2025. Il reste toutefois 10,4 % en dessous du niveau de 2022, et la reprise est inégale : Ferrandière – Maisons-Neuves est presque revenu à son niveau de 2022, quand Charpennes – Tonkin reste 13,2 % en dessous.",
+        a: "Légèrement, oui. Après une remontée de 1,5 % entre 2024 et 2025, la médiane au m² des appartements recule de 1,4 % entre le premier semestre 2025 (3 551 €/m²) et le premier semestre 2026 (3 500 €/m²), à méthode identique. Le recul porte surtout sur les T2 (−1,4 %) et les T3 (−0,8 %) ; les studios (+0,8 %) et les grands appartements résistent. Le niveau reste 10,4 % en dessous de 2022, et la situation est inégale selon les quartiers : Ferrandière – Maisons-Neuves est presque revenu à son niveau de 2022, quand Charpennes – Tonkin reste 13,2 % en dessous. Un semestre ne fait toutefois pas une tendance.",
       },
       {
         q: "Combien coûte un T3 à Villeurbanne ?",
-        a: "Un T3 s'est vendu 226 250 € en médiane à Villeurbanne en 2025, pour une surface médiane de 65 m², soit 3 494 €/m². 578 T3 ont été vendus dans la commune cette année-là.",
+        a: "Un T3 s'est vendu 226 250 € en médiane à Villeurbanne en 2025, pour une surface médiane de 65 m², soit 3 494 €/m². 578 T3 ont été vendus dans la commune cette année-là. Sur le premier semestre 2026, relevé recalculé depuis le fichier brut de la DGFiP, la médiane est de 222 550 € pour 64 m², soit 3 434 €/m², sur 294 ventes.",
+      },
+      {
+        q: "Combien coûte un T2 à Villeurbanne en 2026 ?",
+        a: "165 000 € en médiane sur le premier semestre 2026, pour une surface médiane de 46 m², soit 3 731 €/m². C'est la typologie la plus échangée après le T3 : 247 ventes sur le semestre, contre 210 sur le premier semestre 2025, où la médiane était de 168 500 € et 3 784 €/m².",
+      },
+      {
+        q: "Combien d'appartements se sont vendus à Villeurbanne au premier semestre 2026 ?",
+        a: "940 ventes d'appartements exploitables, contre 898 sur le premier semestre 2025, soit +4,7 %. Le prix médian est de 187 900 € pour une surface médiane de 59 m². Source : fichier brut des valeurs foncières de la DGFiP publié le 12 octobre 2026, calcul Markus Immobilier.",
       },
       {
         q: "D'où viennent ces prix au m² ?",
