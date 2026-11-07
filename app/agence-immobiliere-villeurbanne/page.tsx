@@ -203,7 +203,11 @@ export default function AgenceVilleurbannePage() {
             body: (
               <p className="mb-3">
                 Une agence prend en charge la chaîne complète : fixer le prix,
-                constituer le dossier de diagnostics, présenter le bien, filtrer
+                constituer le{" "}
+                <Link href="/blog/diagnostics-obligatoires-vente" className={A}>
+                  dossier de diagnostics obligatoires
+                </Link>
+                , présenter le bien, filtrer
                 et accompagner les visites, négocier, puis suivre le compromis
                 jusqu&apos;à l&apos;acte notarié. Chez Markus Immobilier, tout
                 commence par une{" "}
@@ -240,7 +244,13 @@ export default function AgenceVilleurbannePage() {
                   <Link href="/honoraires" className={A}>
                     barème public
                   </Link>
-                  , identiques pour tous les mandants. Le détail de ce que
+                  , identiques pour tous les mandants : ces 6 % sont le bas de
+                  la fourchette de <strong>6 à 8 % TTC</strong> que facturent
+                  les agences, chiffrée dans notre analyse du{" "}
+                  <Link href="/blog/cout-gestion-locative" className={A}>
+                    coût réel d&apos;une gestion locative
+                  </Link>
+                  . Le détail de ce que
                   couvre la gestion est sur la page{" "}
                   <Link href="/gestion-locative" className={A}>
                     gestion locative

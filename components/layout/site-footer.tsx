@@ -5,6 +5,7 @@ const SERVICES = [
   { href: "/vendre", label: "Vendre" },
   { href: "/acheter", label: "Acheter" },
   { href: "/gestion-locative", label: "Gestion locative" },
+  { href: "/faire-gerer", label: "Faire gérer mon bien" },
   { href: "/estimation", label: "Estimation" },
   { href: "/estimation-immobiliere-villeurbanne", label: "Estimation à Villeurbanne" },
   { href: "/estimation-immobiliere-lyon", label: "Estimation à Lyon" },

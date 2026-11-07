@@ -221,6 +221,19 @@ export default function EstimationPage() {
                 </Link>
                 .
               </p>
+              <p>
+                Pour refaire ce travail vous-même, étape par étape, et connaître
+                les quatre limites que la base DVF documente elle-même — sa date
+                d&apos;arrêt, son prix net vendeur, sa surface et l&apos;étage
+                absent —, notre guide{" "}
+                <Link
+                  href="/blog/comment-estimer-son-bien-immobilier-lyon-villeurbanne"
+                  className={LNK}
+                >
+                  comment estimer son bien immobilier soi-même
+                </Link>{" "}
+                détaille la méthode et ce qu&apos;elle ne peut pas voir.
+              </p>
             </div>
           </Reveal>
         </div>

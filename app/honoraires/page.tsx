@@ -394,6 +394,27 @@ export default function HonorairesPage() {
                 </Link>
                 .
               </p>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#3d4347]">
+                Deux comparaisons que ce barème ne donne pas, et qui décident
+                souvent. En vente, se passer d&apos;une agence économise{" "}
+                <strong>11 700 €</strong>{" "}
+                d&apos;honoraires au prix médian
+                villeurbannais de 195 000 €, mais fait porter seul une erreur de
+                prix que nous chiffrons à <strong>30 225 €</strong>{" "}
+                quand
+                l&apos;estimation est faite sur les seules données publiques :
+                les deux montants sont calculés, quartier par quartier, dans{" "}
+                <Link href="/blog/vendre-sans-agence" className={A}>
+                  vendre sans agence à Villeurbanne
+                </Link>
+                . En gestion, les 6 % ci-dessus sont le bas de la fourchette de{" "}
+                <strong>6 à 8 % TTC</strong> que facturent les agences, et ce
+                que ce pourcentage couvre — ou ne couvre pas — est détaillé dans{" "}
+                <Link href="/blog/cout-gestion-locative" className={A}>
+                  ce que coûte vraiment une gestion locative
+                </Link>
+                .
+              </p>
 
               <FaqBlock items={FAQ} />
 
