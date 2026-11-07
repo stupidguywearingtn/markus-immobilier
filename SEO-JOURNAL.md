@@ -14,6 +14,101 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-07 (samedi)**
+
+- ✅ **LE RUN A EU LIEU — LE MANQUE DU 05/11 ÉTAIT BIEN UN INCIDENT ISOLÉ.**
+  C'était le point n°4 des hypothèses du 06/11 : « si un deuxième run manque,
+  ce n'est plus l'infrastructure, c'est la tâche planifiée ». **Deuxième run
+  consécutif présent** (06/11 puis 07/11) : **la tâche n'est pas cassée**, rien
+  à remonter à Tony. ⚠️ Garder l'œil : un seul manque sur 71 jours.
+- ✅ **AUCUN RETARD RÉEL DE `main`, CINQUIÈME APPLICATION DE LA CORRECTION DU
+  02/11 — ET LE RELEVÉ EST PLUS NET QUE LES PRÉCÉDENTS.** `HEAD` de départ =
+  **`f08895e`**, ref de suivi local `origin/main` = **`768ada6`** (figé depuis
+  le 01/11). `git ls-remote origin refs/heads/main` donne **`f08895e`** :
+  **aucun retard**, le conteneur démarre exactement sur le vrai `main`.
+  📌 **Fait neuf, à retenir** : `git ls-remote origin refs/heads/<branche du
+  conteneur>` ne rend **RIEN**. La branche `claude/dazzling-feynman-*` sur
+  laquelle le conteneur démarre **n'existe pas sur le dépôt distant** — seul le
+  ref de suivi local la montre. Le push se fait donc en `git push origin
+  HEAD:main`, ce qui est aussi ce que demande la consigne de la tâche
+  (« commit direct sur main ») et ce que font tous les runs précédents.
+- ⚠️ **Conteneur démarré sur la branche `claude/dazzling-feynman-pvgec3`**, pas
+  sur `main`, à la révision du vrai `main`. **Septième constat consécutif**, nom
+  différent chaque fois. Comportement normal.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-deuxième constat identique** (21/09 → 07/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-cinquième confirmation.**
+- 🆕 **LE CLIENT A TOUCHÉ AU SITE LE 06/11, ET NOUS NE POUVIONS PAS LE VOIR
+  AVANT DE POUSSER — PREMIÈRE OCCURRENCE CONSIGNÉE.** Relevé **avant** le
+  push : sitemap **58 URL**, `lastmod` de `/` =
+  **`2026-10-30T08:53:20.821Z`**, identique aux six relevés précédents, d'où la
+  conclusion habituelle « aucun changement du client ». Relevé **après** le
+  push, sur le même sitemap de production : **trois `lastmod` ont bougé**, et
+  aucune URL n'a été ajoutée ni retirée (58 avant comme après, 7 annonces) :
+
+  | URL | avant | après |
+  |---|---|---|
+  | `/annonces/appartement-t3-bis-86m-grand-balcon` | `2026-09-15` | **`2026-11-06`** |
+  | `/annonces` | `2026-10-30` | **`2026-11-06`** |
+  | `/` | `2026-10-30T08:53:20.821Z` | **`2026-11-06`** |
+
+  📌 **Ce n'est pas notre push qui a modifié ces dates, c'est lui qui les a
+  RÉVÉLÉES.** `app/sitemap.ts` est rendu **au build** (`○ /sitemap.xml`), et
+  les trois dates sont dérivées de la base : la date de l'annonce la plus
+  récente remonte à `/annonces` et à `/` (ensemble `LISTING_DRIVEN`). Tony a
+  donc republié l'annonce T3 BIS **le 06/11, après le build du run de ce
+  jour-là**, et le sitemap servi a continué d'annoncer les anciennes dates
+  jusqu'à ce que le nôtre reconstruise.
+  ⚠️ **CONSÉQUENCE DE MÉTHODE, À APPLIQUER DÈS DEMAIN** : le `lastmod` du
+  sitemap de production **ne mesure pas l'activité du client**, il mesure la
+  date du dernier build. Un run sans push ne peut PAS conclure « aucun
+  changement du client » à partir de lui — et les six relevés « identiques »
+  du 31/10 au 06/11 ne prouvaient rien d'autre que l'absence de rebuild entre
+  deux de nos propres pushes.
+  📌 **Contenu de l'annonce inchangé** : même `<h1>` (« Appartement T3 BIS -
+  86m² - Grand balcon »), même prix (**429 000 €**, 3 016 €/m²). L'écart de
+  taille servie (180 222 → 180 632 o) est le lien de footer ajouté aujourd'hui.
+  **Rien à corriger, rien à remonter** : une annonce resauvegardée au
+  back-office est une opération normale.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  NEUVIÈME JOUR.** `Qui sommes` **0**, `7 ans` **0**, `40 M` **0** sur les
+  289 888 o servis. **Non corrigé, et c'est volontaire** (page de Tony, règle
+  des 90 jours). ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE.** `discord.gg/fSyn28G5U` →
+  `{"message": "Unknown Invite", "code": 10006}`, témoin `discord-developers`
+  → objet `guild` complet. ⚠️ **NON renotifié**, même raison.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée**
+  (02/11 non-contenu → 03/11 contenu → 04/11 non-contenu → 06/11 contenu →
+  **07/11 non-contenu**), **et c'est le candidat n°1 du backlog qui a été
+  consommé**, ouvert depuis le 02/11.
+- 🔴 **LE FAIT NEUF DU RUN, ET IL CORRIGE UNE AFFIRMATION DE CE JOURNAL :
+  `/faire-gerer` N'EST DANS AUCUNE NAVIGATION GLOBALE.** Graphe reconstruit
+  depuis les **58 pages servies** : elle ne recevait que **7 pages entrantes**
+  quand toutes ses pages sœurs en reçoivent **57**. L'entrée du 02/11 écrivait
+  « Page (toutes dans la navigation de tout le site) » au-dessus d'un tableau
+  qui la contenait : **c'était faux**. Ni le header (5 liens) ni le footer
+  (11 liens) ne la portaient. **Corrigé : 7 → 58.**
+- 🔴 **SECOND DÉFAUT MESURÉ, ET IL NE SE VOIT QUE DANS LE RENDU : 15 MOTS
+  COLLÉS SERVIS EN PRODUCTION** sur 5 pages (« frais de notaire**ne** sont
+  pas », « garantie Visale**d'**Action Logement », « après deux mois**sans**
+  réponse »). **Cause identifiée** : SWC supprime l'espace de tête d'un nœud de
+  texte JSX multiligne **quand ce nœud contient une entité HTML** (`&apos;`).
+  **Les 15 corrigés, 0 restant sur les 92 pages du build.**
+- 🟡 **« PRIX M2 VILLEURBANNE » REMESURÉE, ÉCHÉANCE DU 07/11 TENUE** : **site
+  absent** (9ᵉ relevé). Aucune agence villeurbannaise dans les résultats : la
+  SERP est tenue par les plateformes nationales (efficity, orpi, realadvisor,
+  squarehabitat, solvimo) et par `blog.qoridor.fr`.
+- 🆕 **UNE SERP NEUVE MESURÉE, ET LA PLACE EST VIDE** : sur « honoraires agence
+  immobilière Villeurbanne pourcentage frais de vente », le moteur écrit
+  **« je n'ai trouvé aucun barème publié pour la vente à Villeurbanne »** et
+  **« les sites d'agences locales ne publient pas de taux de vente »**. Or
+  `/honoraires` publie le barème complet depuis des mois. **Point zéro posé,
+  première remesure le 21/11.**
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  07/11, prouvé avant et après les deux commits du jour. **Aucune erreur neuve.**
+
 **Au 2026-11-06 (vendredi)**
 
 - 🔴 **LE RUN DU 05/11 N'A PAS EU LIEU — PREMIÈRE OCCURRENCE CONSIGNÉE D'UN RUN
@@ -4728,6 +4823,208 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-07 (samedi) — `/faire-gerer` n'était dans aucune navigation globale, et 15 mots collés étaient servis en production par une règle de SWC qui ne se voit pas dans le code
+
+**Angle : NON-CONTENU.** Candidat n°1 du backlog, inscrit le **02/11**,
+reporté quatre fois. L'alternance est respectée (06/11 contenu → 07/11
+non-contenu).
+
+#### Ce qui a été mesuré avant d'agir
+
+**Les SERP d'abord, parce que c'est la seule vraie métrique.**
+
+| Requête | Relevé | Résultat | Prochaine |
+|---|---|---|---|
+| « prix m2 Villeurbanne » | 9ᵉ, échéance du 07/11 tenue | **site absent** | 14/11 |
+| « honoraires agence immobilière Villeurbanne pourcentage frais de vente » | **point zéro, requête neuve** | **site absent** | 21/11 |
+
+📌 **La seconde est une place GEO vide, et elle est documentée par le moteur
+lui-même.** Il écrit : « **je n'ai trouvé aucun barème publié pour la vente à
+Villeurbanne** » et « **les sites d'agences locales ne publient pas de taux de
+vente dans les résultats** ». Le seul barème villeurbannais qu'il trouve est
+celui d'Orpi Cetrim, **et il porte sur la gestion locative, pas sur la vente**.
+Or `/honoraires` publie le barème de transaction complet, ligne par ligne,
+depuis des mois, avec un `OfferCatalog` balisé construit sur les mêmes
+constantes que les tableaux visibles. **Le contenu existe et n'est pas vu.**
+⚠️ **Ce n'est donc PAS un chantier de rédaction** : c'est un signal que la page
+est mal reliée, ce qui est exactement le chantier du jour. Sur
+« prix m2 Villeurbanne », aucune agence villeurbannaise ne sort non plus : la
+SERP est tenue par les plateformes nationales et par `blog.qoridor.fr`.
+
+**Puis le graphe de liens internes, reconstruit depuis les 58 pages servies**
+(méthode du 02/11 : HTML **rendu**, pas le code ; 6 894 255 o téléchargés).
+Deux lectures, et la première n'était pas celle que le backlog annonçait.
+
+*Côté réception.* Le site a **deux régimes et non un** : 16 pages reçoivent
+**57 liens entrants** (elles sont dans le header ou le footer), toutes les
+autres en reçoivent **moins de 10**. Et une page de service se trouve du
+mauvais côté de cette frontière :
+
+| Page | Pages entrantes | Dans le header ? | Dans le footer ? |
+|---|---|---|---|
+| `/vendre`, `/acheter`, `/gestion-locative`, `/estimation`, `/honoraires`, `/agence-immobiliere-villeurbanne`… | **57** | — | **oui** |
+| **`/faire-gerer`** | **7** | non | **NON** |
+| `/agence-immobiliere-gratte-ciel` | 8 | non | non |
+| `/agence-immobiliere-charpennes` | 8 | non | non |
+| `/agence-immobiliere-cusset` | 7 | non | non |
+| `/annonces` | 9 | non | non |
+
+🔴 **L'entrée du 02/11 de ce journal affirmait le contraire**, noir sur blanc :
+son tableau était titré « Page (**toutes dans la navigation de tout le site**) »
+et il contenait `/faire-gerer`. C'était faux. Le header porte 5 liens (`/`,
+`/blog`, `/contact`, `/espace-client`, `/recrutement`) et le footer 11 ;
+`/faire-gerer` n'est dans ni l'un ni l'autre. Ses 7 entrants venaient de
+l'accueil, de trois pages de quartier, de `/gestion-locative`, de `/honoraires`
+et de deux articles.
+
+*Côté émission*, le trou du backlog est confirmé et un quatrième cas apparaît :
+
+| Page | Liens internes | dont vers un article |
+|---|---|---|
+| `/vendre` | 30 | **10** |
+| `/acheter` | 30 | **9** |
+| `/gestion-locative` | 23 | **5** (3 le 02/11) |
+| `/faire-gerer` | 21 | **3** (2 le 02/11) |
+| `/agence-immobiliere-villeurbanne` | 22 | **1** |
+| `/estimation` | 21 | **1** |
+| `/honoraires` | 20 | **1** |
+| 🆕 `/agence-immobiliere-gratte-ciel` | 21 | **1** |
+
+Et les trois articles qui allaient recevoir ces liens étaient parmi les moins
+reçus du corpus : `cout-gestion-locative` **4** pages entrantes,
+`comment-estimer-son-bien-immobilier-lyon-villeurbanne` **4**,
+`vendre-sans-agence` **5** — contre **25** pour
+`prix-immobilier-villeurbanne-2026`.
+
+#### Ce qui a été fait — commit 1, le maillage (4 fichiers, +45 / −2)
+
+1. **`components/layout/site-footer.tsx`** : `/faire-gerer` ajoutée à la colonne
+   **Services**, juste après « Gestion locative », sous l'ancre **« Faire gérer
+   mon bien »**. **7 → 58 pages entrantes.**
+   📌 **Pourquoi cette ancre et pas « Gestion locative » ou « Syndic »** :
+   l'arbitrage de cannibalisation du 29/10 impose une page par requête, et il
+   ne portait pas sur ce couple. Les deux pages ne visent pas la même chose —
+   `/faire-gerer` est la page de service (`title` : « Faire gérer votre bien —
+   Syndic & gestion locative à Villeurbanne », formulaire multi-étapes),
+   `/gestion-locative` porte l'arbitrage chiffré « déléguer ou gérer seul ».
+   Une ancre qui aurait répété « gestion locative » les aurait mises en
+   concurrence ; « Faire gérer mon bien » reprend le libellé de la trame
+   client.
+2. **`/honoraires` 1 → 3 liens éditoriaux** : un paragraphe de **deux
+   comparaisons que le barème ne donne pas**, chacune chiffrée avant son lien —
+   en vente, **11 700 €** d'honoraires économisés en vendant seul face aux
+   **30 225 €** d'erreur médiane d'une estimation sur données publiques
+   (`vendre-sans-agence`) ; en gestion, nos **6 %** situés au bas de la
+   fourchette de **6 à 8 % TTC** du marché (`cout-gestion-locative`).
+3. **`/estimation` 1 → 2** : la section « Sur quoi repose l'estimation ? » parle
+   de la base DVF sans dire qu'elle a **quatre limites qu'elle documente
+   elle-même** ; lien vers le guide qui les détaille (renforcé le 26/10).
+   📌 **Section statique, hors `<EstimationForm />`** — l'outil n'est pas touché.
+4. **`/agence-immobiliere-villeurbanne` 1 → 3** : « constituer le dossier de
+   diagnostics » **devient** le lien vers `diagnostics-obligatoires-vente`, et
+   les 6 % de gestion renvoient à `cout-gestion-locative`. **Aucun lien en
+   « à lire aussi » : chaque lien est posé là où le texte parle déjà du sujet.**
+
+**Aucune date de fraîcheur avancée, et c'est un arbitrage, pas un oubli.**
+`/honoraires` avait été avancée au 2026-11-07, **puis remise au 2026-10-20
+avant le commit** : sur cette page la date est servie sous le libellé
+« **Barème en vigueur** — dernière mise à jour », donc l'avancer attesterait
+que **le barème** a changé aujourd'hui. Il n'a pas changé. La page porte
+elle-même un commentaire qui met en garde contre ce type d'attestation
+(« l'inventer serait une attestation sans fondement sur la page la plus
+engageante du site »), et la règle de `lib/seo/lastmod.ts` dit déjà qu'un lien
+ajouté ne bouge pas la date.
+
+#### Ce qui a été fait — commit 2, les 15 mots collés (5 fichiers, +29 / −15)
+
+**Trouvé en relisant le HTML rendu après le premier chantier, pas dans le
+code.** Un détecteur passé sur les 58 pages de production rend **15 endroits où
+le texte visible soude deux mots** :
+
+| Page | Occurrences | Exemple servi |
+|---|---|---|
+| `/gestion-locative` | 5 | « après deux mois**sans** réponse » |
+| `/faire-gerer` | 4 | « la garantie Visale**d'**Action Logement » |
+| `/confidentialite` | 3 | « Base légale :**l'**exécution du contrat » |
+| `/estimation-immobiliere-villeurbanne` | 2 | « vendre son bien**détaille** l'accompagnement » |
+| `/honoraires` | 1 | « les frais de notaire**ne** sont pas des honoraires » |
+
+🔴 **LA CAUSE, ET ELLE EXPLIQUE POURQUOI LE DÉFAUT EST INVISIBLE À LA RELECTURE
+DU CODE : SWC supprime l'espace de tête d'un nœud de texte JSX multiligne
+QUAND CE NŒUD CONTIENT UNE ENTITÉ HTML** (`&apos;`, pour l'essentiel ici).
+L'espace **est bien écrit dans la source** ; seul le rendu montre le défaut.
+**La preuve est dans `app/confidentialite/page.tsx`**, qui sert cinq blocs de
+structure identique :
+
+```
+ligne 100  <strong>Base légale :</strong> votre consentement et/ou les     -> OK
+ligne 116  <strong>Base légale :</strong> votre consentement et les        -> OK
+ligne 132  <strong>Base légale :</strong> l&apos;exécution du contrat qui  -> COLLÉ
+```
+
+Les deux premiers nœuds ne contiennent **aucune entité** et gardent leur
+espace ; le troisième en contient une et le perd. Même mécanique partout
+ailleurs : `</em> du garant`, `</strong> d&apos;Action`, `</a> détaille`.
+📌 **C'est la même famille que les « 20 mots collés » du 04/10**, mais la cause
+est nommée pour la première fois — ce qui la rend détectable à l'avenir.
+
+**Correction** : `{" "}` explicite après la balise fermante, **aux 15 endroits
+seulement**. **Aucun mot, aucun chiffre, aucune affirmation modifiés.**
+
+**Pourquoi c'est un sujet GEO et pas de la cosmétique** : un passage extrait
+par un LLM ou par un extrait de résultat contient le mot soudé tel quel, et
+« notairene » n'est pas un mot. **Les trois quarts des occurrences tombent dans
+des phrases de règle juridique** — exactement celles que nous écrivons pour
+être citées.
+
+#### Vérifié avant le push
+
+`tsc` sans erreur ; `build` vert, **92 pages statiques**, les pages touchées
+toujours en `○ Static` ; `eslint` **35 problèmes / 24 erreurs avant comme
+après**, les deux fois ; **parité `FAQPage` relue sur 5 pages — 6/6, 10/10,
+8/8, 6/6, 6/6**, toutes les paires retrouvées mot pour mot dans le HTML
+visible ; **0 apostrophe courbe, 0 insécable** dans le texte ajouté ;
+détecteur de mots collés repassé sur les **92 pages du build : 0 occurrence,
+0 double espace introduit** ; footer relu en **1440 px et en 390 px**,
+**0 px de débordement horizontal** sur les deux ; outil d'estimation non touché.
+
+#### Vérifié après le push, en production
+
+- `/honoraires` **1 → 3** liens éditoriaux (131 563 → **133 060 o**),
+  `/estimation` **1 → 2** (73 066 → **74 297 o**),
+  `/agence-immobiliere-villeurbanne` **1 → 3** (98 875 → **99 406 o**).
+- `/faire-gerer` présente dans le footer de **14 pages tirées au hasard sur
+  58, 14 fois sur 14**, y compris sur des pages qui ne la liaient pas du tout
+  avant (`/acheter`, `/confidentialite`).
+- **Détecteur de mots collés repassé sur la production : 0.**
+- Sitemap **58 URL**, `lastmod` de `/honoraires` toujours **2026-10-20** —
+  l'arbitrage sur la date tient jusqu'en production.
+
+#### Ce que j'ai décidé de NE PAS faire, et pourquoi
+
+- **Ne pas ajouter les trois pages de quartier ni `/annonces` au footer.** Le
+  même défaut structurel les touche (7 à 9 entrants), mais ajouter cinq entrées
+  d'un coup à un footer qui en porte 11 est un changement de navigation, pas un
+  correctif de maillage — et `/agence-immobiliere-gratte-ciel` + `/charpennes`
+  visent des requêtes que le journal a classées « marque de concurrent ».
+  **Inscrit au backlog, à trancher sur mesure.**
+- **Ne pas toucher `lib/quartiers.ts`.** `/agence-immobiliere-villeurbanne`
+  publie **3 567 €/m²** et **1 875 ventes** pour 2025 quand le relevé du 04/11,
+  reproduit à l'identique le 06/11, donne **3 562 €/m²** et **1 896 ventes**.
+  L'écart est réel mais il vient de deux recettes de calcul différentes, et le
+  journal a fixé **le printemps 2027** (publication du DVF 2026 complet) comme
+  moment du recalcul. **Y toucher aujourd'hui, c'est casser ce qui marche.**
+  **Inscrit en hypothèse.**
+- **Ne pas écrire de contenu neuf sur les honoraires** malgré la place GEO
+  vide mesurée ce matin. La page **existe et est complète** ; ce qui manque est
+  mesuré et c'est de la visibilité, pas du texte. **Remesurer le 21/11 avant de
+  rédiger quoi que ce soit.**
+- **Ne pas corriger les deux `<a>` internes de `/mentions-legales`.** Deux
+  erreurs `eslint` préexistantes, effet SEO faible, et un troisième chantier
+  dans le même run rendrait les mesures illisibles.
+- **Ne pas renotifier l'accueil sans « Qui sommes-nous » ni le Discord mort.**
+  Inchangés, sept notifications déjà envoyées.
+
 ### 2026-11-06 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h29
 
 - **Déclenchement en double** : la correction de `/blog/prix-immobilier-villeurbanne-2026`
@@ -9202,6 +9499,155 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le maillage des pages de service**
+(07/11 : **candidat n°1 consommé après quatre reports**, et il cachait un
+défaut plus grave que celui qui était inscrit. `/faire-gerer` n'était **dans
+aucune navigation globale** : 7 pages entrantes contre 57 pour ses pages
+sœurs, l'entrée du 02/11 affirmant l'inverse. Ajoutée au footer → **7 → 58**.
+Puis les trois pages du backlog : `/honoraires` **1 → 3** liens éditoriaux,
+`/agence-immobiliere-villeurbanne` **1 → 3**, `/estimation` **1 → 2**, chaque
+lien posé là où le texte parle déjà du sujet. **Second chantier, commit
+séparé** : **15 mots collés servis en production** sur 5 pages, cause nommée
+pour la première fois — **SWC supprime l'espace de tête d'un nœud de texte JSX
+multiligne contenant une entité HTML** —, **0 restant**. Aucune date de
+fraîcheur avancée, volontairement.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (08/11, dimanche) DOIT ÊTRE DU CONTENU**
+(alternance : 03/11 contenu → 04/11 non-contenu → 06/11 contenu →
+**07/11 non-contenu**).
+✅ **La veille du lundi est faite** (02/11) ; **prochaine veille due le 09/11**
+— c'est un lundi, donc **étape 5 obligatoire avant de choisir le chantier**.
+
+🔴 **CANDIDATS CONTENU, par ordre d'impact :**
+  1. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple
+     contrôle du 03/11 obligatoire** (famille remesurée + SERP + couverture
+     interne). Ne pas prendre un terme parce qu'il est absent.
+  2. 🟡 **Le reste du blog faible** : **11 articles sous 200 mots et SANS AUCUNE
+     FAQ** (`lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `mandat-simple-ou-exclusif` 187, `capacite-emprunt-immobilier` 194, puis
+     `compromis-de-vente-delais` 345). 🆕 **Six d'entre eux sont aussi au
+     plancher du graphe mesuré le 07/11 — 3 pages entrantes** :
+     `achat-immobilier-lyon-checklist`, `home-staging-vendre-plus-cher`,
+     `lmnp-location-meublee`, `mandat-simple-ou-exclusif`,
+     `vendre-appartement-lyon-etapes`, `vendre-vite-lyon`. **Renforcer l'un
+     d'eux règle les deux problèmes d'un coup** (volume + réception).
+     ⚠️ **Mesurer d'abord s'il existe une SERP où le site est absent.**
+  3. 🔴 🆕 **`vendre-en-viager-villeurbanne` EST À 3 PAGES ENTRANTES**, le
+     plancher du site, alors qu'il pèse **221 848 o** et date du **03/11**.
+     C'est le même défaut que le 02/11 avait trouvé sur les deux articles
+     précédents. ⚠️ **Ce n'est PAS un chantier contenu** (l'article est
+     complet) : c'est un candidat non-contenu, inscrit plus bas.
+  4. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11, NE PAS LE REFAIRE.**
+     **Prochaine action : remesurer la SERP le 18/11, pas écrire.**
+  5. ⛔ **La place GEO du 18/10 (« budget total achat … frais de notaire »)** :
+     **remesurer plutôt que réécrire**, `/acheter` est déjà écrite pour elle.
+  6. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CLOS LE 30/10.**
+  7. ⛔ 🆕 **NE PAS ÉCRIRE SUR LES HONORAIRES.** La place GEO mesurée le 07/11
+     est vide (« aucun barème publié pour la vente à Villeurbanne » selon le
+     moteur), **mais la page existe et est complète** : le manque est de la
+     visibilité, pas du texte. **Remesurer le 21/11.**
+
+→ 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🔴 🆕 **LES ARTICLES LOURDS À 3 PAGES ENTRANTES.**
+     `vendre-en-viager-villeurbanne` (03/11, 221 848 o) est à **3**,
+     `vendre-bien-indivision-succession-villeurbanne` à **4**,
+     `vendre-logement-loue-droit-preemption-villeurbanne` à **5**. **Les trois
+     articles les plus récents et les plus lourds du site sont au plancher du
+     graphe.** 📌 **Le bon émetteur est `/vendre`** (30 liens, 10 éditoriaux),
+     qui parle déjà des routes de vente — **et le viager en est une qu'elle ne
+     nomme pas**. ⚠️ **Mesurer le graphe avant d'agir** : il bouge à chaque run.
+  2. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Ne PAS répliquer la solution du 07/11 en bloc** : cinq entrées
+     de plus dans un footer qui en porte 12 est un changement de navigation, et
+     deux de ces pages visent des requêtes classées « marque de concurrent ».
+     **Trancher page par page, en commençant par `/annonces`**, qui est la page
+     catalogue et ne pose aucun problème de cannibalisation.
+  3. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+     Quatrième cas de la famille traitée le 07/11, découvert en la mesurant.
+     Mêmes règles : lien posé là où le texte parle déjà du sujet.
+  4. 🟡 **REFAIRE LE CONTRÔLE D'ACCESSIBILITÉ À SIX AGENTS SUR TOUT LE SITEMAP.**
+     **Facteur de citation n°1** de la veille du 02/11, **jamais mesuré que sur
+     une URL à la fois**. ⚠️ 58 URL × 6 agents = 348 requêtes : à échantillonner,
+     **mensuellement**. 📌 **Seul contrôle du journal dont un échec annulerait
+     tout le reste, et sans couverture systématique.**
+  5. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **six runs**). **Une seule affirmation en dépend** :
+     la fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** (code/redirection, **puis** marqueur) : l'hôte rend **200**
+     sur sa page de maintenance.
+  6. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **dixième report**). 🆕 **Ressorti dans la SERP « prix m2 Villeurbanne »
+     du 07/11**, avec des chiffres datés de « juillet 2026 ». **Ne RIEN
+     réécrire sur un seul relevé.**
+  7. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+  8. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     07/11. **Jour creux uniquement.**
+  9. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`,
+     `165 101`, `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 10. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**, pas avant.
+ 11. ⛔ **NE PLUS INVESTIR DANS `/llms.txt` AU-DELÀ DE SA JUSTESSE** (02/11).
+     Vérifié le 07/11 : le chantier du jour n'ajoute **aucune page** et ne
+     change **aucun montant** décrit par le fichier — rien à y faire.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — NEUVIÈME JOUR.** Constaté
+  le 31/10, toujours vrai au 07/11. `Qui sommes` **0**, `7 ans` **0**,
+  `40 M` **0** ; le motif `250` rend 3 occurrences qui sont **toutes des
+  coordonnées SVG**. **Non corrigé : page de Tony, republiée depuis
+  l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant fin
+  janvier 2027, hors panne.** ⚠️ **NON renotifié** (7 notifications, aucun
+  changement) — **à renotifier seulement si l'état change.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). **Recontrôlée le
+  07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.** ⚠️ **NON renotifié**, même raison.
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs`
+  du JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** (qui tient ce registre, pas
+  celle-ci) : **`zimo.fr`** et **`cylex-locale.fr`**.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 07/11** (elles remplacent les blocs plus
+bas) :
+- ✅ **« prix m2 Villeurbanne »** : remesurée le **07/11** (9ᵉ relevé, **site
+  absent**, échéance tenue) → **14/11**. 📌 La page qui la vise a été renforcée
+  le 06/11 : la remesure reprend du sens à deux ou trois semaines d'indexation.
+- 🆕 **« honoraires agence immobilière Villeurbanne pourcentage frais de
+  vente »** : **point zéro posé le 07/11**, site absent, et le moteur déclare
+  **qu'aucun barème de vente villeurbannais n'est publié** alors que
+  `/honoraires` en publie un complet. → **première remesure le 21/11.**
+  📌 **C'est la SERP la plus anormale du journal** : le contenu existe, il est
+  balisé (`OfferCatalog`), et il n'est pas vu. Si elle ne bouge pas après le
+  maillage du 07/11, le problème n'est pas le contenu.
+- **« agence immobilière Villeurbanne »** : mesurée le **06/11** → **13/11**.
+- **« estimation immobilière Villeurbanne »** : mesurée le **06/11** → **13/11**.
+- **« vendre appartement Villeurbanne »** : mesurée le **30/10** → **10/11**.
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **première remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **première remesure vers le 17/11**.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **première remesure le 18/11**. 📌 **PRIORITÉ** : deux
+  pages du site sont écrites pour elle, et la place est vide de l'aveu du
+  moteur.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ✅ **Veille du lundi : faite le 02/11. Prochaine le 09/11.**
+
 **Angle du dernier run : CONTENU — le renforcement de
 `prix-immobilier-villeurbanne-2026`, qui publiait encore une tendance démentie
 par notre propre mesure** (06/11 : **candidat contenu n°1 consommé, mais pas sous
@@ -11914,6 +12360,59 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-07 — Quatre points laissés ouverts par le chantier du maillage
+
+1. 🔴 **DEPUIS QUAND LE `lastmod` DU SITEMAP NE MESURE-T-IL PLUS L'ACTIVITÉ DU
+   CLIENT, ET COMBIEN DE RELEVÉS CELA INVALIDE-T-IL ?** Mesuré aujourd'hui :
+   trois `lastmod` ont changé **entre le relevé d'avant-push et celui
+   d'après-push**, sans qu'aucune URL ne bouge — Tony avait republié l'annonce
+   T3 BIS le **06/11**, après le build de ce jour-là. `app/sitemap.ts` étant
+   rendu **au build**, le sitemap servi gelait l'ancienne date.
+   ⚠️ **Ce que cela invalide** : les six relevés « `lastmod` de `/` identique,
+   donc aucun changement du client » du 31/10 au 06/11 **ne prouvaient rien**.
+   📌 **Ce qui le trancherait, et c'est faisable en un run** : relever le
+   sitemap **avant** le push **et** après, à chaque run, et consigner les deux.
+   **Appliqué dès aujourd'hui.** ⚠️ **Ne PAS en conclure que le client a été
+   actif tous ces jours-là** : une seule republication est prouvée, celle du
+   06/11.
+2. 🟡 **LA SERP « HONORAIRES » EST-ELLE UN PROBLÈME DE MAILLAGE OU D'AUTRE
+   CHOSE ?** Le moteur affirme qu'**aucun barème de vente villeurbannais n'est
+   publié** alors que `/honoraires` en publie un complet, visible et balisé en
+   `OfferCatalog`, et que la page reçoit **57 liens internes**. Le maillage
+   entrant n'est donc **pas** l'explication — c'est le maillage **sortant** qui
+   était pauvre, et il a été corrigé aujourd'hui.
+   📌 **Ce qui le trancherait** : la remesure du **21/11**. Si la page reste
+   absente, les hypothèses restantes sont, dans cet ordre : (a) `OfferCatalog`
+   n'est pas un type que ces moteurs exploitent pour une question de prix —
+   **vérifier si un `PriceSpecification` ou un `FAQPage` portant la question
+   « combien coûte une agence pour vendre à Villeurbanne » serait mieux
+   extrait** ; (b) la page n'a aucun lien externe ; (c) le nom de la commune
+   n'apparaît pas assez tôt dans la page. ⚠️ **Ne rien changer avant la
+   remesure** : trois chantiers d'affilée sur la même page sans mesure
+   intermédiaire rendent le diagnostic impossible.
+3. 🟡 **LE DÉFAUT DES MOTS COLLÉS EXISTE-T-IL AILLEURS QUE DANS LE TEXTE
+   VISIBLE ?** La règle SWC identifiée aujourd'hui s'applique à **tout** nœud
+   de texte JSX multiligne contenant une entité. Le détecteur du jour ne lit
+   que le HTML **rendu, hors `<script>`** : il ne voit donc pas un espace
+   perdu **dans une chaîne passée en attribut** (`alt`, `title`,
+   `aria-label`, `content` d'une balise meta) ni **dans un JSON-LD construit
+   depuis du JSX**. 📌 **Ce qui le trancherait** : repasser le détecteur sans
+   retirer les `<script>`, puis sur les attributs. **Non fait aujourd'hui,
+   faute de temps après deux chantiers.** ⚠️ Risque jugé faible : les FAQ et
+   les JSON-LD du site sont construits depuis des **chaînes TypeScript**, pas
+   depuis du JSX — c'est la raison pour laquelle la parité `FAQPage` est restée
+   à 6/6, 10/10 et 8/8 malgré 15 mots collés dans le texte visible des mêmes
+   pages.
+4. 🟢 **`/agence-immobiliere-villeurbanne` PUBLIE 3 567 €/m² ET 1 875 VENTES,
+   LE JOURNAL MESURE 3 562 €/m² ET 1 896 VENTES.** L'écart vient de deux
+   recettes de calcul différentes (`lib/quartiers.ts`, figé, contre le relevé
+   DVF du 04/11 reproduit le 06/11). ⚠️ **Ne pas y toucher** : le journal a
+   fixé le recalcul au **printemps 2027**, à la publication du DVF 2026
+   complet. 📌 **Mais la contradiction est interne et publiée** : deux pages du
+   site donnent deux chiffres pour la même chose. **À inscrire comme question à
+   trancher au moment du recalcul**, pas avant — et **ne jamais citer les deux
+   dans une même page.**
+
 ### 2026-11-06 — Quatre points laissés ouverts par le renforcement de la page prix
 
 1. 🔴 **UNE SOURCE SE SITUE SOUS NOTRE MÉDIANE SIGNÉE, ET ELLE FRAGILISE UNE
@@ -13374,6 +13873,53 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-07 — Trois erreurs du journal lui-même, dont deux qui ont servi de prémisse à des runs entiers
+
+**1. 🔴 « Toutes dans la navigation de tout le site » — c'était faux, et
+l'affirmation a tenu cinq jours.** L'entrée du **02/11** titre son tableau des
+pages commerciales « Page (**toutes dans la navigation de tout le site**) » et
+y range `/faire-gerer`. Mesure du 07/11 : `/faire-gerer` recevait **7 pages
+entrantes contre 57** pour les autres lignes du même tableau, parce qu'elle
+n'est ni dans le header ni dans le footer. **Conséquence réelle** : le run du
+02/11 a ajouté un lien éditorial **vers** `/faire-gerer` depuis
+`/gestion-locative` en croyant renforcer une page déjà bien reliée, alors que
+la page était structurellement coupée du site.
+📌 **Ce qui a produit l'erreur** : la phrase a été écrite **depuis le tableau
+d'émission** (combien de liens la page envoie) et **appliquée à la réception**
+(combien elle en reçoit). Les deux colonnes ne disent pas la même chose, et
+une page peut très bien émettre 21 liens en n'en recevant que 7.
+✅ **La règle qui en sort** : **ne jamais écrire qu'une page est « dans la
+navigation » sans l'avoir lue dans le composant** (`site-header.tsx`,
+`site-footer.tsx`) **ou comptée côté réception.** Un tableau d'émission ne
+prouve rien sur la réception.
+
+**2. 🔴 « Aucun changement du client, mesuré » — le `lastmod` du sitemap ne
+mesure pas ça.** Écrit six fois de suite, du **31/10** au **06/11**, à partir
+du `lastmod` de `/` servi en production. Mesure du 07/11 : ce `lastmod` a
+changé **entre le relevé d'avant-push et celui d'après-push du même run**,
+sans qu'aucune URL ne bouge. `app/sitemap.ts` est rendu **au build** : le
+sitemap servi gèle les dates du dernier déploiement, pas l'état de la base.
+Tony avait republié l'annonce T3 BIS le **06/11**, après le build de ce
+jour-là ; nous ne pouvions pas le voir.
+✅ **La règle qui en sort** : **relever le sitemap avant ET après le push**, et
+ne conclure « aucun changement du client » que si les deux concordent. Un run
+qui ne pousse rien ne peut pas conclure du tout sur ce point.
+
+**3. 🟡 Mon propre texte du jour a reproduit le défaut que je corrigeais
+ensuite — et je ne l'ai vu qu'en screenshot.** Le paragraphe ajouté à
+`/honoraires` servait « **11 700 €d'honoraires** » et « **30 225 €quand** ».
+La source était pourtant correcte (`<strong>11 700 €</strong> d&apos;honoraires`,
+espace présent). C'est la règle SWC identifiée le même jour : **un nœud de
+texte JSX multiligne contenant une entité HTML perd son espace de tête.**
+📌 **Ce qui l'a rattrapé** : une capture d'écran en 390 px, prise pour vérifier
+le rendu mobile — pas la relecture du code, qui ne pouvait pas le montrer.
+✅ **La règle qui en sort** : **après toute insertion de `<strong>` ou de
+`<em>` suivie de texte, repasser le détecteur sur le HTML rendu**, pas sur la
+source. Commande :
+`python3 -c "…re.finditer(r'</(strong|em|a)>(?=[A-Za-zÀ-ÿ0-9&])', html)…"` sur
+les fichiers de `.next/server/app/`. **Zéro occurrence est le seul résultat
+acceptable.**
 
 ### 2026-11-06 — Le backlog décrivait comme « la plus étoffée du site » une page qui était la 11ᵉ sur 30, et c'est ce qui a failli faire écrire un doublon
 
@@ -15521,6 +16067,61 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-07 — La règle SWC qui mange un espace sur deux, et le détecteur qui la rattrape en dix secondes
+
+**Ce qui a été établi, et c'est reproductible sur ce dépôt.** SWC — le
+compilateur de Next, qui n'applique pas exactement les règles de Babel sur les
+espaces JSX — **supprime l'espace de tête d'un nœud de texte JSX multiligne
+quand ce nœud contient une entité HTML** (`&apos;` dans la quasi-totalité des
+cas ici). Le code est correct à la lecture, le rendu ne l'est pas.
+
+**La preuve, et elle est à un endroit du dépôt** : `app/confidentialite/page.tsx`
+sert cinq blocs de structure identique. Les trois dont le texte contient un
+`&apos;` sont soudés au rendu, les deux autres non.
+
+```
+<strong>Base légale :</strong> votre consentement et/ou les     -> espace gardé
+<strong>Base légale :</strong> l&apos;exécution du contrat qui  -> espace MANGÉ
+```
+
+**Pourquoi c'est un sujet GEO.** Un passage extrait par un LLM ou par un
+extrait de résultat contient le mot soudé tel quel ; « notairene » et
+« Visaled'Action » ne sont pas des mots. Sur les 15 occurrences trouvées le
+07/11, **les trois quarts tombaient dans des phrases de règle juridique** —
+exactement celles que ce site écrit pour être citées. Et aucun outil du
+pipeline ne le signale : ni `tsc`, ni `eslint` (35/24 avant comme après), ni
+le `build`, ni la relecture du diff.
+
+**Le correctif** : `{" "}` explicite après la balise fermante. Rien d'autre
+n'est fiable — déplacer le texte sur la même ligne ne suffit pas, le nœud
+reste multiligne.
+
+**Le détecteur, à repasser après toute insertion de `<strong>` ou `<em>`
+suivie de texte** (il lit le HTML **rendu**, jamais la source) :
+
+```
+python3 -c "
+import re,glob,os
+for f in glob.glob('.next/server/app/**/*.html', recursive=True):
+    s=open(f,encoding='utf-8',errors='replace').read()
+    txt=re.sub(r'<script.*?</script>','',s,flags=re.S)
+    for m in re.finditer(r'<(strong|em|a|b|i)\b[^>]*>([^<]{0,60})</\1>(?=[A-Za-zÀ-ÿ0-9&])', txt):
+        print(os.path.basename(f), repr(m.group(2)))
+"
+```
+
+**Zéro occurrence est le seul résultat acceptable.** Il tourne sur les 92 pages
+du build en quelques secondes, et il se repasse ensuite sur la production
+(mêmes expressions, sur les fichiers téléchargés) pour vérifier le déploiement.
+
+⚠️ **Limite connue, inscrite en hypothèse** : il ne voit que le texte visible.
+Un espace perdu dans un attribut (`alt`, `title`, `aria-label`) ou dans un
+JSON-LD construit depuis du JSX lui échapperait. Sur ce site le risque est
+faible — les FAQ et les JSON-LD sont construits depuis des **chaînes
+TypeScript**, pas depuis du JSX, ce qui explique que la parité `FAQPage` soit
+restée parfaite (6/6, 10/10, 8/8) sur des pages qui servaient pourtant 15 mots
+collés.
 
 ### 2026-11-06 — La recette DVF brute est reproductible : dix valeurs recalculées un autre jour par un autre code, zéro écart — et deux pièges opérationnels à connaître
 
