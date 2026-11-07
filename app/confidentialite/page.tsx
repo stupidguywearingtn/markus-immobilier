@@ -129,7 +129,8 @@ export default function ConfidentialitePage() {
                 votre dossier.
               </li>
               <li>
-                <strong>Base légale :</strong> l&apos;exécution du contrat qui
+                <strong>Base légale :</strong>{" "}
+                l&apos;exécution du contrat qui
                 nous lie.
               </li>
             </ul>
@@ -140,7 +141,8 @@ export default function ConfidentialitePage() {
             </h3>
             <ul>
               <li>
-                <strong>Données :</strong> identité, coordonnées, données
+                <strong>Données :</strong>{" "}
+                identité, coordonnées, données
                 relatives au bien, justificatifs requis par la réglementation
                 (revenus, pièces d&apos;identité, etc.), données bancaires le
                 cas échéant.
@@ -151,7 +153,8 @@ export default function ConfidentialitePage() {
                 le blanchiment, obligations comptables et fiscales).
               </li>
               <li>
-                <strong>Base légale :</strong> l&apos;exécution du contrat et
+                <strong>Base légale :</strong>{" "}
+                l&apos;exécution du contrat et
                 le respect de nos obligations légales.
               </li>
             </ul>

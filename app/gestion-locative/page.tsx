@@ -348,7 +348,8 @@ export default function GestionLocativePage() {
                   qui exclut le micro-foncier quel que soit le montant encaissé.
                   À l&apos;inverse, et c&apos;est l&apos;erreur symétrique :
                   bénéficier du « Pinel », du « Denormandie » ou du « Malraux »
-                  ne fait <em>pas</em> obstacle au micro-foncier (BOFiP,
+                  ne fait <em>pas</em>{" "}
+                  obstacle au micro-foncier (BOFiP,
                   BOI-RFPI-DECLA-10 § 60 et § 90 à 130). Or au micro-foncier,
                   aucune charge réelle ne se déduit :
                   l&apos;administration applique un abattement forfaitaire de{" "}
@@ -543,7 +544,8 @@ export default function GestionLocativePage() {
                   l&apos;annonce</strong> : le loyer de base, le loyer de
                   référence et le loyer de référence majoré de la catégorie du
                   logement. Si le bail omet le loyer de référence majoré, le
-                  locataire a <strong>un mois</strong> à compter de la prise
+                  locataire a <strong>un mois</strong>{" "}
+                  à compter de la prise
                   d&apos;effet du bail pour mettre le bailleur en demeure de
                   l&apos;indiquer, par lettre recommandée avec accusé de
                   réception ; le bailleur a un mois pour répondre, et à défaut de
@@ -560,7 +562,8 @@ export default function GestionLocativePage() {
                   peut alors mettre le bailleur en demeure de mettre le bail en
                   conformité et de rembourser ; à défaut, l&apos;amende
                   administrative atteint <strong>5 000 €</strong> pour une
-                  personne physique et <strong>15 000 €</strong> pour une
+                  personne physique et <strong>15 000 €</strong>{" "}
+                  pour une
                   personne morale. Le contrôle du dispositif est confié à
                   l&apos;équipe métropolitaine de l&apos;habitat, et un numéro
                   vert (0805 160 111) renseigne les particuliers.
@@ -671,12 +674,14 @@ export default function GestionLocativePage() {
                   </strong>{" "}
                   Si le logement n&apos;est pas décent, le locataire met le
                   propriétaire en demeure par lettre recommandée ; après{" "}
-                  <strong>deux mois</strong> sans réponse ou en cas de désaccord
+                  <strong>deux mois</strong>{" "}
+                  sans réponse ou en cas de désaccord
                   persistant, l&apos;un ou l&apos;autre peut saisir le juge des
                   contentieux de la protection, la commission départementale de
                   conciliation restant facultative. Le juge peut alors fixer les
                   travaux et leur délai, <strong>réduire le loyer</strong>, ou{" "}
-                  <strong>suspendre son paiement</strong> et la durée du bail
+                  <strong>suspendre son paiement</strong>{" "}
+                  et la durée du bail
                   jusqu&apos;à réalisation des travaux. Mais dans trois cas la loi lui
                   interdit d&apos;imposer la mise aux normes énergétiques, et le
                   premier vise la situation la plus courante à Villeurbanne, où

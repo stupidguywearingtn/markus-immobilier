@@ -512,7 +512,8 @@ export default function FaireGererPage() {
                     plus exiger le cautionnement d&apos;un tiers, sauf si le
                     logement est loué à un étudiant ou à un apprenti. La GLI
                     n&apos;est donc pas une sécurité de plus, c&apos;est une
-                    sécurité <em>à la place</em> du garant — et le choix se fait
+                    sécurité <em>à la place</em>{" "}
+                    du garant — et le choix se fait
                     avant de publier l&apos;annonce, pas après avoir retenu un
                     candidat.
                   </p>
@@ -538,7 +539,8 @@ export default function FaireGererPage() {
                       guide du préavis et du dépôt de garantie
                     </Link>
                     {" "}; la garantie{" "}
-                    <strong>Visale</strong> d&apos;Action Logement est, elle,
+                    <strong>Visale</strong>{" "}
+                    d&apos;Action Logement est, elle,
                     un cautionnement — elle ne se cumule donc pas davantage avec
                     une GLI.
                   </p>
@@ -639,7 +641,8 @@ export default function FaireGererPage() {
                     l&apos;était jusqu&apos;au 31 mai 2020 ; l&apos;ordonnance
                     n° 2019-1101 du 30 octobre 2019 a réécrit l&apos;article 21
                     et supprimé cette périodicité à compter du 1ᵉʳ juin 2020. Ce
-                    qui dure trois ans, c&apos;est le <em>mandat</em> du syndic,
+                    qui dure trois ans, c&apos;est le <em>mandat</em>{" "}
+                    du syndic,
                     et c&apos;est cette durée que l&apos;habitude a transformée
                     en « mise en concurrence tous les trois ans ». Les deux
                     sont indépendantes : un mandat
@@ -658,7 +661,8 @@ export default function FaireGererPage() {
                     d&apos;immeubles neufs villeurbannais : le syndic qui a
                     participé à la construction de l&apos;immeuble comme
                     promoteur ou architecte — directement, ou par son conjoint ou
-                    un proche —, et le <strong>syndic provisoire</strong> d&apos;une
+                    un proche —, et le <strong>syndic provisoire</strong>{" "}
+                    d&apos;une
                     copropriété neuve, dont le contrat prend fin automatiquement à
                     l&apos;échéance (service-public.gouv.fr, fiche F2608, vérifiée
                     le 8 juillet 2026). Une copropriété neuve est donc appelée à

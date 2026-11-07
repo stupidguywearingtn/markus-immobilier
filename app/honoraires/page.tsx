@@ -383,7 +383,8 @@ export default function HonorairesPage() {
               </p>
               <p className="mt-4 text-[16px] leading-relaxed text-[#3d4347]">
                 Une confusion revient à chaque vente et ne concerne pas ce
-                barème : les <strong>frais de notaire</strong> ne sont pas des
+                barème : les <strong>frais de notaire</strong>{" "}
+                ne sont pas des
                 honoraires d&apos;agence. Ils sont dus par l&apos;acquéreur, en
                 plus du prix affiché, et reviennent pour l&apos;essentiel à
                 l&apos;État et aux collectivités, pas à l&apos;agence. Leur

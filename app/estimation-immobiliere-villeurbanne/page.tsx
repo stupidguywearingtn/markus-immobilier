@@ -285,7 +285,8 @@ export default function EstimationVilleurbannePage() {
                 Notre estimation à Villeurbanne repose sur les{" "}
                 <strong>ventes réellement conclues</strong>, pas sur les prix
                 affichés dans les annonces. Nous utilisons la base{" "}
-                <strong>DVF (demandes de valeurs foncières)</strong> publiée par
+                <strong>DVF (demandes de valeurs foncières)</strong>{" "}
+                publiée par
                 l&apos;État sur data.gouv.fr, qui recense le prix inscrit chez le
                 notaire pour chaque vente, avec sa localisation. Les prix
                 d&apos;annonce, eux, intègrent une marge de négociation et
@@ -388,7 +389,8 @@ export default function EstimationVilleurbannePage() {
                 preneur en attendant que le marché monte — il stagne, puis se
                 vend en dessous de son prix réel après plusieurs baisses. Une
                 fois la fourchette connue, notre page{" "}
-                <Link href="/vendre" className={A}>vendre son bien</Link> détaille
+                <Link href="/vendre" className={A}>vendre son bien</Link>{" "}
+                détaille
                 l&apos;accompagnement jusqu&apos;à la signature, et{" "}
                 <Link href="/acheter" className={A}>acheter à Villeurbanne</Link>{" "}
                 donne la lecture inverse de ces mêmes médianes : le budget total
