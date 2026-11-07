@@ -4823,6 +4823,23 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-07 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h17–06h29
+
+- **Déclenchement en double** : le maillage `/faire-gerer` et la correction des mots
+  collés (`8d6f237`, `53b19bb`, `891c486`) sont poussés depuis ~13 min. Un chantier par
+  jour → **rien publié**, c'est voulu.
+- **Changements du client (étape 0)** — relevé fait sur un sitemap **reconstruit il y a
+  ~20 min** (donc valable, cf. la consigne de méthode du run de ce matin) : **58 URL**,
+  toutes avec une route dans `app/` ou un slug du code → **aucune page de l'éditeur**.
+  `lastmod` ≥ 06/11 : `/`, `/annonces`, `/annonces/appartement-t3-bis-86m-grand-balcon`
+  (republication de l'annonce par Tony, déjà relevée et jugée sans problème ce matin) et
+  `/agence-immobiliere-gratte-ciel` + `/blog/prix-immobilier-villeurbanne-2026` (nos
+  propres modifications du 06/11, `lib/seo/lastmod.ts`). `<title>` de la home =
+  `DEFAULT_TITLE`. `/annonces` en ligne : 7 annonces = 7 dans le sitemap. Aucun commit
+  tiers depuis `891c486`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/faire-gerer`, `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-07 (samedi) — `/faire-gerer` n'était dans aucune navigation globale, et 15 mots collés étaient servis en production par une règle de SWC qui ne se voit pas dans le code
 
 **Angle : NON-CONTENU.** Candidat n°1 du backlog, inscrit le **02/11**,
