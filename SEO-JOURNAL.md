@@ -4907,6 +4907,18 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-08 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h14–06h18
+
+- **Déclenchement en double** : la réécriture de `/blog/mandat-simple-ou-exclusif`
+  (`cb3b84f`, `3d23a7a`) est poussée depuis ~25 min et servie (200, `lastmod` 08/11
+  dans le sitemap). Un chantier par jour → **rien publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap en ligne = **58 URL**, toutes avec une
+  route dans `app/` ou un slug du code → **aucune page de l'éditeur**. Seul `lastmod`
+  ≥ 07/11 : notre article du jour. `<title>` de la home = `DEFAULT_TITLE`. Aucun commit
+  tiers depuis `3d23a7a`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/faire-gerer`, `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-08 (dimanche) — Les trois mois que tout le monde publie ne sont pas une durée de mandat, et la pénalité est plafonnée par décret
 
 **Angle : CONTENU** (alternance respectée : 07/11 non-contenu → 08/11 contenu).
