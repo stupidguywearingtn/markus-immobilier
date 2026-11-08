@@ -1917,7 +1917,7 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Faut-il vendre sans agence ? Notre réponse" },
       { type: "p", text: "Vendre seul est raisonnable quand trois conditions sont réunies en même temps : un bien situé dans un secteur au bâti homogène, du temps à consacrer aux visites et aux documents, et une référence de prix solide — pas une moyenne de portail. Si l'une des trois manque, vous jouez une économie de 11 700 € contre un risque de 30 225 €, et le calcul cesse d'être favorable." },
-      { type: "p", text: "Rien n'oblige d'ailleurs à trancher tout de suite. Vous pouvez partir d'un repère gratuit par quartier sur notre page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne), puis décider. Et si vous préférez être accompagné, [notre façon de mener une vente](/vendre) est décrite étape par étape, honoraires publiés avant tout mandat." },
+      { type: "p", text: "Rien n'oblige d'ailleurs à trancher tout de suite. Vous pouvez partir d'un repère gratuit par quartier sur notre page [estimation immobilière à Villeurbanne](/estimation-immobiliere-villeurbanne), puis décider. Et si vous préférez être accompagné, [notre façon de mener une vente](/vendre) est décrite étape par étape, honoraires publiés avant tout mandat — le mandat lui-même, sa durée d'engagement réelle et les conditions pour en sortir étant traités dans [mandat simple ou exclusif](/blog/mandat-simple-ou-exclusif)." },
     ],
     faq: [
       {
@@ -1974,24 +1974,99 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "mandat-simple-ou-exclusif",
-    title: "Mandat simple ou exclusif : lequel choisir pour vendre ?",
+    title: "Mandat simple ou exclusif : durée, résiliation et pénalité",
     metaDescription:
-      "Mandat simple ou mandat exclusif : différences, avantages et inconvénients pour vendre votre bien au meilleur prix.",
+      "Mandat simple ou exclusif : la durée d'engagement réelle, comment résilier après trois mois, le délai de rétractation de 14 jours et le plafond de la clause pénale.",
     h1: "Mandat simple ou exclusif : lequel choisir ?",
     excerpt:
-      "Le mandat simple ouvre à plusieurs agences ; l'exclusif en confie une seule. Lequel vend le mieux, et pourquoi.",
+      "Le mandat simple ouvre à plusieurs agences, l'exclusif en confie une seule. Durée d'engagement réelle, résiliation après trois mois, rétractation de 14 jours et plafond de la clause pénale, texte en main.",
     date: "2026-04-30",
-    updated: "2026-09-16",
+    updated: "2026-11-08",
     internalHref: "/vendre",
     internalLabel: "Discuter de la vente de mon bien",
     blocks: [
-      { type: "p", text: "**Le mandat simple vous laisse confier le bien à plusieurs agences (et le vendre vous-même) ; le mandat exclusif le confie à une seule agence.** Chacun a sa logique — et si l'option qui vous tente est de vendre sans mandat du tout, le calcul chiffré est sur [vendre sans agence à Villeurbanne](/blog/vendre-sans-agence)." },
-      { type: "h2", text: "Le mandat simple" },
-      { type: "p", text: "Vous multipliez les canaux. Mais en pratique, un bien « partout » paraît moins exclusif, les agences s'y investissent moins, et le même bien à des prix différents brouille les acheteurs." },
-      { type: "h2", text: "Le mandat exclusif" },
-      { type: "p", text: "Une seule agence, donc un engagement fort : plus de moyens, un suivi dédié, une stratégie claire. Les biens en exclusivité se vendent souvent **plus vite et à un meilleur prix**, car l'agence concentre ses efforts." },
+      { type: "p", text: "**Le mandat simple vous laisse confier le bien à plusieurs agences et le vendre vous-même ; le mandat exclusif le confie à une seule agence.** Mais la différence qui compte le jour de la signature n'est pas celle-là : c'est que l'exclusivité fait entrer le mandat dans le régime de l'article 78 du décret du 20 juillet 1972 — droit de sortie après trois mois, préavis de quinze jours par lettre recommandée, et clause pénale plafonnée. Ce que ce régime dit exactement est repris ci-dessous, texte en main. Et si l'option qui vous tente est de vendre sans mandat du tout, le calcul chiffré est sur [vendre sans agence à Villeurbanne](/blog/vendre-sans-agence)." },
+
+      { type: "h2", text: "Mandat simple ou mandat exclusif : qu'est-ce qui change concrètement ?" },
+      { type: "p", text: "**Le mandat simple vous laisse signer avec plusieurs agences en même temps et vendre vous-même sans rien devoir ; le mandat exclusif réserve la vente à une seule agence.** Le reste des différences ne vient pas de l'étiquette du mandat mais des clauses qu'il contient : exclusivité, clause pénale, honoraires dus même sans l'intervention de l'agence. Ce sont ces clauses, et elles seules, qui déclenchent le régime protecteur de l'article 78." },
+      { type: "table",
+        caption: "Ce que chaque type de mandat implique réellement",
+        source: "Décret n° 72-678 du 20 juillet 1972, article 78, version en vigueur depuis le 1er juillet 2015. Barème : barème public de l'agence.",
+        headers: ["", "Mandat simple", "Mandat exclusif"],
+        rows: [
+          ["Nombre d'agences mandatées", "Plusieurs, en même temps", "Une seule"],
+          ["Vendre vous-même à un acheteur que vous avez trouvé", "Libre, aucun honoraire dû", "Des honoraires peuvent rester dus si le mandat contient une clause « honoraires dus même sans l'intervention de l'intermédiaire »"],
+          ["Droit de dénoncer après trois mois (préavis 15 jours, LRAR)", "Seulement si le mandat contient une clause d'exclusivité, une clause pénale ou une clause d'honoraires dus sans intervention", "Oui, par l'effet même de la clause d'exclusivité"],
+          ["Clause pénale", "Possible, et alors plafonnée aux honoraires stipulés", "Possible, et alors plafonnée aux honoraires stipulés"],
+          ["Nos honoraires de transaction", "Barème par tranches de prix", "Le même barème, aucune ligne distincte"],
+        ],
+      },
+
+      { type: "h2", text: "Combien de temps suis-je engagé par un mandat exclusif ?" },
+      { type: "p", text: "**Aucun texte n'impose une durée de trois mois. Ce que la loi fixe, c'est le moment où votre droit de sortie s'ouvre : passé un délai de trois mois à compter de la signature, chacune des deux parties peut dénoncer le mandat à tout moment, à condition d'en prévenir l'autre au moins quinze jours à l'avance par lettre recommandée avec demande d'avis de réception.** C'est l'article 78, alinéa 2, du décret n° 72-678 du 20 juillet 1972." },
+      { type: "p", text: "La nuance change tout en pratique. On lit presque partout que « le mandat exclusif est de trois mois » : c'est un usage de marché, pas une règle. Un mandat peut parfaitement être signé pour six mois ou un an — cela ne vous enferme pas pour autant, puisque le droit de dénonciation s'ouvre de toute façon au bout de trois mois. Et il est réciproque : l'agence peut elle aussi s'en libérer dans les mêmes formes." },
+      { type: "p", text: "Trois situations échappent à ce régime, et le décret les énumère limitativement : les mandats donnés pour la vente d'immeubles par lots, pour la souscription ou la première cession de parts ou d'actions de sociétés immobilières donnant vocation à l'attribution de locaux, et pour la location par fractions de locaux commerciaux d'un même ensemble commercial. Pour la vente d'un appartement ou d'une maison par un particulier, le régime des trois mois s'applique." },
+
+      { type: "h2", text: "Comment résilier un mandat exclusif ?" },
+      { type: "p", text: "**La résiliation suppose quatre vérifications et un courrier recommandé : la date de signature, les mentions de l'acte, la remise de votre exemplaire, puis la lettre avec avis de réception et quinze jours de préavis.** Aucune autre forme ne fait courir le préavis." },
+      { type: "steps",
+        name: "Résilier un mandat exclusif de vente",
+        items: [
+          { name: "Vérifier la date de signature", text: "Le droit de dénonciation de l'article 78 ne s'ouvre qu'une fois passé un délai de trois mois à compter de la signature du mandat. Avant ce terme, votre sortie dépend des clauses du contrat et non du décret." },
+          { name: "Relire les modalités de dénonciation dans l'acte", text: "Elles doivent y figurer en caractères très apparents, tout comme la clause pénale. La Cour de cassation juge que cette exigence est posée à peine de nullité du mandat (1re chambre civile, 24 mai 1989, pourvoi n° 88-10.126)." },
+          { name: "Vérifier que votre exemplaire vous a bien été remis", text: "L'article 78 ne donne effet à la clause d'exclusivité, à la clause pénale et à la clause d'honoraires dus sans intervention que si elles résultent d'une stipulation expresse d'un mandat dont un exemplaire a été remis au mandant. Sans cette remise, la clause ne produit pas d'effet." },
+          { name: "Envoyer la dénonciation par lettre recommandée avec avis de réception", text: "Le texte impose cette forme et un préavis d'au moins quinze jours. Un courriel, un appel ou un courrier simple ne font pas courir le préavis." },
+          { name: "Compter le préavis et conserver l'avis de réception", text: "Le mandat prend fin au terme des quinze jours. L'avis de réception est la seule pièce qui date le point de départ du préavis : gardez-le jusqu'à la vente." },
+        ],
+      },
+
+      { type: "h2", text: "Puis-je me rétracter dans les quatorze jours après avoir signé un mandat ?" },
+      { type: "p", text: "**Cela dépend d'un seul élément : l'endroit où vous avez signé. Un mandat signé chez vous est un contrat conclu hors établissement, et vous disposez alors de quatorze jours pour vous rétracter sans motif et sans frais. Un mandat signé dans les locaux de l'agence n'ouvre, lui, aucun droit de rétractation.** Le délai est fixé par l'article L221-18 du code de la consommation et court, pour une prestation de services, à compter de la conclusion du contrat." },
+      { type: "p", text: "C'est le point que l'on lit le plus souvent à l'envers, sous la forme « quatorze jours uniquement en cas de démarchage ». L'article L221-1, 2° a) du code de la consommation définit le contrat hors établissement comme tout contrat conclu dans un lieu qui n'est pas celui où le professionnel exerce son activité en permanence ou de manière habituelle, **même à la suite d'une sollicitation du consommateur**. Avoir vous-même demandé à l'agent de passer chez vous ne vous prive donc pas du délai." },
+      { type: "p", text: "Dernière précision utile : si l'information sur le droit de rétractation ne vous a pas été donnée, le délai est prolongé de douze mois. Et si l'information vous parvient pendant cette prolongation, un nouveau délai de quatorze jours court à compter de sa réception." },
+
+      { type: "h2", text: "Que risque-t-on en vendant soi-même pendant un mandat exclusif ?" },
+      { type: "p", text: "**Une somme contractuelle, et elle est plafonnée : la clause pénale ne peut pas prévoir un montant supérieur aux honoraires stipulés pour l'opération.** C'est écrit à l'article 78, alinéa 1, du décret du 20 juillet 1972. Autrement dit, le pire des cas est de payer les honoraires que vous auriez payés en vendant par l'agence — jamais davantage." },
+      { type: "p", text: "Encore faut-il que la clause soit valable, et le texte pose trois conditions cumulatives : une stipulation expresse, la remise d'un exemplaire du mandat au mandant, et une mention en caractères très apparents. L'arrêt du 24 mai 1989 ajoute une conséquence rarement rappelée : la nullité de l'obligation principale entraîne celle de la clause pénale. Une rémunération qui n'est pas déterminable à la seule lecture du mandat — par simple renvoi à un tarif affiché, par exemple — fait donc tomber la pénalité avec elle." },
+
+      { type: "h2", text: "Et le mandat semi-exclusif ?" },
+      { type: "p", text: "**Le mandat semi-exclusif n'est pas défini par la loi : c'est un mandat exclusif dont une clause réserve au propriétaire le droit de vendre lui-même.** Il n'existe donc aucun régime juridique « semi-exclusif » à invoquer. Ce qui s'applique à vous dépend uniquement des clauses réellement écrites dans votre acte." },
+      { type: "p", text: "La conséquence pratique est simple : lisez les clauses, pas l'étiquette. Un mandat intitulé « semi-exclusif » qui contient une clause d'honoraires dus même sans l'intervention de l'agence vous expose exactement comme un exclusif classique." },
+
+      { type: "h2", text: "Le type de mandat change-t-il le montant des honoraires ?" },
+      { type: "p", text: "**Chez nous, non : notre barème de transaction ne dépend que du prix de vente.** 9 000 € forfaitaires de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % jusqu'à 500 000 € — et aucune ligne « mandat simple » ou « mandat exclusif ». [Le barème complet](/honoraires) est publié tranche par tranche et consultable avant toute signature." },
+      { type: "p", text: "C'est une vérification à faire partout, et pas seulement chez nous : rien n'interdit à une agence de tarifer différemment les deux mandats. Posez la question avant de signer, et demandez le barème écrit." },
+
       { type: "h2", text: "Notre conseil" },
-      { type: "p", text: "L'exclusif est généralement plus efficace, à condition de choisir une agence en qui vous avez confiance. Un point à vérifier avant de signer, quelle que soit l'agence : le type de mandat ne doit pas changer le tarif. [Notre barème de transaction](/honoraires) est le même dans les deux cas — il ne distingue pas mandat simple et mandat exclusif." },
+      { type: "p", text: "**L'exclusivité se justifie quand elle achète de l'engagement, pas quand elle achète du temps.** Une agence qui obtient l'exclusivité concentre ses moyens sur un seul bien, et c'est tout l'intérêt du dispositif. Mais à Villeurbanne, le levier qui décide d'une vente reste le prix de départ, pas le type de mandat : [les médianes réellement signées par quartier](/blog/prix-immobilier-villeurbanne-2026) sont le vrai point de départ de la discussion." },
+      { type: "p", text: "Avant de signer, trois vérifications suffisent : que les modalités de dénonciation figurent en caractères très apparents, que votre exemplaire vous soit remis le jour même, et que le barème ne dépende pas du type de mandat. Nous en parlons volontiers au 04 78 37 13 67, et [notre façon de mener une vente](/vendre) est décrite étape par étape." },
+      { type: "p", text: "Sources : décret n° 72-678 du 20 juillet 1972, article 78, dans sa version en vigueur depuis le 1er juillet 2015 (décret n° 2015-724 du 24 juin 2015) ; code de la consommation, articles L221-1 et L221-18 ; Cour de cassation, 1re chambre civile, 24 mai 1989, pourvoi n° 88-10.126. Textes consultés sur Légifrance le 8 novembre 2026." },
+    ],
+    faq: [
+      {
+        q: "Combien de temps suis-je engagé par un mandat exclusif ?",
+        a: "Aucun texte n'impose une durée de trois mois. Passé un délai de trois mois à compter de la signature, chacune des deux parties peut dénoncer le mandat à tout moment, en prévenant l'autre au moins quinze jours à l'avance par lettre recommandée avec demande d'avis de réception. Un mandat signé pour six mois ou un an ne vous enferme donc pas au-delà de ce terme. Source : décret n° 72-678 du 20 juillet 1972, article 78, alinéa 2.",
+      },
+      {
+        q: "Comment résilier un mandat exclusif de vente ?",
+        a: "Par lettre recommandée avec avis de réception, avec un préavis d'au moins quinze jours, une fois passé le délai de trois mois suivant la signature. Un courriel, un appel ou un courrier simple ne font pas courir le préavis. Vérifiez au préalable que les modalités de dénonciation figurent dans l'acte en caractères très apparents : la Cour de cassation juge cette exigence posée à peine de nullité du mandat (1re chambre civile, 24 mai 1989, n° 88-10.126).",
+      },
+      {
+        q: "Peut-on se rétracter dans les 14 jours après avoir signé un mandat de vente ?",
+        a: "Cela dépend de l'endroit où vous avez signé. Un mandat signé chez vous est un contrat conclu hors établissement et ouvre un délai de rétractation de quatorze jours, sans motif ni frais, à compter de la conclusion du contrat. Un mandat signé dans les locaux de l'agence n'ouvre aucun droit de rétractation. Avoir vous-même demandé à l'agent de se déplacer ne vous prive pas du délai : le code de la consommation vise le contrat conclu hors des locaux du professionnel même à la suite d'une sollicitation du consommateur. Sources : code de la consommation, articles L221-1, 2° a) et L221-18.",
+      },
+      {
+        q: "Que risque-t-on en vendant soi-même pendant un mandat exclusif ?",
+        a: "Le paiement de la clause pénale prévue au mandat, qui ne peut pas excéder les honoraires stipulés pour l'opération. Le pire des cas est donc de payer les honoraires que vous auriez payés en vendant par l'agence, jamais davantage. Cette clause n'a d'effet qu'à trois conditions cumulatives : une stipulation expresse, la remise d'un exemplaire du mandat au mandant, et une mention en caractères très apparents. Source : décret n° 72-678 du 20 juillet 1972, article 78, alinéa 1.",
+      },
+      {
+        q: "Qu'est-ce qu'un mandat semi-exclusif ?",
+        a: "C'est un mandat exclusif dont une clause réserve au propriétaire le droit de vendre lui-même. Le mandat semi-exclusif n'est pas défini par la loi : il n'existe aucun régime juridique propre à invoquer, et ce qui s'applique dépend uniquement des clauses réellement écrites dans l'acte. Un mandat intitulé « semi-exclusif » qui contient une clause d'honoraires dus même sans l'intervention de l'agence expose comme un exclusif classique.",
+      },
+      {
+        q: "Le mandat simple ou exclusif change-t-il le montant des honoraires d'agence ?",
+        a: "Chez Markus Immobilier, non : le barème de transaction ne dépend que du prix de vente — 9 000 € forfaitaires de 50 001 à 170 000 €, 6 % de 170 001 à 300 000 €, 5 % jusqu'à 500 000 € — et ne comporte aucune ligne distinguant mandat simple et mandat exclusif. Rien n'interdit toutefois à une autre agence de tarifer différemment les deux mandats : demandez le barème écrit avant de signer.",
+      },
     ],
   },
   {

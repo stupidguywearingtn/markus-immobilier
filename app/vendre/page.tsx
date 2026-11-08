@@ -775,6 +775,17 @@ export default function VendrePage() {
                   en moins de deux minutes, ou nous appeler au 04 78 37 13 67
                   pour en parler avant de décider quoi que ce soit.
                 </p>
+                <p>
+                  Reste le document qui vous lie à l&apos;agence, et qui se lit
+                  avant de le signer : le mandat. Sa durée réelle
+                  d&apos;engagement, les quinze jours de préavis pour en sortir
+                  et le plafond de la clause pénale sont détaillés dans{" "}
+                  <Link href="/blog/mandat-simple-ou-exclusif" className={A}>
+                    mandat simple ou exclusif
+                  </Link>
+                  . Notre barème, lui, ne dépend que du prix de vente : il ne
+                  distingue pas les deux.
+                </p>
               </>
             ),
           },
