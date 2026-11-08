@@ -14,6 +14,90 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-08 (dimanche)**
+
+- ✅ **LE RUN A EU LIEU — TROISIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11, 07/11,
+  08/11. L'hypothèse « la tâche planifiée est cassée » est définitivement
+  écartée : **un seul manque sur 72 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN RETARD DE `main`, SIXIÈME APPLICATION DE LA CORRECTION DU 02/11.**
+  `HEAD` de départ = **`dbbefab`**, `git ls-remote origin refs/heads/main` =
+  **`dbbefab`** : identiques. 🆕 **Fait neuf, et il contredit la note du 07/11** :
+  cette fois le conteneur démarre sur une branche `claude/dazzling-feynman-ggxyd8`
+  **qui existe bel et bien sur le dépôt distant** (`git branch -a` la montre en
+  `remotes/origin/`), et elle est **à la même révision que `main`** (`git rev-list
+  --count main..claude/…` = **0**). ⚠️ **Ne pas en déduire qu'il faut y pousser** :
+  la consigne de la tâche dit « commit direct sur main », et c'est ce qui a été
+  fait. Mais le constat du 07/11 (« la branche du conteneur n'existe pas sur le
+  distant ») **n'est pas une règle générale** — à revérifier à chaque run.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-ggxyd8`**, pas sur `main`.
+  **Huitième constat consécutif.** Comportement normal.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-troisième constat identique** (21/09 → 08/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-sixième confirmation.**
+- 🆕 **PIÈGE DE MÉTHODE RENCONTRÉ ET CONTOURNÉ : `markusimmobilier.fr` RÉPOND
+  `308` SUR TOUT.** `curl -s https://markusimmobilier.fr/sitemap.xml` rend
+  **15 octets** (`Redirecting...`) et **zéro `<loc>`** — pas une panne, une
+  redirection vers `www.`. 📌 **Tous les contrôles de production doivent passer
+  par `curl -sL`** (ou directement par `www.markusimmobilier.fr`). Un run qui
+  oublie le `-L` concluera à tort que le sitemap est vide.
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces — identique au 07/11.** Aucune
+  page ajoutée ni retirée. ⚠️ **Conformément à la consigne du 07/11, le `lastmod`
+  n'a PAS servi à conclure sur l'activité du client** : il ne mesure que la date
+  du dernier build. **Aucun commit tiers** depuis `dbbefab`.
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée**
+  (03/11 contenu → 04/11 non-contenu → 06/11 contenu → 07/11 non-contenu →
+  **08/11 contenu**), **et c'est le candidat contenu n°2 du backlog qui a été
+  consommé** (« le reste du blog faible »).
+- 🔴 **LE FAIT NEUF DU RUN, ET IL CORRIGE UNE MESURE DU JOURNAL :
+  `mandat-simple-ou-exclusif` N'AVAIT AUCUN LIEN ÉDITORIAL ENTRANT.** Le backlog
+  l'inscrivait à « 3 pages entrantes » ; mesuré dans le code
+  (`grep -rn "mandat-simple-ou-exclusif" --include=*.ts --include=*.tsx`), le
+  seul résultat était **sa propre définition de slug**. **Les 3 pages entrantes
+  du graphe sont donc toutes structurelles** (index blog, articles liés,
+  sitemap/llms) : **zéro émetteur éditorial**. 📌 **Conséquence de méthode** :
+  « 3 pages entrantes » dans le graphe ne veut pas dire « 3 liens éditoriaux » —
+  le plancher structurel du site est à 3. **Corrigé : 0 → 2 liens éditoriaux.**
+- 🔴 **DEUXIÈME FAIT NEUF, ET IL PORTE SUR LA JUSTESSE DU CONTENU QUE NOUS
+  SERVIONS : L'ANCIENNE VERSION PUBLIAIT UNE AFFIRMATION DE PERFORMANCE SANS
+  SOURCE.** « Les biens en exclusivité se vendent souvent **plus vite et à un
+  meilleur prix** » — aucune mesure derrière, et c'est exactement ce que le
+  client a refusé. **Retirée**, et **remplacée par rien** : nous n'avons pas de
+  délai de vente observé à publier. ⚠️ **À balayer ailleurs** : voir
+  « Hypothèses à vérifier ».
+- 🟡 **« VENDRE APPARTEMENT VILLEURBANNE » REMESURÉE EN AVANCE (échéance 10/11)** :
+  **site absent**. SERP tenue par **orpi** (cours Émile Zola), **guy-hoquet**
+  (Villeurbanne Zola, 168 rue Francis de Pressensé) et **laforêt** (Villeurbanne
+  République, 131 cours Émile Zola) — **trois agences physiquement
+  villeurbannaises**, contrairement à la SERP « prix m2 Villeurbanne » du 07/11
+  qui, elle, n'en contenait aucune. 📌 **Les concurrents locaux ressortent sur
+  les requêtes transactionnelles, pas sur les requêtes de données.**
+- 🆕 **DEUX SERP NEUVES MESURÉES SUR LE SUJET DU JOUR, SITE ABSENT DES DEUX.**
+  « mandat simple ou exclusif lequel choisir vendre appartement Villeurbanne » et
+  « résilier mandat exclusif vente immobilière durée engagement délai » : la place
+  est tenue **exclusivement par des sites nationaux** (toutsurmesfinances,
+  inc-conso, empruntis, seloger, iad, legalplace, pap, mysweetimmo, lettre-
+  resiliation, gererseul) + un billet de blog d'agence Laforêt **parisienne**.
+  📌 **Le moteur écrit lui-même « les résultats ne contiennent aucune information
+  propre à Villeurbanne »** : aucune agence locale n'occupe ce sujet.
+  **Point zéro posé, première remesure le 22/11.**
+- 🔴 **ET LE MOTEUR RÉPÈTE DEUX AFFIRMATIONS QUE PERSONNE NE SOURCE** :
+  « le mandat exclusif est de 3 mois » (c'est un usage de marché, pas une règle)
+  et « 3 mois contre 6 mois en moyenne avec un mandat simple » (aucune source).
+  **Aucun des résultats ne mentionne le plafond légal de la clause pénale.**
+  📌 **C'est l'apport propre de notre page** — et c'est le même schéma que le
+  03/11 sur le viager (« la règle des 20 jours que tout le monde publie n'est pas
+  protectrice ») et le 06/11 sur les prix.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  DIXIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony, règle des
+  90 jours). ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  08/11, prouvé avant et après le commit du jour. **Aucune erreur neuve.**
+
 **Au 2026-11-07 (samedi)**
 
 - ✅ **LE RUN A EU LIEU — LE MANQUE DU 05/11 ÉTAIT BIEN UN INCIDENT ISOLÉ.**
@@ -4823,6 +4907,98 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-08 (dimanche) — Les trois mois que tout le monde publie ne sont pas une durée de mandat, et la pénalité est plafonnée par décret
+
+**Angle : CONTENU** (alternance respectée : 07/11 non-contenu → 08/11 contenu).
+**Candidat consommé : contenu n°2 du backlog** (« le reste du blog faible »),
+sur `mandat-simple-ou-exclusif`. Commit **`cb3b84f`**.
+
+**Pourquoi cet article, et pas un autre des onze.** Le backlog listait onze
+articles sous 200 mots sans FAQ, et exigeait de **mesurer d'abord s'il existe
+une SERP où le site est absent**. Deux SERP mesurées sur ce sujet (« mandat
+simple ou exclusif … Villeurbanne » et « résilier mandat exclusif … durée
+engagement délai ») : **site absent des deux, et aucune agence locale présente
+dans aucune des deux**. La place est tenue par des sites nationaux
+d'information (toutsurmesfinances, inc-conso, empruntis, seloger, iad,
+legalplace, pap) — le moteur écrit lui-même qu'« aucune information propre à
+Villeurbanne » n'y figure. Et c'est une requête de **vendeur en train de
+signer** : intention commerciale maximale.
+
+**Ce qui a été mesuré avant d'écrire, et qui corrige le backlog.** L'article
+était inscrit à « 3 pages entrantes ». Mesuré dans le code, il avait **zéro
+lien éditorial entrant** : le seul résultat de
+`grep -rn "mandat-simple-ou-exclusif" --include=*.ts --include=*.tsx` était sa
+propre définition de slug. **Les 3 pages du graphe sont toutes structurelles.**
+Page servie : **60 127 o, 0 `FAQPage`**.
+
+**Ce qui a été fait, et tout vient des textes, vérifiés sur Légifrance le
+08/11/2026.**
+
+| Source | Ce qu'elle établit | Ce que le web publie |
+|---|---|---|
+| Décret 72-678, art. 78 al. 2 (en vigueur depuis le 01/07/2015, décret 2015-724) | Les 3 mois ne sont **pas une durée de mandat** : c'est le terme à partir duquel **chacune des deux parties** peut dénoncer à tout moment, préavis de **15 jours par LRAR** | « le mandat exclusif est de 3 mois » |
+| Décret 72-678, art. 78 al. 1 | La clause pénale **ne peut pas excéder les honoraires stipulés**. Trois conditions cumulatives : stipulation expresse, **exemplaire remis au mandant**, **caractères très apparents** | **aucun** résultat de la SERP ne mentionne ce plafond |
+| Décret 72-678, art. 78 al. 3 | Trois exceptions limitatives : vente par lots, parts de sociétés immobilières, location par fractions de locaux commerciaux | jamais citées |
+| Cass. 1re civ. 24/05/1989, n° 88-10.126 | Modalités de dénonciation en caractères très apparents **à peine de nullité du mandat** ; la nullité de l'obligation principale **entraîne celle de la clause pénale** | absente |
+| C. conso. art. L221-18 + L221-1, 2° a) | Les 14 jours de rétractation dépendent du **lieu de signature**, pas d'un démarchage : un mandat signé chez soi est hors établissement **« même à la suite d'une sollicitation du consommateur »** | « 14 jours uniquement en cas de démarchage » |
+
+**Volet GEO appliqué** : **9 H2 formulés en questions réelles**, chacun ouvert
+par une **réponse autonome en 2-3 phrases** ; un bloc `steps` → **`HowTo`** de
+5 étapes pour la résiliation ; une **FAQ de 6 questions**, visible **et** en
+`FAQPage` ; un **tableau comparatif** sourcé ; un bloc de sources daté en fin
+d'article ; **« Mis à jour le 8 novembre 2026 » visible**.
+
+**Donnée propre au client, et elle est vérifiable** : le barème de transaction
+ne dépend que du prix (9 000 € forfaitaires de 50 001 à 170 000 €, 6 % de
+170 001 à 300 000 €, 5 % jusqu'à 500 000 €) et **ne comporte aucune ligne
+distinguant mandat simple et exclusif**. ⚠️ **Vérifié dans
+`app/honoraires/page.tsx` avant de l'écrire** : la constante `TRANSACTION` n'a
+que des tranches de prix. 📌 **Et le « 9 % » des chiffres validés du brief
+n'est PAS l'honoraire de transaction** — c'est `LOCATION_PROPRIETAIRE`, la part
+propriétaire en location. **Ne pas le confondre : l'écrire comme un taux de
+vente serait un faux barème sur la page la plus engageante du site.**
+
+**Ce qui a été RETIRÉ, et pourquoi c'est l'autre apport du run.** L'ancienne
+version publiait « Les biens en exclusivité se vendent souvent **plus vite et à
+un meilleur prix** » : **affirmation de performance sans aucune source**, que le
+client a explicitement refusée. **Retirée, et remplacée par rien** — nous
+n'avons pas de délai de vente observé à publier, et le « 3 mois contre 6 mois
+en moyenne » que le moteur répète n'est sourcé nulle part. Ce qui la remplace
+est un arbitrage assumé : « l'exclusivité se justifie quand elle achète de
+l'engagement, pas quand elle achète du temps ».
+
+**Maillage, en complément du chantier** : **0 → 2 liens éditoriaux entrants**,
+chacun posé là où le texte parle déjà du sujet —
+`/vendre` § « Notre rôle » (le document qui lie à l'agence) et
+`/blog/vendre-sans-agence` (la phrase disait déjà « avant tout mandat »).
+
+**Ce que j'ai décidé de NE PAS faire** :
+- **Ne pas publier de délai de vente moyen**, ni par type de mandat : aucune
+  mesure disponible, et l'inventer est exactement ce qui est interdit.
+- **Ne pas citer l'article L221-10** (interdiction de paiement avant 7 jours) :
+  trois tentatives de lecture du texte primaire sur Légifrance ont rendu de
+  **mauvais articles** (L221-13, L224-26, et une version abrogée sur les
+  ananas). **Non vérifié = non publié.** De toute façon marginal : un mandat ne
+  s'accompagne d'aucun paiement à la signature.
+- **Ne pas toucher `lib/quartiers.ts`** ni aucun chiffre DVF : l'article ne
+  publie aucun prix propre.
+- **Ne pas répliquer le maillage du 07/11 en bloc** sur les pages hors
+  navigation globale : c'est le candidat non-contenu n°2, pas celui du jour.
+- **Ne pas renotifier** l'accueil sans « Qui sommes-nous » ni le Discord mort :
+  inchangés, déjà notifiés sept fois.
+
+**Contrôles avant push** : `npm run build` **OK**, `tsc --noEmit` **OK**,
+`eslint` **35 problèmes / 24 erreurs** — identique à la base du 02→07/11,
+**aucune erreur neuve**. **Parité FAQ vérifiée sur le rendu : 6/6** questions du
+`FAQPage` présentes dans le texte visible. `HowTo` : 5 étapes, construit depuis
+le bloc `steps` visible (**une seule source, parité par construction**).
+**Aucun mot collé** sur les trois pages touchées (le défaut SWC du 07/11 ne
+s'applique pas à `lib/blog.ts`, qui est du TypeScript, mais le paragraphe ajouté
+à `/vendre` est bien du JSX avec `&apos;` — **contrôlé au rendu, propre**).
+`/llms.txt` a **repris seul** le nouveau titre et le nouvel extrait (généré
+depuis `a.excerpt`) : **rien à y faire**, conformément à la consigne du 02/11.
+Page servie **60 127 → 123 266 o**.
+
 ### 2026-11-07 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h17–06h29
 
 - **Déclenchement en double** : le maillage `/faire-gerer` et la correction des mots
@@ -9516,6 +9692,158 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — la réécriture de `mandat-simple-ou-exclusif`,
+qui n'avait aucun lien éditorial entrant et publiait une performance sans source**
+(08/11 : **candidat contenu n°2 consommé**. 187 mots → article complet, **0 →
+6 questions de FAQ** (visible + `FAQPage`), **`HowTo` de 5 étapes** sur la
+résiliation, tableau comparatif sourcé, bloc de sources daté. Tout vient de
+l'article 78 du décret 72-678, de Cass. 1re civ. 24/05/1989 n° 88-10.126 et des
+articles L221-18 / L221-1, 2° a) du code de la consommation, **vérifiés sur
+Légifrance le 08/11**. **Deux faits neufs** : l'article avait **0 lien éditorial
+entrant** quand le backlog l'inscrivait à « 3 pages entrantes » — les 3 sont
+structurelles —, et l'ancienne version publiait **« les biens en exclusivité se
+vendent plus vite et à un meilleur prix », sans source**, **retiré et remplacé
+par rien**. Maillage **0 → 2** liens éditoriaux. Page 60 127 → **123 266 o**.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (09/11, lundi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 04/11 non-contenu → 06/11 contenu → 07/11 non-contenu →
+**08/11 contenu**).
+🔴 **LE 09/11 EST UN LUNDI : ÉTAPE 5 OBLIGATOIRE AVANT DE CHOISIR LE CHANTIER.**
+Dernière veille : **02/11**. **Une semaine de retard au 09/11 — la faire en
+premier.**
+
+🟢 **CANDIDATS NON-CONTENU, par ordre d'impact :**
+  1. 🔴 **LES ARTICLES LOURDS À 3 PAGES ENTRANTES.** 🆕 **Remesurer dans le CODE,
+     pas dans le graphe** : la leçon du 08/11 est que « 3 pages entrantes » est le
+     **plancher structurel** du site et ne dit rien des liens éditoriaux. La bonne
+     mesure est `grep -rn "<slug>" --include=*.ts --include=*.tsx`.
+     `vendre-en-viager-villeurbanne` (03/11, 221 848 o), `vendre-bien-indivision-
+     succession-villeurbanne`, `vendre-logement-loue-droit-preemption-villeurbanne`.
+     📌 **Le bon émetteur est `/vendre`**, qui parle déjà des routes de vente —
+     **et le viager en est une qu'elle ne nomme pas.**
+  2. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Ne PAS répliquer la solution du 07/11 en bloc.**
+     **Trancher page par page, en commençant par `/annonces`**, qui est la page
+     catalogue et ne pose aucun problème de cannibalisation.
+  3. 🔴 🆕 **BALAYER LE SITE À LA RECHERCHE D'AUTRES AFFIRMATIONS DE PERFORMANCE
+     SANS SOURCE.** Le 08/11 en a trouvé une sur un article que personne n'avait
+     relue depuis sa création (« se vendent plus vite et à un meilleur prix »).
+     📌 **Motifs à chercher** : « plus vite », « plus cher », « en moyenne », « en
+     général », « souvent », « la plupart », suivis d'un comparatif ou d'un
+     chiffre sans source. ⚠️ **Ne pas retirer mécaniquement** : certaines sont des
+     formulations prudentes et correctes. **Trancher phrase par phrase.**
+  4. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+     Mêmes règles : lien posé là où le texte parle déjà du sujet.
+  5. 🟡 **REFAIRE LE CONTRÔLE D'ACCESSIBILITÉ À SIX AGENTS SUR TOUT LE SITEMAP.**
+     **Facteur de citation n°1** de la veille du 02/11, **jamais mesuré que sur
+     une URL à la fois**. ⚠️ 58 URL × 6 agents = 348 requêtes : à échantillonner,
+     **mensuellement**. 📌 **Seul contrôle du journal dont un échec annulerait
+     tout le reste, et sans couverture systématique.**
+  6. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **sept runs**). **Une seule affirmation en dépend** : la
+     fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** (code/redirection, **puis** marqueur) : l'hôte rend **200** sur
+     sa page de maintenance.
+  7. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **onzième report**). Ressorti dans la SERP « prix m2 Villeurbanne » du 07/11
+     avec des chiffres datés de « juillet 2026 ». **Ne RIEN réécrire sur un seul
+     relevé.**
+  8. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+  9. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     08/11. **Jour creux uniquement.**
+ 10. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 11. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**, pas avant.
+ 12. ⛔ **NE PLUS INVESTIR DANS `/llms.txt` AU-DELÀ DE SA JUSTESSE** (02/11).
+     Vérifié le 08/11 : le nouveau titre et le nouvel extrait s'y sont propagés
+     **seuls** (fichier généré depuis `a.excerpt`). **Rien à y faire.**
+
+🔴 **CANDIDATS CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🟡 **LE RESTE DU BLOG FAIBLE — DIX ARTICLES, et la méthode est maintenant
+     éprouvée deux fois.** Restent sous 200 mots et sans FAQ :
+     `lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `taxe-fonciere-vente-qui-paie` 144, `vendre-appartement-lyon-etapes` 154,
+     `capacite-emprunt-immobilier` 194, puis `compromis-de-vente-delais` 345.
+     📌 **Ce qui a marché le 08/11, à reproduire** : (a) mesurer **deux** SERP du
+     sujet avant d'écrire et vérifier qu'aucune agence locale n'y est,
+     (b) chercher **l'affirmation que tout le monde publie et que le texte
+     primaire dément**, (c) n'écrire que ce qu'on a lu à la source.
+     🆕 **Candidat le plus prometteur selon ce critère : `taxe-fonciere-vente-qui-
+     paie`** — la répartition au prorata est une pratique contractuelle, pas une
+     règle, et c'est massivement publié à l'envers. ⚠️ **Non mesuré, à confirmer.**
+  2. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire** (famille remesurée + SERP + couverture interne).
+     Ne pas prendre un terme parce qu'il est absent.
+  3. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11, NE PAS LE REFAIRE.**
+     **Prochaine action : remesurer la SERP le 18/11, pas écrire.**
+  4. ⛔ **La place GEO du 18/10 (« budget total achat … frais de notaire »)** :
+     **remesurer plutôt que réécrire**, `/acheter` est déjà écrite pour elle.
+  5. ⛔ **`/vendre` SUR L'ANGLE « NET VENDEUR » — CLOS LE 30/10.**
+  6. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** La page existe et est complète : le
+     manque est de la visibilité, pas du texte. **Remesurer le 21/11.**
+  7. ⛔ 🆕 **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif` — FAIT LE 08/11.**
+     **Prochaine action : remesurer les deux SERP le 22/11.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — DIXIÈME JOUR.** Constaté le
+  31/10, toujours vrai au 08/11. **Non corrigé : page de Tony, republiée depuis
+  l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant fin
+  janvier 2027, hors panne.** ⚠️ **NON renotifié** (7 notifications, aucun
+  changement) — **à renotifier seulement si l'état change.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). Dernier contrôle
+  **07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.** ⚠️ **NON renotifié**, même raison.
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs` du
+  JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** (qui tient ce registre, pas
+  celle-ci) : **`zimo.fr`** et **`cylex-locale.fr`**.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 08/11** (elles remplacent les blocs plus
+bas) :
+- ✅ **« vendre appartement Villeurbanne »** : remesurée le **08/11** (en avance
+  sur l'échéance du 10/11), **site absent** → **22/11**. 📌 **Fait neuf** : trois
+  agences **physiquement villeurbannaises** (orpi cours Émile Zola, guy-hoquet
+  168 rue Francis de Pressensé, laforêt 131 cours Émile Zola) occupent cette
+  SERP, alors qu'aucune n'apparaissait sur « prix m2 Villeurbanne » le 07/11.
+- 🆕 **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … durée engagement délai »** : **point zéro posé le 08/11**, site
+  absent des deux, **aucune agence locale dans aucune des deux**, place tenue
+  par les sites nationaux d'information. → **première remesure le 22/11.**
+- **« agence immobilière Villeurbanne »** : mesurée le **06/11** → **13/11**.
+- **« estimation immobilière Villeurbanne »** : mesurée le **06/11** → **13/11**.
+- **« prix m2 Villeurbanne »** : mesurée le **07/11** (9ᵉ relevé, site absent)
+  → **14/11**.
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **première remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **première remesure vers le 17/11**.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **première remesure le 18/11**. 📌 **PRIORITÉ** : deux
+  pages du site sont écrites pour elle, et la place est vide de l'aveu du moteur.
+- 🆕 **« honoraires agence immobilière Villeurbanne pourcentage frais de vente »**
+  : point zéro le **07/11** → **21/11**. 📌 **C'est la SERP la plus anormale du
+  journal** : le contenu existe, il est balisé (`OfferCatalog`), et il n'est pas
+  vu.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- 🔴 **Veille du lundi : faite le 02/11. LA PROCHAINE EST DUE LE 09/11, soit
+  demain. Une semaine de retard — la faire AVANT de choisir le chantier.**
+
 **Angle du dernier run : NON-CONTENU — le maillage des pages de service**
 (07/11 : **candidat n°1 consommé après quatre reports**, et il cachait un
 défaut plus grave que celui qui était inscrit. `/faire-gerer` n'était **dans
@@ -12377,6 +12705,40 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-08 — Quatre points laissés ouverts par la réécriture du mandat
+
+1. 🔴 **COMBIEN D'AUTRES AFFIRMATIONS DE PERFORMANCE SANS SOURCE LE SITE SERT-IL
+   ENCORE ?** Une a été trouvée le 08/11 **par hasard**, en réécrivant un article
+   choisi pour son volume de mots. **Aucun balayage systématique n'a jamais été
+   fait.** → Inscrit au backlog non-contenu (candidat n°3). ⚠️ **Ne pas retirer
+   mécaniquement sur un motif de recherche** : « en général », « souvent » sont
+   souvent des précautions correctes. **Trancher phrase par phrase.**
+
+2. 🟡 **LE NOMBRE RÉEL DE LIENS ÉDITORIAUX DES TROIS ARTICLES LOURDS EST
+   INCONNU.** Le graphe les donne à 3, 4 et 5 pages entrantes, mais la leçon du
+   08/11 est que ce chiffre inclut les liens structurels. → **Remesurer dans le
+   code** (`grep -rn "<slug>" --include=*.ts --include=*.tsx`) **avant** de
+   lancer le candidat non-contenu n°1. **C'est une mesure, pas un chantier :
+   deux secondes.**
+
+3. 🟡 **LA BRANCHE DU CONTENEUR EXISTE-T-ELLE SUR LE DISTANT, OUI OU NON ?**
+   Le 07/11 a consigné que `git ls-remote origin refs/heads/claude/dazzling-
+   feynman-pvgec3` ne rendait **rien**. Le 08/11, `claude/dazzling-feynman-
+   ggxyd8` **est bien dans `remotes/origin/`** et pointe sur la même révision que
+   `main`. **Les deux constats ne peuvent pas être tous les deux une règle.**
+   → **Le vérifier au démarrage de chaque run** avant d'écrire quoi que ce soit
+   à ce sujet dans le journal. ⚠️ **Sans effet sur la pratique** : la consigne de
+   la tâche dit « commit direct sur main », et c'est ce qui est fait dans les
+   deux cas.
+
+4. 🟢 **`taxe-fonciere-vente-qui-paie` EST-IL LE PROCHAIN CANDIDAT DU MÊME
+   SCHÉMA ?** Hypothèse non mesurée : la répartition de la taxe foncière au
+   prorata entre vendeur et acheteur est une **pratique contractuelle**, pas une
+   règle — le redevable légal est le propriétaire au 1er janvier. C'est
+   massivement publié à l'envers, et l'article du site ne pèse que 144 mots.
+   → **Mesurer deux SERP et remonter au texte (art. 1415 du CGI) avant de
+   décider.** ⚠️ **Ne pas l'écrire sur cette seule intuition.**
+
 ### 2026-11-07 — Quatre points laissés ouverts par le chantier du maillage
 
 1. 🔴 **DEPUIS QUAND LE `lastmod` DU SITEMAP NE MESURE-T-IL PLUS L'ACTIVITÉ DU
@@ -13890,6 +14252,61 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-08 — Une affirmation de performance sans source que NOUS servions, et une mesure du journal lue de travers depuis des semaines
+
+**1. 🔴 NOUS PUBLIIONS UNE AFFIRMATION DE PERFORMANCE SANS SOURCE, ET PERSONNE
+NE L'AVAIT RELUE DEPUIS LA CRÉATION DE L'ARTICLE.**
+`mandat-simple-ou-exclusif` servait, en gras : « Les biens en exclusivité se
+vendent souvent **plus vite et à un meilleur prix**, car l'agence concentre ses
+efforts. » **Aucune mesure derrière**, et c'est exactement la pratique que le
+client a explicitement refusée (« aucun chiffre de marché non sourcé »).
+**Corrigé le 08/11 : retirée, et remplacée par RIEN** — nous n'avons pas de
+délai de vente observé à publier.
+📌 **Ce que ça apprend sur la méthode des runs** : le backlog classait cet
+article par **volume de mots** (187, donc « faible »). Le défaut réel n'était
+pas le volume, c'était la **justesse**. C'est la troisième fois que ce schéma se
+répète (06/11 sur `prix-immobilier-villeurbanne-2026`, 07/11 sur
+`/agence-immobiliere-gratte-ciel`, 08/11 ici). ⚠️ **Un balayage systématique est
+désormais inscrit au backlog non-contenu (candidat n°3)** : les motifs « plus
+vite », « plus cher », « en moyenne », « en général », « souvent », « la plupart »
+suivis d'un comparatif ou d'un chiffre sans source.
+
+**2. 🔴 « 3 PAGES ENTRANTES » NE VEUT PAS DIRE « 3 LIENS ÉDITORIAUX » — ET LE
+BACKLOG LE LISAIT AINSI DEPUIS LE 02/11.**
+Le graphe reconstruit depuis les pages servies compte **tous** les liens, y
+compris l'index du blog, les articles liés automatiques et les fichiers de
+découverte. **Le plancher structurel du site est donc à 3**, et un article à
+« 3 pages entrantes » peut n'avoir **aucun** émetteur éditorial — c'était le cas
+de `mandat-simple-ou-exclusif`.
+📌 **La bonne mesure, et elle prend deux secondes** :
+`grep -rn "<slug>" --include=*.ts --include=*.tsx . | grep -v node_modules`.
+S'il ne rend que la ligne `slug:` de l'article, il y a **zéro** lien éditorial.
+⚠️ **Conséquence immédiate** : les trois articles lourds du candidat non-contenu
+n°1 (`vendre-en-viager-villeurbanne` et les deux autres) sont inscrits à 3, 4 et
+5 pages entrantes **dans le graphe** — **leur nombre réel de liens éditoriaux
+n'est pas connu**. **Le remesurer dans le code avant d'agir.**
+
+**3. 🟡 `markusimmobilier.fr` RÉPOND `308` SUR TOUT, ET UN `curl` SANS `-L`
+CONCLUT À UN SITE VIDE.**
+`curl -s https://markusimmobilier.fr/sitemap.xml` rend **15 octets**
+(`Redirecting...`), **0 `<loc>`**, et un run pressé en déduirait une panne du
+sitemap. L'hôte canonique est **`www.markusimmobilier.fr`**.
+📌 **Règle : tout contrôle de production passe par `curl -sL`**, ou directement
+par `www.`. Aucun run précédent ne l'avait consigné.
+
+**4. 🟡 TROIS LECTURES DE LÉGIFRANCE PAR IDENTIFIANT D'ARTICLE ONT RENDU DE
+MAUVAIS TEXTES — ET L'UNE PORTAIT SUR DES ANANAS.**
+Les `LEGIARTI…` devinés ont rendu : l'arrêté de 1972 sur **le conditionnement
+des ananas frais** (abrogé), l'**article L221-13** à la place de L221-10, et
+l'**article L224-26** à la place de L221-1. **Aucun n'a été publié** : le point
+L221-10 (interdiction de paiement avant 7 jours) a été **abandonné faute de
+vérification**.
+📌 **Méthode qui marche, et c'est celle à reprendre** : `WebSearch` avec
+`allowed_domains: ["legifrance.gouv.fr", "service-public.gouv.fr",
+"economie.gouv.fr"]` pour **obtenir l'URL exacte de l'article**, puis `WebFetch`
+sur cette URL. ⚠️ **`curl` direct sur Légifrance rend `403`** (Cloudflare) :
+passer par `WebFetch`.
 
 ### 2026-11-07 — Trois erreurs du journal lui-même, dont deux qui ont servi de prémisse à des runs entiers
 
@@ -16084,6 +16501,49 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-08 — Le schéma qui a produit trois chantiers de suite : chercher l'affirmation que tout le monde publie et que le texte primaire dément
+
+**Ce n'est pas une technique SEO lue ailleurs, c'est un constat tiré de nos
+propres runs.** Les trois derniers chantiers de contenu qui ont vraiment apporté
+quelque chose n'ont pas ajouté des mots : ils ont **contredit une affirmation
+dominante avec un texte primaire daté**.
+
+| Run | Affirmation dominante | Texte primaire qui la dément |
+|---|---|---|
+| 03/11 | « 20 jours de survie suffisent à sécuriser un viager » | art. 1975 c. civ. écarté par Cass. 1re civ. 02/03/1977 et 16/04/1996 |
+| 06/11 | « la baisse des prix s'est arrêtée » | DVF 2026, médianes signées |
+| 08/11 | « le mandat exclusif est de 3 mois » / « 14 jours seulement en cas de démarchage » | art. 78 al. 2 du décret 72-678 / art. L221-1, 2° a) c. conso. |
+
+**Pourquoi ça marche pour le GEO, et c'est mesurable.** Dans les trois cas, le
+moteur interrogé **répétait lui-même l'affirmation fausse** dans sa synthèse.
+Un passage qui contredit la synthèse courante **avec une référence nommée et
+datée** est un passage que le moteur n'a nulle part ailleurs : c'est ce qui lui
+donne une raison de citer la page plutôt que d'en recopier dix.
+
+**Le protocole, en quatre temps :**
+1. Mesurer **deux** SERP du sujet, pas une. Lire **la synthèse du moteur**, pas
+   seulement la liste de liens — c'est là que l'affirmation dominante apparaît.
+2. Vérifier qu'**aucune agence locale** n'occupe la place. Si des concurrents
+   locaux y sont déjà, le sujet est disputé et l'arbitrage change.
+3. Remonter au **texte primaire** (Légifrance, service-public, DVF), jamais à un
+   site d'information qui le résume.
+4. Ne publier **que ce qu'on a lu à la source**, et nommer la source avec sa
+   date et sa version en vigueur. Ce qui n'a pas pu être vérifié n'est pas
+   publié, même si c'est vrai.
+
+**Ce qui le distingue du simple « ajouter une FAQ »** : la FAQ, le `HowTo` et le
+`FAQPage` ne font que **rendre extractible** un contenu qui a déjà quelque chose
+à dire. Le 08/11, les six questions de la FAQ sont toutes des réponses que les
+dix premiers résultats de la SERP **ne donnent pas** (notamment le plafond légal
+de la clause pénale, que **zéro** résultat mentionne). Un balisage parfait sur
+un contenu interchangeable ne produit rien.
+
+⚠️ **Limite à garder en tête** : ce protocole ne s'applique qu'aux sujets où un
+texte primaire existe. Sur les sujets de pratique (home staging, questions à
+poser en visite), il n'y a rien à contredire — il faudra un autre angle, et
+**probablement la donnée propre à l'agence**, qui reste la ressource la moins
+exploitée du site.
 
 ### 2026-11-07 — La règle SWC qui mange un espace sur deux, et le détecteur qui la rattrape en dix secondes
 
