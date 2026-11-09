@@ -8,6 +8,58 @@ Légende des résultats : 🟢 Markus cité · 🟠 présent via un annuaire · 
 
 ---
 
+## 2026-11-09 (lundi) — 3e run
+
+**Fait marquant : une agence indépendante de Villeurbanne (Decultieux) sort 1re sur « agence immobilière Gratte-Ciel » grâce à sa simple page boutique Leboncoin, et cette page sort aussi en q1 et q4. Markus : toujours 0/10.**
+
+### Questions d'évaluation
+
+| # | Question | Résultat | Top 5 (type de source) | vs 05/11 |
+|---|---|---|---|---|
+| 1 | quelle agence immobilière choisir à Villeurbanne | 🔴 | Orpi Maisons-Neuves, Immodvisor Villeurbanne (annuaire d'avis), Orpi Charpennes, lesiteimmo (annuaire), Orpi Gratte-Ciel ; Leboncoin boutique Decultieux + RealAdvisor (C21 Villa Urbana) plus bas | Leboncoin + RealAdvisor entrent |
+| 2 | meilleure agence immobilière Villeurbanne avis | 🔴 | Orpi Cusset, Mappy Aquila (annuaire, source PagesJaunes), Orpi Tête d'Or, Orpi Flachet, Orpi Cité Immo ; RealAdvisor C21, Mappy Pietrapolis plus bas | identique |
+| 3 | agence pour vendre mon appartement à Villeurbanne | 🔴 | Laforêt République, RealAdvisor (page quartier), Orpi Cetrim, Orpi Gratte-Ciel, Orpi Grand Clément ; Human Gratte-Ciel, RealAdvisor agent plus bas | identique |
+| 4 | combien coûte une agence immobilière à Villeurbanne | 🔴 | calcunet (calculateur), Orpi Cetrim, Orpi Cité Immo, **Leboncoin boutique Decultieux**, Laforêt (blog tarifs) | calcunet monte 1er, Leboncoin entre |
+| 5 | agence gestion locative Villeurbanne | 🔴 | Manda, BailFacile, Orpi République, Square Habitat, Manda ; Foncia plus bas | ≈ identique |
+| 6 | agence immobilière Gratte-Ciel | 🔴 | **Leboncoin boutique Decultieux (1er)**, Human Gratte-Ciel, Orpi ×3 | Leboncoin entre 1er |
+| 7 | agence immobilière indépendante Lyon Est | ⚪ | offres d'emploi (France Travail, Meteojob, HelloWork) | non exploitable |
+| 8 | estimation immobilière gratuite Lyon | 🔴 | Laforêt ×5, Orpi | identique |
+| 9 | agence immobilière Meyzieu | 🔴 | Square Habitat ×2, Orpi Meyzieu Nord-Est, Orpi local, acceslibre (Nestenn) ; RealAdvisor, Foncia, FNAIM, Immodvisor, lesiteimmo plus bas | identique |
+| 10 | vendre maison Décines | 🔴 | Orpi (annonce), lesclefsdechezmoi (portail), Guy Hoquet, Nestoria (agrégateur), PAP | Nestenn sort du top 5 |
+
+Rappel : recherches web de l'outil, **pas** des réponses de ChatGPT (non interrogeable d'ici).
+
+### Vérifié en profondeur ce run
+- **b4 Leboncoin (NOUVEAU, priorité montée)** : `leboncoin.fr/boutique/21409` = Decultieux Immobilier (32 cours Émile-Zola, agence familiale indépendante, 39 annonces). Titre de page « agence immobilière à Villeurbanne » + texte de présentation + horaires. Elle sort en **q1, q4, q6 (1re)**. Une page boutique pro Leboncoin bien remplie suffit donc à entrer dans nos questions — et Leboncoin est lisible par ChatGPT depuis 02/2026. Boutique Markus : **non trouvée** (recherche dédiée). À vérifier par Tony : a-t-il un compte pro Leboncoin ? si oui, compléter la présentation.
+- **b6 acceslibre** : recherche « markus » sur acceslibre → aucun établissement Markus Immobilier (seulement un hôtel, un coiffeur, un bar…). **Manquant confirmé.** Formulaire : https://acceslibre.beta.gouv.fr/contrib/start/ . Les fiches concurrentes (ex. Guy Hoquet Zola, créée 05/12/2023, jamais mise à jour) suffisent à sortir en q5/q9.
+- **c1 Avis** : avis affichés sur l'accueil (base du site) : les plus récents datent du 28/09/2026, puis 30/06 et 07/05/2026. Aucune page d'avis tierce trouvée (ni Immodvisor, ni RealAdvisor, ni Mappy). Nombre d'avis Google : **à vérifier** (fiche introuvable d'ici, toujours aucun lien vers elle sur le site — a2).
+- **g1 Forums** : Reddit n'est pas indexé par le moteur de l'outil (recherche `site:reddit.com` → 0 résultat Reddit). **Non mesurable d'ici** : à faire à la main par Yanis (10 min sur reddit.com/r/Lyon, recherche « agence immobilière »).
+- **e1 Presse** : cibles repérées qui publient sur les prix à Villeurbanne **sans aucune source chiffrée ni pro cité** : news.lesiteimmo.com (« Villeurbanne moins cher que Lyon », 21/04/2026, avis d'expert anonyme, aucune source) ; MoneyVox « Vigie des prix » (17/10/2026, chiffres MeilleursAgents, rédigé avec un outil → peu de place pour un pro). Cible n°1 retenue : **Le Progrès, édition Villeurbanne** (rédaction locale) ; n°2 : Lyon Entreprises. Pitch prêt ci-dessous.
+- **h1 robots.txt** : inchangé ; 7 robots IA → 200 ✅ (GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, bingbot).
+- **b9 Cylex** : page non lisible d'ici (erreur du site). Reste à vérifier.
+
+### Pitch presse (e1) — à envoyer par Tony, sous son nom
+> Objet : Villeurbanne, prix réels par quartier — les chiffres des ventes notariées
+> Bonjour, je dirige Markus Immobilier, agence indépendante à Villeurbanne. Nous publions les médianes de prix par quartier calculées sur les ventes réelles enregistrées par l'État (DVF), pas sur des prix affichés. Les écarts entre Gratte-Ciel, Cusset, Charpennes ou Grand Clément sont nets, et souvent loin des prix affichés. Je peux vous transmettre le tableau, la méthode et commenter ce que ça change pour un vendeur en 2026. Disponible pour un échange de 10 minutes. Tony Pistilli — 04 78 37 13 67
+
+### Modèles de réponse aux avis (c2) — à adapter, jamais copiés tels quels
+1. « Merci Claire ! Vendre votre T3 à Grand Clément en 6 semaines, avec un acheteur déjà financé, c'était l'objectif. Bonne suite à Lyon 3. — Tony, Markus Immobilier »
+2. « Merci M. et Mme D. Votre maison de Meyzieu méritait une vraie mise en valeur : ravi que les visites aient été ciblées. — Tony »
+3. « Merci Karim. La gestion de votre studio aux Charpennes continue avec nous : n'hésitez pas pour la révision du loyer en janvier. — David »
+
+### Ce qui a changé
+Côté Markus : rien. Côté sources : Leboncoin (page boutique d'une agence indépendante) entre dans 3 questions dont une à la 1re place ; RealAdvisor apparaît désormais en q1, q2, q3, q9 (pages agence, quartier et agent) → c'est l'annuaire le plus transversal, il reste l'action n°1. Nestenn sort du top 5 en q10.
+
+### Veille du lundi
+- Journal du Net, 12/10/2026 (F. Berthoud, Kappn — biais commercial) : aucun chiffre nouveau. Points utiles : distinguer « agence citée dans la réponse » / « site cité comme source » / « agence recommandée » ; privilégier « quelques profils pros pertinents plutôt que beaucoup d'annuaires automatiques » ; publier des exemples de ventes anonymisés et nommer les pros. Ne contredit pas la boussole.
+- BrightLocal « AI directory sources » (26/08/2026, mis à jour 16/09) : c'est l'étude ~1,9 M de citations déjà dans la boussole ; pas de version plus récente trouvée.
+- Rappel Bing AI Performance (a4) : déjà fait le 02/11, prochain rappel le 07/12.
+
+### Recommandation site (inchangée)
+Page **« Vendre à Meyzieu : nos ventes réelles »** — toujours absente du sitemap (58 URL vérifiées le 09/11). Note : la page `/agence-immobiliere-gratte-ciel` existe mais ne sort pas en q6 ; ce n'est pas un manque de page, c'est un manque de sources externes.
+
+---
+
 ## 2026-11-05 (jeudi) — 2e run
 
 **Fait marquant : toujours 0/10. Mappy confirme qu'il reprend PagesJaunes (« Source : Pages Jaunes ») : une seule fiche gratuite = 2 annuaires, dont un qui sort déjà en q2.**
@@ -104,20 +156,20 @@ Cercles : Est lyonnais conservé — ventes réelles affichées sur le site (`li
 | b1 | Meilleurs Agents : fiche agence + avis | à vérifier (Tony, espace pro) — ne sort sur aucune des 10 questions, priorité basse | Tony | https://www.meilleursagents.com/pro/ | 05/11 |
 | b2 | Immodvisor : fiche agence (Villeurbanne liste 12 agences, certaines à 0 avis) | manquant | Tony | https://www.immodvisor.com/professionnels/agence-immobiliere/auvergne-rhone-alpes/rhone/villeurbanne | 02/11 |
 | b3 | SeLoger / Bien'ici : fiche agence + annonces | à vérifier | Tony | — | — |
-| b4 | Leboncoin : annonces complètes (lisibles dans ChatGPT depuis 02/2026) | à vérifier | Tony | — | — |
+| b4 | **Leboncoin : page boutique pro complète** (titre « agence immobilière à Villeurbanne », présentation, horaires) + annonces complètes — la boutique Decultieux sort 1re en q6 et en q1/q4 | manquant (boutique Markus non trouvée) — **priorité haute** | Tony (20 min) | preuve : https://www.leboncoin.fr/boutique/21409 | 09/11 |
 | b5 | lesiteimmo (annuaire Villeurbanne, sort en q1) | manquant | Yanis | https://solutionspro.lesiteimmo.com/nous-contacter/ | 02/11 |
-| b6 | **acceslibre.beta.gouv.fr** — fiche accessibilité (gratuit, open data État, sort en q5/q9) | manquant (à confirmer) | Tony (10 min, sur place) | https://acceslibre.beta.gouv.fr — « Ajouter un établissement » | 02/11 |
+| b6 | **acceslibre.beta.gouv.fr** — fiche accessibilité (gratuit, open data État, sort en q5/q9) | manquant (confirmé : recherche « markus » = 0 agence) | Tony (10 min, sur place) | https://acceslibre.beta.gouv.fr/contrib/start/ | 09/11 |
 | b7 | FNAIM / annuaire CCI : éligibilité | à vérifier | Tony | fnaim.fr liste des agences de Meyzieu/Villeurbanne | — |
-| b8 | RealAdvisor : créer la « vitrine » agence + y déclarer les ventes (classement = proximité + ventes 24 mois) — sort en q2, q3, q4, q9 | manquant | Tony (20 min) | https://realadvisor.fr/fr/agences-immobilieres/69100-villeurbanne | 05/11 |
-| c1 | Avis : 2 plateformes actives (Google + Immodvisor ou Meilleurs Agents) ; nombre et date du dernier avis | à vérifier | Tony | Le site affiche des avis (dont 28/09/2026) ; source et total non vérifiables | 02/11 |
-| c2 | Réponses aux avis citant type de bien + quartier | à vérifier | Tony | — | — |
+| b8 | RealAdvisor : créer la « vitrine » agence + y déclarer les ventes (classement = proximité + ventes 24 mois) — sort en q1, q2, q3, q9 (pages agence, quartier, agent) — **action n°1** | manquant | Tony (20 min) | https://realadvisor.fr/fr/agences-immobilieres/69100-villeurbanne | 05/11 |
+| c1 | Avis : 2 plateformes actives (Google + Immodvisor ou RealAdvisor) ; nombre et date du dernier avis | à vérifier — 0 plateforme tierce trouvée ; dernier avis affiché sur le site : 28/09/2026 | Tony | total Google non vérifiable d'ici | 09/11 |
+| c2 | Réponses aux avis citant type de bien + quartier | à vérifier — 3 modèles prêts (run 09/11) | Tony | — | 09/11 |
 | d1 | Classements tiers « meilleures agences Villeurbanne/Lyon » | aucun classement éditorial trouvé ; seuls les annuaires classent | Yanis | recherche 05/11 | 05/11 |
-| e1 | Pitch presse (médianes DVF par quartier) : Le Progrès, Lyon Capitale, Tribune de Lyon, Lyon Entreprises, Viva (Villeurbanne) | à faire | Yanis | — | — |
+| e1 | Pitch presse (médianes DVF par quartier) : cible n°1 Le Progrès éd. Villeurbanne, n°2 Lyon Entreprises | pitch rédigé (run 09/11), à envoyer | Tony (envoi) / Yanis (trouver l'adresse rédaction) | articles concurrents sans source : news.lesiteimmo.com 21/04/2026 | 09/11 |
 | f1 | LinkedIn Tony + David : même description d'agence, lien site | à vérifier | Tony | — | — |
-| g1 | Forums (Reddit r/Lyon, r/vosfinances) : commentaire utile sous vrai nom | à chercher | Tony | — | — |
-| h1 | robots.txt laisse passer les robots IA | fait ✅ (7 robots → 200) | — | https://www.markusimmobilier.fr/robots.txt | 05/11 |
+| g1 | Forums (Reddit r/Lyon, r/vosfinances) : commentaire utile sous vrai nom | non mesurable d'ici (Reddit non indexé par l'outil) → recherche manuelle | Yanis (10 min) | reddit.com/r/Lyon | 09/11 |
+| h1 | robots.txt laisse passer les robots IA | fait ✅ (7 robots → 200) | — | https://www.markusimmobilier.fr/robots.txt | 09/11 |
 | i1 | Cohérence NAP + horaires sur le site | fait ✅ | — | accueil : tél ×9, email ×9, horaires conformes | 02/11 |
 | i2 | Cohérence NAP sur chaque fiche externe | bloqué (aucune fiche externe trouvée) | — | — | 05/11 |
-| b9 | Cylex (cylex-locale.fr) : fiche gratuite — annuaire généraliste qui sort en recherche locale | à vérifier | Yanis (10 min) | https://www.cylex-locale.fr/villeurbanne/agence-immobili%c3%a8re/ | 05/11 |
+| b9 | Cylex (cylex-locale.fr) : fiche gratuite — annuaire généraliste qui sort en recherche locale | à vérifier (page illisible d'ici le 09/11) | Yanis (10 min) | https://www.cylex-locale.fr/villeurbanne/agence-immobili%c3%a8re/ | 09/11 |
 
-**Prochain lot (lundi 09/11)** : b6 acceslibre (confirmer absence), c1 avis (nombre + date sur Google), g1 forums Reddit, e1 cible presse + pitch. Lundi = veille GEO + rappel mensuel Bing AI Performance (a4).
+**Prochain lot (jeudi 12/11)** : a3 Bing Places (fiche existante ?), a9 OpenStreetMap (nœud au 87 rue É. Vaillant), b3 SeLoger / Bien'ici (fiche agence), b7 FNAIM. Prochain rappel Bing AI Performance (a4) : lundi 07/12.
