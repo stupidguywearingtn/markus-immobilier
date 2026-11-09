@@ -1694,7 +1694,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Un appartement acheté au prix médian de son quartier en 2022 et revendu au prix médian en 2025 ne dégage aucune plus-value imposable : il faudrait revendre 9,7 % à 23,9 % au-dessus du marché actuel. Le calcul, quartier par quartier.",
     date: "2026-06-11",
-    updated: "2026-10-19",
+    updated: "2026-11-09",
     internalHref: "/vendre",
     internalLabel: "Savoir ce qu'il reste après la vente",
     blocks: [
@@ -1762,6 +1762,7 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "La cave, le garage et la place de parking sont-ils exonérés eux aussi ?" },
       { type: "p", text: "**Oui, mais à deux conditions souvent ignorées : ils doivent être cédés simultanément au logement et former avec lui un « tout indissociable », c'est-à-dire constituer une dépendance immédiate et nécessaire.** Pour un garage, l'administration admet de ne pas écarter cette qualification lorsqu'il se situe à **moins d'un kilomètre** de la résidence principale ; pour une chambre de bonne, lorsqu'elle se trouve dans le même immeuble. À défaut, la cession est traitée comme une cession ordinaire, donc imposable." },
       { type: "p", text: "Ce kilomètre n'est pas un seuil mécanique : c'est une **présomption simple**, susceptible de preuve contraire. Le caractère de dépendance reste une question de fait. Deux précisions utiles avant l'acte : vendre à des **acquéreurs distincts** ne fait pas obstacle à l'exonération, et dans ce cas la condition de cession simultanée est réputée satisfaite si les ventes interviennent dans un délai normal." },
+      { type: "p", text: "⚠️ **L'exonération de la résidence principale ne dépend pas de la forme que prend la vente : elle vaut aussi pour une vente en viager.** Le bouquet — le capital payé comptant à la signature — n'est pas un revenu, il relève du régime de la plus-value immobilière, et il en est donc exonéré quand le logement cédé est la résidence principale du vendeur. La rente, elle, ne suit pas ce régime du tout : elle s'impose comme une rente viagère à titre onéreux, pour une fraction seulement de son montant, figée selon l'âge du vendeur au premier versement. Le détail est sur [vendre en viager à Villeurbanne](/blog/vendre-en-viager-villeurbanne)." },
       { type: "p", text: "Source : BOFiP-Impôts, BOI-RFPI-PVI-10-40-10, « Exonération résultant de la cession de la résidence principale », version en vigueur du 27 juin 2023, § 1, § 190 à § 320 et § 330 à § 360." },
 
       { type: "h2", text: "Je vends un bien locatif pour acheter ma première résidence principale : suis-je imposé ?" },
@@ -1810,6 +1811,10 @@ export const ARTICLES: Article[] = [
       {
         q: "La vente de ma résidence principale est-elle imposée à la plus-value ?",
         a: "Non, l'exonération est totale — impôt sur le revenu comme prélèvements sociaux — sans condition de durée de détention ni de montant. Le logement doit être votre habitation habituelle et effective au jour de la vente, mais cette condition connaît six assouplissements, dont celui du vendeur qui a déjà déménagé. Les dépendances immédiates et nécessaires (cave, garage, place de stationnement) sont exonérées à condition d'être cédées simultanément et de former avec le logement un tout indissociable ; pour un garage, l'administration admet de ne pas écarter cette qualification en dessous d'un kilomètre de distance, sous forme de présomption simple. L'impôt sur la plus-value ne concerne donc que les résidences secondaires et les biens locatifs. Source : BOFiP-Impôts, BOI-RFPI-PVI-10-40-10, version en vigueur du 27 juin 2023, § 1, § 190 à § 320 et § 330 à § 360.",
+      },
+      {
+        q: "Le bouquet d'une vente en viager est-il imposé à la plus-value ?",
+        a: "Non lorsque le logement vendu en viager est la résidence principale du vendeur, et c'est le cas le plus fréquent. Le bouquet — le capital payé comptant le jour de l'acte — n'est pas un revenu : il relève du régime de la plus-value immobilière, qui exonère totalement la cession de la résidence principale. Hors résidence principale, le régime général s'applique au bouquet, avec les mêmes taux et les mêmes abattements de durée de détention que pour une vente classique. La rente, elle, ne relève pas du tout de la plus-value : elle est imposée comme une rente viagère à titre onéreux, pour une fraction seulement de son montant, qui dépend de l'âge du vendeur au premier versement — 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % au-delà de 69 ans — et qui reste figée à cette date, sans révision ultérieure.",
       },
       {
         q: "J'ai déménagé avant d'avoir vendu : est-ce que je perds l'exonération de résidence principale ?",

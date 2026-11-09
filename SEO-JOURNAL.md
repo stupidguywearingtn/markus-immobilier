@@ -14,6 +14,70 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-09 (lundi)**
+
+- ✅ **LE RUN A EU LIEU — QUATRIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11, 07/11,
+  08/11, 09/11. **Un seul manque sur 73 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN RETARD DE `main`, SEPTIÈME APPLICATION DE LA CORRECTION DU 02/11.**
+  `HEAD` de départ = **`c849a43`**, `git ls-remote origin refs/heads/main` =
+  **`c849a43`** : identiques. **Aucun commit tiers** depuis `c849a43`.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-szz076`**, pas sur `main`.
+  **Neuvième constat consécutif**, nom différent chaque fois. Comportement normal.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-quatrième constat identique** (21/09 → 09/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-septième confirmation.**
+- ✅ **Le piège `308` du 08/11 est confirmé et contourné** : tous les contrôles de
+  production de ce run sont passés par `curl -sL`. **À garder définitivement.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces — identique au 07/11 et au 08/11.**
+  Aucune page ajoutée ni retirée. ⚠️ Le `lastmod` n'a **PAS** servi à conclure sur
+  l'activité du client (consigne du 07/11).
+- 🟢 **VEILLE DU LUNDI FAITE (étape 5), elle avait une semaine de retard.**
+  Dernière veille : 02/11. Quatre résultats retenus, dont **un refusé à la
+  publication faute de source primaire** — détail en « Techniques apprises ».
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée**
+  (06/11 contenu → 07/11 non-contenu → 08/11 contenu → **09/11 non-contenu**),
+  **et c'est le candidat non-contenu n°1 du backlog qui a été consommé.**
+- 🆕 **LE CONTRÔLE D'ACCESSIBILITÉ AUX AGENTS D'IA EST ENFIN SYSTÉMATIQUE —
+  CANDIDAT NON-CONTENU N°5 FAIT, ET IL REVIENT SAIN.** C'était le seul contrôle
+  du journal dont un échec aurait annulé tout le reste, et il n'avait jamais été
+  mesuré que sur une URL à la fois. **348 requêtes réelles = 58 URL × 6 agents**
+  (`GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `PerplexityBot`, `ClaudeBot`,
+  `Bingbot`) : **348/348 en `200`**, aucun blocage, aucun `403`, aucun timeout.
+  **Temps : médiane 0,16 s, p90 0,34 s, maximum 1,45 s (`/annonces`), zéro
+  requête au-delà de 3 s.** `robots.txt` de production ne bloque **aucun** agent
+  d'IA (`User-Agent: *` / `Allow: /`, seuls `/api/`, `/espace-client`, `/radar`,
+  `/admin` fermés). **Aucun cloaking** : `/equipe` servie **au même octet près**
+  (61 896 o) à `GPTBot` et à `ChatGPT-User`. 📌 **À refaire mensuellement, pas
+  plus souvent** — prochaine échéance **09/12**.
+- 🔴 **LE FAIT NEUF DU RUN, ET IL CORRIGE LE BACKLOG : SUR LES TROIS ARTICLES
+  LOURDS INSCRITS COMME ORPHELINS, UN SEUL L'ÉTAIT.** Mesuré dans le code
+  (`grep -rn "<slug>" --include=*.ts --include=*.tsx`, la méthode imposée le
+  08/11) : `vendre-en-viager-villeurbanne` **0 lien éditorial entrant**, mais
+  `vendre-bien-indivision-succession-villeurbanne` **2** (dont un émis par
+  l'article viager lui-même) et `vendre-logement-loue-droit-preemption-villeurbanne`
+  **2**. **Le backlog surestimait le défaut d'un facteur 3.**
+- 🔴 **ET LE MOT « VIAGER » N'EXISTAIT NULLE PART SUR LE SITE EN DEHORS DE
+  L'ARTICLE LUI-MÊME.** `/vendre`, la page qui énumère ce qui se retranche du prix
+  de vente, ne nommait pas une seule fois cette route de vente. Un article de
+  **221 848 o**, sourcé, publié le 03/11, était **éditorialement injoignable**.
+  **Corrigé : 0 → 3 liens éditoriaux, depuis 2 pages émettrices.**
+- 🟡 **DEUX REQUÊTES COMMERCIALES CENTRALES REMESURÉES (échéance 13/11, mesurées
+  en avance) : SITE ABSENT DES DEUX.** « agence immobilière Villeurbanne » et
+  « estimation immobilière Villeurbanne ». 📌 **Fait neuf utile** : `cylex-locale.fr`
+  **et** `zimo.fr` ressortent tous les deux sur la première — ce sont **exactement
+  les deux annuaires** inscrits au backlog « à transmettre à la tâche GEO ». Leur
+  valeur est donc confirmée par la SERP, pas supposée.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  ONZIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony, règle des
+  90 jours). ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  09/11, prouvé avant et après le commit du jour. **Aucune erreur neuve.**
+
 **Au 2026-11-08 (dimanche)**
 
 - ✅ **LE RUN A EU LIEU — TROISIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11, 07/11,
@@ -4907,6 +4971,140 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-09 (lundi) — Un article de 221 848 octets était éditorialement injoignable, et le contrôle d'accessibilité aux IA revient sain pour la première fois sur les 58 URL
+
+**Angle : NON-CONTENU** (alternance respectée). **Candidats non-contenu n°1 et
+n°5 du backlog consommés tous les deux.** Veille du lundi faite avant le choix
+du chantier, comme l'étape 5 l'impose.
+
+#### Étape 2 — ce qui a été mesuré, pas recopié
+
+| Mesure | Résultat |
+|---|---|
+| `HEAD` de départ / `main` distant | `c849a43` / `c849a43` — **aucun retard** |
+| Sitemap de production (`curl -sL`) | **58 URL, 7 annonces** — identique au 07/11 et 08/11 |
+| Commits tiers depuis `c849a43` | **aucun** |
+| « agence immobilière Villeurbanne » | **site absent** |
+| « estimation immobilière Villeurbanne » | **site absent** |
+| `eslint` avant / après | **35 / 24** → **35 / 24**, aucune erreur neuve |
+| Mots collés dans le rendu des 2 pages touchées | **0** |
+
+#### Le contrôle qui n'avait jamais été fait en entier (candidat n°5)
+
+**348 requêtes réelles, 58 URL × 6 agents, et tout passe.**
+
+| Agent | Codes | — |
+|---|---|---|
+| `GPTBot` | 58 × `200` | — |
+| `OAI-SearchBot` | 58 × `200` | — |
+| `ChatGPT-User` | 58 × `200` | — |
+| `PerplexityBot` | 58 × `200` | — |
+| `ClaudeBot` | 58 × `200` | — |
+| `Bingbot` | 58 × `200` | — |
+
+- **Temps** : médiane **0,16 s**, p90 **0,34 s**, max **1,45 s** (`/annonces`).
+  **Zéro requête au-delà de 3 s**, donc zéro risque de coupure côté agent.
+- **`robots.txt`** : `User-Agent: *` / `Allow: /`. **Aucun agent d'IA bloqué.**
+  Fermés : `/api/`, `/espace-client`, `/radar`, `/admin` — tous légitimes.
+- **Pas de cloaking** : `/equipe` servie **à l'octet identique** (61 896 o) à
+  `GPTBot` et à `ChatGPT-User`, `diff` vide après normalisation des balises.
+- ⚠️ **Les écarts d'octets vus au premier passage (43 à 306 o sur 5 URL) ne sont
+  PAS dépendants de l'agent** : ce sont des variations entre deux requêtes
+  (pages à contenu daté/dynamique). Le contrôle qui tranche est de **rejouer la
+  même URL avec deux agents à la suite**, pas de comparer deux colonnes d'un
+  tableau construit en parallèle. **Piège évité de justesse.**
+- 📌 **Conclusion : un audit qui revient sain est un résultat** (règle du 30/09).
+  **À refaire mensuellement, échéance 09/12.** Ne pas le rejouer avant.
+
+#### Le chantier (candidat n°1) — et il était plus petit que le backlog ne le disait
+
+**Le backlog inscrivait trois articles lourds « à 3 pages entrantes ». Mesuré
+dans le code, un seul était réellement orphelin.**
+
+| Article | Liens éditoriaux entrants (mesurés) |
+|---|---|
+| `vendre-en-viager-villeurbanne` | **0** |
+| `vendre-bien-indivision-succession-villeurbanne` | **2** (`/vendre`, + l'article viager) |
+| `vendre-logement-loue-droit-preemption-villeurbanne` | **2** (`/vendre`, `/gestion-locative`) |
+
+**Et le constat aggravant : `grep -rn "viager"` sur tout le code ne rendait
+AUCUN résultat en dehors de l'article lui-même.** `/vendre` — la page qui
+détaille ce qui se retranche du prix de vente — ne nommait pas une seule fois
+cette route de vente. L'article émettait un lien vers l'article indivision,
+mais n'en recevait aucun : **il donnait sans recevoir.**
+
+**Trois liens posés, chacun justifié par la phrase et non par la cible**
+(règle du 16/09) — et chacun comble une **sur-généralisation réelle** du texte
+existant, ce qui est la seule raison valable d'ajouter un lien :
+
+1. **`/vendre`, section « Calendrier »** (`app/vendre/page.tsx:497`). La section
+   ouvrait sur « **À la signature de l'acte authentique, pas au compromis** »,
+   présenté comme universel. **Le viager est l'exception exacte** : le prix n'est
+   pas encaissé en une fois mais sous forme de rente jusqu'au décès, le plus
+   souvent précédée d'un bouquet payé comptant — **et le bouquet n'est pas
+   obligatoire**, ce que presque toutes les pages concurrentes omettent.
+2. **`/vendre`, section « Plus-value »** (`app/vendre/page.tsx:673`).
+   L'exonération de la résidence principale est désormais dite **indépendante de
+   la forme de la vente** : elle vaut aussi en viager, le bouquet relevant du
+   régime de la plus-value et en étant exonéré pour une résidence principale.
+3. **`/blog/plus-value-immobiliere-calcul`** (`lib/blog.ts:1765`), dans la
+   section « Qui n'a aucune plus-value à déclarer ». **Deuxième page émettrice**,
+   pour ne pas faire dépendre toute la réception d'une seule page.
+
+**Volet GEO (étape 4) :** une **question de FAQ réellement posée** ajoutée à
+`plus-value-immobiliere-calcul` — « Le bouquet d'une vente en viager est-il
+imposé à la plus-value ? » —, réponse directe en tête puis développement, avec
+les parts imposées de la rente **reprises telles quelles** de l'article viager
+(70 % avant 50 ans, 50 % de 50 à 59, 40 % de 60 à 69, 30 % au-delà de 69) et non
+recalculées (règle du 02/10). **Parité `FAQPage` ↔ FAQ visible vérifiée dans le
+rendu : 11 questions en JSON-LD, 11 `<summary>` visibles, listes identiques
+après tri.**
+
+**Résultat mesuré après build :** `vendre-en-viager-villeurbanne` passe de
+**0 à 3 liens éditoriaux entrants**, depuis **2 pages émettrices**.
+
+#### Dates de fraîcheur — un arbitrage à surveiller
+
+**Avancées toutes les deux au 2026-11-09** : `/vendre` dans
+`lib/seo/lastmod.ts` (2026-10-21 → 2026-11-09) et le champ `updated` de
+`plus-value-immobiliere-calcul` (2026-10-19 → 2026-11-09).
+
+⚠️ **C'est un arbitrage, pas une évidence, et il faut qu'il puisse être
+contesté demain.** `lib/seo/lastmod.ts` écrit noir sur blanc qu'« un lien
+ajouté ne bouge pas la date » et que « l'avancer à tort est le défaut coûteux ».
+**Raison de l'avoir avancée quand même** : les deux pages ne reçoivent pas un
+lien habillé sur du texte existant, elles reçoivent des **paragraphes neufs
+porteurs de faits qu'elles ne contenaient pas** (l'exception du viager au
+calendrier de paiement, le sort fiscal du bouquet), et la page de blog gagne en
+plus une **question de FAQ**, donc son JSON-LD `FAQPage` a réellement changé.
+Un lecteur d'hier qui revient aujourd'hui apprend quelque chose. 📌 **Si le run
+de demain juge que c'était abusif, le corriger et l'écrire dans « Erreurs
+commises ».** Le 07/11, à l'inverse, n'avait avancé aucune date — et c'était
+juste, puisqu'il n'avait fait que déplacer des liens.
+
+#### Ce que j'ai décidé de NE PAS faire, et pourquoi
+
+- ❌ **Ne pas publier le chiffre « 18× moins de citations » de la veille.** Il est
+  cité de seconde main par SEOCode (04/11/2026) sur « environ 700 000 pages »,
+  **sans nommer les chercheurs ni lier l'étude**. Il a servi de **motif** pour
+  lancer l'audit d'accessibilité — ce qui est légitime — mais notre propre mesure
+  est la seule que nous publierions. **Un motif n'est pas une source.**
+- ❌ **Ne pas forcer un troisième émetteur depuis l'article indivision.** L'article
+  viager lui lie déjà vers elle ; la réciproque aurait été un lien justifié par la
+  cible et non par la phrase (des héritiers qui vendent un bien dont ils
+  n'habitent pas ne sont pas le public du viager). **Règle du 16/09 respectée.**
+- ❌ **Ne pas toucher `/llms.txt`.** La description de `/vendre` qui y figure
+  reste **exacte** après l'ajout : rien n'y est devenu faux. Le backlog dit de ne
+  plus y investir au-delà de sa justesse (02/11). 🆕 **À surveiller quand même** :
+  cette description est écrite à la main dans `app/llms.txt/route.ts`, elle ne se
+  régénère pas depuis la page, donc elle **dérivera** si `/vendre` continue de
+  s'enrichir. Inscrit au backlog.
+- ❌ **Ne pas corriger les deux `<a>` de `/mentions-legales`.** Jour non creux.
+- ❌ **Ne pas renotifier** l'accueil sans « Qui sommes-nous » ni le Discord mort :
+  **aucun changement d'état** depuis sept notifications.
+- ❌ **Ne pas rejouer l'audit d'accessibilité avant le 09/12.** 348 requêtes sur
+  le site du client ne se relancent pas par confort.
+
 ### 2026-11-08 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h14–06h18
 
 - **Déclenchement en double** : la réécriture de `/blog/mandat-simple-ou-exclusif`
@@ -9704,6 +9902,164 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — la réception éditoriale de l'article viager,
+et le premier audit d'accessibilité aux IA mené sur les 58 URL**
+(09/11 : **candidats non-contenu n°1 ET n°5 consommés**. n°1 : le backlog
+inscrivait trois articles lourds orphelins, **un seul l'était** —
+`vendre-en-viager-villeurbanne` à **0** lien éditorial, les deux autres déjà à
+**2**. Le mot « viager » n'existait **nulle part** hors de l'article.
+**0 → 3 liens éditoriaux, 2 pages émettrices**, chacun comblant une
+sur-généralisation réelle du texte d'accueil. **+1 question de FAQ** sur
+`plus-value-immobiliere-calcul`, parité `FAQPage` vérifiée **11/11**.
+n°5 : **348 requêtes, 58 URL × 6 agents, 348/348 en `200`**, p90 **0,34 s**,
+zéro requête > 3 s, aucun cloaking, `robots.txt` ne bloque aucune IA.
+Dates de fraîcheur avancées sur les deux pages — **arbitrage explicitement
+contestable, voir l'entrée du jour**.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (10/11, mardi) DOIT ÊTRE DU CONTENU**
+(alternance : 06/11 contenu → 07/11 non-contenu → 08/11 contenu →
+**09/11 non-contenu**).
+✅ **La veille du lundi est faite (09/11), elle avait une semaine de retard.**
+**Prochaine veille due le 16/11.**
+
+🔴 **CANDIDATS CONTENU, par ordre d'impact :**
+  1. 🔴 **`taxe-fonciere-vente-qui-paie` — LE CANDIDAT LE PLUS PROMETTEUR, ET IL
+     RESTE À CONFIRMER.** 144 mots, aucune FAQ. L'hypothèse inscrite le 08/11 :
+     **la répartition au prorata entre vendeur et acheteur est une pratique
+     contractuelle, pas une règle**, et c'est massivement publié à l'envers —
+     le redevable légal est celui qui est propriétaire au **1er janvier**.
+     ⚠️ **Non mesuré.** 📌 **Méthode imposée** : (a) deux SERP du sujet mesurées
+     avant d'écrire, en vérifiant qu'aucune agence locale n'y est, (b) trouver
+     l'affirmation dominante que le texte primaire dément, (c) n'écrire que ce
+     qu'on a lu à la source (CGI art. 1415 pour l'annualité, et vérifier sur
+     Légifrance **en faisant chercher l'URL**, jamais en devinant un LEGIARTI).
+     🆕 **Et le lien vers cet article existe déjà dans `/vendre`** (prorata de
+     taxe foncière « par convention ») : la réception est donc acquise, le
+     chantier est purement du volume + de la FAQ.
+  2. 🟡 **LE RESTE DU BLOG FAIBLE — NEUF ARTICLES.** Sous 200 mots et sans FAQ :
+     `lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `vendre-appartement-lyon-etapes` 154, `capacite-emprunt-immobilier` 194,
+     puis `compromis-de-vente-delais` 345.
+     ⚠️ **Remesurer les liens entrants dans le CODE** avant d'en déduire un
+     défaut de maillage (cf. l'erreur du jour).
+  3. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.** Ne pas prendre un terme parce qu'il est absent.
+  4. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** — fait le 08/11.
+     **Prochaine action : remesurer les deux SERP le 22/11.**
+  5. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11.** **Remesurer la SERP le 18/11.**
+  6. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité, pas
+     du texte. **Remesurer le 21/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Ne PAS répliquer la solution du 07/11 en bloc. Trancher page
+     par page, en commençant par `/annonces`**, page catalogue qui ne pose aucun
+     problème de cannibalisation.
+  2. 🔴 **BALAYER LE SITE À LA RECHERCHE D'AFFIRMATIONS DE PERFORMANCE SANS
+     SOURCE.** Ouvert le 08/11, **non fait**. 📌 **Motifs** : « plus vite »,
+     « plus cher », « en moyenne », « en général », « souvent », « la plupart »,
+     suivis d'un comparatif ou d'un chiffre sans source. ⚠️ **Ne pas retirer
+     mécaniquement** : certaines sont des formulations prudentes et correctes.
+     **Trancher phrase par phrase.**
+  3. 🆕 🟡 **LA DESCRIPTION DE `/vendre` DANS `/llms.txt` EST ÉCRITE À LA MAIN ET
+     VA DÉRIVER.** Constaté le 09/11 : `app/llms.txt/route.ts` contient un
+     paragraphe rédigé à la main par page principale, qui **ne se régénère pas**
+     depuis la page (contrairement aux articles, générés depuis `a.excerpt`).
+     Elle reste **exacte** aujourd'hui — l'ajout du viager ne l'a pas rendue
+     fausse — donc **rien à faire dans l'immédiat**. 📌 **Le contrôle à faire,
+     quand un run enrichira encore une page principale** : vérifier que son
+     paragraphe de `/llms.txt` ne contredit pas la page. **Ne pas y investir
+     au-delà de sa justesse** (02/11).
+  4. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+     Mêmes règles : lien posé là où le texte parle déjà du sujet.
+  5. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **huit runs**). **Une seule affirmation en dépend** : la
+     fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** (code/redirection, **puis** marqueur) : l'hôte rend **200** sur
+     sa page de maintenance.
+  6. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **douzième report**). **Ne RIEN réécrire sur un seul relevé.**
+  7. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+  8. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     09/11. **Jour creux uniquement.**
+  9. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 10. ⛔ 🆕 **NE PAS REJOUER L'AUDIT D'ACCESSIBILITÉ AUX IA AVANT LE 09/12.**
+     Fait en entier le 09/11 (**348 requêtes, 348/348 en `200`**), sain.
+     **Mensuel, pas plus.** 348 requêtes sur le site du client ne se relancent
+     pas par confort.
+ 11. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**, pas avant.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — ONZIÈME JOUR.** Constaté le
+  31/10, toujours vrai au 09/11. **Non corrigé : page de Tony, republiée depuis
+  l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant fin
+  janvier 2027, hors panne.** ⚠️ **NON renotifié** (7 notifications, aucun
+  changement) — **à renotifier seulement si l'état change.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). Dernier contrôle
+  **07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.** ⚠️ **NON renotifié**, même raison.
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs` du
+  JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** (qui tient ce registre, pas
+  celle-ci) : **`zimo.fr`** et **`cylex-locale.fr`**. 🆕 **Leur valeur est
+  désormais confirmée par la SERP, plus seulement supposée** : tous les deux
+  ressortent sur « agence immobilière Villeurbanne » mesurée le 09/11.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 09/11** (elles remplacent les blocs plus
+bas) :
+- ✅ **« agence immobilière Villeurbanne »** : remesurée le **09/11** (en avance
+  sur l'échéance du 13/11), **site absent** → **16/11**. SERP tenue par les
+  réseaux (orpi ×2, human-immobilier ×2, square habitat, foncia, century 21,
+  guy hoquet, laforêt) et par les annuaires (`cylex-locale.fr`, `zimo.fr`,
+  `bottin.fr`, `immodvisor`, `lesiteimmo`, `realadvisor`, `mappy`, `leboncoin`).
+- ✅ **« estimation immobilière Villeurbanne »** : remesurée le **09/11** (en
+  avance), **site absent** → **16/11**. 📌 **Fait notable** : la SERP est
+  **saturée par un seul concurrent** — `laforet.com/agence-immobiliere/
+  villeurbanne-republique/estimer/*` occupe **six positions** avec une page par
+  type de bien (appartement, maison, immeuble, terrain, local commercial,
+  simulateur de loyer), et `capifrance.fr` **sept** avec le même procédé.
+  🆕 **Hypothèse à verser au backlog, NON tranchée** : notre `/estimation` est
+  **une seule page** pour tous les types de biens. Voir « Hypothèses à vérifier ».
+- **« prix m2 Villeurbanne »** : mesurée le **07/11** (9ᵉ relevé, site absent)
+  → **14/11**.
+- **« vendre appartement Villeurbanne »** : mesurée le **08/11**, site absent
+  → **22/11**.
+- 🆕 **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … durée engagement délai »** : point zéro le 08/11, site absent des
+  deux → **première remesure le 22/11.**
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **première remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **première remesure vers le 17/11**.
+  📌 **PRIORITÉ RELEVÉE** : l'article vient de passer de **0 à 3** liens
+  éditoriaux entrants ce jour. Si sa position bouge d'ici le 17/11, c'est la
+  **première mesure propre de l'effet du maillage interne** de ce journal —
+  aucun autre facteur n'a changé sur cette page.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **première remesure le 18/11**. 📌 **PRIORITÉ** : deux
+  pages du site sont écrites pour elle, et la place est vide de l'aveu du moteur.
+- 🆕 **« honoraires agence immobilière Villeurbanne pourcentage frais de vente »**
+  : point zéro le **07/11** → **21/11**. 📌 **C'est la SERP la plus anormale du
+  journal** : le contenu existe, il est balisé (`OfferCatalog`), et il n'est pas vu.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
 **Angle du dernier run : CONTENU — la réécriture de `mandat-simple-ou-exclusif`,
 qui n'avait aucun lien éditorial entrant et publiait une performance sans source**
 (08/11 : **candidat contenu n°2 consommé**. 187 mots → article complet, **0 →
@@ -12717,6 +13073,55 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-09 — Deux concurrents saturent la SERP « estimation immobilière Villeurbanne » avec une page PAR TYPE DE BIEN, là où nous n'en avons qu'une
+
+**Ce qui est mesuré, et seulement ça.** Sur « estimation immobilière Villeurbanne
+gratuite » (09/11), deux domaines occupent à eux seuls la majorité des
+positions, chacun avec **une URL distincte par type de bien** :
+
+- `laforet.com/agence-immobiliere/villeurbanne-republique/estimer/` → **six
+  positions** : `/appartement`, `/maison`, `/immeuble`, `/terrain`,
+  `/local-commercial`, `/simulateur-loyer`.
+- `capifrance.fr/fr/immobilier/…/villeurbanne_69` → **sept positions** sur le
+  même procédé (vente appartement, vente maison, programme, local commercial,
+  location, neuf, commerce).
+
+**Notre côté** : `/estimation` est **une seule page** qui traite tous les types
+de biens, plus `/estimation-immobiliere-villeurbanne` et
+`/estimation-immobiliere-lyon` pour la dimension géographique. **Site absent de
+la SERP.**
+
+🔴 **L'HYPOTHÈSE — ET ELLE N'EST PAS TRANCHÉE.** Une page d'estimation par type
+de bien capterait-elle des positions que notre page unique ne peut pas prendre ?
+
+⚠️ **Ce qui interdit de la mettre en œuvre en l'état, et qui doit être vérifié
+AVANT toute écriture :**
+
+1. **C'est le schéma même que ce journal combat ailleurs.** Six pages qui
+   diffèrent par un mot sont une **ferme de pages satellites**, et le 05/10
+   comme le 28/09 ont noté que Google documente explicitement que ça ne sert
+   **pas** ses réponses d'IA. Le fait qu'un concurrent en tire des positions
+   aujourd'hui ne dit pas que ça tiendra, ni que ça nous serait attribué.
+2. **Le risque de cannibalisation est direct et chiffrable.** Nous avons déjà
+   trois pages d'estimation. En ajouter par type les ferait concourir entre
+   elles. 📌 **Le calcul de cannibalisation du 01/10 (sur toutes les paires)
+   est obligatoire avant d'en créer une seule.**
+3. **Il faut d'abord savoir si ces pages ont du contenu propre.** Si les six
+   pages Laforêt sont le même gabarit avec un mot changé, l'enseignement est
+   l'inverse de celui qu'on croit lire : ce serait la **force du domaine** qui
+   les classe, pas leur découpage — et le découpage ne serait pas reproductible
+   par un site d'agence indépendante.
+4. ⚠️ **Deux des URL relevées portent un titre qui ne correspond pas à leur
+   chemin** (`/estimer/immeuble` et `/estimer/terrain` rendent tous les deux
+   « Vendre sa maison à Villeurbanne en 2024 : 5 astuces… »). **Indice que le
+   gabarit est générique et mal tenu** — à confirmer en lisant les pages.
+
+📌 **Prochaine action, et c'est une LECTURE, pas une écriture** : télécharger
+deux des six pages Laforêt et comparer leur contenu réel (règle du 27/09 —
+« télécharger la page d'un concurrent sert à voir où il se contredit »).
+**Si ce sont des gabarits creux : ne rien reproduire, et l'écrire ici.**
+**Ne créer aucune page d'estimation par type avant ce contrôle.**
+
 ### 2026-11-08 — Quatre points laissés ouverts par la réécriture du mandat
 
 1. 🔴 **COMBIEN D'AUTRES AFFIRMATIONS DE PERFORMANCE SANS SOURCE LE SITE SERT-IL
@@ -14264,6 +14669,47 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-09 — Le backlog surestimait un défaut d'un facteur 3, et la cause est qu'il avait été écrit avant la méthode de mesure qui le corrige
+
+**Ce qui était écrit** (backlog, candidat non-contenu n°1, inscrit le 08/11) :
+
+> **LES ARTICLES LOURDS À 3 PAGES ENTRANTES.** `vendre-en-viager-villeurbanne`
+> (03/11, 221 848 o), `vendre-bien-indivision-succession-villeurbanne`,
+> `vendre-logement-loue-droit-preemption-villeurbanne`.
+
+**Ce que la mesure a rendu** (`grep -rn "<slug>" --include=*.ts --include=*.tsx`,
+la méthode que le 08/11 avait justement imposée) :
+
+| Article | Liens éditoriaux entrants réels |
+|---|---|
+| `vendre-en-viager-villeurbanne` | **0** — le seul réellement orphelin |
+| `vendre-bien-indivision-succession-villeurbanne` | **2** — déjà relié, rien à faire |
+| `vendre-logement-loue-droit-preemption-villeurbanne` | **2** — déjà relié, rien à faire |
+
+**Pourquoi l'erreur** : les trois avaient été regroupés sur la foi du graphe
+(« 3 pages entrantes »), **avant** que le 08/11 n'établisse que 3 est le
+**plancher structurel** du site et ne dit rien des liens éditoriaux. Le backlog
+a été écrit le jour même où la méthode changeait, et il a gardé l'ancienne
+liste avec la nouvelle consigne au-dessus.
+
+**Ce que ça coûtait** : un run qui aurait appliqué le backlog en bloc aurait
+posé des liens vers deux articles **qui n'en avaient pas besoin** — c'est-à-dire
+exactement le défaut que le 07/11 avait nommé (« ⚠️ **Ne PAS répliquer la
+solution en bloc. Trancher page par page.** »).
+
+📌 **Règle, et elle généralise le candidat n°1 lui-même** :
+
+> Quand un run change la **méthode de mesure** d'un défaut, il doit **remesurer
+> tous les éléments déjà inscrits au backlog sous l'ancienne méthode**, ou les
+> marquer explicitement « non remesurés ». Une consigne neuve posée au-dessus
+> d'une liste ancienne ne la corrige pas — elle la déguise.
+
+C'est la deuxième fois que ce schéma se produit : le 07/11 avait trouvé la même
+chose sur `/faire-gerer` (« Page (toutes dans la navigation de tout le site) »
+écrit au-dessus d'un tableau qui la contredisait). **Le défaut récurrent de ce
+journal n'est pas de mal mesurer, c'est de laisser cohabiter une prose ancienne
+et un chiffre neuf.**
 
 ### 2026-11-08 — Une affirmation de performance sans source que NOUS servions, et une mesure du journal lue de travers depuis des semaines
 
@@ -16513,6 +16959,102 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-09 — VEILLE (lundi, elle avait une semaine de retard) : la fetchabilité par les agents d'IA devient un facteur mesurable, et une réponse de FAQ n'interprète PAS le markdown
+
+#### A. Ce que la veille a rapporté d'applicable ici
+
+**Sources retenues, avec leur date et leur degré de confiance.** La règle de ce
+journal est de ne retenir que ce qui est *applicable ici* et de nommer ce qui
+n'est pas sourçable.
+
+| Résultat | Source / date | Confiance | Applicable ? |
+|---|---|---|---|
+| Les AI Overviews apparaissent sur **plus de 80 % des recherches** Google, y compris les fautes de frappe et les requêtes sans résultat | Search Engine Roundtable, récapitulatif webmaster de **novembre 2026** (02/11) | moyenne — **non confirmé par Google** | Oui : confirme qu'il n'existe plus de requête « sans IA » sur laquelle se replier |
+| Google a **publié des consignes `robots.txt` pour les agents d'IA** et documenté l'en-tête `Retry-After` pour le rythme de crawl | Documentation Google, via le même récapitulatif (11/2026) | haute — **changement de doc Google** | Oui, et **vérifié ce jour** : notre `robots.txt` ne bloque aucun agent d'IA |
+| Google a **déplacé les AI Overviews des recherches de marque** vers la colonne de droite, là où siègent les knowledge panels, sans l'annoncer | ppc.land / Search Engine Roundtable, **02/11/2026** | moyenne — **non annoncé** | **Non** : le client interdit les requêtes de marque. Noté pour ne pas le reprendre. |
+| Recherche **GEO de Princeton** (KDD 2024) : huit tactiques testées, la meilleure combinaison rend **+40,6 %** de visibilité dans les réponses générées | Travaux académiques présentés à **KDD 2024** | **la plus haute du lot — seule source revue par les pairs** | Oui, et elle **valide la méthode suivie ici** (réponse directe, chiffres, sources nommées) |
+| Les pages qui **expiraient** quand ChatGPT tentait de les charger auraient été citées **18 fois moins** souvent ; celles échouant plus de trois fois sur quatre, jamais | SEOCode, **04/11/2026**, « environ 700 000 pages » | 🔴 **BASSE — ni chercheurs nommés, ni étude liée** | **Comme MOTIF, oui. Comme chiffre à publier, NON.** |
+
+#### B. La distinction de méthode que ce run a dû trancher : un motif n'est pas une source
+
+**Le chiffre « 18× » est exactement le genre d'affirmation que ce journal retire
+des pages du client depuis le 08/11** (« se vendent plus vite et à un meilleur
+prix », sans source). Il serait incohérent de le republier parce qu'il nous
+arrange.
+
+**Mais il reste une raison parfaitement valable de lancer un contrôle.** D'où la
+règle, qui vaut pour toute veille future :
+
+> Une affirmation non sourcée peut **déclencher une mesure**. Elle ne peut
+> jamais **remplacer** la mesure, ni être citée sur une page du client.
+> Ce qu'on publie, c'est notre relevé — pas ce qui nous a poussé à le faire.
+
+Appliqué ce jour : le chiffre a motivé les **348 requêtes réelles** de l'audit
+d'accessibilité (candidat n°5, jamais fait en entier), et c'est **notre** relevé
+— 348/348 en `200`, p90 à 0,34 s — qui est consigné. Le « 18× » n'apparaît
+nulle part sur le site.
+
+#### C. Le piège de code découvert en voulant appliquer le volet GEO
+
+🔴 **Une réponse de FAQ d'article de blog est rendue en TEXTE BRUT. Un lien
+markdown y apparaîtrait littéralement, crochets et parenthèses compris, sur une
+page de production.**
+
+Le corps d'un article passe par `<ArticleBody>`, qui interprète le markdown —
+`[libellé](/cible)` y devient un lien. **La FAQ, non** :
+
+```tsx
+// app/blog/[slug]/page.tsx — le rendu d'une réponse de FAQ
+<p className="mt-3 text-[15px] leading-[1.7] text-[#3d4347]">
+  {f.a}          {/* ← nœud de texte JSX. AUCUNE interprétation markdown. */}
+</p>
+```
+
+**Le contrôle qui tranche, à faire AVANT d'écrire un lien dans une FAQ** —
+chercher comment le champ est rendu, pas supposer qu'il l'est comme le corps :
+
+```bash
+grep -n "faq" "app/blog/[slug]/page.tsx"
+# puis lire le rendu : {f.a} brut  → texte seul
+#                      <Md>{f.a}</Md> ou dangerouslySetInnerHTML → markdown OK
+```
+
+📌 **Conséquence appliquée ce jour** : la question ajoutée à
+`plus-value-immobiliere-calcul` est **volontairement sans lien**, et le lien
+vers l'article viager a été placé dans un **bloc `p` du corps** (`lib/blog.ts:1765`),
+où le markdown est bien interprété — vérifié dans le HTML rendu
+(`href="/blog/vendre-en-viager-villeurbanne"` présent une fois dans le corps).
+
+⚠️ **Ce piège est de la même famille que celui du 07/11** (SWC qui mange
+l'espace de tête d'un nœud JSX multiligne contenant une entité HTML) : **dans
+les deux cas, le code est juste et c'est le RENDU qui trahit.** La règle du
+18/09 — « un contenu publié n'est vérifié que dans le HTML rendu, jamais dans le
+source » — vient de servir une fois de plus, et elle reste la plus rentable de ce
+journal.
+
+#### D. Le piège de mesure évité pendant l'audit
+
+🟡 **Comparer deux colonnes d'un tableau construit en parallèle ne prouve pas un
+cloaking.** Le premier passage des 348 requêtes affichait des écarts d'octets de
+43 à 306 o sur 5 URL, entre agents. **Lecture fausse disponible** : « le site ne
+sert pas la même chose à `GPTBot` qu'à `Bingbot` ».
+
+**Le contrôle qui tranche** — rejouer **la même URL** avec deux agents **à la
+suite**, puis `diff` sur le balisage normalisé :
+
+```bash
+for A in "GPTBot/1.2" "ChatGPT-User/1.0"; do
+  curl -sL --cacert /root/.ccr/ca-bundle.crt -A "Mozilla/5.0 (compatible; $A)" \
+    https://www.markusimmobilier.fr/equipe -o "eq_${A//\//_}.html"
+done
+diff <(sed 's/></>\n</g' eq_GPTBot_1.2.html) <(sed 's/></>\n</g' eq_ChatGPT-User_1.0.html)
+# -> 61 896 o des deux côtés, diff VIDE : aucun cloaking.
+```
+
+Les écarts venaient de **variations entre deux instants** sur des pages à
+contenu daté, pas de l'agent. 📌 **Un écart mesuré en parallèle est une
+hypothèse ; seul un relevé séquentiel sur la même URL la tranche.**
 
 ### 2026-11-08 — Le schéma qui a produit trois chantiers de suite : chercher l'affirmation que tout le monde publie et que le texte primaire dément
 

@@ -483,6 +483,26 @@ export default function VendrePage() {
                 </p>
                 <p>
                   <strong>
+                    Cette exonération vaut aussi lorsque la résidence
+                    principale est vendue en viager.
+                  </strong>{" "}
+                  Le bouquet — le capital payé comptant à la signature —
+                  n&apos;est pas un revenu : il relève du régime de la
+                  plus-value immobilière, dont il est exonéré quand le logement
+                  cédé est la résidence principale du vendeur, le cas le plus
+                  fréquent. Hors résidence principale, c&apos;est le régime
+                  général exposé ci-dessus qui s&apos;applique, et la rente, de
+                  son côté, suit ses propres règles d&apos;imposition :{" "}
+                  <Link
+                    href="/blog/vendre-en-viager-villeurbanne"
+                    className={A}
+                  >
+                    vendre en viager à Villeurbanne
+                  </Link>{" "}
+                  en expose le détail, âge par âge.
+                </p>
+                <p>
+                  <strong>
                     Un fait local change la réponse pour beaucoup de vendeurs
                     villeurbannais : le prix médian au m² d&apos;un appartement
                     à Villeurbanne est inférieur de {fmtPourcent(RECUL_2022)} à son niveau
@@ -636,6 +656,29 @@ export default function VendrePage() {
                   encaissable à la signature, comme détaillé plus bas. Entre les
                   deux, comptez généralement deux à trois mois — le temps des vérifications du notaire et du
                   financement de l&apos;acheteur.
+                </p>
+                <p>
+                  <strong>
+                    Une forme de vente échappe entièrement à ce calendrier : le
+                    viager.
+                  </strong>{" "}
+                  Le prix n&apos;y est pas encaissé en une fois le jour de
+                  l&apos;acte, mais sous forme d&apos;une rente versée
+                  jusqu&apos;au décès du vendeur, le plus souvent précédée
+                  d&apos;un capital payé comptant à la signature — le bouquet,
+                  qui n&apos;est pourtant pas obligatoire. L&apos;acheteur
+                  devient propriétaire dès la signature, tandis que le vendeur
+                  conserve le plus souvent le droit d&apos;habiter son logement.{" "}
+                  <Link
+                    href="/blog/vendre-en-viager-villeurbanne"
+                    className={A}
+                  >
+                    Ce que le vendeur touche vraiment en viager à Villeurbanne
+                  </Link>{" "}
+                  détaille le barème de l&apos;article 669 du code général des
+                  impôts, la part de la rente réellement imposée selon
+                  l&apos;âge au premier versement, et les clauses dont
+                  l&apos;absence coûte le plus cher au vendeur.
                 </p>
                 <p>
                   Une asymétrie mérite d&apos;être connue avant de signer :{" "}
