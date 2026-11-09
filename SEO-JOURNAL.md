@@ -4971,6 +4971,20 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-09 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h23
+
+- **Déclenchement en double** : le maillage viager (`f3894a7`) est poussé depuis ~20 min
+  et servi (`/vendre` 200, 4 occurrences de `vendre-en-viager-villeurbanne` dans le HTML).
+  Un chantier par jour → **rien publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap en ligne = **58 URL**, toutes avec une
+  route dans `app/` ou un slug du code → **aucune page de l'éditeur**. `lastmod` ≥ 08/11 :
+  `/vendre`, `/blog/plus-value-immobiliere-calcul` (les deux = `f3894a7`) et
+  `/blog/mandat-simple-ou-exclusif` (`cb3b84f`). `<title>` de la home = `DEFAULT_TITLE`.
+  Aucun commit tiers depuis `f3894a7`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/vendre`, `/blog/vendre-en-viager-villeurbanne`,
+  `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-09 (lundi) — Un article de 221 848 octets était éditorialement injoignable, et le contrôle d'accessibilité aux IA revient sain pour la première fois sur les 58 URL
 
 **Angle : NON-CONTENU** (alternance respectée). **Candidats non-contenu n°1 et
