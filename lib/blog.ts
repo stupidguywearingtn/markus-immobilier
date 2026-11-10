@@ -1666,23 +1666,116 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "taxe-fonciere-vente-qui-paie",
-    title: "Taxe foncière et vente : qui paie quoi en 2026 ?",
+    title: "Taxe foncière et vente : qui paie quoi, et combien l'acheteur rembourse",
     metaDescription:
-      "En cas de vente, qui paie la taxe foncière ? Règle légale, prorata dans le compromis et exemple de calcul.",
-    h1: "Taxe foncière et vente : qui paie quoi ?",
+      "Le vendeur paie la taxe foncière de toute l'année de la vente, et aucun texte n'oblige l'acheteur à en rembourser une part. La part réellement en jeu à Villeurbanne, et la clause à faire écrire.",
+    h1: "Taxe foncière et vente : qui paie quoi, et ce que l'acheteur rembourse vraiment",
     excerpt:
-      "Le propriétaire au 1er janvier paie la taxe foncière de l'année entière. Comment se règle le prorata entre vendeur et acheteur.",
+      "Le propriétaire au 1er janvier paie la taxe foncière de l'année entière, et aucun texte n'oblige l'acheteur à lui en rembourser une part : seule une clause du compromis le fait. Sur les 1 869 ventes d'appartements enregistrées à Villeurbanne en 2025, la part en jeu atteint 47,9 % de la taxe de l'année à la date de vente médiane.",
     date: "2026-06-25",
+    updated: "2026-11-10",
     internalHref: "/vendre",
     internalLabel: "Faire estimer mon bien avant de vendre",
     blocks: [
-      { type: "p", text: "**Le propriétaire au 1er janvier paie la taxe foncière de toute l'année.** C'est la règle légale : même si vous vendez en mars, c'est vous (le vendeur) qui recevez l'avis et qui êtes redevable pour l'année entière auprès du fisc." },
-      { type: "h2", text: "Le prorata, en pratique" },
-      { type: "p", text: "Dans les faits, la plupart des [compromis de vente](/blog/compromis-de-vente-delais) prévoient un **partage au prorata** : l'acheteur rembourse au vendeur la part correspondant à la période où il sera propriétaire. Ce n'est pas une obligation légale, mais un accord privé inscrit dans l'acte — à négocier au moment de la vente." },
-      { type: "h2", text: "Exemple" },
-      { type: "p", text: "Taxe foncière annuelle de 1 200 €, vente signée le 1er juillet. Le vendeur a payé l'année entière ; l'acheteur lui rembourse 6 mois, soit 600 €." },
-      { type: "h2", text: "À retenir" },
-      { type: "p", text: "Vérifiez que ce prorata est bien prévu dans le compromis : c'est souvent oublié, et cela évite les mauvaises surprises." },
+      { type: "p", text: "**Le propriétaire au 1er janvier paie la taxe foncière de toute l'année de la vente, et aucun texte n'oblige l'acheteur à lui en rembourser une part.** L'avis arrive en septembre au nom du vendeur, même si le bien a été vendu en mars, et l'administration fiscale ne tient aucun compte du changement de propriétaire en cours d'année. Le partage au prorata, que presque tous les articles sur le sujet présentent comme la règle, n'est qu'un accord privé : il n'existe que si une clause du compromis ou de l'acte le prévoit, et il n'est jamais opposable au fisc." },
+      { type: "p", text: "Cette page dit qui est redevable, sur quelle année le prorata se calcule, ce que la part de l'acheteur représente réellement à Villeurbanne — nous l'avons calculée sur les 1 869 ventes d'appartements enregistrées dans la commune en 2025 — et pourquoi la clause usuelle des actes de vente a déjà dû être défendue devant la Cour de cassation." },
+
+      { type: "h2", text: "Qui paie la taxe foncière l'année de la vente, le vendeur ou l'acheteur ?" },
+      { type: "p", text: "**Le vendeur, en totalité, s'il était propriétaire au 1er janvier.** La taxe foncière est due pour l'année entière par le propriétaire au 1er janvier : c'est l'article 1415 du code général des impôts, que cite impots.gouv.fr. L'avis d'imposition est établi à son nom et il doit le payer en entier, même s'il a vendu depuis." },
+      { type: "p", text: "Deux conséquences pratiques, et elles surprennent souvent. D'abord, les avis ne partent qu'en septembre : un vendeur qui signe en mars reçoit six mois plus tard un avis pour un bien qui n'est plus le sien. Ensuite, l'administration ne tient pas compte des changements de propriétaire en cours d'année — il n'y a ni avis coupé en deux, ni dégrèvement à demander, ni démarche à faire de ce côté." },
+      { type: "p", text: "À ne pas confondre avec les [frais de notaire](/blog/frais-de-notaire-lyon-2026), qui sont eux à la charge de l'acheteur et réglés le jour de l'acte : la taxe foncière, elle, est déjà établie au nom du vendeur quand la vente se signe." },
+
+      { type: "h2", text: "L'acheteur est-il obligé de rembourser une partie de la taxe foncière ?" },
+      { type: "p", text: "**Non. Aucun texte ne l'y oblige.** Le remboursement au prorata n'existe que s'il est écrit dans le compromis ou dans l'acte de vente : c'est un accord entre les deux parties, pas une règle fiscale. S'il n'y a pas de clause, l'acheteur ne doit rien et le vendeur paie seul l'année entière." },
+      { type: "p", text: "Et cet accord ne change rien pour l'administration. impots.gouv.fr est explicite : il « ne concerne pas l'administration fiscale ». Si l'acheteur ne verse pas sa part, le vendeur reste le seul redevable de l'impôt et n'a qu'un recours civil contre lui. C'est précisément pour cela que la somme se règle le jour de l'acte, chez le notaire, et non en septembre quand l'avis arrive." },
+      { type: "p", text: "Cette nuance vaut la peine d'être retenue avant de signer un [compromis de vente](/blog/compromis-de-vente-delais) : ce qui n'y figure pas ne se rattrape pas ensuite auprès du fisc." },
+
+      { type: "h2", text: "Quelle part de la taxe foncière l'acheteur rembourse-t-il, concrètement ?" },
+      { type: "p", text: "**À Villeurbanne, environ la moitié de la taxe de l'année.** La date de vente médiane des appartements villeurbannais est le 9 juillet : à cette date, il reste 175 jours jusqu'au 31 décembre, soit **47,9 %** de la taxe de l'année à la charge de l'acheteur. Mais la dispersion est énorme, et c'est ce qui rend la clause importante : dans **23,1 %** des ventes, l'acheteur supporte plus des trois quarts de la taxe de l'année." },
+      { type: "p", text: "Nous avons calculé cette part sur les ventes réellement enregistrées dans la commune, pas sur une moyenne nationale : **1 869 ventes d'appartements à Villeurbanne en 2025**, base DVF. Premier quartile **25,2 %**, médiane **47,9 %**, troisième quartile **72,3 %**. Tout dépend du mois de signature, et de rien d'autre — ni du prix, ni du quartier, ni du type de bien." },
+      {
+        type: "table",
+        caption: "Part de la taxe foncière de l'année revenant à l'acheteur selon le mois de la vente — appartements, Villeurbanne, 2025",
+        source: "Dates de mutation : base DVF (Etalab / data.gouv.fr), fichier de la commune 69266, millésime 2025, extraction du 10 novembre 2026 — 1 869 ventes d'appartements (une seule ligne bâtie par mutation, surface ≥ 10 m², prix au m² entre 800 et 12 000 €). Part de l'acheteur calculée selon la convention de service-public.gouv.fr : jours restants jusqu'au 31 décembre divisés par 365, le jour de la vente n'étant pas compté. Colonnes « Jours restants » et « Part à la charge de l'acheteur » calculées pour une vente signée le 15 du mois.",
+        headers: ["Mois de la vente", "Ventes 2025", "Part des ventes", "Jours restants", "Part à la charge de l'acheteur"],
+        rows: [
+          ["Janvier", "127", "6,8 %", "350", "95,9 %"],
+          ["Février", "139", "7,4 %", "319", "87,4 %"],
+          ["Mars", "162", "8,7 %", "291", "79,7 %"],
+          ["Avril", "158", "8,5 %", "260", "71,2 %"],
+          ["Mai", "108", "5,8 %", "230", "63,0 %"],
+          ["Juin", "189", "10,1 %", "199", "54,5 %"],
+          ["Juillet", "226", "12,1 %", "169", "46,3 %"],
+          ["Août", "96", "5,1 %", "138", "37,8 %"],
+          ["Septembre", "202", "10,8 %", "107", "29,3 %"],
+          ["Octobre", "159", "8,5 %", "77", "21,1 %"],
+          ["Novembre", "131", "7,0 %", "46", "12,6 %"],
+          ["Décembre", "172", "9,2 %", "16", "4,4 %"],
+        ],
+      },
+      { type: "p", text: "Juillet est le mois où l'on signe le plus à Villeurbanne (12,1 % des ventes de l'année) et c'est aussi celui où l'enjeu est le plus faible : la taxe se partage presque en deux parts égales. Les ventes de janvier à mars, elles, représentent **22,9 %** des ventes de l'année et mettent de 80 % à 96 % de la taxe du côté de l'acheteur. Ce sont celles où l'absence de clause coûte le plus cher au vendeur — et aussi celles où l'acheteur a le plus d'intérêt à demander le montant avant de s'engager." },
+      { type: "p", text: "Le chiffre à retenir du côté vendeur : une vente sur quatre se signe assez tôt dans l'année pour que plus de 75 % de la taxe soit théoriquement à la charge de l'acheteur. C'est une somme qui ne revient au vendeur que si la clause est bien écrite." },
+
+      { type: "h2", text: "Sur quelle année de taxe foncière le prorata se calcule-t-il ?" },
+      { type: "p", text: "**Sur le dernier avis connu, c'est-à-dire en pratique celui de l'année précédente.** Au moment de l'acte, l'avis de l'année en cours n'existe pas encore, puisqu'il ne part qu'en septembre. Le notaire calcule donc la part de l'acheteur sur le dernier avis de taxe foncière connu : c'est la base que retient service-public.gouv.fr." },
+      { type: "p", text: "L'exemple chiffré que donne la fiche officielle est le plus clair : une vente signée chez le notaire le 21 mai 2025, avec une taxe foncière 2024 de 1 500 €. Il reste 224 jours jusqu'au 31 décembre, l'acheteur rembourse donc 1 500 × 224 / 365 = **920,55 €**, versés d'avance le jour de la vente. Le vendeur, lui, paiera la taxe 2025 en entier quand l'avis arrivera en septembre 2025." },
+      { type: "p", text: "Cette base a une conséquence qu'il vaut mieux régler dans la clause, et que presque personne n'écrit : si la taxe de l'année en cours s'avère plus élevée que celle sur laquelle le prorata a été calculé, la différence reste pour le vendeur. Comme le prorata n'est imposé par aucun texte, sa régularisation ne l'est pas davantage — elle n'existe que si la clause la prévoit." },
+
+      { type: "h2", text: "La clause du compromis suffit-elle à garantir le remboursement ?" },
+      { type: "p", text: "**Pas n'importe quelle clause. La formule la plus répandue dans les actes a déjà été contestée en justice, et le vendeur ne l'a emporté que grâce à des preuves extérieures au contrat.** « Vérifiez que le prorata est prévu » ne suffit donc pas : ce qui compte est que la clause nomme le prorata, sa date de départ et sa date de fin." },
+      { type: "p", text: "Les actes de vente prévoient fréquemment que l'acquéreur s'oblige à acquitter, à compter du jour de l'acte, tous les impôts, contributions et autres charges de toute nature auxquels l'immeuble est assujetti. Dans l'affaire jugée par la Cour de cassation le 9 mai 2001, l'acquéreur — une commune — s'est appuyé sur le sens littéral de cette clause pour refuser de rembourser : prise à la lettre, elle ne l'engageait que pour l'avenir, pas pour une taxe déjà établie au nom du vendeur." },
+      { type: "p", text: "Le vendeur a obtenu le remboursement, mais la Cour ne s'est pas fondée sur la seule clause : elle a retenu un faisceau d'indices — des courriers et les premières conclusions déposées en appel — faisant apparaître la véritable intention des parties. La clause usuelle n'a donc pas suffi à elle seule, et l'ANIL note que la position aurait pu être différente dans d'autres circonstances." },
+      { type: "p", text: "D'où la rédaction que des auteurs recommandent, rapportée par l'ANIL, pour fermer la discussion avant qu'elle n'ait lieu : « l'acquéreur remboursera au vendeur le prorata de la taxe foncière couru de la date fixée pour l'entrée en jouissance au 31 décembre suivant ». Une clause qui se contente de transférer les charges à compter de l'acte laisse, elle, place au débat." },
+
+      { type: "h2", text: "Comment sécuriser le prorata de taxe foncière avant de signer ?" },
+      { type: "p", text: "**En trois gestes : obtenir le dernier avis avant le compromis, faire écrire une clause qui nomme le prorata et sa période, et faire régler la somme chez le notaire le jour de l'acte.** Les cinq étapes ci-dessous sont celles que nous vérifions sur chaque dossier de vente." },
+      {
+        type: "steps",
+        name: "Sécuriser le prorata de taxe foncière d'une vente immobilière",
+        items: [
+          { name: "Demander le dernier avis de taxe foncière", text: "Avant la signature du compromis, l'acheteur demande au vendeur son dernier avis de taxe foncière. C'est la base sur laquelle le prorata sera calculé, et le seul moyen de savoir de quel montant on parle avant de s'engager." },
+          { name: "Faire écrire la clause en nommant le prorata", text: "La clause doit viser expressément le remboursement au prorata, avec sa date de départ et sa date de fin, et non se contenter de transférer les charges à compter de l'acte. La formule rapportée par l'ANIL fait référence : rembourser le prorata de la taxe foncière couru de la date fixée pour l'entrée en jouissance au 31 décembre suivant." },
+          { name: "Fixer la base de calcul dans la clause", text: "Préciser que le calcul se fait sur le dernier avis connu, et dire ce qui se passe si la taxe de l'année en cours s'avère différente : régularisation ou pas. Sans cette précision, l'écart reste à la charge du vendeur." },
+          { name: "Faire régler la somme le jour de l'acte", text: "Le notaire porte le décompte dans l'acte et la somme est versée d'avance, le jour de la signature. Attendre l'arrivée de l'avis en septembre, c'est devoir réclamer à quelqu'un qui n'a plus aucune raison de répondre vite." },
+          { name: "Conserver l'avis payé et le décompte", text: "Le vendeur garde l'avis acquitté et le décompte signé. En cas de contestation ultérieure, ce sont les seules pièces qui établissent ce qui a été convenu et ce qui a été versé." },
+        ],
+      },
+
+      { type: "h2", text: "Que faire si l'acheteur ne rembourse pas après la vente ?" },
+      { type: "p", text: "**Le vendeur reste le seul redevable auprès du fisc, et son unique recours est civil, contre l'acheteur.** Un prorata impayé ne se règle pas avec l'administration : elle n'a pas à connaître l'accord entre les parties et réclame l'impôt au propriétaire du 1er janvier. Il n'y a ni réclamation fiscale à déposer, ni dégrèvement à espérer." },
+      { type: "p", text: "Le vendeur doit donc agir sur le fondement de la clause — ce qui ramène à sa rédaction, et à l'arrêt de 2001 : si la clause se contente de transférer les charges à compter de l'acte, il faudra démontrer l'intention des parties par des éléments extérieurs au contrat. C'est long, incertain, et pour un montant qui dépasse rarement quelques centaines d'euros." },
+      { type: "p", text: "La seule protection vraiment efficace est donc en amont : le règlement d'avance, le jour de l'acte. C'est la raison pour laquelle le notaire le propose systématiquement, et pourquoi il n'y a aucun intérêt à repousser le sujet à septembre." },
+
+      { type: "h2", text: "Notre conseil" },
+      { type: "p", text: "**Traitez le prorata de taxe foncière comme un point du compromis, pas comme une discussion de septembre.** C'est un sujet qui ne coûte rien à régler avant la signature et qui devient pénible une fois l'acte passé. Côté vendeur, demandez que la clause nomme le prorata et sa période ; côté acheteur, demandez le dernier avis avant de vous engager, parce qu'à Villeurbanne une vente sur quatre met plus de 75 % de la taxe de votre côté." },
+      { type: "p", text: "Et gardez l'ordre de grandeur en tête : le prorata est un ajustement, pas un facteur de décision. Ce qui détermine ce que vous encaissez réellement, c'est le prix — [les médianes réellement signées quartier par quartier](/blog/prix-immobilier-villeurbanne-2026) sont le bon point de départ. Nous reprenons ce calcul avec vous au 04 78 37 13 67, et [notre façon de mener une vente](/vendre) est décrite étape par étape." },
+      { type: "p", text: "Sources : impots.gouv.fr, « J'ai acheté / vendu un bien immobilier cette année, dois-je payer une partie de la taxe foncière ? », page modifiée le 20 juillet 2026 (redevable pour l'année entière, article 1415 du code général des impôts, portée de l'accord entre les parties) ; service-public.gouv.fr, fiche F59 « Taxe foncière sur les propriétés bâties », vérifiée le 25 septembre 2026 (envoi des avis en septembre, répartition chez le notaire, calcul sur le dernier avis connu, exemple chiffré du 21 mai 2025) ; ANIL, analyse de jurisprudence « Vente d'immeuble / Clause de répartition de la taxe foncière », Cour de cassation, 3e chambre civile, 9 mai 2001. Pages consultées le 10 novembre 2026. Dates de vente : base DVF (Etalab / data.gouv.fr), fichier de la commune 69266, millésime 2025, extraction du 10 novembre 2026." },
+    ],
+    faq: [
+      {
+        q: "Qui paie la taxe foncière l'année de la vente d'un logement ?",
+        a: "Le vendeur, en totalité, s'il était propriétaire au 1er janvier. La taxe foncière est due pour l'année entière par le propriétaire au 1er janvier, l'avis est établi à son nom et lui est adressé en septembre, même si le bien a été vendu entre-temps. L'administration fiscale ne tient pas compte des changements de propriétaire en cours d'année. Sources : impots.gouv.fr (article 1415 du code général des impôts) et service-public.gouv.fr, fiche F59.",
+      },
+      {
+        q: "L'acheteur doit-il rembourser la taxe foncière au vendeur ?",
+        a: "Aucun texte ne l'y oblige. Le remboursement au prorata n'existe que si une clause du compromis ou de l'acte de vente le prévoit : c'est un accord privé entre les parties, pas une règle fiscale. S'il n'y a pas de clause, l'acheteur ne doit rien et le vendeur paie seul l'année entière. Cet accord n'est de toute façon pas opposable à l'administration fiscale, qui réclame l'impôt au propriétaire du 1er janvier.",
+      },
+      {
+        q: "Comment se calcule le prorata de taxe foncière entre vendeur et acheteur ?",
+        a: "En jours restants jusqu'au 31 décembre, divisés par 365, le jour de la vente n'étant pas compté. L'exemple officiel de service-public.gouv.fr : pour une vente signée le 21 mai 2025 et une taxe foncière 2024 de 1 500 €, il reste 224 jours, l'acheteur rembourse 1 500 × 224 / 365, soit 920,55 €, versés d'avance le jour de la vente. Le calcul est en général fait par le notaire et porté dans l'acte.",
+      },
+      {
+        q: "Sur quelle année de taxe foncière le prorata est-il calculé ?",
+        a: "Sur le dernier avis connu, donc en pratique celui de l'année précédente : au moment de l'acte, l'avis de l'année en cours n'existe pas encore, puisqu'il ne part qu'en septembre. C'est la base retenue par service-public.gouv.fr, fiche F59. Conséquence à régler dans la clause : si la taxe de l'année en cours s'avère plus élevée, la différence reste pour le vendeur, sauf si une régularisation est expressément prévue.",
+      },
+      {
+        q: "La clause du compromis suffit-elle à obtenir le remboursement de la taxe foncière ?",
+        a: "Pas n'importe quelle clause. La formule la plus répandue, par laquelle l'acquéreur s'oblige à acquitter les impôts à compter du jour de l'acte, a été contestée devant la Cour de cassation le 9 mai 2001 : l'acquéreur soutenait qu'à la lettre, elle ne l'engageait que pour l'avenir. Le vendeur a obtenu le remboursement, mais la Cour s'est appuyée sur un faisceau d'indices extérieurs au contrat, pas sur la clause seule. Mieux vaut une clause qui nomme le prorata, sa date de départ et sa date de fin. Source : analyse de jurisprudence ANIL.",
+      },
+      {
+        q: "Quelle part de la taxe foncière l'acheteur supporte-t-il à Villeurbanne ?",
+        a: "Environ la moitié de la taxe de l'année au point médian, et beaucoup plus dans un quart des cas. Sur les 1 869 ventes d'appartements enregistrées à Villeurbanne en 2025 (base DVF, millésime 2025), la date de vente médiane est le 9 juillet : il reste alors 175 jours jusqu'au 31 décembre, soit 47,9 % de la taxe à la charge de l'acheteur. Premier quartile 25,2 %, troisième quartile 72,3 %, et dans 23,1 % des ventes l'acheteur supporte plus de 75 % de la taxe de l'année.",
+      },
     ],
   },
   {
