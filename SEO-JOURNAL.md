@@ -5061,6 +5061,20 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-10 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h20–06h26
+
+- **Déclenchement en double** : la réécriture `taxe-fonciere-vente-qui-paie` (`2a5d8dc`) est
+  poussée depuis ~20 min et servie (200, « 9 mai 2001 » présent dans le HTML). Un chantier
+  par jour → **rien publié**, c'est voulu.
+- **Changements du client (étape 0)** : sitemap en ligne = **58 URL**, toutes avec une route
+  dans `app/` ou un slug du code → **aucune page de l'éditeur**. `lastmod` ≥ 09/11 : `/vendre`,
+  `/blog/plus-value-immobiliere-calcul` (`f3894a7`) et `/blog/taxe-fonciere-vente-qui-paie`
+  (`2a5d8dc`). `<title>` de la home = `DEFAULT_TITLE`. `ls-remote main` = `c104e2f`, aucun
+  commit tiers. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/blog/taxe-fonciere-vente-qui-paie`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-10 (mardi) — `taxe-fonciere-vente-qui-paie` : la clause que tout le monde conseille de vérifier a déjà été contestée en justice, et la part réellement en jeu à Villeurbanne se mesure
 
 **Candidat contenu n°1 du backlog, consommé.** Inscrit le 08/11 avec la mention
