@@ -14,6 +14,96 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-10 (mardi)**
+
+- ✅ **LE RUN A EU LIEU — CINQUIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11, 07/11,
+  08/11, 09/11, 10/11. **Un seul manque sur 74 jours** (le 05/11). Rien à
+  remonter.
+- ✅ **AUCUN RETARD DE `main`, HUITIÈME APPLICATION DE LA CORRECTION DU 02/11.**
+  `HEAD` de départ = **`5e968b1`**, `git ls-remote origin refs/heads/main` =
+  **`5e968b1`** : identiques. **Aucun commit tiers** depuis `5e968b1`.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-kixtj2`**, pas sur `main`.
+  **Dixième constat consécutif**, nom différent chaque fois. 📌 **Et le constat
+  du 07/11 est de nouveau le bon, contre celui du 08/11** : `git ls-remote origin
+  refs/heads/claude/dazzling-feynman-kixtj2` ne rend **RIEN** — la branche
+  n'existe pas sur le distant, seul le ref de suivi local la montre (et il est
+  périmé : il faisait croire que `main` retardait de 6 commits). **Conclusion
+  stable sur dix runs : vérifier par `ls-remote`, jamais par `git branch -a`,
+  et pousser en `git push origin HEAD:main`.**
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-cinquième constat identique** (21/09 → 10/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-huitième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL — identique au 07/11, 08/11 et 09/11.**
+  Aucune page ajoutée ni retirée. ⚠️ Le `lastmod` n'a **PAS** servi à conclure sur
+  l'activité du client (consigne du 07/11). Tous les contrôles de production sont
+  passés par `curl -sL` (piège `308` du 08/11).
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée**
+  (07/11 non-contenu → 08/11 contenu → 09/11 non-contenu → **10/11 contenu**),
+  **et c'est le candidat contenu n°1 du backlog qui a été consommé**
+  (`taxe-fonciere-vente-qui-paie`, inscrit le 08/11 et explicitement « non
+  mesuré, à confirmer »).
+- 🔴 **L'HYPOTHÈSE DU BACKLOG ÉTAIT FAUSSE, ET C'EST UNE AUTRE QUI A PAYÉ.** Le
+  backlog pariait que « la répartition au prorata est une pratique contractuelle,
+  pas une règle, et c'est massivement publié à l'envers ». **Mesuré : l'article
+  que nous servions le disait DÉJÀ correctement** (« Ce n'est pas une obligation
+  légale, mais un accord privé inscrit dans l'acte »). Le défaut n'était pas la
+  justesse, c'était le **volume** (144 mots) et l'**absence de FAQ**. 📌 **Et les
+  deux faits neufs sont venus des sources primaires, pas de l'hypothèse** : la
+  clause usuelle contestée en justice, et la base de calcul = dernier avis connu.
+- 🔴 **FAIT NEUF N°1 — « VÉRIFIEZ QUE LE PRORATA EST PRÉVU » EST UN CONSEIL
+  INSUFFISANT, ET C'EST EXACTEMENT CE QUE NOUS ÉCRIVIONS.** La formule la plus
+  répandue dans les actes (l'acquéreur s'oblige à acquitter les impôts « à compter
+  du jour de l'acte ») a été **contestée devant la Cour de cassation le 9 mai
+  2001** : l'acquéreur — une commune — soutenait qu'à la lettre, elle ne
+  l'engageait que pour l'avenir. Le vendeur a obtenu le remboursement **mais sur
+  un faisceau d'indices extérieurs au contrat** (courriers, premières conclusions
+  d'appel), **pas sur la clause seule**. L'ANIL écrit noir sur blanc que la
+  position « aurait pu être différente dans d'autres circonstances ».
+  **Aucun des 20 résultats des deux SERP mesurées ne mentionne cet arrêt.**
+- 🔴 **FAIT NEUF N°2 — LA BASE DE CALCUL DU PRORATA EST L'AVIS DE L'ANNÉE
+  PRÉCÉDENTE, ET LES SOURCES SE CONTREDISENT LÀ-DESSUS.** Le moteur relevait
+  lui-même la contradiction (« Les sources ne sont pas toutes d'accord sur la base
+  de calcul »). **Tranché à la source** : service-public.gouv.fr (fiche F59,
+  vérifiée le 25/09/2026) calcule « sur la base du dernier avis de taxe foncière
+  connu », puisque l'avis de l'année en cours ne part qu'en septembre.
+  **Son exemple chiffré a été reproduit à l'identique** : vente du 21/05/2025,
+  taxe 2024 de 1 500 €, **224 jours** → 1 500 × 224 / 365 = **920,55 €**.
+- 🆕 **DONNÉE PROPRE AU CLIENT PRODUITE, ET ELLE N'EXISTE NULLE PART AILLEURS :
+  LA PART DE LA TAXE FONCIÈRE RÉELLEMENT EN JEU À VILLEURBANNE.** Calculée sur
+  les **1 869 ventes d'appartements** de 2025 (DVF, commune 69266, extraction du
+  10/11/2026) : **date de vente médiane le 9 juillet** → **47,9 %** de la taxe de
+  l'année à la charge de l'acheteur, **Q1 25,2 %**, **Q3 72,3 %**, et **23,1 %
+  des ventes** (432) mettent **plus de 75 %** de la taxe du côté de l'acheteur.
+  Tableau mois par mois publié, **avec la convention de calcul en légende** pour
+  que le lecteur refasse le compte.
+- 🟡 **DEUX SERP DE SUJET MESURÉES AVANT D'ÉCRIRE (méthode imposée le 08/11) :
+  SITE ABSENT DES DEUX, ET AUCUNE AGENCE LOCALE DEDANS.** « taxe foncière vente
+  appartement qui paie vendeur ou acheteur prorata compromis Villeurbanne » et
+  « qui paie la taxe foncière l'année de la vente … prorata temporis obligation ».
+  📌 **Le moteur écrit lui-même « les résultats ne contiennent rien de spécifique
+  à Villeurbanne »** — même schéma que le 08/11 sur le mandat. La place est tenue
+  par des nationaux (bailfacile, mysweetimmo, investissement-locatif, seloger,
+  francetransactions, reassurez-moi, commentcamarche) + **un billet Laforêt d'une
+  agence de Nevers**. **Point zéro posé, première remesure le 24/11.**
+- ✅ **CONTRÔLE DVF IMPOSÉ PAR LE 13/10 : PASSÉ, AVEC UNE DÉRIVE À CONSIGNER.**
+  Avant de publier un chiffre neuf, reproduire un chiffre déjà publié depuis la
+  même extraction. Résultat : **62 m² et 195 000 € à l'identique**,
+  **3 566,7 €/m² contre 3 566,8** noté, **n = 1 869 contre 1 876**. La source
+  « latest » a été rafraîchie depuis l'extraction précédente. ⚠️ **L'arrondi
+  publié partout sur le site (3 567 €/m²) est INCHANGÉ : rien à recalculer.**
+  📌 **Mais le `n` publié par deux articles est 1 875/1 876 — voir « Hypothèses ».**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  DOUZIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony, règle des
+  90 jours). ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  10/11, prouvé avant et après le commit du jour. **Aucune erreur neuve.**
+
+
 **Au 2026-11-09 (lundi)**
 
 - ✅ **LE RUN A EU LIEU — QUATRIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11, 07/11,
@@ -4971,6 +5061,146 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-10 (mardi) — `taxe-fonciere-vente-qui-paie` : la clause que tout le monde conseille de vérifier a déjà été contestée en justice, et la part réellement en jeu à Villeurbanne se mesure
+
+**Candidat contenu n°1 du backlog, consommé.** Inscrit le 08/11 avec la mention
+« ⚠️ **Non mesuré** », et la mesure a **invalidé l'hypothèse de départ** tout en
+en découvrant deux meilleures. Détail dans « Erreurs commises et corrigées ».
+
+**Étape 2 — ce qui a été mesuré avant d'écrire.**
+
+| Mesure | Résultat |
+|---|---|
+| Sitemap de production (`curl -sL`) | **58 URL**, identique au 07/11, 08/11, 09/11 |
+| `/blog/taxe-fonciere-vente-qui-paie` en ligne | **200**, **59 120 o** |
+| `ls-remote` `main` vs `HEAD` | **`5e968b1`** = **`5e968b1`**, aucun commit tiers |
+| SERP n°1 « taxe foncière vente appartement qui paie vendeur ou acheteur prorata compromis Villeurbanne » | **site absent**, aucune agence locale |
+| SERP n°2 « qui paie la taxe foncière l'année de la vente … prorata temporis obligation » | **site absent**, aucune agence locale |
+| `eslint` avant commit | **35 problèmes / 24 erreurs** (baseline du 02/11) |
+
+**Les deux SERP sont tenues exclusivement par des nationaux** : bailfacile,
+mysweetimmo (×2), investissement-locatif, seloger, francetransactions,
+reassurez-moi, commentcamarche (×3 forums), alexia, kohenavocats (×5),
+assemblee-nationale (questions écrites), **plus un billet Laforêt d'une agence de
+Nevers**. Le moteur écrit lui-même « **les résultats ne contiennent rien de
+spécifique à Villeurbanne** ». **Point zéro posé, première remesure le 24/11.**
+
+**Ce que l'article disait, et ce qui lui manquait réellement.** 144 mots, aucune
+FAQ, quatre H2 (« Le prorata, en pratique », « Exemple », « À retenir ») — aucun
+formulé en question. **Sa justesse n'était pas en cause** : il écrivait déjà
+« Ce n'est pas une obligation légale, mais un accord privé inscrit dans l'acte ».
+Le défaut était le volume, l'absence de FAQ, et une dernière phrase qui donnait
+un conseil **insuffisant** (« Vérifiez que ce prorata est bien prévu dans le
+compromis ») — ce que la jurisprudence contredit.
+
+**Les deux faits neufs, tous deux tirés de sources primaires.**
+
+1. **La clause usuelle ne suffit pas à elle seule.** Les actes prévoient
+   fréquemment que l'acquéreur s'oblige à acquitter, « à compter du jour de
+   l'acte », tous les impôts et charges de l'immeuble. Dans l'affaire jugée par
+   la **Cour de cassation, 3e chambre civile, le 9 mai 2001**, l'acquéreur — une
+   commune — s'est appuyé sur le **sens littéral** de cette clause pour refuser
+   de rembourser : prise à la lettre, elle ne l'engageait que **pour l'avenir**,
+   pas pour une taxe déjà établie au nom du vendeur. Le vendeur a obtenu le
+   remboursement, **mais la Cour s'est fondée sur un faisceau d'indices
+   extérieurs au contrat** (courriers, premières conclusions déposées en appel)
+   faisant apparaître l'intention réelle des parties. L'ANIL ajoute que la
+   position « aurait pu être différente dans d'autres circonstances » et rapporte
+   la rédaction recommandée : « l'acquéreur remboursera au vendeur le prorata de
+   la taxe foncière couru de la date fixée pour l'entrée en jouissance au
+   31 décembre suivant ». **Source : ANIL, analyse de jurisprudence 2002.**
+2. **Le prorata se calcule sur le dernier avis CONNU, donc celui de l'année
+   précédente.** L'avis de l'année en cours n'existe pas au moment de l'acte : il
+   ne part qu'en septembre. **Source : service-public.gouv.fr, fiche F59,
+   vérifiée le 25/09/2026.** Son exemple chiffré est reproduit à l'identique dans
+   l'article : vente du 21/05/2025, taxe 2024 de 1 500 €, **224 jours restants**,
+   1 500 × 224 / 365 = **920,55 €**. 📌 **Conséquence que personne n'écrit, et
+   qui se déduit du caractère purement contractuel du prorata** : si la taxe de
+   l'année en cours est plus élevée, **l'écart reste pour le vendeur**, sauf si la
+   clause prévoit une régularisation.
+
+**La donnée propre au client, calculée et non reprise.** Sur les **1 869 ventes
+d'appartements** enregistrées à Villeurbanne en 2025 (DVF, commune 69266,
+extraction du 10/11/2026, population exacte du journal) :
+
+| Mesure | Valeur |
+|---|---|
+| Date de mutation médiane | **9 juillet 2025** (jour 190) |
+| Part de la taxe à la charge de l'acheteur, médiane | **47,9 %** (175 j / 365) |
+| Premier quartile / troisième quartile | **25,2 %** / **72,3 %** |
+| Ventes où l'acheteur supporte **plus de 50 %** | 889 — **47,6 %** |
+| Ventes où l'acheteur supporte **plus de 75 %** | 432 — **23,1 %** |
+| Ventes où l'acheteur supporte **moins de 25 %** | 462 — **24,7 %** |
+| Mois le plus chargé | **juillet**, 226 ventes (**12,1 %**) |
+| Mois le plus creux | **août**, 96 ventes (**5,1 %**) |
+
+⚠️ **La convention de calcul est celle de service-public.gouv.fr, et elle est
+affichée en légende du tableau** : jours restants jusqu'au 31 décembre ÷ 365,
+**le jour de la vente n'étant pas compté**. C'est ce qui permet au lecteur de
+refaire le compte et de retomber sur les chiffres publiés. Voir
+« Techniques apprises » : une première version calculée en jours **inclusifs**
+donnait 48,2 % et ne reproduisait pas l'exemple officiel (225 jours au lieu
+de 224).
+
+**Ce qui a été publié.**
+
+- **144 → 2 682 mots.** Page servie **59 120 → 146 266 octets**.
+- **8 H2, tous formulés en questions réelles**, chacun ouvrant sur une réponse
+  directe autonome en gras : qui paie l'année de la vente · l'acheteur est-il
+  obligé de rembourser · quelle part concrètement · sur quelle année le prorata
+  se calcule · la clause du compromis suffit-elle · comment sécuriser le prorata
+  avant de signer · que faire si l'acheteur ne rembourse pas · Notre conseil.
+- **0 → 6 questions de FAQ**, visibles **et** en `FAQPage`. **Parité 6/6 vérifiée
+  dans le HTML rendu**, pas dans la source.
+- **`HowTo` de 5 étapes** (« Sécuriser le prorata de taxe foncière d'une vente
+  immobilière »), construit depuis le bloc `steps` — parité garantie par
+  construction.
+- **Un tableau** mois par mois avec légende de source et convention de calcul.
+- **4 liens éditoriaux sortants** : `/blog/frais-de-notaire-lyon-2026`,
+  `/blog/compromis-de-vente-delais`, `/blog/prix-immobilier-villeurbanne-2026`,
+  `/vendre`.
+- **`updated: "2026-11-10"`** → `BlogPosting.dateModified` = `2026-11-10`,
+  « Mis à jour le 10 novembre 2026 » **visible** dans le rendu. `datePublished`
+  inchangé (`2026-06-25`).
+- **5 blocs JSON-LD** sur la page : `RealEstateAgent`, `BlogPosting`, `HowTo`,
+  `FAQPage`, `BreadcrumbList`. 📌 **Rien à ajouter côté balisage** : le gabarit
+  `app/blog/[slug]/page.tsx` les génère tous les cinq depuis les données.
+- **`/llms.txt` s'est mis à jour SEUL** (nouveau titre + nouvel extrait),
+  vérifié sur le serveur de production local — fichier généré depuis
+  `a.excerpt`. **Rien à y faire**, conformément à la consigne du 02/11.
+
+**Ce qui a été RETIRÉ.** L'exemple maison (« taxe de 1 200 €, vente le
+1er juillet, l'acheteur rembourse 600 € »), remplacé par l'exemple **officiel**
+de service-public.gouv.fr. Motif : il reposait implicitement sur la taxe de
+l'année en cours, c'est-à-dire sur la base que la fiche officielle **ne** retient
+pas.
+
+**Ce qui a été décidé de NE PAS faire, et pourquoi.**
+
+- **Aucun montant de taxe foncière villeurbannaise publié.** Il faudrait la
+  valeur locative cadastrale, que nous n'avons pas. Publier un « montant moyen »
+  aurait été un chiffre de marché non sourcé — refusé par le client. **Tout est
+  exprimé en % de la taxe de l'année**, plus l'exemple officiel chiffré.
+  Piste ouverte dans « Hypothèses à vérifier ».
+- **Aucun lien ajouté depuis `charges-copropriete`**, malgré un titre
+  (« Charges de copropriété : la répartition, et qui paie l'année de la vente »)
+  qui en fait le voisin naturel. Mesuré : cet article **ne contient pas une seule
+  occurrence** de « taxe foncière ». Poser le lien exigerait d'**écrire une
+  phrase** dans un autre article — c'est du non-contenu, et la règle du 16/09 est
+  qu'un lien se justifie par la phrase, pas par la cible. **Versé au backlog.**
+- **Aucune réécriture du gabarit partagé.** Les cinq types de JSON-LD y sont déjà.
+- **`/vendre` non retouchée** : son ancre entrante (« prorata entre vendeur et
+  acheteur », suivie de « n'existe que s'il est écrit dans l'acte ») est **déjà
+  exactement cohérente** avec la nouvelle thèse de l'article. Rien à corriger.
+
+**Contrôles avant push.** `tsc --noEmit` propre · `npx eslint` **35 / 24**,
+identique à la baseline, aucune erreur neuve · `next build` des **92 pages**
+passe · **0 mot collé** dans le HTML rendu (règle du 07/11) · parité FAQ **6/6**
+dans le rendu · `/llms.txt` et `/blog` contrôlés sur le serveur local.
+
+**Commit** : `2a5d8dc`.
+
+
 ### 2026-11-09 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h23
 
 - **Déclenchement en double** : le maillage viager (`f3894a7`) est poussé depuis ~20 min
@@ -9916,6 +10146,169 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — la réécriture de `taxe-fonciere-vente-qui-paie`,
+dont le conseil final était contredit par la jurisprudence**
+(10/11 : **candidat contenu n°1 consommé**. 144 → **2 682 mots**, **0 → 6
+questions de FAQ** (parité 6/6 vérifiée dans le rendu), **`HowTo` de 5 étapes**,
+8 H2 en questions, tableau mois par mois. **Deux faits neufs** : la clause
+usuelle des actes a été contestée devant la Cour de cassation le **9 mai 2001**
+et le vendeur n'a gagné que sur un faisceau d'indices extérieurs au contrat
+(ANIL) ; et le prorata se calcule sur le **dernier avis connu**, donc celui de
+l'année précédente (service-public.gouv.fr, fiche F59). **Donnée propre** :
+**1 869 ventes** d'appartements villeurbannais 2025, date médiane **9 juillet**,
+part médiane de l'acheteur **47,9 %**, **23,1 %** des ventes au-delà de 75 %.
+⚠️ **L'hypothèse du backlog était fausse** — l'article était déjà juste, voir
+« Erreurs commises et corrigées ».)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (11/11, mercredi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 07/11 non-contenu → 08/11 contenu → 09/11 non-contenu →
+**10/11 contenu**).
+✅ **La veille du lundi est faite (09/11). Prochaine veille due le 16/11.**
+
+🟢 **CANDIDATS NON-CONTENU, par ordre d'impact :**
+  1. 🔴 **BALAYER LE SITE À LA RECHERCHE D'AFFIRMATIONS DE PERFORMANCE SANS
+     SOURCE.** Ouvert le 08/11, **non fait**, **troisième report**. 📌 **Motifs** :
+     « plus vite », « plus cher », « en moyenne », « en général », « souvent »,
+     « la plupart », suivis d'un comparatif ou d'un chiffre sans source.
+     ⚠️ **Ne pas retirer mécaniquement** : certaines sont des formulations
+     prudentes et correctes. **Trancher phrase par phrase.** 📌 **Le run du 10/11
+     en a retiré une de plus au passage** (« c'est souvent oublié » n'a pas été
+     reconduit) : le motif est productif.
+  2. 🆕 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Le premier s'intitule « Charges de
+     copropriété : la répartition, et qui paie l'année de la vente », le second
+     fait désormais 2 682 mots sur la taxe foncière de l'année de la vente.
+     **Mesuré le 10/11** : `charges-copropriete` ne contient **aucune occurrence**
+     de « taxe foncière », et n'émet que **2 liens éditoriaux**
+     (`diagnostics-obligatoires-vente`, `loi-carrez-surface`).
+     ⚠️ **Il faut donc ÉCRIRE une phrase** dans `charges-copropriete`, pas juste
+     poser une ancre : règle du 16/09, le lien se justifie par la phrase.
+     📌 **Le sens inverse est acquis** : `/vendre` émet déjà l'ancre entrante.
+  3. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Ne PAS répliquer la solution du 07/11 en bloc. Trancher page
+     par page, en commençant par `/annonces`**, page catalogue qui ne pose aucun
+     problème de cannibalisation.
+  4. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+     Mêmes règles : lien posé là où le texte parle déjà du sujet.
+  5. 🆕 🟡 **LE `n` DVF PUBLIÉ PAR DEUX ARTICLES EST FIGÉ À 1 875/1 876, ET LA
+     SOURCE REND 1 869.** Mesuré le 10/11. **Ne pas patcher à l'aveugle** :
+     voir « Hypothèses à vérifier », l'arbitrage n'est pas évident et les
+     médianes publiées, elles, sont inchangées.
+  6. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **neuf runs**). **Une seule affirmation en dépend** : la
+     fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** (code/redirection, **puis** marqueur) : l'hôte rend **200** sur
+     sa page de maintenance.
+  7. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **treizième report**). **Ne RIEN réécrire sur un seul relevé.**
+  8. 🟡 **LA DESCRIPTION DE `/vendre` DANS `/llms.txt` EST ÉCRITE À LA MAIN.**
+     Revérifiée le 10/11 : **toujours exacte**, le chantier du jour ne l'a pas
+     rendue fausse (il n'a pas touché `/vendre`). **Rien à faire dans
+     l'immédiat.** 📌 Le contrôle est à refaire quand un run enrichira une page
+     principale. **Ne pas y investir au-delà de sa justesse** (02/11).
+  9. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+ 10. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     10/11. **Jour creux uniquement.**
+ 11. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 12. ⛔ **NE PAS REJOUER L'AUDIT D'ACCESSIBILITÉ AUX IA AVANT LE 09/12.**
+     Fait en entier le 09/11 (**348 requêtes, 348/348 en `200`**), sain.
+     **Mensuel, pas plus.**
+ 13. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**, pas avant.
+
+🔴 **CANDIDATS CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🟡 **LE RESTE DU BLOG FAIBLE — NEUF ARTICLES, dont huit sous 200 mots.** Sous
+     200 mots et sans FAQ :
+     `lmnp-location-meublee` 107, `home-staging-vendre-plus-cher` 111,
+     `faire-offre-achat` 113, `achat-immobilier-lyon-checklist` 117,
+     `questions-a-poser-visite` 119, `vendre-vite-lyon` 129,
+     `vendre-appartement-lyon-etapes` 154, `capacite-emprunt-immobilier` 194,
+     puis `compromis-de-vente-delais` 345.
+     📌 **Ce qui a marché deux fois (08/11, 10/11)** : (a) deux SERP du sujet
+     mesurées avant d'écrire, en vérifiant qu'aucune agence locale n'y est,
+     (b) chercher **l'affirmation dominante que le texte primaire dément**,
+     (c) n'écrire que ce qu'on a lu à la source.
+     🆕 ⚠️ **LEÇON DU 10/11, À APPLIQUER** : l'hypothèse inscrite au backlog pour
+     un article **peut être fausse** (ici, l'article était déjà juste). **Lire
+     l'article AVANT de croire le pari du backlog**, et accepter que le défaut
+     réel soit simplement le volume. Les faits neufs viennent des **sources
+     primaires**, pas de l'hypothèse.
+     🆕 **Candidat le plus prometteur selon ce critère : `compromis-de-vente-delais`**
+     — il est **déjà cité par trois articles** (dont deux fois par celui du jour),
+     c'est le carrefour éditorial du blog, et à 345 mots il est le plus faible
+     des carrefours. ⚠️ **Non mesuré.**
+  2. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.** Ne pas prendre un terme parce qu'il est absent.
+  3. ⛔ 🆕 **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** — fait le 10/11.
+     **Prochaine action : remesurer les deux SERP le 24/11.**
+  4. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** — fait le 08/11.
+     **Prochaine action : remesurer les deux SERP le 22/11.**
+  5. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11.** **Remesurer la SERP le 18/11.**
+  6. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité, pas
+     du texte. **Remesurer le 21/11.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — DOUZIÈME JOUR.** Constaté le
+  31/10, toujours vrai au 10/11. **Non corrigé : page de Tony, republiée depuis
+  l'éditeur.** ⚠️ **Règle des 90 jours : pas de retouche côté code avant fin
+  janvier 2027, hors panne.** ⚠️ **NON renotifié** (7 notifications, aucun
+  changement) — **à renotifier seulement si l'état change.**
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). Dernier contrôle
+  **07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.** ⚠️ **NON renotifié**, même raison.
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs` du
+  JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** (qui tient ce registre, pas
+  celle-ci) : **`zimo.fr`** et **`cylex-locale.fr`**. **Leur valeur est confirmée
+  par la SERP** : tous les deux ressortent sur « agence immobilière Villeurbanne »
+  mesurée le 09/11.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 10/11** :
+- **« agence immobilière Villeurbanne »** : mesurée le **09/11**, site absent
+  → **16/11**.
+- **« estimation immobilière Villeurbanne »** : mesurée le **09/11**, site absent
+  → **16/11**.
+- **« prix m2 Villeurbanne »** : mesurée le **07/11** (9ᵉ relevé, site absent)
+  → **14/11**.
+- **« vendre appartement Villeurbanne »** : mesurée le **08/11**, site absent
+  → **22/11**.
+- 🆕 **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata vendeur-acheteur) :
+  point zéro posé, **site absent des deux, aucune agence locale dedans**
+  → **première remesure le 24/11**.
+- **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … durée engagement délai »** : point zéro le 08/11, site absent des
+  deux → **22/11.**
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **première remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **première remesure vers le 17/11**.
+  📌 **PRIORITÉ** : l'article est passé de **0 à 3** liens éditoriaux entrants le
+  09/11 et **rien d'autre n'a changé sur cette page**. Si sa position bouge d'ici
+  le 17/11, c'est la **première mesure propre de l'effet du maillage interne** de
+  ce journal.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **première remesure le 18/11**. 📌 **PRIORITÉ** : deux
+  pages du site sont écrites pour elle, et la place est vide de l'aveu du moteur.
+- **« honoraires agence immobilière Villeurbanne pourcentage frais de vente »**
+  : point zéro le **07/11** → **21/11**. 📌 **C'est la SERP la plus anormale du
+  journal** : le contenu existe, il est balisé (`OfferCatalog`), et il n'est pas vu.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+
 **Angle du dernier run : NON-CONTENU — la réception éditoriale de l'article viager,
 et le premier audit d'accessibilité aux IA mené sur les 58 URL**
 (09/11 : **candidats non-contenu n°1 ET n°5 consommés**. n°1 : le backlog
@@ -13087,6 +13480,82 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-10 — Le `n` de DVF a bougé (1 876 → 1 869) alors que les médianes publiées, elles, n'ont pas bougé : faut-il corriger les deux articles qui publient le `n` ?
+
+**Ce qui est mesuré, et seulement ça.** Le contrôle imposé par l'entrée du 13/10
+(« avant de publier une statistique neuve tirée d'une source déjà utilisée,
+reproduire d'abord une statistique DÉJÀ PUBLIÉE depuis la même extraction ») a
+été joué le 10/11 sur la population exacte du journal (Vente · une seule ligne
+bâtie par mutation · Appartement · surface ≥ 10 m² · 800 ≤ €/m² ≤ 12 000), à
+partir de `files.data.gouv.fr/geo-dvf/latest/csv/2025/communes/69/69266.csv` :
+
+| Statistique | Valeur notée au journal | Valeur du 10/11 | Écart |
+|---|---|---|---|
+| `n` (ventes d'appartements 2025) | **1 876** (et 1 875 avant le 13/10) | **1 869** | **− 7** |
+| Médiane €/m² | **3 566,8** | **3 566,7** | − 0,1 |
+| Surface médiane | **62 m²** | **62 m²** | **identique** |
+| Prix médian | **195 000 €** | **195 000 €** | **identique** |
+
+**Ce qui est acquis.** `latest` est un millésime **rafraîchi**, pas figé : la
+DGFiP corrige des mutations après publication. **L'arrondi publié partout sur le
+site (3 567 €/m²) est inchangé**, donc **aucune des chaînes de calcul dérivées
+n'est fausse** — ni les seuils de plus-value, ni les frais de notaire, ni les
+honoraires par quartier, ni la loi Carrez. **Rien n'a été recalculé le 10/11, et
+c'est volontaire.**
+
+**Ce qui reste à trancher, et pourquoi ce n'est pas évident.** Deux endroits
+publient le `n` lui-même, pas une médiane :
+
+- `estimation-en-ligne-ou-agence` — son **titre** porte « (mesuré sur 1 875
+  ventes) », donc le changer change une URL de partage, un `<title>`, un extrait
+  de `/llms.txt` et des ancres entrantes.
+- `loi-carrez-surface` — « 1 727 ventes sur 1 876 (92,1 %) », avec une
+  statistique Carrez qui a **sa propre péremption** (extraction du 13/10).
+
+**Les trois options, et leurs coûts.**
+
+1. **Ne rien changer** et considérer que `n` est daté par la mention
+   d'extraction qui l'accompagne. **Coût** : un lecteur qui retélécharge la
+   source ne retombe pas sur le `n` publié. **Mais c'est déjà vrai de tout
+   millésime rafraîchi**, et la mention de date le dit.
+2. **Republier les `n` à 1 869** et refaire le ratio Carrez depuis la même
+   extraction. **Coût** : un `<title>` modifié, et un chiffre qui rebougera au
+   prochain rafraîchissement — donc un chantier **récurrent et sans fin**.
+3. **Retirer le `n` du titre** de `estimation-en-ligne-ou-agence` et ne le garder
+   que dans le corps, daté. **Coût** : perte d'un élément de preuve en SERP, qui
+   est précisément ce qui distingue ce titre des concurrents.
+
+⚠️ **Non tranché. Ne pas trancher seul dans un run de contenu** : l'option 2
+touche un `<title>` servi, ce qui est un changement de rendu — règle du cadrage
+(« en cas de doute sur un changement touchant au rendu, ne pas le faire »).
+📌 **Ce qu'il faut mesurer d'abord, et qui n'a jamais été fait** : rejouer
+l'extraction **deux fois à une semaine d'intervalle** pour savoir si le `n`
+dérive encore, ou s'il s'est stabilisé. Sans ça, l'option 2 est un pari.
+
+### 2026-11-10 — Nous ne pouvons pas chiffrer en euros la taxe foncière villeurbannaise, et c'est la seule limite de l'article du jour
+
+**Ce qui manque.** L'article du 10/11 exprime tout en **pourcentage de la taxe de
+l'année** (médiane 47,9 %, Q1 25,2 %, Q3 72,3 %) et reprend l'exemple chiffré
+**officiel** de service-public.gouv.fr (1 500 € de taxe 2024, 920,55 €). Il ne
+dit **pas** ce que représente une taxe foncière villeurbannaise en euros.
+
+**Pourquoi, et pourquoi ce n'est pas un oubli.** Le montant d'une taxe foncière
+est le produit de la **valeur locative cadastrale** du local par les taux votés.
+Nous avons accès aux taux (publics), **pas aux valeurs locatives** par logement.
+Publier un « montant moyen » déduit d'un produit fiscal communal divisé par un
+nombre de locaux serait un **chiffre de marché non sourcé**, que le client a
+explicitement refusé. **Décision du 10/11 : rien publié en euros.**
+
+**La piste à explorer, non mesurée.** Le fichier **REI** (recensement des
+éléments d'imposition à la fiscalité directe locale) publie par commune les
+**bases nettes** et les **taux** de TFPB. ⚠️ **Trois contrôles obligatoires avant
+d'en tirer quoi que ce soit** : (a) vérifier que le fichier distingue bien les
+locaux d'habitation du reste, (b) ne jamais diviser une base par un nombre de
+locaux pris dans une autre source, (c) **reproduire d'abord un chiffre déjà
+publié par la DGFiP** depuis la même extraction (règle du 13/10). Si l'un des
+trois échoue, **ne rien publier** : l'article se tient très bien sans.
+
+
 ### 2026-11-09 — Deux concurrents saturent la SERP « estimation immobilière Villeurbanne » avec une page PAR TYPE DE BIEN, là où nous n'en avons qu'une
 
 **Ce qui est mesuré, et seulement ça.** Sur « estimation immobilière Villeurbanne
@@ -14683,6 +15152,111 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-10 — L'hypothèse que le backlog portait depuis deux jours était fausse, et l'article visé était déjà juste
+
+**Ce qui était écrit** (backlog, candidat contenu n°1, inscrit le 08/11, repris
+tel quel le 09/11) :
+
+> 🔴 **`taxe-fonciere-vente-qui-paie` — LE CANDIDAT LE PLUS PROMETTEUR.**
+> 144 mots, aucune FAQ. L'hypothèse inscrite le 08/11 : **la répartition au
+> prorata entre vendeur et acheteur est une pratique contractuelle, pas une
+> règle**, et c'est massivement publié à l'envers.
+
+**Ce que la lecture de l'article a rendu.** Il écrivait déjà, dans son deuxième
+paragraphe : « Ce n'est pas une obligation légale, mais un accord privé inscrit
+dans l'acte ». **L'article était juste sur le point même où le backlog pariait
+qu'il serait faux.** Et le pari sur les concurrents l'était aussi : les deux SERP
+mesurées montrent que les sites nationaux énoncent correctement la règle du
+propriétaire au 1er janvier — ils ne la publient pas « à l'envers ».
+
+**Ce qui était réellement défectueux**, et qui n'était pas dans l'hypothèse :
+
+1. **Le volume et l'absence de FAQ** (144 mots, 0 question) — seul point du
+   backlog qui était exact.
+2. **Le conseil final était insuffisant** : « Vérifiez que ce prorata est bien
+   prévu dans le compromis ». La jurisprudence dit que la clause usuelle **ne
+   suffit pas** : il faut qu'elle nomme le prorata et sa période.
+3. **L'exemple reposait sur la mauvaise base de calcul** (implicitement la taxe
+   de l'année en cours, quand la fiche officielle retient le dernier avis connu).
+
+→ **Règle générale, et c'est la plus réutilisable de ce run : une hypothèse
+inscrite au backlog ne se vérifie pas dans la SERP, elle se vérifie d'abord dans
+NOTRE propre page.** Lire l'article visé **avant** de monter le dossier de
+sources. Ici, le pari était faux et le chantier restait entièrement justifié —
+mais si le run avait écrit l'article en partant de l'hypothèse, il aurait
+« corrigé » une phrase déjà correcte et manqué les deux vrais apports.
+📌 **Même famille que l'erreur du 09/11** (le backlog surestimait un défaut de
+maillage d'un facteur 3) et que celle du 08/11 (« 3 pages entrantes » ne voulait
+pas dire « 3 liens éditoriaux »). **Trois runs de suite, le backlog s'est
+trompé sur un chiffre ou un diagnostic qu'il portait lui-même.** La cause est
+toujours la même : l'entrée a été écrite **avant** la mesure qui la corrige.
+**Conséquence de méthode, à appliquer dès demain : toute entrée de backlog qui
+porte un diagnostic, et non une simple tâche, doit être remesurée au début du run
+qui la consomme — et le résultat de cette remesure écrit, même quand il confirme.**
+
+### 2026-11-10 — Première version du calcul publiée en jours inclusifs : elle ne reproduisait pas l'exemple officiel, et aurait publié 48,2 % au lieu de 47,9 %
+
+**Ce qui s'est passé.** La part de taxe foncière revenant à l'acheteur a d'abord
+été calculée en comptant **le jour de la vente**
+(`(31 décembre − date) + 1` jours), ce qui donnait : date médiane au 9 juillet,
+part médiane **48,2 %**, Q1 25,5 %, Q3 72,6 %, et « 48,2 % des ventes au-delà
+de 50 % ».
+
+**Ce qui l'a rattrapé.** Le contrôle de reproduction de l'exemple **officiel** de
+service-public.gouv.fr : vente du 21/05/2025, la fiche écrit « **il reste 224
+jours** jusqu'au 31 décembre ». La convention inclusive rend **225**. L'écart
+d'un seul jour prouvait que la convention publiée par la source **exclut le jour
+de la vente**.
+
+**Correction appliquée.** Tout recalculé en `365 − jour de l'année`, ce qui
+reproduit **224 jours** et **920,55 €** à l'identique. Chiffres publiés :
+médiane **47,9 %**, Q1 **25,2 %**, Q3 **72,3 %**, **23,1 %** des ventes au-delà
+de 75 %. **Et la convention est écrite en légende du tableau**, pour que le
+lecteur refasse le compte.
+
+→ **Règle générale : quand une source publie un exemple chiffré, c'est lui qui
+fixe la convention de calcul, pas le bon sens.** Un prorata, un décompte de
+jours, un arrondi : reproduire l'exemple de la source **avant** d'appliquer sa
+formule à nos propres données. Un écart d'un jour sur 365 ne se voit pas dans un
+résultat mais invalide la comparabilité avec la source qu'on cite.
+📌 **Même famille que la convention d'arrondi de `loi-carrez-surface` (13/10)** :
+ce n'est pas la valeur exacte qui compte, c'est que le lecteur retombe sur le
+chiffre publié en refaisant le calcul affiché.
+
+### 2026-11-10 — Premier jet du contenu français écrit SANS ACCENTS, et rien dans la chaîne de contrôle ne l'aurait vu
+
+**Ce qui s'est passé.** Le bloc d'article a été écrit une première fois en
+ASCII pur (« taxe fonciere », « l'annee entiere », « proprietaire »), par
+précaution inutile contre un problème d'encodage du heredoc `bash` — qui
+n'existe pas : `cat <<'EOF'` transmet l'UTF-8 octet pour octet, comme le
+prouvent toutes les autres écritures de ce journal. **Le fichier a été écrit et
+le script a répondu `ok`.**
+
+**Pourquoi c'est grave et pas anecdotique.** `tsc --noEmit` passe, `eslint`
+passe, `next build` passe, le rendu HTML est valide, la parité FAQ est bonne,
+le JSON-LD est bon. **Aucun contrôle de la chaîne ne regarde l'orthographe.**
+Un run qui aurait poussé à cet instant aurait servi 2 682 mots de français sans
+accents sur le site d'un client, et le journal du lendemain aurait trouvé une
+page « conforme » sur tous ses indicateurs.
+
+**Correction appliquée.** Bloc entièrement réécrit avec les accents, les
+guillemets français et les tirets cadratins, puis contrôle explicite : recherche
+des formes sans accent (`fonciere`, `annee`, `impots`, `proprietaire`, `mediane`,
+`deja`, `etablie`, `periode`, `acquereur`…) dans le bloc publié. **Seules
+occurrences restantes légitimes** : le `slug`
+(`taxe-fonciere-vente-qui-paie`, les URL sont sans accent) et le nom de domaine
+`impots.gouv.fr`. **Réécriture faite avant tout commit**, rien de fautif n'est
+entré dans l'historique.
+
+→ **Règle générale, à ajouter aux contrôles avant push de tout run de contenu :
+après écriture, grepper le bloc publié à la recherche des formes non accentuées
+des mots fréquents du français.** Le contrôle coûte une commande et attrape une
+faute qu'aucun outil du projet ne voit.
+📌 **Et la leçon d'outillage : ne pas « se protéger » d'un problème d'encodage
+non constaté.** Le heredoc cité transmet l'UTF-8 sans altération ; la prudence
+mal placée a coûté une réécriture complète du bloc.
+
 
 ### 2026-11-09 — Le backlog surestimait un défaut d'un facteur 3, et la cause est qu'il avait été écrit avant la méthode de mesure qui le corrige
 
@@ -16973,6 +17547,103 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-10 — Lire une décision de justice quand Légifrance est fermé, et deux pièges de convention sur un décompte de jours
+
+**1. 🟢 L'ANIL est la porte d'entrée vers la jurisprudence depuis ce conteneur,
+et elle rend le raisonnement, pas seulement la référence.** L'entrée du 13/10
+établissait que `legifrance.gouv.fr` répond **403** en `curl` **et** en WebFetch,
+donc qu'un texte de loi ne se lit pas de première main ici. Le run du 10/11
+avait besoin d'une **décision** de la Cour de cassation, pas d'un article de
+code — cas non couvert.
+
+**Ce qui a marché, en deux temps :**
+
+```bash
+# 1. laisser une recherche web trouver l'URL de l'analyse (ne JAMAIS deviner
+#    une URL anil.org : elles contiennent le titre complet, slashs compris)
+#    -> /documentation-experte/analyses-juridiques-jurisprudence/jurisprudence/
+#       jurisprudence-2002/vente-dimmeuble-/-clause-de-repartition-de-la-taxe-fonciere/
+# 2. telecharger, puis degraisser en texte : 31 ko de HTML pour ~2 ko utiles
+curl -s --cacert /root/.ccr/ca-bundle.crt "<url>" -o anil.html
+python3 -I -c "
+import re,html,sys
+t=open('anil.html',encoding='utf-8').read()
+t=re.sub(r'<(script|style)[^>]*>.*?</\1>','',t,flags=re.S|re.I)  # AVANT les balises
+t=re.sub(r'<[^>]+>',' ',t); t=html.unescape(t)
+print(re.sub(r'[ \t]+',' ',t))"
+```
+
+⚠️ **Et c'est le point qui compte : WebFetch a refusé de reproduire la page**
+(« Je ne peux pas reproduire intégralement ce texte »), en rendant un résumé.
+Le résumé disait l'essentiel **mais omettait le libellé exact de la clause
+litigieuse**, qui est précisément ce qui rend l'article publiable. **Le
+téléchargement direct + dégraissage, lui, rend le texte intégral.**
+📌 **Règle : pour une source dont on veut CITER les termes, télécharger ; pour
+une source dont on veut seulement le fait, WebFetch suffit.** Les deux ont été
+utilisés le 10/11, chacun là où il est bon.
+
+**Ce que l'ANIL rend et qu'aucune autre source accessible ne rend** :
+la référence (**Cass. Civ. III, 9.5.01** — sans numéro de pourvoi, et il ne faut
+donc **pas** en inventer un), le libellé de la clause usuelle, l'argument de
+l'acquéreur, **le fondement réel de la décision** (un faisceau d'indices, pas la
+clause), la réserve des auteurs, et la rédaction qu'ils recommandent. ⚠️ **Citer
+l'ANIL comme source**, pas la Cour de cassation directement : nous n'avons pas lu
+l'arrêt.
+
+**2. 🔴 Un exemple chiffré publié par une source officielle est une
+SPÉCIFICATION de convention, et c'est le seul moyen de la découvrir.** Détail
+complet dans « Erreurs commises et corrigées » : la fiche F59 écrit « il reste
+**224 jours** » pour une vente du 21/05/2025. Un décompte inclusif rend 225.
+
+```python
+# convention service-public.gouv.fr (fiche F59) : le jour de la vente n'est PAS compte
+jours_restants = 365 - date_vente.timetuple().tm_yday
+part_acheteur  = jours_restants / 365
+# controle OBLIGATOIRE avant d'appliquer la formule a nos donnees :
+# 21/05/2025 -> 224 jours ; 1500 * 224 / 365 == 920.55 (valeur publiee par la fiche)
+```
+
+→ **Règle générale : avant d'appliquer à nos données la formule d'une source,
+reproduire l'exemple de la source avec elle.** C'est le pendant, côté formule, de
+la règle du 13/10 côté population (« reproduire d'abord une statistique déjà
+publiée »). Les deux ont été joués le 10/11, et **les deux ont servi** : le
+premier a validé la population, le second a corrigé la convention.
+
+**3. 🟢 La recette de la distribution des dates de vente, à réutiliser telle
+quelle.** Elle produit une donnée locale que personne ne publie, à partir d'une
+source déjà exploitée par le site — donc sans nouvelle dépendance :
+
+```python
+# population EXACTE du journal (entree du 07/09), controle du 13/10 passe d'abord
+BATI={'Appartement','Maison','Local industriel. commercial ou assimile'}
+# "une seule ligne batie par mutation" = exactement 1 ligne dans BATI
+# ⚠️ 'Dependance' NE compte PAS comme ligne batie : l'inclure fait tomber n a 220
+#    et les medianes publiees ne retombent plus (3 831,6 EUR/m2, 32,5 m2) -> faux
+```
+
+⚠️ **C'est le piège qui a coûté le premier essai** : une cave ou un parking vendu
+avec l'appartement est une ligne `Dépendance`, et la compter comme « ligne bâtie »
+élimine 88 % de la population. **Le contrôle du 13/10 l'a attrapé immédiatement** —
+sans lui, le run aurait publié une distribution de dates calculée sur 220 ventes
+au lieu de 1 869.
+
+**4. 📌 Les cinq types de JSON-LD d'un article de blog sont déjà tous générés par
+le gabarit, et c'est vérifiable en une commande.** Contrôlé le 10/11 dans le HTML
+**rendu** (`.next/server/app/blog/<slug>.html`) : `RealEstateAgent`,
+`BlogPosting` (`datePublished` + `dateModified`), `HowTo` (depuis le bloc
+`steps`), `FAQPage` (depuis `faq`), `BreadcrumbList`. **Il n'y a donc rien à
+ajouter côté balisage sur un article** — et un run qui croirait devoir ajouter un
+`BreadcrumbList` toucherait un gabarit partagé pour rien.
+
+```bash
+python3 -I -c "
+import re,html,json
+s=open('.next/server/app/blog/<slug>.html',encoding='utf-8').read()
+for b in re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>',s,re.S):
+    d=json.loads(html.unescape(b)); print(d.get('@type'))"
+```
+
 
 ### 2026-11-09 — VEILLE (lundi, elle avait une semaine de retard) : la fetchabilité par les agents d'IA devient un facteur mesurable, et une réponse de FAQ n'interprète PAS le markdown
 
