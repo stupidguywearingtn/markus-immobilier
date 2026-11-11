@@ -21,7 +21,7 @@ const FAQ: QA[] = [
   },
   {
     q: "Quel est le prix moyen au m² à Villeurbanne en 2026 ?",
-    a: "À Villeurbanne, le prix médian est d'environ 3 750 €/m² pour un appartement et d'environ 4 400 à 4 800 €/m² pour une maison, avec une fourchette allant d'environ 2 800 à 5 500 €/m² selon le quartier, l'état et le DPE du bien.",
+    a: "Le prix médian d'un appartement vendu à Villeurbanne est de 3 567 €/m² sur l'année 2025, et de 3 500 €/m² sur le premier semestre 2026 (940 ventes). Pour une maison, la médiane 2025 est de 4 186 €/m². Nous publions la médiane plutôt que la moyenne, parce qu'elle n'est pas tirée vers le haut par quelques ventes exceptionnelles : selon le quartier, elle va de 2 738 €/m² à Cyprian – Les Brosses à 3 923 €/m² à Ferrandière – Maisons-Neuves. Chiffres calculés par Markus Immobilier sur le fichier des valeurs foncières de la DGFiP (DVF), c'est-à-dire sur les ventes réellement signées et non sur les prix affichés.",
   },
   {
     q: "Combien de temps prend une estimation en ligne ?",
@@ -41,7 +41,7 @@ const FAQ: QA[] = [
   },
   {
     q: "Le DPE influence-t-il le prix d'un bien ?",
-    a: "Oui. Un bien bien classé (A à C) se vend plus vite et plus cher qu'un bien énergivore (F ou G), qui subit une décote car l'acheteur anticipe des travaux. À Villeurbanne, environ 7,6 % des biens sont des passoires thermiques.",
+    a: "Oui, et par un mécanisme vérifiable plutôt que par un effet de marché : un logement classé G ne peut plus être mis en location depuis le 1er janvier 2025, la classe F suit à partir de 2028 et la classe E à partir de 2034. Un acheteur qui ne pourra pas louer le bien, ou qui devra financer des travaux pour le pouvoir, en tient compte dans son offre. À Villeurbanne, le risque est faible et concentré : 2 454 appartements sur les 49 717 diagnostiqués sont classés F ou G, soit 4,9 %, contre 7,1 % en France et 6,7 % à Lyon. Mais ce taux monte à 7,60 % pour les appartements construits entre 1948 et 1974, et à 12,37 % pour ceux d'avant 1948. Source : base DPE des logements existants de l'ADEME, extraction du 11 octobre 2026, comptage Markus Immobilier.",
   },
 ];
 
