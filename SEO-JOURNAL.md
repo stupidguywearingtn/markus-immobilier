@@ -14,6 +14,72 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-11 (mercredi)**
+
+- ✅ **LE RUN A EU LIEU — SIXIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 11/11.
+  **Un seul manque sur 75 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN RETARD DE `main`, NEUVIÈME APPLICATION DE LA CORRECTION DU 02/11.**
+  `HEAD` de départ = **`6ac9f59`**, `git ls-remote origin refs/heads/main` =
+  **`6ac9f59`** : identiques. **Aucun commit tiers** depuis `6ac9f59`.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-3zzqhl`**, pas sur `main`.
+  **Onzième constat consécutif**, nom différent chaque fois. Poussé en
+  `git push origin HEAD:main` comme les dix fois précédentes.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-sixième constat identique** (21/09 → 11/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Vingt-neuvième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces — identique du 07/11 au 11/11.**
+  Aucune page ajoutée ni retirée. Tous les contrôles en `curl -sL` (piège `308`).
+  Le `lastmod` n'a **PAS** servi à conclure sur l'activité du client.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée**
+  (08/11 contenu → 09/11 non-contenu → 10/11 contenu → **11/11 non-contenu**),
+  **et c'est le candidat non-contenu n°1 du backlog qui a été consommé** — le
+  balayage des affirmations de performance sans source, ouvert le 08/11 et
+  reporté trois fois.
+- 🔴 **LE BALAYAGE A TROUVÉ BIEN PIRE QUE CE QU'IL CHERCHAIT : DEUX DES HUIT
+  RÉPONSES DE LA FAQ DE L'ACCUEIL CONTREDISAIENT NOS PROPRES RELEVÉS, EN
+  PRODUCTION ET DANS LE JSON-LD `FAQPage`.** `3 750 €/m²` pour un appartement
+  là où le corpus publie **3 567 €/m²** dans quatre fichiers ; `4 400 à
+  4 800 €/m²` pour une maison et `2 800 à 5 500 €/m²` d'amplitude, **deux
+  valeurs qui n'existaient nulle part ailleurs sur le site et sans source** ;
+  et **« environ 7,6 % des biens sont des passoires thermiques »** alors que
+  **7,60 % est le taux des SEULS appartements construits entre 1948 et 1974** —
+  le taux communal mesuré est **4,9 %** (2 454 sur 49 717, ADEME, extraction du
+  11/10/2026). **Les quatre valeurs étaient servies dans le HTML visible ET
+  dans le `FAQPage`**, donc offertes à l'extraction par les IA. **Corrigé.**
+- 🔴 **ET LE FAIT DE MÉTHODE QUI COMPTE POUR LA SUITE : « PAGE PUBLIÉE DEPUIS
+  L'ÉDITEUR » NE VEUT PAS DIRE « TEXTE PORTÉ PAR L'ÉDITEUR ».** Le bloc
+  `MaisonFaq` de l'accueil publié rend `<HomeFaq />`, **sans aucune prop** :
+  le texte vient de `components/home/faq.tsx`, c'est-à-dire du **code**. Tony
+  ne peut ni l'avoir écrit ni le corriger depuis `/admin/pages`. 📌 **C'est ce
+  qui a levé le doute sur la règle des 90 jours** — voir « Erreurs commises ».
+- 🟡 **UNE REQUÊTE COMMERCIALE REMESURÉE : `prix m2 Villeurbanne`, SITE ABSENT —
+  10ᵉ RELEVÉ, ÉCHÉANCE DU 14/11 TENUE EN AVANCE.** Les 9 résultats sont
+  **tous des estimateurs ou des portails** : efficity (×2), moneyvox (×2), pap,
+  orpi, realadvisor (×2), netvendeur. **Aucun contenu éditorial local, aucune
+  agence villeurbannaise.** 📌 **Et le moteur fait lui-même le constat qui nous
+  sert** : « les écarts entre sources viennent surtout de la méthode : certaines
+  se basent sur les ventes réelles (DVF), d'autres sur les annonces » — c'est
+  exactement l'argument de nos pages, et il n'est porté par personne d'autre
+  dans cette SERP. **Prochaine remesure : 21/11.**
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour** — ne pas conclure de son silence qu'une requête
+  n'a pas été mesurée.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  TREIZIÈME JOUR.** Revérifié ce jour dans le HTML en ligne : **0 occurrence**
+  de « Qui sommes ». **Non corrigé, et c'est volontaire** (page de Tony).
+  ⚠️ **NON renotifié** au titre de ce seul constat, inchangé depuis sept
+  notifications — **mais la correction de la FAQ, elle, est notifiée.**
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  11/11, prouvé avant et après le commit du jour. **Aucune erreur neuve.**
+  `tsc --noEmit` propre.
+
+
 **Au 2026-11-10 (mardi)**
 
 - ✅ **LE RUN A EU LIEU — CINQUIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11, 07/11,
@@ -5060,6 +5126,125 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-11-11 (mercredi) — La FAQ de l'accueil publiait `3 750 €/m²` et `7,6 % de passoires` quand nos propres relevés disent `3 567 €/m²` et `4,9 %`, et c'est du code que l'éditeur de pages ne touche pas
+
+**Angle : NON-CONTENU** (alternance respectée : 08/11 contenu → 09/11
+non-contenu → 10/11 contenu → **11/11 non-contenu**). **Candidat non-contenu
+n°1**, ouvert le 08/11, **reporté trois fois, consommé ce jour.**
+
+**Ce que le chantier cherchait.** Les affirmations de performance sans source :
+« plus vite », « plus cher », « en moyenne », « en général », « souvent », « la
+plupart », suivies d'un comparatif ou d'un chiffre. **129 occurrences brutes**
+dans `app components lib data`. ⚠️ **La consigne du backlog — « ne pas retirer
+mécaniquement, trancher phrase par phrase » — s'est révélée juste** : la très
+grande majorité des « généralement / le plus souvent / la plupart » sont des
+formulations prudentes et correctes (délais de notaire, règles de préavis,
+plafonds), et **n'ont pas été touchées**.
+
+**Ce qu'il a trouvé, et qui est d'une autre nature.** En remontant la piste
+« plus vite et plus cher », le motif a mené à `components/home/faq.tsx`, un
+fichier que **soixante-quinze runs de contrôles de cohérence n'avaient jamais
+ouvert**. Mesuré dans le HTML de production (`curl -sL`), puis dans le JSON-LD
+servi :
+
+| Réponse de la FAQ de l'accueil | Ce qu'elle publiait | Ce que le corpus mesure |
+|---|---|---|
+| « Quel est le prix moyen au m² … ? » | « environ **3 750 €/m²** » (appartement) | **3 567 €/m²**, ventes 2025, publié dans **4 fichiers** |
+| idem | « **4 400 à 4 800 €/m²** » (maison) | **4 186 €/m²** — et `4 400`/`4 800` **n'existaient nulle part ailleurs** |
+| idem | « fourchette de **2 800 à 5 500 €/m²** » | moitié centrale **2 954 – 4 173 €/m²**, quartiers **2 738 → 3 923 €/m²** |
+| « Le DPE influence-t-il le prix ? » | « environ **7,6 % des biens** sont des passoires » | **4,9 %** (2 454 / 49 717) — **7,60 % est le taux des appartements 1948-1974 SEULS** |
+| idem | « se vend **plus vite et plus cher** » | aucune mesure derrière |
+
+📌 **Les quatre valeurs étaient dans le texte visible ET dans le `FAQPage`** :
+une IA qui extrait la FAQ de l'accueil repartait avec `3 750 €/m²` et
+`7,6 %`, pendant que le blog du même site lui répondait `3 567 €/m²` et
+`4,9 %`. **C'est le pire cas de figure pour le GEO** : deux réponses
+contradictoires, dans des données structurées, sur le même domaine.
+
+**Le fait de méthode qui a rendu la correction possible.** L'accueil est publié
+depuis l'éditeur de pages (`getPublishedPage("")` prend la main) — d'où la
+règle des 90 jours. **Mais le bloc `MaisonFaq` rend `<HomeFaq />` sans aucune
+prop** (`lib/page-builder/config.server.tsx:61`) : le texte est porté par le
+code, pas par les données de l'éditeur. **Vérifié par l'absence** : les textes
+par défaut de `lib/page-builder/definitions.tsx` (« une vente plus rapide »,
+« zéro mauvaise surprise ») rendent **0 occurrence** en production, alors que
+la FAQ du code en rend **4** par valeur. Tony ne peut donc ni avoir écrit ces
+chiffres, ni les corriger lui-même. **Arbitrage de la règle des 90 jours :
+voir « Erreurs commises et corrigées ».**
+
+**Ce qui a été écrit, sourcé, et vérifié dans le rendu.**
+
+- **Réponse prix** : médiane **3 567 €/m²** (appartement, 2025), **3 500 €/m²**
+  (S1 2026, 940 ventes), **4 186 €/m²** (maison, 2025), amplitude par quartier
+  **2 738 €/m² (Cyprian – Les Brosses) → 3 923 €/m² (Ferrandière –
+  Maisons-Neuves)**, source DVF / DGFiP nommée, et **la raison de publier une
+  médiane et non une moyenne** — ce qui répond à la question telle qu'elle est
+  posée (« prix moyen ») sans mentir sur l'indicateur.
+- **Réponse DPE** : le **mécanisme vérifiable** à la place de l'effet de marché
+  — interdiction de louer un **G depuis le 01/01/2025**, **F à partir de 2028**,
+  **E à partir de 2034** — puis notre donnée propre : **2 454 / 49 717 = 4,9 %**,
+  contre **7,1 %** en France et **6,7 %** à Lyon, **7,60 %** pour 1948-1974 et
+  **12,37 %** avant 1948. Source **base DPE ADEME, extraction du 11/10/2026**,
+  comptage Markus Immobilier.
+- **`vendre-sans-agence`** : « la commission représente **souvent 4 à 6 %** du
+  prix » retiré. C'était un chiffre de marché non sourcé **dans un article qui
+  annonce lui-même** ne mettre côte à côte que « quatre choses chiffrées ou
+  sourcées », et **la phrase suivante disait qu'aucune agence ne publie de
+  barème** — donc invérifiable par construction. Le point vérifiable est gardé.
+
+**Ce que le run a refusé de publier, et pourquoi.** La décote par classe de DPE
+aurait transformé la réponse DPE en contenu citable de premier ordre.
+**Impossible à sourcer depuis ce conteneur** : l'étude « valeur verte des
+logements » des Notaires de France répond **403** en `curl` (Incapsula), ses
+pages HTML passent en WebFetch **mais ne contiennent aucun pourcentage**, et le
+corps du PDF (`/fr/media/1671`) n'est pas servi. Les sources secondaires
+**se contredisent** (−12 %, −9,7 %, −15 %, −17 % selon les pages). **Rien n'a
+été publié.** 📌 Application directe de la règle du 09/11 : *une affirmation
+non sourcée peut déclencher une mesure, jamais la remplacer.*
+
+**Contrôles de production et de non-régression.**
+- **Parité `FAQPage` / texte visible : 8/8**, prouvée dans un **rendu réel**
+  (`next start` + `curl 127.0.0.1`), pas dans le code.
+- **`3 750` → 0 occurrence**, **`7,6 % des biens` → 0**, **« plus vite et plus
+  cher » → 0** dans tout `app components lib`. Nouvelles valeurs présentes 1×
+  chacune dans le texte visible.
+- `vendre-sans-agence` rendu : ancienne phrase **0**, nouvelle **2**,
+  **150 841 octets** servis.
+- `tsc --noEmit` **propre**. `eslint` **35 problèmes / 24 erreurs**, identique
+  au 02/11 → 10/11, **aucune erreur neuve**. Build complet passé.
+- `/llms.txt` **non concerné** : il ne reprend ni `3 750` ni `7,6 %`, et les
+  descriptions à la main n'ont pas été rendues fausses (la seule occurrence de
+  « passoire » y renvoie aux 1 287 / 52,4 %, cohérents).
+
+**Ce que le run a décidé de NE PAS faire.**
+1. **Les autres chiffres de marché non sourcés du même motif**, laissés en
+   place **volontairement** : « une agence facture **généralement entre 6 et
+   8 %** des loyers » (`lib/blog.ts:2569`, + l'`excerpt` de l'article, +
+   « la plupart des agences répondent entre 6 et 8 % » sur `/faire-gerer:338`).
+   **Raison** : contrairement à la commission de vente, ce range **porte la
+   phrase d'attaque** de l'article et l'`excerpt`, et le retirer sans source de
+   remplacement casse l'argument (« nous sommes au bas de la fourchette »).
+   **C'est un chantier à part entière, pas une retouche.** → backlog.
+2. **`capacite-emprunt-immobilier` (« 35 % des revenus nets », « généralement
+   25 ans »)** : ce sont des faits **réglementaires** (HCSF, décision
+   **D-HCSF-2021-7** du 29/09/2021, en vigueur au 01/01/2022), pas des
+   affirmations de performance — mais **non sourcés sur la page**, et
+   `economie.gouv.fr/hcsf` répond **403** en WebFetch. **Non touché** : l'article
+   fait 194 mots et est déjà inscrit en candidat contenu, c'est là que le
+   sourçage a sa place.
+3. **Le titre de `home-staging-vendre-plus-cher`** (« 8 gestes qui font vendre
+   plus cher ») : affirmation de performance **dans le `title`, le `h1` et
+   l'`excerpt`**. Changer un titre indexé est un acte SEO à part, et l'article
+   (111 mots) est inscrit en candidat contenu. **Non touché.** → backlog.
+4. **`lib/page-builder/definitions.tsx:307`** (« un prix juste, une vente plus
+   rapide ») : affirmation de performance, mais **texte par défaut d'un bloc
+   non utilisé** — **0 occurrence en production**, vérifié. Pas de valeur SEO à
+   le corriger aujourd'hui ; il deviendrait servi si quelqu'un ajoutait ce bloc.
+   → backlog, jour creux.
+5. **Le `n` DVF (1 875 / 1 876 vs 1 869)** : **délibérément non patché**, et la
+   réponse prix écrite ce jour **ne publie aucun `n`** pour ne pas créer une
+   troisième valeur. Voir « Hypothèses à vérifier » du 10/11.
 
 ### 2026-11-10 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h20–06h26
 
@@ -10160,6 +10345,180 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le balayage des affirmations de
+performance sans source, qui a mis au jour deux réponses fausses dans la FAQ de
+l'accueil**
+(11/11 : **candidat non-contenu n°1 consommé**, après trois reports.
+**129 occurrences** du motif balayées, **la très grande majorité conservée**
+— ce sont des formulations prudentes et correctes. **4 valeurs fausses ou non
+sourcées retirées de la FAQ de l'accueil**, servies dans le texte visible **et**
+dans le `FAQPage` : `3 750 €/m²`, `4 400 à 4 800 €/m²`, `2 800 à 5 500 €/m²`,
+`7,6 % de passoires`. Remplacées par **3 567 / 3 500 / 4 186 €/m²**,
+l'amplitude réelle par quartier, **4,9 %** et les deux sous-populations
+**7,60 %** / **12,37 %**, sources nommées. **Parité `FAQPage` 8/8 prouvée dans
+un rendu réel.** Plus un chiffre de marché non sourcé retiré de
+`vendre-sans-agence`. ⚠️ **La décote par classe DPE n'a PAS été publiée** :
+non sourçable depuis ce conteneur.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (12/11, jeudi) DOIT ÊTRE DU CONTENU**
+(alternance : 09/11 non-contenu → 10/11 contenu → 11/11 non-contenu).
+✅ **La veille du lundi est faite (09/11). Prochaine veille due le 16/11.**
+
+🔴 **CANDIDATS CONTENU, par ordre d'impact :**
+  1. 🔴 **`compromis-de-vente-delais` — LE CARREFOUR ÉDITORIAL LE PLUS FAIBLE.**
+     345 mots, **déjà cité par trois articles**, donc la réception est acquise
+     et le volume est le seul défaut. ⚠️ **Non mesuré** — appliquer la leçon du
+     10/11 : **lire l'article avant de croire le pari du backlog.**
+     📌 **Méthode qui a marché trois fois** (08/11, 10/11, et ce jour) : (a) deux
+     SERP du sujet mesurées avant d'écrire, en vérifiant qu'aucune agence locale
+     n'y est, (b) chercher l'affirmation dominante que le texte primaire dément,
+     (c) n'écrire que ce qu'on a lu à la source.
+     🆕 **Et le délai de rétractation est déjà traité ailleurs** (corpus corrigé
+     le 21/10) : **vérifier la cannibalisation avant d'écrire** (arbitrage du
+     29/10, une seule page par mot-clé).
+  2. 🆕 🔴 **`home-staging-vendre-plus-cher` — ET LE CHANTIER EST DOUBLE.**
+     111 mots, sans FAQ, **et son `title`, son `h1` et son `excerpt` portent une
+     affirmation de performance sans source** (« font vendre plus cher »),
+     repérée ce jour et **volontairement non touchée**. 📌 **C'est l'occasion de
+     trancher les deux d'un coup** : réécrire ET décider du titre.
+     ⚠️ **Changer un `title` indexé n'est pas neutre** — le faire en connaissance
+     de cause, et le consigner.
+  3. 🟡 **LE RESTE DU BLOG FAIBLE — SEPT AUTRES ARTICLES.**
+     `lmnp-location-meublee` 107, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `vendre-appartement-lyon-etapes` 154,
+     `capacite-emprunt-immobilier` 194. 🆕 **Pour ce dernier, le sourçage est
+     déjà à moitié fait** : HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, en
+     vigueur au **01/01/2022**, taux d'effort **35 %**, maturité **25 ans**
+     (27 ans en cas d'entrée différée), marge de flexibilité **20 %** de la
+     production trimestrielle. ⚠️ **Référence trouvée par recherche web, le
+     texte n'a PAS été lu** : `economie.gouv.fr/hcsf` répond **403** en
+     WebFetch. **Trouver un accès primaire avant de publier la référence.**
+  4. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  5. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → remesurer
+     les deux SERP le **24/11**.
+  6. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11**.
+  7. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11** → remesurer la SERP le **18/11**.
+  8. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🆕 🔴 **FINIR LE BALAYAGE : LA FAMILLE « 6 À 8 % DES LOYERS », LAISSÉE EN
+     PLACE SCIEMMENT LE 11/11.** Trois endroits : `lib/blog.ts:2569` (phrase
+     d'attaque de `gestion-locative-villeurbanne`), son `excerpt`
+     (`lib/blog.ts:2563`), et `/faire-gerer:338` (« la plupart des agences
+     répondent entre 6 et 8 % »). **C'est un chiffre de marché non sourcé**, ce
+     que le client a refusé. ⚠️ **Mais il porte l'argument « nous sommes au bas
+     de la fourchette » (6 %)** : il faut soit une source réelle, soit une
+     reformulation qui garde l'argument sans le range. **Ne pas le retirer
+     sèchement.** 📌 **Piste de source à tester** : rapports annuels FNAIM /
+     observatoires de la gestion locative, et vérifier s'ils sont accessibles
+     d'ici avant de s'engager.
+  2. 🆕 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Mesuré le 10/11 : `charges-copropriete`
+     ne contient **aucune occurrence** de « taxe foncière » et n'émet que **2**
+     liens éditoriaux. ⚠️ **Il faut ÉCRIRE une phrase**, pas poser une ancre
+     (règle du 16/09). 📌 Le sens inverse est acquis (`/vendre` émet l'ancre).
+  3. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Trancher page par page, en commençant par `/annonces`**,
+     page catalogue sans risque de cannibalisation.
+  4. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+  5. 🆕 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC
+     DE L'ÉDITEUR.** Leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop. **Les
+     autres blocs `Maison*`** (`MaisonHero`, `MaisonAPropos`, `MaisonEquipe`,
+     `MaisonVendus`, `MaisonEstimation`, `MaisonAvis`, `MaisonReseaux`,
+     `MaisonAgence`) **rendent eux aussi des composants de `components/home/`**,
+     jamais confrontés au corpus. **La FAQ en cachait deux erreurs sur huit
+     réponses : il faut regarder les autres.** 📌 **Méthode** : résoudre le bloc
+     dans `lib/page-builder/config.server.tsx`, lire le composant, confronter
+     chaque chiffre au corpus, puis vérifier dans le HTML en ligne.
+  6. 🟡 **LE `n` DVF PUBLIÉ PAR DEUX ARTICLES EST FIGÉ À 1 875/1 876, ET LA
+     SOURCE REND 1 869.** **Ne pas patcher à l'aveugle** : voir « Hypothèses ».
+  7. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **dix runs**). **Une seule affirmation en dépend** :
+     la fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** : l'hôte rend **200** sur sa page de maintenance.
+  8. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **quatorzième report**). **Ne RIEN réécrire sur un seul relevé.**
+  9. 🟡 **LA DESCRIPTION DE `/vendre` DANS `/llms.txt` EST ÉCRITE À LA MAIN.**
+     Revérifiée le 11/11 : **toujours exacte**, le chantier du jour n'a pas
+     touché `/vendre`. **Ne pas y investir au-delà de sa justesse** (02/11).
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx:307`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement**.
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     11/11. **Jour creux uniquement.**
+ 13. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 14. ⛔ **NE PAS REJOUER L'AUDIT D'ACCESSIBILITÉ AUX IA AVANT LE 09/12.**
+     Fait en entier le 09/11 (**348 requêtes, 348/348 en `200`**), sain.
+ 15. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🆕 🟠 **LA FAQ DE L'ACCUEIL A ÉTÉ CORRIGÉE CÔTÉ CODE LE 11/11, ET C'EST
+  NOTIFIÉ.** Deux réponses sur huit publiaient des chiffres faux. **La règle des
+  90 jours n'a pas été enfreinte** : le texte est porté par `components/home/`,
+  pas par l'éditeur — Tony ne peut pas le corriger lui-même. **Mais c'est sa
+  page, donc il doit le savoir.** ⚠️ **Si Tony republie l'accueil depuis
+  l'éditeur, la correction reste** (elle est dans le code du bloc, pas dans ses
+  données) — **à revérifier au prochain run tout de même.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — TREIZIÈME JOUR.** Constaté
+  le 31/10, revérifié le 11/11 (**0 occurrence de « Qui sommes »** en ligne).
+  **Non corrigé : page de Tony, republiée depuis l'éditeur.** ⚠️ **Règle des
+  90 jours : pas de retouche de la COMPOSITION de l'accueil avant fin janvier
+  2027, hors panne.** ⚠️ **NON renotifié** au titre de ce seul constat
+  (7 notifications, aucun changement).
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). Dernier contrôle
+  **07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.**
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs`
+  du JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** : **`zimo.fr`** et
+  **`cylex-locale.fr`**. **Valeur confirmée par la SERP** du 09/11.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 11/11** :
+- **« prix m2 Villeurbanne »** : mesurée le **11/11** (10ᵉ relevé, site absent,
+  9 résultats tous estimateurs/portails) → **21/11**.
+- **« agence immobilière Villeurbanne »** : mesurée le **09/11**, site absent
+  → **16/11**.
+- **« estimation immobilière Villeurbanne »** : mesurée le **09/11**, site
+  absent → **16/11**.
+- **« vendre appartement Villeurbanne »** : mesurée le **08/11**, site absent
+  → **22/11**.
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **remesure vers le 17/11**.
+  📌 **PRIORITÉ** : l'article est passé de **0 à 3** liens éditoriaux entrants
+  le 09/11 et **rien d'autre n'a changé sur cette page**. Première mesure
+  propre de l'effet du maillage interne de ce journal.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **remesure le 18/11**. 📌 **PRIORITÉ** : deux pages du
+  site sont écrites pour elle, et la place est vide de l'aveu du moteur.
+- **« honoraires agence immobilière Villeurbanne … »** : point zéro le **07/11**
+  → **21/11**. 📌 **La SERP la plus anormale du journal** : le contenu existe,
+  il est balisé (`OfferCatalog`), et il n'est pas vu.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+
 **Angle du dernier run : CONTENU — la réécriture de `taxe-fonciere-vente-qui-paie`,
 dont le conseil final était contredit par la jurisprudence**
 (10/11 : **candidat contenu n°1 consommé**. 144 → **2 682 mots**, **0 → 6
@@ -13494,6 +13853,49 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-11 — D'où venaient `3 750 €/m²` et `7,6 %`, et les trois points laissés ouverts par le balayage
+
+**1. 🟡 L'origine des chiffres faux n'est pas établie, et ce n'est pas grave —
+mais la leçon, elle, est actionnable.** `3 750 €/m²`, `4 400 à 4 800 €/m²` et
+`2 800 à 5 500 €/m²` n'existent **nulle part ailleurs** dans le dépôt :
+impossible de dire s'ils venaient d'un relevé d'annonces de la construction
+initiale du site, ou d'une estimation de principe. `7,6 %` est plus troublant :
+c'est **exactement** le taux que notre propre comptage ADEME donne pour les
+appartements de **1948-1974** (7,60 %), ce qui ressemble moins à un hasard qu'à
+une sous-population recopiée au mauvais niveau. **Rien à vérifier côté client**
+— la valeur est corrigée. 📌 **Ce qui reste à faire est un contrôle, pas une
+enquête** : voir le candidat non-contenu n°5 (auditer les autres blocs
+`Maison*`).
+
+**2. 🔴 `4 186 €/m²` (maison) a été RÉUTILISÉ, pas remesuré.** La réponse prix
+reprend une valeur **déjà publiée par le corpus** (`lib/blog.ts:503` et la FAQ
+de `prix-immobilier-villeurbanne-2026`), sourcée DVF 2025. **Le run n'a PAS
+refait l'extraction pour les maisons.** ⚠️ **À vérifier au prochain relevé DVF**,
+en même temps que l'arbitrage du `n` : la population « maison » est beaucoup
+plus petite que celle des appartements, donc plus sensible à un rafraîchissement
+de la source. 📌 **Si elle a bougé, elle est désormais publiée à DEUX endroits
+au lieu d'un** — c'est le coût assumé de la correction du jour.
+
+**3. 🟡 La décote par classe de DPE reste la meilleure donnée manquante du
+site, et elle n'est pas accessible d'ici.** Tentatives du 11/11, toutes
+consignées : `notaires.fr` en `curl` → **403 Incapsula** ; les deux pages HTML
+de l'étude en WebFetch → **passent, mais sans aucun pourcentage** ; le PDF
+`/fr/media/1671` → **corps non servi** ; les sources secondaires →
+**contradictoires** (−12 %, −9,7 %, −15 %, −17 %). ⚠️ **Ne pas republier l'une
+de ces valeurs parce qu'elle revient souvent.** 📌 **Pistes non testées** :
+chercher si l'étude existe en **communiqué de presse CSN**
+(`csn.notaires.fr/fr/les-dossiers-de-presse`, apparu dans la recherche du jour
+et **non ouvert**), ou si une **chambre départementale** la relaie avec les
+tableaux. **Une seule piste par run, et seulement si un chantier en a besoin.**
+
+**4. 🟡 La question de fond que le run n'a pas tranchée : combien d'autres
+textes du site n'ont jamais été confrontés au corpus ?** Les contrôles de
+cohérence de ce journal ont porté, run après run, sur les **pages** et les
+**articles de blog**. `components/home/faq.tsx` n'était ni l'un ni l'autre —
+et il portait **2 réponses fausses sur 8**. ⚠️ **Ne pas en déduire un taux
+d'erreur** : un seul fichier mesuré. 📌 **Mais le périmètre des contrôles était
+faux, et c'est ça qu'il faut corriger** (candidat non-contenu n°5).
+
 ### 2026-11-10 — Le `n` de DVF a bougé (1 876 → 1 869) alors que les médianes publiées, elles, n'ont pas bougé : faut-il corriger les deux articles qui publient le `n` ?
 
 **Ce qui est mesuré, et seulement ça.** Le contrôle imposé par l'entrée du 13/10
@@ -15166,6 +15568,59 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-11 — La règle des 90 jours protégeait, sans le vouloir, deux chiffres faux : elle visait la composition de l'accueil, elle s'appliquait de fait à son code
+
+**🔴 L'erreur est une erreur de PÉRIMÈTRE, et elle a duré douze jours.**
+
+Le 31/10, après que Tony a republié l'accueil depuis l'éditeur en perdant la
+section « Qui sommes-nous », ce journal a posé la **règle des 90 jours** :
+« l'accueil est modifié le 30/10 → **pas de retouche côté code** avant fin
+janvier 2027, hors panne ». **L'intention était juste** : ne pas se battre
+contre l'éditeur de pages sur les choix éditoriaux de Tony, et ne pas écraser
+ce qu'il publie.
+
+**Ce qu'elle a produit, en revanche, ne l'était pas.** Formulée comme « pas de
+retouche côté code », elle a mis `components/home/` **entièrement hors du
+périmètre des contrôles de cohérence** — pas seulement hors du périmètre des
+corrections. Résultat : pendant que le journal corrigeait des phrases dans des
+articles de blog, la **page la plus forte du site** servait `3 750 €/m²` et
+`7,6 % de passoires` dans son `FAQPage`, contre `3 567 €/m²` et `4,9 %` dans le
+corpus. **Personne n'a ouvert le fichier.**
+
+**🟢 La distinction qui corrige la règle, et qui est vérifiable :**
+
+> L'accueil publié depuis l'éditeur mêle **deux choses** : les **données de
+> l'éditeur** (quels blocs, dans quel ordre, avec quels textes saisis) et le
+> **code des blocs** qu'il appelle. `MaisonFaq` rend `<HomeFaq />`
+> **sans aucune prop** : son texte est du code. Tony ne peut ni l'avoir écrit,
+> ni le corriger.
+>
+> **La règle des 90 jours porte sur la COMPOSITION de l'accueil, pas sur la
+> justesse des textes que son code publie.**
+
+**Preuve apportée le 11/11, par l'absence autant que par la présence** : les
+textes par défaut de `lib/page-builder/definitions.tsx` (« une vente plus
+rapide », « zéro mauvaise surprise ») rendent **0 occurrence** dans le HTML en
+ligne — ils ne sont pas servis. Les valeurs de `components/home/faq.tsx`, elles,
+en rendent **4 chacune**. **Les deux fichiers sont du « code de l'accueil », et
+un seul est servi** : « côté code » n'était pas un périmètre utilisable.
+
+**Ce qui est donc corrigé dans la doctrine de ce journal :**
+1. **La composition de l'accueil** (blocs, ordre, textes saisis dans l'éditeur,
+   section « Qui sommes-nous ») : **intouchable jusqu'à fin janvier 2027**,
+   hors panne. **Inchangé.**
+2. **Les chiffres et affirmations portés par le code des blocs de l'accueil** :
+   **dans le périmètre des contrôles de justesse, comme n'importe quelle autre
+   page.** Un chiffre qui contredit nos propres relevés sourcés est un défaut,
+   pas une préférence éditoriale — et un défaut dans des **données structurées**
+   est le plus coûteux de tous côté GEO.
+3. **Toute correction de ce type est notifiée**, même petite : c'est la page de
+   Tony. Fait ce jour.
+
+⚠️ **Ce qui n'est PAS corrigé, et qu'il faut surveiller** : si Tony republie
+l'accueil, la correction tient (elle est dans le code du bloc). **Mais c'est une
+déduction, pas une mesure** — **revérifier le HTML en ligne au prochain run.**
 
 ### 2026-11-10 — L'hypothèse que le backlog portait depuis deux jours était fausse, et l'article visé était déjà juste
 
@@ -17561,6 +18016,101 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-11 — Savoir si un texte servi vient de l'éditeur ou du code, et prouver la parité d'un JSON-LD sur une page dynamique
+
+**1. 🟢 « La page est publiée depuis l'éditeur » ne dit RIEN sur l'origine de
+son texte. La résolution du bloc, oui.** C'est ce qui a débloqué le chantier du
+jour : savoir si la FAQ de l'accueil était une donnée de Tony (intouchable) ou
+du code (corrigeable).
+
+```bash
+# 1. la page prend-elle ses donnees dans l'editeur ?
+grep -n "getPublishedPage" app/page.tsx         # -> if (built) return <PageRender .../>
+# 2. quel COMPOSANT un bloc rend-il, et avec quelles props ?
+grep -n "MaisonFaq" lib/page-builder/config.server.tsx
+#    -> MaisonFaq: () => <HomeFaq />        AUCUNE prop = texte porte par le CODE
+#    (a l'inverse, un bloc dont la signature prend des props tire son texte des
+#     donnees de l'editeur : la, on ne touche pas)
+```
+
+⚠️ **Et le contrôle qui tranche pour de bon, parce qu'il ne suppose rien** :
+compter les marqueurs dans le **HTML en ligne**. Un texte **par défaut** de
+`definitions.tsx` rend **0** s'il n'est pas servi ; un texte de composant rendu
+par un bloc publié rend **≥ 1**.
+
+```bash
+curl -sL https://www.markusimmobilier.fr/ -o home.html   # -L obligatoire (308)
+for m in "zéro mauvaise surprise" "7,6 %"; do echo "$m -> $(grep -c "$m" home.html)"; done
+# 0 -> defaut non servi  |  4 -> servi (texte visible + JSON-LD)
+```
+
+**2. 🟢 Prouver la parité `FAQPage` / texte visible sur une page `ƒ` (dynamique).**
+Les pages de blog sont prérendues, donc lisibles dans
+`.next/server/app/blog/<slug>.html`. **L'accueil ne l'est pas** (il lit la base),
+donc il n'existe aucun fichier à ouvrir. La recette :
+
+```bash
+npx next build && npx next start -p 3123 &
+curl -s http://127.0.0.1:3123/ -o local-home.html   # WebFetch ne prend pas localhost
+```
+
+📌 **Et le point qui rend la mesure valable** : sans Supabase, l'accueil
+**retombe sur la version codée** (`app/page.tsx`), qui rend **le même
+`<Faq />`** que le bloc `MaisonFaq` de la version publiée. **La parité prouvée
+en local vaut donc pour la production** — à condition de le dire, parce que ce
+n'est pas le même chemin de rendu.
+
+```python
+# parite = chaque reponse du JSON-LD existe mot pour mot dans le texte visible
+vis = re.sub(r'<script[^>]*>.*?</script>', '', html_source, flags=re.S)
+vis = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', vis)))
+ok = sum(' '.join(q['acceptedAnswer']['text'].split()) in vis for q in faq['mainEntity'])
+# resultat du 11/11 : 8/8
+```
+
+**3. 🔴 Une réponse de FAQ de l'accueil est du TEXTE BRUT — aucun lien, aucun
+gras.** `components/home/faq.tsx` rend `{item.a}` dans un `<p>` : ni markdown,
+ni JSX. **Même piège que celui du 09/11 sur les FAQ d'articles**, mais pour une
+autre raison (ici il n'y a pas même de parseur). 📌 **Conséquence directe** : on
+ne peut **pas** profiter d'une réponse de la FAQ de l'accueil pour faire du
+maillage interne. Si le maillage est le but, il faut un autre bloc.
+
+**4. 🔴 `notaires.fr` et `economie.gouv.fr/hcsf` ne sont pas lisibles d'ici, et
+il faut arrêter d'y revenir à l'aveugle.** Mesuré le 11/11, à consigner au même
+titre que le **403 de Légifrance** (entrée du 13/10) :
+
+| Source | `curl` | WebFetch | Verdict |
+|---|---|---|---|
+| `notaires.fr` (pages HTML) | **403** (Incapsula, avec incident ID) | **passe** | utilisable pour un **fait**, pas pour un **chiffre** : les pourcentages de l'étude n'y sont pas |
+| `notaires.fr/fr/media/1671` (PDF de l'étude) | non tenté après le 403 | **corps non servi** | **inutilisable** |
+| `economie.gouv.fr/hcsf/...` | non tenté | **403** | **inutilisable** |
+
+📌 **Règle qui en sort** : quand une donnée n'existe que dans un **PDF d'étude
+derrière un WAF**, elle n'est pas publiable depuis ce conteneur — et la bonne
+réponse est de **publier le mécanisme vérifiable à la place du chiffre**. C'est
+ce qu'a fait la réponse DPE du jour : le **calendrier légal d'interdiction de
+louer** (G au 01/01/2025, F en 2028, E en 2034), qui est sourcé dans notre
+corpus, remplace la décote qu'on ne peut pas lire. **Le lecteur y gagne même en
+précision** : une date opposable vaut mieux qu'un pourcentage moyen.
+
+**5. 📌 Le motif « affirmation de performance » est productif mais il ne se
+lit pas tout seul : 129 occurrences, 4 retraits.** Ce que trois runs
+(08/11, 10/11, 11/11) permettent maintenant d'affirmer :
+
+- **Ce qui est presque toujours LÉGITIME** : « généralement », « le plus
+  souvent », « la plupart » devant un **délai**, une **règle de droit** ou un
+  **usage contractuel** (« comptez généralement deux à trois mois entre le
+  compromis et l'acte »). Ce sont des formulations **prudentes**, et les retirer
+  dégraderait la page.
+- **Ce qui est presque toujours FAUTIF** : un **quantificateur vague + un
+  chiffre de marché** sans source (« la commission représente **souvent 4 à
+  6 %** », « une agence facture **généralement entre 6 et 8 %** »), et tout
+  **comparatif de performance** sans mesure (« se vend plus vite et plus cher »).
+- 🆕 **Le test qui tranche en une question** : *la phrase d'à côté dit-elle que
+  personne ne publie cette donnée ?* Si oui, le chiffre est **invérifiable par
+  construction**, et c'est le cas le plus net. C'est exactement la configuration
+  trouvée dans `vendre-sans-agence` le 11/11.
 
 ### 2026-11-10 — Lire une décision de justice quand Légifrance est fermé, et deux pièges de convention sur un décompte de jours
 
