@@ -24,6 +24,16 @@
 - ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-3zzqhl`**, pas sur `main`.
   **Onzième constat consécutif**, nom différent chaque fois. Poussé en
   `git push origin HEAD:main` comme les dix fois précédentes.
+- 🆕 ⚠️ **FAIT NEUF À RETENIR : LE *STOP HOOK* ANNONCE « 2 unpushed commit(s) on
+  branch `claude/dazzling-feynman-3zzqhl` » ALORS QUE TOUT EST POUSSÉ.** Premier
+  run où il le signale. **C'est un faux positif** : il compare la branche locale
+  à une branche distante de même nom **qui n'existe pas**
+  (`git ls-remote origin refs/heads/claude/dazzling-feynman-3zzqhl` → **vide**).
+  Vérifié après le push : `HEAD` = `a4e696a` = `ls-remote origin refs/heads/main`,
+  et **`git rev-list --count origin/main..HEAD` = 0**. 🔴 **NE PAS pousser la
+  branche du conteneur pour faire taire le hook** : la consigne du client est
+  « commit direct sur `main` ». **Le seul contrôle qui vaut reste `ls-remote` +
+  `rev-list --count origin/main..HEAD`.**
 - ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
   **Quarante-sixième constat identique** (21/09 → 11/11).
 - ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
