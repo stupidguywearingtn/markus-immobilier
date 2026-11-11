@@ -5256,6 +5256,17 @@ non sourcée peut déclencher une mesure, jamais la remplacer.*
    réponse prix écrite ce jour **ne publie aucun `n`** pour ne pas créer une
    troisième valeur. Voir « Hypothèses à vérifier » du 10/11.
 
+### 2026-11-11 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (FAQ accueil, `e21d28c`)
+
+- **Déclenchement en double** : la correction de la FAQ de l'accueil (`e21d28c`) est servie
+  (`3 567` présent, `3 750` absent du HTML de `/`). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : sitemap en ligne = **58 URL**, toutes avec une route
+  dans `app/` ou un slug du code → **aucune page de l'éditeur**. `lastmod` le plus récent =
+  10/11 (déjà décrit). `<title>` de la home = `DEFAULT_TITLE`. `ls-remote main` = `b7c5808`,
+  aucun commit tiers. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-10 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu à 06h20–06h26
 
 - **Déclenchement en double** : la réécriture `taxe-fonciere-vente-qui-paie` (`2a5d8dc`) est
