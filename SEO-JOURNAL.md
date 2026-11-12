@@ -5405,6 +5405,19 @@ rendus en `<a href>`, le tableau et sa légende de source présents,
 `dateModified` = **2026-11-12** et « Mis à jour le 12 novembre 2026 » visible
 dans le hero.
 
+### 2026-11-12 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (compromis de vente, `333ab83`)
+
+- **Déclenchement en double** : la réécriture `compromis-de-vente-delais` (`333ab83`) est
+  servie (200, « 12 novembre 2026 » présent dans le HTML). Un chantier par jour → **rien
+  publié**.
+- **Changements du client (étape 0)** : `ls-remote main` = `eff69b6` **avant** tout fetch,
+  aucun commit tiers. Sitemap en ligne = **58 URL**, toutes avec une route dans `app/` ou un
+  slug du code → **aucune page de l'éditeur**. `lastmod` du 12/11 = notre article seul.
+  `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/blog/compromis-de-vente-delais`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-11 (mercredi) — La FAQ de l'accueil publiait `3 750 €/m²` et `7,6 % de passoires` quand nos propres relevés disent `3 567 €/m²` et `4,9 %`, et c'est du code que l'éditeur de pages ne touche pas
 
 **Angle : NON-CONTENU** (alternance respectée : 08/11 contenu → 09/11
