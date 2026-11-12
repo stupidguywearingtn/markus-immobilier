@@ -34,6 +34,21 @@
   `git push origin HEAD:main` comme les onze fois précédentes, puis vérifié :
   `ls-remote origin refs/heads/main` = `333ab83` = `HEAD`, et
   `git rev-list --count origin/main..HEAD` = **0**.
+- 🆕 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU « 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-wvh4kb` » ALORS QUE TOUT EST POUSSÉ — DEUXIÈME
+  OCCURRENCE, ET ELLE EST PLUS TROMPEUSE QUE CELLE DU 11/11.** Revérifié après
+  les deux push : `git ls-remote origin refs/heads/main` = **`7e16e2b`** = `HEAD`,
+  `git rev-list --count origin/main..HEAD` = **0**, et
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-wvh4kb` rend
+  **RIEN** : la branche n'existe pas sur le distant. **C'est donc le même faux
+  positif.** ⚠️ **Mais le détail qui piège** : au démarrage de CE run,
+  `git branch -a` montrait bien `remotes/origin/claude/dazzling-feynman-wvh4kb`
+  — **un ref de suivi local périmé pour une branche distante inexistante**, ce
+  qui donne au message du hook l'air d'être fondé. C'est le MÊME mécanisme que
+  le piège `origin/main` du jour, dans l'autre sens. 🔴 **NE PAS pousser la
+  branche du conteneur pour faire taire le hook** (consigne client : commit
+  direct sur `main`). **Le seul contrôle qui vaut reste `ls-remote` +
+  `rev-list --count origin/main..HEAD`** — et jamais `git branch -a`.
 - ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
   **Quarante-septième constat identique** (21/09 → 12/11).
 - ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
