@@ -497,9 +497,12 @@ export default function AcheterPage() {
                   lendemain de la première présentation de la lettre
                   recommandée qui notifie le compromis à l&apos;acquéreur, ou
                   de sa remise en main propre. Pour un lot de copropriété, il
-                  ne démarre pas tant que les sept documents de copropriété
-                  n&apos;ont pas tous été remis. Le vendeur, lui, est engagé
-                  dès sa signature. La condition
+                  est repoussé si les documents des 1° et 2° du II de
+                  l&apos;article L721-2 — organisation de l&apos;immeuble et
+                  informations financières — n&apos;ont pas été remis au plus
+                  tard à la signature ; les autres pièces obligatoires, elles,
+                  ne décalent pas ce point de départ. Le vendeur, lui, est
+                  engagé dès sa signature. La condition
                   suspensive d&apos;obtention de prêt protège ensuite
                   l&apos;acheteur jusqu&apos;à la réponse de la banque : son délai
                   et son montant se négocient au moment de rédiger{" "}
