@@ -14,6 +14,116 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-12 (jeudi)**
+
+- ✅ **LE RUN A EU LIEU — SEPTIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 12/11.
+  **Un seul manque sur 76 jours** (le 05/11). Rien à remonter.
+- 🔴 **ET LE PIÈGE DU 02/11 A FAILLI ME PRENDRE UNE DIXIÈME FOIS, DANS L'AUTRE
+  SENS.** Au démarrage, `git log origin/main` montrait `main` **13 commits en
+  retard** (`dbbefab`, le 07/11) alors que `HEAD` portait `e5ef7eb` : de quoi
+  conclure que quatre jours de travail n'étaient jamais arrivés en production.
+  **C'est le ref de suivi local qui était périmé**, pas `main` :
+  `git ls-remote origin refs/heads/main` rendait bien **`e5ef7eb`**.
+  📌 **La règle du 02/11 vaut donc dans les DEUX directions** — un `origin/main`
+  local peut faire croire au retard comme à l'avance. **Le seul contrôle qui
+  vaut est `git ls-remote`, et il doit précéder tout `git fetch`**, parce qu'un
+  fetch efface la trace de ce qui était périmé. **Aucun commit tiers** depuis
+  `e5ef7eb`.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-wvh4kb`**, pas sur `main`.
+  **Douzième constat consécutif**, nom différent chaque fois. Poussé en
+  `git push origin HEAD:main` comme les onze fois précédentes, puis vérifié :
+  `ls-remote origin refs/heads/main` = `333ab83` = `HEAD`, et
+  `git rev-list --count origin/main..HEAD` = **0**.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-septième constat identique** (21/09 → 12/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trentième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces — identique du 07/11 au 12/11.**
+  Aucune page ajoutée ni retirée. Tous les contrôles en `curl -sL` (piège `308`).
+  Le `lastmod` n'a **PAS** servi à conclure sur l'activité du client.
+- ✅ **LA CORRECTION DE LA FAQ DE L'ACCUEIL DU 11/11 TIENT.** Contrôle demandé
+  par le backlog d'hier : Tony n'a pas republié l'accueil entre-temps, et le
+  sitemap est inchangé. Rien à renotifier.
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée**
+  (09/11 non-contenu → 10/11 contenu → 11/11 non-contenu → **12/11 contenu**),
+  **et c'est le candidat contenu n°1 du backlog qui a été consommé**
+  (`compromis-de-vente-delais`, inscrit le 11/11 et explicitement « non mesuré,
+  à confirmer »). 345 → **2 981 mots**.
+- 🔴 **LE FAIT NEUF DU RUN, ET IL VAUT POUR TOUT LE CORPUS : « SEPT DOCUMENTS »
+  ET « SEPT BLOCS » NE DÉSIGNENT PAS LA MÊME CHOSE, ET L'ARTICLE L721-3 NE
+  REPORTE LE DÉLAI DE RÉTRACTATION QUE POUR DEUX DES SEPT BLOCS.** Lu deux fois
+  à la source : le report ne joue que si les documents **des 1° et 2° du II de
+  l'article L721-2** manquent. Le carnet d'entretien (3°), la notice
+  d'information (4°), le DTG (5°) et le plan pluriannuel de travaux (6° et 7°)
+  sont obligatoires et **ne décalent rien**. Or les documents des 1° et 2°, pris
+  pièce par pièce, font **exactement sept** (3 + 4) — c'est de là que vient la
+  formule « les sept documents de copropriété » que le site publiait, et qui est
+  **exacte au compte mais lue comme « tous les documents obligatoires »**.
+  Tableau bloc par bloc publié dans l'article.
+- 🔴 **ET J'AI FAILLI PUBLIER UNE « CORRECTION » QUI ÉTAIT FAUSSE.** J'ai d'abord
+  écrit, dans l'article et dans le commit, que le site se trompait. **C'est le
+  balayage multiligne du corpus qui m'a arrêté** : il a trouvé un article qui
+  **énumérait les sept pièces**, et elles correspondaient exactement aux 1° + 2°.
+  Détail en « Erreurs commises et corrigées ». 📌 **Rien de faux n'a été poussé.**
+- 🆕 **DONNÉE PROPRE AU CLIENT PRODUITE, ET ELLE N'EXISTE NULLE PART AILLEURS SUR
+  CE SUJET : LA PART DES VENTES VILLEURBANNAISES QUE LA RÈGLE DES DOCUMENTS DE
+  COPROPRIÉTÉ CONCERNE RÉELLEMENT.** Sur les **1 961 logements vendus en 2025**
+  (DVF, commune 69266, extraction du 12/11/2026), **1 876 étaient des
+  appartements, soit 95,7 %**, contre **85 maisons (4,3 %)**. Le point de départ
+  du délai dépend donc d'une remise de documents dans **plus de dix-neuf ventes
+  de logement sur vingt**.
+- ✅ **CONTRÔLE DVF IMPOSÉ PAR LE 13/10 : PASSÉ À L'IDENTIQUE, ET LE `n` EST
+  REVENU À 1 876.** Reproduction depuis la même extraction : **n = 1 876**,
+  **3 566,8 €/m²**, **195 000 €**, **62 m²** — les quatre chiffres de contrôle au
+  chiffre près. 📌 **Fait utile pour l'hypothèse ouverte le 10/11** : ce run-là
+  avait relevé `n = 1 869` et conclu à un rafraîchissement de la source
+  « latest ». La source rend de nouveau **1 876**, c'est-à-dire la valeur publiée
+  par les deux articles. **L'écart du 10/11 était transitoire : il n'y a rien à
+  patcher, et le candidat non-contenu n°6 du backlog tombe.**
+- 🟡 **DEUX SERP DE SUJET MESURÉES AVANT D'ÉCRIRE (méthode imposée le 08/11) :
+  SITE ABSENT DES DEUX, ET AUCUNE AGENCE LOCALE DEDANS.** « compromis de vente
+  délai rétractation 10 jours point de départ notification Villeurbanne » et
+  « délai entre compromis et acte authentique 3 mois condition suspensive prêt
+  durée minimale obligatoire ». 📌 **Le moteur écrit lui-même « les résultats ne
+  mentionnent pas Villeurbanne »** — troisième fois en cinq runs. Les places sont
+  tenues par des nationaux (foncia, seloger, kazaki, crédit agricole,
+  conseils-immobilier, vousfinancer, laforet, capifrance, hellopret, 544.fr) et
+  **deux cabinets d'avocats parisiens**. 🆕 **`blog.qoridor.fr` ressort sur la
+  seconde** — c'est le concurrent inscrit au backlog non-contenu n°8 depuis le
+  19/10. **Point zéro posé, première remesure le 26/11.**
+- 🟡 **UNE REQUÊTE COMMERCIALE REMESURÉE EN AVANCE : `agence immobilière
+  Villeurbanne`, SITE ABSENT.** Échéance du 16/11 tenue en avance. **19
+  résultats, aucun n'est le site** : portails et annuaires (leboncoin, orpi ×2,
+  human-immobilier ×2, square habitat, laforet ×2, zimo, realadvisor, lesiteimmo,
+  foncia, mappy ×2, immodvisor, acceslibre, klapty) + une offre d'emploi France
+  Travail. **Aucun changement par rapport au 09/11.** 🆕 **Deux annuaires de plus
+  à transmettre à la tâche GEO** : `immodvisor.com` et `lesiteimmo.com`, qui
+  s'ajoutent à `zimo.fr` (de nouveau présent) et `cylex-locale.fr`.
+  ⚠️ **Mais ce n'est PAS une découverte** : vérifié dans `GEO-SUIVI.md`, la tâche
+  GEO avait déjà relevé `immodvisor` et `lesiteimmo` dans son top 5 du **09/11**.
+  **Les deux tâches convergent sur les mêmes annuaires par deux chemins
+  différents, ce qui confirme leur poids** — et c'est tout.
+  📌 **Leçon de périmètre : `GEO-SUIVI.md` est tenu par une AUTRE tâche
+  planifiée (« GEO », lundi + jeudi), qui ne modifie pas le site. Ne pas y
+  écrire, mais LE LIRE avant d'annoncer une découverte sur les annuaires ou sur
+  la visibilité en réponse d'IA.**
+  **Prochaine remesure : 19/11.**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  QUATORZIÈME JOUR.** **Non recontrôlé en ligne ce jour** (le chantier ne touche
+  pas l'accueil) ; dernier contrôle **11/11**, 0 occurrence de « Qui sommes ».
+  **Non corrigé, et c'est volontaire** (page de Tony, règle des 90 jours).
+  ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  12/11, prouvé après le commit du jour. **Aucune erreur neuve.**
+  `tsc --noEmit` propre, `npm run build` en **0**.
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour.**
+
 **Au 2026-11-11 (mercredi)**
 
 - ✅ **LE RUN A EU LIEU — SIXIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 11/11.
@@ -5136,6 +5246,149 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-11-12 (jeudi) — Les documents de copropriété qui repoussent le délai de rétractation ne sont pas ceux que tout le monde cite, et « sept documents » n'est pas « sept blocs »
+
+**Angle : CONTENU** (alternance respectée : 09/11 non-contenu → 10/11 contenu →
+11/11 non-contenu → **12/11 contenu**). **Candidat contenu n°1** du backlog,
+inscrit le 11/11 avec la mention « ⚠️ non mesuré — lire l'article avant de croire
+le pari du backlog ».
+
+**Ce que le backlog pariait, et ce que la mesure a dit.** Le backlog annonçait
+« le carrefour éditorial le plus faible : 345 mots, déjà cité par trois
+articles, donc la réception est acquise et le volume est le seul défaut ».
+**Mesuré avant d'écrire, et le pari était à moitié juste.** La page servie en
+production faisait bien **504 mots au total** (dont ~345 d'article), **0 FAQ,
+0 `FAQPage`, 0 `HowTo`**, et ses quatre H2 étaient des chaînes de mots-clés
+(« Les conditions suspensives », « Le délai jusqu'à l'acte »). **Mais ses deux
+premières sections étaient déjà bonnes et sourcées** (fiche F2965) : le défaut
+n'était pas la justesse, c'était que **les deux dernières sections n'avaient
+aucune source** et que « 2 à 3 mois » et « le dépôt restitué » étaient affirmés
+sans texte derrière. **Deuxième fois en trois runs que le backlog surestime le
+défaut** (cf. 10/11).
+
+**Contrôle de cannibalisation, fait avant d'écrire** (arbitrage du 29/10, une
+seule page par mot-clé). Le backlog avertissait que « le délai de rétractation
+est déjà traité ailleurs ». **Mesuré par `grep` + attribution au slug** : 23
+occurrences de « rétractation » dans `lib/blog.ts`, dont **7 dans
+`compromis-de-vente-delais`** (le maximum), 6 dans `mandat-simple-ou-exclusif`,
+5 dans `vendre-sans-agence`, 2 dans `charges-copropriete`, 1 chacune dans trois
+autres. **La page visée EST la page canonique du sujet** — son `title` et son
+`h1` le portent. Aucune cannibalisation : les autres la mentionnent en passant.
+📌 **Généralisable : avant de renoncer pour cannibalisation, compter les
+occurrences PAR PAGE, pas sur le dépôt.** Un avertissement de backlog qui dit
+« traité ailleurs » peut décrire des mentions de passage autour de la page
+canonique.
+
+**Les deux SERP mesurées avant d'écrire, site absent des deux.** « compromis de
+vente délai rétractation 10 jours point de départ notification Villeurbanne » et
+« délai entre compromis et acte authentique 3 mois condition suspensive prêt
+durée minimale obligatoire ». Aucune agence locale, **le moteur écrivant
+lui-même que « les résultats ne mentionnent pas Villeurbanne »**. Et les deux
+SERP se contredisent sur deux points mesurables : le point de départ du délai
+(crédit-agricole.fr écrit « à compter de l'ENVOI de la lettre recommandée », les
+autres « première présentation ») et la durée minimale de la condition
+suspensive de prêt (« un mois » chez certains, « 30 jours » chez d'autres).
+**Deux places vides, tranchables à la source.**
+
+**Ce qui a été écrit.** 345 → **2 981 mots**, **8 H2 tous formulés en questions
+réelles**, chacun ouvrant sur une réponse autonome en 2-3 phrases ; **6
+questions de FAQ** (parité `FAQPage` **6/6 prouvée dans un rendu réel**, pas
+dans le source) ; **un `HowTo` de 5 étapes** (« calculer la date de fin de son
+délai de rétractation »), balisé depuis le bloc `steps`, donc parité garantie par
+construction ; **un tableau** des sept blocs du II de L721-2 avec la colonne
+« reporte le délai ? ». **Quatre liens éditoriaux sortants** ajoutés.
+
+**Les trois faits neufs, tous lus à la source primaire.**
+
+1. 🔴 **L'article L721-3 CCH ne reporte le délai que pour les 1° et 2° du II de
+   L721-2.** Texte lu **deux fois**, sur la page de l'article et sur celle de la
+   section : « Lorsque les documents et les informations mentionnés aux 1° et 2°
+   du II de l'article L. 721-2 ne sont pas remis à l'acquéreur au plus tard à la
+   date de la signature de la promesse de vente, le délai de rétractation prévu
+   à l'article L. 271-1 ne court qu'à compter du lendemain de la communication
+   de ces documents et informations à l'acquéreur. » Le deuxième alinéa, pour le
+   délai de RÉFLEXION devant notaire sans promesse préalable, vise un périmètre
+   **encore plus étroit** : le 1° et le seul **c)** du 2°. **Aucun des 20
+   résultats des deux SERP ne fait cette distinction** ; tous écrivent « tous les
+   documents ».
+2. 🔴 **Cour de cassation, 1ʳᵉ chambre civile, 14 février 2018, n° 17-10.514,
+   publié au bulletin (Bull. 2018, I, n° 28).** L'acquéreur **régulièrement
+   avisé** qui s'abstient d'aller retirer sa lettre recommandée ne peut pas
+   soutenir que le délai n'a jamais couru. L'arrêt casse une décision d'appel qui
+   avait condamné le **notaire** pour notification irrégulière. **Fait absent de
+   la SERP, et il tranche la contradiction crédit-agricole.fr** : ce n'est ni
+   l'envoi ni la réception, c'est la **première présentation**.
+3. 🔴 **Cour de cassation, 3ᵉ chambre civile, 18 mars 2021, n° 20-16.354, publié
+   au bulletin.** La mention manuscrite de renonciation au prêt **ne s'applique
+   pas à une promesse reçue en la forme authentique par un notaire** (§ 13).
+   129 600 € d'indemnité d'immobilisation en jeu. **Le piège symétrique de
+   l'acheteur qui n'emprunte pas, que personne ne publie.**
+
+**Et les cinq points de droit secondaires, tous sourcés :** l'**amende
+administrative de L271-1** (« ne peut excéder 3 000 euros pour une personne
+physique et 15 000 euros pour une personne morale ») ; le **plancher d'un mois**
+de la condition suspensive de prêt et la restitution « **immédiatement et
+intégralement**, sans retenue ni indemnité » (**L313-41 code de la
+consommation**, en vigueur depuis le 01/07/2016) ; les **30 000 € d'amende**
+pour un acompte réclamé avant la fin du délai de rétractation et les **21 jours**
+de restitution (**F37190**, vérifiée le 19/09/2025) ; l'**absence de tout délai
+légal** entre compromis et acte — « les parties fixent librement ce délai » —
+avec la seule exception de l'**Alsace-Moselle (6 mois)**, qui n'est pas le Rhône
+(**F2965**, vérifiée le 10/04/2026) ; et la **prolongation au premier jour
+ouvrable** désormais rattachée aux **articles 640 à 647-1 du code de procédure
+civile** auxquels la fiche officielle renvoie, là où elle était affirmée sans
+référence.
+
+**La donnée propre au client.** Sur les **1 961 logements vendus à Villeurbanne
+en 2025**, **1 876 étaient des appartements (95,7 %)** contre **85 maisons
+(4,3 %)**. Un appartement étant, sauf cas rares, un lot de copropriété, la règle
+de L721-3 gouverne le point de départ du délai dans **plus de dix-neuf ventes de
+logement sur vingt** dans la commune. Base DVF (data.gouv.fr / Etalab), commune
+69266, extraction du **12/11/2026**, recette du journal (une seule ligne de
+logement par mutation, `nature_mutation = Vente`, surface ≥ 10 m²,
+800 ≤ €/m² ≤ 12 000). **Convention de calcul publiée en légende.**
+📌 **Aucun nouveau calcul n'a été nécessaire** : c'est un décompte de la même
+extraction qui sert déjà les médianes. Coût : nul. Risque de contradiction avec
+les autres pages : nul.
+
+**Contrôle de non-régression DVF (imposé par le 13/10) : passé à l'identique.**
+n = **1 876**, médiane **3 566,8 €/m²**, prix médian **195 000 €**, surface
+médiane **62 m²** — les quatre chiffres de contrôle du journal, au chiffre près.
+📌 **Et il règle une hypothèse ouverte le 10/11** : ce run-là avait obtenu
+`n = 1 869` et conclu que la source « latest » avait été rafraîchie. Elle rend de
+nouveau **1 876**, la valeur publiée. **L'écart était transitoire — il n'y avait
+rien à patcher.**
+
+**Les trois pages alignées, et celle qui ne l'a pas été.** La formule « les sept
+documents de copropriété » était publiée dans `lib/blog.ts` (l'article),
+`app/acheter/page.tsx` et `app/llms.txt/route.ts`. **Elle n'est pas fausse** —
+les pièces des 1° et 2° font exactement sept — **mais elle se lit comme « tous
+les documents obligatoires »**, ce qui est faux depuis que le II compte sept
+blocs numérotés. Les trois ont été remplacées par la référence explicite aux
+1° et 2°, avec la précision que les autres pièces ne décalent pas le point de
+départ. ⚠️ **`app/vendre/page.tsx:698` porte la même formule et n'a PAS été
+touché** : elle y est exacte, c'est la page argent du vendeur, et le chantier du
+jour est une page acheteur. **Consigné au backlog, pas corrigé en passant.**
+
+**Maillage interne.** Quatre liens éditoriaux sortants, dont deux qui servent
+des pages inscrites au backlog : **`/blog/charges-copropriete`** (2 liens
+sortants seulement, mesuré le 10/11) reçoit un lien entrant éditorial sur les
+informations financières du 2°, et
+**`/blog/vendre-logement-loue-droit-preemption-villeurbanne`** en reçoit un sur
+le délai de deux mois du droit de préemption urbain. ⚠️ **Le DPU n'est PAS
+dupliqué ici** : il est traité en une phrase et renvoyé, parce que l'article
+dédié le traite déjà avec ses actes fondateurs (délibération n° 2019-3507 du
+13/05/2019). **Règle du 09/09 respectée : une donnée, une page canonique.**
+
+**Contrôles avant push.** `tsc --noEmit` propre. `npm run build` en **0**.
+`eslint` : **35 problèmes / 24 erreurs**, identique au chiffre du 02/11 au 11/11,
+**aucune erreur neuve**. Rendu réel inspecté : **0 markdown brut** (ni `**`
+résiduel ni `[texte](/url)` visible), **0 collage de mots** (détecteurs
+`[0-9€%²°][a-zA-Z]{2,}` et `[a-z]{3}[A-Z][a-z]{3}` à vide), les 5 liens internes
+rendus en `<a href>`, le tableau et sa légende de source présents,
+`dateModified` = **2026-11-12** et « Mis à jour le 12 novembre 2026 » visible
+dans le hero.
 
 ### 2026-11-11 (mercredi) — La FAQ de l'accueil publiait `3 750 €/m²` et `7,6 % de passoires` quand nos propres relevés disent `3 567 €/m²` et `4,9 %`, et c'est du code que l'éditeur de pages ne touche pas
 
@@ -10366,6 +10619,195 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — la réécriture de `compromis-de-vente-delais`,
+dont les deux dernières sections n'avaient aucune source**
+(12/11 : **candidat contenu n°1 consommé**. 345 → **2 981 mots**, **0 → 6
+questions de FAQ** (parité 6/6 vérifiée dans le rendu), **`HowTo` de 5 étapes**,
+8 H2 en questions, un tableau. **Trois faits neufs** : L721-3 CCH ne reporte le
+délai de rétractation que pour les **1° et 2°** du II de L721-2, pas pour les
+blocs 3° à 7° ; **Cass. 1ʳᵉ civ., 14/02/2018, n° 17-10.514** (l'acquéreur avisé
+qui ne retire pas son pli ne peut pas dire que le délai n'a pas couru) ;
+**Cass. 3ᵉ civ., 18/03/2021, n° 20-16.354** (la mention manuscrite de
+renonciation au prêt ne s'applique pas à une promesse authentique). **Donnée
+propre** : **1 876 appartements sur 1 961 logements vendus en 2025, soit 95,7 %**
+— la règle des documents gouverne le point de départ dans plus de 19 ventes sur
+20. ⚠️ **Une « correction » de notre propre corpus a été écrite puis retirée
+avant le commit : elle était fausse** — voir « Erreurs commises et corrigées ».)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (13/11, vendredi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 10/11 contenu → 11/11 non-contenu → **12/11 contenu**).
+✅ **La veille du lundi est faite (09/11). Prochaine veille due le 16/11.**
+
+🔴 **CANDIDATS CONTENU, par ordre d'impact :**
+  1. 🔴 **`home-staging-vendre-plus-cher` — ET LE CHANTIER EST DOUBLE.**
+     111 mots, sans FAQ, **et son `title`, son `h1` et son `excerpt` portent une
+     affirmation de performance sans source** (« font vendre plus cher »),
+     repérée le 11/11 et **volontairement non touchée**. 📌 **C'est l'occasion de
+     trancher les deux d'un coup** : réécrire ET décider du titre.
+     ⚠️ **Changer un `title` indexé n'est pas neutre** — le faire en connaissance
+     de cause, et le consigner. ⚠️ **Non mesuré** : appliquer la leçon du 10/11
+     **et celle du 12/11** — lire l'article, et chercher d'où vient la phrase
+     litigieuse avant de la déclarer fausse.
+  2. 🟡 **LE RESTE DU BLOG FAIBLE — SEPT AUTRES ARTICLES.**
+     `lmnp-location-meublee` 107, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `vendre-appartement-lyon-etapes` 154,
+     `capacite-emprunt-immobilier` 194. 🆕 **Pour ce dernier, le sourçage est
+     déjà à moitié fait** : HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, en
+     vigueur au **01/01/2022**, taux d'effort **35 %**, maturité **25 ans**
+     (27 ans en cas d'entrée différée), marge de flexibilité **20 %** de la
+     production trimestrielle. ⚠️ **Référence trouvée par recherche web, le
+     texte n'a PAS été lu** : `economie.gouv.fr/hcsf` répond **403** en
+     WebFetch. **Trouver un accès primaire avant de publier la référence.**
+     📌 **Pour `faire-offre-achat` et `questions-a-poser-visite`, la recette du
+     12/11 est transposable** : ces deux pages touchent au compromis, et le
+     corpus a désormais huit H2 sourcés à réutiliser en renvoi plutôt qu'à
+     réécrire.
+  3. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  4. ⛔ **NE PAS RÉÉCRIRE `compromis-de-vente-delais`** (12/11) → remesurer les
+     deux SERP le **26/11**.
+  5. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → remesurer
+     les deux SERP le **24/11**.
+  6. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11**.
+  7. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11** → remesurer la SERP le **18/11**.
+  8. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🔴 **FINIR LE BALAYAGE : LA FAMILLE « 6 À 8 % DES LOYERS », LAISSÉE EN
+     PLACE SCIEMMENT LE 11/11.** Trois endroits : `lib/blog.ts:2569` (phrase
+     d'attaque de `gestion-locative-villeurbanne`), son `excerpt`
+     (`lib/blog.ts:2563`), et `/faire-gerer:338` (« la plupart des agences
+     répondent entre 6 et 8 % »). **C'est un chiffre de marché non sourcé**, ce
+     que le client a refusé. ⚠️ **Mais il porte l'argument « nous sommes au bas
+     de la fourchette » (6 %)** : il faut soit une source réelle, soit une
+     reformulation qui garde l'argument sans le range. **Ne pas le retirer
+     sèchement.** 📌 **Piste de source à tester** : rapports annuels FNAIM /
+     observatoires de la gestion locative. ⚠️ **Et appliquer d'abord la règle du
+     12/11** : chercher dans le corpus si une page fonde déjà ce range.
+     ⚠️ **Les numéros de ligne datent du 11/11** et le commit du 12/11 a déplacé
+     `lib/blog.ts` d'environ +90 lignes — **relocaliser par `grep`, pas par
+     numéro.**
+  2. 🆕 🟡 **ALIGNER `app/vendre/page.tsx:698` SUR LA FORMULATION DES 1° ET 2°.**
+     La page y écrit « il ne démarre même pas tant que les sept documents de
+     copropriété n'ont pas tous été remis ». **La phrase est EXACTE** (les pièces
+     des 1° et 2° font sept) : ce n'est pas une correction d'erreur, c'est une
+     levée d'ambiguïté. **Non faite le 12/11 volontairement** — page argent du
+     vendeur, chantier du jour côté acheteur. ⚠️ **Même traitement à envisager
+     pour `lib/blog.ts:1982` et sa FAQ (`:2035`) dans
+     `diagnostics-obligatoires-vente`, qui énumèrent correctement les sept
+     pièces mais ne disent pas que les blocs 3° à 7° ne décalent rien.**
+     📌 **Une phrase à ajouter, pas une réécriture.**
+  3. 🆕 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Mesuré le 10/11 : `charges-copropriete`
+     ne contient **aucune occurrence** de « taxe foncière » et n'émet que **2**
+     liens éditoriaux. ⚠️ **Il faut ÉCRIRE une phrase**, pas poser une ancre
+     (règle du 16/09). 🆕 **Le 12/11 lui a donné un lien ENTRANT de plus**
+     (depuis `compromis-de-vente-delais`, sur les informations financières du
+     2°) : le défaut restant est bien sortant.
+  4. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Trancher page par page, en commençant par `/annonces`**,
+     page catalogue sans risque de cannibalisation.
+  5. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+  6. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC
+     DE L'ÉDITEUR.** Leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop. **Les
+     autres blocs `Maison*`** (`MaisonHero`, `MaisonAPropos`, `MaisonEquipe`,
+     `MaisonVendus`, `MaisonEstimation`, `MaisonAvis`, `MaisonReseaux`,
+     `MaisonAgence`) **rendent eux aussi des composants de `components/home/`**,
+     jamais confrontés au corpus. 📌 **Méthode** : résoudre le bloc dans
+     `lib/page-builder/config.server.tsx`, lire le composant, confronter chaque
+     chiffre au corpus, puis vérifier dans le HTML en ligne.
+  7. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **onze runs**). **Une seule affirmation en dépend** :
+     la fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** : l'hôte rend **200** sur sa page de maintenance.
+  8. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **quinzième report**). 🆕 **Sa valeur vient d'être reconfirmée par la SERP
+     du 12/11**, où il ressort sur « conditions suspensives compromis de vente ».
+     **Ne RIEN réécrire sur un seul relevé.**
+  9. 🟡 **LA DESCRIPTION DE `/vendre` DANS `/llms.txt` EST ÉCRITE À LA MAIN.**
+     🆕 **Mise à jour le 12/11** (périmètre des 1° et 2°). **Toujours exacte.**
+     **Ne pas y investir au-delà de sa justesse** (02/11).
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`. 🆕 **Sa priorité
+     monte d'un cran** : depuis le 12/11, `compromis-de-vente-delais` renvoie
+     vers l'article qui porte cette délibération, donc **deux pages en dépendent**.
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx:307`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement**.
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`** (lignes 199
+     et 230). **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le
+     12/11. **Jour creux uniquement.**
+ 13. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 14. ✅ **TOMBÉ LE 12/11 : LE `n` DVF FIGÉ À 1 875/1 876.** La source rend de
+     nouveau **1 876**, la valeur publiée. **L'écart du 10/11 (1 869) était
+     transitoire. Rien à patcher.**
+ 15. ⛔ **NE PAS REJOUER L'AUDIT D'ACCESSIBILITÉ AUX IA AVANT LE 09/12.**
+     Fait en entier le 09/11 (**348 requêtes, 348/348 en `200`**), sain.
+ 16. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🟠 **LA FAQ DE L'ACCUEIL A ÉTÉ CORRIGÉE CÔTÉ CODE LE 11/11, ET C'EST
+  NOTIFIÉ.** 🆕 **Revérifié le 12/11 : Tony n'a pas republié l'accueil, la
+  correction tient.** **Ne pas renotifier.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — QUATORZIÈME JOUR.** Constaté
+  le 31/10, dernier contrôle en ligne le **11/11** (**0 occurrence de « Qui
+  sommes »**). **Non corrigé : page de Tony, republiée depuis l'éditeur.**
+  ⚠️ **Règle des 90 jours : pas de retouche de la COMPOSITION de l'accueil avant
+  fin janvier 2027, hors panne.** ⚠️ **NON renotifié** (7 notifications, aucun
+  changement).
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). Dernier contrôle
+  **07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.**
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs`
+  du JSON-LD `Organization` (`app/layout.tsx:127`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** : **`zimo.fr`** (confirmé une
+  2ᵉ fois dans la SERP du 12/11) et **`cylex-locale.fr`**. ⚠️ **`immodvisor.com`
+  et `lesiteimmo.com`, également relevés le 12/11, sont DÉJÀ connus de la tâche
+  GEO** (top 5 de sa question n°1 le 09/11) : rien à transmettre pour ceux-là.
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 12/11** :
+- **« agence immobilière Villeurbanne »** : mesurée le **12/11** (en avance sur
+  l'échéance du 16/11), site absent sur 19 résultats → **19/11**.
+- **« prix m2 Villeurbanne »** : mesurée le **11/11** (10ᵉ relevé, site absent,
+  9 résultats tous estimateurs/portails) → **21/11**.
+- **« estimation immobilière Villeurbanne »** : mesurée le **09/11**, site
+  absent → **16/11**.
+- **« vendre appartement Villeurbanne »** : mesurée le **08/11**, site absent
+  → **22/11**.
+- **DEUX SERP DE SUJET DU 12/11** (rétractation / délai jusqu'à l'acte) →
+  **26/11**.
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **remesure vers le 17/11**.
+  📌 **PRIORITÉ** : l'article est passé de **0 à 3** liens éditoriaux entrants
+  le 09/11 et **rien d'autre n'a changé sur cette page**. Première mesure
+  propre de l'effet du maillage interne de ce journal.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **remesure le 18/11**. 📌 **PRIORITÉ** : deux pages du
+  site sont écrites pour elle, et la place est vide de l'aveu du moteur.
+- **« honoraires agence immobilière Villeurbanne … »** : point zéro le **07/11**
+  → **21/11**. 📌 **La SERP la plus anormale du journal** : le contenu existe,
+  il est balisé (`OfferCatalog`), et il n'est pas vu.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
 **Angle du dernier run : NON-CONTENU — le balayage des affirmations de
 performance sans source, qui a mis au jour deux réponses fausses dans la FAQ de
 l'accueil**
@@ -13874,6 +14316,55 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-12 — Ce que la réécriture du compromis laisse ouvert
+
+**1. ✅ RÉSOLUE — le `n` DVF de 1 875/1 876 contre 1 869.** L'hypothèse du 10/11
+supposait que la source « latest » avait été rafraîchie à la baisse et que les
+deux articles publiant `1 875` / `1 876` finiraient par être en écart. **La même
+recette appliquée à l'extraction du 12/11 rend de nouveau `n = 1 876`**, avec
+les trois autres chiffres de contrôle identiques (3 566,8 €/m², 195 000 €,
+62 m²). **L'écart du 10/11 était transitoire. Rien à patcher, rien à surveiller.**
+📌 **Et c'est un argument de méthode** : la réaction correcte à un écart de `n`
+de 0,4 % sur une base rafraîchie en continu est **de ne rien faire et de
+remesurer**, pas de republier.
+
+**2. 🟡 LA LONGUEUR DE L'ARTICLE DÉPASSE LA FOURCHETTE QUE LA VEILLE DU 15/09
+DONNAIT POUR GAGNANTE, ET C'EST LA DEUXIÈME FOIS DE SUITE.** La veille notait
+**1 200 à 2 100 mots** comme la fourchette des contenus cités, avec la consigne
+« ne pas céder à la tentation du guide de 5 000 mots ». Le 10/11 a produit
+**2 682 mots**, le 12/11 **2 981**. **Aucun des deux n'est du remplissage** — le
+12/11 ajoute huit H2 sourcés, un tableau, un HowTo et une donnée locale — mais
+**la dérive est régulière et il faut la mesurer, pas la justifier**.
+📌 **À vérifier à la veille du 16/11** : la fourchette a-t-elle bougé dans les
+études récentes, et les articles longs du corpus (viager 221 848 o, taxe foncière
+2 682 mots) se font-ils citer ? **Si rien ne tranche, viser 2 000 mots pour les
+deux prochaines réécritures et comparer.** ⚠️ **Ne pas raccourcir les articles
+existants sur cette seule base** : ce serait détruire du contenu sourcé sur une
+corrélation.
+
+**3. 🟡 L'EFFET D'UN `title` ET D'UN `excerpt` RÉÉCRITS N'EST PAS ISOLÉ SUR CETTE
+PAGE.** Le `title` n'a pas bougé, mais la `metaDescription` et l'`excerpt` ont
+été entièrement réécrits, et l'`excerpt` est passé d'une ligne à un paragraphe
+qui porte les trois faits neufs. **L'`excerpt` s'affiche sur `/blog` et sur les
+cartes « articles liés »** : la page d'index change donc d'aspect. **Contrôlé au
+build (aucune erreur, aucun débordement de gabarit détecté dans le HTML), pas
+contrôlé à l'œil.** 📌 **À regarder au prochain run** : la carte de cet article
+sur `/blog` et dans les « articles liés » des trois pages qui le citent — un
+`excerpt` long peut casser l'alignement d'une grille. **Si c'est le cas, c'est
+l'`excerpt` qu'on raccourcit, pas l'article.**
+
+**4. 🟡 LA PHRASE « 2 À 3 MOIS » RESTE UNE PRATIQUE, PAS UNE SOURCE.** Elle est
+désormais encadrée (« aucun délai légal ne s'impose », F2965, et les trois délais
+qui ne se négocient pas), mais le « 2 à 3 mois » lui-même n'a pour appui que la
+convergence des pages professionnelles de la SERP. **Ce n'est pas un chiffre de
+marché au sens de la consigne client** — c'est une durée de pratique, donnée
+comme telle, sans prétendre à une mesure. ⚠️ **Mais si une source officielle ou
+notariale datée le chiffre un jour, la remplacer.** 📌 **Et la vraie sortie
+serait une donnée propre** : le délai médian observé entre compromis et acte sur
+les ventes de l'agence. **Impossible depuis ce conteneur** (aucune donnée de
+transaction interne accessible), et **à ne pas demander à Tony tant que le
+besoin n'est pas avéré**.
+
 ### 2026-11-11 — D'où venaient `3 750 €/m²` et `7,6 %`, et les trois points laissés ouverts par le balayage
 
 **1. 🟡 L'origine des chiffres faux n'est pas établie, et ce n'est pas grave —
@@ -15589,6 +16080,59 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-12 — J'ai écrit une « correction » de notre propre texte avant de l'avoir vérifiée, et c'est un balayage multiligne qui l'a arrêtée avant le commit
+
+**🔴 L'erreur, dans l'ordre où elle s'est produite.** En lisant l'article
+L721-2 sur Légifrance, j'ai compté **sept blocs numérotés** au II (1° à 7°). En
+lisant ensuite L721-3, j'ai vu que le report du délai de rétractation ne vise
+que les **1° et 2°**. J'en ai conclu, en une seule inférence et sans la
+vérifier, que la phrase publiée par le site — « le délai ne démarre pas tant que
+les **sept documents** de copropriété n'ont pas tous été remis » — désignait les
+sept BLOCS, donc qu'elle était **fausse**. J'ai écrit dans l'article un
+paragraphe commençant par « ⚠️ **Nous l'écrivions nous aussi, et nous l'avons
+corrigée le 12 novembre 2026** », et le brouillon du message de commit annonçait
+une erreur factuelle corrigée.
+
+**🟢 Ce qui l'a arrêtée.** Avant de commiter, j'ai balayé le dépôt pour trouver
+**toutes** les occurrences de la formule, afin de les aligner. Le balayage a
+trouvé `lib/blog.ts:1982` — un passage de `diagnostics-obligatoires-vente` qui
+écrit « Sept documents de copropriété » **et qui les énumère**. Les sept items
+listés sont : fiche synthétique, règlement + état descriptif de division, PV des
+trois dernières années, montant des charges sur deux exercices, part du fonds de
+travaux, sommes dues au syndicat, état global des impayés. **C'est exactement le
+1° (3 pièces) plus le 2° (4 informations) = 7.** La phrase du site était donc
+**exacte**, et ma « correction » aurait publié une accusation fausse contre notre
+propre corpus — sur une page que trois autres articles citent.
+
+**📌 La leçon, et elle est opératoire.** Le journal avait déjà la règle
+« recalculer avant de dériver » (11/09) et « lire l'article avant de croire le
+pari du backlog » (10/11). **Il manquait le cas symétrique : avant de déclarer
+qu'une phrase du corpus est fausse, chercher d'où elle vient.** Une formule
+publiée par un prédécesseur a presque toujours une source ; ici elle était dans
+le dépôt, à quatre fichiers de distance, sous forme de liste. **Règle :
+une affirmation du corpus ne se qualifie de fausse qu'après avoir cherché, dans
+le corpus lui-même, le passage qui la fonde.** Le coût de la recherche est d'une
+minute ; le coût de l'erreur aurait été une page qui se dédit publiquement à
+tort, et un message de commit mensonger dans l'historique.
+
+**Ce qui a été publié à la place, et qui est le vrai fait neuf.** Non pas « le
+site se trompait » mais : **« sept documents » et « sept blocs » ne désignent pas
+la même chose**, les pièces des 1° et 2° font sept, le II compte sept blocs
+depuis le 1ᵉʳ janvier 2024, et **les blocs 3° à 7° sont obligatoires sans décaler
+le point de départ du délai**. C'est plus utile au lecteur que la correction que
+j'avais imaginée, et c'est vrai.
+
+**⚠️ Et une seconde erreur, de méthode de mesure, découverte dans le même
+balayage.** Mon premier `grep` cherchait la chaîne `"sept documents"`. Il a
+rendu **4 emplacements**. Le balayage multiligne en a rendu **7**, dont
+`app/vendre/page.tsx:698` — **une occurrence RENDUE en production**, invisible au
+premier `grep` parce que le JSX la coupe en fin de ligne (`les sept` / retour à
+la ligne / `documents de copropriété`). 📌 **Règle : sur du JSX ou du texte
+reformaté, un `grep` d'expression de plusieurs mots ne mesure rien.** Chercher
+un seul mot distinctif, ou balayer avec un motif tolérant aux retours à la ligne
+(`sept\s+documents`, en `re.S`). **C'est la variante, pour les phrases, du piège
+déjà consigné le 27/10 sur les accords de « mis à jour ».**
 
 ### 2026-11-11 — La règle des 90 jours protégeait, sans le vouloir, deux chiffres faux : elle visait la composition de l'accueil, elle s'appliquait de fait à son code
 
@@ -18037,6 +18581,60 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-12 — Méthode : lire un renvoi de texte légal, et ne pas diagnostiquer la typographie sur un texte dé-balisé
+
+Pas de veille aujourd'hui (**jeudi** — elle se fait le lundi ; celle du 09/11
+reste la référence, **prochaine due le 16/11**). Quatre méthodes réutilisables
+sont sorties du run.
+
+- **Un article qui RENVOIE à un autre par numéros est une mine, et il se lit en
+  deux temps.** L721-3 ne dit rien de substantiel : il dit « les documents
+  mentionnés aux 1° et 2° du II de l'article L721-2 ». Toute la valeur est dans
+  le **périmètre du renvoi**, et elle est invisible si l'on ne lit que l'article
+  renvoyant ou que l'article renvoyé. 📌 **Recette : (1) lire l'article qui pose
+  la sanction et relever EXACTEMENT les numéros visés, (2) lire l'article visé
+  et énumérer ce que couvrent ces numéros — et seulement ceux-là, (3) écrire ce
+  que couvrent les numéros NON visés, parce que c'est là qu'est le fait neuf.**
+  Ici : le report du délai ne couvre pas le carnet d'entretien ni le plan
+  pluriannuel de travaux, et personne ne le publie. **Le même schéma vaut pour
+  tous les renvois du CCH et du code de la consommation.**
+- **Deux lectures d'un même article, sur deux pages différentes de Légifrance,
+  valent mieux qu'une lecture et une recherche web.** L721-3 a été lu sur sa
+  propre page **et** sur la page de la section (Titre II, L721-1 à L721-3). Les
+  deux lectures ont rendu le même périmètre (1° et 2° pour la rétractation, 1° et
+  c du 2° pour la réflexion) et la même date d'entrée en vigueur (29/08/2015).
+  📌 **C'est l'application au texte primaire de la règle du 15/09 (« deux sources
+  professionnelles concordantes minimum sur un chiffre de droit ») :** sur un
+  texte officiel, les deux sources peuvent être deux vues de la même base, à
+  condition de le dire. ⚠️ **Et le contrôle du 16096 tient** : à chaque lecture,
+  la première question posée à la page est « **quel article est affiché, dans
+  quel code, quelle version en vigueur ?** » — ce qui a fait apparaître ici que
+  L721-2 est en vigueur **depuis le 1ᵉʳ janvier 2024** (loi n° 2021-1104 du
+  22/08/2021, art. 171), donc que les anciennes rédactions trouvées par
+  recherche web étaient périmées.
+- **🔴 Ne jamais diagnostiquer la typographie sur un texte obtenu en remplaçant
+  les balises par des espaces.** Mon extracteur fait
+  `re.sub(r'<[^>]+>', ' ', html)`. Sur `/acheter`, il a rendu **12 occurrences
+  d'une espace avant une virgule** (« non professionnel , et il ne court pas »),
+  ce qui ressemblait à 12 défauts visibles. **Vérifié dans le HTML brut : il n'y
+  en a aucun** — la source est `professionnel</strong>, et`, sans espace. **Les
+  12 espaces étaient produits par mon propre extracteur.** 📌 **Règle : le
+  détecteur de collages (`[0-9€%²°][a-zA-Z]{2,}`) se passe sur le texte
+  dé-balisé, mais tout défaut d'ESPACEMENT se vérifie sur le HTML brut, avec
+  `grep -o` et `cat -A`.** J'ai failli « corriger » une page argent du client
+  pour un artefact de mon outil de mesure — exactement le risque que la consigne
+  « ne corrige rien qui fonctionne » cherche à éviter.
+- **Le piège du ref de suivi périmé fonctionne dans les DEUX sens, et un `fetch`
+  efface la preuve.** Le 02/11 et les neuf runs suivants ont consigné qu'un
+  `origin/<branche-du-conteneur>` périmé fait croire que `main` **retarde**. Ce
+  jour, c'est `origin/main` lui-même qui était périmé de 13 commits : au
+  démarrage, `git log origin/main` montrait le 07/11 alors que `ls-remote`
+  rendait le 11/11. 📌 **Donc : `git ls-remote origin refs/heads/main` AVANT
+  tout `git fetch`**, parce qu'après le fetch on ne peut plus savoir si l'on
+  aurait été trompé. Et **ne jamais conclure « du travail n'est pas en
+  production » d'un `git log origin/main`** : les treize commits étaient tous là.
+
 
 ### 2026-11-11 — Savoir si un texte servi vient de l'éditeur ou du code, et prouver la parité d'un JSON-LD sur une page dynamique
 
