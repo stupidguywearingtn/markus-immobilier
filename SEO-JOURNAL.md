@@ -27,6 +27,21 @@
   la branche n'existe pas sur le distant. Poussé en `git push origin HEAD:main`.
 - ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
   **Quarante-huitième constat identique** (21/09 → 13/11).
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — TROISIÈME OCCURRENCE (11/11, 12/11, 13/11).** Message :
+  « There are 1 unpushed commit(s) on branch `claude/dazzling-feynman-tnnyzt` ».
+  **C'est le même faux positif, et il est désormais systématique** : le hook
+  compare la branche locale du conteneur à une branche distante de même nom
+  **qui n'existe pas**. Vérifié après le push :
+  `git ls-remote origin refs/heads/main` = **`03d10cd`** = `HEAD`,
+  `git rev-list --count origin/main..HEAD` = **0**,
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-tnnyzt` rend
+  **RIEN**, et l'arbre de travail est **propre**. 🔴 **NE PAS pousser la
+  branche du conteneur pour faire taire le hook** (consigne client : commit
+  direct sur `main`). **Le seul contrôle qui vaut reste `ls-remote` +
+  `rev-list --count origin/main..HEAD`** — et jamais `git branch -a`.
+  📌 **Trois occurrences d'affilée : traiter ce message comme du bruit connu,
+  le vérifier en deux commandes, le consigner, et ne rien changer au flux.**
 - ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
   Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-et-unième confirmation.**
 - ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces — identique du 07/11 au 13/11.**
