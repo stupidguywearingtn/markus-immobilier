@@ -244,9 +244,12 @@ export default function AgenceVilleurbannePage() {
                   <Link href="/honoraires" className={A}>
                     barème public
                   </Link>
-                  , identiques pour tous les mandants : ces 6 % sont le bas de
-                  la fourchette de <strong>6 à 8 % TTC</strong> que facturent
-                  les agences, chiffrée dans notre analyse du{" "}
+                  , identiques pour tous les mandants. Aucun barème national ne
+                  fixe le taux de gestion : ce qui est réglementé, c&apos;est son
+                  affichage, et le prix affiché par une agence est un{" "}
+                  <strong>maximum</strong> que le texte invite à négocier à la
+                  baisse. Le détail de cette obligation est dans notre analyse
+                  du{" "}
                   <Link href="/blog/cout-gestion-locative" className={A}>
                     coût réel d&apos;une gestion locative
                   </Link>

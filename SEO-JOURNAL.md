@@ -14,6 +14,112 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-13 (vendredi)**
+
+- ✅ **LE RUN A EU LIEU — HUITIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 13/11.
+  **Un seul manque sur 77 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN ÉCART DE `main`, ET LE CONTRÔLE DU 02/11 A ÉTÉ FAIT AVANT TOUT
+  `fetch`.** `HEAD` de départ = **`d78b29e`**, `git ls-remote origin
+  refs/heads/main` = **`d78b29e`** : identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-tnnyzt`**, pas sur `main`.
+  **Treizième constat consécutif**, nom différent chaque fois.
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-tnnyzt` rend **RIEN** :
+  la branche n'existe pas sur le distant. Poussé en `git push origin HEAD:main`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-huitième constat identique** (21/09 → 13/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-et-unième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces — identique du 07/11 au 13/11.**
+  Aucune page ajoutée ni retirée. Tous les contrôles en `curl -sL` (piège `308`).
+  Le `lastmod` n'a **PAS** servi à conclure sur l'activité du client.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée**
+  (10/11 contenu → 11/11 non-contenu → 12/11 contenu → **13/11 non-contenu**),
+  **et c'est le candidat non-contenu n°1 du backlog qui a été consommé** — la
+  famille « 6 à 8 % des loyers », laissée en place sciemment le 11/11.
+- 🔴 **LE BACKLOG ANNONÇAIT TROIS EMPLACEMENTS : IL Y EN AVAIT CINQ, ET LE SLUG
+  ÉTAIT FAUX.** Le backlog du 11/11 désignait `lib/blog.ts:2569` (« phrase
+  d'attaque de `gestion-locative-villeurbanne` »), son `excerpt` (`:2563`) et
+  `/faire-gerer:338`. **Relocalisé par `grep` comme la consigne l'imposait**, et
+  le compte réel est de **cinq** : l'`excerpt` et le paragraphe d'attaque de
+  **`cout-gestion-locative`** (et non `gestion-locative-villeurbanne`, qui
+  n'existe pas sous ce nom), `/faire-gerer`, **`/honoraires`** et
+  **`/agence-immobiliere-villeurbanne`**. **Les deux pages commerciales
+  n'étaient pas au backlog du tout.** Les cinq sont confirmés servis en
+  production avant modification (quatre `curl -sL`, `200` partout).
+- 🔴 **ET LA RÈGLE DU 12/11 A JOUÉ UNE DEUXIÈME FOIS, DANS LE BON SENS : LE
+  CORPUS FONDAIT DÉJÀ À MOITIÉ CE QUE JE CROYAIS DÉCOUVRIR.** Avant d'annoncer
+  l'arrêté du 10 janvier 2017 comme un fait neuf, balayage du corpus :
+  **`/faire-gerer:129` et `/honoraires:170` le citaient déjà**, « modifié le
+  26 janvier 2022 » inclus, pour fonder l'affichage TTC. **Le fait neuf est donc
+  étroit et il faut le dire ainsi** : ce que le corpus ne disait nulle part,
+  c'est **pourquoi** le mot « maximum » y figure, et **que la gestion
+  immobilière est expressément dans le champ de l'article 2**.
+- 🆕 **FAIT NEUF SOURCÉ À LA SOURCE PRIMAIRE : LE BARÈME AFFICHÉ EST UN PLAFOND,
+  ET LE TEXTE LE VEUT NÉGOCIABLE.** L'**arrêté du 26 janvier 2022** (JORF
+  n° 0029 du 4 février 2022, texte n° 6, NOR ECOC2138946A), article 1er,
+  remplace à l'article 2 I de l'arrêté du 10 janvier 2017 le mot
+  « effectivement » par « maximums », insère « maximums » au II et change
+  « prix » en « prix maximums » au III ; **en vigueur le 1er avril 2022**
+  (article 3). **Sa notice donne le motif** : permettre aux consommateurs qui le
+  souhaitent de négocier à la baisse, et corriger les cas où un barème affiché
+  pouvait être regardé comme non respecté alors qu'il avait été négocié **en
+  faveur du client**. Lu sur Légifrance le 13/11/2026, version de l'article 2
+  « en vigueur depuis le 01 avril 2022 ». **L'article 2 I vise expressément
+  « la gestion immobilière »**, pas seulement la vente et la location.
+- 🆕 **ET C'EST UNE « FOURCHETTE » QUE LE DROIT N'ADMET PAS.** ANIL, analyse
+  juridique **n° 2017-08** (« à jour au 20 mars 2017 ») : « Les « fourchettes »
+  de prix ne sont pas admises. » 📌 **Attribué à l'ANIL, pas à l'arrêté** —
+  l'article 2 III admet des « tranches de prix », qui sont des paliers, pas une
+  fourchette : ne pas confondre les deux dans un futur run.
+- 🔴 **ET LE « 6 À 8 % » CIRCULE AVEC UNE AUTORITÉ QU'IL N'A PAS.** Une des deux
+  SERP mesurées attribue le range à l'ANIL — **via `immojeune.com`**, pas via
+  l'ANIL. **Recherche web restreinte à `anil.org` : aucun taux de gestion en
+  pourcentage n'y figure.** Le chiffre que le site republiait depuis février
+  2026 n'avait donc pas de source, et celle qu'on lui prête n'en est pas une.
+- 🟡 **DEUX SERP DE SUJET MESURÉES (méthode du 08/11) : SITE ABSENT DES DEUX.**
+  « tarif gestion locative Villeurbanne pourcentage honoraires agence 2026 » :
+  13 résultats, **aucun n'est le site** — orpi (2 barèmes PDF), foncia,
+  immojeune, manda (×6), bailfacile, laforet. 📌 **Et deux barèmes locaux y
+  sont publics** : Orpi CETRIM Villeurbanne (8 % TTC ancien, 7 % neuf, barème du
+  10/04/2025) et Foncia Villeurbanne (5,99 % + 3,48 % de GLI = 9,47 % TTC).
+  « les honoraires de gestion locative sont-ils négociables barème affiché » :
+  16 résultats, **site absent** — mysweetimmo (×2), francetransactions, seloger
+  (×3), iad (×2), orpi, copeps, foncia, immojeune + 3 barèmes PDF d'agences.
+  📌 **Le point négociabilité est DÉJÀ tenu par des nationaux sur la
+  transaction** ; ce qui reste vide, c'est **la gestion** — le moteur l'écrit
+  lui-même : « Cette mention vaut surtout pour la transaction ou la location, et
+  elle est rare pour la gestion. » **Point zéro posé, première remesure le 27/11.**
+- 🟡 **UNE REQUÊTE COMMERCIALE REMESURÉE EN AVANCE : `estimation immobilière
+  Villeurbanne`, SITE ABSENT.** Échéance du 16/11 tenue en avance (le 16/11 est
+  un lundi, donc chargé par la veille). **13 résultats, aucun n'est le site** :
+  laforet (×2), orpi (×2), square habitat (×2), capifrance (×2), efficity (×2),
+  leboncoin, optimhome, netvendeur. **Aucun changement par rapport au 09/11.**
+  📌 **Et le moteur reformule l'argument du site à notre place** : « Je n'ai pas
+  trouvé de prix au m² officiel et à jour, ni de données notariales, dans ces
+  résultats » — **quatrième fois en six runs** qu'une SERP se déclare vide de ce
+  que le site publie précisément. **Prochaine remesure : 23/11.**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  QUINZIÈME JOUR.** **Non recontrôlé en ligne ce jour** (le chantier ne touche
+  pas l'accueil) ; dernier contrôle **11/11**, 0 occurrence de « Qui sommes ».
+  **Non corrigé, et c'est volontaire** (page de Tony, règle des 90 jours).
+  ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  13/11, prouvé avant et après les modifications. **Aucune erreur neuve.**
+  `tsc --noEmit` propre, `npm run build` en **0**.
+- ✅ **PARITÉ `FAQPage` PROUVÉE DANS UN RENDU RÉEL SUR LES QUATRE PAGES À FAQ
+  TOUCHÉES OU VOISINES** : `/honoraires` **6/6**, `/faire-gerer` **8/8**,
+  `/agence-immobiliere-villeurbanne` **6/6**, `/gestion-locative` **10/10**.
+  `cout-gestion-locative` n'a **pas** de FAQ visible et n'émet **pas** de
+  `FAQPage` : pas de mismatch possible. ⚠️ **Contrôle fait sur un serveur
+  relancé sur un AUTRE port** — voir « Erreurs commises ».
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour.**
+
 **Au 2026-11-12 (jeudi)**
 
 - ✅ **LE RUN A EU LIEU — SEPTIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 12/11.
@@ -5261,6 +5367,142 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-11-13 (vendredi) — Le « 6 à 8 % des loyers » que le site republiait n'avait pas de source, et le texte qui encadre les barèmes dit l'inverse de ce que la fourchette suggère
+
+**Angle : NON-CONTENU** (alternance respectée : 10/11 contenu → 11/11
+non-contenu → 12/11 contenu → **13/11 non-contenu**). **Candidat non-contenu
+n°1** du backlog, inscrit le 11/11 et laissé en place sciemment ce jour-là.
+
+**Ce que le backlog annonçait, et ce que `grep` a trouvé.** Trois emplacements
+étaient inscrits (`lib/blog.ts:2569`, `:2563`, `/faire-gerer:338`) sous le slug
+`gestion-locative-villeurbanne`. **Relocalisation par `grep` obligatoire** (le
+commit du 12/11 avait déplacé `lib/blog.ts`), et le compte réel est de **cinq
+emplacements répartis sur quatre pages**, dont **deux pages commerciales qui
+n'étaient pas au backlog** :
+
+| Emplacement | Ce qu'il publiait |
+|---|---|
+| `lib/blog.ts` — `excerpt` de `cout-gestion-locative` | « En général 6 à 8 % TTC des loyers encaissés » |
+| `lib/blog.ts` — paragraphe d'attaque du même article | « Une agence facture généralement entre 6 et 8 % des loyers encaissés » |
+| `app/faire-gerer/page.tsx` | « La plupart des agences répondent « entre 6 et 8 %, ça dépend » » |
+| `app/honoraires/page.tsx` | « les 6 % ci-dessus sont le bas de la fourchette de **6 à 8 % TTC** que facturent les agences » |
+| `app/agence-immobiliere-villeurbanne/page.tsx` | « ces 6 % sont le bas de la fourchette de **6 à 8 % TTC** que facturent les agences » |
+
+**Les cinq étaient servis en production** (quatre `curl -sL`, `200` partout)
+avant modification. Le slug était `cout-gestion-locative`, pas
+`gestion-locative-villeurbanne` : **la note du backlog était fausse sur le nom
+comme sur le compte.**
+
+**Pourquoi c'était à corriger et pas seulement à retirer.** Le range est un
+chiffre de marché sans source, ce que le client a explicitement refusé. Mais il
+portait l'argument commercial « nos 6 % sont le bas de la fourchette » :
+le retirer sèchement aurait coûté l'argument. La consigne du backlog était
+donc « soit une source réelle, soit une reformulation qui garde l'argument ».
+
+**Ce qui a été cherché d'abord, et ce que ça a donné.** Recherche web restreinte
+à `anil.org` : **aucun taux de gestion en pourcentage n'est publié par l'ANIL**.
+En revanche l'ANIL publie le cadre de l'affichage, et c'est de là qu'est venue
+la sortie : **ce qui est réglementé n'est pas le montant, c'est sa publication —
+et le montant publié est un PLAFOND.**
+
+**Les faits retenus, lus à la source primaire le 13/11/2026 :**
+- **Arrêté du 10 janvier 2017**, article 2, version **« en vigueur depuis le
+  01 avril 2022 »** (Légifrance, consultée le 13/11/2026) : I — obligation
+  d'afficher les **prix maximums pratiqués** des prestations, **« notamment
+  celles liées à la vente, à la location de biens et à la gestion
+  immobilière »** ; II — **toutes taxes comprises** ; III — éventuelles
+  **tranches de prix** et éléments de calcul, avec mention claire de leur
+  caractère cumulatif ; IV — affichage **à l'entrée, en vitrine, et accessible
+  en ligne**.
+- **Arrêté du 26 janvier 2022** (JORF n° 0029 du 4 février 2022, texte n° 6,
+  NOR ECOC2138946A), **article 1er** : au I, « effectivement » → **« maximums »** ;
+  au II, insertion de « maximums » ; au III, « prix » → « prix maximums ».
+  **Entrée en vigueur le 1er avril 2022** (article 3). **Sa notice donne le
+  motif** : permettre aux consommateurs qui le souhaitent de **négocier à la
+  baisse**, et corriger les cas où un barème affiché pouvait être regardé comme
+  non respecté alors qu'il avait été négocié **en faveur du client**.
+- **ANIL**, analyse juridique **n° 2017-08**, « à jour au 20 mars 2017 » :
+  « Les « fourchettes » de prix ne sont pas admises. »
+
+⚠️ **Nuance à ne pas écraser dans un futur run** : l'article 2 III admet des
+**« tranches de prix »** (des paliers, comme le barème de vente du site). Ce
+n'est **pas** une fourchette. La phrase sur les fourchettes est **attribuée à
+l'ANIL**, jamais à l'arrêté.
+
+⚠️ **Et la moitié du « fait neuf » n'en était pas un** : `/faire-gerer:129` et
+`/honoraires:170` citaient **déjà** « l'arrêté du 10 janvier 2017, modifié le
+26 janvier 2022 » pour fonder l'affichage TTC. **Vérifié avant d'écrire**, en
+application de la règle du 12/11. Ce qui était absent du corpus : le **motif**
+du mot « maximum », la **négociabilité** qui en découle, et le fait que la
+**gestion immobilière** est expressément dans le champ.
+
+**Ce qui a été écrit, emplacement par emplacement :**
+1. **`cout-gestion-locative` — `excerpt`, `metaDescription` et paragraphe
+   d'attaque réécrits.** Réponse directe et autonome en tête : « Les honoraires
+   de gestion locative ne sont fixés par aucun barème national : ils sont
+   libres. Ce que la réglementation encadre, ce n'est pas leur montant mais leur
+   publication. » `updated` passé de `2026-09-16` à **`2026-11-13`**
+   (`dateModified` du `BlogPosting` vérifié dans le rendu).
+2. **Nouveau H2 sourcé dans l'article : « Le taux de gestion affiché par une
+   agence est-il négociable ? »** — réponse directe, les trois conséquences
+   pratiques lues dans l'article 2 (champ, TTC, lieux d'affichage), la
+   disqualification du « entre 6 et 8 %, ça dépend », et un **bloc Sources
+   complet avec « Textes lus le 13 novembre 2026 »**.
+3. **Les trois H2 non-questions de l'article convertis en questions réelles**
+   (étape 4 du brief, appliquée à tout contenu touché) : « Ce que ça inclut » →
+   « Que comprend exactement une gestion locative ? » ; « Les options » →
+   « Quelles options s'ajoutent au taux de gestion locative ? » ; « Le bon
+   calcul » → « Déléguer sa gestion locative, est-ce rentable ? ». **Chacun ouvre
+   désormais sur une réponse autonome de 1 à 2 phrases.** Les quatre H2 vérifiés
+   dans le HTML rendu.
+4. **`/faire-gerer`** — l'intro de « Ce que ça coûte » ne prête plus le range aux
+   agences : « « Ça dépend » est la réponse la plus courante […] C'est pourtant
+   une prestation dont le tarif **maximum** doit être affiché, toutes taxes
+   comprises, à l'entrée de l'agence comme en ligne — et qui, pour cette raison
+   même, se négocie. »
+5. **`/honoraires`** — le paragraphe de comparaison ne cite plus de range, et la
+   **réponse de FAQ déjà existante** sur l'affichage reçoit une phrase : « Le mot
+   « maximum » n'est pas neutre : un barème affiché est un plafond, pas un tarif
+   intangible, et il peut donc être négocié à la baisse. » **FAQ et `FAQPage`
+   sont générés depuis le même tableau** → parité par construction, **prouvée
+   6/6 dans un rendu réel**.
+6. **`/agence-immobiliere-villeurbanne`** — même reformulation dans le corps de
+   la section « Location & gestion ». ⚠️ **L'occurrence n'était PAS dans le
+   tableau `FAQ`** de la page : le `FAQPage` n'a pas bougé (vérifié 6/6).
+
+**La seule occurrence du range qui subsiste dans tout le code** est la citation
+qui la réfute (« une réponse du type « entre 6 et 8 %, ça dépend » ne vous engage
+à rien »). `grep` de contrôle : **1 occurrence, et c'est celle-là.**
+
+**`/llms.txt` à jour sans intervention** : les entrées de blog y sont générées
+depuis `a.excerpt` (`app/llms.txt/route.ts:43`), donc la réécriture de l'`excerpt`
+s'y est propagée seule. **Vérifié dans le rendu.** Les descriptions écrites à la
+main (`/faire-gerer`, `/honoraires`) restent exactes : **non touchées**, règle
+du 02/11.
+
+**Contrôles passés.** `tsc --noEmit` **0** ; `eslint` **35 problèmes / 24
+erreurs**, identique au 02/11→12/11, **aucune erreur neuve** ; `npm run build`
+**0** ; parité `FAQPage` **6/6, 8/8, 6/6, 10/10** sur un rendu réel.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi :**
+- **Ne pas publier les barèmes des concurrents villeurbannais**, bien que deux
+  soient publics et chiffrés (Orpi CETRIM 8 % TTC / 7 % neuf, barème du
+  10/04/2025 ; Foncia 5,99 % + 3,48 % GLI). Ce serait une donnée propre et
+  vérifiable, **mais c'est de la publicité comparative nominative** : décision
+  du client, pas la mienne. **Inscrit au backlog, à arbitrer par Tony.**
+- **Ne pas ajouter de `faq` à `cout-gestion-locative`.** L'article n'en a pas,
+  donc pas de `FAQPage` : en ajouter une est du travail de contenu, et l'angle
+  du jour est non-contenu. **Inscrit en candidat contenu.**
+- **Ne pas toucher `LEGAL_CHECKED` de `/honoraires`** (`2026-09-15`, affiché
+  « Références légales vérifiées le 15 septembre 2026 »). Je n'ai re-vérifié
+  qu'**un** des textes de cette page : le bumper attesterait d'une vérification
+  que je n'ai pas faite. **La phrase ajoutée à la FAQ ne porte donc aucune date
+  neuve** — elle s'appuie sur le mot « maximum » de l'article 2, déjà cité sur
+  la page. Le daté (notice de 2022, lecture du 13/11) vit **uniquement** dans le
+  bloc Sources de l'article de blog.
+- **Ne pas corriger le `n` DVF de `1 875` → `1 876`** (10 emplacements) :
+  mesuré ce jour, mais c'est un chantier à part. **Inscrit au backlog.**
 
 ### 2026-11-12 (jeudi) — Les documents de copropriété qui repoussent le délai de rétractation ne sont pas ceux que tout le monde cite, et « sept documents » n'est pas « sept blocs »
 
@@ -10647,6 +10889,214 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le retrait du « 6 à 8 % des loyers », un
+chiffre de marché sans source republié dans cinq emplacements sur quatre pages**
+(13/11 : **candidat non-contenu n°1 consommé**, après avoir été laissé en place
+sciemment le 11/11. Le backlog annonçait **3** emplacements et un slug qui
+n'existe pas : il y en avait **5**, dont **deux pages commerciales absentes du
+backlog** (`/honoraires`, `/agence-immobiliere-villeurbanne`), et le slug est
+`cout-gestion-locative`. **Remplacé par un fait sourcé à la source primaire** :
+l'arrêté du 10 janvier 2017 art. 2, version en vigueur depuis le 1er avril 2022,
+impose d'afficher les **prix maximums** TTC des prestations **de gestion
+immobilière** incluses ; l'arrêté du 26 janvier 2022 (JORF n° 0029 du 4 février
+2022, NOR ECOC2138946A) a substitué « maximums » à « effectivement », **et sa
+notice dit pourquoi : permettre au client de négocier à la baisse**. L'ANIL
+(analyse n° 2017-08) écrit que les **fourchettes** de prix ne sont pas admises.
+**Nouveau H2 sourcé** dans l'article + **3 H2 non-questions convertis en
+questions** + `updated` → 2026-11-13. Parité `FAQPage` prouvée **6/6, 8/8, 6/6,
+10/10** sur un rendu réel. ⚠️ **La moitié du « fait neuf » était déjà dans le
+corpus** — `/faire-gerer:129` et `/honoraires:170` citaient déjà l'arrêté :
+vérifié AVANT d'écrire, règle du 12/11.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (14/11, samedi) DOIT ÊTRE DU CONTENU**
+(alternance : 11/11 non-contenu → 12/11 contenu → **13/11 non-contenu**).
+✅ **La veille du lundi est faite (09/11). Prochaine veille due le 16/11.**
+
+🔴 **CANDIDATS CONTENU, par ordre d'impact :**
+  1. 🔴 **`home-staging-vendre-plus-cher` — ET LE CHANTIER EST DOUBLE.**
+     111 mots, sans FAQ, **et son `title`, son `h1` et son `excerpt` portent une
+     affirmation de performance sans source** (« font vendre plus cher »),
+     repérée le 11/11 et **volontairement non touchée deux runs de suite**.
+     📌 **C'est l'occasion de trancher les deux d'un coup** : réécrire ET décider
+     du titre. ⚠️ **Changer un `title` indexé n'est pas neutre** — le faire en
+     connaissance de cause, et le consigner. ⚠️ **Non mesuré** : appliquer la
+     leçon du 10/11 **et celle du 12/11** — lire l'article, et chercher d'où
+     vient la phrase litigieuse avant de la déclarer fausse. 🆕 **Et la recette
+     du 13/11 s'applique si la phrase est insourçable** : chercher le texte qui
+     encadre l'AFFICHAGE d'une telle promesse plutôt qu'un texte qui la fonde.
+  2. 🆕 🟡 **DONNER UNE FAQ À `cout-gestion-locative`.** L'article n'a **pas** de
+     champ `faq`, donc **pas de `FAQPage`** — vérifié dans le rendu du 13/11, où
+     il n'émet que `BlogPosting` + `BreadcrumbList` + `RealEstateAgent`. Ses
+     quatre H2 sont désormais de vraies questions avec réponse autonome en tête :
+     **la matière est prête, il reste à la décliner en `faq`**. ⚠️ **Parité
+     visible ↔ JSON-LD obligatoire** (le champ `faq` duplique le contenu,
+     contrairement à `steps`).
+  3. 🟡 **LE RESTE DU BLOG FAIBLE — SEPT AUTRES ARTICLES.**
+     `lmnp-location-meublee` 107, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `vendre-appartement-lyon-etapes` 154,
+     `capacite-emprunt-immobilier` 194. 🆕 **Pour ce dernier, le sourçage est
+     déjà à moitié fait** : HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, en
+     vigueur au **01/01/2022**, taux d'effort **35 %**, maturité **25 ans**
+     (27 ans en cas d'entrée différée), marge de flexibilité **20 %** de la
+     production trimestrielle. ⚠️ **Référence trouvée par recherche web, le
+     texte n'a PAS été lu** : `economie.gouv.fr/hcsf` répond **403** en
+     WebFetch. **Trouver un accès primaire avant de publier la référence.**
+     📌 **Pour `faire-offre-achat` et `questions-a-poser-visite`, la recette du
+     12/11 est transposable** : ces deux pages touchent au compromis, et le
+     corpus a désormais huit H2 sourcés à réutiliser en renvoi.
+  4. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  5. ⛔ **NE PAS RÉÉCRIRE `cout-gestion-locative`** (13/11) → remesurer les deux
+     SERP le **27/11**.
+  6. ⛔ **NE PAS RÉÉCRIRE `compromis-de-vente-delais`** (12/11) → **26/11**.
+  7. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → **24/11**.
+  8. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11**.
+  9. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11** → remesurer la SERP le **18/11**.
+ 10. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🆕 🔴 **LE `n` DVF PUBLIÉ EN DEUX VALEURS : `1 875` (10 emplacements) CONTRE
+     `1 876` (2), POUR LA MÊME POPULATION.** Mesuré le 13/11, contextes
+     comparés : c'est bien « les ventes d'appartements signées à Villeurbanne en
+     2025 » dans les deux cas. L'extraction reproduite le 12/11 rend **1 876**,
+     donc `1 875` est très probablement une valeur périmée. Emplacements :
+     `app/agence-immobiliere-villeurbanne` ×2, `app/estimation-immobiliere-villeurbanne`
+     ×4, `lib/blog.ts` ×4+ pour `1 875` ; `lib/blog.ts:2211` et `:2861` pour
+     `1 876`. ⚠️ **NE PAS PATCHER À L'AVEUGLE** : le 10/11 la même source rendait
+     `1 869`. **Recette imposée** : refaire l'extraction, reproduire les quatre
+     chiffres de contrôle (n, 3 566,8 €/m², 195 000 €, 62 m²) **avant** de
+     toucher un emplacement, puis grepper les sommes dérivées (règle du 13/10).
+     ✅ **L'arrondi `3 567 €/m²` n'est pas en cause.** ⚠️ **Relocaliser par
+     `grep`, pas par numéro de ligne** — le commit du 13/11 a déplacé
+     `lib/blog.ts`.
+  2. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La page écrit « il ne démarre même pas tant que les sept documents de
+     copropriété n'ont pas tous été remis ». **La phrase est EXACTE** (les pièces
+     des 1° et 2° font sept) : ce n'est pas une correction d'erreur, c'est une
+     levée d'ambiguïté. ⚠️ **Même traitement à envisager pour `lib/blog.ts` et sa
+     FAQ dans `diagnostics-obligatoires-vente`**, qui énumèrent correctement les
+     sept pièces mais ne disent pas que les blocs 3° à 7° ne décalent rien.
+     📌 **Une phrase à ajouter, pas une réécriture.** ⚠️ **Numéros de ligne du
+     12/11 périmés — relocaliser par `grep`.**
+  3. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Mesuré le 10/11 : `charges-copropriete`
+     ne contient **aucune occurrence** de « taxe foncière » et n'émet que **2**
+     liens éditoriaux. ⚠️ **Il faut ÉCRIRE une phrase**, pas poser une ancre
+     (règle du 16/09). Le défaut restant est **sortant**.
+  4. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Trancher page par page, en commençant par `/annonces`**,
+     page catalogue sans risque de cannibalisation.
+  5. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+  6. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC
+     DE L'ÉDITEUR.** Leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop. **Les
+     autres blocs `Maison*`** (`MaisonHero`, `MaisonAPropos`, `MaisonEquipe`,
+     `MaisonVendus`, `MaisonEstimation`, `MaisonAvis`, `MaisonReseaux`,
+     `MaisonAgence`) **rendent eux aussi des composants de `components/home/`**,
+     jamais confrontés au corpus. 📌 **Méthode** : résoudre le bloc dans
+     `lib/page-builder/config.server.tsx`, lire le composant, confronter chaque
+     chiffre au corpus, puis vérifier dans le HTML en ligne.
+  7. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **douze runs**). **Une seule affirmation en dépend** :
+     la fiche « DPE collectif » (`lib/blog.ts`). 📌 **Contrôle à deux temps
+     obligatoire** : l'hôte rend **200** sur sa page de maintenance.
+  8. 🟡 **LIRE UNE PAGE DE QUARTIER DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **seizième report**). 🆕 **Valeur reconfirmée par la SERP du 12/11.**
+     **Ne RIEN réécrire sur un seul relevé.**
+  9. 🟡 **LA DESCRIPTION DE `/vendre` DANS `/llms.txt` EST ÉCRITE À LA MAIN.**
+     **Toujours exacte** (contrôlée le 12/11). **Ne pas y investir au-delà de sa
+     justesse** (02/11). 🆕 **Les entrées de BLOG, elles, sont générées depuis
+     `a.excerpt`** (`app/llms.txt/route.ts:43`) : réécrire un `excerpt` met
+     `/llms.txt` à jour tout seul — **vérifié le 13/11, rien à faire à la main.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`. **Deux pages en
+     dépendent** depuis le 12/11.
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement**.
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.**
+     **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le 13/11.
+     **Jour creux uniquement.**
+ 13. 🟢 **La parité des valeurs RNIC entre pages** (`2 065`, `79 797`, `165 101`,
+     `1 597`, `1 744`, `84,5 %`, `73 582`). **Prévention.**
+ 14. ⛔ **NE PAS REJOUER L'AUDIT D'ACCESSIBILITÉ AUX IA AVANT LE 09/12.**
+     Fait en entier le 09/11 (**348 requêtes, 348/348 en `200`**), sain.
+ 15. ⛔ **LA QUESTION « AFFICHÉ ≠ SIGNÉ » — TRANCHÉE LE 04/11.** Remesurer à la
+     publication de **l'année 2026 complète (printemps 2027)**.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🆕 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  Deux sont **publics et chiffrés** (la loi oblige à les afficher) : **Orpi CETRIM
+  Villeurbanne 8 % TTC sur l'ancien / 7 % dans le neuf**, barème daté du
+  **10/04/2025** ; **Foncia Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**.
+  Ils situeraient nos **6 %** avec des chiffres réels et vérifiables, là où le
+  site n'a plus de fourchette. ⚠️ **Mais nommer un concurrent et son prix est de
+  la publicité comparative** (encadrée, pas interdite) : **c'est une décision
+  commerciale, pas une décision d'agent.** 📌 **Question à Tony. Ne rien publier
+  avant sa réponse.**
+- 🟠 **LA FAQ DE L'ACCUEIL A ÉTÉ CORRIGÉE CÔTÉ CODE LE 11/11, ET C'EST
+  NOTIFIÉ.** **Revérifié le 12/11 : la correction tient. Ne pas renotifier.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — QUINZIÈME JOUR.** Constaté
+  le 31/10, dernier contrôle en ligne le **11/11** (**0 occurrence de « Qui
+  sommes »**). **Non corrigé : page de Tony, republiée depuis l'éditeur.**
+  ⚠️ **Règle des 90 jours : pas de retouche de la COMPOSITION de l'accueil avant
+  fin janvier 2027, hors panne.** ⚠️ **NON renotifié** (7 notifications, aucun
+  changement).
+- 🔴 **INVITATION DISCORD MORTE** (`discord.gg/fSyn28G5U`). Dernier contrôle
+  **07/11** : `code 10006`, témoin valide. **Le code est publié 4 fois dans le
+  seul HTML de l'accueil.** Source : `components/layout/site-footer.tsx`,
+  `components/home/social.tsx`, `design-system.md` § 11. ⚠️ **Il faut une
+  invitation PERMANENTE.** 📌 **Dès que Tony fournit le code : substituer aux
+  TROIS endroits, puis revérifier par l'API.** **Ne pas retirer le CTA
+  entre-temps.**
+- **COMPTE X `markusimmo_`** : 404, mais **étalonnage non concluant**
+  (`orpi_immo` rend 404 aussi, `laforet_france` 200). Publié dans le `sameAs`
+  du JSON-LD `Organization` (`app/layout.tsx`) + 2 autres fichiers.
+  **Question à Tony : le compte existe-t-il ?** **Ne rien retirer avant.**
+- **DEUX ANNUAIRES À TRANSMETTRE À LA TÂCHE GEO** : **`zimo.fr`** et
+  **`cylex-locale.fr`**. ⚠️ **`immodvisor.com` et `lesiteimmo.com` sont DÉJÀ
+  connus de la tâche GEO** (top 5 du 09/11) : rien à transmettre pour ceux-là.
+  📌 **Rappel de périmètre : `GEO-SUIVI.md` est tenu par une AUTRE tâche
+  planifiée (lundi + jeudi). Ne pas y écrire, mais LE LIRE avant d'annoncer une
+  découverte sur les annuaires.**
+
+→ 🔴 **REQUÊTES CIBLES — ÉCHÉANCES AU 13/11** :
+- **« estimation immobilière Villeurbanne »** : mesurée le **13/11** (en avance
+  sur l'échéance du 16/11), site absent sur 13 résultats → **23/11**.
+- **« agence immobilière Villeurbanne »** : mesurée le **12/11**, site absent
+  sur 19 résultats → **19/11**.
+- **« prix m2 Villeurbanne »** : mesurée le **11/11** (10ᵉ relevé, site absent)
+  → **21/11**.
+- **« vendre appartement Villeurbanne »** : mesurée le **08/11**, site absent
+  → **22/11**.
+- 🆕 **DEUX SERP DE SUJET DU 13/11** (tarif de gestion locative / négociabilité
+  du barème) → **27/11**. 📌 **Ce qui est à surveiller précisément** : le créneau
+  « négociabilité **de la gestion** », que les nationaux laissent vide de l'aveu
+  du moteur.
+- **DEUX SERP DE SUJET DU 12/11** (rétractation / délai jusqu'à l'acte) → **26/11**.
+- **DEUX SERP DE SUJET DU 01/11** (préemption / vendre un logement loué) →
+  **remesure vers le 15/11**.
+- **DEUX SERP DE SUJET DU 03/11** (viager) → **remesure vers le 17/11**.
+  📌 **PRIORITÉ** : l'article est passé de **0 à 3** liens éditoriaux entrants
+  le 09/11 et **rien d'autre n'a changé sur cette page**. Première mesure
+  propre de l'effet du maillage interne de ce journal.
+- 🔴 **LA SERP OUVERTE LE 04/11** (« prix immobilier Villeurbanne premier
+  semestre 2026 … ») → **remesure le 18/11**. 📌 **PRIORITÉ** : deux pages du
+  site sont écrites pour elle, et la place est vide de l'aveu du moteur.
+- **« honoraires agence immobilière Villeurbanne … »** : point zéro le **07/11**
+  → **21/11**. 📌 **La SERP la plus anormale du journal** : le contenu existe,
+  il est balisé (`OfferCatalog`), et il n'est pas vu.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
 **Angle du dernier run : CONTENU — la réécriture de `compromis-de-vente-delais`,
 dont les deux dernières sections n'avaient aucune source**
 (12/11 : **candidat contenu n°1 consommé**. 345 → **2 981 mots**, **0 → 6
@@ -14344,6 +14794,42 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-13 — Ce que le chantier du « 6 à 8 % » laisse ouvert
+
+**1. 🔴 LE `n` DVF DE 2025 EST PUBLIÉ EN DEUX VALEURS DIFFÉRENTES POUR LA MÊME
+POPULATION, ET C'EST MESURÉ.** `1 875` dans **10 emplacements**
+(`app/agence-immobiliere-villeurbanne` ×2, `app/estimation-immobiliere-villeurbanne`
+×4, `lib/blog.ts` ×4 au moins) contre `1 876` dans **2** (`lib/blog.ts:2211` et
+`:2861`). **Contextes comparés : c'est bien la même population** — « ventes
+d'appartements réellement signées à Villeurbanne en 2025 ». L'extraction
+reproduite le 12/11 rend **1 876**. 📌 **Donc `1 875` est très probablement une
+valeur d'une extraction plus ancienne**, et c'est `1 876` qui est juste.
+⚠️ **Mais ne pas patcher à l'aveugle** : le 10/11 la même source rendait
+`1 869`, et le 12/11 de nouveau `1 876`. **Recette imposée** : refaire
+l'extraction, reproduire les quatre chiffres de contrôle (n, 3 566,8 €/m²,
+195 000 €, 62 m²) **avant** de toucher à un seul des 12 emplacements, puis
+grepper les sommes dérivées (règle du 13/10). ✅ **L'arrondi `3 567 €/m²` publié
+partout n'est PAS en cause.**
+
+**2. 🟡 LES DEUX BARÈMES LOCAUX PUBLICS NE SONT PAS EXPLOITÉS, ET CE N'EST PAS À
+MOI DE TRANCHER.** Orpi CETRIM Villeurbanne publie **8 % TTC** sur l'ancien et
+**7 % TTC** dans le neuf (barème daté du 10/04/2025) ; Foncia Villeurbanne
+affiche **5,99 % + 3,48 % de GLI = 9,47 % TTC**. Ce sont des **documents que la
+loi oblige à publier**, donc vérifiables, et ils situeraient nos 6 % avec des
+chiffres réels au lieu d'une fourchette inventée. ⚠️ **Mais nommer un concurrent
+et son prix est de la publicité comparative** (encadrée, pas interdite) :
+**question à Tony, pas décision d'agent.** 📌 **Repli possible sans nommer
+personne** : publier la **méthode** de comparaison (taux TTC + frais fixes +
+options), ce que l'article fait déjà.
+
+**3. 🟡 LA NÉGOCIABILITÉ EST TENUE PAR DES NATIONAUX SUR LA TRANSACTION, PAS SUR
+LA GESTION.** Mesuré ce jour : mysweetimmo, francetransactions et seloger
+couvrent le sujet, mais le moteur relève lui-même que « cette mention vaut
+surtout pour la transaction ou la location, et elle est rare pour la gestion ».
+**L'hypothèse à tester le 27/11** : le créneau « gestion » suffit-il à faire
+remonter la page, ou faut-il une page dédiée ? **Ne rien réécrire sur un seul
+relevé.**
+
 ### 2026-11-12 — Ce que la réécriture du compromis laisse ouvert
 
 **1. ✅ RÉSOLUE — le `n` DVF de 1 875/1 876 contre 1 869.** L'hypothèse du 10/11
@@ -16108,6 +16594,37 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-13 — J'ai mesuré une parité JSON-LD sur une page servie par l'ANCIEN build, et c'est `EADDRINUSE` qui me l'a appris
+
+**🔴 L'erreur.** Après avoir ajouté une phrase à une réponse de FAQ de
+`/honoraires`, j'ai relancé `npm run build` puis `npm run start`, et mesuré la
+parité `FAQPage` : **6/6, verdict « conforme »**. **C'était faux.** Le serveur
+qui répondait était celui du build **précédent** : `pkill -f "next start"` avait
+rendu la main, mais le port 3000 était encore tenu au moment du `npm run start`,
+qui a échoué avec `EADDRINUSE` **dans un log que je n'ai pas lu**. Le processus
+lancé étant en arrière-plan, **aucune erreur n'est remontée dans le terminal**,
+et `curl` a répondu `200` sur du contenu périmé.
+
+**🔎 Ce qui l'a révélé.** Un contrôle complémentaire : `grep` de la phrase
+ajoutée dans le HTML servi → **0 occurrence**, alors que `grep` dans le fichier
+source → **1**. C'est cette contradiction fichier/rendu, et non le `200`, qui a
+fait ouvrir `start3.log`.
+
+**📌 La règle à garder.** Un `200` ne prouve pas que le serveur sert le build
+qu'on vient de produire. **Recette : après chaque relance, (1) lire le log de
+démarrage, (2) relancer sur un PORT LIBRE** (`PORT=3100 npm run start`) plutôt
+que de se battre avec un port occupé, **(3) `grep` dans le rendu une chaîne
+EXCLUSIVE à la modification du jour avant de croire un seul contrôle de
+parité.** La troisième est la seule qui ne coûte rien et détecte tout.
+⚠️ **Et le piège est silencieux par construction** : les deux builds servent des
+pages valides, donc tous les contrôles « structurels » (codes HTTP, types de
+JSON-LD, parité des FAQ inchangées) passent. **Seule une chaîne neuve échoue.**
+
+**Conséquence sur ce run** : la parité a été remesurée sur le port 3100, build
+du jour, et les quatre pages à FAQ sortent **6/6, 8/8, 6/6, 10/10**. La phrase
+ajoutée apparaît bien **deux fois** dans le HTML de `/honoraires` (texte visible
++ `FAQPage`), ce qui est la signature attendue d'une source unique.
 
 ### 2026-11-12 — J'ai écrit une « correction » de notre propre texte avant de l'avoir vérifiée, et c'est un balayage multiligne qui l'a arrêtée avant le commit
 
@@ -18609,6 +19126,46 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-13 — Méthode : sourcer un chiffre de marché en remontant au texte qui encadre son AFFICHAGE, et non à une autorité qu'on lui prête
+
+Pas de veille aujourd'hui (**vendredi** — elle se fait le lundi ; celle du 09/11
+reste la référence, **prochaine due le 16/11**). Trois méthodes réutilisables
+sont sorties du run.
+
+- 🔴 **QUAND UN CHIFFRE DE MARCHÉ EST INSOURÇABLE, CHERCHER LE TEXTE QUI ENCADRE
+  SA PUBLICATION PLUTÔT QU'UN TEXTE QUI LE FIXE.** Le « 6 à 8 % des loyers » n'a
+  pas de source et n'en aura pas : les honoraires de gestion sont libres. **Mais
+  leur affichage, lui, est réglementé** — et le texte d'affichage dit quelque
+  chose de bien plus fort que la fourchette : le prix publié est un **maximum**.
+  📌 **Recette : (1) constater qu'aucun texte ne fixe le montant, (2) chercher
+  l'obligation d'INFORMATION correspondante, (3) publier ce que cette obligation
+  donne au lecteur comme levier.** La faiblesse (« on ne peut pas sourcer ce
+  chiffre ») devient l'angle (« ce chiffre n'a pas à exister, exigez le
+  barème »).
+- 🔴 **UNE FOURCHETTE LARGEMENT ATTRIBUÉE À UNE AUTORITÉ N'EST PAS SOURCÉE POUR
+  AUTANT : VÉRIFIER CHEZ L'AUTORITÉ ELLE-MÊME, PAR RECHERCHE RESTREINTE AU
+  DOMAINE.** Le moteur attribue « 6 à 8 % HT » à l'ANIL — **mais via
+  `immojeune.com`**. Recherche restreinte à `allowed_domains: anil.org` :
+  **aucun taux de gestion en pourcentage sur le site de l'ANIL.** 📌 **Recette :
+  dès qu'un résultat cite « selon X », relancer la recherche avec
+  `allowed_domains: <domaine de X>` avant de reprendre l'attribution.** Une
+  attribution de seconde main est un faux sourçage, et c'est précisément ce que
+  le client a refusé.
+- 🟡 **LIRE UN ARRÊTÉ MODIFICATIF EN TROIS TEMPS, ET NE PAS SE CONTENTER DE SON
+  ARTICLE 1ᵉʳ.** L'arrêté du 26 janvier 2022 ne remplace qu'un mot
+  (« effectivement » → « maximums »), ce qui est illisible seul. **Recette :
+  (1) lire la version CONSOLIDÉE de l'article modifié et relever son
+  « en vigueur depuis », (2) lire l'arrêté modificatif pour savoir quel mot a
+  bougé et à quelle date, (3) lire la NOTICE de l'arrêté modificatif, qui donne
+  le MOTIF** — c'est là, et nulle part dans les articles, qu'on lit que le
+  changement vise à permettre la négociation à la baisse. **Le motif est la
+  partie citable ; les articles ne donnent que la lettre.**
+- ⚠️ **ET DISTINGUER « TRANCHE » DE « FOURCHETTE » DANS CE TEXTE.** L'article 2
+  III admet explicitement des **tranches de prix** (paliers, avec mention de leur
+  caractère cumulatif) ; c'est l'**ANIL** qui écrit que les **fourchettes** ne
+  sont pas admises. **Deux notions, deux sources : ne jamais prêter la seconde à
+  l'arrêté.**
 
 ### 2026-11-12 — Méthode : lire un renvoi de texte légal, et ne pas diagnostiquer la typographie sur un texte dé-balisé
 

@@ -335,8 +335,11 @@ export default function FaireGererPage() {
             </p>
             <Eyebrow className="mb-3">Ce que ça coûte</Eyebrow>
             <p className="text-[17px] leading-relaxed text-[#3d4347] mb-14 max-md:mb-10">
-              La plupart des agences répondent « entre 6 et 8 %, ça dépend » à la
-              question du prix de la gestion. Notre barème est public, et cette
+              « Ça dépend » est la réponse la plus courante à la question du prix
+              de la gestion. C&apos;est pourtant une prestation dont le tarif{" "}
+              <strong>maximum</strong> doit être affiché, toutes taxes comprises,
+              à l&apos;entrée de l&apos;agence comme en ligne — et qui, pour cette
+              raison même, se négocie. Notre barème est public, et cette
               page le traduit en euros sur un cas villeurbannais réel : un
               appartement de {SURFACE} m² — la surface médiane des appartements
               vendus dans la commune en {DVF_ANNEE}{" "}— loué au loyer médian

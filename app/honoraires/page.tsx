@@ -167,7 +167,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: "Pourquoi une agence doit-elle afficher son barème, et les montants sont-ils TTC ?",
-    a: "Toutes les lignes du barème sont exprimées TTC : c'est le montant réellement facturé, sans supplément. L'affichage n'est pas un geste commercial mais une obligation : l'arrêté du 10 janvier 2017, modifié le 26 janvier 2022, impose à tout professionnel de l'immobilier de publier ses prix maximum toutes taxes comprises, en vitrine comme sur son site internet. Concrètement, cela permet de comparer deux agences sur le même terrain avant même de les rencontrer.",
+    a: "Toutes les lignes du barème sont exprimées TTC : c'est le montant réellement facturé, sans supplément. L'affichage n'est pas un geste commercial mais une obligation : l'arrêté du 10 janvier 2017, modifié le 26 janvier 2022, impose à tout professionnel de l'immobilier de publier ses prix maximum toutes taxes comprises, en vitrine comme sur son site internet. Le mot « maximum » n’est pas neutre : un barème affiché est un plafond, pas un tarif intangible, et il peut donc être négocié à la baisse. Concrètement, cela permet de comparer deux agences sur le même terrain avant même de les rencontrer.",
   },
 ];
 
@@ -408,9 +408,12 @@ export default function HonorairesPage() {
                 <Link href="/blog/vendre-sans-agence" className={A}>
                   vendre sans agence à Villeurbanne
                 </Link>
-                . En gestion, les 6 % ci-dessus sont le bas de la fourchette de{" "}
-                <strong>6 à 8 % TTC</strong> que facturent les agences, et ce
-                que ce pourcentage couvre — ou ne couvre pas — est détaillé dans{" "}
+                . En gestion, aucun barème national ne fixe le taux : ce qui est
+                réglementé, c&apos;est son <strong>affichage</strong>, et le prix
+                affiché par une agence est un <strong>maximum</strong>,
+                négociable à la baisse. Ce que les 6 % ci-dessus couvrent — ou
+                ne couvrent pas — et le texte qui impose cet affichage sont
+                détaillés dans{" "}
                 <Link href="/blog/cout-gestion-locative" className={A}>
                   ce que coûte vraiment une gestion locative
                 </Link>
