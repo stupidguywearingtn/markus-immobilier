@@ -5383,6 +5383,18 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-13 (2e déclenchement, 06h43 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (gestion locative, `03d10cd`)
+
+- **Déclenchement en double** : la correction « 6 à 8 % des loyers » (`03d10cd`) est servie
+  (`/blog/cout-gestion-locative` 200, « 13 novembre 2026 » dans le HTML ; `/honoraires`,
+  `/faire-gerer`, `/agence-immobiliere-villeurbanne` 200). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `ls-remote main` = `ae0f611`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, toutes avec une route dans `app/` ou un slug du code → **aucune
+  page de l'éditeur**. `lastmod` du 13/11 = notre article seul. `<title>` de la home =
+  `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-13 (vendredi) — Le « 6 à 8 % des loyers » que le site republiait n'avait pas de source, et le texte qui encadre les barèmes dit l'inverse de ce que la fourchette suggère
 
 **Angle : NON-CONTENU** (alternance respectée : 10/11 contenu → 11/11
