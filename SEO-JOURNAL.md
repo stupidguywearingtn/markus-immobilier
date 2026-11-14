@@ -30,6 +30,28 @@
   **Quarante-neuvième constat identique** (21/09 → 14/11).
 - ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
   Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-deuxième confirmation.**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — QUATRIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 14/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-mhvnky` ». **Le compte annoncé (2) correspond
+  exactement aux deux commits du run** (`bf9de4a` + `47aa31a`), ce qui rend le
+  message crédible — c'est le même piège de vraisemblance qu'au 12/11.
+  Vérifié après les deux push, dans l'ordre imposé :
+  `git rev-parse HEAD` = **`47aa31a`**,
+  `git ls-remote origin refs/heads/main` = **`47aa31a`** (identiques),
+  `git rev-list --count origin/main..HEAD` = **0**,
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-mhvnky` rend
+  **RIEN**, et l'arbre de travail est **propre**.
+  🔴 **NE PAS pousser la branche du conteneur pour faire taire le hook**
+  (consigne client : commit direct sur `main`). **Le seul contrôle qui vaut
+  reste `ls-remote` + `rev-list --count origin/main..HEAD`** — et jamais
+  `git branch -a`.
+  📌 **Quatre occurrences d'affilée : c'est désormais le comportement normal du
+  hook en fin de run, et non un incident.** Le traiter comme du bruit connu :
+  deux commandes de vérification, une ligne au journal, rien à changer au flux.
+  ⚠️ **Et ne pas se laisser rassurer par un compte qui tombe juste** : le hook
+  compte correctement les commits du run, il se trompe seulement sur la branche
+  à laquelle il les compare.
 - ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles de blog —
   identique du 07/11 au 14/11.** Aucune page ajoutée ni retirée. `curl -sL`
   (piège `308`). Le `lastmod` n'a **PAS** servi à conclure sur l'activité du
