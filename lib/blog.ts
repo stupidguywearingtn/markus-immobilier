@@ -2046,28 +2046,123 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "home-staging-vendre-plus-cher",
-    title: "Home staging : 8 gestes qui font vendre plus cher",
+    title: "Home staging : est-ce que ça fait vraiment vendre plus cher ?",
     metaDescription:
-      "Le home staging valorise votre bien pour vendre plus vite et plus cher. Découvrez 8 gestes simples et peu coûteux.",
-    h1: "Home staging : 8 gestes qui font vendre plus cher",
+      "Aucune étude publiée en France n'établit le gain de prix d'un home staging. Ce que la FNAIM a réellement publié, ce que mesure la seule enquête à méthode connue, et à partir de quel gain la dépense est remboursée au prix médian de Villeurbanne.",
+    h1: "Home staging : est-ce que ça fait vraiment vendre plus cher ?",
     excerpt:
-      "Mettre en valeur un bien pour que l'acheteur s'y projette, sans gros travaux. Les 8 gestes essentiels.",
+      "Le « +7 % » attribué à une étude FNAIM de janvier 2024 sur 1 820 transactions ne se retrouve pas chez la FNAIM : son seul contenu sur le sujet est une note du 15 avril 2014, sans méthode et sans aucun pourcentage de gain de prix. La seule enquête qui publie sa méthode est américaine, et 12 % de ses répondants ne constatent aucun effet. Le calcul de rentabilité au prix médian villeurbannais, et les huit gestes qui restent utiles.",
     date: "2026-05-14",
+    updated: "2026-11-14",
     internalHref: "/vendre",
     internalLabel: "Préparer la vente de mon bien",
     blocks: [
-      { type: "p", text: "**Le home staging consiste à mettre en valeur un bien pour que l'acheteur s'y projette** — sans gros travaux, juste de la présentation. Un bien « prêt à vivre » se vend plus vite et souvent plus cher." },
-      { type: "h2", text: "Les 8 gestes essentiels" },
-      { type: "ol", items: [
-        "**Désencombrer** : retirer le superflu pour agrandir visuellement.",
-        "**Dépersonnaliser** : enlever photos et objets trop personnels.",
-        "**Réparer** les petits défauts (poignée, joint, peinture écaillée).",
-        "**Neutraliser les couleurs** : des tons clairs et neutres.",
-        "**Maximiser la lumière** : rideaux ouverts, ampoules puissantes.",
-        "**Ranger et nettoyer** à fond, surtout cuisine et salle de bain.",
-        "**Neutraliser les odeurs** (aération, pas de tabac).",
-        "**Soigner les photos** : c'est la première impression en ligne.",
-      ] },
+      { type: "p", text: "**Aucune étude publiée en France n'établit qu'un home staging fait vendre plus cher, et le « +7 % » que reprennent la plupart des pages sur le sujet ne se retrouve nulle part chez la fédération à laquelle il est attribué.** Ce qui est documenté, c'est un effet sur le délai de vente, et un effet de prix nettement plus modeste mesuré aux États-Unis : 29 % des agents interrogés par la National Association of Realtors en 2025 déclarent une hausse de 1 à 10 % du montant proposé par les acheteurs, et 12 % des agents d'acheteurs ne constatent aucun effet." },
+      { type: "p", text: "Cette page donne les sources que nous avons pu lire **à la source**, et elles sont deux : une note de revue de presse de la FNAIM du **15 avril 2014**, et le rapport **« 2025 Profile of Home Staging »** de la NAR du **6 mai 2025**. La première ne contient aucun pourcentage de gain de prix ; la seconde publie sa méthode. Vient ensuite le seul calcul qui tranche pour un vendeur villeurbannais : à partir de quel gain la prestation est remboursée. Les huit gestes concrets sont en fin de page." },
+
+      { type: "h2", text: "Le home staging fait-il vraiment vendre plus cher ?" },
+      { type: "p", text: "**Rien ne permet de l'affirmer avec un chiffre, en France.** Aucune étude française publiée avec sa méthode ne mesure l'écart de prix entre un bien mis en scène et le même bien vendu en l'état. Ce qui est mieux établi, c'est l'effet sur le **délai de vente** et sur la **marge de négociation** : deux grandeurs que l'on peut observer sans avoir besoin de vendre deux fois le même logement." },
+      { type: "p", text: "C'est la limite de fond du sujet, et elle explique l'absence de chiffre solide : un logement ne se vend qu'une fois, dans un marché donné. L'écart de prix attribué à la mise en scène ne s'observe donc jamais directement — il se déduit toujours d'une comparaison entre des biens différents, ou d'une comparaison entre le prix obtenu et une estimation de départ, qui est elle-même une opinion." },
+      { type: "p", text: "C'est aussi pourquoi le titre de cette page a changé en novembre 2026. Elle s'intitulait « 8 gestes qui font vendre plus cher » : c'était une promesse de résultat que nous ne savons pas sourcer, et nous préférons la retirer que la laisser en l'air." },
+
+      { type: "h2", text: "D'où vient le chiffre de « +7 % » que l'on lit partout ?" },
+      { type: "p", text: "**D'une étude attribuée à la FNAIM, datée de janvier 2024 et portant sur 1 820 transactions — que nous n'avons pas pu retrouver chez la FNAIM.** Le chiffre circule sous plusieurs formes incompatibles entre elles, toutes rattachées à la même étude : « environ +7 % au-dessus de l'estimation initiale contre +1,2 % en l'état », mais aussi « 8 à 12 % plus cher et 30 % plus vite », ou encore « une hausse de valeur de 5 à 15 % »." },
+      { type: "p", text: "Quand une même source est créditée de trois fourchettes différentes, c'est en général que personne ne l'a lue. Recherche faite sur le site de la fédération, **le seul contenu de la FNAIM consacré au home staging que nous ayons trouvé est une note de revue de presse du 15 avril 2014**, et elle ne contient aucun pourcentage de gain de prix (son contenu exact est détaillé au paragraphe suivant)." },
+      { type: "p", text: "Nous ne reprenons donc pas le « +7 % », et nous conseillons de se méfier de toute page qui l'avance sans lien vers le document d'origine. C'est le même réflexe que pour les prix au m² : nous avons déjà montré, chiffres en main, que [les prix au m² affichés en ligne pour Villeurbanne dépassent de 16 à 45 % les prix réellement signés](/blog/investir-locatif-lyon). Un chiffre sans source vérifiable n'est pas une donnée, c'est un argument commercial." },
+
+      { type: "h2", text: "Qu'a réellement publié la FNAIM sur le home staging ?" },
+      { type: "p", text: "**Trois éléments, dans une note de revue de presse datée du 15 avril 2014 : un propriétaire qui recourt au home staging « vend son bien en moins d'un mois, contre 127 jours dans le cadre d'une vente classique », « le coût du home staging varie entre 1 % et 4 % du prix de vente », et ce coût reste selon elle « moins onéreux qu'une négociation ».** La note ne donne ni taille d'échantillon, ni méthode, ni période d'observation." },
+      { type: "p", text: "Deux précautions s'imposent avant de s'en servir. D'abord, ces chiffres ont **douze ans** : le délai de vente moyen a varié plusieurs fois entre 2014 et 2026, et un ordre de grandeur de délai vieillit vite. Ensuite — et c'est l'erreur de lecture la plus répandue — le « 1 % à 4 % » est un **coût**, pas un gain. Plusieurs pages le présentent comme une hausse de prix, ce qui inverse le sens de la phrase." },
+      { type: "p", text: "Paradoxalement, c'est pourtant le seul des trois chiffres qui serve directement à décider, parce qu'il donne le ticket d'entrée. C'est celui que nous reprenons dans le calcul ci-dessous, en le datant." },
+
+      { type: "h2", text: "Que dit la seule enquête sur le sujet dont la méthode est publiée ?" },
+      { type: "p", text: "**Le rapport « 2025 Profile of Home Staging » de la National Association of Realtors, publié le 6 mai 2025, est à notre connaissance la seule enquête sur le home staging qui publie sa méthode. Elle est américaine, et son résultat sur le prix est beaucoup plus modeste que ce qui circule en France : 29 % des agents déclarent une hausse de 1 à 10 % du montant proposé par les acheteurs.** Du côté des agents d'acheteurs, 17 % constatent une hausse de 1 à 5 %, et **12 % ne constatent aucun effet**." },
+      { type: "p", text: "La méthode est donnée sans détour, et elle invite à la prudence : en février 2025, la NAR a sollicité **49 806 agents** tirés au hasard et a retenu **1 266 réponses exploitables**, soit un taux de réponse de **2,5 %**, pour une marge d'erreur de ± 2,75 % à 95 % de confiance. Il s'agit donc d'une enquête d'**opinion de professionnels** : les agents rapportent ce qu'ils ont observé, pas un écart de prix calculé sur des transactions appariées." },
+      { type: "p", text: "Deux limites à garder en tête avant de transposer ces chiffres à Villeurbanne : le marché américain pratique le home staging bien plus systématiquement que le marché français, et il porte majoritairement sur des maisons individuelles. Les résultats sur le **délai** et sur la **projection de l'acheteur** se transposent plus volontiers que ceux sur le prix." },
+      {
+        type: "table",
+        caption: "Ce que mesure réellement le rapport 2025 Profile of Home Staging",
+        source:
+          "National Association of Realtors, « 2025 Profile of Home Staging », publié le 6 mai 2025. Enquête menée en février 2025 : 49 806 agents sollicités, 1 266 réponses exploitables (taux de réponse 2,5 %), marge d'erreur ± 2,75 % à 95 % de confiance. Relevé le 14 novembre 2026.",
+        headers: ["Ce qui est observé", "Résultat publié"],
+        rows: [
+          ["Hausse du montant proposé par les acheteurs", "1 à 10 %, selon 29 % des agents"],
+          ["Hausse constatée par les agents d'acheteurs", "1 à 5 %, selon 17 % d'entre eux"],
+          ["**Aucun effet** sur le regard de l'acheteur", "**12 % des agents d'acheteurs**"],
+          ["Effet sur le délai de vente", "49 % des agents de vendeurs constatent une réduction (30 % légère, 19 % forte)"],
+          ["Projection de l'acheteur dans le logement", "Facilitée, selon 83 % des agents d'acheteurs"],
+          ["Visite d'un bien déjà vu en ligne", "31 % des agents d'acheteurs notent des acheteurs plus enclins à visiter"],
+          ["Coût médian d'une prestation", "1 500 $ (500 $ quand l'agent la réalise lui-même)"],
+        ],
+      },
+
+      { type: "h2", text: "À partir de quel gain un home staging est-il remboursé à Villeurbanne ?" },
+      { type: "p", text: "**Au prix médian d'un appartement villeurbannais — 195 000 € en 2025 — la fourchette de coût de 1 % à 4 % publiée par la FNAIM représente 1 950 € à 7 800 €. Il faut donc que la mise en scène fasse gagner au moins 1 % du prix pour rembourser la prestation la moins chère, et 4 % pour rembourser la plus chère.** C'est le seul calcul qui tranche, et il se fait avant de dépenser le premier euro." },
+      { type: "p", text: "Le tableau ci-dessous convertit chaque point de pourcentage en euros sur ce prix médian, puis retranche les deux bornes de coût. Il n'a pas de ligne « +0 % » parce qu'elle se lit toute seule : sans effet sur le prix, vous perdez le coût de la prestation — et c'est le cas que rapportent 12 % des agents d'acheteurs interrogés par la NAR." },
+      {
+        type: "table",
+        caption: "Ce que vaut chaque point de pourcentage sur un appartement villeurbannais au prix médian",
+        source:
+          "Calcul sur le prix médian d'un appartement vendu à Villeurbanne en 2025 (195 000 €), médiane DVF recalculée par Markus Immobilier. Bornes de coût : 1 % et 4 % du prix de vente, fourchette publiée par la FNAIM le 15 avril 2014.",
+        headers: ["Gain de prix", "En euros sur 195 000 €", "Reste après un coût de 1 950 € (1 %)", "Reste après un coût de 7 800 € (4 %)"],
+        rows: [
+          ["+1 %", "1 950 €", "0 €", "− 5 850 €"],
+          ["+2 %", "3 900 €", "+1 950 €", "− 3 900 €"],
+          ["+3 %", "5 850 €", "+3 900 €", "− 1 950 €"],
+          ["+5 %", "9 750 €", "+7 800 €", "+1 950 €"],
+          ["+10 %", "19 500 €", "+17 550 €", "+11 700 €"],
+        ],
+      },
+      { type: "p", text: "Et le calcul change avec la typologie, parce que le pourcentage porte sur un prix, pas sur une surface. Sur un **T1**, dont le prix médian villeurbannais est de **115 000 €**, la même fourchette de coût représente 1 150 € à 4 600 € — mais chaque point de pourcentage ne vaut plus que **1 150 €**. Sur un **T4** à **255 000 €**, le point vaut **2 550 €**, et un même devis de 3 000 € se rembourse donc plus facilement. **Plus le bien est petit, plus une prestation payante est difficile à rentabiliser**, et plus les gestes gratuits comptent." },
+
+      { type: "h2", text: "Quels gestes de home staging comptent sur un appartement à Villeurbanne ?" },
+      { type: "p", text: "**Ceux qui portent sur la lumière, le volume perçu, le rangement et les photos — parce qu'ici, l'immense majorité des logements vendus sont des appartements.** Sur les ventes de 2025, [95,7 % des logements vendus à Villeurbanne étaient des appartements](/blog/compromis-de-vente-delais), et la surface médiane vendue est de **62 m²**. Or une bonne moitié des conseils de home staging que l'on trouve en ligne portent sur ce qu'un appartement n'a pas : façade, allée, portail, jardin, boîte aux lettres, numéro de rue." },
+      { type: "p", text: "Les huit gestes ci-dessous sont donc triés pour un appartement, et ils sont tous réalisables sans prestataire. Trois d'entre eux s'appuient sur des constats de l'enquête NAR citée plus haut : les pièces à traiter en priorité, la projection de l'acheteur et le poids des photos en ligne." },
+      {
+        type: "steps",
+        name: "Préparer un appartement avant les photos et les visites",
+        items: [
+          { name: "Désencombrer, pièce par pièce", text: "Sortez tout ce qui ne sert pas chaque jour : l'objectif n'est pas de ranger, c'est de rendre le volume lisible. Dans un 62 m², c'est le levier le plus efficace, et il est gratuit. Les surfaces planes — table basse, plan de travail, rebord de fenêtre, dessus de commode — sont celles qui se voient le plus sur une photo." },
+          { name: "Dépersonnaliser sans vider", text: "Retirez photos de famille, diplômes, collections et objets personnels. L'enquête NAR relève que 83 % des agents d'acheteurs jugent la projection de l'acheteur facilitée par la mise en scène : c'est exactement ce que la dépersonnalisation sert à obtenir. Un logement entièrement vide, à l'inverse, se lit mal — gardez de quoi donner l'échelle des pièces." },
+          { name: "Traiter en priorité le séjour, la chambre principale et la cuisine", text: "Ce sont les trois pièces que le rapport NAR 2025 identifie comme les plus souvent mises en scène, les chambres d'enfants et d'amis étant les moins prioritaires. Si votre temps est limité, c'est l'ordre à suivre." },
+          { name: "Réparer les petits défauts visibles", text: "Poignée qui tourne dans le vide, joint de salle de bain noirci, interrupteur cassé, peinture écaillée, chasse d'eau qui coule. Pris séparément ce sont des détails ; accumulés, ils donnent l'impression d'un bien mal entretenu — et un argument de négociation gratuit." },
+          { name: "Neutraliser les couleurs fortes", text: "Un mur rouge ou une pièce sombre fait travailler l'acheteur contre vous : il calcule des travaux. Des tons clairs et neutres sont le choix par défaut, et un pot de peinture reste la dépense la moins chère de cette liste." },
+          { name: "Maximiser la lumière", text: "Rideaux et volets ouverts, vitres propres, ampoules de même température de couleur dans une même pièce, et une lampe d'appoint dans les angles sombres. Sur un appartement, la lumière remplace ce que la vue sur jardin apporte à une maison." },
+          { name: "Nettoyer à fond, et neutraliser les odeurs", text: "Cuisine et salle de bain d'abord : ce sont les deux pièces où la saleté se lit immédiatement. Pour les odeurs, aérez longuement plutôt que de parfumer — un désodorisant fort est lu comme une tentative de masquer quelque chose. Tabac et animaux demandent un traitement en amont, pas le jour de la visite." },
+          { name: "Soigner les photos avant la mise en ligne", text: "C'est la première impression, et elle précède la visite : le rapport NAR 2025 note que 31 % des agents d'acheteurs voient des acheteurs plus enclins à visiter un bien qu'ils ont déjà vu en ligne. Photographiez de jour, depuis l'angle de la pièce, à hauteur de poitrine, sans grand-angle déformant — un volume exagéré sur la photo se paie en déception à la visite." },
+        ],
+      },
+
+      { type: "h2", text: "Faut-il faire le home staging avant ou après avoir fixé le prix ?" },
+      { type: "p", text: "**Après avoir vérifié le prix, toujours. Aucune mise en scène ne rattrape un bien affiché au-dessus de son marché :** la seule enquête à méthode publiée mesure un effet de prix de l'ordre de quelques points, alors qu'un prix de départ surévalué de 10 ou 15 % est d'un tout autre ordre de grandeur. Dépenser 3 000 € de présentation pour corriger une erreur de prix de 25 000 € n'a pas de sens." },
+      { type: "p", text: "À Villeurbanne, le prix médian d'un appartement vendu en 2025 est de **195 000 €** pour **62 m²**, soit **3 567 €/m²** — mais la médiane va de **2 738 €/m² à Cyprian – Les Brosses** à **3 923 €/m² à Ferrandière – Maisons-Neuves**, soit **43 % d'écart** entre les deux extrêmes de la commune. [Les chiffres par quartier](/blog/prix-immobilier-villeurbanne-2026) sont recalculés sur les ventes réellement signées, et notre [outil d'estimation](/estimation) part des ventes proches de votre adresse en moins de deux minutes." },
+      { type: "p", text: "L'ordre qui fonctionne est donc : vérifier le prix, préparer le bien, photographier, publier. Les étapes de la vente elle-même sont détaillées dans [vendre son appartement à Lyon](/blog/vendre-appartement-lyon-etapes), et la question du mandat dans [mandat simple ou exclusif](/blog/mandat-simple-ou-exclusif)." },
+    ],
+    faq: [
+      {
+        q: "Le home staging fait-il vendre plus cher ?",
+        a: "Aucune étude publiée en France ne l'établit avec un chiffre vérifiable. La seule enquête sur le sujet qui publie sa méthode est le rapport « 2025 Profile of Home Staging » de la National Association of Realtors, publié le 6 mai 2025 : 29 % des agents y déclarent une hausse de 1 à 10 % du montant proposé par les acheteurs, 17 % des agents d'acheteurs une hausse de 1 à 5 %, et 12 % d'entre eux aucun effet. C'est une enquête d'opinion de professionnels américains, pas une mesure de prix sur des transactions appariées.",
+      },
+      {
+        q: "D'où vient le chiffre de +7 % attribué à une étude FNAIM ?",
+        a: "Nous ne l'avons pas retrouvé chez la FNAIM. Le chiffre est présenté par plusieurs sites comme venant d'une étude de janvier 2024 portant sur 1 820 transactions, mais il circule sous des formes incompatibles entre elles (+7 % contre +1,2 %, « 8 à 12 % », « 5 à 15 % ») et aucune page ne renvoie au document d'origine. Recherche faite sur le site de la fédération, le seul contenu de la FNAIM consacré au home staging que nous ayons trouvé est une note de revue de presse du 15 avril 2014, qui ne contient aucun pourcentage de gain de prix.",
+      },
+      {
+        q: "Combien coûte un home staging ?",
+        a: "La seule fourchette française que nous ayons pu lire à la source est celle de la FNAIM, publiée le 15 avril 2014 : entre 1 % et 4 % du prix de vente. Au prix médian d'un appartement villeurbannais, 195 000 € en 2025, cela représente 1 950 € à 7 800 €. À titre de comparaison, le rapport NAR 2025 donne un coût médian de 1 500 $ pour une prestation, et 500 $ quand l'agent réalise la mise en scène lui-même.",
+      },
+      {
+        q: "Le home staging fait-il vendre plus vite ?",
+        a: "C'est l'effet le mieux documenté des deux. Le rapport NAR 2025 indique que 49 % des agents de vendeurs constatent une réduction du délai de vente, dont 30 % une réduction légère et 19 % une réduction forte. La FNAIM, dans sa note du 15 avril 2014, avançait une vente « en moins d'un mois, contre 127 jours dans le cadre d'une vente classique », mais sans publier ni méthode ni taille d'échantillon, et ce chiffre a aujourd'hui douze ans.",
+      },
+      {
+        q: "Quels gestes faire en priorité sur un appartement ?",
+        a: "Désencombrer pour rendre le volume lisible, puis traiter le séjour, la chambre principale et la cuisine — les trois pièces que le rapport NAR 2025 identifie comme les plus souvent mises en scène. Viennent ensuite la lumière, la réparation des petits défauts visibles et les photos. À Villeurbanne, où 95,7 % des logements vendus en 2025 étaient des appartements pour une surface médiane de 62 m², les conseils portant sur la façade, l'allée ou le jardin ne s'appliquent pas.",
+      },
+      {
+        q: "Faut-il faire le home staging avant ou après avoir fixé le prix ?",
+        a: "Après avoir vérifié le prix. L'effet de prix mesuré par la seule enquête à méthode publiée se compte en quelques points, alors qu'une surévaluation de départ se compte souvent en dizaines de milliers d'euros : la mise en scène ne corrige pas une erreur de prix. À Villeurbanne, la médiane d'un appartement va de 2 738 €/m² à Cyprian – Les Brosses à 3 923 €/m² à Ferrandière – Maisons-Neuves, soit 43 % d'écart : le quartier pèse davantage que la présentation.",
+      },
     ],
   },
   {
