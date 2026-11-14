@@ -14,6 +14,159 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-14 (samedi)**
+
+- ✅ **LE RUN A EU LIEU — NEUVIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 14/11.
+  **Un seul manque sur 78 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN ÉCART DE `main`, ET LE CONTRÔLE DU 02/11 A ÉTÉ FAIT AVANT TOUT
+  `fetch`.** `HEAD` de départ = **`4def279`**, `git ls-remote origin
+  refs/heads/main` = **`4def279`** : identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-mhvnky`**, pas sur `main`.
+  **Quatorzième constat consécutif**, nom différent chaque fois.
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-mhvnky` rend **RIEN**.
+  Poussé en `git push origin HEAD:main`, vérifié après coup :
+  `ls-remote origin refs/heads/main` = **`bf9de4a`** = `HEAD`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Quarante-neuvième constat identique** (21/09 → 14/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-deuxième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles de blog —
+  identique du 07/11 au 14/11.** Aucune page ajoutée ni retirée. `curl -sL`
+  (piège `308`). Le `lastmod` n'a **PAS** servi à conclure sur l'activité du
+  client. 📌 **Et le sitemap local ne vaut pas le sitemap de production sur ce
+  point** : le rendu local rend **55 URL**, parce que les annonces viennent de
+  la base (**4 en local contre 7 en ligne**). **Les 30 articles de blog, eux,
+  sont identiques des deux côtés** — c'est ce comptage-là qui prouve qu'aucune
+  page n'a été ajoutée ni perdue, pas le total.
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée**
+  (11/11 non-contenu → 12/11 contenu → 13/11 non-contenu → **14/11 contenu**),
+  **et c'est le candidat contenu n°1 du backlog qui a été consommé** —
+  `home-staging-vendre-plus-cher`, inscrit le 11/11 et laissé en place
+  volontairement deux runs de suite. **111 → ~2 400 mots.**
+- 🔴 **LE CHIFFRE QUE TOUT LE SUJET RÉPÈTE N'EXISTE PAS CHEZ CELUI À QUI ON
+  L'ATTRIBUE — DEUXIÈME FOIS EN DEUX RUNS, ET C'EST DÉSORMAIS UN MOTIF.**
+  Le « **+7 %**, étude FNAIM de **janvier 2024** sur **1 820 transactions** »
+  est le chiffre de référence de toutes les pages du sujet. **Recherche
+  restreinte à `fnaim.fr` : il n'y est pas.** Il circule sous **trois
+  fourchettes incompatibles entre elles** — « +7 % contre +1,2 % en l'état »,
+  « 8 à 12 % plus cher et 30 % plus vite », « hausse de valeur de 5 à 15 % » —
+  **toutes créditées à la même étude**, et aucune page ne renvoie au document
+  d'origine. 📌 **C'est exactement le motif du « 6 à 8 % des loyers » du
+  13/11** (un range attribué à l'ANIL via `immojeune.com`, absent de
+  `anil.org`). **Deux occurrences d'affilée : en faire une étape de méthode,
+  pas une découverte.**
+- 🆕 **ET LE SEUL CONTENU RÉEL DE LA FNAIM SUR LE SUJET A DOUZE ANS, N'A AUCUNE
+  MÉTHODE, ET SON CHIFFRE EST UN COÛT QUE LES PAGES LISENT COMME UN GAIN.**
+  `fnaim.fr/actualite/280/4293-une-donnee-de-la-fnaim-sur-le-home-staging.htm`,
+  **revue de presse du 15 avril 2014**, lu à la source le 14/11/2026 : vente
+  « en moins d'un mois, contre **127 jours** dans le cadre d'une vente
+  classique », « le coût du home staging varie entre **1 % et 4 % du prix de
+  vente** », et ce coût est « moins onéreux qu'une négociation ». **Ni
+  échantillon, ni méthode, ni période.** 🔴 **Le « 1 à 4 % » est un COÛT** :
+  plusieurs pages du sujet le présentent comme une hausse de prix, **ce qui
+  inverse le sens de la phrase**. 📌 **Et le « 127 jours » que la première SERP
+  attribue au réseau Avéo est en réalité un chiffre FNAIM de 2014** — une
+  paternité de plus qui se perd en circulant.
+- 🆕 **LA SEULE ENQUÊTE DU SUJET QUI PUBLIE SA MÉTHODE EST AMÉRICAINE, ET SON
+  EFFET PRIX EST BIEN PLUS MODESTE QUE CE QUI CIRCULE EN FRANCE.** NAR,
+  « **2025 Profile of Home Staging** », **publié le 6 mai 2025**, lu dans le
+  communiqué de la NAR le 14/11/2026 : **1 à 10 % de hausse du montant proposé
+  selon 29 % des agents**, **1 à 5 % selon 17 % des agents d'acheteurs**, et
+  **AUCUN effet pour 12 % d'entre eux** ; **49 % des agents de vendeurs**
+  constatent une réduction du délai (30 % légère, 19 % forte) ; **83 %**
+  jugent la projection de l'acheteur facilitée ; coût médian **1 500 $**
+  (500 $ quand l'agent la réalise lui-même). **Méthode publiée** : février
+  2025, **49 806 agents sollicités**, **1 266 réponses exploitables**, **taux
+  de réponse 2,5 %**, marge d'erreur **± 2,75 %** à 95 %. ⚠️ **C'est une
+  enquête d'OPINION de professionnels, pas une mesure sur transactions
+  appariées** — écrit tel quel dans l'article.
+  ⚠️ **La page de présentation du rapport sur `nar.realtor` est muette sur les
+  chiffres** (elle ne donne que les réponses des agents d'acheteurs) : **c'est
+  le communiqué de presse qui porte les résultats et la méthode.** Deux
+  lectures ont été nécessaires.
+  ⚠️ **ET UNE DIVERGENCE INTERNE À LA NAR EST SIGNALÉE** : son « Monthly
+  Research Update » de mai 2025 inverse les pourcentages des agents
+  d'acheteurs (60 % / 26 %) par rapport au communiqué. **Le communiqué a été
+  retenu** ; aucun de ces deux chiffres n'est publié dans l'article.
+- 🆕 **DONNÉE PROPRE AU CLIENT PRODUITE, ET ELLE N'EXISTE NULLE PART AILLEURS
+  SUR CE SUJET : LE SEUIL DE RENTABILITÉ D'UN HOME STAGING AU PRIX MÉDIAN
+  VILLEURBANNAIS.** 1 % à 4 % de **195 000 €** = **1 950 € à 7 800 €**, donc
+  le gain doit atteindre **entre +1 % et +4 %** pour seulement rembourser la
+  prestation. Tableau de conversion point par point (+1 % = 1 950 €, +10 % =
+  19 500 €) avec le reste après chacune des deux bornes de coût, et
+  déclinaison par typologie : **T1 à 115 000 € → le point vaut 1 150 €**,
+  **T4 à 255 000 € → 2 550 €**. **Plus le bien est petit, plus une prestation
+  payante est difficile à rentabiliser.** Les 16 valeurs du tableau ont été
+  recalculées à l'euro depuis `lib/quartiers.ts`.
+- ✅ **AUCUN NOUVEAU CHIFFRE DVF N'A ÉTÉ INTRODUIT, ET C'EST DÉLIBÉRÉ.** Les
+  seuls chiffres locaux de l'article viennent de `lib/quartiers.ts`
+  (**195 000 €**, **62 m²**, **3 567 €/m²**, **2 738** et **3 923 €/m²**,
+  typologies **115 000 / 255 000 €**) ou d'un renvoi interne pour le **95,7 %**
+  d'appartements. **Le `n` n'est cité nulle part**, pour ne pas trancher au
+  passage le conflit `1 875` / `1 876` du backlog.
+- 🟢 **ET CE CONFLIT EST PROBABLEMENT RÉSOLU SANS AVOIR ÉTÉ TOUCHÉ — À
+  VÉRIFIER AVANT DE PATCHER QUOI QUE CE SOIT.** `lib/blog.ts` (article
+  `prix-immobilier-villeurbanne-2026`) **documente déjà deux chemins
+  d'extraction** : « sur l'année 2025, les deux chemins donnent **1 896**
+  ventes contre **1 875** », le fichier brut de la DGFiP conservant les ventes
+  que le fichier géolocalisé écarte faute d'adresse exploitable. **Le `1 875`
+  n'est donc très probablement pas une valeur périmée mais le compte du
+  fichier géolocalisé**, celui qui porte les médianes du site ; le `1 876` de
+  `compromis-de-vente-delais` vient d'une extraction au filtre différent, qui
+  publie ses critères. 🔴 **Le candidat non-contenu n°1 doit donc être
+  REQUALIFIÉ avant tout patch** — voir le backlog.
+- 🟡 **UNE REQUÊTE COMMERCIALE REMESURÉE, LA QUATRIÈME DE LA ROTATION :
+  `vendre appartement Villeurbanne`, SITE ABSENT — 5ᵉ RELEVÉ** (13, 20, 27/10,
+  10/11, 14/11). **9 résultats, aucun n'est le site**, et la SERP a changé de
+  nature : **elle est redevenue purement transactionnelle**, sans aucune page
+  éditoriale. etreproprio, seloger, orpi, leboncoin ×2, pap, guy-hoquet
+  (`villeurbanne-zola`), paruvendu, decultieux-immobilier. 🆕 **Quatre
+  nouveaux venus** : `etreproprio.com`, `paruvendu.fr`,
+  `decultieux-immobilier.com`, `villeurbanne-zola.guy-hoquet.com`.
+  ⚠️ **Et le « laforet — Villeurbanne en 2024 », périmé, qui tenait une place
+  sur les quatre relevés précédents, a DISPARU de celui-ci** — comme les trois
+  autres pages éditoriales. **L'ouverture de la SERP à l'éditorial, confirmée
+  quatre fois, ne l'est PAS cette fois : à resurveiller avant d'en conclure
+  quoi que ce soit.** 📌 **Et la famille « réserve du moteur » se reproduit** :
+  PAP y publie **3 623 €/m²** et le moteur note de lui-même « la page n'indique
+  pas de date, donc vérifiez-la ». **Prochaine remesure : 21/11.**
+- 🟡 **UNE SERP DE SUJET MESURÉE AVANT D'ÉCRIRE (méthode du 08/11) : SITE
+  ABSENT.** « home staging vendre plus cher chiffres étude combien ça rapporte
+  vraiment » : **9 résultats, aucun n'est le site** — tagusproperty,
+  maisonetvous, capaxis, groupe4aimmobilier, kontakts, roomagen, az-et-mut,
+  episode-serie, **`blog.qoridor.fr`**. 🆕 **`blog.qoridor.fr` ressort une
+  troisième fois** (19/10, 12/11, 14/11) et il tient **deux** pages sur ce
+  sujet (`/home-staging` et `/home-staging-prix-conseils`) : c'est le
+  concurrent local du backlog non-contenu n°8, et il est **le seul acteur
+  local de cette SERP**. 📌 **Et c'est lui qui republie le « +7 % » FNAIM
+  introuvable** — ce qui donne un angle de différenciation direct, et pas
+  seulement un concurrent à lire. **Point zéro posé, première remesure le
+  28/11.**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  SEIZIÈME JOUR.** **Non recontrôlé en ligne ce jour** (le chantier ne touche
+  pas l'accueil) ; dernier contrôle **11/11**, 0 occurrence de « Qui sommes ».
+  **Non corrigé, et c'est volontaire** (page de Tony, règle des 90 jours).
+  ⚠️ **NON renotifié**, inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD** : **non recontrôlée ce jour** (le chantier ne la
+  touche pas). Dernier contrôle **07/11** : `code 10006`, morte. ⚠️ **NON
+  renotifié**, même raison.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  14/11, prouvé après le commit du jour. **Aucune erreur neuve.**
+  `tsc --noEmit` propre, `npm run build` en **0**.
+- ✅ **PARITÉ `FAQPage` ET `HowTo` PROUVÉES DANS UN RENDU RÉEL, SUR UN SERVEUR
+  DONT LA FRAÎCHEUR A ÉTÉ VÉRIFIÉE** (leçon du 13/11) : `FAQPage` **6/6**,
+  **8/8 étapes `HowTo`** présentes mot pour mot dans le visible.
+  📌 **L'article n'émettait NI `FAQPage` NI `HowTo` avant ce run** (vérifié
+  dans le HTML en ligne : 0 occurrence).
+- ✅ **`/llms.txt` S'EST MIS À JOUR SEUL, TITRE INCLUS.** Vérifié dans le rendu
+  local : la nouvelle entrée porte le **nouveau titre** et le **nouvel
+  excerpt**. 📌 **Le 13/11 n'avait prouvé que l'excerpt** (généré depuis
+  `a.excerpt`) ; **le titre l'est aussi**. Rien à faire à la main.
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour.**
+
 **Au 2026-11-13 (vendredi)**
 
 - ✅ **LE RUN A EU LIEU — HUITIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 13/11.
@@ -5382,6 +5535,105 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-11-14 (samedi) — `home-staging-vendre-plus-cher` : le chiffre de référence du sujet n'existe pas chez celui à qui on l'attribue, et le vrai chiffre de la FNAIM est un coût lu comme un gain (`bf9de4a`)
+
+**Chantier choisi, et pourquoi.** Candidat **contenu n°1** du backlog, inscrit
+le 11/11 et laissé en place volontairement deux runs de suite. **Chantier
+double, tranché d'un coup comme le backlog le demandait** : 111 mots sans FAQ,
+**et** un `title` indexé, un `h1` et un `excerpt` portant une promesse de
+résultat sans source (« 8 gestes qui **font vendre plus cher** »). L'angle du
+jour devait être du contenu (alternance 12/11 contenu → 13/11 non-contenu).
+
+**Changements du client (étape 0).** `ls-remote main` = `4def279` = `HEAD` de
+départ, **aucun commit tiers**. Sitemap en ligne **58 URL / 7 annonces /
+30 articles**, identique au 07/11.
+
+**Ce que la mesure a donné avant d'écrire.** Deux SERP, **site absent des
+deux** : la commerciale `vendre appartement Villeurbanne` (5ᵉ relevé) et celle
+du sujet. Détail dans « État des lieux ». **Le seul acteur local de la SERP du
+sujet est `blog.qoridor.fr`**, et c'est lui qui republie le chiffre
+introuvable — angle de différenciation direct.
+
+**Les trois faits sourcés, et ils ont été lus à la source.**
+
+1. 🔴 **Le « +7 %, FNAIM, janvier 2024, 1 820 transactions » n'est pas sur
+   `fnaim.fr`.** Recherche restreinte au domaine. Il circule sous **trois
+   fourchettes incompatibles** créditées à la même étude, et aucune page ne
+   renvoie au document d'origine. **Non repris dans l'article**, et le fait
+   qu'il soit introuvable est devenu **le H2 n°2**.
+2. 🔴 **Le seul contenu FNAIM du sujet : revue de presse du 15 avril 2014.**
+   « En moins d'un mois, contre **127 jours** » ; coût « entre **1 % et 4 % du
+   prix de vente** » ; « moins onéreux qu'une négociation ». **Aucune méthode,
+   aucun échantillon.** 🔴 **Le 1 à 4 % est un COÛT, pas un gain** — plusieurs
+   pages du sujet l'inversent. 📌 **Et le « 127 jours » que la SERP attribue au
+   réseau Avéo est ce chiffre FNAIM de 2014.**
+3. 🆕 **NAR, « 2025 Profile of Home Staging », 6 mai 2025** — la seule enquête
+   du sujet qui publie sa méthode (49 806 sollicités, **1 266 réponses**,
+   **2,5 %** de réponse, **± 2,75 %**). Effet prix **modeste** : 1 à 10 % selon
+   **29 %** des agents, 1 à 5 % selon **17 %** des agents d'acheteurs, **aucun
+   effet pour 12 %**. Délai : **49 %**. Projection : **83 %**. Visite d'un bien
+   vu en ligne : **31 %**. Coût médian **1 500 $ / 500 $**.
+   ⚠️ **La page de présentation du rapport ne porte pas les chiffres** — il a
+   fallu lire le **communiqué de presse**. ⚠️ **Divergence interne à la NAR
+   signalée** (son Monthly Research Update inverse 60 % / 26 %) : **aucun de
+   ces deux chiffres n'est publié.**
+
+**Donnée propre au client, inexistante ailleurs sur ce sujet.** Le **seuil de
+remboursement** au prix médian villeurbannais : 1 à 4 % de **195 000 €** =
+**1 950 à 7 800 €**, donc **+1 % à +4 % de gain pour seulement rembourser**.
+Tableau de conversion point par point avec le reste après chaque borne, et
+déclinaison par typologie (**T1 115 000 € → 1 150 € le point**, **T4
+255 000 € → 2 550 €**). **16 valeurs recalculées à l'euro** depuis
+`lib/quartiers.ts`. Conclusion écrite noir sur blanc : **plus le bien est
+petit, plus une prestation payante est difficile à rentabiliser**.
+
+**Décision sur le `title` indexé, assumée.** `title`, `h1` et `excerpt`
+passent de « 8 gestes qui font vendre plus cher » à « **est-ce que ça fait
+vraiment vendre plus cher ?** ». **Le slug est inchangé** (jamais toucher une
+URL indexée). Les mots de requête (`home staging`, `vendre plus cher`) sont
+conservés, et l'article **dit lui-même pourquoi le titre a changé** — un
+paragraphe y est consacré. ⚠️ **À surveiller** : c'est un titre indexé qui
+change, l'effet sur les impressions n'est pas mesurable depuis ici.
+
+**Les 8 gestes : conservés, pas jetés, et triés pour un appartement.**
+Transformés en bloc `steps` (donc `HowTo`), chaque geste gagnant une
+explication. Justification locale : **95,7 % des logements vendus à
+Villeurbanne en 2025 étaient des appartements** (renvoi interne vers
+`compromis-de-vente-delais`), **surface médiane 62 m²**, alors que la moitié
+des conseils en ligne portent sur ce qu'un appartement n'a pas (façade, allée,
+portail, jardin). **Trois des huit** s'appuient sur un constat chiffré de la
+NAR (pièces prioritaires, projection 83 %, photos 31 %).
+
+**Volet GEO appliqué.** **7 H2, tous des questions réelles**, chacun ouvrant
+sur une réponse autonome en 2-3 phrases en gras. **FAQ de 6 questions créée**
+(l'article n'avait pas de champ `faq`). `updated` → **2026-11-14**, « mis à
+jour » visible. `/llms.txt` reprend **seul** le nouveau titre **et** le nouvel
+excerpt (vérifié).
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi.**
+
+- **Ne pas publier le « +7 % », même avec une réserve.** Insourçable à la
+  source primaire : il est traité comme un objet à examiner, pas comme une
+  donnée.
+- **N'introduire aucun nouveau chiffre DVF.** Le `n` n'est cité **nulle part**,
+  pour ne pas trancher au passage le conflit `1 875` / `1 876` du backlog. Tous
+  les chiffres locaux viennent de `lib/quartiers.ts` ou d'un renvoi interne.
+- **Ne pas publier de délai de vente observé par l'agence.** Ce serait la
+  donnée la plus citable du sujet, mais **je n'en ai aucune de mesurée** :
+  l'inventer était exclu. **Inscrit au backlog.**
+- **Ne pas écrire sur le home staging virtuel.** Aucune source primaire lue, et
+  la seule statistique trouvée vient d'un éditeur de l'outil.
+- **Ne pas toucher `lib/llm.ts`**, qui mentionne « home staging » dans le
+  prompt de l'outil d'estimation. **Consigne client : ne rien casser.**
+
+**Contrôles avant push.** `npx tsc --noEmit` **propre**, `npm run build` en
+**0**, `eslint` **35 / 24** (identique au 02/11, **aucune erreur neuve**),
+**0 apostrophe courbe, 0 insécable, densité d'accents 0,146** (fichier :
+0,15). Parité **`FAQPage` 6/6** et **`HowTo` 8/8** sur un rendu réel, serveur
+dont la fraîcheur a été vérifiée. **30 articles de blog avant comme après.**
+**Outil d'estimation non touché** (`git diff --name-only` ne contient que
+`lib/blog.ts`).
 
 ### 2026-11-13 (2e déclenchement, 06h43 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (gestion locative, `03d10cd`)
 
@@ -10915,6 +11167,177 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
+
+**Angle du dernier run : CONTENU — la réécriture de `home-staging-vendre-plus-cher`,
+dont le chiffre de référence du sujet est insourçable et dont le titre indexé
+portait une promesse de résultat sans source**
+(14/11 : **candidat contenu n°1 consommé**, après avoir été laissé en place
+sciemment le 11/11 **et** le 13/11. **111 → ~2 400 mots**, **0 → 6 questions de
+FAQ** (parité 6/6 dans un rendu réel), **`HowTo` de 8 étapes** (8/8 présentes
+dans le visible), **7 H2 tous en questions**, `updated` → 2026-11-14. L'article
+n'émettait **ni `FAQPage` ni `HowTo`** avant ce run. **Le chantier double du
+backlog a bien été tranché d'un coup** : `title`, `h1` et `excerpt` passent de
+« 8 gestes qui font vendre plus cher » à « est-ce que ça fait vraiment vendre
+plus cher ? », **slug inchangé**, et l'article dit lui-même pourquoi.
+**Trois faits sourcés à la source** : le « +7 %, FNAIM, janvier 2024,
+1 820 transactions » est **absent de `fnaim.fr`** et circule sous **trois
+fourchettes incompatibles** ; le seul contenu FNAIM du sujet est une **revue de
+presse du 15/04/2014** (« 127 jours », coût « 1 % à 4 % du prix de vente »,
+sans méthode) **et son 1 à 4 % est un COÛT que plusieurs pages republient comme
+un gain** ; la seule enquête à méthode publiée est le **NAR « 2025 Profile of
+Home Staging » du 06/05/2025** (49 806 sollicités, 1 266 réponses, 2,5 %,
+± 2,75 %), dont l'effet prix réel est **1 à 10 % selon 29 % des agents** et
+**aucun effet pour 12 % des agents d'acheteurs**. **Donnée propre au client** :
+le seuil de remboursement au prix médian villeurbannais, **1 950 à 7 800 €**
+pour 195 000 €, donc **+1 % à +4 % de gain pour seulement rembourser**, avec
+déclinaison par typologie. **Aucun nouveau chiffre DVF introduit, délibérément.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (15/11, dimanche) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 12/11 contenu → 13/11 non-contenu → **14/11 contenu**).
+🔴 **ET LE 16/11 EST UN LUNDI : LA VEILLE Y EST DUE** (dernière faite le 09/11).
+
+🟢 **CANDIDATS NON-CONTENU, par ordre d'impact :**
+  1. 🔴 **LE `n` DVF EN DEUX VALEURS — MAIS LE CANDIDAT DOIT ÊTRE REQUALIFIÉ
+     AVANT TOUT PATCH, ET C'EST PROBABLEMENT UN FAUX PROBLÈME.** Le 13/11 avait
+     relevé `1 875` (10 emplacements) contre `1 876` (2) « pour la même
+     population » et conclu à une valeur périmée. 🆕 **Le 14/11 a trouvé
+     l'explication déjà écrite dans le corpus** : l'article
+     `prix-immobilier-villeurbanne-2026` publie que « sur l'année 2025, les deux
+     chemins donnent **1 896** ventes contre **1 875** », le **fichier brut de la
+     DGFiP** conservant les ventes que le **fichier géolocalisé** écarte faute
+     d'adresse exploitable. **`1 875` est donc le compte du fichier géolocalisé,
+     celui qui porte les médianes du site** ; le `1 876` de
+     `compromis-de-vente-delais` vient d'une extraction dont les critères sont
+     publiés en légende (ventes à une seule ligne de logement, surface ≥ 10 m²,
+     prix au m² entre 800 et 12 000 €). 🔴 **Donc : ne PAS harmoniser.** Le
+     chantier qui reste est **étroit et différent** : vérifier que chaque
+     emplacement dit bien de QUELLE extraction il parle, et ajouter la mention
+     là où elle manque. ⚠️ **Relocaliser par `grep`, pas par numéro de ligne.**
+     📌 **Règle du 12/11 appliquée une troisième fois : le corpus savait déjà.**
+  2. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La page écrit « il ne démarre même pas tant que les sept documents de
+     copropriété n'ont pas tous été remis ». **La phrase est EXACTE** : ce n'est
+     pas une correction d'erreur, c'est une levée d'ambiguïté. ⚠️ **Même
+     traitement à envisager pour `lib/blog.ts` et la FAQ de
+     `diagnostics-obligatoires-vente`.** 📌 **Une phrase à ajouter, pas une
+     réécriture.** ⚠️ **Relocaliser par `grep`.**
+  3. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Mesuré le 10/11 : `charges-copropriete`
+     ne contient **aucune occurrence** de « taxe foncière » et n'émet que **2**
+     liens éditoriaux. ⚠️ **Il faut ÉCRIRE une phrase**, pas poser une ancre
+     (règle du 16/09). Le défaut restant est **sortant**.
+  4. 🟡 **LES PAGES HORS NAVIGATION GLOBALE, AUTRES QUE `/faire-gerer`.**
+     Mesuré le 07/11 : `/agence-immobiliere-cusset` **7**,
+     `/agence-immobiliere-charpennes` **8**, `/agence-immobiliere-gratte-ciel`
+     **8**, `/annonces` **9**, contre **57** pour les 16 pages du header et du
+     footer. ⚠️ **Trancher page par page, en commençant par `/annonces`.**
+  5. 🆕 🟡 **DEUX LIENS ENTRANTS À POSER VERS LE NOUVEL ARTICLE.** Il est
+     désormais substantiel mais **personne ne pointe vers lui** : les candidats
+     naturels sont `vendre-appartement-lyon-etapes`, `vendre-vite-lyon` et
+     `/vendre`, qui parlent tous de la préparation du bien. ⚠️ **Mesurer les
+     liens entrants réels par `grep` avant de conclure**, et **écrire une
+     phrase, pas poser une ancre** (règle du 16/09).
+  6. 🟡 **`/agence-immobiliere-gratte-ciel` N'ÉMET QU'UN LIEN ÉDITORIAL.**
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC
+     DE L'ÉDITEUR.** Leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop. **Les
+     autres blocs `Maison*`** rendent eux aussi des composants de
+     `components/home/`, jamais confrontés au corpus. 📌 **Méthode** : résoudre
+     le bloc dans `lib/page-builder/config.server.tsx`, lire le composant,
+     confronter chaque chiffre au corpus, puis vérifier dans le HTML en ligne.
+  8. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **treize runs**). **Une seule affirmation en dépend** :
+     la fiche « DPE collectif ». 📌 **Contrôle à deux temps obligatoire** :
+     l'hôte rend **200** sur sa page de maintenance.
+  9. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **dix-septième
+     report**). 🆕 **Valeur reconfirmée une troisième fois par la SERP du 14/11**,
+     où il est **le seul acteur local** et où il tient **deux** pages de home
+     staging — **dont celle qui republie le « +7 % » introuvable.** 📌 **Lire
+     `blog.qoridor.fr/article/home-staging` en priorité** : savoir s'il source
+     son chiffre ou non tranche la valeur du concurrent. **Ne RIEN réécrire sur
+     un seul relevé.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.**
+     **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le 14/11.
+     **Jour creux uniquement.**
+
+🔴 **CANDIDATS CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`.** L'article n'a **pas** de
+     champ `faq`, donc **pas de `FAQPage`** (vérifié dans le rendu du 13/11).
+     Ses quatre H2 sont de vraies questions avec réponse autonome en tête :
+     **la matière est prête.** ⚠️ **Parité visible ↔ JSON-LD obligatoire.**
+  2. 🟡 **LE RESTE DU BLOG FAIBLE — SEPT ARTICLES**, le plus court en tête :
+     `lmnp-location-meublee` 107, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `vendre-appartement-lyon-etapes` 154,
+     `capacite-emprunt-immobilier` 194. 🆕 **Pour ce dernier, le sourçage est
+     à moitié fait** : HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, en
+     vigueur au **01/01/2022**, taux d'effort **35 %**, maturité **25 ans**,
+     flexibilité **20 %**. ⚠️ **Référence trouvée par recherche web, le texte
+     n'a PAS été lu** : `economie.gouv.fr/hcsf` répond **403** en WebFetch.
+     **Trouver un accès primaire avant de publier la référence.**
+     🆕 **Et la recette du 14/11 s'applique à `questions-a-poser-visite` et
+     `vendre-vite-lyon`** : ce sont des sujets de pratique sans texte primaire,
+     donc chercher **l'enquête qui publie sa méthode** plutôt qu'un texte à
+     contredire. Le NAR 2025 contient d'autres constats utilisables.
+  3. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  4. ⛔ **NE PAS RÉÉCRIRE `home-staging-vendre-plus-cher`** (14/11) → remesurer
+     les deux SERP le **28/11**. ⚠️ **Et surveiller l'effet du changement de
+     `title` indexé** : il n'est pas mesurable depuis ici, mais si la requête
+     « home staging » apparaît un jour dans un relevé, le noter.
+  5. ⛔ **NE PAS RÉÉCRIRE `cout-gestion-locative`** (13/11) → **27/11**.
+  6. ⛔ **NE PAS RÉÉCRIRE `compromis-de-vente-delais`** (12/11) → **26/11**.
+  7. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → **24/11**.
+  8. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11**.
+  9. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11** → remesurer la SERP le **18/11**.
+ 10. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🆕 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** Le run du 14/11 a buté dessus : sur le home staging, **la donnée la
+  plus citable serait le délai de vente moyen constaté par l'agence** (la seule
+  source française du sujet a douze ans et aucune méthode). **Nous n'avons
+  aucun délai mesuré**, et l'inventer était exclu. 📌 **Question à Tony : les
+  délais entre mandat et compromis sont-ils exploitables quelque part ?**
+  **Ne rien publier avant sa réponse.** ⚠️ **Et ce manque dépasse le home
+  staging** : il revient sur tous les sujets de pratique.
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  Deux sont **publics et chiffrés** : **Orpi CETRIM Villeurbanne 8 % TTC sur
+  l'ancien / 7 % dans le neuf** (barème du **10/04/2025**) et **Foncia
+  Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**. ⚠️ **Nommer un concurrent
+  et son prix est de la publicité comparative** (encadrée, pas interdite) :
+  **décision commerciale, pas décision d'agent.** 📌 **Ne rien publier avant sa
+  réponse.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — SEIZIÈME JOUR.** Dernier
+  contrôle en ligne le **11/11** (0 occurrence). **Non corrigé : page de Tony.**
+  ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié** (7 notifications).
+- 🔴 **INVITATION DISCORD MORTE** (`code 10006`, dernier contrôle 07/11).
+  ⚠️ **NON renotifié.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+- **« vendre appartement Villeurbanne »** : 5ᵉ relevé le **14/11** → **21/11**.
+- **« agence immobilière Villeurbanne »** → **19/11**.
+- **« prix m2 Villeurbanne »** → **21/11**.
+- **« estimation immobilière Villeurbanne »** → **23/11**.
+- **« honoraires agence immobilière Villeurbanne … »** → **21/11**.
+  📌 **La SERP la plus anormale du journal** : le contenu existe, il est balisé
+  (`OfferCatalog`), et il n'est pas vu.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+---
 
 **Angle du dernier run : NON-CONTENU — le retrait du « 6 à 8 % des loyers », un
 chiffre de marché sans source republié dans cinq emplacements sur quatre pages**
@@ -16622,6 +17045,94 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-11-14 — J'ai écrit un lien interne vers un slug qui n'existe pas, et seul un contrôle automatique des slugs l'a arrêté avant publication
+
+**🔴 L'erreur.** En rédigeant le H2 sur le « +7 % » introuvable, j'ai voulu
+renvoyer vers notre article qui compare les prix au m² affichés en ligne aux
+prix réellement signés. **J'ai écrit le lien
+`/blog/prix-m2-villeurbanne-sources-comparees` — ce slug n'existe pas.** Je
+l'ai **déduit du sujet de l'article**, pas relevé dans le code. Le contenu, lui,
+existe bien : il est dans **`investir-locatif-lyon`**, dont le titre ne dit rien
+de cette comparaison.
+
+**⚠️ Pourquoi c'est dangereux, et pourquoi rien ne l'aurait rattrapé.** Un slug
+inventé dans un lien markdown **ne casse ni `tsc`, ni `eslint`, ni
+`npm run build`** : c'est une chaîne de caractères dans un champ `text`. La page
+se construit, se sert, répond **200**, et le lien rend un **404 silencieux** que
+seul un clic révèle. 📌 **C'est la famille des faux verdicts du 31/10, du 02/11
+et du 03/11 dans une forme nouvelle** : non plus une page saine et fausse, mais
+un **lien syntaxiquement parfait vers rien**, dans un fichier qui compile.
+
+**✅ Ce qui l'a attrapé, et c'est à garder.** Le détecteur de typographie que je
+passe sur toute prose neuve avant insertion **extrait aussi les liens internes**,
+et chaque slug a été confronté à `lib/blog.ts` :
+
+```bash
+# sur le BROUILLON, avant insertion : extraire les slugs ET les vérifier
+python3 -I -c '
+import re
+s=open("brouillon.txt",encoding="utf-8").read()
+print(sorted(set(re.findall(r"\]\((/[^)]+)\)", s))))'
+# puis, pour chaque /blog/<slug> :
+grep -c "slug: \"<slug>\"" lib/blog.ts     # 0 = le lien est mort
+```
+
+**Résultat du jour : 5 slugs à 1, un slug à 0.** Corrigé avant insertion.
+
+📌 **LA RÈGLE À APPLIQUER DÉSORMAIS : un slug de lien interne se RELÈVE dans
+`lib/blog.ts` (ou dans `app/`), il ne se DÉDUIT jamais du sujet de l'article
+visé.** Et le contrôle des slugs rejoint les trois contrôles de prose
+(apostrophe courbe, insécable, densité d'accents) dans le passage obligatoire
+**sur le brouillon, avant insertion**. ⚠️ **Le piège propre à ce dépôt** :
+plusieurs articles portent un contenu que leur slug ne laisse pas deviner —
+la comparaison des sources de prix au m² vit dans `investir-locatif-lyon`, et
+la part d'appartements dans les ventes vit dans `compromis-de-vente-delais`.
+**Le sujet ne prédit pas le slug ici.**
+
+### 2026-11-14 — J'ai commencé par écrire la prose de l'article dans un heredoc shell, exactement ce que la règle du 05/11 interdit
+
+**🔴 L'erreur.** Le premier brouillon de l'article a été écrit par
+`cat > brouillon.txt <<'EOF'`, et il est sorti **intégralement désaccentué** —
+le même mécanisme, le même outil et le même résultat que les deux occurrences
+qui ont produit la règle. **La règle existait, nommément, dans ce journal, et je
+l'ai enfreinte au premier bloc de prose du run.**
+
+**✅ Ce qui a été fait, et c'est la bonne décision.** Le brouillon a été
+**supprimé et réécrit intégralement** avec l'outil d'écriture de fichier, sans
+tentative de réaccentuation. 📌 **La seconde règle du 05/11 a donc joué :
+« un texte dégradé se RÉÉCRIT, il ne se RÉPARE pas. »** La réécriture a coûté
+un appel d'outil ; une table de réaccentuation aurait coûté des fautes
+invisibles.
+
+⚠️ **CE QUE CETTE RÉCIDIVE APPREND, ET C'EST LE VRAI POINT.** La règle du 05/11
+était formulée comme opératoire (« supprimer l'occasion ») mais elle ne l'est
+pas tout à fait : **elle suppose que je me souvienne de la règle au moment où je
+choisis l'outil**, c'est-à-dire exactement la vigilance que la règle du 30/10
+avait déjà prouvé insuffisante. **Troisième occurrence du même mécanisme.**
+📌 **Le contrôle qui, lui, est vraiment opératoire, parce qu'il ne dépend
+d'aucun souvenir : mesurer la densité d'accents sur le brouillon AVANT de
+l'insérer.** Un texte désaccentué rend **0,000** ; un texte français normal rend
+**0,14 à 0,15** sur ce dépôt. **Ce contrôle attrape la faute quel que soit
+l'outil qui l'a produite**, et il était déjà dans la routine du run.
+
+```bash
+# le contrôle qui ne dépend pas de ma mémoire, sur le BROUILLON
+python3 -I -c '
+import re,unicodedata
+s=open("brouillon.txt",encoding="utf-8").read()
+acc=sum(1 for c in s if c.isalpha() and ord(c)>127)
+mots=len(re.findall(r"[A-Za-zÀ-ÿ]+", s))
+print(f"{acc/mots:.3f}")'
+# 0.000 -> prose dégradée, JETER et réécrire   |   0.14–0.15 -> normal
+```
+
+**✅ Et les trois « mots collés » signalés le même jour (`aDe`, `lHr`, `lLa`)
+sont de nouveau des artefacts du détecteur**, inspectés en contexte : il
+franchit les sauts de ligne entre `metaDescription`, `internalHref` et
+`internalLabel`. **Exactement les trois mêmes qu'au 05/11**, pour la même
+raison. 📌 **Sixième fois qu'un instrument est le fautif** : la leçon du 30/10
+tient — ne pas conclure avant d'avoir regardé l'occurrence.
+
 ### 2026-11-13 — J'ai mesuré une parité JSON-LD sur une page servie par l'ANCIEN build, et c'est `EADDRINUSE` qui me l'a appris
 
 **🔴 L'erreur.** Après avoir ajouté une phrase à une réponse de FAQ de
@@ -19153,6 +19664,99 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-14 — Méthode : quand le chiffre de référence d'un sujet est insourçable, c'est le SUJET de la page, et c'est ce qui la rend citable
+
+Pas de veille aujourd'hui (**samedi** — elle se fait le lundi ; celle du 09/11
+reste la référence, **prochaine due le 16/11**). Trois méthodes réutilisables
+sont sorties du run.
+
+**1. Le motif « chiffre orphelin » est maintenant identifié, et il se teste en
+deux recherches.** Deux runs d'affilée ont trouvé la même chose : un chiffre que
+tout un sujet répète, attribué à une autorité, **absent du site de cette
+autorité**. Le 13/11, « 6 à 8 % des loyers » attribué à l'ANIL via
+`immojeune.com`, introuvable sur `anil.org`. Le 14/11, « +7 %, FNAIM, janvier
+2024, 1 820 transactions », introuvable sur `fnaim.fr`.
+
+**Le test, et il tient en deux recherches web :**
+
+```
+1) recherche libre sur le chiffre    -> relever TOUTES les formes qu'il prend
+2) recherche restreinte au domaine de l'autorité (allowed_domains)
+   -> le chiffre y est-il, oui ou non ?
+```
+
+📌 **Et le signal qui annonce le résultat avant même la seconde recherche :
+plusieurs fourchettes incompatibles créditées à la même étude.** Le 14/11,
+« +7 % contre +1,2 % », « 8 à 12 % et 30 % plus vite » et « 5 à 15 % »
+renvoyaient tous à la même source. **Quand une même étude produit trois
+fourchettes, personne ne l'a lue** — et elle est probablement introuvable.
+
+⚠️ **Ne PAS conclure « le chiffre est faux ».** La conclusion correcte est plus
+étroite et plus solide : **il est insourçable**, et aucune page ne renvoie au
+document d'origine. C'est ce qu'il faut écrire.
+
+**2. Et la recherche au domaine rend souvent autre chose que rien — c'est là
+qu'est la vraie trouvaille.** Le 14/11, `fnaim.fr` ne contenait pas le « +7 % »
+**mais contenait autre chose** : une revue de presse du 15/04/2014 avec
+**« 1 % à 4 % du prix de vente »** et **« 127 jours »**. 🔴 **Et le « 1 à 4 % »
+y est un COÛT, que plusieurs pages du sujet republient comme un GAIN de prix.**
+
+📌 **La leçon générale : quand un chiffre circule détaché de sa source, vérifier
+aussi s'il n'a pas changé de NATURE en route** — un coût lu comme un gain, un
+plafond lu comme une moyenne, un taux sur un sous-ensemble lu comme un taux
+communal (celui-là, c'était le 7,6 % de passoires du 11/11). **Trois formes
+différentes du même glissement en quatre runs.** 🆕 **Et la paternité glisse
+aussi** : le « 127 jours » que la SERP attribue au réseau Avéo est ce chiffre
+FNAIM de 2014.
+
+**3. Sur un sujet sans texte primaire, la source utilisable est l'enquête qui
+publie sa MÉTHODE — et il faut aller chercher la méthode au bon endroit.** La
+limite écrite le 08/11 tenait (« sur les sujets de pratique comme le home
+staging, il n'y a rien à contredire ») mais elle était trop pessimiste : **il
+n'y a pas de texte juridique, il peut y avoir une enquête méthodologiquement
+publiée.** Ici, le NAR « 2025 Profile of Home Staging » du 06/05/2025.
+
+⚠️ **Deux pièges rencontrés, tous deux coûteux :**
+
+- **La page de présentation du rapport ne portait pas les chiffres** (seules les
+  réponses des agents d'acheteurs y figuraient). **C'est le communiqué de presse
+  qui porte les résultats ET la méthode** (49 806 sollicités, 1 266 réponses,
+  2,5 %, ± 2,75 %). 📌 **Sur un rapport institutionnel, lire le communiqué
+  AVANT la page produit** — et si les deux divergent, le dire.
+- **Deux publications du même organisme se contredisaient** : le Monthly
+  Research Update de mai 2025 inverse deux pourcentages par rapport au
+  communiqué. **Aucun des deux chiffres n'a été publié**, et la divergence est
+  consignée ici. 📌 **Une divergence interne à la source est une raison de ne
+  pas citer le chiffre, pas de choisir le plus favorable.**
+
+**Ce que ça donne côté GEO, et c'est le point qui compte.** Une page qui écrit
+« le chiffre de référence de ce sujet est introuvable chez celui à qui on
+l'attribue, voici ce que la source dit réellement, et voici la seule enquête
+dont la méthode est publiée » **n'a aucun équivalent dans sa SERP** — les neuf
+résultats mesurés le 14/11 republient tous le chiffre orphelin, le concurrent
+local `blog.qoridor.fr` compris. C'est **le même mécanisme que le 08/11** (le
+plafond de la clause pénale que zéro résultat mentionnait) : **ce qui se fait
+citer, c'est la réponse que les autres ne donnent pas**, et un chiffre que tout
+le monde répète sans l'avoir lu est l'un des meilleurs gisements de ces
+réponses.
+
+**4. Le comptage qui prouve qu'aucune page n'a été perdue n'est pas le total du
+sitemap.** Le sitemap local du run rendait **55 URL** contre **58** en
+production, de quoi croire à une perte. **Les annonces viennent de la base** :
+4 en local, 7 en ligne. **Le comptage qui tranche est celui des pages portées
+par le code** — ici `/blog/`, **30 des deux côtés**.
+
+```bash
+# le contrôle juste : comparer la famille portée par le CODE, pas le total
+curl -s http://127.0.0.1:PORT/sitemap.xml | grep -o '<loc>[^<]*</loc>' | grep -c '/blog/'
+curl -sL https://markusimmobilier.fr/sitemap.xml  | grep -o '<loc>[^<]*</loc>' | grep -c '/blog/'
+```
+
+📌 **À généraliser : tout écart entre un rendu local et la production doit
+d'abord être imputé aux données de la base avant d'être lu comme une
+régression** — c'est la même famille d'erreur que le ref de suivi local périmé
+du 12/11, un instrument local qui ne décrit pas la production.
 
 ### 2026-11-13 — Méthode : sourcer un chiffre de marché en remontant au texte qui encadre son AFFICHAGE, et non à une autorité qu'on lui prête
 
