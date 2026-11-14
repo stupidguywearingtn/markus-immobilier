@@ -5558,6 +5558,18 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-14 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (home staging, `bf9de4a`)
+
+- **Déclenchement en double** : l'article home staging (`bf9de4a`) est servi
+  (`/blog/home-staging-vendre-plus-cher` 200, `lastmod` 2026-11-14 au sitemap). Un chantier
+  par jour → **rien publié**.
+- **Changements du client (étape 0)** : `ls-remote main` = `a6aa4a5`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, toutes avec une route dans `app/` ou un slug du code →
+  **aucune page de l'éditeur**. `lastmod` du 14/11 = notre article seul. `<title>` de la home =
+  `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-14 (samedi) — `home-staging-vendre-plus-cher` : le chiffre de référence du sujet n'existe pas chez celui à qui on l'attribue, et le vrai chiffre de la FNAIM est un coût lu comme un gain (`bf9de4a`)
 
 **Chantier choisi, et pourquoi.** Candidat **contenu n°1** du backlog, inscrit
