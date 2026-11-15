@@ -121,6 +121,32 @@
   échoué puis réussi à la relance immédiate.** Voir « Techniques apprises » :
   **le signe qui tranche est qu'aucun fichier du projet n'est nommé dans le
   log.**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — CINQUIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 15/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-eskmx0` ». **Le compte annoncé (2) correspond
+  exactement aux deux commits du run** (`24d9e04` + `3fc8c1b`) — même piège de
+  vraisemblance qu'aux 12/11 et 14/11. Vérifié : `git rev-parse HEAD` =
+  **`3fc8c1b`**, `git ls-remote origin refs/heads/main` = **`3fc8c1b`**,
+  `git rev-list --count origin/main..HEAD` = **0**,
+  `ls-remote` de la branche du conteneur rend **RIEN**, arbre **propre**.
+  🔴 **NE PAS pousser la branche du conteneur pour faire taire le hook.**
+  🆕 ✅ **ET UN CONTRÔLE MEILLEUR QUE `rev-list` A ÉTÉ UTILISÉ CETTE FOIS,
+  PARCE QUE `rev-list` DÉPEND DU REF DE SUIVI LOCAL — celui-là même qui
+  était périmé le 12/11 et qui a fait croire à un retard de 13 commits.**
+  Demander directement si chaque commit est un ancêtre du SHA rendu par
+  `ls-remote` ne passe par aucun ref local :
+
+  ```bash
+  REMOTE=$(git ls-remote origin refs/heads/main | cut -f1)
+  git merge-base --is-ancestor <commit> "$REMOTE" && echo OUI || echo NON
+  ```
+
+  📌 **Les deux commits du run rendent OUI.** C'est le contrôle à préférer
+  désormais : il répond à la seule question qui compte (« ce commit est-il
+  sur le `main` distant ? ») sans dépendre de quoi que ce soit de local.
+  📌 **Cinq occurrences d'affilée : comportement normal du hook, pas un
+  incident.** Deux commandes, une ligne au journal, rien à changer au flux.
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
   été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
   et dans les entrées du jour.**
