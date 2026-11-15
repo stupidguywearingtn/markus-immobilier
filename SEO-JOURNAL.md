@@ -5695,6 +5695,17 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-15 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (hub annonces, `24d9e04`)
+
+- **Déclenchement en double** : le balisage du hub `/annonces` (`24d9e04`) est servi
+  (200, `ItemList` + `BreadcrumbList` dans le JSON-LD en ligne). Un chantier par jour →
+  **rien publié**.
+- **Changements du client (étape 0)** : `ls-remote main` = `f8ddec9`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, inchangé, aucune page de l'éditeur ; aucun `lastmod` après
+  le 14/11. `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/agence-immobiliere-villeurbanne`, `/llms.txt`, `/robots.txt` → 200.
+
 ### 2026-11-15 — Le hub `/annonces` ne déclarait rien, alors que chacune de ses fiches est entièrement balisée
 
 **Angle : NON-CONTENU** (alternance : 13/11 non-contenu → 14/11 contenu →
