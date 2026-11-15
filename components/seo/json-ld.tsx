@@ -302,3 +302,52 @@ export function webPageLd(opts: {
     publisher: { "@id": AGENCY_ID },
   };
 }
+
+/**
+ * Le hub `/annonces` comme liste ordonnée des biens réellement disponibles.
+ *
+ * Pourquoi cette page et pas une autre : les fiches `/annonces/<slug>` sont
+ * déjà entièrement décrites (`RealEstateListing` + `Apartment` + `Offer`), mais
+ * **le hub qui les rassemble ne déclarait rien** — aucun `ItemList`, donc aucun
+ * moteur ne pouvait lire « cette page est le catalogue de N biens, les voici ».
+ * C'est le pendant exact de `blogLd()` pour les annonces.
+ *
+ * Chaque entrée ne fait que **pointer** (position, URL, titre visible sur la
+ * carte) : le prix, la surface, le DPE et la disponibilité restent déclarés par
+ * la fiche, qui en est la source unique. C'est la forme que Google documente
+ * pour une page de liste — balisage sommaire sur le hub, balisage complet sur
+ * la fiche — et elle évite deux nœuds concurrents qui pourraient se
+ * contredire sur un prix.
+ *
+ * ⚠️ À construire depuis les biens RÉELLEMENT AFFICHÉS (`getAllAvailableListings()`),
+ * jamais depuis `lib/mock-properties.ts` : ces placeholders sont fictifs, la
+ * page les isole déjà derrière un `data-nosnippet`, et les baliser
+ * présenterait « Loft d'exception sur Bellecour, 1 250 000 € » comme un mandat
+ * de l'agence.
+ *
+ * Pas d'`itemListOrder` : l'ordre affiché est « mis en avant d'abord, puis du
+ * plus récent au plus ancien », qui n'est aucun des ordres que schema.org sait
+ * nommer. Les `position` reproduisent l'ordre réel des cartes ; déclarer en
+ * plus un `ItemListOrderDescending` serait faux.
+ */
+export function listingsLd(
+  listings: { slug: string; titre: string }[],
+  opts: { name: string; description: string; path: string },
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${BASE}${opts.path}#annonces`,
+    name: opts.name,
+    description: opts.description,
+    url: `${BASE}${opts.path}`,
+    inLanguage: "fr-FR",
+    numberOfItems: listings.length,
+    itemListElement: listings.map((l, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${BASE}/annonces/${l.slug}`,
+      name: l.titre,
+    })),
+  };
+}

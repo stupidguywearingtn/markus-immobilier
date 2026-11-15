@@ -16,6 +16,13 @@ import {
   parseFilterParams,
 } from "@/lib/filter-properties";
 import { PROPERTIES } from "@/lib/mock-properties";
+import {
+  JsonLd,
+  breadcrumbLd,
+  listingsLd,
+  webPageLd,
+} from "@/components/seo/json-ld";
+import { lastmodOf } from "@/lib/seo/lastmod";
 
 export const metadata: Metadata = {
   title: "Nos annonces — Acheter ou louer à Lyon & Villeurbanne",
@@ -42,8 +49,44 @@ export default async function AnnoncesPage({
   // Biens disponibles = statiques (lib/listings.ts) + annonces publiées (Supabase).
   const disponibles = await getAllAvailableListings();
 
+  // Les biens réellement affichés, dans l'ordre réel des cartes : le groupe
+  // « à vendre » puis le groupe « à louer » (chacun déjà trié par
+  // getAllAvailableListings()), amputés du groupe que le filtre Vente/Location
+  // masque. C'est la MÊME dérivation que <ListingsByStatus /> plus bas, pour
+  // que l'ItemList ne puisse pas annoncer un bien que la page ne montre pas.
+  const affiches = (["vente", "location"] as const)
+    .filter((t) => !filters.type || filters.type === t)
+    .flatMap((t) => disponibles.filter((l) => l.transaction === t));
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Accueil", path: "/" },
+          { name: "Nos annonces", path: "/annonces" },
+        ])}
+      />
+      <JsonLd
+        data={webPageLd({
+          path: "/annonces",
+          name: "Nos annonces — acheter ou louer à Villeurbanne et à Lyon",
+          description:
+            "Tous les biens actuellement proposés à la vente et à la location par Markus Immobilier, à Villeurbanne et à Lyon.",
+          dateModified: lastmodOf("/annonces"),
+        })}
+      />
+      {/* Le catalogue des biens disponibles, tel qu'il est affiché. Les fiches
+          portent chacune leur RealEstateListing + Offer ; cette liste ne fait
+          que les rassembler et les compter. Les placeholders fictifs de
+          lib/mock-properties.ts en sont volontairement absents. */}
+      <JsonLd
+        data={listingsLd(affiches, {
+          path: "/annonces",
+          name: "Biens à vendre et à louer — Markus Immobilier",
+          description:
+            "Les biens actuellement disponibles à la vente et à la location chez Markus Immobilier, à Villeurbanne et à Lyon.",
+        })}
+      />
       <PageHero
         eyebrow="Catalogue"
         title={
