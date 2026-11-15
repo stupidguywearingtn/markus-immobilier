@@ -14,6 +14,117 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-15 (dimanche)**
+
+- ✅ **LE RUN A EU LIEU — DIXIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 15/11.
+  **Un seul manque sur 79 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN ÉCART DE `main`, ET LE CONTRÔLE DU 02/11 A ÉTÉ FAIT AVANT TOUT
+  `fetch`.** `HEAD` de départ = **`7414b91`**, `git ls-remote origin
+  refs/heads/main` = **`7414b91`** : identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-eskmx0`**, pas sur `main`.
+  **Quinzième constat consécutif**, nom différent chaque fois.
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-eskmx0` rend **RIEN**.
+  Poussé en `git push origin HEAD:main`, vérifié après coup.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquantième constat identique** (21/09 → 15/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-troisième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles de blog —
+  identique du 07/11 au 15/11.** Aucune page ajoutée ni retirée. `curl -sL`
+  (piège `308`). Le `lastmod` n'a **PAS** servi à conclure sur l'activité du
+  client.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU, l'alternance est respectée**
+  (12/11 contenu → 13/11 non-contenu → 14/11 contenu → **15/11 non-contenu**).
+- 🔴 **LE HUB `/annonces` N'ÉMETTAIT QU'UN SEUL NŒUD, ET C'EST LE SEUL MAILLON
+  MUET D'UNE CHAÎNE PAR AILLEURS COMPLÈTE.** Mesuré en production avant
+  d'agir : `/annonces` n'émettait que le **`RealEstateAgent` global du
+  layout** — **ni `BreadcrumbList`, ni `WebPage`, ni aucune liste de ses
+  annonces**. En face, `/agence-immobiliere-villeurbanne`,
+  `/estimation-immobiliere-villeurbanne` et `/agence-immobiliere-gratte-ciel`
+  émettent chacune `WebPage` + `BreadcrumbList` + `Service` + `FAQPage`, **et
+  les fiches `/annonces/<slug>` portent déjà `RealEstateListing` +
+  `Apartment` + `Offer` + `BreadcrumbList`** (vérifié sur
+  `appartement-t3-vendre-villeurbanne-grand-clement`). 📌 **Le défaut
+  n'était donc pas un manque de balisage sur le site, mais un trou à l'endroit
+  exact où les fiches se rassemblent.**
+- ✅ **CORRIGÉ : `listingsLd()` + `breadcrumbLd` + `webPageLd` SUR `/annonces`,
+  AVEC PARITÉ PROUVÉE DANS UN RENDU RÉEL.** Les 4 titres de l'`ItemList` sont
+  présents **mot pour mot** dans le texte visible, les 4 URL sont des `href`
+  **réels** de la page, `numberOfItems` correspond, **aucun placeholder fictif
+  n'est balisé**. Et sous filtre : `?type=location` rend **1 carte pour
+  1 item**, `?type=vente` **3 cartes pour 3 items**.
+  📌 **Fraîcheur du serveur établie par le contenu servi** (le texte corrigé
+  présent, l'ancien absent), leçon du 13/11.
+- ⚠️ **ET LE RENDU LOCAL NE MONTRE QUE 4 ANNONCES LÀ OÙ LA PRODUCTION EN A 7** —
+  c'est la différence connue du 14/11 (les annonces viennent de la base :
+  4 statiques en local, 4 statiques + 3 de la base en ligne). **La parité est
+  donc prouvée sur 4 biens, pas sur 7**, et c'est le maximum vérifiable d'ici.
+- ✅ **CHANGEMENT STRICTEMENT ADDITIF : 92 insertions, 0 suppression**, et
+  `JsonLd` ne rend qu'une balise `<script>`. **Aucun changement de rendu
+  possible** — c'est ce qui a permis de trancher la dernière question du
+  contrôle qualité sans hésiter.
+- ✅ **`PAGE_LASTMOD["/annonces"]` N'A PAS ÉTÉ AVANCÉ**, volontairement : il reste
+  au **2026-08-27**. La règle d'entretien de `lib/seo/lastmod.ts` réserve la
+  date du jour aux vrais changements de contenu et **exclut explicitement un
+  correctif technique**. 📌 **C'est aussi la date la plus ancienne de la table**
+  (la page n'a pas changé de contenu depuis l'audit d'août).
+- 🟢 **LE CANDIDAT NON-CONTENU N°1 DU BACKLOG EST CLOS SANS PATCH, ET LA
+  REQUALIFICATION DU 14/11 ÉTAIT JUSTE.** Vérifié moi-même par `grep` :
+  **les DEUX emplacements en `1 876` publient déjà leurs critères
+  d'extraction en entier** — `lib/blog.ts:2306` (« commune 69266, extraction
+  du 12 novembre 2026, ventes à une seule ligne de logement, surface
+  ≥ 10 m², prix au m² retenu entre 800 et 12 000 € ») et `lib/blog.ts:2956`
+  (« extraction du 13 octobre 2026 … 1 876 ventes d'appartements
+  exploitables »). **Il n'y a donc rien à ajouter**, et le `1 875` des
+  10 autres emplacements est bien le compte du fichier géolocalisé.
+  📌 **Troisième run de suite où ce candidat rétrécit à la mesure : inscrit
+  comme « incohérence » le 13/11, requalifié le 14/11, clos le 15/11.**
+- 🟡 **LA REQUÊTE COMMERCIALE PHARE REMESURÉE EN AVANCE :
+  `agence immobilière Villeurbanne`, SITE ABSENT.** Échéance du **19/11** tenue
+  **quatre jours en avance** (le 16/11 est un lundi, chargé par la veille).
+  **20 résultats, aucun n'est le site.** 🆕 **Et la nature de cette SERP est
+  son fait le plus net : elle est tenue par des ANNUAIRES autant que par des
+  agences** — `lesiteimmo.com` (qui recense **douze** agences à Villeurbanne),
+  `immodvisor.com`, `zimo.fr`, `realadvisor.fr`, `mappy.com`,
+  `acceslibre.beta.gouv.fr`, plus `klapty.com` (visites virtuelles) et une
+  offre d'emploi `francetravail.fr`. Côté agences : orpi (×2), human-immobilier
+  (×2), square habitat, laforet (×2), foncia, century 21, leboncoin.
+  📌 **Conséquence à instruire, pas à trancher seul : sur cette requête, la
+  moitié de la page 1 n'est pas gagnable par du contenu** — elle se gagne par
+  une présence dans les annuaires, qui est **hors dépôt**. **Prochaine
+  remesure : 22/11.**
+- ✅ **`/llms.txt` VÉRIFIÉ EN PRODUCTION, À JOUR, RIEN À FAIRE.** Les **7**
+  annonces y sont, avec titre, prix, surface, DPE et adresse, **générées
+  automatiquement** depuis les mêmes données que les fiches. 📌 **Le chantier
+  du jour n'ajoutant aucune page, `llms.txt` n'avait pas à bouger** — contrôlé
+  plutôt que supposé.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  DIX-SEPTIÈME JOUR, ET RECONTRÔLÉ EN LIGNE CE JOUR** (contrairement aux
+  13/11 et 14/11) : **0 occurrence de « Qui sommes »** dans le HTML de
+  production. **Non corrigé, et c'est volontaire** (page de Tony, règle des
+  90 jours). ⚠️ **NON renotifié** — inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE, ET RECONTRÔLÉE CE JOUR** (premier
+  contrôle depuis le 07/11, soit huit jours) : `discord.gg/fSyn28G5U` rend
+  **`{"message": "Unknown Invite", "code": 10006}`**. C'est **la seule
+  invitation référencée dans le code** et elle est servie sur l'accueil.
+  ⚠️ **NON renotifié** — inchangé depuis sept notifications, et une huitième
+  n'apporterait rien que les sept premières n'aient dit.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  15/11, prouvé après le commit du jour. **Aucune erreur neuve.**
+  `tsc --noEmit` propre.
+- 🔴 🆕 **ET `npm run build` A ÉCHOUÉ DEUX FOIS SUR CINQ, SANS AUCUN RAPPORT
+  AVEC LE CODE — FAIT NOUVEAU, LE BUILD ÉTAIT EN 0 À TOUS LES RUNS
+  PRÉCÉDENTS.** 20 erreurs `next/font/google` (Montserrat),
+  « `Module not found: Can't resolve
+  '@vercel/turbopack-next/internal/font/google/font'` ». **Le même code a
+  échoué puis réussi à la relance immédiate.** Voir « Techniques apprises » :
+  **le signe qui tranche est qu'aucun fichier du projet n'est nommé dans le
+  log.**
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour.**
+
 **Au 2026-11-14 (samedi)**
 
 - ✅ **LE RUN A EU LIEU — NEUVIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 14/11.
@@ -5557,6 +5668,104 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-11-15 — Le hub `/annonces` ne déclarait rien, alors que chacune de ses fiches est entièrement balisée
+
+**Angle : NON-CONTENU** (alternance : 13/11 non-contenu → 14/11 contenu →
+**15/11 non-contenu**). **Commit `24d9e04`.**
+
+**Pourquoi ce chantier plutôt qu'un autre.** Le candidat non-contenu n°1 du
+backlog (le `n` DVF en deux valeurs) **s'est clos à la mesure sans patch** :
+les deux emplacements en `1 876` publient déjà leurs critères d'extraction en
+entier, il n'y avait rien à ajouter. Le candidat suivant qui portait sur une
+page **commerciale** désignait `/annonces` (« trancher page par page, en
+commençant par `/annonces` »), et la mesure a montré un défaut plus net que
+celui qui était inscrit : **ce n'est pas seulement le maillage interne de
+cette page qui est faible, c'est qu'elle ne déclare rien du tout.**
+
+**Ce qui a été mesuré avant d'agir, en production.**
+
+| Page | Nœuds JSON-LD émis |
+|---|---|
+| `/annonces` | **`RealEstateAgent` seul** (celui du layout) |
+| `/agence-immobiliere-villeurbanne` | `WebPage` + `BreadcrumbList` + `Service` + `FAQPage` + `WebSite` |
+| `/estimation-immobiliere-villeurbanne` | idem + `HowTo` |
+| `/agence-immobiliere-gratte-ciel` | idem |
+| `/annonces/<slug>` (fiche) | `RealEstateListing` + `Apartment` + `Offer` + `BreadcrumbList` + `Place` |
+
+📌 **Le hub était le seul maillon muet d'une chaîne par ailleurs complète.**
+Aucun moteur ne pouvait lire « cette page est le catalogue de N biens, les
+voici ». C'est le pendant exact de ce que `blogLd()` fait depuis septembre
+pour `/blog`.
+
+**Pourquoi cette page compte.** C'est elle qui porte les requêtes
+transactionnelles où le site est absent : la SERP de
+« vendre appartement Villeurbanne » (relevée cinq fois, site absent cinq fois)
+est tenue par **leboncoin, seloger, pap et paruvendu**, qui sont tous des
+**hubs d'annonces**.
+
+**Ce qui a été écrit.**
+
+1. **`listingsLd()`** dans `components/seo/json-ld.tsx`, calqué sur `blogLd()`.
+   Chaque entrée ne fait que **POINTER** — `position`, `url`, titre visible sur
+   la carte. **Le prix, la surface, le DPE et la disponibilité restent
+   déclarés par la fiche**, seule source. C'est la forme documentée pour une
+   page de liste (balisage sommaire sur le hub, complet sur la fiche) **et elle
+   évite deux nœuds concurrents qui pourraient se contredire sur un prix** —
+   l'argument que `blogLd()` écrit déjà pour les articles.
+2. Sur `/annonces` : **`breadcrumbLd`** (Accueil → Nos annonces),
+   **`webPageLd`** (qui date la page depuis `PAGE_LASTMOD`) et **`listingsLd`**.
+
+**Les deux garde-fous, parce que cette page affiche aussi des biens FICTIFS.**
+
+- 🔴 **L'`ItemList` est construite depuis `getAllAvailableListings()`, jamais
+  depuis `lib/mock-properties.ts`.** Baliser ces placeholders présenterait
+  « Loft d'exception sur Bellecour, 1 250 000 € » **comme un mandat de
+  l'agence**. 📌 **La page les isole déjà derrière un `data-nosnippet`, et son
+  commentaire dit pourquoi dans ces termes exacts** : le garde-fou existait
+  déjà pour le snippet, il manquait pour le JSON-LD.
+- 🔴 **La liste est dérivée EXACTEMENT comme `<ListingsByStatus />`**, filtre
+  Vente/Location inclus. Sans ça, `?type=location` aurait annoncé 7 biens pour
+  2 cartes affichées.
+
+**Parité prouvée dans un rendu réel**, sur un serveur dont la fraîcheur est
+établie par le contenu servi (leçon du 13/11) :
+
+- les **4** titres de l'`ItemList` présents **mot pour mot** dans le texte
+  visible (comparaison après normalisation NFC et des inssécables) ;
+- les **4** URL sont des `href` **réels** de la page ;
+- `numberOfItems` = nombre d'items ;
+- **aucun** placeholder fictif balisé (`Bellecour`, `Loft` : absents) ;
+- sous filtre : **1 carte / 1 item** et **3 cartes / 3 items**.
+
+⚠️ **La parité est prouvée sur 4 biens, pas sur 7** : le rendu local n'a que
+les 4 annonces statiques, les 3 autres venant de la base. **C'est le maximum
+vérifiable d'ici**, et c'est la différence déjà consignée le 14/11.
+
+**Deux décisions de non-action, assumées.**
+
+- **Pas d'`itemListOrder`.** L'ordre affiché est « mis en avant d'abord, puis du
+  plus récent au plus ancien », **qui n'est aucun des ordres que schema.org
+  sait nommer**. Les `position` reproduisent l'ordre réel des cartes ;
+  déclarer en plus un `ItemListOrderDescending` serait **faux**.
+- **`PAGE_LASTMOD["/annonces"]` n'est pas avancé** (il reste au 2026-08-27) :
+  la règle d'entretien de `lib/seo/lastmod.ts` **exclut explicitement un
+  correctif technique**.
+
+**Contrôles.** `tsc` propre · `eslint` **35 / 24**, base identique depuis le
+02/11, **aucune erreur neuve** · `build` en **0** · **92 insertions,
+0 suppression**, et `JsonLd` ne rend qu'un `<script>` : **aucun changement de
+rendu possible**, ce qui répond « non » à la dernière question du contrôle
+qualité.
+
+**Mesure du jour.** `agence immobilière Villeurbanne` remesurée **quatre jours
+en avance** (échéance 19/11, le 16/11 étant un lundi chargé par la veille) :
+**20 résultats, site absent**. 🆕 **Et cette SERP est tenue par des ANNUAIRES
+autant que par des agences** — `lesiteimmo` (douze agences villeurbannaises
+recensées), `immodvisor`, `zimo`, `realadvisor`, `mappy`,
+`acceslibre.beta.gouv.fr`. 📌 **La moitié de cette page 1 n'est pas gagnable
+par du contenu** : elle se gagne par une présence dans les annuaires, **hors
+dépôt**. À instruire, pas à trancher seul.
 
 ### 2026-11-14 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (home staging, `bf9de4a`)
 
@@ -11202,6 +11411,167 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — le hub `/annonces`, seul maillon muet
+d'une chaîne de balisage par ailleurs complète**
+(15/11 : `listingsLd()` + `breadcrumbLd` + `webPageLd` sur `/annonces`, qui
+n'émettait que le `RealEstateAgent` du layout alors que ses propres fiches
+portent `RealEstateListing` + `Apartment` + `Offer`. Parité prouvée dans un
+rendu réel, **filtres inclus** : 4 titres présents mot pour mot, 4 URL réelles,
+`?type=location` 1 carte pour 1 item, `?type=vente` 3 pour 3, **aucun
+placeholder fictif balisé**. **92 insertions, 0 suppression.**
+`PAGE_LASTMOD` volontairement non avancé. **Commit `24d9e04`.**
+🟢 **Et le candidat non-contenu n°1 a été CLOS SANS PATCH** : les deux
+emplacements en `1 876` publient déjà leurs critères d'extraction en entier.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (16/11, lundi) DOIT ÊTRE DU CONTENU**
+(alternance : 13/11 non-contenu → 14/11 contenu → **15/11 non-contenu**).
+🔴 **ET LE 16/11 EST UN LUNDI : LA VEILLE Y EST DUE, AVANT DE CHOISIR LE
+CHANTIER** (dernière faite le 09/11, soit une semaine).
+
+🔴 **CANDIDATS CONTENU, par ordre d'impact :**
+  1. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`.** L'article n'a **pas** de
+     champ `faq`, donc **pas de `FAQPage`** (vérifié dans le rendu du 13/11).
+     Ses quatre H2 sont de vraies questions avec réponse autonome en tête :
+     **la matière est prête.** ⚠️ **Parité visible ↔ JSON-LD obligatoire.**
+  2. 🟡 **LE RESTE DU BLOG FAIBLE — SEPT ARTICLES**, le plus court en tête :
+     `lmnp-location-meublee` 107, `faire-offre-achat` 113,
+     `achat-immobilier-lyon-checklist` 117, `questions-a-poser-visite` 119,
+     `vendre-vite-lyon` 129, `vendre-appartement-lyon-etapes` 154,
+     `capacite-emprunt-immobilier` 194. **Pour ce dernier, le sourçage est
+     à moitié fait** : HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, en
+     vigueur au **01/01/2022**, taux d'effort **35 %**, maturité **25 ans**,
+     flexibilité **20 %**. ⚠️ **Référence trouvée par recherche web, le texte
+     n'a PAS été lu** : `economie.gouv.fr/hcsf` répond **403** en WebFetch.
+     **Trouver un accès primaire avant de publier la référence.**
+     **Et la recette du 14/11 s'applique à `questions-a-poser-visite` et
+     `vendre-vite-lyon`** : sujets de pratique sans texte primaire, donc
+     chercher **l'enquête qui publie sa méthode** plutôt qu'un texte à
+     contredire. Le NAR 2025 contient d'autres constats utilisables.
+  3. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  4. ⛔ **NE PAS RÉÉCRIRE `home-staging-vendre-plus-cher`** (14/11) → remesurer
+     les deux SERP le **28/11**. ⚠️ **Et surveiller l'effet du changement de
+     `title` indexé.**
+  5. ⛔ **NE PAS RÉÉCRIRE `cout-gestion-locative`** (13/11) → **27/11**.
+  6. ⛔ **NE PAS RÉÉCRIRE `compromis-de-vente-delais`** (12/11) → **26/11**.
+  7. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → **24/11**.
+  8. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11**.
+  9. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11** → remesurer la SERP le **18/11**.
+ 10. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS, par ordre d'impact :**
+  1. 🆕 🟡 **LE MAILLAGE INTERNE DE `/annonces`, QUI RESTE ENTIER.** Le
+     chantier du 15/11 a traité le **balisage** de cette page, **pas ses liens
+     entrants** : le défaut mesuré le 07/11 (**9** liens entrants contre **57**
+     pour les 16 pages du header et du footer) **est intact**. 📌 **C'est
+     désormais le candidat le plus mûr** : la page vient d'être rendue lisible
+     par les machines, lui donner du poids interne est la suite logique.
+     ⚠️ **ÉCRIRE une phrase, pas poser une ancre** (règle du 16/09), et
+     **mesurer les liens entrants réels par `grep` avant de conclure**.
+  2. 🟡 **DEUX LIENS ENTRANTS À POSER VERS `home-staging-vendre-plus-cher`.**
+     Il est désormais substantiel mais **personne ne pointe vers lui** :
+     candidats naturels `vendre-appartement-lyon-etapes`, `vendre-vite-lyon`
+     et `/vendre`. ⚠️ **Mesurer par `grep` d'abord**, et **écrire une phrase**.
+  3. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La page écrit « il ne démarre même pas tant que les sept documents de
+     copropriété n'ont pas tous été remis ». **La phrase est EXACTE** : ce n'est
+     pas une correction d'erreur, c'est une levée d'ambiguïté. ⚠️ **Même
+     traitement à envisager pour `lib/blog.ts` et la FAQ de
+     `diagnostics-obligatoires-vente`.** **Une phrase à ajouter, pas une
+     réécriture.** ⚠️ **Relocaliser par `grep`.**
+  4. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Mesuré le 10/11 : `charges-copropriete`
+     ne contient **aucune occurrence** de « taxe foncière » et n'émet que **2**
+     liens éditoriaux. ⚠️ **Il faut ÉCRIRE une phrase**, pas poser une ancre.
+     Le défaut restant est **sortant**.
+  5. 🟡 **LES AUTRES PAGES HORS NAVIGATION GLOBALE.** Mesuré le 07/11 :
+     `/agence-immobiliere-cusset` **7**, `/agence-immobiliere-charpennes` **8**,
+     `/agence-immobiliere-gratte-ciel` **8**. ⚠️ **Trancher page par page.**
+  6. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC
+     DE L'ÉDITEUR.** Leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop. **Les
+     autres blocs `Maison*`** rendent eux aussi des composants de
+     `components/home/`, jamais confrontés au corpus. **Méthode** : résoudre
+     le bloc dans `lib/page-builder/config.server.tsx`, lire le composant,
+     confronter chaque chiffre au corpus, puis vérifier dans le HTML en ligne.
+  7. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **quatorze runs**). **Une seule affirmation en
+     dépend** : la fiche « DPE collectif ». **Contrôle à deux temps
+     obligatoire** : l'hôte rend **200** sur sa page de maintenance.
+  8. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **dix-huitième report**). Valeur reconfirmée trois fois par les SERP, où
+     il est **le seul acteur local** et tient **deux** pages de home staging —
+     **dont celle qui republie le « +7 % » introuvable.** **Lire
+     `blog.qoridor.fr/article/home-staging` en priorité.** **Ne RIEN réécrire
+     sur un seul relevé.**
+  9. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+ 10. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 11. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.**
+     **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le 15/11.
+     **Jour creux uniquement.**
+ 12. ✅ **CLOS LE 15/11 — LE `n` DVF EN DEUX VALEURS.** À **ne pas réinscrire** :
+     les deux emplacements en `1 876` (`lib/blog.ts:2306` et `:2956`) publient
+     **déjà** leurs critères d'extraction en entier, et le `1 875` des
+     10 autres est le compte du fichier géolocalisé. **Il n'y a rien à
+     ajouter.** 📌 **Inscrit le 13/11, requalifié le 14/11, clos le 15/11 :
+     trois runs pour un faux problème, parce que le premier avait conclu avant
+     de lire le corpus.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🆕 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT, ET LA
+  SERP PHARE MONTRE QU'ELLE VAUT LA MOITIÉ DE LA PAGE 1.** Relevé du 15/11 sur
+  « agence immobilière Villeurbanne » : **20 résultats, site absent**, et la
+  page 1 est tenue autant par des **annuaires** (`lesiteimmo` — qui recense
+  **douze** agences villeurbannaises —, `immodvisor`, `zimo`, `realadvisor`,
+  `mappy`, `acceslibre.beta.gouv.fr`) que par des agences. 📌 **Aucune ligne
+  de code ne peut gagner ces positions.** **Question à Tony : l'agence est-elle
+  inscrite sur ces annuaires, et veut-elle qu'on s'en occupe ?**
+  **Ne rien faire avant sa réponse** (créer des fiches au nom de l'agence
+  engage la marque).
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** Le run du 14/11 a buté dessus. **Nous n'avons aucun délai
+  mesuré**, et l'inventer était exclu. **Question à Tony : les délais entre
+  mandat et compromis sont-ils exploitables quelque part ?** **Ne rien publier
+  avant sa réponse.** ⚠️ **Ce manque revient sur tous les sujets de pratique.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  Deux sont **publics et chiffrés** : **Orpi CETRIM Villeurbanne 8 % TTC sur
+  l'ancien / 7 % dans le neuf** (barème du **10/04/2025**) et **Foncia
+  Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**. ⚠️ **Nommer un concurrent
+  et son prix est de la publicité comparative** (encadrée, pas interdite) :
+  **décision commerciale, pas décision d'agent.** **Ne rien publier avant sa
+  réponse.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — DIX-SEPTIÈME JOUR.**
+  **Recontrôlé en ligne le 15/11 : 0 occurrence.** **Non corrigé : page de
+  Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié** (7 notifications).
+- 🔴 **INVITATION DISCORD MORTE — RECONTRÔLÉE LE 15/11**, premier contrôle
+  depuis le 07/11 : `discord.gg/fSyn28G5U` rend `code 10006`
+  (« Unknown Invite »). **Seule invitation référencée dans le code**, servie
+  sur l'accueil. ⚠️ **NON renotifié.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+- **« agence immobilière Villeurbanne »** : relevée le **15/11** (en avance)
+  → **22/11**.
+- **« vendre appartement Villeurbanne »** : 5ᵉ relevé le 14/11 → **21/11**.
+- **« prix m2 Villeurbanne »** → **21/11**.
+- **« estimation immobilière Villeurbanne »** → **23/11**.
+- **« honoraires agence immobilière Villeurbanne … »** → **21/11**.
+  **La SERP la plus anormale du journal** : le contenu existe, il est balisé
+  (`OfferCatalog`), et il n'est pas vu.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+---
+
 **Angle du dernier run : CONTENU — la réécriture de `home-staging-vendre-plus-cher`,
 dont le chiffre de référence du sujet est insourçable et dont le titre indexé
 portait une promesse de résultat sans source**
@@ -15277,6 +15647,31 @@ fonctionne ».
 ~160 caractères Google tronque la description).
 
 ## Hypothèses à vérifier
+
+### 2026-11-15 — Trois questions ouvertes par le chantier `/annonces`
+
+- 🟡 **`CollectionPage` serait plus précis que `WebPage` pour un hub de liste,
+  et je ne l'ai PAS fait.** `CollectionPage` est un sous-type de `WebPage` qui
+  dit « ceci est une page de liste ». J'ai gardé `webPageLd()`, le helper
+  partagé par les **21 pages statiques**, pour ne pas introduire un motif
+  concurrent dont la valeur n'est pas mesurée. 📌 **À instruire avant de
+  changer** : y a-t-il une preuve que `CollectionPage` change quoi que ce soit
+  dans les réponses d'IA, ou est-ce de la précision gratuite ? **Ne pas
+  toucher sans cette preuve** — le coût serait de casser l'uniformité de 21
+  pages.
+- 🟡 **LA PARITÉ DE L'`ItemList` N'A PU ÊTRE PROUVÉE QUE SUR 4 DES 7 BIENS.**
+  Le rendu local n'a que les 4 annonces statiques ; les 3 autres viennent de
+  Supabase. **Le mécanisme est prouvé, pas le cas à 7.** 📌 **Contrôle à
+  faire au prochain run qui touche cette page** : lire le HTML **de
+  production** et vérifier que `numberOfItems` vaut bien **7** et que les
+  3 annonces de la base y sont. **Rien ne laisse penser le contraire** (la
+  dérivation est la même pour les deux sources), mais ce n'est pas mesuré.
+- 🟢 **LE COMMENTAIRE DE `app/blog/page.tsx` ANNONCE « les 26 URLs
+  d'articles » ALORS QU'IL Y EN A 30.** Repéré en lisant le précédent de
+  `blogLd()`. **Chiffre périmé dans un commentaire de code, invisible du
+  lecteur et des moteurs** — donc **aucun enjeu SEO**, et je ne l'ai pas
+  touché (le chantier du jour ne portait pas sur ce fichier). 📌 **Jour creux
+  uniquement**, et à ne corriger qu'en recomptant le jour où on le fait.
 
 ### 2026-11-13 — Ce que le chantier du « 6 à 8 % » laisse ouvert
 
@@ -19698,6 +20093,146 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-15 — `npm run build` échoue par intermittence sur `next/font/google`, et le signe qui le distingue d'une vraie régression
+
+🆕 **FAIT NOUVEAU : le build était en 0 à tous les runs précédents de ce
+journal. Aujourd'hui il a échoué deux fois sur cinq, sans aucun rapport avec
+le code.**
+
+**Le symptôme**, 20 erreurs identiques :
+
+```
+Error: Turbopack build failed with 20 errors:
+[next]/internal/font/google/montserrat_3374a586.module.css:7:8
+Module not found: Can't resolve '@vercel/turbopack-next/internal/font/google/font'
+```
+
+🔴 **LE PIÈGE : ça ressemble à une régression du run.** Le premier build du
+run a échoué **juste après** mes deux premières modifications, et un build qui
+casse après qu'on a touché au code se lit naturellement comme « j'ai cassé
+quelque chose ». ⚠️ **Et la première hypothèse raisonnable — le proxy bloque
+Google Fonts — était fausse aussi** : `fonts.googleapis.com` répond **200**.
+
+✅ **LE SIGNE QUI TRANCHE, ET IL COÛTE UNE COMMANDE : aucun fichier du projet
+n'est nommé dans le log.**
+
+```bash
+grep -c 'turbopack-next/internal/font' build.log   # -> 20  (toutes les erreurs)
+grep -c 'annonces/page\|json-ld'        build.log   # -> 0   (aucun de mes fichiers)
+```
+
+📌 **Une régression de mon code nommerait mon fichier. Vingt erreurs qui
+nomment toutes la même police, et zéro qui nomme le projet, ne décrivent pas
+mon diff.**
+
+**La preuve définitive, en deux builds du MÊME code** (c'est elle qui tranche,
+pas le `grep`) :
+
+| Build | Code | `.next` | Résultat |
+|---|---|---|---|
+| 1 | avec mes modifs | **non vérifié** | **ÉCHEC** — 20 erreurs de police |
+| 2 | `git stash` → `main` nu | effacé | **0** |
+| 3 | avec mes modifs | effacé | **0** |
+| 4 | avec mes modifs (+1 chaîne) | effacé | **ÉCHEC** — 20 erreurs de police |
+| 5 | **identique au 4** | effacé | **0** |
+
+🔴 **Les builds 4 et 5 portent exactement le même code, le même état de cache
+(effacé) et donnent des résultats opposés.** C'est intermittent, point. **Ce n'est ni le cache
+`.next`, ni mon diff** — j'avais d'abord conclu au cache périmé au vu des
+builds 1 à 3, **et le build 4 a démenti cette conclusion**.
+
+✅ **LA CONDUITE À TENIR, dans cet ordre :**
+1. `grep` le log pour un fichier du projet. **Zéro → ce n'est pas le code.**
+2. **Relancer** (`rm -rf .next && npm run build`). Deux fois sur deux, la
+   relance immédiate est passée.
+3. **Ne PAS démonter son propre diff avant d'avoir relancé.** C'est l'erreur
+   que ce bloc existe pour éviter : j'ai dépensé un `git stash` + un build
+   complet (≈ 2 min chacun) pour prouver une innocence qu'une relance aurait
+   montrée.
+4. **Ne pas en conclure que le réseau est bloqué** sans l'avoir testé :
+   `curl -o /dev/null -w "%{http_code}" https://fonts.googleapis.com/css2?family=Montserrat`
+   a rendu **200** pendant que le build échouait.
+
+⚠️ **Et la conséquence pour le journal : « build en 0 » ne vaut désormais
+comme contrôle que si l'on dit à quelle tentative.** Un échec de build sur
+`next/font/google` n'est **pas** un résultat à consigner comme un défaut du
+dépôt.
+
+---
+
+### 2026-11-15 — Donner à un hub de liste le balisage de ses propres fiches, sans jamais baliser un bien fictif
+
+**Le motif général, utilisable ailleurs : quand les fiches d'un ensemble sont
+bien balisées, vérifier ce que déclare la page qui les RASSEMBLE.** Le réflexe
+naturel est d'auditer les pages une à une ; le trou était à la jointure.
+`/annonces` n'émettait que le `RealEstateAgent` du layout alors que **chacune**
+de ses 7 fiches porte `RealEstateListing` + `Apartment` + `Offer`.
+
+✅ **Le contrôle qui le trouve en une commande, sur n'importe quelle page :**
+
+```bash
+curl -sL https://markusimmobilier.fr/<page> \
+  | grep -o '"@type":"[A-Za-z]*"' | sort | uniq -c
+```
+
+📌 **À passer sur un HUB et sur une de ses FICHES, puis comparer.** Un hub
+qui rend moins de types que sa fiche est un maillon muet.
+
+🔴 **LA RÈGLE QUI A COMPTÉ LE PLUS ICI : une page peut afficher des données
+FICTIVES, et un `ItemList` naïf les publierait comme réelles.** `/annonces`
+affiche les placeholders de `lib/mock-properties.ts` (« Loft d'exception sur
+Bellecour, 1 250 000 € »). ✅ **Le dépôt portait déjà le garde-fou — pour le
+snippet, pas pour le JSON-LD** : le bloc est enveloppé dans un
+`data-nosnippet`, et son commentaire explique que « un extrait de Google ou une
+réponse d'IA reprend des cartes isolées, sans l'encart ».
+📌 **Lire les commentaires de garde-fou AVANT d'ajouter du balisage : celui-ci
+disait exactement quoi ne pas baliser, et pourquoi.**
+
+✅ **ET LA PARITÉ D'UN `ItemList` SE PROUVE AUTREMENT QUE CELLE D'UNE `FAQPage`.**
+Pour une FAQ, on compare des réponses à du texte. Pour une liste, **trois
+contrôles indépendants** :
+
+```python
+# 1. chaque name existe mot pour mot dans le texte VISIBLE (hors <script>)
+# 2. chaque url est un href REEL de la page
+# 3. numberOfItems == len(itemListElement)
+```
+
+⚠️ **Normaliser avant de comparer** : NFC, puis `U+202F` et `U+00A0` → espace,
+**avant** le `\s+`. C'est la règle du 29/10, et elle s'applique telle quelle.
+
+🔴 **LE CAS QUE J'AI FAILLI MANQUER : une page dont le contenu dépend des
+`searchParams` a une parité VARIABLE.** `/annonces?type=location` n'affiche
+qu'un groupe. Un `ItemList` construit sur l'ensemble aurait annoncé **7 biens
+pour 2 cartes** — un mismatch qui n'apparaît sur **aucune** lecture de l'URL
+canonique. ✅ **La parade est de dériver la liste par la MÊME expression que le
+composant d'affichage**, pas par une requête parallèle :
+
+```tsx
+const affiches = (["vente", "location"] as const)
+  .filter((t) => !filters.type || filters.type === t)
+  .flatMap((t) => disponibles.filter((l) => l.transaction === t));
+```
+
+📌 **Et le test qui le prouve est de visiter les états filtrés, pas seulement
+l'URL propre** : `?type=location` → 1 carte / 1 item, `?type=vente` → 3 / 3.
+
+✅ **ENFIN, DEUX NON-ACTIONS QUI SONT DU MÊME MÉTIER QUE LES ACTIONS :**
+- **Ne pas déclarer un `itemListOrder` qu'on ne peut pas nommer.** L'ordre réel
+  était « mis en avant d'abord, puis par date » : aucun des ordres de
+  schema.org. Les `position` suffisent à dire l'ordre affiché ; **ajouter
+  `ItemListOrderDescending` aurait été une affirmation fausse** pour gagner un
+  champ.
+- **Ne pas avancer `PAGE_LASTMOD` pour un correctif technique.** La table le
+  dit elle-même (« l'avancer à tort est le défaut coûteux »). Un balisage
+  ajouté **n'est pas** un changement de contenu.
+
+📌 **Et un dernier réflexe de relâche : j'avais écrit que la page listait les
+biens « avec prix, surface, quartier et DPE ». C'est faux pour les garages,
+qui n'ont ni surface ni DPE.** Corrigé avant le commit en une description qui
+ne promet aucun champ. **Le détecteur d'accents ne voit pas ce genre de
+défaut ; seule la relecture de ce qu'on affirme le voit.**
 
 ### 2026-11-14 — Méthode : quand le chiffre de référence d'un sujet est insourçable, c'est le SUJET de la page, et c'est ce qui la rend citable
 
