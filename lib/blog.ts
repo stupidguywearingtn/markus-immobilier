@@ -3049,26 +3049,134 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "lmnp-location-meublee",
-    title: "LMNP : le statut idéal pour louer en meublé ?",
+    title: "LMNP 2026 : ce que la location meublée change vraiment, à Villeurbanne",
     metaDescription:
-      "Le statut LMNP (loueur meublé non professionnel) : conditions, régimes micro-BIC et réel, et avantages fiscaux pour louer en meublé.",
-    h1: "LMNP : le statut idéal pour louer en meublé ?",
+      "Plafond du micro-BIC porté à 83 600 € pour les revenus 2026, abattement de 50 %, prélèvements sociaux à 18,6 % et amortissements retirés du prix d'achat à la revente depuis le 15 février 2025. Et la règle villeurbannaise : aucun changement d'usage à demander.",
+    h1: "LMNP : ce que la location meublée change vraiment, à Villeurbanne",
     excerpt:
-      "Louer en meublé avec une fiscalité avantageuse. Conditions, régimes micro-BIC et réel, et l'intérêt fiscal.",
+      "En meublé, les loyers ne sont pas des revenus fonciers mais des BIC. Pour les revenus perçus à compter de 2026, le micro-BIC s'applique jusqu'à 83 600 € de recettes avec 50 % d'abattement (15 000 € et 30 % pour un meublé de tourisme non classé). Deux contreparties que presque personne ne met en regard : les prélèvements sociaux sur les loyers meublés sont passés à 18,6 % quand ceux de la location nue restent à 17,2 %, et depuis le 15 février 2025 les amortissements déduits au régime réel sont retirés du prix d'acquisition au moment de la revente. Sur un 62 m² villeurbannais loué au loyer médian, l'avantage net du meublé sur le nu va de 536 € à 1 188 € par an selon la tranche. À Villeurbanne, aucune demande de changement d'usage n'est à déposer pour un meublé de tourisme, mais la déclaration en mairie est obligatoire.",
     date: "2026-01-08",
+    updated: "2026-11-16",
     internalHref: "/gestion-locative",
     internalLabel: "Faire gérer mon bien en location",
     blocks: [
-      { type: "p", text: "**Le statut LMNP (loueur meublé non professionnel) permet de louer un logement meublé avec une fiscalité avantageuse sur les loyers.** C'est l'un des montages préférés des investisseurs." },
-      { type: "h2", text: "Les conditions" },
-      { type: "p", text: "Louer un logement **meublé** (équipement suffisant pour y vivre), avec des recettes locatives qui restent sous le seuil du professionnel." },
-      { type: "h2", text: "Les deux régimes" },
+      { type: "p", text: "**En location meublée, vos loyers ne sont pas des revenus fonciers : ce sont des bénéfices industriels et commerciaux (BIC).** Pour les revenus perçus à compter de 2026, le régime micro-BIC s'applique jusqu'à **83 600 €** de recettes avec un abattement de **50 %** — contre 15 000 € et 30 % pour un meublé de tourisme non classé. Deux contreparties sont rarement mises en regard de cet abattement : les prélèvements sociaux sur les loyers meublés sont passés à **18,6 %** alors que ceux de la location nue restent à 17,2 %, et depuis le **15 février 2025** les amortissements déduits au régime réel sont retirés du prix d'acquisition quand vous revendez." },
+
+      { type: "h2", text: "Qu'est-ce que le statut LMNP, et peut-on l'être sans l'avoir choisi ?" },
+      { type: "p", text: "**Le LMNP n'est pas une option à cocher : c'est le statut qui s'applique par défaut dès que vous louez un logement meublé sans franchir le seuil du professionnel.** Vous êtes loueur en meublé non professionnel si les recettes annuelles tirées de cette activité par votre foyer fiscal sont inférieures à 23 000 € TTC sur l'année civile, **ou** si elles restent inférieures au montant total des autres revenus d'activité du foyer (salaires, autres BIC). Il suffit qu'une seule de ces deux conditions soit remplie." },
+      { type: "p", text: "Vous ne devenez loueur en meublé **professionnel** (LMP) que si les **deux** conditions sont réunies : plus de 23 000 € de recettes annuelles, **et** des recettes supérieures au total des autres revenus d'activité du foyer. Pour un bailleur villeurbannais qui perçoit un salaire, la première condition est bien plus facile à franchir que la seconde — c'est pourquoi la très grande majorité des bailleurs en meublé restent non professionnels." },
+      { type: "p", text: "La distinction n'est pas qu'une étiquette, elle change le sort de vos déficits. En LMNP, un déficit ne s'impute que sur vos futurs revenus de location meublée, pendant **10 ans**. En LMP, il s'impute sur votre revenu global sans limitation de montant, avec un report de 6 ans en cas de revenu global insuffisant." },
+      { type: "p", text: "Un changement daté concerne les bailleurs non-résidents : à compter de l'imposition des revenus de **2026** (déclarés en 2027), l'administration comparera les recettes françaises aux revenus professionnels **mondiaux** du foyer, et non plus aux seuls revenus perçus en France. Cette mesure rend le statut non professionnel plus facile à conserver pour un non-résident." },
+
+      { type: "h2", text: "Quel est le plafond du micro-BIC en 2026, et l'abattement de 50 % existe-t-il toujours ?" },
+      { type: "p", text: "**Oui, l'abattement de 50 % existe toujours, et le plafond a monté : 83 600 € de recettes pour les revenus perçus à compter de 2026, contre 77 700 € pour les revenus de 2025.** Seuls les meublés de tourisme non classés font exception, avec un seuil de 15 000 € et un abattement de 30 %. Les meublés de tourisme classés et les chambres d'hôtes sont, eux, revenus dans le régime commun de la location meublée." },
+      {
+        type: "table",
+        caption: "Micro-BIC en location meublée : seuil de recettes hors taxes et abattement forfaitaire",
+        source: "BOFiP, BOI-BAREME-000044 (version du 19 août 2026) et actualité BOFiP du 19 août 2026 ; CGI, art. 50-0. Lus le 16 novembre 2026.",
+        headers: ["Type de location", "Seuil — revenus 2026 à 2028", "Abattement", "Seuil — revenus 2025"],
+        rows: [
+          ["Location meublée de longue durée", "83 600 €", "50 %", "77 700 €"],
+          ["Meublé de tourisme classé, chambre d'hôtes", "83 600 €", "50 %", "77 700 €"],
+          ["Meublé de tourisme non classé", "15 000 €", "30 %", "15 000 €"],
+        ],
+      },
+      { type: "p", text: "Trois précisions qui comptent plus que le chiffre lui-même. L'abattement ne peut jamais être **inférieur à 305 €**, ce qui ne change rien au-delà de 610 € de recettes. Le plafond s'apprécie sur **l'ensemble** de vos locations meublées : il n'existe pas de plafond par appartement. Et un dépassement isolé ne vous fait pas basculer : le passage au régime réel ne devient obligatoire qu'après **deux années consécutives** au-dessus du seuil." },
+      { type: "p", text: "**Ce que ce plafond signifie concrètement à Villeurbanne : il n'est presque jamais la vraie question.** 83 600 € de recettes annuelles, c'est 6 967 € de loyers par mois ; au loyer médian communal de 14,6 €/m² hors charges, il faudrait louer environ **477 m²** en meublé pour en sortir. Pour un bailleur d'un ou deux appartements, le choix ne se joue donc pas sur le plafond mais sur la comparaison entre l'abattement de 50 % et les charges réellement déductibles. En meublé de tourisme non classé, en revanche, le seuil de 15 000 € est atteint dès **1 250 €** de recettes mensuelles : c'est là que le régime réel devient vite obligatoire." },
+
+      { type: "h2", text: "Micro-BIC ou régime réel : lequel choisir ?" },
+      { type: "p", text: "**Le micro-BIC est gagnant tant que vos charges réelles restent sous 50 % des loyers ; le régime réel le devient dès qu'elles les dépassent, ce que l'amortissement du bien suffit souvent à provoquer.** Le micro-BIC n'exige aucune comptabilité : vous portez vos recettes brutes sur la déclaration 2042-C-PRO et l'abattement est appliqué automatiquement. Le réel suppose une comptabilité complète et une déclaration 2031 déposée depuis un espace professionnel." },
+      { type: "p", text: "Au régime réel, vous déduisez vos dépenses réelles — travaux, intérêts d'emprunt, assurances, frais de gestion — **et** vous pratiquez l'amortissement, c'est-à-dire la déduction annuelle d'une fraction du prix de l'immeuble et du mobilier. C'est ce mécanisme, et lui seul, qui permet d'annuler l'impôt sur les loyers pendant plusieurs années. Le réel est obligatoire au-delà des plafonds, et possible sur option en dessous." },
+      { type: "p", text: "Un cas particulier à connaître avant d'acheter à plusieurs : les **indivisions sont exclues du micro-BIC** et relèvent du régime réel, sauf cas particuliers. Acheter un meublé en indivision, c'est donc accepter d'emblée la comptabilité du réel." },
+
+      { type: "h2", text: "L'amortissement en LMNP est-il encore un avantage quand on revend ?" },
+      { type: "p", text: "**Plus entièrement, et c'est le changement le plus important de ces dernières années : pour les ventes réalisées à compter du 15 février 2025, les amortissements déduits au régime réel sont retirés du prix d'acquisition retenu pour calculer la plus-value.** La plus-value imposable augmente donc mécaniquement de tout ce que vous avez amorti. L'avantage du régime réel n'est plus un gain définitif : c'est pour partie un **report**, de l'impôt sur les loyers vers l'impôt sur la plus-value." },
+      { type: "p", text: "La date exacte mérite d'être posée, parce qu'on lit les deux. La loi de finances pour 2025 a été promulguée le **14 février 2025** et prévoit que la mesure s'applique « aux cessions réalisées à compter du lendemain de la promulgation » : la bonne date est donc le **15 février 2025**, et non le 16." },
+      { type: "p", text: "La minoration ne s'applique pas à tout. En sont exclus les logements situés dans certaines **résidences gérées** : résidences réservées aux étudiants, aux personnes de moins de 30 ans en formation ou en stage, aux titulaires d'un contrat de professionnalisation ou d'apprentissage et aux personnes de plus de 65 ans ; établissements sociaux et médico-sociaux ; résidences-services pour personnes âgées ou handicapées agréées ; et unités de soins de longue durée. Un investissement en résidence étudiante — hypothèse courante à proximité du campus de la Doua — n'est donc pas touché, alors qu'un studio meublé ordinaire l'est." },
+      { type: "p", text: "Pour le reste, la vente d'un bien loué en meublé par un loueur non professionnel relève du **régime des plus-values des particuliers**, avec ses abattements pour durée de détention : le calcul, les taux et les cas d'exonération sont détaillés dans [notre article sur le calcul de la plus-value immobilière](/blog/plus-value-immobiliere-calcul). En LMP, c'est le régime des plus-values professionnelles qui s'applique, avec une exonération totale possible après plus de 5 ans d'activité si les recettes annuelles ne dépassent pas 90 000 € hors taxes." },
+
+      { type: "h2", text: "Meublé ou vide à Villeurbanne : combien l'écart d'abattement rapporte-t-il, en euros ?" },
+      { type: "p", text: "**À loyer égal, le meublé fait économiser entre 536 € et 1 188 € d'impôt par an sur un appartement villeurbannais de 62 m², selon votre tranche d'imposition.** Et cet écart est plus faible qu'on ne le calcule d'ordinaire, parce que les deux régimes ne subissent pas les mêmes prélèvements sociaux : **18,6 % sur des loyers meublés contre 17,2 % sur des revenus fonciers** depuis la hausse de CSG applicable aux revenus 2025." },
+      { type: "p", text: "Le calcul part d'un bien réel et de chiffres déjà publiés sur ce site. Au loyer médian communal de 14,6 €/m² hors charges, un appartement de 62 m² — la surface médiane des ventes villeurbannaises — se loue **905 € par mois**, soit **10 860 € par an**. Loué vide, il relève du micro-foncier et son abattement de 30 % laisse une base imposable de **7 602 €**. Loué meublé, il relève du micro-BIC et son abattement de 50 % laisse **5 430 €**." },
+      {
+        type: "table",
+        caption: "Impôt et prélèvements sociaux sur 10 860 € de loyers annuels (62 m² au loyer médian villeurbannais), selon le mode de location",
+        source: "Calcul Markus Immobilier. Abattements : CGI art. 32 (micro-foncier, 30 %) et art. 50-0 (micro-BIC, 50 %). Prélèvements sociaux : 17,2 % sur les revenus fonciers, 18,6 % sur les revenus de location meublée (DGFiP, brochure « Impôt sur le revenu 2026 », page 45 ; LFSS 2026, art. 12).",
+        headers: ["Tranche marginale", "Loué vide (base 7 602 €)", "Loué meublé (base 5 430 €)", "Avantage du meublé"],
+        rows: [
+          ["11 %", "2 144 €", "1 607 €", "536 €"],
+          ["30 %", "3 588 €", "2 639 €", "949 €"],
+          ["41 %", "4 424 €", "3 236 €", "1 188 €"],
+        ],
+      },
+      { type: "p", text: "**Le point que la hausse de CSG change, et que presque aucune page n'intègre encore :** calculé avec le même taux de prélèvements sociaux des deux côtés, l'avantage du meublé serait de 1 025 € à 30 % de tranche au lieu de 949 €. Les 1,4 point de CSG supplémentaires absorbent donc de **6 % à 12 %** de l'écart selon la tranche — davantage, proportionnellement, pour les tranches basses." },
+      { type: "p", text: "Trois limites, à lire avant de conclure. **Premièrement, ce calcul est fait à loyer égal** : un meublé se loue en général plus cher qu'un logement vide, mais nous ne publions aucun écart meublé/vide villeurbannais, faute de donnée locale sourcée — le loyer de 14,6 €/m² est un loyer médian communal, pas un loyer de meublé. **Deuxièmement, le meublé est une activité commerciale** : il ouvre la cotisation foncière des entreprises, qu'un bailleur en location nue ne paie pas, et impose une immatriculation ; ces coûts se retranchent des montants ci-dessus. **Troisièmement, les seuils ne sont pas comparables** : le micro-foncier s'arrête à 15 000 € de revenus bruts fonciers pour l'ensemble du foyer, le micro-BIC à 83 600 €. Le calcul ne tient pas compte de la CSG déductible (6,8 %), qui vient réduire le revenu imposable de l'année suivante." },
+      { type: "p", text: "Si votre question porte sur le coût de la délégation plutôt que sur le régime fiscal, l'arbitrage chiffré entre gérer soi-même et déléguer est fait sur [notre page gestion locative](/gestion-locative), et le détail de ce que couvre un taux de gestion sur [combien coûte vraiment une gestion locative](/blog/cout-gestion-locative)." },
+
+      { type: "h2", text: "Faut-il déclarer son meublé à la mairie de Villeurbanne ?" },
+      { type: "p", text: "**À Villeurbanne, il n'y a aucune demande de changement d'usage à déposer pour louer un meublé de tourisme — mais la déclaration en mairie, elle, est obligatoire** dès lors que le logement est une résidence secondaire, ou qu'une résidence principale est louée plus de 120 jours par an. La ville n'a pas délibéré pour mettre en place une télédéclaration : une déclaration simple suffit." },
+      { type: "p", text: "En pratique : le formulaire CERFA se remplit en ligne sur service-public.fr, puis se transmet à la mairie, qui délivre un **récépissé dans un délai d'un mois**. Point qui distingue Villeurbanne de beaucoup de communes, et que les pages nationales ne peuvent pas deviner : **aucun numéro d'enregistrement n'est attribué**. Le dossier se dépose en ligne ou par courrier à la direction du développement économique, de l'emploi et de l'insertion, CS 65051, 69601 Villeurbanne cedex." },
+      { type: "p", text: "Deux confusions à éviter. Cette déclaration ne concerne que le **meublé de tourisme** : un appartement loué meublé à l'année, qui constitue la résidence principale de son locataire, n'y est pas soumis. Et le changement d'usage est une **décision locale** : la règle villeurbannaise ne vaut pas pour la commune voisine, elle se vérifie mairie par mairie. Une page nationale qui vous annonce une autorisation à demander ne décrit pas forcément Villeurbanne." },
+
+      { type: "h2", text: "Quelles règles de bail s'appliquent à un meublé à Villeurbanne ?" },
+      { type: "p", text: "**Deux différences avec la location vide pèsent davantage sur un bailleur villeurbannais que le régime fiscal : le dépôt de garantie est plafonné à deux mois de loyer hors charges en meublé, contre un seul en logement vide, et l'encadrement des loyers s'applique aux meublés avec ses propres loyers de référence.** Le loyer de référence dépend en effet de la catégorie du logement, qui distingue le vide du meublé." },
+      { type: "p", text: "Villeurbanne est classée en zone tendue et soumise à l'encadrement des loyers, dont le plafond applicable est celui de l'arrêté préfectoral en vigueur **à la date de signature du bail**. Le détail de ces règles, du plafond de dépôt de garantie, des délais de restitution et de la pénalité de retard est sourcé dans [préavis et dépôt de garantie en zone tendue à Villeurbanne](/blog/preavis-depot-garantie-location-villeurbanne)." },
+
+      {
+        type: "steps",
+        name: "Démarrer une activité de location meublée",
+        items: [
+          { name: "Immatriculer l'activité", text: "Enregistrez-vous sur le guichet unique de l'INPI dans les 15 jours suivant le début de la location, afin d'obtenir un numéro SIRET. Cette formalité est obligatoire, y compris pour un seul appartement." },
+          { name: "Choisir son régime d'imposition", text: "Le micro-BIC s'applique par défaut sous les seuils. Le régime réel est possible sur option, et devient obligatoire après deux années consécutives au-dessus du seuil." },
+          { name: "Créer un espace professionnel si vous êtes au réel", text: "Au régime réel, résident ou non-résident, un espace professionnel sur impots.gouv.fr est obligatoire pour télédéclarer le formulaire 2031 et ses annexes." },
+          { name: "Déclarer les loyers chaque année", text: "Au micro-BIC, portez les recettes brutes sur la déclaration 2042-C-PRO : l'abattement est appliqué automatiquement. Au réel, déposez la 2031 depuis l'espace professionnel." },
+          { name: "Déclarer en mairie s'il s'agit d'un meublé de tourisme", text: "À Villeurbanne, remplissez le CERFA sur service-public.fr puis transmettez-le à la mairie : récépissé sous un mois, aucun numéro d'enregistrement, aucun changement d'usage à demander." },
+          { name: "Prévoir la cotisation foncière des entreprises", text: "L'activité étant commerciale, la CFE est due ; son montant dépend de la commune où se situe le bien. Elle n'existe pas en location nue." },
+          { name: "Informer le service des impôts en cas de changement de régime", text: "Si vous passez du micro au réel, signalez-le à votre service des impôts des entreprises via la messagerie sécurisée de votre espace professionnel, pour que le changement soit pris en compte." },
+        ],
+      },
+
+      { type: "h2", text: "Sources et date de vérification" },
       { type: "ul", items: [
-        "**Micro-BIC** : un abattement forfaitaire de 50 % sur les loyers. Simple, sans comptabilité lourde.",
-        "**Réel** : vous déduisez les charges réelles et **amortissez** le bien et le mobilier — souvent plus avantageux, mais avec une comptabilité.",
+        "BOFiP, **BOI-BAREME-000044** (version du 19 août 2026), « Seuils des régimes d'imposition » — seuil de 83 600 € pour les années 2026 à 2028 et de 77 700 € pour 2025 au C « Autres entreprises », seuil de 15 000 € pour les meublés de tourisme non classés. Lu le 16 novembre 2026.",
+        "BOFiP, **actualité du 19 août 2026** (ACTU-2025-00127) — « pour les revenus perçus à compter de l'année 2026, l'ensemble des activités de location en meublé relève du seuil de chiffre d'affaires de 83 600 € et d'un abattement de 50 % », à l'exception des meublés de tourisme non classés (15 000 € et 30 %) ; plafonds 2026 de l'article 35 bis du CGI fixés à 215 € en Île-de-France et 159 € dans les autres régions. Loi n° 2024-1039 du 19 novembre 2024, art. 7.",
+        "BOFiP, **BOI-BIC-DECLA-20** (version du 19 août 2026) — abattement forfaitaire qui ne peut être inférieur à 305 €.",
+        "DGFiP, **« Foire aux questions — régime des locations meublées »**, mars 2026 — définition du LMNP et du LMP (23 000 € TTC), imputation des déficits (10 ans en LMNP), TVA, CFE, taxe d'habitation, SCI, indivision, globalisation des recettes, tolérance de dépassement sur deux années, immatriculation INPI sous 15 jours, et conséquences de la réforme de la plus-value.",
+        "**Loi n° 2025-127 du 14 février 2025 de finances pour 2025, article 84** (JORF n° 0039 du 15 février 2025) — III ajouté à l'article 150 VB du CGI minorant le prix d'acquisition des amortissements admis en déduction au titre de l'article 39 C, liste des résidences exclues, et application « aux cessions réalisées à compter du lendemain de la promulgation ».",
+        "DGFiP, brochure pratique **« Impôt sur le revenu 2026 »**, fiche « Principales nouveautés — revenus 2025 », page 45 — CSG portée de 9,2 % à 10,6 % sur les revenus du patrimoine, les revenus fonciers, plus-values immobilières, assurance-vie et épargne logement restant à 9,2 % (LFSS 2026, art. 12 ; CSS, art. L136-8).",
+        "**Ville de Villeurbanne**, « Déclarer un meublé de tourisme », villeurbanne.fr — absence de demande de changement d'usage, obligation de déclaration, récépissé sous un mois, absence de numéro d'enregistrement. Lue le 16 novembre 2026.",
+        "Loyer médian communal de 14,6 €/m² hors charges (carte des loyers, data.gouv.fr) et surface médiane de 62 m² (base DVF) — les mêmes chiffres que ceux publiés sur nos autres pages.",
       ] },
-      { type: "h2", text: "L'intérêt" },
-      { type: "p", text: "Bien optimisé, le LMNP permet de réduire fortement (voire d'annuler) l'impôt sur les loyers pendant des années." },
+    ],
+    faq: [
+      {
+        q: "Dois-je payer de la TVA sur mes loyers de location meublée ?",
+        a: "En principe non : la location meublée est exonérée de TVA, sans possibilité d'option. L'exception est la location para-hôtelière : si vous proposez, en plus du logement, au moins trois services de type hôtelier (petit-déjeuner, nettoyage régulier, fourniture de linge, réception), la TVA devient obligatoire au taux de 10 %. Micro-BIC et franchise de TVA sont deux régimes indépendants : on peut relever du micro-BIC pour ses loyers et devoir déclarer la TVA.",
+      },
+      {
+        q: "Un loueur en meublé paie-t-il la cotisation foncière des entreprises (CFE) ?",
+        a: "Oui. La location meublée étant fiscalement une activité commerciale, la CFE est due par les loueurs en meublé, et son montant dépend de la commune où se situe le bien. C'est une charge qui n'existe pas en location nue, et elle doit être retranchée de l'avantage fiscal du meublé avant de comparer les deux modes de location.",
+      },
+      {
+        q: "Peut-on faire de la location meublée via une SCI ?",
+        a: "C'est possible mais rarement souhaitable : la location meublée est une activité commerciale, et une SCI qui loue en meublé de façon régulière devient automatiquement redevable de l'impôt sur les sociétés. La SCI perd alors la transparence fiscale qui motive le plus souvent sa création.",
+      },
+      {
+        q: "Mes déficits de location meublée sont-ils imputables sur mes autres revenus ?",
+        a: "Non si vous êtes loueur non professionnel : en LMNP, les déficits ne s'imputent que sur vos futurs revenus de location meublée, pendant 10 ans. Ce n'est qu'en LMP qu'ils s'imputent sur le revenu global sans limitation de montant, avec un report de 6 ans si le revenu global est insuffisant.",
+      },
+      {
+        q: "Je loue une chambre meublée à un étudiant chez moi : est-ce imposable ?",
+        a: "Pas nécessairement. Les produits tirés de la location d'une partie de votre habitation principale sont exonérés d'impôt sur le revenu si les pièces louées constituent la résidence principale du locataire et si le loyer reste raisonnable. Pour 2026, l'administration fixe ce plafond à 159 € par m² de surface habitable et par an, hors charges, hors Île-de-France : soit 1 431 € par an (119 € par mois) pour une chambre de 9 m², ou 1 908 € par an (159 € par mois) pour 12 m². À Villeurbanne, où le campus de la Doua et l'INSA soutiennent la demande étudiante, c'est le cas le plus fréquent de location meublée entièrement défiscalisée.",
+      },
+      {
+        q: "Ai-je un plafond de micro-BIC par appartement meublé ?",
+        a: "Non. Pour apprécier les limites du régime micro-BIC, vous devez globaliser l'ensemble des recettes réalisées par toutes vos locations meublées : il n'existe pas de plafond par appartement. À noter également que les indivisions sont exclues du micro-BIC et relèvent du régime réel, sauf cas particuliers.",
+      },
+      {
+        q: "Qu'est-ce qui a changé à la revente si j'ai amorti mon bien en LMNP ?",
+        a: "Pour les ventes réalisées à compter du 15 février 2025, les amortissements déduits pendant la location au régime réel sont retirés du prix d'acquisition servant à calculer la plus-value, ce qui augmente mécaniquement le gain imposable. Certaines résidences gérées en sont exclues : résidences étudiantes, résidences pour jeunes en formation ou en apprentissage, résidences pour personnes de plus de 65 ans, établissements sociaux et médico-sociaux, résidences-services agréées et unités de soins de longue durée.",
+      },
     ],
   },
   {
