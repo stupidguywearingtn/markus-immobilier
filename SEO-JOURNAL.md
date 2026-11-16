@@ -5835,6 +5835,18 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-16 (2e déclenchement, 06h43 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (LMNP, `8000bc2`)
+
+- **Déclenchement en double** : l'article `/blog/lmnp-location-meublee` réécrit ce matin est
+  servi (titre « LMNP 2026 : ce que la location meublée change vraiment, à Villeurbanne »,
+  `lastmod` 16/11 au sitemap). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `7efdb6b`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, inchangé, aucune page de l'éditeur ; seul `lastmod` du 16/11 =
+  l'article LMNP (mon run). `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/blog`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-16 (lundi) — `lmnp-location-meublee` : 70 → ~2 780 mots, et la contrepartie à la revente qui manquait (`8000bc2`)
 
 **🔴 CE QUI N'ALLAIT PAS, mesuré avant d'agir.** 70 mots de texte (le
