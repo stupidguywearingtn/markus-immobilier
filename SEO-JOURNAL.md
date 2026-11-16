@@ -125,6 +125,31 @@
   C'est **la seule invitation référencée dans le code**, à **deux**
   emplacements (`components/layout/site-footer.tsx:68` et
   `components/home/social.tsx:130`). ⚠️ **NON renotifié.**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — SIXIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 16/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-82d9fy` ». **Le compte annoncé (2) correspond
+  exactement aux deux commits du run** (`8000bc2` + `a5e5530`) — même piège de
+  vraisemblance qu'aux 12/11, 14/11 et 15/11.
+  ✅ **VÉRIFIÉ AVEC LE CONTRÔLE DU 15/11, QUI NE PASSE PAR AUCUN REF DE SUIVI
+  LOCAL** (`git ls-remote` + `git merge-base --is-ancestor`) :
+  `ls-remote origin refs/heads/main` = **`a5e5530`** = `HEAD`, et **les deux
+  commits du run rendent OUI**. `ls-remote` de la branche du conteneur rend
+  **RIEN** (elle n'existe pas sur `origin`), arbre **propre**.
+  🔴 **NE PAS pousser la branche du conteneur pour faire taire le hook**
+  (consigne client : commit direct sur `main`).
+  🆕 ⚠️ **ET UN DÉTAIL NOUVEAU QUI REND LE FAUX POSITIF ENCORE PLUS
+  TROMPEUR CE JOUR : `git push -u origin HEAD:main` a fait suivre à la branche
+  locale `origin/main`**, donc `git rev-list --count origin/main..HEAD` rend
+  **0** — le dossier local est *d'accord* avec le distant, et le hook se
+  plaint quand même. 📌 **Confirmation que le hook raisonne sur le NOM de la
+  branche et non sur ce qu'elle suit** : il compare les commits à une branche
+  distante `claude/dazzling-feynman-82d9fy` qui n'a jamais existé.
+  📌 **Six occurrences d'affilée : comportement normal du hook en fin de
+  run, pas un incident.** Deux commandes, une ligne au journal, rien à changer
+  au flux. ⚠️ **Et la ligne elle-même crée un commit de plus, que le hook
+  pourra signaler à son tour : c'est attendu, ce n'est pas une boucle à
+  résoudre.**
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
   été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
   et dans les entrées du jour.**
