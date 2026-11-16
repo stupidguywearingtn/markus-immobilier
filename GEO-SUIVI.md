@@ -8,6 +8,47 @@ Légende des résultats : 🟢 Markus cité · 🟠 présent via un annuaire · 
 
 ---
 
+## 2026-11-16 (lundi) — 5e run
+
+**Fait marquant : rien ne bouge (Markus 0/10, 5e run de suite). Les mêmes sources tiennent le top : RealAdvisor, Leboncoin boutique Decultieux, Immodvisor. Une page PagesJaunes « agences immobilières » sort désormais en q7.**
+
+### Questions d'évaluation
+
+| # | Question | Résultat | Top 5 (type de source) | vs 12/11 |
+|---|---|---|---|---|
+| 1 | quelle agence immobilière choisir à Villeurbanne | 🔴 | RealAdvisor (Beauvallon), Immodvisor Villeurbanne (annuaire d'avis), RealAdvisor ×2 (autres communes), RealAdvisor (quartier Charpennes-Wilson) ; Orpi Charpennes/Gratte-Ciel, Leboncoin boutique Decultieux plus bas | identique |
+| 2 | meilleure agence immobilière Villeurbanne avis | 🔴 | 16 pages RealAdvisor hors Villeurbanne (moteur bruité) | identique |
+| 3 | agence pour vendre mon appartement à Villeurbanne | 🔴 | Laforêt République, RealAdvisor ×2 (quartiers), Orpi République, Orpi Maisons-Neuves ; RealAdvisor vitrine Avi Korssia 13e | Orpi Cetrim estimation entre |
+| 4 | combien coûte une agence immobilière à Villeurbanne | 🔴 | calcunet (calculateur), SeLoger édito (média), **Leboncoin boutique Decultieux**, Laforêt ×2 | identique |
+| 5 | agence gestion locative Villeurbanne | 🔴 | Laforêt, BailFacile, Manda, Orpi Cetrim, Square Habitat ; acceslibre (Loximmo) 8e, Foncia plus bas | identique |
+| 6 | agence immobilière Gratte-Ciel | 🔴 | **Leboncoin boutique Decultieux (1re)**, Human Gratte-Ciel, Orpi ×3 ; annonces FNAIM plus bas | Leboncoin revient 1er |
+| 7 | agence immobilière indépendante Lyon Est | 🔴 | Leboncoin Decultieux (1re), Leboncoin boutique 4222279, RealAdvisor, efficity ×2 (mandataires) ; Mappy (Homicca), **PagesJaunes annuaire Lyon 2e**, Custplace plus bas | PagesJaunes entre |
+| 8 | estimation immobilière gratuite Lyon | 🔴 | Laforêt ×12, Orpi | identique |
+| 9 | agence immobilière Meyzieu | 🔴 | Square Habitat ×2, Orpi Nord-Ouest, Orpi Nord-Est, RealAdvisor vitrine Blaow ; acceslibre (Nestenn), RealAdvisor Pro Deal, Foncia, FNAIM, Immodvisor, lesiteimmo plus bas | identique |
+| 10 | vendre maison Décines | 🔴 | Orpi (annonces) ×2, lesclefsdechezmoi (portail), Guy Hoquet, Nestoria (agrégateur) ; PAP, Laforêt, Capifrance, lesiteimmo plus bas | identique |
+
+Rappel : recherches web de l'outil, **pas** des réponses de ChatGPT (non interrogeable d'ici).
+
+### Vérifié en profondeur ce run
+- **b9 Cylex** : page Villeurbanne toujours illisible d'ici (fetch refusé). En recherche `site:cylex-locale.fr` : fiches Foncia Location, Agence CC Immo, Iméance (Villeurbanne). **Markus : aucune fiche trouvée.** Statut : manquant (probable), inscription gratuite à faire par Yanis.
+- **b10 Zimo** : Zimo est un **moteur d'annonces immobilières** ; ses pages « professionnel » (ACI Immobilier, Accorimm Villeurbanne, CIMM Immobilier) semblent créées à partir des flux d'annonces des agences. **Markus : aucune page.** Pas une inscription manuelle : se règle si le logiciel d'annonces de Tony diffuse vers Zimo (lié à b3). Priorité basse.
+- **c3 Custplace** : page illisible (erreur du site). La recherche « custplace agence immobilière Villeurbanne » ne sort **aucune** fiche Custplace de Villeurbanne ; une seule fiche Custplace (Espaces Atypiques Bellecour) sort en q7. Priorité basse — garder Google + RealAdvisor comme les 2 plateformes d'avis.
+- **f1 LinkedIn Tony / David** : recherche « Tony Pistilli LinkedIn immobilier Villeurbanne » → **aucun profil trouvé** par le moteur (seulement d'autres agents). Non mesurable d'ici : Yanis doit vérifier à la main que les 2 profils existent, sont publics et portent la même phrase d'agence + le lien du site.
+- **h1 robots.txt** : inchangé ; 7 robots IA → 200 ✅. Sitemap : 58 URL, toujours aucune page Meyzieu/Décines/Bron/Jonage/Vaulx.
+
+### Ce qui a changé
+Côté Markus : rien. Côté sources : PagesJaunes (page annuaire) entre en q7 → renforce a7 (fiche PagesJaunes = aussi Mappy). Classement quasi figé depuis le 09/11 : les gagnants restent les agences qui ont **une vitrine sur un annuaire** (RealAdvisor, Leboncoin), pas celles qui ont le meilleur site. Contexte : un core update Google tourne depuis le 10/11 (journal SEO) — ne rien conclure sur les positions de cette semaine.
+
+### Veille du lundi
+- Stratenet, « Baromètre GEO de l'immobilier belge », oct. 2026 (agence partenaire HubSpot — biais commercial) : 50 agences, 50 questions, 403 réponses ChatGPT / Perplexity / AI Overview. **33 % des réponses ne citent aucune agence** ; 10 agences sur 50 jamais citées ; 14 des 40 citées n'apparaissent que sur un seul moteur ; **le volume d'annonces ne prédit pas la citation** (un leader à 12,3 % des annonces = 2 % des citations ; deux agences à ~5 % des annonces à Liège = 0 citation). Belgique, pas France, mesure d'un jour. Conforte la boussole (moteurs différents → travailler les deux ; ce qui compte = être lisible dans les sources tierces).
+- MySweetImmo, 06/10/2026 (média qui vend de la visibilité — biais) : aucun chiffre GEO nouveau. Confirme AI Overviews/AI Mode en France depuis le 22/07/2026 et que Google dit qu'aucun balisage spécial n'est nécessaire. Cite Leboncoin et **Omny** comme déjà intégrés à ChatGPT → Omny à vérifier (nouvelle ligne b11).
+- Rien ne contredit la boussole BrightLocal / Immodvisor.
+
+### Recommandation site (inchangée)
+Page **« Vendre à Meyzieu : nos ventes réelles »** — absente du sitemap (58 URL vérifiées le 16/11).
+
+---
+
 ## 2026-11-12 (jeudi) — 4e run
 
 **Fait marquant : deux petites agences de Meyzieu (Blaow, Pro Deal Transaction) sortent en q9 avec leur simple vitrine RealAdvisor, et la boutique Leboncoin de Decultieux sort désormais 1re en q7. Markus : toujours 0/10.**
@@ -202,14 +243,14 @@ Cercles : Est lyonnais conservé — ventes réelles affichées sur le site (`li
 | c2 | Réponses aux avis citant type de bien + quartier | à vérifier — 3 modèles prêts (run 09/11) | Tony | — | 09/11 |
 | d1 | Classements tiers « meilleures agences Villeurbanne/Lyon » | aucun classement éditorial trouvé ; seuls les annuaires classent | Yanis | recherche 05/11 | 05/11 |
 | e1 | Pitch presse (médianes DVF par quartier) : cible n°1 Le Progrès éd. Villeurbanne, n°2 Lyon Entreprises | pitch rédigé (run 09/11), à envoyer | Tony (envoi) / Yanis (trouver l'adresse rédaction) | articles concurrents sans source : news.lesiteimmo.com 21/04/2026 | 09/11 |
-| f1 | LinkedIn Tony + David : même description d'agence, lien site | à vérifier | Tony | — | — |
+| f1 | LinkedIn Tony + David : même description d'agence, lien site | à vérifier à la main (aucun profil trouvé par le moteur le 16/11) | Yanis (10 min) | linkedin.com | 16/11 |
 | g1 | Forums (Reddit r/Lyon, r/vosfinances) : commentaire utile sous vrai nom | non mesurable d'ici (Reddit non indexé par l'outil) → recherche manuelle | Yanis (10 min) | reddit.com/r/Lyon | 09/11 |
-| h1 | robots.txt laisse passer les robots IA | fait ✅ (7 robots → 200) | — | https://www.markusimmobilier.fr/robots.txt | 12/11 |
+| h1 | robots.txt laisse passer les robots IA | fait ✅ (7 robots → 200) | — | https://www.markusimmobilier.fr/robots.txt | 16/11 |
 | i1 | Cohérence NAP + horaires sur le site | fait ✅ | — | accueil : tél ×9, email ×9, horaires conformes | 02/11 |
 | i2 | Cohérence NAP sur chaque fiche externe | bloqué (aucune fiche externe trouvée) | — | — | 05/11 |
-| b9 | Cylex (cylex-locale.fr) : fiche gratuite — annuaire généraliste qui sort en recherche locale | à vérifier (page illisible d'ici le 09/11) | Yanis (10 min) | https://www.cylex-locale.fr/villeurbanne/agence-immobili%c3%a8re/ | 09/11 |
+| b9 | Cylex (cylex-locale.fr) : fiche gratuite — annuaire généraliste (Foncia, CC Immo, Iméance y sont pour Villeurbanne) | manquant (aucune fiche Markus en recherche ; page illisible d'ici) | Yanis (10 min) | https://www.cylex-locale.fr/villeurbanne/agence-immobili%c3%a8re/ | 16/11 |
+| b10 | Zimo (moteur d'annonces ; pages « professionnel » créées depuis les flux d'annonces) | manquant — se règle via la diffusion des annonces (lié à b3), priorité basse | Tony | https://www.zimo.fr/professionnels/villeurbanne-69100 | 16/11 |
+| b11 | Omny (portail cité comme intégré à ChatGPT par MySweetImmo 06/10/2026) : vérifier ce que c'est et si les annonces de l'agence peuvent y figurer | à vérifier | Yanis | https://www.mysweetimmo.com/2026/10/06/agents-immobiliers-et-ia-serez-vous-recommandes-par-chatgpt-claude-ou-gemini/ | 16/11 |
+| c3 | Custplace (plateforme d'avis) | aucune fiche Custplace Villeurbanne ne sort ; page illisible — priorité basse | Tony | https://fr.custplace.com | 16/11 |
 
-| b10 | Zimo (annuaire de pros, sort sur 2 requêtes Villeurbanne) | à vérifier (page illisible d'ici) | Yanis | https://www.zimo.fr/professionnels/villeurbanne-69100 | 12/11 |
-| c3 | Custplace (plateforme d'avis, fiches agences sortent en q6/q7) : page entreprise gratuite | à vérifier | Tony | https://fr.custplace.com | 12/11 |
-
-**Prochain lot (lundi 16/11)** : b9 Cylex, b10 Zimo, c3 Custplace, f1 LinkedIn Tony + David — et veille du lundi. Prochain rappel Bing AI Performance (a4) : lundi 07/12.
+**Prochain lot (jeudi 19/11)** : a5 Apple Business Connect, a6 Facebook, a10 Waze, b5 lesiteimmo, b11 Omny. Prochain rappel Bing AI Performance (a4) : lundi 07/12.
