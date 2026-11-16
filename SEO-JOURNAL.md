@@ -14,6 +14,121 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-16 (lundi)**
+
+- ✅ **LE RUN A EU LIEU — ONZIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 16/11.
+  **Un seul manque sur 80 jours** (le 05/11). Rien à remonter.
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`26ba16d`**, `git ls-remote origin refs/heads/main` = **`26ba16d`** :
+  identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-82d9fy`**, pas sur `main`.
+  **Seizième constat consécutif**, nom différent chaque fois.
+  `git ls-remote origin refs/heads/claude/dazzling-feynman-82d9fy` rend **RIEN**
+  au démarrage. Poussé en `git push -u origin HEAD:main`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-et-unième constat identique** (21/09 → 16/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-quatrième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles de blog —
+  identique du 07/11 au 16/11.** Aucune page ajoutée ni retirée. `curl -sL`
+  (piège `308`). Le `lastmod` n'a **PAS** servi à conclure sur l'activité du
+  client.
+- 🟢 **CHANTIER DU JOUR : CONTENU, l'alternance est respectée**
+  (14/11 contenu → 15/11 non-contenu → **16/11 contenu**).
+- 🔴 🆕 **VEILLE DU LUNDI FAITE, ET ELLE SORT LE FAIT LE PLUS IMPORTANT DU
+  RUN : UN *CORE UPDATE* GOOGLE EST EN COURS DE DÉPLOIEMENT DEPUIS LE 10/11.**
+  Confirmé sur la **source primaire** (tableau de bord d'état de Google
+  Search, historique des mises à jour de classement) : « November 2026 core
+  update », démarrée le **10 novembre 2026**, et c'est **la seule entrée de
+  2026 sans durée enregistrée** — les sept autres en portent une. Google
+  annonce « up to 2 weeks ». 📌 **CONSÉQUENCE DIRECTE SUR LA MÉTRIQUE DE CE
+  JOURNAL : le relevé du 15/11 (« agence immobilière Villeurbanne », site
+  absent) a été pris à J+5 d'un core update, et TOUTES les remesures
+  programmées au 18, 21, 22, 23 et 24/11 tombent dans ou juste après le
+  déploiement.** Une position mesurée dans cette fenêtre ne peut être
+  attribuée ni à notre travail ni à son absence. **Ce n'est pas une raison de
+  ne pas mesurer, c'en est une de ne pas conclure.**
+- 🟢 **CHANTIER : `lmnp-location-meublee` RÉÉCRIT DE FOND EN COMBLE, 70 →
+  ~2 780 MOTS. Commit `8000bc2`.** C'était **le contenu le plus faible du
+  site** — et le comptage réel est **pire que celui du backlog** : 70 mots,
+  pas 107 (le backlog comptait autrement). Il portait surtout **deux
+  affirmations devenues inexactes** : un « abattement forfaitaire de 50 % »
+  sans seuil ni exception des meublés de tourisme, et « réduire fortement
+  voire annuler l'impôt sur les loyers pendant des années » **sans un mot de
+  la contrepartie à la revente**. 📌 **Le chantier n'était donc pas « étoffer
+  un article court » mais corriger une page qui promettait un avantage sans
+  dire ce qu'il coûte.**
+- ✅ **TOUT EST SOURCÉ SUR DES TEXTES PRIMAIRES LUS CE JOUR**, et deux
+  conflits de chiffres ont été tranchés dans les textes eux-mêmes :
+  **(1)** le seuil du micro-BIC est **83 600 €** pour les revenus perçus à
+  compter de **2026** et **77 700 €** pour **2025** — ce ne sont pas deux
+  sources qui se contredisent, ce sont **les deux lignes d'année du même C
+  « Autres entreprises »** de `BOI-BAREME-000044` (19/08/2026) ;
+  **(2)** la réforme de la plus-value s'applique au **15/02/2025** et non au
+  16, parce que la LF 2025 dit « à compter du **lendemain de la
+  promulgation** » et qu'elle a été promulguée le **14/02/2025**.
+- 🔴 🆕 **LE PIÈGE ÉVITÉ, ET C'EST LE CORPUS QUI L'A ARRÊTÉ : LES
+  PRÉLÈVEMENTS SOCIAUX NE SONT PAS LES MÊMES EN MEUBLÉ ET EN NU.** Ma
+  première version de la comparaison appliquait **17,2 % des deux côtés** et
+  publiait 613 / 1 025 / 1 264 €. `grep` dans le corpus avant d'écrire :
+  `/blog/plus-value-immobiliere-calcul` publie déjà, sourcé, que les
+  **revenus de location meublée sont passés à 18,6 %** quand les revenus
+  fonciers restent à 17,2 %. Vérifié moi-même à la source (DGFiP, brochure
+  « Impôt sur le revenu 2026 », p. 45 : la CSG passe à 10,6 % sur les revenus
+  du patrimoine, et la liste de ce qui **reste** à 9,2 % — revenus fonciers,
+  plus-values immobilières, assurance-vie, épargne logement — **ne contient
+  pas** le meublé). Chiffres publiés corrigés en **536 / 949 / 1 188 €** :
+  les 1,4 point de CSG absorbent **6 à 12 %** de l'écart.
+- ✅ **BALISAGE : LA PAGE N'ÉMETTAIT QUE `BlogPosting` + `BreadcrumbList`,
+  ELLE ÉMET DÉSORMAIS AUSSI `FAQPage` ET `HowTo`.** Parité **prouvée dans un
+  rendu réel** (pas dans la source, leçon du 18/09) : **7/7** questions et
+  **7/7** réponses présentes **mot pour mot** dans le texte visible, **7/7**
+  étapes du `HowTo` idem, et les **20 chiffres clés** de l'article tous
+  présents dans le visible. Normalisation NFC + `U+202F`/`U+00A0` avant
+  comparaison, `<script>` retirés **avant** les balises.
+- ✅ **DONNÉE LOCALE QUE PERSONNE NE CROISE AVEC LA FISCALITÉ :** à Villeurbanne
+  **aucune demande de changement d'usage** n'est à déposer pour un meublé de
+  tourisme, la déclaration en mairie reste obligatoire, **récépissé sous un
+  mois**, **aucun numéro d'enregistrement attribué** (villeurbanne.fr).
+  📌 **C'est une règle communale : une page nationale ne peut pas la
+  deviner**, et c'est exactement le genre de contenu que ni un concurrent
+  national ni un LLM ne possède.
+- 🟡 **SERP DE SUJET MESURÉE — SITE ABSENT, ET LA SERP EST À 100 %
+  NATIONALE.** Requête « plafond micro-BIC location meublée 2026 » : aucun
+  acteur local, aucune agence, **que des éditeurs nationaux**
+  (`bailfacile`, `plan-immobilier`, `jedeclaremonmeuble`, `weblex`,
+  `gererseul`, `indy`, `fiscaloo`, `seloger`, `investissement-locatif`).
+  🆕 **Et ils se contredisent sur l'année de référence** : `plan-immobilier`
+  donne 77 700 € comme plafond « 2026 ». 📌 **C'est la justification
+  mesurée du chantier : le sujet est encombré mais mal traité, et le
+  créneau local est vide.** **Remesure : 30/11.**
+- ✅ **`/llms.txt` À JOUR SANS INTERVENTION, ET VÉRIFIÉ.** Il **dérive** de
+  l'`excerpt` des articles (`articleLine()` dans `app/llms.txt/route.ts`) :
+  le nouveau titre et le seuil de 83 600 € y sont apparus seuls. 📌 **Rien à
+  éditer à la main ici — mais c'est une raison de soigner l'`excerpt`, qui
+  est le texte que les LLM lisent.**
+- ✅ **BUILD EN 0 À LA PREMIÈRE TENTATIVE**, contrairement au 15/11 (2 échecs
+  sur 5 sur `next/font/google`). **La précaution du 15/11 n'a pas eu à
+  servir.** `tsc --noEmit` propre.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR
+  `/mentions-legales`, NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre
+  identique du 02/11 au 16/11, prouvé après le commit du jour. **Aucune
+  erreur neuve.** Pages témoins (`/`, `/blog`, `/blog/cout-gestion-locative`,
+  `/annonces`, `/llms.txt`, `/sitemap.xml`) toutes en **200**.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  DIX-HUITIÈME JOUR, RECONTRÔLÉ EN LIGNE CE JOUR** : **0 occurrence de
+  « Qui sommes »** dans le HTML de production. **Non corrigé, et c'est
+  volontaire** (page de Tony, règle des 90 jours). ⚠️ **NON renotifié** —
+  inchangé depuis sept notifications.
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE, RECONTRÔLÉE CE JOUR** :
+  `discord.gg/fSyn28G5U` rend **`{"message": "Unknown Invite", "code": 10006}`**.
+  C'est **la seule invitation référencée dans le code**, à **deux**
+  emplacements (`components/layout/site-footer.tsx:68` et
+  `components/home/social.tsx:130`). ⚠️ **NON renotifié.**
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour.**
+
 **Au 2026-11-15 (dimanche)**
 
 - ✅ **LE RUN A EU LIEU — DIXIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 15/11.
@@ -5694,6 +5809,81 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 ---
 
 ## Chantiers faits
+
+### 2026-11-16 (lundi) — `lmnp-location-meublee` : 70 → ~2 780 mots, et la contrepartie à la revente qui manquait (`8000bc2`)
+
+**🔴 CE QUI N'ALLAIT PAS, mesuré avant d'agir.** 70 mots de texte (le
+backlog en annonçait 107 — **comptage différent, mais dans les deux cas c'est
+le contenu le plus faible du site**), aucune source, aucun champ `faq`, trois
+H2 en étiquettes (« Les conditions », « Les deux régimes », « L'intérêt »).
+Et **deux affirmations devenues inexactes** :
+- « Micro-BIC : un abattement forfaitaire de 50 % » — **sans son seuil**, et
+  **sans l'exception des meublés de tourisme non classés** (15 000 € / 30 %),
+  qui est précisément le cas Airbnb ;
+- « le LMNP permet de réduire fortement (voire d'annuler) l'impôt sur les
+  loyers pendant des années » — **sans un mot de la réforme de la
+  plus-value** : depuis le 15/02/2025, les amortissements déduits sont retirés
+  du prix d'acquisition à la revente. **La page vendait un gain net là où il y
+  a pour partie un report.**
+
+**✅ CE QUI A ÉTÉ ÉCRIT, et sur quoi.** 8 H2 tous formulés en questions
+réelles, **réponse autonome en tête de chacun**, 2 tableaux sourcés, un bloc
+`steps` (→ `HowTo` de 7 étapes) et une FAQ de **7 questions distinctes des
+H2** (TVA, CFE, SCI, déficits, chambre chez l'habitant, plafond par
+appartement, revente). Sources primaires **lues ce jour** :
+- `BOI-BAREME-000044` (19/08/2026) — **83 600 €** pour 2026-2028 et
+  **77 700 €** pour 2025 au C « Autres entreprises », **15 000 €** pour les
+  meublés de tourisme non classés ;
+- actualité BOFiP du **19/08/2026** — abattements **50 %** / **30 %**, loi
+  n° 2024-1039 du 19/11/2024 art. 7, **et** les plafonds 2026 de l'art. 35 bis
+  du CGI (**215 €** Île-de-France, **159 €** ailleurs) ;
+- `BOI-BIC-DECLA-20` (19/08/2026) — abattement plancher de **305 €** ;
+- **DGFiP, « FAQ régime des locations meublées », mars 2026** (PDF, 533 lignes
+  de texte) — LMNP/LMP et les **23 000 € TTC**, déficits **10 ans**, TVA et
+  les **trois services hôteliers**, CFE, SCI → IS, indivision exclue du micro,
+  globalisation des recettes, **tolérance de dépassement sur deux années**,
+  INPI **sous 15 jours**, exonération LMP après 5 ans sous **90 000 €** ;
+- **LF 2025, art. 84** (JORF n° 0039 du 15/02/2025) — III ajouté à l'art.
+  150 VB du CGI, **liste complète des résidences gérées exclues**, et
+  « à compter du lendemain de la promulgation » ;
+- **DGFiP, brochure IR 2026, p. 45** — CSG à **10,6 %** sur les revenus du
+  patrimoine, liste de ce qui reste à 9,2 % ;
+- **villeurbanne.fr**, « Déclarer un meublé de tourisme ».
+
+**📌 LA DONNÉE PROPRE AU CLIENT, sans aucun nouveau calcul DVF.** La
+comparaison meublé / nu est chiffrée sur le **62 m² au loyer médian déjà
+publié ailleurs sur le site** (14,6 €/m² HC → **905 €/mois**, **10 860 €/an**) :
+base **7 602 €** en micro-foncier (abattement 30 %) contre **5 430 €** en
+micro-BIC (50 %), et un avantage annuel de **536 €** (TMI 11 %), **949 €**
+(30 %), **1 188 €** (41 %) **après** prise en compte des prélèvements sociaux
+différents (18,6 % contre 17,2 %). **Les seuls chiffres neufs sont de
+l'arithmétique sur des chiffres déjà publiés** — aucune médiane recalculée,
+donc aucun risque de divergence avec les cinq articles qui dépendent de
+`lib/quartiers.ts`.
+
+**🔴 CE QUE J'AI REFUSÉ D'ÉCRIRE, et pourquoi.**
+- **Aucun écart de loyer meublé / vide à Villeurbanne.** C'est le chiffre que
+  le lecteur voudrait, et c'est celui que nous n'avons pas : 14,6 €/m² est un
+  **loyer médian communal, pas un loyer de meublé**. La comparaison est donc
+  posée **« à loyer égal », et la limite est écrite dans l'article**, pas
+  cachée.
+- **Aucune promesse de rendement, aucun « montage ».** Les deux charges que le
+  meublé ajoute (**CFE** et comptabilité du réel) sont écrites noir sur blanc
+  comme à retrancher de l'avantage.
+- **Aucune règle de changement d'usage pour les communes voisines.** Je sais
+  que celle de Villeurbanne est « aucune demande à déposer » ; je **n'ai pas
+  vérifié** Lyon, donc l'article dit que la règle se vérifie mairie par mairie
+  **sans nommer d'autre commune**.
+- **Pas de `faq` sur `cout-gestion-locative`** (candidat n° 1 du backlog) — voir
+  « Chantiers en attente » : sa SERP se remesure le 27/11 pour juger la
+  réécriture du 13/11, et y ajouter du contenu aujourd'hui aurait rendu cette
+  mesure inexploitable. **Report assumé, pas oubli.**
+
+**✅ CONTRÔLES.** `tsc --noEmit` 0 · `npm run build` **0 à la première
+tentative** · `eslint` **35 / 24, inchangé** · page en **200** · parité
+JSON-LD ↔ visible **7/7 + 7/7 dans un rendu réel** · `dateModified` =
+**2026-11-16** · `llms.txt` à jour **par dérivation**, vérifié · 30 articles
+au sitemap, inchangé. **120 insertions, 12 suppressions, un seul fichier.**
 
 ### 2026-11-15 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (hub annonces, `24d9e04`)
 
@@ -11448,6 +11638,210 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — la réécriture complète de
+`lmnp-location-meublee`, le contenu le plus faible du site, qui promettait un
+avantage fiscal sans dire ce qu'il coûte à la revente**
+(16/11 : **70 → ~2 780 mots**, **0 → 7 questions de FAQ** (parité 7/7 dans un
+rendu réel), **`HowTo` de 7 étapes** (7/7 présentes dans le visible), **8 H2
+tous en questions**, `updated` → 2026-11-16. La page n'émettait **ni `FAQPage`
+ni `HowTo`** avant ce run. Tout sourcé sur des textes primaires lus le jour
+même : seuil micro-BIC **83 600 €** pour 2026 (77 700 € pour 2025),
+amortissements retirés du prix d'acquisition depuis le **15/02/2025**,
+prélèvements sociaux **18,6 %** en meublé contre 17,2 % en nu, et la règle
+villeurbannaise du meublé de tourisme (**aucun changement d'usage**, aucun
+numéro d'enregistrement). **Commit `8000bc2`.**
+🔴 **Et le piège du run a été arrêté par le corpus** : la première version
+appliquait 17,2 % de prélèvements sociaux des deux côtés.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (17/11, mardi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 14/11 contenu → 15/11 non-contenu → **16/11 contenu**).
+✅ **La veille du lundi a été faite le 16/11 — prochaine due le 23/11.**
+
+🔴 🆕 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : UN *CORE UPDATE*
+EST EN COURS DEPUIS LE 10/11/2026** (source primaire : tableau de bord d'état
+de Google Search — « November 2026 core update », **seule entrée de 2026 sans
+durée enregistrée**, annoncée « up to 2 weeks »). **Les remesures des 18, 21,
+22, 23 et 24/11 tombent dans ou juste après le déploiement : les relever oui,
+en tirer une conclusion sur l'effet de notre travail non.** ⚠️ **Et vérifier
+au passage si l'entrée a reçu une durée** — c'est le signe que le
+déploiement est terminé.
+
+🟢 **CANDIDATS NON-CONTENU POUR LE 17/11, par ordre d'impact :**
+  1. 🟡 **LE MAILLAGE INTERNE DE `/annonces`, QUI RESTE ENTIER.** Le chantier
+     du 15/11 a traité le **balisage** de cette page, **pas ses liens
+     entrants** : le défaut mesuré le 07/11 (**9** liens entrants contre **57**
+     pour les 16 pages du header et du footer) **est intact**. 📌 **C'est le
+     candidat le plus mûr** : la page vient d'être rendue lisible par les
+     machines, lui donner du poids interne est la suite logique.
+     ⚠️ **ÉCRIRE une phrase, pas poser une ancre** (règle du 16/09), et
+     **mesurer les liens entrants réels par `grep` avant de conclure**.
+  2. 🆕 🟡 **DEUX À TROIS LIENS ENTRANTS À POSER VERS
+     `lmnp-location-meublee`.** Il vient de passer de 70 à ~2 780 mots et
+     **presque personne ne pointe vers lui** : les candidats naturels sont
+     `rentabilite-locative-lyon`, `investir-locatif-lyon`,
+     `cout-gestion-locative` et `/gestion-locative`. ⚠️ **Mesurer par `grep`
+     d'abord** (l'article sortant, lui, pointe déjà vers
+     `/gestion-locative`, `/blog/cout-gestion-locative`,
+     `/blog/plus-value-immobiliere-calcul` et
+     `/blog/preavis-depot-garantie-location-villeurbanne`), et **écrire une
+     phrase**.
+  3. 🟡 **DEUX LIENS ENTRANTS À POSER VERS `home-staging-vendre-plus-cher`.**
+     Substantiel depuis le 14/11 mais **personne ne pointe vers lui** :
+     candidats `vendre-appartement-lyon-etapes`, `vendre-vite-lyon` et
+     `/vendre`. ⚠️ **Mesurer par `grep` d'abord**, et **écrire une phrase**.
+  4. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La phrase est **EXACTE** : ce n'est pas une correction d'erreur, c'est une
+     levée d'ambiguïté. ⚠️ Même traitement à envisager pour `lib/blog.ts` et
+     la FAQ de `diagnostics-obligatoires-vente`. **Une phrase à ajouter.**
+  5. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Mesuré le 10/11 : `charges-copropriete`
+     ne contient **aucune occurrence** de « taxe foncière » et n'émet que **2**
+     liens éditoriaux. ⚠️ **Il faut ÉCRIRE une phrase.** Défaut **sortant**.
+  6. 🟡 **LES AUTRES PAGES HORS NAVIGATION GLOBALE.** Mesuré le 07/11 :
+     `/agence-immobiliere-cusset` **7**, `/agence-immobiliere-charpennes` **8**,
+     `/agence-immobiliere-gratte-ciel` **8**. ⚠️ **Trancher page par page.**
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC
+     DE L'ÉDITEUR.** Leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop.
+     **Méthode** : résoudre le bloc dans
+     `lib/page-builder/config.server.tsx`, lire le composant, confronter chaque
+     chiffre au corpus, puis vérifier dans le HTML en ligne.
+  8. 🟡 **RELANCER `justice.fr`** (maintenance le 31/10 **et** le 02/11, non
+     recontrôlé depuis — **quinze runs**). **Une seule affirmation en
+     dépend** : la fiche « DPE collectif ». **Contrôle à deux temps
+     obligatoire** : l'hôte rend **200** sur sa page de maintenance.
+  9. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10,
+     **dix-neuvième report**). Seul acteur local sur les SERP de home staging,
+     dont celle qui republie le « +7 % » introuvable. **Lire
+     `blog.qoridor.fr/article/home-staging` en priorité.** **Ne RIEN réécrire
+     sur un seul relevé.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13 MAI 2019**
+     (inscrit le 01/11). ⚠️ Passer par `agora.grandlyon.com`.
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.**
+     **2 des 24 erreurs `eslint`**, total reconfirmé **35 / 24** le 16/11.
+     **Jour creux uniquement.**
+
+🔴 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (18/11), par ordre d'impact :**
+  1. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — **MAIS PAS AVANT LE
+     27/11.** L'article n'a **pas** de champ `faq`, donc **pas de `FAQPage`**
+     (reconfirmé dans le rendu de production du 16/11 : il n'émet que
+     `BlogPosting` + `BreadcrumbList`), et ses quatre H2 sont de vraies
+     questions à réponse autonome : **la matière est prête**.
+     🔴 🆕 **POURQUOI C'EST REPORTÉ ET NON FAIT LE 16/11 :** sa SERP se
+     remesure le **27/11** pour juger la réécriture du 13/11. **Ajouter du
+     contenu avant cette date rendrait la mesure inexploitable** — on ne
+     saurait plus ce qu'on mesure. ✅ **À faire dès le 27/11, après le
+     relevé.** ⚠️ **Parité visible ↔ JSON-LD obligatoire.**
+  2. 🟡 **LE RESTE DU BLOG FAIBLE — SIX ARTICLES**, et **les comptages du
+     backlog étaient tous surestimés** : recomptés le 16/11 sur les seuls
+     champs de texte, `questions-a-poser-visite` **34**,
+     `vendre-appartement-lyon-etapes` **34**, `achat-immobilier-lyon-checklist`
+     **40**, `vendre-vite-lyon` **43**, `faire-offre-achat` **113**,
+     `capacite-emprunt-immobilier` **170**. 📌 **Les quatre premiers sont des
+     coquilles vides à 34-43 mots, pas des articles courts** — et **aucun des
+     six n'a de champ `faq`**. Le plus court en tête.
+     **Pour `capacite-emprunt-immobilier`, le sourçage est à moitié fait** :
+     HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, en vigueur au
+     **01/01/2022**, taux d'effort **35 %**, maturité **25 ans**, flexibilité
+     **20 %**. ⚠️ **Référence trouvée par recherche web, le texte n'a PAS été
+     lu** : `economie.gouv.fr/hcsf` répond **403** en WebFetch. **Trouver un
+     accès primaire avant de publier la référence.**
+     **Et la recette du 14/11 s'applique à `questions-a-poser-visite` et
+     `vendre-vite-lyon`** : sujets de pratique sans texte primaire, donc
+     chercher **l'enquête qui publie sa méthode** plutôt qu'un texte à
+     contredire.
+  3. 🆕 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE
+     SITE.** Le chantier du 16/11 a montré que **tout le corpus parle de
+     location NUE** (micro-foncier, encadrement, zone tendue) et que le meublé
+     n'avait qu'une page de 70 mots. Pistes **non mesurées** :
+     « bail mobilité », « colocation meublée Villeurbanne », « louer à un
+     étudiant Villeurbanne » (campus de la Doua, INSA), « résidence étudiante
+     LMNP ». ⚠️ **Triple contrôle du 03/11 obligatoire** avant d'écrire.
+  4. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS.**
+     Pistes non mesurées : `donation-partage`, `SCI familiale`, `prêt à taux
+     zéro`, `déficit foncier`, `copropriété en difficulté`. ⚠️ **Triple
+     contrôle du 03/11 obligatoire.**
+  5. ⛔ **NE PAS RÉÉCRIRE `lmnp-location-meublee`** (16/11) → remesurer la SERP
+     le **30/11**. ⚠️ **Et surveiller l'effet du changement de `title`
+     indexé** (« LMNP : le statut idéal pour louer en meublé ? » → « LMNP
+     2026 : ce que la location meublée change vraiment, à Villeurbanne »).
+  6. ⛔ **NE PAS RÉÉCRIRE `home-staging-vendre-plus-cher`** (14/11) → **28/11**.
+  7. ⛔ **NE PAS RÉÉCRIRE `cout-gestion-locative`** (13/11) → **27/11**.
+  8. ⛔ **NE PAS RÉÉCRIRE `compromis-de-vente-delais`** (12/11) → **26/11**.
+  9. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → **24/11**.
+ 10. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11**.
+ 11. ⛔ **LE BILAN DU SEMESTRE — ÉCRIT LE 06/11** → remesurer la SERP le **18/11**.
+ 12. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 🆕 **ÉCHÉANCE À SEPT JOURS : L'ENCADREMENT DES LOYERS EST DONNÉ PAR
+  NOS PAGES COMME ARRIVANT À TERME LE 23/11/2026.** Le corpus l'écrit
+  (expérimentation de la loi ELAN art. 140, portée de 5 à 8 ans par la loi 3DS)
+  et précise qu'une prolongation de deux ans a été **adoptée par le Sénat en
+  première lecture le 21/10/2026, texte non définitif**. 📌 **Ce n'est pas un
+  chantier, c'est une date à ne pas manquer : le 24/11, plusieurs pages
+  affirmeront soit une règle périmée, soit une échéance dépassée.**
+  ⚠️ **À vérifier au plus tard le 24/11** (sort du texte à l'Assemblée), et
+  **ne rien réécrire avant de l'avoir vérifié**.
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT, ET LA
+  SERP PHARE MONTRE QU'ELLE VAUT LA MOITIÉ DE LA PAGE 1.** Relevé du 15/11 sur
+  « agence immobilière Villeurbanne » : **20 résultats, site absent**, et la
+  page 1 est tenue autant par des **annuaires** (`lesiteimmo` — qui recense
+  **douze** agences villeurbannaises —, `immodvisor`, `zimo`, `realadvisor`,
+  `mappy`, `acceslibre.beta.gouv.fr`) que par des agences. 📌 **Aucune ligne
+  de code ne peut gagner ces positions.** **Question à Tony : l'agence est-elle
+  inscrite sur ces annuaires, et veut-elle qu'on s'en occupe ?**
+  **Ne rien faire avant sa réponse.**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** **Question à Tony : les délais entre mandat et compromis sont-ils
+  exploitables quelque part ?** ⚠️ **Ce manque revient sur tous les sujets de
+  pratique.**
+- 🆕 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST
+  PUBLIABLE, FAUTE DE DONNÉE.** Le run du 16/11 a buté dessus : la comparaison
+  fiscale est posée « à loyer égal » **parce que nous n'avons pas de loyer de
+  meublé local sourcé** (14,6 €/m² est un loyer médian communal, toutes
+  locations confondues). **Question à Tony : l'agence a-t-elle des loyers de
+  meublés observés à Villeurbanne ?** C'est le chiffre qui rendrait la page
+  imbattable. **Ne rien publier avant sa réponse.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  Deux sont **publics et chiffrés** : **Orpi CETRIM Villeurbanne 8 % TTC sur
+  l'ancien / 7 % dans le neuf** (barème du **10/04/2025**) et **Foncia
+  Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**. ⚠️ **Publicité
+  comparative** : **décision commerciale, pas décision d'agent.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — DIX-HUITIÈME JOUR.**
+  **Recontrôlé en ligne le 16/11 : 0 occurrence.** **Non corrigé : page de
+  Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié** (7 notifications).
+- 🔴 **INVITATION DISCORD MORTE — RECONTRÔLÉE LE 16/11** :
+  `discord.gg/fSyn28G5U` rend `code 10006`. **Seule invitation référencée dans
+  le code**, à **deux** emplacements (`components/layout/site-footer.tsx:68`,
+  `components/home/social.tsx:130`). ⚠️ **NON renotifié.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ **Toutes celles d'ici le 24/11 tombent dans le core update démarré le
+10/11 — relever, ne pas conclure.**
+- **« agence immobilière Villeurbanne »** : relevée le **15/11** → **22/11**.
+- **« vendre appartement Villeurbanne »** : 5ᵉ relevé le 14/11 → **21/11**.
+- **« prix m2 Villeurbanne »** → **21/11**.
+- **« estimation immobilière Villeurbanne »** → **23/11**.
+- **« honoraires agence immobilière Villeurbanne … »** → **21/11**.
+  **La SERP la plus anormale du journal** : le contenu existe, il est balisé
+  (`OfferCatalog`), et il n'est pas vu.
+- 🆕 **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**. Relevé du
+  jour : **site absent, SERP à 100 % nationale, aucun acteur local**, et les
+  éditeurs **se contredisent sur l'année de référence du seuil**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+---
+
 **Angle du dernier run : NON-CONTENU — le hub `/annonces`, seul maillon muet
 d'une chaîne de balisage par ailleurs complète**
 (15/11 : `listingsLd()` + `breadcrumbLd` + `webPageLd` sur `/annonces`, qui
@@ -15685,6 +16079,40 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+### 2026-11-16 — Quatre questions ouvertes par le chantier LMNP
+
+- 🔴 **L'ENCADREMENT DES LOYERS ARRIVE À TERME LE 23/11/2026 SELON NOS
+  PROPRES PAGES, ET C'EST DANS SEPT JOURS.** Le corpus écrit que
+  l'expérimentation (loi ELAN art. 140, portée de 5 à 8 ans par la loi 3DS)
+  s'achève le 23/11/2026, et qu'une prolongation de deux ans a été adoptée par
+  le **Sénat en première lecture le 21/10/2026**, texte **non définitif**.
+  ⚠️ **À vérifier au plus tard le 24/11**, source primaire (dossier législatif
+  ou JO). 📌 **Et une précision du corpus à ne pas perdre dans l'opération :
+  la fin de l'encadrement ne supprimerait PAS le préavis d'un mois**, qui
+  repose sur le décret zone tendue et non sur l'expérimentation.
+- 🟡 **LA FAQ LMNP DE LA DGFiP (mars 2026) PUBLIE ENCORE 77 700 €.** Elle
+  décrit les revenus **2025**, donc elle n'est pas fausse — mais un lecteur qui
+  la télécharge en 2026 y lit un seuil périmé pour l'année en cours.
+  ⚠️ **Ne jamais la citer comme source du seuil 2026** (c'est
+  `BOI-BAREME-000044` qui fait foi), et **vérifier à la prochaine campagne
+  déclarative si une version actualisée paraît**.
+- 🟡 **LE TAUX DE 18,6 % MÉRITE UN DEUXIÈME TÉMOIN SUR LE CAS DU MEUBLÉ
+  PRÉCISÉMENT.** La brochure DGFiP p. 45 donne la règle **par la liste de ce
+  qui reste à 9,2 %** (revenus fonciers, plus-values immobilières,
+  assurance-vie, épargne logement) — le meublé en est **absent**, donc il passe
+  à 10,6 %. **C'est un raisonnement par exclusion, pas une mention explicite.**
+  Le corpus l'affirme déjà depuis une entrée antérieure et deux pages le
+  publient. ⚠️ **Chercher une mention nominative du meublé** (BOFiP série
+  PRLV, ou CSS art. L136-6/L136-8) **avant de pousser ce chiffre plus loin dans
+  le corpus.**
+- 🟢 **LE CHANGEMENT D'USAGE À LYON N'A PAS ÉTÉ VÉRIFIÉ.** L'article dit que
+  la règle se vérifie mairie par mairie **sans nommer d'autre commune**, et
+  c'est volontaire. 📌 **Si la règle lyonnaise était vérifiée sur
+  `lyon.fr`, le contraste Villeurbanne / Lyon deviendrait une donnée locale
+  très citable** (une agence villeurbannaise qui explique la différence avec
+  la métropole voisine). **À instruire un jour creux, source officielle
+  uniquement.**
+
 ### 2026-11-15 — Trois questions ouvertes par le chantier `/annonces`
 
 - 🟡 **`CollectionPage` serait plus précis que `WebPage` pour un hub de liste,
@@ -17510,6 +17938,47 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-16 — J'ai calculé un écart d'imposition entre deux régimes en appliquant le même taux de prélèvements sociaux aux deux, et c'est notre propre corpus qui m'a arrêté
+
+**🔴 L'ERREUR.** En chiffrant l'avantage du meublé sur le nu pour un 62 m²
+villeurbannais, j'ai posé l'écart de **base imposable** (7 602 € en
+micro-foncier contre 5 430 € en micro-BIC, soit **2 172 €**) puis je l'ai
+multiplié par **(TMI + 17,2 %)**, comme si les deux régimes subissaient les
+mêmes prélèvements sociaux. Résultat publiable : **613 / 1 025 / 1 264 €**.
+**C'est faux.**
+
+**✅ CE QUI L'A ARRÊTÉE, et ce n'est pas un contrôle de fin de course.** Avant
+d'écrire le passage, j'ai greppé le corpus sur le sujet voisin — réflexe de
+cohérence, pas de vérification — et `/blog/plus-value-immobiliere-calcul`
+publiait déjà, **sourcé**, que les **revenus de location meublée sont passés
+à 18,6 %** quand les revenus fonciers restent à 17,2 % :
+
+```bash
+grep -rn "18,6" --include=*.ts --include=*.tsx lib app | grep -v node_modules
+```
+
+**Le calcul juste n'est donc pas un écart de base multiplié par un taux
+commun, mais la différence de deux impôts calculés séparément :**
+
+```
+nu      : 7 602 € × (TMI + 17,2 %)
+meublé  : 5 430 € × (TMI + 18,6 %)
+écart   : 536 € (TMI 11 %) · 949 € (30 %) · 1 188 € (41 %)
+```
+
+📌 **L'erreur n'aurait pas été un arrondi : 1 025 € contre 949 € à 30 % de
+TMI, soit 8 % de surestimation, et un chiffre publié en tableau.** Pire, elle
+aurait **contredit notre propre site** — le genre d'incohérence interne que
+l'entrée du 24/09 décrit comme le défaut le plus coûteux.
+
+🔴 **LA LEÇON, GÉNÉRALISABLE.** **Un écart entre deux régimes fiscaux ne se
+calcule jamais sur la seule différence d'assiette.** Chaque régime a son
+assiette **et** ses taux, et il suffit qu'un seul prélèvement diffère de
+1,4 point pour que l'écart bouge de 6 à 12 %. **Le contrôle à faire avant
+d'écrire, et non après : grepper le corpus sur chaque taux qu'on s'apprête à
+appliquer**, parce que sur un site qui publie déjà 300 chiffres sourcés, la
+réponse y est souvent déjà.
 
 ### 2026-11-14 — J'ai écrit un lien interne vers un slug qui n'existe pas, et seul un contrôle automatique des slugs l'a arrêté avant publication
 
@@ -20130,6 +20599,147 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-16 — Veille du lundi : un core update tourne pendant qu'on mesure, et le tableau de bord de Google dit lequel n'est pas fini
+
+🔴 **LE FAIT DE LA SEMAINE, ET IL CHANGE LA LECTURE DE TOUTES LES MESURES
+DU JOURNAL : le « November 2026 core update » est en cours de déploiement
+depuis le 10 novembre 2026.**
+
+✅ **LA SOURCE PRIMAIRE, ET LA FAÇON DE LIRE LA PAGE.** La page de
+documentation « ranking updates » **redirige en 301** vers l'historique du
+tableau de bord d'état de Google Search. C'est **là** que vit la liste
+officielle, et elle se lit par la **colonne de durée** :
+
+| Mise à jour 2026 | Début | Durée enregistrée |
+|---|---|---|
+| **November 2026 core update** | **10 nov. 2026** | **aucune** |
+| September 2026 spam update | 24 sept. 2026 | 13 j 16 h |
+| August 2026 spam update | 18 août 2026 | 2 j 16 h |
+| June 2026 spam update | 24 juin 2026 | 2 j 1 h |
+| May 2026 core update | 21 mai 2026 | 11 j 21 h |
+| March 2026 core update | 27 mars 2026 | 12 j 4 h |
+| March 2026 spam update | 24 mars 2026 | 19 h 30 |
+| February 2026 Discover update | 5 févr. 2026 | 21 j 17 h |
+
+📌 **Toutes les entrées de 2026 portent une durée, sauf celle de novembre :
+c'est le signe qu'elle tourne encore.** Le contrôle ne coûte qu'un fetch, et
+**il se refait à chaque veille** — l'apparition d'une durée signifiera que le
+déploiement est clos. Durée annoncée par Google : « up to 2 weeks », et
+l'énoncé est le libellé habituel (« regular update designed to better surface
+relevant, satisfying content for searchers from all types of sites ») : **rien
+à corriger, rien à préempter.**
+
+⚠️ **LA CONSÉQUENCE MÉTHODOLOGIQUE, ET ELLE VAUT POUR LES DIX PROCHAINS
+JOURS.** Le journal mesure des positions à échéances fixes (18, 21, 22, 23 et
+24/11) pour juger l'effet de chantiers datés. **Ces relevés tombent dans le
+déploiement.** La conduite à tenir n'est pas de suspendre les mesures — une
+série interrompue ne se rattrape pas — mais de **les relever en notant
+l'échéance du core update à côté**, et de **ne tirer aucune conclusion
+d'attribution** avant qu'une durée soit enregistrée. 📌 **Le relevé du 15/11
+sur la requête phare est déjà concerné : il a été pris à J+5.**
+
+✅ **CE QUE LA VEILLE N'A PAS TROUVÉ, et c'est utile aussi.** Aucun changement
+de données structurées en octobre ni en novembre 2026 : le journal des
+modifications de la documentation Google ne liste, sur ces deux mois, qu'une
+page sur l'identification du trafic Search via l'en-tête `Referer` (12/11), le
+support des requêtes « things to do » (09/11), et côté IA deux entrées
+d'octobre (contrôles de partage avec l'IA générative le 21/10, contenu
+généré par IA le 01/10). **Rien à appliquer ici.** ⚠️ **Et « Gemini 4
+Hydrogen », annoncé dans Search le 12/11 sur le blog de Google, ne documente
+RIEN sur la sélection des sources** : la seule phrase exploitable promet
+« un éventail plus large de liens utiles ». **Ne pas en déduire de tactique.**
+
+🔴 **ET LA LEÇON SUR LES SOURCES DE VEILLE, parce qu'elle s'est reconfirmée
+durement.** Les deux premières recherches (« AI Overviews », « se faire citer
+par ChatGPT/Perplexity ») n'ont rendu **que des blogs d'agences** se citant les
+uns les autres, avec des chiffres invariablement non traçables (« +1,7× de
+citations avec du schema », « 82 % de contenus de moins de 30 jours chez
+Perplexity », « r=0,334-0,664 »). **Aucun n'est utilisable ici.** ✅ **Ce qui a
+produit le seul fait solide de la veille, c'est d'aller directement aux
+sources de l'éditeur** : le tableau de bord d'état, le journal des
+modifications de la documentation, le blog officiel. **À commencer par là les
+prochains lundis**, et ne faire la recherche large qu'ensuite.
+
+---
+
+### 2026-11-16 — Deux chiffres officiels qui se contredisent sont souvent deux années du même tableau, et seul le texte primaire le montre
+
+**Le motif, et il va se représenter.** Une recherche restreinte à
+`bofip.impots.gouv.fr` a rendu un résumé affirmant que **l'actualité BOFiP et
+le barème se contredisaient** : 83 600 € d'un côté, 77 700 € de l'autre pour
+la même période 2026-2028, avec la recommandation de « vérifier lequel fait
+foi ». **Il n'y avait aucune contradiction.**
+
+✅ **LE CONTRÔLE QUI TRANCHE, et il ne passe pas par un résumé :** télécharger
+la page, retirer `<script>`/`<style>` **avant** les balises, normaliser, puis
+imprimer **chaque occurrence du chiffre avec 230 caractères de contexte de
+part et d'autre**.
+
+```bash
+curl -sL --cacert /root/.ccr/ca-bundle.crt "<url du BOI>" -o boi.html
+# puis, en Python : re.finditer sur (83 600|77 700|15 000), et afficher
+# s[m.start()-230 : m.end()+230] pour CHAQUE occurrence
+```
+
+📌 **Le contexte a montré immédiatement que les deux chiffres sont les
+DEUX LIGNES D'ANNÉE du même C « Autres entreprises »** : « Seuils applicables
+pour les années 2026 à 2028 … 83 600 € », suivi de « Seuils applicables pour
+l'année 2025 … 77 700 € ». Un résumé qui lit un tableau HTML à plat perd
+l'en-tête de ligne et **rend deux années comme deux sources**.
+
+⚠️ **C'est la troisième fois que ce journal note qu'un résumé de moteur
+attribue à une page un chiffre qu'elle ne publie pas sous cette forme**
+(23/09, 15/11, 16/11). **La règle est stable : un chiffre destiné à être
+publié se lit dans le texte primaire, avec son contexte, jamais dans un
+résumé.**
+
+✅ **ET LE MÊME RÉFLEXE A TRANCHÉ UNE DATE.** Deux pages officielles donnaient
+le 15 **et** le 16 février 2025 pour l'entrée en vigueur de la réforme de la
+plus-value LMNP. Le texte de loi dit « **le I s'applique aux cessions
+réalisées à compter du lendemain de la promulgation de la présente loi** », et
+la loi a été **promulguée le 14/02/2025** (publiée au JORF du 15/02).
+📌 **Le lendemain de la promulgation est le 15, pas le 16 — la confusion
+vient de ceux qui comptent à partir de la publication.** **Une date d'effet se
+lit dans l'article d'application de la loi, pas dans une page qui la
+résume** — et la publier avec son raisonnement (« promulguée le 14, donc
+le 15 ») est précisément ce qui rend un passage citable.
+
+---
+
+### 2026-11-16 — Une FAQ officielle en PDF est la source la plus rentable du mois, et elle se trouve par le nom de fichier
+
+✅ **CE QUI A ÉTÉ TROUVÉ :** `faq-lmnp-03_2026.pdf` sur `impots.gouv.fr` — une
+**foire aux questions de la DGFiP sur le régime des locations meublées**,
+datée de mars 2026, 533 lignes de texte extrait, organisée en huit sections
+dont « Revente du bien », « Nouveautés fiscales » et un **logigramme** de
+décision complet.
+
+📌 **Pourquoi c'est la source la plus rentable :** une FAQ officielle est
+**déjà écrite en questions-réponses autonomes**, c'est-à-dire exactement la
+forme que le volet GEO demande. Elle a fourni, en une lecture, **neuf réponses
+vérifiées** (LMNP/LMP, déficits, TVA et les trois services hôteliers, CFE,
+taxe d'habitation, SCI → IS, indivision, globalisation des recettes, revente)
+dont **sept sont devenues la FAQ de l'article**. ⚠️ **Et il ne faut pas la
+recopier** : elle décrit les revenus **2025** (77 700 €), le seuil en vigueur
+pour 2026 vient du barème.
+
+✅ **COMMENT ON TOMBE DESSUS, et c'est reproductible :** la recherche
+restreinte au domaine officiel a rendu le **nom de fichier** avant toute page
+de prose. **Les documents les plus denses d'une administration sont des PDF
+dont le nom porte le sujet et la date** (`faq-lmnp-03_2026`,
+`nouveautes.pdf`, `dmto_2026-06.pdf`). **Le réflexe à garder : chercher le
+document, pas l'article qui en parle.**
+
+```bash
+curl -sL --cacert /root/.ccr/ca-bundle.crt "<url>.pdf" -o doc.pdf
+file doc.pdf && pdftotext doc.pdf doc.txt && wc -l doc.txt
+```
+
+⚠️ **`pdftotext` est disponible sur ce conteneur** (contrairement à ce que
+l'entrée du 29/09 laissait craindre pour certains PDF), et `--cacert` reste
+obligatoire. **Contrôler le `file` avant de lire** : un 302 rend un fichier
+minuscule qui n'est pas un PDF.
 
 ### 2026-11-15 — `npm run build` échoue par intermittence sur `next/font/google`, et le signe qui le distingue d'une vraie régression
 
