@@ -5983,6 +5983,17 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-17 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage `/annonces`, `512cd3f`)
+
+- **Déclenchement en double** : le lien footer « Nos annonces » posé ce matin est servi
+  en production (vérifié sur `/vendre`). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `da7bcf4`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, inchangé, aucune page de l'éditeur ; dernier `lastmod` =
+  16/11 (article LMNP, mon run). `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/blog`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-17 — `/annonces` était la seule page commerciale hors navigation globale, et aucun des 30 articles ne lui envoyait de lien (`512cd3f`)
 
 - **Mesure d'abord, sur le HTML rendu des 58 pages de production** (et non par
