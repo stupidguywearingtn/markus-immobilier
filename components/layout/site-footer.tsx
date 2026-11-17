@@ -4,6 +4,7 @@ import { LogoFull } from "@/components/ui/logo";
 const SERVICES = [
   { href: "/vendre", label: "Vendre" },
   { href: "/acheter", label: "Acheter" },
+  { href: "/annonces", label: "Nos annonces" },
   { href: "/gestion-locative", label: "Gestion locative" },
   { href: "/faire-gerer", label: "Faire gérer mon bien" },
   { href: "/estimation", label: "Estimation" },

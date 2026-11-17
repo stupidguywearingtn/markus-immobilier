@@ -784,6 +784,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Les frais de notaire comprennent-ils les honoraires d'agence ?" },
       { type: "p", text: "**Non : les frais de notaire ne comprennent pas les honoraires d'agence, et les deux ne vont pas dans la même poche.** Les premiers sont dus par l'acquéreur et reviennent pour l'essentiel à la Métropole, à la commune et à l'État ; les seconds rémunèrent l'agence et relèvent d'un barème propre à chaque enseigne, obligatoirement affiché." },
       { type: "p", text: "Dans notre barème, les honoraires de transaction sont [à la charge du vendeur](/honoraires) : le prix affiché sur nos annonces est donc celui que règle l'acheteur — sans honoraires à ajouter, mais avec les frais d'acquisition en plus. Cela a une conséquence directe sur la fiscalité de l'achat : quand les honoraires sont mis à la charge de l'acquéreur, ils s'ajoutent au prix mais **sortent de l'assiette** des droits de mutation ; quand ils sont à la charge du vendeur, l'assiette est le prix entier. Si vous voulez fixer le prix de départ avant de faire ces calculs, notre [estimation à Villeurbanne](/estimation-immobiliere-villeurbanne) donne une fourchette en moins de deux minutes." },
+      { type: "p", text: "Pour chiffrer la facture d'un bien précis plutôt qu'une médiane, appliquez les taux ci-dessus au prix affiché : les [biens actuellement à la vente](/annonces) portent chacun le prix que règle l'acheteur, auquel s'ajoutent les frais d'acquisition et rien d'autre." },
 
       { type: "h2", text: "Méthode et sources" },
       { type: "ul", items: [
@@ -960,6 +961,7 @@ export const ARTICLES: Article[] = [
         "[Diagnostic de performance énergétique, analyse juridique n° 2021-09](https://www.anil.org/aj-dpe/), ANIL — à jour au 29 août 2025 : condition du permis de construire déposé avant le 1er janvier 2013, renvoi au calendrier de l'article 158 VI de la loi du 22 août 2021 et à l'article L126-31 du code de la construction et de l'habitation.",
       ] },
       { type: "p", text: "Si vous vous demandez ce que votre étiquette change sur le prix, nos [prix au m² réels par quartier](/blog/prix-immobilier-villeurbanne-2026) donnent le point de départ, et notre page [vendre son bien à Villeurbanne](/vendre) le net vendeur une fois les honoraires déduits." },
+      { type: "p", text: "Côté achat, la question se pose dans l'autre sens : l'étiquette que vous reprenez décide du calendrier de travaux que vous héritez, et des échéances de location rappelées plus haut. C'est pourquoi chaque appartement de [notre catalogue de biens à vendre](/annonces) porte son étiquette DPE à côté de sa surface et de son nombre de pièces, avant même la visite." },
     ],
     faq: [
       {
@@ -1448,6 +1450,7 @@ export const ARTICLES: Article[] = [
         "**L'écart intra-quartier.** Il est presque toujours supérieur à l'écart entre quartiers. Choisir le bon secteur vous fait gagner un cadrage ; choisir le bon bien dans ce secteur vous fait gagner beaucoup plus.",
       ] },
       { type: "p", text: "C'est exactement là qu'un conseiller qui visite le secteur toutes les semaines apporte ce qu'aucune base de données ne contient. Nos conseillers connaissent les immeubles, les copropriétés et les rues de chacun de ces quartiers — et savent quand un prix affiché est justifié ou non." },
+      { type: "p", text: "Et comme ces médianes décrivent des ventes closes et non des biens disponibles, leur contrepartie concrète est le catalogue : [les biens que nous avons actuellement à la vente](/annonces) sont affichés avec leur quartier, leur surface, leur nombre de pièces et leur étiquette DPE — cette dernière étant précisément ce que DVF n'enregistre pas." },
       { type: "p", text: "Trois de ces secteurs ont leur propre page, avec le prix au m² du quartier, la surface qu'un budget y achète et ce que coûte une vente sur place : [Gratte-Ciel](/agence-immobiliere-gratte-ciel), [Charpennes – Tonkin](/agence-immobiliere-charpennes) et [Cusset – Bonnevay](/agence-immobiliere-cusset)." },
     ],
     faq: [
