@@ -6181,6 +6181,19 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-19 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (article visite, `45cf86c`)
+
+- **Déclenchement en double** : l'article `/blog/questions-a-poser-visite` réécrit ce matin
+  est servi en production (200, nouveau `<title>` « 15 questions à poser, et ce que chaque
+  réponse vous apprend »). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `86d77f9`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, inchangé ; toutes les URL hors `/annonces/*` et `/blog/*`
+  ont un dossier de route dans `app/` → **aucune page de l'éditeur**. Seul `lastmod` du
+  19/11 = l'article visite (mon run). `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/blog`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-17 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage `/annonces`, `512cd3f`)
 
 - **Déclenchement en double** : le lien footer « Nos annonces » posé ce matin est servi
