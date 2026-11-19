@@ -191,6 +191,23 @@
   **Seule invitation référencée dans le code**, à **deux** emplacements
   (`components/layout/site-footer.tsx`, `components/home/social.tsx`).
   ⚠️ **NON renotifié** — état inchangé.
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — HUITIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 19/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-lye40s` ». **Le compte annoncé (2) correspond
+  exactement aux deux commits du run** (`45cf86c` + `cfd36d3`) — même piège de
+  vraisemblance qu'aux 12, 14, 15, 16 et 17/11.
+  ✅ **VÉRIFIÉ AVEC LE CONTRÔLE DU 15/11, QUI NE PASSE PAR AUCUN REF DE SUIVI
+  LOCAL** : `ls-remote origin refs/heads/main` = **`cfd36d3`** = `HEAD`, les
+  **deux commits rendent OUI** à `merge-base --is-ancestor`, `ls-remote` de la
+  branche du conteneur rend **RIEN** (elle n'existe pas sur `origin`), arbre
+  **propre** (0 entrée).
+  🔴 **NE PAS pousser la branche du conteneur pour faire taire le hook**
+  (consigne client : commit direct sur `main`).
+  📌 **Huit occurrences d'affilée : comportement normal du hook en fin de run,
+  pas un incident.** ⚠️ **Et cette ligne-ci crée un commit de plus, que le hook
+  pourra signaler à son tour : c'est attendu, ce n'est pas une boucle à
+  résoudre.**
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
   été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
   et dans les entrées du jour.**
