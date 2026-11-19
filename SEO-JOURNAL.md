@@ -14,6 +14,187 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-19 (jeudi)**
+
+- 🔴 🆕 **LE RUN DU 18/11 N'A PAS EU LIEU — LA SÉRIE DE DOUZE RUNS CONSÉCUTIFS
+  EST ROMPUE.** Le journal ne porte **aucune entrée du 18/11** et `git log` ne
+  porte **aucun commit du 18/11** : le dernier avant ce jour est `bc15ee9`
+  (17/11). **Deuxième manque en 83 jours** (le premier : 05/11). ⚠️ **Rien
+  n'indique la cause côté dépôt ; ce n'est pas une panne constatée, c'est un
+  run absent.** 📌 **Conséquence sur l'alternance : l'angle CONTENU prévu pour
+  le 18/11 n'a pas été consommé, il est pris aujourd'hui.**
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`bc15ee9`**, `git ls-remote origin refs/heads/main` = **`bc15ee9`** :
+  identiques. **Aucun commit tiers**, et donc aucune décision prise ailleurs à
+  lire avant de mesurer.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-lye40s`**, pas sur `main`.
+  **Dix-huitième constat consécutif**, nom différent chaque fois. Poussé en
+  `git push origin HEAD:main`, vérifié après coup par `ls-remote`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-troisième constat identique** (21/09 → 19/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-sixième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles de blog —
+  identique du 07/11 au 19/11.** Aucune page ajoutée ni retirée. `curl -sL`
+  (piège `308`). Le `lastmod` n'a **PAS** servi à conclure sur l'activité du
+  client.
+- 🟢 **CHANTIER DU JOUR : CONTENU** (17/11 non-contenu → 18/11 **absent** →
+  **19/11 contenu**). ✅ **Veille du lundi : faite le 16/11, prochaine due le
+  23/11** — pas ce jour.
+- 🔴 **LE *CORE UPDATE* DE NOVEMBRE TOURNE TOUJOURS, J+9, ET LE SIGNE DE FIN
+  N'EST TOUJOURS PAS LÀ.** Recontrôlé sur la **source primaire** (tableau de
+  bord d'état de Google Search) : « November 2026 core update », démarrée le
+  **10/11/2026**, **aucune durée enregistrée**, sa colonne « Duration »
+  affichant « Information » là où les autres portent un intervalle (**mars :
+  12 j 4 h**, **mai : 11 j 21 h**, spam de septembre : 13 j 16 h).
+  📌 **S'il dure autant que les deux autres core updates de 2026, il se termine
+  vers le 22/11** : les remesures des **21 et 22/11 tombent encore dedans**,
+  celles des 23 et 24/11 juste après. **Relever oui, conclure non.**
+- 🟡 **REMESURE DUE LE 18/11, FAITE CE JOUR AVEC UN JOUR DE RETARD — SITE
+  TOUJOURS ABSENT.** Requête « prix immobilier Villeurbanne premier semestre
+  2026 baisse prix au m2 ventes signées » (point zéro le **04/11**, site
+  absent) : **9 résultats, site absent**, et le moteur **avoue de nouveau son
+  manque de source** (« je n'ai pas trouvé de bilan du premier semestre 2026
+  basé sur les ventes signées à Villeurbanne »), exactement le vide que
+  `prix-immobilier-villeurbanne-2026` comble. **Aucun progrès mesuré — et
+  mesuré à J+9 d'un core update, donc non interprétable.**
+  🆕 📌 **UN CHANGEMENT DE COMPOSITION, LUI, EST NET : les concurrents publient
+  désormais des médianes DVF, et elles convergent vers la nôtre.**
+  `score-adresse` **3 547 €/m²**, `fonciris` **3 571 €/m²**, `renta-immo`
+  **3 777 €/m²** — là où le relevé du 04/11 ne voyait que des estimations
+  d'annonces à **3 700–3 800 €/m²**. Notre médiane signée 2025 est de
+  **3 567 €/m²**. **La thèse « affiché ≠ signé » ne nous distingue donc plus
+  autant sur cette requête-là ; ce qui nous distingue encore, c'est la maille
+  QUARTIER et le semestre.** **Prochaine remesure : 03/12.**
+- 🟡 🆕 **SERP DE SUJET NEUVE, MESURÉE AVANT D'ÉCRIRE — SITE ABSENT, ET LA SERP
+  EST À 100 % NATIONALE.** Requête « questions à poser lors de la visite d'un
+  appartement avant d'acheter » : **9 résultats, aucun acteur local, aucune
+  agence lyonnaise** — `fourez.notaires.fr`, `archersnotaires.fr`, `foncia`,
+  `jerevedunemaison`, `credit-agricole`, `qualitel.org`, `pap.fr`,
+  `leblogimmobilier`, `maison-kyka`. **Aucun des neuf ne contient de donnée de
+  prix locale.** 📌 **C'est la justification mesurée du chantier : sujet
+  encombré, mais créneau local entièrement vide.** **Première mesure, aucune
+  comparaison possible. Remesure : 03/12.**
+- 🔴 🆕 **ET LA SERP A DÉSIGNÉ UN DÉFAUT QUE JE N'AURAIS PAS VU EN LISANT LE
+  SEUL ARTICLE : NOTRE TITRE ÉTAIT UN QUASI-DOUBLON DE CELUI D'UN CONCURRENT
+  QUI CLASSE.** `qualitel.org` occupe la SERP avec **« Visite d'appartement :
+  15 questions à poser »** ; notre page s'appelait **« Visite d'un bien : les
+  15 questions à poser »** — même promesse, même compte, en plus court et sans
+  réponses. 📌 **Se mesurer à la SERP avant d'écrire ne sert pas qu'à choisir
+  un sujet : ici, cela a changé le TITRE.**
+- 🟢 **CHANTIER : `questions-a-poser-visite` RÉÉCRIT DE FOND EN COMBLE, 70 →
+  ~2 700 MOTS. Commit `45cf86c`.** C'était, après le LMNP traité le 16/11,
+  **le contenu le plus faible du site**, et son défaut n'était pas la longueur :
+  **la page posait 15 questions et n'en répondait aucune.** Aucun chiffre,
+  aucune source, **une seule occurrence de « Villeurbanne » dans toute la page
+  servie — et elle est dans le footer.** 📌 **Pour un moteur qui extrait des
+  passages autonomes, une page qui pose des questions sans y répondre n'est
+  citable nulle part : c'est le pire cas GEO du corpus, et il était en ligne
+  depuis le 22/01/2026.**
+- ✅ **L'APPORT PROPRE EST LA LECTURE DE CHAQUE RÉPONSE, PAS LA LISTE.** Chaque
+  puce porte la question, **ce que la réponse apprend**, puis **« À en faire : »**.
+  C'est ce que ne font pas les neuf concurrents mesurés, qui listent des
+  questions nues.
+- ✅ **TROIS TEXTES PRIMAIRES LUS CE JOUR, CHACUN EN EXIGEANT DE LA PAGE QU'ELLE
+  SE NOMME** (règle du 03/11, jamais d'identifiant Légifrance deviné) :
+  **(1)** `art. L125-5 du code de l'environnement`, **en vigueur depuis le
+  01/01/2025** (loi n° 2023-580, art. 23) — I bis, 2ᵉ alinéa : l'état des
+  risques « est remis au potentiel acquéreur par le vendeur **lors de la
+  première visite** de l'immeuble, si une telle visite a lieu ». **C'est la
+  seule obligation du corpus dont le calendrier est attaché à la VISITE**, donc
+  exactement la matière de cette page.
+  **(2)** `art. 6-2 du décret n° 67-223`, **en vigueur depuis le 25/12/2025**
+  (modifié par le **décret n° 2025-1292 du 22/12/2025**, art. 3) — les travaux
+  incombent à qui est copropriétaire **au jour de l'exigibilité**.
+  **(3)** `art. L721-2 du CCH`, **en vigueur depuis le 01/01/2024** (loi
+  n° 2021-1104, art. 171) — les sept blocs dus au plus tard à la promesse.
+- 🔴 🆕 **UNE RÉSERVE DE DROIT ÉCRITE DANS L'ARTICLE PLUTÔT QUE PASSÉE SOUS
+  SILENCE : LA REMISE EN PREMIÈRE VISITE N'EST PAS SANCTIONNÉE EXPRESSÉMENT.**
+  Le **V** de l'article L125-5, qui ouvre la résolution du contrat ou la
+  diminution du prix, vise le I, les **3ᵉ à 5ᵉ** alinéas du I bis, le dernier
+  alinéa du II et le IV — **il ne vise pas le 2ᵉ alinéa du I bis**, celui de la
+  première visite. **La page présente donc l'obligation sans lui attacher cette
+  sanction**, et la note d'en-tête de `lib/blog.ts` interdit de la « compléter ».
+- 🔴 🆕 **ET LA MÊME LECTURE JETTE UN DOUTE SUR UNE PHRASE DÉJÀ EN LIGNE
+  AILLEURS — NON CORRIGÉE CE JOUR, VOIR « Hypothèses à vérifier ».**
+  `vendre-sans-agence` écrit que l'état des risques doit être remis dès la
+  première visite « faute de quoi celui-ci pourra demander la résolution de la
+  vente ou une diminution du prix ». ⚠️ **L'obligation est juste, le
+  rattachement de la sanction est douteux.** **Non touché** : règle du doute,
+  et ce n'était pas le chantier du jour.
+- ✅ **DONNÉE LOCALE QU'AUCUNE DES NEUF PAGES CONCURRENTES NE PEUT AVOIR : LE
+  TEST DU PRIX DEMANDÉ, FAIT DE TÊTE PENDANT LA VISITE.** Tableau des médianes
+  **signées du premier semestre 2026** par quartier (**2 491 à 3 966 €/m²**,
+  commune **3 500 €/m²**, **940 ventes**) et « repère pour 60 m² » qui n'est
+  **que la médiane × 60**, annoncé comme tel. **Mêmes valeurs que
+  `estimation-en-ligne-ou-agence`** — aucune recopie à la main d'un chiffre qui
+  pourrait diverger.
+- ✅ **DEUX LIMITES ÉCRITES PLUTÔT QUE TUES** : une médiane de quartier ne tient
+  compte **ni de l'étage, ni de l'ascenseur, ni du balcon, ni de l'état**, et
+  **DVF n'enregistre ni l'état ni le DPE** ; le repère sert à détecter un prix
+  hors marché, pas à estimer un bien.
+- ✅ 🆕 **AUCUN DÉLAI DE VENTE PUBLIÉ, ET LA PAGE ÉCRIT POURQUOI.** La question
+  « depuis combien de temps est-il en vente ? » appelait un délai moyen local —
+  **nous n'en avons pas de publiable** (DVF enregistre la signature, jamais la
+  mise en vente ; aucune source publique à la maille communale). 📌 **C'est le
+  manque signalé « en attente de Tony » depuis plusieurs runs : il est ici
+  assumé à l'écrit, ce qui vaut mieux que de l'éluder.**
+- ✅ **BALISAGE : LA PAGE N'ÉMETTAIT QUE `BlogPosting` + `BreadcrumbList`, ELLE
+  ÉMET DÉSORMAIS AUSSI `FAQPage` ET `HowTo`.** Parité **prouvée sur le rendu**
+  (leçon du 18/09, jamais sur la source) : **6/6 questions et 6/6 réponses**
+  présentes mot pour mot dans le texte visible, **7/7 noms et 7/7 textes**
+  d'étapes du `HowTo`, et **25 chiffres et références** tous présents dans le
+  visible. `<script>` retirés **avant** les balises, normalisation NFC +
+  `U+202F`/`U+00A0`.
+- ✅ **BUILD EN 0 À LA PREMIÈRE TENTATIVE**, `tsc --noEmit` propre.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR
+  `/mentions-legales`, NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre
+  identique du 02/11 au 19/11, prouvé après le commit du jour. **Aucune erreur
+  neuve.** **Dix pages témoins** toutes en **200**.
+- 🔴 🆕 **DEUX DÉFAUTS ONT ÉTÉ ATTRAPÉS PAR LA CAPTURE, ET AUCUN DES DEUX PAR LA
+  CHAÎNE D'OUTILS** (`tsc`, `eslint`, build, parité FAQ : tous verts les deux
+  fois). Détail dans « Erreurs commises et corrigées » :
+  **(1)** le serveur local servait une version **périmée** avec un `200` parfait
+  — `pkill -f "next start"` ne tue pas un processus nommé `next-server` ;
+  **(2)** `*italique*` **n'existe pas** dans le rendu d'article : 15 mentions
+  `*À en faire :*` sortaient **avec leurs astérisques** à l'écran.
+- ✅ **LE TABLEAU DES 15 QUESTIONS A ÉTÉ ABANDONNÉ APRÈS CAPTURE, ET C'EST UN
+  ARBITRAGE, PAS UN RENONCEMENT.** Première version : un tableau à 3 colonnes
+  (question / ce que la réponse apprend / ce qu'il faut en faire). **À 390 px,
+  15 lignes de prose dans un tableau à défilement horizontal se lisent mal** —
+  et de la prose longue en cellule **s'extrait mal** pour un LLM. Converti en
+  **trois groupes `h3` + `ul` pleine largeur** : meilleur sur les deux critères
+  à la fois. **Débordement horizontal = 0** en mobile (390 px) **et** desktop
+  (1440 px), capture à l'appui.
+- ✅ **`/llms.txt` À JOUR SANS INTERVENTION, VÉRIFIÉ** : il **dérive** de
+  `title` + `excerpt`, et le nouveau titre comme les médianes de quartier y sont
+  apparus seuls. **Rien à éditer à la main — mais c'est une raison de plus de
+  soigner l'`excerpt`, qui est le texte que les LLM lisent.**
+- ✅ 🆕 **UN LIEN ÉDITORIAL DE PLUS VERS `/annonces`**, qui prolonge le chantier
+  du 17/11 sans le refaire : la page de visite renvoie aux biens disponibles
+  **par une phrase écrite**, pas par une ancre posée sur du texte existant
+  (règle du 16/09). **`internalHref` laissé sur `/acheter`** — le basculer est
+  une question en attente de Tony, pas une décision d'agent.
+- ✅ **SITEMAP LOCAL 55 vs PRODUCTION 58 : ÉCART EXPLIQUÉ, PAS UNE RÉGRESSION.**
+  Les 3 URL manquantes sont **toutes** des `/annonces/<slug>`, qui viennent de
+  la base et n'existent pas dans un conteneur sans elle. **Les 30 URL de blog
+  sont là**, la mienne comprise. 📌 **Vérifié par `diff` des deux listes, pas
+  déduit du total** — un écart de 3 aurait tout aussi bien pu être 3 articles
+  perdus.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-ET-UNIÈME JOUR, RECONTRÔLÉ EN LIGNE CE JOUR** : **0 occurrence de
+  « Qui sommes »** dans le HTML de production. **Non corrigé, et c'est
+  volontaire** (page de Tony, règle des 90 jours). ⚠️ **NON renotifié** — état
+  inchangé depuis huit notifications.
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE, RECONTRÔLÉE CE JOUR** :
+  `discord.gg/fSyn28G5U` rend **`{"message": "Unknown Invite", "code": 10006}`**.
+  **Seule invitation référencée dans le code**, à **deux** emplacements
+  (`components/layout/site-footer.tsx`, `components/home/social.tsx`).
+  ⚠️ **NON renotifié** — état inchangé.
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST FIGÉ AU 04/10** et n'a plus
+  été alimenté depuis. **Les mesures vivent dans ces blocs « État des lieux »
+  et dans les entrées du jour.**
+
 **Au 2026-11-17 (mardi)**
 
 - ✅ **LE RUN A EU LIEU — DOUZIÈME RUN CONSÉCUTIF PRÉSENT.** 06/11 → 17/11.
@@ -11869,6 +12050,202 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : CONTENU — `questions-a-poser-visite`, réécrit de 70 à
+~2 700 mots** (19/11 : la page posait **15 questions et n'en répondait
+aucune**, avec **une seule occurrence de « Villeurbanne »** dans tout le HTML
+servi, et elle était en ligne ainsi depuis le 22/01/2026. Apport propre = la
+**lecture** de chaque réponse — « ce qu'elle apprend », « à en faire » — pas la
+liste. Trois textes primaires lus ce jour : `L125-5` du code de
+l'environnement (état des risques **dès la première visite**, en vigueur depuis
+le 01/01/2025), `art. 6-2 du décret 67-223` (travaux dus par qui est
+copropriétaire **à l'exigibilité**, version du 25/12/2025) et `L721-2 du CCH`
+(les sept blocs dus à la promesse, version du 01/01/2024). Tableau local des
+**médianes signées S1 2026 par quartier**. `FAQPage` (6) et `HowTo` (7) ajoutés,
+parité prouvée sur le rendu. **Commit `45cf86c`.**
+🔴 **Et la SERP relevée AVANT d'écrire a changé le titre** : `qualitel.org`
+classe avec un titre quasi identique à l'ancien nôtre.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (20/11, vendredi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 17/11 non-contenu → 18/11 **run absent** → **19/11 contenu**).
+✅ **La veille du lundi a été faite le 16/11 — prochaine due le 23/11.**
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE *CORE UPDATE* DU 10/11
+TOURNAIT ENCORE LE 19/11 (J+9, toujours aucune durée enregistrée).** Les deux
+autres core updates de 2026 ont duré **12 j 4 h** (mars) et **11 j 21 h** (mai) :
+**s'il dure autant, il se termine vers le 22/11**. Les remesures des **21 et
+22/11 tombent encore dedans**. **Relever, ne pas conclure.** ⚠️ **Vérifier à
+chaque run si l'entrée a reçu une durée.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE 20/11, par ordre d'impact :**
+  1. 🟡 **DEUX À TROIS LIENS ENTRANTS VERS `lmnp-location-meublee`** —
+     **mesuré à 0 par `grep` le 17/11, et TOUJOURS PAS revérifié sur le rendu.**
+     ⚠️ 🔴 **REMESURER SUR LE HTML RENDU AVANT D'AGIR** (erreur du 17/11 sur
+     `/acheter` : `grep` disait 0, le rendu 13, à cause d'`internalHref`).
+     Candidats : `rentabilite-locative-lyon`, `investir-locatif-lyon`,
+     `/gestion-locative`. ⛔ **PAS `cout-gestion-locative`** (gel jusqu'au
+     27/11). ⚠️ **Écrire une phrase, pas poser une ancre.**
+  2. 🟡 **DEUX LIENS ENTRANTS VERS `home-staging-vendre-plus-cher`** — **même
+     réserve : mesuré à 0 par `grep`, à revérifier sur le rendu.** Candidats :
+     `vendre-appartement-lyon-etapes`, `vendre-vite-lyon`, `/vendre`.
+  3. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La phrase est **EXACTE** : levée d'ambiguïté, pas correction d'erreur.
+  4. 🆕 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite — voir
+     « Hypothèses à vérifier »). **Une lecture du V de `L125-5` alinéa par
+     alinéa suffit à décider.** ⚠️ **Si l'on corrige, c'est une phrase, et
+     `updated` bouge.**
+  5. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** Défaut **sortant**. ⛔ **Attendre le
+     24/11** (`taxe-fonciere-vente-qui-paie` sous gel de mesure).
+  6. 🟡 **LES AUTRES PAGES HORS NAVIGATION GLOBALE.** Mesuré le 07/11 :
+     `/agence-immobiliere-cusset` **7**, `/agence-immobiliere-charpennes` **8**,
+     `/agence-immobiliere-gratte-ciel` **8**. ⚠️ **Remesurer sur le rendu**,
+     puis trancher page par page.
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11 : `MaisonFaq → <HomeFaq />` sans prop).
+  8. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **dix-huit
+     runs** sans recontrôle). **Une seule affirmation en dépend** (« DPE
+     collectif »). **Contrôle à deux temps obligatoire.**
+  9. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **vingt-deuxième
+     report**). **Lire `blog.qoridor.fr/article/home-staging` en priorité.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 19/11. **Jour creux.**
+
+🔴 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (21/11), par ordre d'impact :**
+  1. 🟡 **LE BLOG FAIBLE — CINQ ARTICLES RESTANTS** (comptages du 16/11 sur les
+     seuls champs de texte) : `vendre-appartement-lyon-etapes` **34**,
+     `achat-immobilier-lyon-checklist` **40**, `vendre-vite-lyon` **43**,
+     `faire-offre-achat` **113**, `capacite-emprunt-immobilier` **170**.
+     📌 **`questions-a-poser-visite` (34) sort de cette liste : fait le 19/11.**
+     🆕 📌 **LE FAVORI EST `achat-immobilier-lyon-checklist`** : c'est le plus
+     court des restants **côté acheteur**, la famille où le site est absent
+     (SERP des 17/11 et 19/11), **et la page du 19/11 lui envoie désormais deux
+     liens** — elle promet un détail qu'une coquille de 40 mots ne tient pas.
+     ⚠️ **Attention au partage des rôles** : la visite appartient désormais à
+     `questions-a-poser-visite`, la check-list doit couvrir **le parcours**
+     (budget, offre, compromis, acte), pas la visite.
+     **Pour `capacite-emprunt-immobilier`, le sourçage est à moitié fait** :
+     HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, taux d'effort **35 %**,
+     maturité **25 ans**, flexibilité **20 %**. ⚠️ **Référence trouvée par
+     recherche web, le texte n'a PAS été lu** (`economie.gouv.fr/hcsf` rend
+     **403** en WebFetch). **Trouver un accès primaire avant de publier.**
+  2. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     Pistes **non mesurées** : « bail mobilité », « colocation meublée
+     Villeurbanne », « louer à un étudiant Villeurbanne », « résidence
+     étudiante LMNP ». ⚠️ **Triple contrôle du 03/11 obligatoire.**
+  3. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR SUR DES TERMES NEUFS** :
+     `donation-partage`, `SCI familiale`, `prêt à taux zéro`, `déficit
+     foncier`, `copropriété en difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  4. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — **MAIS PAS AVANT LE
+     27/11** (sa SERP se remesure ce jour-là). La matière est prête.
+  5. ⛔ **NE PAS RÉÉCRIRE `questions-a-poser-visite`** (19/11) → **03/12.**
+  6. ⛔ **NE PAS RÉÉCRIRE `lmnp-location-meublee`** (16/11) → **30/11.**
+     ⚠️ **Surveiller l'effet du changement de `title` indexé.**
+  7. ⛔ **NE PAS RÉÉCRIRE `home-staging-vendre-plus-cher`** (14/11) → **28/11.**
+  8. ⛔ **NE PAS RÉÉCRIRE `cout-gestion-locative`** (13/11) → **27/11.**
+  9. ⛔ **NE PAS RÉÉCRIRE `compromis-de-vente-delais`** (12/11) → **26/11.**
+ 10. ⛔ **NE PAS RÉÉCRIRE `taxe-fonciere-vente-qui-paie`** (10/11) → **24/11.**
+ 11. ⛔ **NE PAS RÉÉCRIRE `mandat-simple-ou-exclusif`** (08/11) → **22/11.**
+ 12. ⛔ **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`) — REMESURÉ
+     LE 19/11** (site absent, 9 résultats) → **prochaine remesure 03/12.**
+ 13. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES.** Le manque est de la visibilité,
+     pas du texte. **Remesurer le 21/11.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ÉCHÉANCE À SIX JOURS : L'ENCADREMENT DES LOYERS EST DONNÉ PAR NOS PAGES
+  COMME ARRIVANT À TERME LE 23/11/2026.** Le corpus l'écrit (expérimentation de
+  la loi ELAN art. 140, portée de 5 à 8 ans par la loi 3DS) et précise qu'une
+  prolongation de deux ans a été **adoptée par le Sénat en première lecture le
+  21/10/2026, texte non définitif**. 📌 **Ce n'est pas un chantier, c'est une
+  date à ne pas manquer : le 24/11, plusieurs pages affirmeront soit une règle
+  périmée, soit une échéance dépassée.** ⚠️ **À vérifier au plus tard le
+  24/11** (sort du texte à l'Assemblée), et **ne rien réécrire avant de
+  l'avoir vérifié**.
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT, ET DEUX SERP
+  LE CONFIRMENT MAINTENANT.** Le 15/11 sur « agence immobilière Villeurbanne » :
+  **20 résultats, site absent**, page 1 tenue autant par des **annuaires**
+  (`lesiteimmo` — **douze** agences villeurbannaises —, `immodvisor`, `zimo`,
+  `realadvisor`, `mappy`, `acceslibre.beta.gouv.fr`) que par des agences.
+  🆕 Le 17/11 sur « appartement à vendre Villeurbanne agence » : **19
+  résultats, site absent**, dont `immo.trovit`, `maisonsetappartements` et
+  `etreproprio` — **des agrégateurs, pas des agences**. 📌 **Aucune ligne de
+  code ne peut gagner ces positions.** **Question à Tony : l'agence est-elle
+  inscrite sur ces annuaires et portails, et veut-elle qu'on s'en occupe ?**
+  **Ne rien faire avant sa réponse.**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** **Question à Tony : les délais entre mandat et compromis sont-ils
+  exploitables quelque part ?** ⚠️ **Ce manque revient sur tous les sujets de
+  pratique.**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE,
+  FAUTE DE DONNÉE** (buté dessus le 16/11 : 14,6 €/m² est un loyer médian
+  communal toutes locations confondues). **Question à Tony : l'agence a-t-elle
+  des loyers de meublés observés à Villeurbanne ?** **Ne rien publier avant sa
+  réponse.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  Deux sont **publics et chiffrés** : **Orpi CETRIM Villeurbanne 8 % TTC sur
+  l'ancien / 7 % dans le neuf** (barème du **10/04/2025**) et **Foncia
+  Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**. ⚠️ **Publicité
+  comparative** : **décision commerciale, pas décision d'agent.**
+- 🆕 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS
+  `/annonces` PLUTÔT QUE VERS `/acheter` ?** Les 30 articles ont un CTA unique
+  (`internalHref`) qui va à `/vendre` (12), `/acheter` (8), `/estimation` (6)
+  ou `/gestion-locative` (4). Le basculer serait **le levier de maillage le
+  plus fort qui reste** — mais c'est un **remplacement, pas un ajout** : il
+  retirerait autant de liens à `/acheter`, et il arbitre un parcours
+  commercial (page éditoriale vs catalogue). 📌 **Non fait ce jour, et pas à
+  trancher seul.** ⚠️ **Question à Tony : sur un article côté acheteur, où
+  doit mener le bouton — vers la page « Acheter » ou vers les annonces ?**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — DIX-NEUVIÈME JOUR.**
+  **Recontrôlé en ligne le 17/11 : 0 occurrence.** **Non corrigé : page de
+  Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié** (8 notifications).
+- 🔴 **INVITATION DISCORD MORTE — RECONTRÔLÉE LE 17/11** :
+  `discord.gg/fSyn28G5U` rend `code 10006`. **Seule invitation référencée dans
+  le code**, à **deux** emplacements (`components/layout/site-footer.tsx`,
+  `components/home/social.tsx`). ⚠️ **NON renotifié.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ **Celles des 21 et 22/11 tombent encore dans le core update du 10/11 (J+9
+le 19/11, toujours sans durée enregistrée) ; celles des 23 et 24/11 juste
+après. Relever, ne pas conclure.**
+- **« vendre appartement Villeurbanne »** : 5ᵉ relevé le 14/11 → **21/11**.
+- **« prix m2 Villeurbanne »** → **21/11**.
+- **« honoraires agence immobilière Villeurbanne … »** → **21/11**.
+  **La SERP la plus anormale du journal** : le contenu existe, il est balisé
+  (`OfferCatalog`), et il n'est pas vu.
+- **« agence immobilière Villeurbanne »** : relevée le **15/11** → **22/11**.
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- **« estimation immobilière Villeurbanne »** → **23/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**.
+- 🆕 **« appartement à vendre Villeurbanne agence »** — 1ᵉʳ relevé le **17/11**
+  (site absent sur 19 résultats, `guy-hoquet` 8 positions en `/biens/print/`)
+  → **01/12**. 📌 **C'est la requête témoin du chantier de maillage du jour :
+  elle mesure `/annonces`, pas un article.**
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** — remesuré le
+  **19/11** (avec un jour de retard, site absent sur 9 résultats, le moteur
+  avouant de nouveau n'avoir aucune donnée de ventes signées S1 2026) →
+  **03/12**. 🆕 📌 **Fait nouveau : les concurrents publient désormais des
+  médianes DVF (3 547 / 3 571 / 3 777 €/m²) proches de la nôtre (3 567) —
+  l'écart « affiché ≠ signé » nous distingue moins sur CETTE requête ; la
+  maille QUARTIER et le SEMESTRE restent notre avantage propre.**
+- 🆕 **« questions à poser lors de la visite d'un appartement avant d'acheter »**
+  — 1ᵉʳ relevé le **19/11** : **9 résultats, site absent, SERP à 100 %
+  nationale** (`fourez.notaires`, `archersnotaires`, `foncia`, `qualitel`,
+  `pap`, `credit-agricole`, `jerevedunemaison`, `leblogimmobilier`,
+  `maison-kyka`), **aucune des neuf ne portant de donnée de prix locale**
+  → **03/12**. 📌 **Requête témoin du chantier du 19/11.**
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+---
+
 **Angle du dernier run : NON-CONTENU — `/annonces`, seule page commerciale
 hors navigation globale, et zéro lien éditorial depuis les 30 articles**
 (17/11 : graphe entrant reconstruit sur le **HTML rendu des 58 pages de
@@ -16517,6 +16894,26 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+- 🔴 🆕 **(19/11) `vendre-sans-agence` ATTACHE À LA REMISE DE L'ÉTAT DES RISQUES
+  EN PREMIÈRE VISITE UNE SANCTION QUE LE TEXTE NE LUI ATTACHE PEUT-ÊTRE PAS.**
+  La page écrit que l'état des risques « doit être remis à l'acquéreur dès la
+  **première visite** si le logement est en zone d'exposition, **faute de quoi
+  celui-ci pourra demander la résolution de la vente ou une diminution du
+  prix** ». **L'obligation est exacte** — `art. L125-5 du code de
+  l'environnement`, I bis, 2ᵉ alinéa, version en vigueur depuis le 01/01/2025,
+  lu ce jour. **C'est le rattachement de la sanction qui est douteux** : le
+  **V** du même article ouvre la résolution ou la diminution du prix pour les
+  manquements au I, aux **3ᵉ à 5ᵉ** alinéas du I bis, au dernier alinéa du II
+  et au IV — **il ne cite pas le 2ᵉ alinéa du I bis**.
+  ⚠️ **NON CORRIGÉ CE JOUR, VOLONTAIREMENT** : ce n'était pas le chantier, la
+  nuance est fine (on peut soutenir que le document finit de toute façon dans
+  le dossier de diagnostic visé par les alinéas 3 à 5), et la règle du doute
+  s'applique. 📌 **Ce qu'il faut faire avant de trancher : lire le V
+  alinéa par alinéa et vérifier s'il existe une jurisprudence rattachant la
+  sanction à la remise en visite.** ⚠️ **Ne pas « corriger » par simple
+  symétrie avec la page du 19/11, qui a choisi, elle, de ne PAS énoncer de
+  sanction.**
+
 ### 2026-11-16 — Quatre questions ouvertes par le chantier LMNP
 
 - 🔴 **L'ENCADREMENT DES LOYERS ARRIVE À TERME LE 23/11/2026 SELON NOS
@@ -18376,6 +18773,79 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-19 — Le serveur local m'a servi une version périmée avec un `200` parfait, et `pkill` ne l'avait pas tué
+
+🔴 **LE FAIT.** Après avoir modifié `lib/blog.ts`, j'ai relancé le serveur avec
+`pkill -f "next start"` puis `npm run start`, et j'ai revérifié la page. Elle
+répondait **`200`**, avec une taille **identique à l'octet près** au relevé
+précédent (**183 624 o** les deux fois). Les contrôles de parité passaient.
+**Et pourtant la page servie était l'ANCIENNE** : le tableau que je venais de
+supprimer y était encore, les `h3` que je venais d'ajouter n'y étaient pas.
+
+⚠️ **LA CAUSE, ET ELLE EST BÊTE.** Le processus ne s'appelle pas `next start`
+mais **`next-server`** : `pkill -f "next start"` n'a tué personne. Le nouveau
+serveur a alors échoué silencieusement — **`EADDRINUSE`, `errno: -98`**, visible
+seulement dans son fichier de log, que je ne lisais pas — et **l'ancien a
+continué de répondre**.
+
+📌 **CE QUI REND L'ERREUR DANGEREUSE : LE FAUX VERDICT EST POSITIF.** Ce n'est
+pas une page en erreur, c'est une page **saine, complète et fausse** — la même
+famille que les identifiants Légifrance du 03/11 (`200` sur un article réel mais
+sans rapport) et que les pages de maintenance des 31/10 et 02/11. **Si je
+n'avais pas cherché une chaîne précise du NOUVEAU contenu, j'aurais validé et
+commité en croyant avoir vérifié.**
+
+```bash
+# FAUX — ne tue rien, et le serveur neuf meurt en silence sur EADDRINUSE
+pkill -f "next start" ; npm run start & sleep 12 ; curl -s localhost:3000/...
+
+# JUSTE — tuer sur le VRAI nom, confirmer qu'il ne reste rien, LIRE le log de
+# démarrage, puis exiger du rendu une chaîne qui n'existe QUE dans la version neuve
+pkill -f "next-server" ; sleep 3 ; ps aux | grep -c "[n]ext-server"   # -> 0
+npm run start > server.log 2>&1 & sleep 14 ; tail -2 server.log       # -> "Ready"
+curl -s localhost:3000/... | grep -c "<chaine-qui-n-existe-que-apres>"
+```
+
+📌 **LA RÈGLE GÉNÉRALE QUI EN SORT, ET ELLE DÉPASSE LE SERVEUR : un contrôle qui
+ne peut pas ÉCHOUER quand le changement est absent ne contrôle rien.** Vérifier
+« la page répond 200 » ou « la parité FAQ passe » ne distingue pas la version
+neuve de l'ancienne — **les deux la passent**. Tout contrôle d'après-modification
+doit viser une chaîne **absente avant** et **présente après**. ⚠️ **Et une
+taille d'octets identique à deux relevés censés différer est un SIGNAL, pas une
+coïncidence : c'est ce qui m'a mis la puce à l'oreille.**
+
+### 2026-11-19 — J'ai écrit en italique dans un rendu qui n'a pas d'italique, et les astérisques sont sorties à l'écran
+
+🔴 **LE FAIT.** Dans la réécriture de `questions-a-poser-visite`, j'ai écrit
+**15 fois** la mention `*À en faire :*` en comptant sur un rendu en italique.
+`components/blog/article-body.tsx` ne connaît que **trois formes** :
+`**gras**`, `[lien](/url)` et `**[lien](/url)**`. L'italique simple n'existe
+pas. **Les quinze mentions sont donc sorties avec leurs astérisques visibles**,
+en plein milieu du texte lu par le visiteur.
+
+⚠️ **AUCUN OUTIL NE L'A VU, ET IL N'Y AVAIT AUCUNE RAISON QU'IL LE VOIE.**
+`tsc --noEmit` : propre. `eslint` : 35/24, inchangé. Build : 0. Parité FAQ ↔
+JSON-LD : 6/6 et 7/7. **Toutes vertes, sur une page qui affichait des
+astérisques à l'écran.** 📌 **C'est la famille déjà nommée le 03/11 : les
+fautes typographiques échappent à `tsc`, à `eslint`, au build et à la parité.**
+**Seule la capture l'a montré.**
+
+✅ **CORRIGÉ** en `**À en faire :**` (forme gras, supportée). **Le rendu du
+corpus n'a PAS été touché** : ajouter l'italique à `INLINE_RE` aurait modifié le
+rendu des 30 articles pour le confort d'un seul — et ce fichier porte un
+avertissement explicite sur l'ordre de ses alternatives.
+
+```bash
+# le contrôle qui l'attrape, à passer sur le RENDU de toute page retouchée
+#   (texte visible seul : <script> retirés AVANT les balises)
+#   -> doit rendre 0 astérisque ET 0 "](/"  (lien markdown non rendu)
+```
+
+📌 **LA RÈGLE : avant d'employer une syntaxe de balisage dans un contenu, lire
+le rendu qui l'interprète — pas supposer qu'il parle markdown.** Ici, trois
+formes sur une regex de quinze lignes, documentée, à deux fichiers de distance.
+
 
 ### 2026-11-17 — J'ai compté une page orpheline par `grep` alors qu'elle recevait 13 liens, et j'allais bâtir le chantier du jour sur ce comptage
 
@@ -21078,6 +21548,81 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-19 — Les trois seules formes de balisage que le rendu d'article comprend
+
+Le corps d'article est rendu par `components/blog/article-body.tsx`, dont la
+regex `INLINE_RE` ne reconnaît que **trois** formes, et rien d'autre :
+
+```
+**gras**            |   [lien](/url)   ou   [lien](https://...)   |   **[lien](/url)**
+```
+
+⚠️ **Il n'y a NI italique, NI code, NI titre markdown dans un `text:`.** Tout
+le reste ressort **tel quel à l'écran**, astérisques et crochets compris
+(constaté le 19/11, voir « Erreurs »). ⚠️ **La forme « lien en gras » doit
+rester la PREMIÈRE alternative de la regex** — le fichier le dit lui-même, et
+l'inverser fait ressortir les crochets et l'URL.
+
+📌 **Conséquence pratique quand on veut une seconde emphase dans une puce** (du
+type « question → lecture → action ») : **tout passe par `**gras**`**. Deux gras
+dans une même puce se lisent très bien ; c'est la forme retenue pour les 15
+puces de `questions-a-poser-visite`.
+
+### 2026-11-19 — Un tableau n'est pas toujours le bon véhicule : le critère mobile et le critère LLM vont dans le même sens
+
+Pour présenter 15 questions avec, pour chacune, ce que la réponse apprend et ce
+qu'il faut en faire, le réflexe est le **tableau à 3 colonnes**. Il a été écrit,
+**puis abandonné après capture**. Les deux critères qui le condamnent pointent
+dans la même direction :
+
+- **Mobile (390 px)** — le composant de tableau du site enveloppe la table dans
+  un conteneur `overflow-x-auto` : **la page ne déborde pas** (bon), mais les
+  15 lignes de prose se lisent dans **trois colonnes étroites à défilement
+  horizontal**, ce qui est mauvais sur un site dont la règle est « peu
+  d'informations par écran, beaucoup de respiration ».
+- **Extraction par un LLM** — une cellule de tableau contenant trois phrases
+  **ne s'extrait pas comme un passage autonome** : le lien entre la cellule et
+  l'en-tête de colonne se perd dès que le passage est sorti de la page.
+
+✅ **La forme retenue — `h3` de famille + `ul` pleine largeur, chaque puce
+portant `**question**` puis la lecture puis `**À en faire :**`** — gagne sur les
+deux tableaux à la fois : pleine largeur en mobile, et **chaque puce est un
+passage qui se suffit à lui-même**.
+
+📌 **LE TABLEAU RESTE LE BON VÉHICULE POUR LES CHIFFRES** : celui des médianes
+de quartier (4 colonnes de nombres courts) a été conservé sans hésitation. **Le
+critère n'est pas « tableau ou pas », c'est la longueur de la cellule.**
+
+### 2026-11-19 — Mesurer la SERP avant d'écrire ne sert pas qu'à choisir le sujet : ici, cela a changé le titre
+
+En relevant « questions à poser lors de la visite d'un appartement avant
+d'acheter » **avant** de toucher à l'article, j'ai vu que `qualitel.org` classe
+avec **« Visite d'appartement : 15 questions à poser »** — quand notre page
+s'appelait **« Visite d'un bien : les 15 questions à poser »**. Même promesse,
+même compte, en plus court et **sans aucune réponse**.
+
+📌 **Un doublon de titre avec une page qui classe ne se voit PAS en lisant son
+propre article** : il ne se voit que dans la SERP. **Ajouter au réflexe du
+relevé : comparer le titre de la page visée aux titres qui occupent la page 1**,
+et pas seulement la présence ou l'absence du site.
+
+⚠️ **Et la contrepartie à surveiller** : changer un `title` déjà indexé a un
+effet propre, indépendant du contenu. **Même précaution que pour le LMNP le
+16/11 — surveiller, ne pas conclure dans la fenêtre du core update.**
+
+### 2026-11-19 — Un contrôle qui ne peut pas échouer quand le changement est absent ne contrôle rien
+
+Généralisation de l'incident du serveur périmé du jour, et elle vaut bien
+au-delà de lui. `200`, build à 0, `tsc` propre, parité FAQ 6/6 : **l'ancienne
+version du fichier passait exactement les mêmes contrôles que la nouvelle.**
+
+📌 **Tout contrôle d'après-modification doit viser une chaîne ABSENTE AVANT et
+PRÉSENTE APRÈS** — un `h3` neuf, une légende supprimée, un chiffre nouveau.
+C'est la seule forme qui distingue « mon changement est en place » de « le
+serveur répond ». ⚠️ **Corollaire utile : deux relevés censés différer et qui
+rendent la MÊME taille en octets ne sont pas une coïncidence.**
+
 
 ### 2026-11-17 — Méthode : mesurer un graphe de liens internes, et la seule découpe qui rend le chiffre lisible
 
