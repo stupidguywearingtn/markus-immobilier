@@ -328,6 +328,41 @@
  * n° 75-14.556 et 16/04/1996 n° 93-19.661, qui annulent pour absence d'aléa
  * bien au-delà de ce délai dès que l'acheteur connaissait la gravité de l'état
  * de santé du vendeur. C'est l'apport propre de l'article : ne pas le raboter.
+ *
+ * Depuis le 19/11/2026, « questions-a-poser-visite » est passé de 70 mots (une
+ * liste de 15 questions SANS AUCUNE RÉPONSE) à ~2 700 mots. Son apport propre
+ * est la LECTURE de chaque réponse, pas la liste : chaque puce porte la
+ * question, ce que la réponse apprend, puis ce qu'il faut en faire — c'est la
+ * raison d'être de la page. Ne pas la rétrograder en check-list.
+ * ⚠️ CES 15 PUCES ONT ÉTÉ UN TABLEAU À 3 COLONNES PENDANT LA RÉDACTION DU
+ * 19/11, ET IL A ÉTÉ ABANDONNÉ APRÈS CAPTURE : à 390 px, 15 lignes de prose
+ * dans un tableau à défilement horizontal se lisent mal, et de la prose longue
+ * en cellule s'extrait mal. Ne pas reconvertir ce bloc en tableau.
+ * ⚠️ PARTAGE DES RÔLES À RESPECTER — cette page LIE, elle ne republie pas :
+ * la répartition vendeur/acquéreur et l'état daté restent la propriété de
+ * « charges-copropriete », les sept blocs de l'art. L721-2 et l'effet sur le
+ * délai de rétractation celle de « compromis-de-vente-delais », les durées de
+ * validité celle de « diagnostics-obligatoires-vente », les échéances 2027
+ * celle de « dpe-2026-ce-qui-change », et l'écart affiché/signé celle de
+ * « estimation-en-ligne-ou-agence ». La page n'en garde que la lecture utile
+ * EN VISITE.
+ * ⚠️ DÉPENDANCE DVF : son tableau publie les médianes du PREMIER SEMESTRE 2026
+ * par quartier (2 491 à 3 966 €/m², commune 3 500 €/m², 940 ventes) et un
+ * « repère pour 60 m² » qui n'est QUE la médiane × 60 — si ces médianes sont
+ * recalculées, le tableau doit être RECALCULÉ, jamais patché, en même temps que
+ * « estimation-en-ligne-ou-agence » qui porte les mêmes valeurs.
+ * ⚠️ L'ÉTAT DES RISQUES EN PREMIÈRE VISITE EST PRÉSENTÉ SANS SANCTION, ET C'EST
+ * VOLONTAIRE : l'obligation est au I bis, 2ᵉ alinéa de l'art. L125-5 du code de
+ * l'environnement (en vigueur depuis le 01/01/2025), mais le V, qui ouvre la
+ * résolution ou la diminution du prix, NE VISE PAS expressément cet alinéa. Ne
+ * pas « compléter » ce passage par une sanction que le texte n'attache pas à
+ * cette remise.
+ * ⚠️ AUCUN DÉLAI DE VENTE N'EST PUBLIÉ, et la page écrit noir sur blanc
+ * pourquoi (DVF enregistre la signature, pas la mise en vente). Ne pas y
+ * ajouter un délai « observé » sans donnée sourcée de l'agence.
+ * ⚠️ TITRE CHANGÉ le 19/11/2026 : l'ancien (« Visite d'un bien : les 15
+ * questions à poser ») était un quasi-doublon du titre de qualitel.org, qui
+ * occupe la SERP. Surveiller l'effet du changement de title indexé.
  */
 
 export type Block =
@@ -2879,41 +2914,144 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "questions-a-poser-visite",
-    title: "Visite d'un bien : les 15 questions à poser",
+    title: "Visite d'un appartement : 15 questions à poser, et ce que chaque réponse vous apprend",
     metaDescription:
-      "La check-list des 15 questions essentielles à poser lors de la visite d'un appartement ou d'une maison avant d'acheter.",
-    h1: "Visite d'un bien : les 15 questions à poser",
+      "Les 15 questions à poser en visite, avec pour chacune ce que la réponse révèle et ce qu'il faut en faire. Plus le test du prix demandé sur la médiane signée du quartier à Villeurbanne, et les documents exigibles dès la première visite.",
+    h1: "Visite d'un appartement : 15 questions à poser, et ce que chaque réponse vous apprend",
     excerpt:
-      "Les bonnes questions révèlent les vrais coûts et les problèmes éventuels. La check-list à garder en tête en visite.",
+      "Une liste de questions ne sert à rien si l'on ne sait pas lire les réponses. Pour chacune des 15 questions utiles en visite, ce que la réponse vous apprend et ce qu'il faut en faire. Trois d'entre elles pèsent sur le budget bien plus que le prix affiché : les travaux votés en assemblée générale, dont le paiement revient à celui qui est copropriétaire au jour où la somme devient exigible ; le montant réel des charges ; et l'étiquette du DPE. À Villeurbanne, le prix demandé se teste sur place : la médiane des appartements signés au premier semestre 2026 est de 3 500 €/m² sur la commune, de 2 491 à 3 966 €/m² selon le quartier. Et l'état des risques doit vous être remis dès la première visite, si visite il y a.",
     date: "2026-01-22",
+    updated: "2026-11-19",
     internalHref: "/acheter",
     internalLabel: "Acheter avec notre accompagnement",
     blocks: [
-      { type: "p", text: "**Avant de faire une offre, posez les bonnes questions : elles révèlent les vrais coûts et les éventuels problèmes.** Voici la check-list à garder en tête." },
-      { type: "h2", text: "Sur le bien" },
-      { type: "ol", items: [
-        "Quelle est la raison de la vente ?",
-        "Depuis quand est-il en vente ?",
-        "Quel est le DPE ?",
-        "Des travaux récents ont-ils été faits ?",
-        "L'isolation et le chauffage ?",
-        "Y a-t-il des traces d'humidité ?",
+      { type: "p", text: "**Une liste de questions ne sert à rien si l'on ne sait pas lire les réponses : ce qui compte en visite, ce n'est pas de poser les quinze questions, c'est de savoir ce que chaque réponse vous apprend et ce qu'il faut en faire.** Trois d'entre elles pèsent sur votre budget bien plus que le prix affiché — les travaux votés en assemblée générale, le montant réel des charges et l'étiquette du DPE. Les douze autres servent surtout à décider si vous revenez une deuxième fois." },
+      { type: "p", text: "Cette page donne les quinze questions avec, pour chacune, la lecture de la réponse. Elle ajoute deux choses qu'une liste générique ne peut pas donner : **comment tester sur place le prix demandé** à partir des prix réellement signés dans le quartier, et **quels documents vous pouvez réclamer dès la visite** plutôt qu'attendre la signature." },
+
+      { type: "h2", text: "Quelles sont les 15 questions à poser pendant une visite ?" },
+      { type: "p", text: "**Les voici, regroupées en trois familles : le bien, l'argent, l'environnement.** Pour chacune, ce que la réponse vous apprend puis ce qu'il faut en faire — c'est cette seconde partie qui compte, parce qu'une même réponse peut être rassurante ou disqualifiante selon ce qu'elle implique. Notez les réponses pendant la visite, pas après : à la troisième visite de la journée, les logements se mélangent." },
+
+      { type: "h3", text: "Sur le bien" },
+      { type: "ul", items: [
+        "**Pourquoi vendez-vous ?** Un départ contraint — mutation, séparation, succession — indique un vendeur sensible au calendrier plus qu'au prix ; un vendeur qui achète plus grand dans le même secteur est rarement pressé. **À en faire :** si le motif est un calendrier, négociez le délai plutôt que le prix, car une signature rapide a une valeur.",
+        "**Depuis combien de temps est-il en vente ?** Un bien ancien dans l'annonce a déjà été vu par le marché et non retenu : c'est un signal sur le prix, rarement sur le bien. **À en faire :** demandez si le prix a déjà baissé, et de combien. Un prix révisé une fois le sera souvent deux.",
+        "**Des travaux ont-ils été faits, et lesquels ?** Des travaux récents sur les parties privatives valorisent ; des travaux sur l'immeuble indiquent une copropriété qui entretient — et qui appelle des fonds. **À en faire :** demandez les factures, car sans facture un travail annoncé ne se vérifie pas.",
+        "**Y a-t-il des traces d'humidité ?** Une trace fraîche et une trace ancienne traitée ne se valent pas : l'origine compte plus que la tache. **À en faire :** regardez les angles de murs extérieurs, le bas des murs et les plafonds de salle de bains, et photographiez.",
+        "**Quel est le mode de chauffage, et son coût réel ?** Collectif ou individuel, gaz ou électrique : cela change qui décide des travaux et ce qui passe en charges. **À en faire :** demandez les factures d'énergie de deux hivers, pas une estimation.",
+        "**Quelle est l'orientation, et la luminosité en hiver ?** Une visite d'été ne dit rien de janvier ; l'orientation, elle, se vérifie sur place. **À en faire :** notez l'orientation plutôt que l'impression lumineuse du jour de la visite.",
       ] },
-      { type: "h2", text: "Sur les coûts" },
-      { type: "ol", items: [
-        "Montant de la taxe foncière ?",
-        "Montant des charges de copropriété ?",
-        "Des travaux sont-ils votés en AG ?",
-        "Coût moyen de l'énergie ?",
+
+      { type: "h3", text: "Sur l'argent" },
+      { type: "ul", items: [
+        "**Quelle est l'étiquette du DPE, et de quand date-t-il ?** L'étiquette figure déjà dans l'annonce : la vraie question est la date du diagnostic et le détail du rapport, pas la lettre. **À en faire :** un F ou un G engage un calendrier de travaux et des restrictions de location — demandez le rapport complet.",
+        "**Quel est le montant des charges de copropriété ?** C'est une dépense mensuelle qui s'ajoute à la mensualité de prêt, et qui ne se négocie pas. **À en faire :** demandez le montant annuel par lot et ce qu'il couvre, car un chauffage collectif inclus change complètement la comparaison.",
+        "**Des travaux sont-ils votés en assemblée générale ?** C'est la question qui peut coûter le plus cher, et celle dont la réponse est la plus souvent incomplète. **À en faire :** demandez les procès-verbaux des trois dernières années **et l'échéancier des appels de fonds** — ce n'est pas la date de la vente qui désigne le payeur, voir plus bas.",
+        "**Y a-t-il un fonds de travaux, et à quelle hauteur ?** La part accumulée reste attachée au lot : elle vous suit, et le vendeur ne la récupère pas. **À en faire :** faites-la chiffrer. Un fonds déjà constitué réduit l'appel de fonds futur ; un fonds vide sur un immeuble ancien l'annonce.",
+        "**Quel est le montant de la taxe foncière ?** Un ordre de grandeur annuel, à ajouter au coût de détention. **À en faire :** demandez le dernier avis d'imposition. La taxe de l'année de la vente se répartit par accord entre les parties, pas par la loi.",
+        "**Y a-t-il eu des offres, et à quel niveau ?** Le vendeur n'est pas tenu de répondre, mais son embarras renseigne autant que le chiffre. **À en faire :** une offre refusée vous donne un plancher de négociation ; aucune offre après plusieurs mois vous en donne un plafond.",
       ] },
-      { type: "h2", text: "Sur l'environnement" },
-      { type: "ol", items: [
-        "Le quartier est-il calme ?",
-        "Quels commerces et transports à proximité ?",
-        "Des projets de construction prévus ?",
-        "Problèmes de voisinage ?",
-        "Stationnement ?",
+
+      { type: "h3", text: "Sur l'environnement" },
+      { type: "ul", items: [
+        "**Le quartier est-il calme, et à quelles heures ?** C'est la réponse du vendeur la moins fiable de toute la liste. **À en faire :** revenez un vendredi soir et un dimanche matin — c'est la seule vérification qui vaille.",
+        "**Quels commerces, écoles et transports à proximité ?** Mesurable, et déterminant à la revente autant qu'à l'usage. **À en faire :** chronométrez le trajet réel jusqu'à l'arrêt, pas la distance à vol d'oiseau.",
+        "**Des projets de construction sont-ils prévus autour ?** Une vue dégagée n'est pas un droit acquis : un projet voisin peut supprimer la lumière qui vous a décidé. **À en faire :** consultez le plan local d'urbanisme en mairie, car le vendeur n'a pas toujours l'information et elle est publique.",
       ] },
+      { type: "p", text: "Si vous préparez votre parcours d'achat au-delà de la visite, l'enchaînement complet des étapes — budget, offre, compromis, acte — est détaillé dans [la check-list de l'acquéreur](/blog/achat-immobilier-lyon-checklist), et la façon de formuler une offre dans [faire une offre d'achat](/blog/faire-offre-achat)." },
+
+      { type: "h2", text: "Comment savoir si le prix demandé est au niveau du marché à Villeurbanne ?" },
+      { type: "p", text: "**En divisant le prix demandé par la surface, puis en comparant le résultat à la médiane des appartements réellement signés dans ce quartier — pas à un prix affiché en ligne.** Au premier semestre 2026, cette médiane est de **3 500 €/m²** sur la commune de Villeurbanne, sur 940 ventes exploitables, et elle va de **2 491 à 3 966 €/m²** selon le quartier. C'est un calcul que vous pouvez faire de tête pendant la visite." },
+      { type: "p", text: "L'écart avec les prix publiés en ligne justifie à lui seul de faire le calcul : les sites qui affichent un prix au m² pour Villeurbanne dépassent la médiane signée de **25,1 %** sur la commune entière. Sur un appartement de 60 m², cet écart représente **52 800 €**. Le détail de cette comparaison, source par source, est dans [estimation en ligne ou en agence](/blog/estimation-en-ligne-ou-agence)." },
+      {
+        type: "table",
+        caption: "Médiane des appartements signés par quartier au premier semestre 2026, et repère de prix pour 60 m²",
+        headers: ["Quartier (contour officiel)", "Médiane signée S1 2026", "Repère pour 60 m²", "Ventes du semestre"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "3 966 €/m²", "237 960 €", "102"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 805 €/m²", "228 300 €", "320"],
+          ["Charpennes – Tonkin", "3 440 €/m²", "206 400 €", "104"],
+          ["Perralière – Grandclément", "3 312 €/m²", "198 720 €", "149"],
+          ["Cusset – Bonnevay", "3 136 €/m²", "188 160 €", "89"],
+          ["Buers – Croix-Luizet", "3 041 €/m²", "182 460 €", "144"],
+          ["Cyprian – Les Brosses", "2 491 €/m²", "149 460 €", "19"],
+          ["Villeurbanne, commune entière", "3 500 €/m²", "210 000 €", "940"],
+        ],
+        source: "Calcul Markus Immobilier, extraction du 4 novembre 2026, à partir du fichier « Valeurs foncières 2026 - Premier semestre » (DGFiP, data.gouv.fr, mis en ligne le 12 octobre 2026), commune 69266, ventes d'appartements à une seule ligne bâtie, surface ≥ 10 m², 800 à 12 000 €/m², médiane, rattachement au quartier par la parcelle cadastrale et les contours officiels de quartiers de la Métropole de Lyon. Le « repère pour 60 m² » est la médiane du quartier multipliée par 60 : c'est un ordre de grandeur de comparaison, pas une estimation de bien. Quartier Saint-Jean non publié, échantillon trop mince.",
+      },
+      { type: "p", text: "Deux précautions d'usage, parce qu'une médiane n'est pas un prix. **Une médiane de quartier ne tient compte ni de l'étage, ni de l'ascenseur, ni du balcon, ni de l'état du bien** : un rez-de-chaussée sur rue et un dernier étage avec terrasse se partagent la même ligne du tableau. Et **la base DVF n'enregistre ni l'état ni le DPE** du logement vendu, ce qui explique une partie de la dispersion autour de la médiane. Le repère sert donc à repérer un prix hors marché, pas à fixer le vôtre : si le prix demandé sort de 15 % au-dessus de la médiane du quartier, la question à poser devient « qu'est-ce qui justifie l'écart ? »." },
+      { type: "p", text: "Les écarts entre quartiers villeurbannais sont du même ordre que l'écart affiché/signé, ce qui veut dire qu'un même budget change de quartier plus facilement qu'il ne change de surface. L'arbitrage budget-surface-quartier est traité dans [où acheter à Villeurbanne](/blog/ou-acheter-villeurbanne-quartiers), et les biens que nous proposons actuellement, avec leur prix et leur quartier, sont sur [nos annonces](/annonces)." },
+
+      { type: "h2", text: "Quels documents puis-je demander dès la première visite ?" },
+      { type: "p", text: "**Tous ceux que le vendeur devra de toute façon vous remettre au plus tard à la signature de la promesse de vente — et un qui vous est dû dès la visite elle-même : l'état des risques.** Pour un lot de copropriété, la loi fixe sept blocs de documents à remettre au plus tard à la promesse. Rien ne vous empêche de les réclamer plus tôt, et c'est tout l'intérêt : ils répondent, par écrit, à la moitié des quinze questions ci-dessus." },
+      { type: "p", text: "L'état des risques est le seul dont le calendrier est attaché à la visite : l'article L125-5 du code de l'environnement, dans sa version en vigueur depuis le 1er janvier 2025, prévoit qu'il « est remis au potentiel acquéreur par le vendeur lors de la première visite de l'immeuble, si une telle visite a lieu ». Il doit avoir été établi depuis moins de six mois. Il se remplit gratuitement en ligne depuis le service public Géorisques : un vendeur qui ne l'a pas peut l'éditer le jour même." },
+      { type: "p", text: "Les sept blocs dus à la promesse couvrent l'organisation de l'immeuble (fiche synthétique, règlement de copropriété, état descriptif de division, procès-verbaux des trois dernières années), les informations financières (charges payées par le vendeur sur les deux derniers exercices, sommes dues au syndicat, impayés, part du fonds de travaux rattachée au lot), le carnet d'entretien, la notice d'information, les conclusions du diagnostic technique global s'il existe et le plan pluriannuel de travaux. **Deux de ces blocs ont un effet de droit particulier** : si les documents d'organisation et les informations financières ne sont pas remis à temps, le délai de rétractation ne commence à courir qu'au lendemain de leur communication. Le détail est dans [compromis de vente : les délais](/blog/compromis-de-vente-delais)." },
+      { type: "p", text: "En pratique, demandez en priorité trois pièces, qui sont celles qui déplacent un budget : les **procès-verbaux des trois dernières assemblées générales**, le **montant annuel des charges par lot** et le **rapport de DPE complet**. Les durées de validité de chaque diagnostic sont dans [diagnostics obligatoires : durées de validité](/blog/diagnostics-obligatoires-vente)." },
+
+      { type: "h2", text: "Des travaux sont votés en assemblée générale : qui va les payer, le vendeur ou moi ?" },
+      { type: "p", text: "**Celui qui est copropriétaire le jour où la somme devient exigible — ce qui n'est ni la date du vote, ni forcément la date de la vente.** C'est la règle de l'article 6-2 du décret du 17 mars 1967, dans sa version en vigueur depuis le 25 décembre 2025 : les provisions du budget prévisionnel sont dues par le vendeur, et les dépenses non comprises dans ce budget — la catégorie dont relèvent les gros travaux — incombent à celui qui est copropriétaire au moment où le paiement est appelé." },
+      { type: "p", text: "La conséquence pratique est contre-intuitive, et c'est pour cela qu'il faut poser la question en visite : **des travaux votés il y a deux ans peuvent être à votre charge, et des travaux votés après votre achat peuvent ne pas l'être.** Ce qui décide, c'est le calendrier des appels de fonds. Demandez donc non pas « des travaux sont-ils votés ? » mais « quels travaux sont votés, et quel est l'échéancier des appels de fonds ? »." },
+      { type: "p", text: "Deux nuances à connaître avant de négocier. **Un accord entre vendeur et acquéreur est possible** — les notaires prévoient presque systématiquement un prorata dans l'acte — mais il ne vaut qu'entre les parties : le syndic continue d'appeler les charges auprès du propriétaire inscrit. Et **la part du fonds de travaux déjà constituée reste attachée au lot** : le vendeur ne la récupère pas, elle vous suit. La répartition complète, les régularisations de comptes et le plafond de 380 € TTC de l'état daté sont détaillés dans [charges de copropriété : la répartition](/blog/charges-copropriete)." },
+
+      { type: "h2", text: "Que faut-il vraiment regarder sur le DPE pendant la visite ?" },
+      { type: "p", text: "**La date du diagnostic et le détail du rapport, pas la lettre.** L'étiquette figure déjà dans l'annonce : la visite sert à savoir si elle est encore valable et sur quoi elle repose. Un DPE réalisé depuis le 1er juillet 2021 est valable 10 ans ; ceux réalisés entre le 1er janvier 2018 et le 30 juin 2021 ne sont plus valables." },
+      { type: "p", text: "Deux échéances changent la lecture d'une étiquette en 2026. D'une part, les seuils ont été adaptés au 1er juillet 2024 pour les logements de 40 m² ou moins — un studio mal classé a pu changer d'étiquette sans travaux. D'autre part, deux arrêtés applicables au 1er janvier 2027 modifient le calcul : une étiquette F ou G aujourd'hui ne sera pas nécessairement la même l'an prochain, et l'attestation de nouvelle étiquette se téléchargera gratuitement. Ce qui est en jeu, les dates et les sources sont dans [DPE 2026 : ce qui change](/blog/dpe-2026-ce-qui-change)." },
+      { type: "p", text: "La question à poser est donc double : **quelle est la date du DPE, et puis-je avoir le rapport complet ?** Le rapport indique les postes de déperdition et les recommandations de travaux chiffrées ; l'étiquette, elle, ne dit pas ce qu'il faudrait faire ni ce que cela coûterait." },
+
+      { type: "h2", text: "Faut-il se méfier d'un bien en vente depuis longtemps ?" },
+      { type: "p", text: "**Un délai long est un signal sur le prix, pas sur le bien — et il se négocie.** Un logement resté plusieurs mois dans les annonces a été vu par les acheteurs du secteur et n'a pas été retenu : dans un marché où les prix signés reculent, la cause la plus fréquente est un prix d'annonce calé sur une référence plus ancienne, pas un défaut caché." },
+      { type: "p", text: "**Markus Immobilier ne publie pas de délai de vente moyen à Villeurbanne**, parce que nous n'avons pas de donnée publiable sur ce point : la base DVF enregistre la date de la signature, jamais la date de mise en vente, et aucune source publique ne donne ce délai à la maille communale. Nous préférons l'écrire que publier un chiffre que nous ne pourrions pas sourcer." },
+      { type: "p", text: "Ce que vous pouvez mesurer, en revanche, c'est le mouvement du prix. Demandez si le prix a déjà été révisé et de combien : une baisse déjà consentie indique un vendeur qui a accepté le principe de la négociation, et le marché villeurbannais lui donne un argument — la médiane communale signée est passée de 3 551 €/m² au premier semestre 2025 à 3 500 €/m² au premier semestre 2026, soit **−1,4 %**, pendant que les prix affichés en ligne ne bougeaient pas." },
+
+      {
+        type: "steps",
+        name: "Mener une visite utile",
+        items: [
+          { name: "Préparer le calcul du prix au m²", text: "Avant d'entrer, divisez le prix demandé par la surface annoncée et comparez-le à la médiane signée du quartier. Vous saurez en trente secondes si vous visitez un bien dans le marché ou au-dessus." },
+          { name: "Réclamer l'état des risques", text: "Il vous est dû lors de la première visite, s'il y a visite, et doit avoir moins de six mois. Il s'édite gratuitement en ligne depuis Géorisques : son absence n'est pas un obstacle, c'est une information sur la préparation du dossier." },
+          { name: "Poser les trois questions qui coûtent cher", text: "Travaux votés et échéancier des appels de fonds, montant annuel des charges par lot, date et rapport du DPE. Les douze autres questions peuvent attendre une deuxième visite ; celles-ci décident du budget." },
+          { name: "Noter les réponses sur place", text: "Écrivez les montants et les dates pendant la visite, pas le soir. Photographiez les angles de murs, le tableau électrique et les traces d'humidité éventuelles." },
+          { name: "Demander les pièces écrites", text: "Procès-verbaux des trois dernières assemblées générales, factures des travaux annoncés, factures d'énergie de deux hivers, dernier avis de taxe foncière. Une réponse orale qui ne se confirme pas par écrit n'est pas une réponse." },
+          { name: "Revenir à une autre heure", text: "Le bruit, la lumière et le stationnement ne se vérifient qu'en revenant un vendredi soir ou un dimanche matin. C'est la seule des quinze questions dont la réponse du vendeur ne vaut rien." },
+          { name: "Formuler l'offre à partir des écarts mesurés", text: "Prix au m² du bien comparé à la médiane du quartier, travaux à venir chiffrés, charges annuelles : ces trois écarts sont les seuls arguments de négociation qu'un vendeur ne peut pas écarter d'un revers de main." },
+        ],
+      },
+
+      { type: "h2", text: "Sources et date de vérification" },
+      { type: "ul", items: [
+        "**Code de l'environnement, article L125-5**, version en vigueur depuis le 1er janvier 2025 (modifié par la loi n° 2023-580 du 10 juillet 2023, art. 23) — I bis, deuxième alinéa : « l'état des risques est remis au potentiel acquéreur par le vendeur lors de la première visite de l'immeuble, si une telle visite a lieu ». Lu le 19 novembre 2026. ⚠️ Le V, qui ouvre la résolution du contrat ou la diminution du prix, ne vise pas expressément ce deuxième alinéa : nous présentons donc la remise en visite comme une obligation, sans lui attacher cette sanction.",
+        "**Décret n° 2022-1289 du 1er octobre 2022** relatif à l'information des acquéreurs et des locataires sur les risques — état des risques établi depuis moins de six mois.",
+        "**Code de la construction et de l'habitation, article L721-2**, version en vigueur depuis le 1er janvier 2024 (modifié par la loi n° 2021-1104 du 22 août 2021, art. 171) — les sept blocs de documents et informations remis à l'acquéreur d'un lot de copropriété au plus tard à la date de signature de la promesse de vente, dont la part du fonds de travaux rattachée au lot (2° d) et le plan pluriannuel de travaux (6° et 7°). Lu le 19 novembre 2026.",
+        "**Décret n° 67-223 du 17 mars 1967, article 6-2**, version en vigueur depuis le 25 décembre 2025 (modifié par le décret n° 2025-1292 du 22 décembre 2025, art. 3) — 1° : la provision exigible du budget prévisionnel est due par le vendeur ; 2° : le paiement des provisions pour dépenses non comprises dans le budget prévisionnel incombe à celui qui est copropriétaire au moment de l'exigibilité ; 3° : les trop-perçus et moins-perçus sont portés au compte de celui qui est copropriétaire lors de l'approbation des comptes. Lu le 19 novembre 2026. L'article ne nomme pas les « travaux » : ceux-ci relèvent de la catégorie des dépenses hors budget prévisionnel du 2°.",
+        "**Décret n° 67-223, article 6-3** — un accord contraire entre les parties à la vente ne produit d'effet qu'entre elles.",
+        "Médianes de prix signés : calcul Markus Immobilier, extraction du 4 novembre 2026 sur le fichier « Valeurs foncières 2026 - Premier semestre » (DGFiP, data.gouv.fr, publié le 12 octobre 2026), commune 69266 — les mêmes valeurs que celles publiées sur nos autres pages.",
+        "Durées de validité du DPE et échéances des arrêtés du 11 juin et du 19 août 2026 : voir nos pages [DPE 2026](/blog/dpe-2026-ce-qui-change) et [diagnostics obligatoires](/blog/diagnostics-obligatoires-vente), qui portent les sources primaires.",
+      ] },
+    ],
+    faq: [
+      {
+        q: "Le vendeur est-il obligé de me dire pourquoi il vend ?",
+        a: "Non. Aucun texte n'oblige un vendeur à motiver sa vente, et son silence n'est pas un signal négatif en soi. En revanche, il est tenu de vous informer des vices cachés qu'il connaît et de vous remettre les documents prévus par la loi : c'est sur ces pièces écrites, pas sur ses explications, qu'il faut fonder votre décision.",
+      },
+      {
+        q: "Des travaux ont été votés avant mon achat : est-ce le vendeur qui les paie ?",
+        a: "Pas nécessairement. Selon l'article 6-2 du décret du 17 mars 1967, les dépenses non comprises dans le budget prévisionnel — la catégorie des gros travaux — sont dues par celui qui est copropriétaire au jour où la somme devient exigible, et non par celui qui était propriétaire au moment du vote. Des travaux votés deux ans avant la vente peuvent donc être à votre charge si l'appel de fonds tombe après votre acquisition. Vendeur et acquéreur peuvent convenir d'un prorata dans l'acte, mais cet accord ne vaut qu'entre eux : le syndic continue d'appeler les charges auprès du propriétaire inscrit.",
+      },
+      {
+        q: "Quels documents le vendeur doit-il me remettre dès la première visite ?",
+        a: "Un seul a son calendrier attaché à la visite : l'état des risques. L'article L125-5 du code de l'environnement, dans sa version en vigueur depuis le 1er janvier 2025, prévoit qu'il est remis au potentiel acquéreur par le vendeur lors de la première visite de l'immeuble, si une telle visite a lieu, et il doit avoir été établi depuis moins de six mois. Les autres documents — règlement de copropriété, procès-verbaux des trois dernières années, informations financières, carnet d'entretien, notice d'information, diagnostic technique global, plan pluriannuel de travaux — sont dus au plus tard à la signature de la promesse de vente, mais rien n'interdit de les demander dès la visite.",
+      },
+      {
+        q: "Comment vérifier pendant la visite si le prix demandé est cohérent ?",
+        a: "Divisez le prix demandé par la surface et comparez le résultat à la médiane des appartements signés dans le quartier. Au premier semestre 2026 à Villeurbanne, cette médiane est de 3 500 €/m² sur la commune, et va de 2 491 €/m² à Cyprian – Les Brosses à 3 966 €/m² à Ferrandière – Maisons-Neuves. Attention à la source de comparaison : les prix au m² affichés en ligne pour Villeurbanne dépassent la médiane réellement signée de 25,1 % sur la commune entière. Une médiane ne tient compte ni de l'étage, ni de l'état, ni du DPE : elle sert à repérer un prix hors marché, pas à estimer un bien précis.",
+      },
+      {
+        q: "Un bien en vente depuis six mois cache-t-il un problème ?",
+        a: "Le plus souvent, non : c'est un signal sur le prix d'annonce, pas sur le logement. Un bien resté longtemps en vente a été vu par les acheteurs du secteur et écarté, et dans un marché où les prix signés reculent la cause la plus fréquente est un prix calé sur une référence plus ancienne. Markus Immobilier ne publie pas de délai de vente moyen à Villeurbanne, faute de donnée publiable : la base DVF enregistre la date de signature, jamais la date de mise en vente. La question utile est de demander si le prix a déjà été révisé, et de combien.",
+      },
+      {
+        q: "Faut-il visiter deux fois avant de faire une offre ?",
+        a: "Pour tout ce qui dépend de l'heure ou du jour, oui. Le bruit, la luminosité réelle, le stationnement et la vie du quartier ne se vérifient qu'en revenant à un autre moment, typiquement un vendredi soir et un dimanche matin : ce sont les seules questions de la liste dont la réponse du vendeur n'a aucune valeur probante. Pour ce qui est écrit — charges, travaux votés, DPE, diagnostics — une seule visite suffit, à condition de repartir avec les documents.",
+      },
     ],
   },
   {
