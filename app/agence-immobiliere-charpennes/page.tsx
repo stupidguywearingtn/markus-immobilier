@@ -290,7 +290,16 @@ export default function CharpennesPage() {
                 <Link href="/estimation" className={A}>
                   estimation en ligne
                 </Link>{" "}
-                prend deux minutes et compare aux ventes du secteur.
+                prend deux minutes et compare aux ventes du secteur. Voir aussi
+                notre page{" "}
+                <Link href="/agence-immobiliere-villeurbanne" className={A}>
+                  agence immobilière à Villeurbanne
+                </Link>{" "}
+                et le quartier voisin de{" "}
+                <Link href="/agence-immobiliere-cusset" className={A}>
+                  Cusset
+                </Link>
+                .
               </p>
             ),
           },

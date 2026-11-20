@@ -14,6 +14,160 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-20 (vendredi)**
+
+- ✅ **LE RUN A EU LIEU, ET IL SUIT IMMÉDIATEMENT CELUI DU 19/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 84 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`7535dcc`**, `git ls-remote origin refs/heads/main` = **`7535dcc`** :
+  identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-bgxvr0`**, pas sur `main`.
+  **Dix-neuvième constat consécutif**, nom différent chaque fois. Poussé en
+  `git push origin HEAD:main`.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-quatrième constat identique** (21/09 → 20/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-septième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles de blog —
+  identique du 07/11 au 20/11.** Aucune page ajoutée ni retirée. **58/58 en 200**
+  (crawl complet du jour, pas un échantillon).
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU** (19/11 contenu → **20/11 non-contenu**).
+  ✅ **Veille du lundi : faite le 16/11, prochaine due le 23/11** — pas ce jour.
+- 🔴 **LE *CORE UPDATE* DE NOVEMBRE TOURNE TOUJOURS, J+10, ET L'ENTRÉE N'A
+  TOUJOURS AUCUNE DURÉE.** Recontrôlé sur la **source primaire** (tableau de bord
+  d'état de Google Search) : « November 2026 core update », démarrée le
+  **10/11/2026**, colonne « Duration » = **« Information »**, là où les deux
+  autres core updates de 2026 portent **12 j 4 h** (mars) et **11 j 21 h** (mai).
+  📌 **S'il dure autant, il se termine vers le 22/11.** **Relever oui, conclure
+  non.**
+- 🔴 🆕 **SERP NEUVE, ET C'EST LA MESURE LA PLUS PARLANTE DU RUN : LE MOTEUR
+  AVOUE NE PAS TROUVER DE GRILLE D'HONORAIRES POUR VILLEURBANNE.** Requête
+  « combien coûte une agence immobilière à Villeurbanne honoraires » : **15
+  résultats, site absent**, et **11 des 15 sont des pages `orpi.com`** (dont
+  `static.orpi.com/files/baremes/230.pdf`, leur barème **en PDF**). Le moteur
+  écrit noir sur blanc : « **Je n'ai pas trouvé de grille complète pour
+  Villeurbanne** » et « **le pourcentage exact ne figure pas dans les extraits
+  obtenus, il faut le lire dans le PDF du barème** ».
+  📌 **C'est exactement l'objectif que `/agence-immobiliere-villeurbanne` se
+  donne dans son propre commentaire d'en-tête (parti pris du 12/09) : « aucun de
+  ces résultats ne publie ce que coûte une agence ».** Le vide est donc
+  **toujours ouvert** — et notre page, qui le comble en texte HTML, **n'est pas
+  vue**. **Premier relevé, aucune comparaison possible. Remesure : 04/12.**
+- 🟡 **« AGENCE IMMOBILIÈRE VILLEURBANNE » RELEVÉE EN AVANCE (échéance 22/11) —
+  SITE TOUJOURS ABSENT SUR 20 RÉSULTATS**, composition inchangée depuis le
+  15/11 : annuaires (`lesiteimmo`, `immodvisor`, `zimo`, `realadvisor`, `mappy`,
+  `bottin`, `fnaim`) et réseaux franchisés (`orpi`, `laforet`, `foncia`,
+  `square habitat`, `human-immobilier`, `century21`, `guy-hoquet`).
+  🆕 Deux entrants par rapport au 15/11 : **`leboncoin.fr/boutique/21409`** et
+  **`manda.fr`**. ⚠️ **Mesuré à J+10 d'un core update : non interprétable.**
+  **L'échéance du 22/11 est maintenue** — ce relevé ne la consomme pas.
+- 🔴 🆕 **CHANTIER : LES TROIS PAGES DE QUARTIER ÉTAIENT NOMMÉES 3 À 28 FOIS PAR
+  LES ARTICLES SANS JAMAIS ÊTRE LIÉES. Commit du jour.** Graphe entrant
+  **reconstruit sur le HTML rendu des 58 pages de production**, header et footer
+  retirés (leçon du 17/11) :
+
+  | page | total | hors header/footer |
+  |---|---|---|
+  | `/contact` | 57 | 48 |
+  | `/blog` | 57 | 30 |
+  | `/estimation` | 57 | 27 |
+  | `/vendre` | 57 | 19 |
+  | `/honoraires` | 57 | 16 |
+  | `/acheter` | 57 | 13 |
+  | `/annonces` | 57 | **13** |
+  | `/estimation-immobiliere-villeurbanne` | 57 | 12 |
+  | `/gestion-locative` | 57 | 10 |
+  | **`/agence-immobiliere-gratte-ciel`** | **8** | **8** |
+  | **`/agence-immobiliere-charpennes`** | **8** | **8** |
+  | **`/agence-immobiliere-cusset`** | **7** | **7** |
+  | `/agence-immobiliere-villeurbanne` | 57 | 4 |
+  | **`/annonces/<slug>`** (les 7) | **2** | **2** |
+
+  ✅ **D'abord une bonne nouvelle mesurée : le chantier du 17/11 a pris.**
+  `/annonces` est passée de **9 / 9** à **57 / 13** en production.
+- 🔴 🆕 **ET UN CADRAGE QUI A FAILLI ME FAIRE CHOISIR LE MAUVAIS CHANTIER — VOIR
+  « Erreurs commises et corrigées ».** J'allais traiter
+  `/agence-immobiliere-villeurbanne` (**4** liens éditoriaux, le plus bas des
+  pages stratégiques) et `/contact` (**48 entrants, 0 sortant hors footer**, le
+  plus gros puits du site). **Les deux sont dans le footer : les 58 pages les
+  lient déjà.** Un lien éditorial de plus vers une page du footer **ne crée
+  aucune arête nouvelle**. **Les seules pages hors header ET footer sont les 3
+  pages de quartier, les 30 articles et les 7 fiches** — c'est là, et là
+  seulement, qu'un lien ajoute quelque chose.
+- ✅ **LE DÉFAUT RÉEL, MESURÉ SUR LE TEXTE VISIBLE DES 30 ARTICLES : neuf
+  articles non gelés nomment les trois quartiers, UN SEUL les lie.**
+  `investir-locatif-lyon` **28 mentions / 0 lien**, `plus-value-immobiliere-calcul`
+  **9 / 0**, `estimation-en-ligne-ou-agence` **8 / 0**,
+  `rentabilite-locative-lyon` **7 / 0**, `frais-de-notaire-lyon-2026` **6 / 0**,
+  `vendre-sans-agence` **4 / 0**, `loi-carrez-surface` **3 / 0**,
+  `vendre-en-viager-villeurbanne` **2 / 0** — seul
+  `ou-acheter-villeurbanne-quartiers` (**25 mentions**) en porte **3**.
+- ✅ **TROIS PHRASES ÉDITORIALES + UN ALIGNEMENT DE MOTIF, 4 INSERTIONS,
+  0 SUPPRESSION.** Dans `investir-locatif-lyon` (qui publie un tableau d'écarts
+  par quartier), `rentabilite-locative-lyon` (tableau de rendement par quartier)
+  et `estimation-en-ligne-ou-agence` (précision de l'estimation par quartier),
+  **une phrase écrite**, jamais une ancre posée sur du texte existant (règle du
+  16/09). Et `agence-immobiliere-charpennes` reçoit la phrase « Voir aussi »
+  **que ses deux pages sœurs portent déjà et qu'elle seule n'avait pas**.
+- ✅ **EFFET MESURÉ SUR LE RENDU LOCAL, pas déduit** : Gratte-Ciel **8 → 11**,
+  Charpennes **8 → 11**, Cusset **7 → 11**, `/agence-immobiliere-villeurbanne`
+  **4 → 5**. 📌 **L'écart local 55 / production 58 ne fausse rien, et c'est
+  vérifié** : les 3 URL manquantes sont les `/annonces/<slug>` de la base, et
+  **aucune des 7 fiches de production ne lie une page de quartier** (0 sur 7).
+- ✅ **CHAQUE CHIFFRE CITÉ DANS LES PHRASES AJOUTÉES A ÉTÉ LU SUR LA PAGE CIBLE
+  AVANT D'ÊTRE ÉCRIT** : 655 ventes (Gratte-Ciel), 200 et −13,2 % depuis 2022
+  (Charpennes), 213 ventes (Cusset). **Aucun chiffre neuf, aucun recalcul.**
+  ⚠️ **Et une formulation a été corrigée avant écriture** : Cusset est le mieux
+  placé **des trois** au tableau de rendement (5,53 %), **pas du tableau** —
+  Cyprian – Les Brosses le dépasse à 6,40 %.
+- ✅ **BALISAGE : AUCUN CHANGEMENT, ET C'EST PROUVÉ À L'OCTET PRÈS.** Les blocs
+  `ld+json` des 4 pages retouchées sont **identiques** à ceux servis en
+  production (`diff` des blocs extraits : 4, 4, 4 et 5 blocs, identiques).
+  **`dateModified` n'a donc pas bougé** — décision assumée, prolongement du
+  17/11 : une référence croisée ajoutée **ne change pas ce que la page dit**.
+- ✅ **BUILD EN 0 À LA PREMIÈRE TENTATIVE**, `tsc --noEmit` propre.
+- ✅ **LE PIÈGE DU 19/11 A ÉTÉ DÉSAMORCÉ DANS LES DEUX SENS** : serveur tué sur
+  **`next-server`** (0 restant confirmé), log de démarrage lu (« Ready »), et
+  **contrôle visant une chaîne qui n'existe QUE après le changement** (« ont
+  leur propre page de marché » / « une page de marché dédiée » / « Voir aussi »)
+  — **1 occurrence sur chacune des 4 pages**. **0 astérisque et 0 `](/` ** dans
+  le texte visible des 4 pages.
+- ✅ **CAPTURE MOBILE (iPhone 13, 390 px) ET DESKTOP (1440 px) SUR LES 4 PAGES :
+  débordement horizontal = 0 partout**, et la phrase de Charpennes se lit comme
+  celles de Cusset et Gratte-Ciel.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR
+  `/mentions-legales`, NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre
+  identique du 02/11 au 20/11. **Aucune erreur neuve.**
+- ✅ **`/llms.txt` CONTRÔLÉ ET DÉJÀ JUSTE, RIEN À ÉDITER** : ses lignes des
+  quatre pages locales portent déjà les médianes, les nombres de ventes et
+  « ce que coûte une agence pour vendre (≈ 11 700 € TTC sur le prix médian de
+  195 000 €) ». 📌 **Le vide mesuré sur la SERP n'est donc pas un défaut de
+  `llms.txt`.**
+- ✅ 🆕 **BALISAGE D'ÉTABLISSEMENT : AUCUN TROU, VÉRIFIÉ PLUTÔT QUE SUPPOSÉ.**
+  J'ai soupçonné `/contact` d'être la page qui porte l'adresse et les horaires
+  **sans** `LocalBusiness` : **faux**. `RealEstateAgent` **et**
+  `openingHoursSpecification` sont présents sur les **58 pages sur 58**.
+  **Rien à faire, et c'est une piste fermée pour de bon.**
+- 🔴 **LES 7 FICHES `/annonces/<slug>` SONT LA CLASSE LA PLUS PAUVRE DU SITE —
+  2 LIENS ENTRANTS CHACUNE, ET AUCUN BLOC « BIENS SIMILAIRES ».** Leurs deux
+  seuls entrants sont l'accueil et `/annonces` : **les 7 fiches ne se lient pas
+  entre elles**. 📌 **Et c'est exactement la classe de page qui tient la SERP du
+  17/11** (`guy-hoquet` y occupait **8 positions** en `/biens/print/<id>`).
+  ⛔ **NON TRAITÉ CE JOUR, ET LA RAISON EST ferme : ces pages viennent de la
+  base, absente du conteneur** — elles ne se rendent pas en local, donc un bloc
+  ajouté serait **invérifiable**, ce qui est précisément le piège du 19/11.
+  **À faire le jour où la base est joignable. Voir « Hypothèses à vérifier ».**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-DEUXIÈME JOUR, RECONTRÔLÉ EN LIGNE CE JOUR** : **0 occurrence de
+  « Qui sommes »** dans le HTML de production. **Non corrigé, et c'est
+  volontaire** (page de Tony, règle des 90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE, RECONTRÔLÉE CE JOUR** :
+  `discord.gg/fSyn28G5U` rend **`{"message": "Unknown Invite", "code": 10006}`**.
+  **Seule invitation référencée dans le code**, à **deux** emplacements.
+  ⚠️ **NON renotifié** — état inchangé.
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+
 **Au 2026-11-19 (jeudi)**
 
 - 🔴 🆕 **LE RUN DU 18/11 N'A PAS EU LIEU — LA SÉRIE DE DOUZE RUNS CONSÉCUTIFS
@@ -6181,6 +6335,86 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-20 (vendredi) — Les trois pages de quartier étaient nommées 3 à 28 fois par les articles sans jamais être liées
+
+**Angle : NON-CONTENU (maillage interne).** Alternance respectée (19/11 contenu).
+
+**Ce qui a été mesuré avant d'agir** — graphe entrant reconstruit sur le **HTML
+rendu des 58 pages de production**, header et footer retirés (règle du 17/11,
+jamais par `grep` sur la source) :
+
+- `/agence-immobiliere-gratte-ciel` **8**, `/agence-immobiliere-charpennes` **8**,
+  `/agence-immobiliere-cusset` **7** — **les trois sont absentes du header ET du
+  footer**, donc ces 7-8 liens sont tout ce qu'elles reçoivent.
+- Les 7 fiches `/annonces/<slug>` : **2 entrants chacune** (l'accueil et
+  `/annonces`), **aucun lien entre elles**.
+- `/annonces` **9 / 9 le 17/11 → 57 / 13 aujourd'hui** : le chantier du 17/11 a
+  bien pris en production.
+- Sur le **texte visible** des 30 articles : **neuf articles non gelés nomment
+  les trois quartiers, un seul les lie.** `investir-locatif-lyon` **28 / 0**,
+  `plus-value-immobiliere-calcul` **9 / 0**, `estimation-en-ligne-ou-agence`
+  **8 / 0**, `rentabilite-locative-lyon` **7 / 0**,
+  `frais-de-notaire-lyon-2026` **6 / 0**, `vendre-sans-agence` **4 / 0**,
+  `loi-carrez-surface` **3 / 0**, `vendre-en-viager-villeurbanne` **2 / 0** ;
+  `ou-acheter-villeurbanne-quartiers` **25 / 3**.
+
+**Ce qui a été fait — 4 insertions, 0 suppression, strictement additif :**
+
+1. **`investir-locatif-lyon`** — après le paragraphe des frais d'acquisition
+   (qui chiffre déjà sur la médiane de Cusset – Bonnevay) : une phrase qui
+   renvoie aux trois pages de quartier pour **ce qu'une médiane seule ne dit
+   pas** — nombre de ventes, évolution depuis 2022, surface par budget.
+2. **`rentabilite-locative-lyon`** — après le paragraphe « ce que ce tableau ne
+   dit pas » : même renvoi, accroché au tableau de rendement des sept quartiers.
+3. **`estimation-en-ligne-ou-agence`** — après la section sur la précision de
+   l'estimation quartier par quartier.
+4. **`agence-immobiliere-charpennes`** — ajout de la phrase « Voir aussi notre
+   page agence immobilière à Villeurbanne et le quartier voisin de Cusset »,
+   **identique en forme à celle que portent déjà Cusset et Gratte-Ciel** et que
+   Charpennes seule n'avait pas. **Alignement sur un motif existant**, pas une
+   invention.
+
+**Effet mesuré sur le rendu local** (pas déduit) : Gratte-Ciel **8 → 11**,
+Charpennes **8 → 11**, Cusset **7 → 11**,
+`/agence-immobiliere-villeurbanne` **4 → 5**. L'écart local 55 / production 58
+ne fausse rien : les 3 URL manquantes sont des `/annonces/<slug>`, et **aucune
+des 7 fiches ne lie une page de quartier** (0 sur 7, vérifié).
+
+**Chiffres cités dans les phrases : tous relus sur la page cible avant écriture**
+(655 ventes Gratte-Ciel, 200 et −13,2 % Charpennes, 213 Cusset). **Aucun chiffre
+neuf.** ⚠️ Une formulation corrigée avant publication : Cusset est le mieux placé
+**des trois**, pas du tableau (Cyprian – Les Brosses le dépasse à 6,40 %).
+
+**Contrôles** : `tsc` propre · build **0 à la première tentative** · `eslint`
+**35 / 24**, inchangé depuis le 02/11 · serveur tué sur **`next-server`** et log
+de démarrage lu · **contrôle visant une chaîne absente avant / présente après**,
+1 occurrence sur chacune des 4 pages · **0 astérisque, 0 `](/`** dans le visible ·
+blocs `ld+json` **identiques à l'octet près** à la production · capture **390 px
+et 1440 px**, **débordement horizontal 0** partout.
+
+**Ce que j'ai décidé de NE PAS faire, et pourquoi :**
+
+- ⛔ **Ne pas poser de lien éditorial vers `/agence-immobiliere-villeurbanne` ni
+  vers `/contact` depuis les articles**, alors que c'est ce que j'avais commencé
+  à faire : **elles sont dans le footer, donc déjà liées par les 58 pages**.
+  Voir « Erreurs commises et corrigées ».
+- ⛔ **Ne pas insérer dans `/vendre`** : j'avais rédigé un renvoi « ce que coûte
+  une agence » ; `/honoraires` publie **déjà** Transaction · Location · Gestion
+  **avec le PDF**, et `/vendre` calcule déjà les honoraires sur la médiane de
+  chaque quartier. **C'était du remplissage, abandonné avant écriture.**
+- ⛔ **Ne pas insérer dans `/estimation` ni `/acheter`** : leur énumération dit
+  explicitement « pages de **quartier** » — l'absence de la page communale y est
+  **cohérente, pas un défaut**.
+- ⛔ **Ne pas toucher les 8 articles gelés** (remesures SERP en cours).
+- ⛔ **Ne pas toucher `frais-de-notaire-lyon-2026`** (6 mentions, 0 lien) : il a
+  déjà reçu un ajout le 17/11, inutile d'empiler sur une même page.
+- ⛔ **Ne pas construire de bloc « biens similaires » sur les 7 fiches**, qui est
+  pourtant le plus gros trou du graphe : **elles viennent de la base, absente du
+  conteneur, donc invérifiables en rendu local** — exactement le piège du 19/11.
+- ⛔ **Ne pas avancer `updated` / `dateModified`** : une référence croisée ne
+  change pas ce que la page dit (prolongement du 17/11). Prouvé par le `diff`
+  des blocs `ld+json`.
+
 ### 2026-11-19 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (article visite, `45cf86c`)
 
 - **Déclenchement en double** : l'article `/blog/questions-a-poser-visite` réécrit ce matin
@@ -12080,6 +12314,209 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — les trois pages de quartier, nommées 3 à
+28 fois par les articles et liées par un seul** (20/11 : graphe entrant
+reconstruit sur le **HTML rendu des 58 pages**, header et footer retirés.
+`/agence-immobiliere-gratte-ciel` **8**, `charpennes` **8**, `cusset` **7**, et
+elles sont **hors header ET hors footer** — contrairement à
+`/agence-immobiliere-villeurbanne` (**57 / 4**) et `/contact` (**57 / 48**) que
+j'allais traiter à tort. Corrigé par **4 insertions / 0 suppression** : une
+phrase écrite dans `investir-locatif-lyon`, `rentabilite-locative-lyon` et
+`estimation-en-ligne-ou-agence`, plus la phrase « Voir aussi » **que Charpennes
+seule n'avait pas**. **Effet mesuré en rendu local : 8 → 11, 8 → 11, 7 → 11.**
+`dateModified` **non avancé**, `ld+json` prouvé identique à l'octet près.)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (21/11, samedi) DOIT ÊTRE DU CONTENU**
+(alternance : 18/11 absent → 19/11 contenu → **20/11 non-contenu**).
+✅ **La veille du lundi a été faite le 16/11 — prochaine due le 23/11.**
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE *CORE UPDATE* DU 10/11
+TOURNAIT ENCORE LE 20/11 (J+10, toujours « Information » dans la colonne
+Duration).** Mars a duré **12 j 4 h**, mai **11 j 21 h** : **s'il dure autant, il
+se termine vers le 22/11**. Les remesures des **21 et 22/11 tombent encore
+dedans**, celles des 23 et 24/11 juste après. **Relever, ne pas conclure.**
+⚠️ **Vérifier à chaque run si l'entrée a reçu une durée.**
+
+🔴 **CANDIDATS CONTENU POUR LE 21/11, par ordre d'impact :**
+  1. 🟡 **LE BLOG FAIBLE — CINQ ARTICLES RESTANTS** (comptages du 16/11 sur les
+     seuls champs de texte) : `vendre-appartement-lyon-etapes` **34**,
+     `achat-immobilier-lyon-checklist` **40**, `vendre-vite-lyon` **43**,
+     `faire-offre-achat` **113**, `capacite-emprunt-immobilier` **170**.
+     📌 **LE FAVORI RESTE `achat-immobilier-lyon-checklist`** : le plus court des
+     restants **côté acheteur**, la famille où le site est absent, et la page du
+     19/11 lui envoie deux liens. ⚠️ **Partage des rôles** : la visite appartient
+     à `questions-a-poser-visite`, la check-list doit couvrir **le parcours**
+     (budget, offre, compromis, acte), pas la visite.
+     **Pour `capacite-emprunt-immobilier`, le sourçage est à moitié fait** :
+     HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, taux d'effort **35 %**,
+     maturité **25 ans**, flexibilité **20 %**. ⚠️ **Le texte n'a PAS été lu**
+     (`economie.gouv.fr/hcsf` rend **403** en WebFetch). **Trouver un accès
+     primaire avant de publier.**
+  2. 🆕 🟡 **ET LA SERP DU 20/11 DÉSIGNE UN SUJET NEUF, MESURÉ, OÙ LE MOTEUR
+     DÉCLARE LUI-MÊME SON MANQUE.** Sur « combien coûte une agence immobilière à
+     Villeurbanne honoraires » : **15 résultats, site absent, 11 sur 15 sont des
+     pages `orpi.com`**, et le moteur écrit « **je n'ai pas trouvé de grille
+     complète pour Villeurbanne** » et « **il faut le lire dans le PDF du
+     barème** ». 📌 **Le contenu existe déjà chez nous** (page
+     `/agence-immobiliere-villeurbanne`, FAQ « Combien coûte une agence
+     immobilière pour vendre à Villeurbanne ? », et `/honoraires` en HTML **et**
+     en PDF) : **le manque est de la visibilité, pas du texte.** ⚠️ **Donc PAS
+     un chantier d'écriture — ne pas réécrire ce qui est déjà écrit.**
+  3. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     Pistes **non mesurées** : « bail mobilité », « colocation meublée
+     Villeurbanne », « louer à un étudiant Villeurbanne ». ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  4. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+     `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
+     difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  5. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — **PAS AVANT LE 27/11.**
+  6. ⛔ **NE PAS RÉÉCRIRE** : `questions-a-poser-visite` (19/11) → **03/12** ·
+     `lmnp-location-meublee` (16/11) → **30/11** ·
+     `home-staging-vendre-plus-cher` (14/11) → **28/11** ·
+     `cout-gestion-locative` (13/11) → **27/11** ·
+     `compromis-de-vente-delais` (12/11) → **26/11** ·
+     `taxe-fonciere-vente-qui-paie` (10/11) → **24/11** ·
+     `mandat-simple-ou-exclusif` (08/11) → **22/11** ·
+     `prix-immobilier-villeurbanne-2026` → **03/12**.
+  7. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** (voir le 2 ci-dessus). **Remesurer
+     le 21/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (22/11), par ordre d'impact :**
+  1. 🔴 🆕 **FINIR LE CHANTIER DU 20/11 : CINQ ARTICLES NOMMENT ENCORE LES
+     QUARTIERS SANS LES LIER.** `plus-value-immobiliere-calcul` **9 mentions /
+     0 lien**, `frais-de-notaire-lyon-2026` **6 / 0** (⚠️ a déjà reçu un ajout le
+     17/11), `vendre-sans-agence` **4 / 0**, `loi-carrez-surface` **3 / 0**,
+     `vendre-en-viager-villeurbanne` **2 / 0**. **Même recette : une phrase
+     écrite, jamais une ancre sur du texte existant, chiffres relus sur la page
+     cible.**
+  2. 🔴 🆕 **LES 7 FICHES `/annonces/<slug>` : 2 ENTRANTS CHACUNE, ET AUCUN BLOC
+     « BIENS SIMILAIRES ».** C'est **le plus gros trou du graphe** (leurs seuls
+     entrants : l'accueil et `/annonces`), et **la classe de page qui tient la
+     SERP du 17/11** (`guy-hoquet`, 8 positions en `/biens/print/<id>`).
+     ⛔ **BLOQUÉ TANT QUE LA BASE N'EST PAS JOIGNABLE** : ces pages ne se rendent
+     pas dans le conteneur (55 URL en local contre 58 en production), donc tout
+     bloc ajouté serait **invérifiable**. ⚠️ **Ne pas le construire à l'aveugle —
+     c'est le piège du 19/11.** **À tenter au début d'un run : si les 7 fiches
+     se rendent en local, c'est le chantier du jour.**
+  3. 🟡 **DEUX À TROIS LIENS ENTRANTS VERS `lmnp-location-meublee` ET
+     `home-staging-vendre-plus-cher`** — **remesurés sur le rendu le 20/11 :
+     3 entrants chacun**, et non 0 comme le disait le `grep` du 17/11. **Les
+     trois sont l'index `/blog` + 2 liens de l'algorithme d'articles liés :
+     aucun lien éditorial.** ⛔ **Tous deux sous gel** (30/11 et 28/11).
+  4. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La phrase est **EXACTE** : levée d'ambiguïté, pas correction d'erreur.
+  5. 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite). **Une
+     lecture du V de `L125-5` alinéa par alinéa suffit.** ⚠️ **Si l'on corrige,
+     c'est une phrase, et `updated` bouge.** 📌 **Et ce serait l'occasion d'y
+     poser aussi le lien de quartier manquant (point 1).**
+  6. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** ⛔ **Attendre le 24/11.**
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11).
+  8. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **dix-neuf
+     runs** sans recontrôle). **Contrôle à deux temps obligatoire.**
+  9. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **vingt-troisième
+     report**). **`blog.qoridor.fr/article/home-staging` en priorité.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 20/11. **Jour creux.**
+ 13. ⛔ **NE PLUS CHERCHER DE TROU DANS LE BALISAGE D'ÉTABLISSEMENT.**
+     `RealEstateAgent` **et** `openingHoursSpecification` sont présents sur les
+     **58 pages sur 58** (vérifié le 20/11). **Piste fermée.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🔴 **ÉCHÉANCE À TROIS JOURS : L'ENCADREMENT DES LOYERS EST DONNÉ PAR NOS PAGES
+  COMME ARRIVANT À TERME LE 23/11/2026.** Le corpus l'écrit (expérimentation de
+  la loi ELAN art. 140, portée de 5 à 8 ans par la loi 3DS) et précise qu'une
+  prolongation de deux ans a été **adoptée par le Sénat en première lecture le
+  21/10/2026, texte non définitif**. 📌 **Ce n'est pas un chantier, c'est une
+  date à ne pas manquer : le 24/11, plusieurs pages affirmeront soit une règle
+  périmée, soit une échéance dépassée.** ⚠️ **À vérifier au plus tard le
+  24/11**, et **ne rien réécrire avant de l'avoir vérifié**.
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT, ET LE 20/11
+  AJOUTE UNE TROISIÈME SERP À L'APPUI.** 15/11 « agence immobilière
+  Villeurbanne » : 20 résultats, site absent, page 1 tenue autant par des
+  annuaires (`lesiteimmo`, `immodvisor`, `zimo`, `realadvisor`, `mappy`,
+  `bottin`, `fnaim`) que par des agences — **recontrôlé identique le 20/11**,
+  avec deux entrants : **`leboncoin.fr/boutique/21409`** et **`manda.fr`**.
+  17/11 « appartement à vendre Villeurbanne agence » : 19 résultats, site
+  absent, agrégateurs en force. 🆕 20/11 « combien coûte une agence immobilière
+  à Villeurbanne honoraires » : **11 des 15 résultats sont des pages `orpi.com`.**
+  📌 **Aucune ligne de code ne peut gagner ces positions.** **Question à Tony :
+  l'agence est-elle inscrite sur ces annuaires et portails, et veut-elle qu'on
+  s'en occupe ?** **Ne rien faire avant sa réponse.**
+- 🆕 🟠 **LE BARÈME D'ORPI EST INDEXÉ EN PDF ET LE NÔTRE NE L'EST PAS — EST-CE
+  UNE PISTE À OUVRIR ?** Le moteur a remonté `static.orpi.com/files/baremes/230.pdf`
+  comme source de prix, et a déclaré au passage ne pas trouver de grille
+  complète pour Villeurbanne. Notre `/honoraires` propose bien un PDF.
+  **Question à Tony : veut-on vérifier que ce PDF est indexable et le faire
+  remonter ?** ⚠️ **Non touché : c'est une question de diffusion, pas de code.**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** **Question à Tony : les délais entre mandat et compromis sont-ils
+  exploitables quelque part ?** ⚠️ **Ce manque revient sur tous les sujets de
+  pratique.**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE, FAUTE
+  DE DONNÉE.** **Question à Tony : l'agence a-t-elle des loyers de meublés
+  observés à Villeurbanne ?**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  **Orpi CETRIM Villeurbanne 8 % TTC sur l'ancien / 7 % dans le neuf** (barème du
+  **10/04/2025**) et **Foncia Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**.
+  🆕 **Le relevé du 20/11 a de nouveau fait remonter le barème Orpi CETRIM**, qui
+  reste donc public et chiffré. ⚠️ **Publicité comparative : décision
+  commerciale, pas décision d'agent.**
+- 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS `/annonces`
+  PLUTÔT QUE VERS `/acheter` ?** Les 30 articles ont un CTA unique
+  (`internalHref`) : `/vendre` 12, `/acheter` 8, `/estimation` 6,
+  `/gestion-locative` 4, `/annonces` 0. C'est un **remplacement, pas un ajout**.
+  📌 **Pas à trancher seul.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — VINGT-DEUXIÈME JOUR**,
+  recontrôlé en ligne le 20/11 (**0 occurrence**). **Non corrigé : page de
+  Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié** (8 notifications).
+- 🔴 **INVITATION DISCORD MORTE — RECONTRÔLÉE LE 20/11** : `code 10006`.
+  **Seule invitation référencée dans le code**, à **deux** emplacements
+  (`components/layout/site-footer.tsx`, `components/home/social.tsx`).
+  ⚠️ **NON renotifié.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ **Celles des 21 et 22/11 tombent encore dans le core update du 10/11 (J+10 le
+20/11, toujours sans durée) ; celles des 23 et 24/11 juste après. Relever, ne
+pas conclure.**
+- **« vendre appartement Villeurbanne »** → **21/11**.
+- **« prix m2 Villeurbanne »** → **21/11**.
+- **« honoraires agence immobilière Villeurbanne … »** → **21/11**.
+  **La SERP la plus anormale du journal** : le contenu existe, il est balisé
+  (`OfferCatalog`), et il n'est pas vu.
+- **« agence immobilière Villeurbanne »** → **22/11**. 🆕 **Relevée en avance le
+  20/11 (site absent, 20 résultats, composition inchangée) — ce relevé NE
+  consomme PAS l'échéance du 22/11.**
+- **« mandat simple ou exclusif … »** et **« résilier mandat exclusif … »** →
+  **22/11**.
+- **« estimation immobilière Villeurbanne »** → **23/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**.
+- **« appartement à vendre Villeurbanne agence »** → **01/12**. 📌 **Requête
+  témoin de `/annonces`.**
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** → **03/12**.
+- **« questions à poser lors de la visite d'un appartement avant d'acheter »** →
+  **03/12**. 📌 **Requête témoin du chantier du 19/11.**
+- 🆕 **« combien coûte une agence immobilière à Villeurbanne honoraires »** —
+  1ᵉʳ relevé le **20/11** : **15 résultats, site absent, 11 sur 15 chez `orpi`**,
+  le moteur déclarant n'avoir trouvé **aucune grille complète pour Villeurbanne**
+  → **04/12**. 📌 **C'est la requête témoin de `/agence-immobiliere-villeurbanne`,
+  et elle mesure exactement l'objectif GEO que cette page se donne.**
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**. 🆕 **Mais les
+  pages qui les visent ont été renforcées ce jour en maillage interne** — leur
+  effet se lira sur les requêtes de type « prix Charpennes / Gratte-Ciel ».
+
+---
+
 **Angle du dernier run : CONTENU — `questions-a-poser-visite`, réécrit de 70 à
 ~2 700 mots** (19/11 : la page posait **15 questions et n'en répondait
 aucune**, avec **une seule occurrence de « Villeurbanne »** dans tout le HTML
@@ -16924,6 +17361,29 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+- 🔴 🆕 **(20/11) LES 7 FICHES `/annonces/<slug>` NE SE LIENT PAS ENTRE ELLES, ET
+  JE N'AI PAS PU VÉRIFIER S'IL EXISTE DÉJÀ UN BLOC « BIENS SIMILAIRES » DÉSACTIVÉ
+  OU VIDE.** Mesure certaine : en production, chaque fiche reçoit **2 liens
+  entrants** (l'accueil et `/annonces`) et **aucune fiche n'en lie une autre**.
+  Ce que je **n'ai pas pu** établir : si le composant de fiche prévoit un bloc de
+  biens similaires qui ne s'affiche pas faute de données, ou s'il n'en existe
+  aucun. **Les fiches viennent de la base, absente du conteneur** — elles ne se
+  rendent pas en local (55 URL contre 58 en production), et je refuse de
+  construire à l'aveugle un bloc que je ne peux pas voir rendu (piège du 19/11).
+  ⚠️ **À trancher en début de run, par une lecture du composant de fiche dans
+  `app/annonces/[slug]/` — ce qui, lui, ne demande pas la base.** 📌 **L'enjeu
+  est réel : c'est la classe de page qui tient la SERP du 17/11.**
+
+- 🟡 🆕 **(20/11) `/contact` EST LA PAGE LA PLUS LIÉE DU SITE (48 LIENS
+  ÉDITORIAUX) ET N'ÉMET AUCUN LIEN ÉDITORIAL — EST-CE UN DÉFAUT ?** Ce n'est
+  **pas** un puits de maillage (son footer lie tout, voir « Erreurs » du 20/11),
+  donc **aucune arête n'est à gagner**. Reste une question d'usage, pas de
+  référencement : sa phrase d'introduction promet « Achat, location, gestion,
+  syndic — on est là pour vous **orienter** », et la page n'oriente vers rien.
+  ⚠️ **Non touché : c'est la page de conversion de Tony, et un bloc de liens y
+  changerait son rendu pour un gain SEO nul.** **Question d'ergonomie à lui
+  poser, pas une décision d'agent.**
+
 - 🔴 🆕 **(19/11) `vendre-sans-agence` ATTACHE À LA REMISE DE L'ÉTAT DES RISQUES
   EN PREMIÈRE VISITE UNE SANCTION QUE LE TEXTE NE LUI ATTACHE PEUT-ÊTRE PAS.**
   La page écrit que l'état des risques « doit être remis à l'acquéreur dès la
@@ -18803,6 +19263,65 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+### 2026-11-20 — « Hors header/footer » est le bon cadre pour juger un signal éditorial, et le mauvais pour conclure qu'une page est mal liée
+
+🔴 **L'ERREUR, ARRÊTÉE JUSTE AVANT LE PREMIER COMMIT.** En reconstruisant le
+graphe entrant sur le rendu des 58 pages, j'ai trié sur la colonne **« hors
+header/footer »** — celle qui isole les liens éditoriaux — et j'en ai tiré deux
+conclusions que j'ai failli publier :
+
+- **`/agence-immobiliere-villeurbanne` : 4 liens, le plus bas de toutes les pages
+  stratégiques** (contre 27 pour `/estimation`, 19 pour `/vendre`). « La page qui
+  porte la requête n°1 du brief est la moins maillée du site. »
+- **`/contact` : 48 entrants, 0 sortant. Le plus gros puits de maillage du site.**
+
+**J'avais commencé à agir sur les deux** : une phrase était déjà rédigée pour
+`/vendre`, et un bloc de liens contextuels conçu pour `/contact`.
+
+⚠️ **LES DEUX CONCLUSIONS SONT FAUSSES, ET POUR LA MÊME RAISON : CES PAGES SONT
+DANS LE FOOTER.** `components/layout/site-footer.tsx` liste
+`/agence-immobiliere-villeurbanne` (2ᵉ liste) et le header liste `/contact` :
+**les 58 pages du site les lient déjà**. Leur colonne « total » le disait —
+**57** — et je ne la regardais pas.
+
+📌 **CE QUE ÇA CHANGE, ET CE N'EST PAS UN DÉTAIL DE COMPTAGE : un lien éditorial
+de plus vers une page déjà listée dans le footer ne crée AUCUNE arête nouvelle.**
+Le couple (page source → page cible) existe déjà. On ajoute une ancre et un
+contexte — ce qui a une valeur, mais pas celle qu'on croit — **pas un lien**.
+Et un bloc de liens sur `/contact` n'aurait redistribué **strictement rien** :
+`/contact` émet déjà, par son footer, un lien vers chacune des cibles que
+j'allais y poser.
+
+✅ **LE BON CADRE, ET IL SE DÉDUIT EN UNE LIGNE.** Les pages **absentes à la fois
+du header et du footer** sont les seules où un lien crée une arête neuve. Sur ce
+site elles sont exactement trois classes :
+
+```
+3 pages de quartier  (/agence-immobiliere-{gratte-ciel,charpennes,cusset})  7-8 entrants
+30 articles de blog                                                        3-28 entrants
+7 fiches /annonces/<slug>                                                  2 entrants
+```
+
+**C'est ce constat qui a choisi le chantier du jour**, et il l'a choisi contre
+mon intuition de départ : non pas la page communale (déjà liée 57 fois), mais
+les trois pages de quartier, qui portent deux des six requêtes du brief
+(« agence immobilière Gratte-Ciel », « agence immobilière Charpennes ») et que
+**neuf articles nomment sans jamais les lier**.
+
+🔴 **LA RÈGLE À GARDER.** Devant un tableau de liens entrants, **lire les deux
+colonnes ensemble** : « hors header/footer » mesure le **signal éditorial**
+(est-ce que le corpus parle de cette page ?), « total » mesure la **couverture**
+(est-ce qu'on peut l'atteindre depuis n'importe où ?). ⚠️ **Un chantier de
+maillage se décide sur la seconde ; un chantier éditorial sur la première.** Les
+confondre fait travailler une journée entière pour zéro arête.
+
+📌 **Et le contrôle qui l'attrape en trois secondes, avant toute analyse :**
+
+```bash
+# la cible est-elle dans le header ou le footer ? si oui, pas d'arête à gagner.
+grep -n 'href="/<cible>"' components/layout/site-footer.tsx components/layout/site-header.tsx
+```
 
 ### 2026-11-19 — Le serveur local m'a servi une version périmée avec un `200` parfait, et `pkill` ne l'avait pas tué
 
@@ -21578,6 +22097,65 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-20 — Reconstruire le graphe de liens internes en six lignes, et les deux colonnes qu'il faut lire ensemble
+
+La recette complète, celle qui a servi les 17/11 et 20/11. Elle part du
+**sitemap de production**, jamais de la source, et elle sépare le **total** du
+**hors header/footer** — les deux ne répondent pas à la même question.
+
+```bash
+# 1. toutes les URL de production (curl -sL : piège du 308 sans www)
+curl -sL https://markusimmobilier.fr/sitemap.xml \
+  | grep -o "<loc>[^<]*</loc>" | sed 's|</*loc>||g' | sort > urls.txt
+
+# 2. le HTML rendu de chacune
+while read -r u; do
+  curl -sL --max-time 30 -o "prod/$(echo "$u" | sed 's|https://www.markusimmobilier.fr||; s|/|_|g').html" "$u"
+done < urls.txt
+
+# 3. le MÊME corpus, header et footer retirés -> isole le lien ÉDITORIAL
+for f in prod/*.html; do
+  perl -0777 -pe 's{<header\b.*?</header>}{}gs; s{<footer\b.*?</footer>}{}gs' "$f" > "body/$(basename "$f")"
+done
+
+# 4. compter, en excluant la page elle-même
+grep -l 'href="/<cible>"' prod/*.html | grep -v '<self>' | wc -l   # TOTAL
+grep -l 'href="/<cible>"' body/*.html | grep -v '<self>' | wc -l   # ÉDITORIAL
+```
+
+⚠️ **Deux pièges vérifiés ce jour, et le premier m'a rendu 58 zéros.**
+**(1)** le sitemap écrit `https://www.markusimmobilier.fr`, **avec `www`** —
+une substitution faite sans le `www.` laisse l'URL entière dans la variable et
+tous les comptages tombent à 0. **Un tableau entièrement à zéro n'est pas un
+site orphelin, c'est un `sed` faux.**
+**(2)** `<header>` et `<footer>` n'apparaissent **qu'une fois chacun** dans ce
+rendu : le `.*?` non gourmand suffit, inutile de parser le HTML.
+
+📌 **ET LA LECTURE, QUI EST LE VRAI APPORT** (voir « Erreurs » du 20/11) :
+
+| colonne | ce qu'elle mesure | la question qu'elle tranche |
+|---|---|---|
+| **total** | la **couverture** | peut-on atteindre cette page depuis n'importe où ? |
+| **hors header/footer** | le **signal éditorial** | le corpus parle-t-il de cette page ? |
+
+**Un chantier de maillage se décide sur la colonne `total`** : si elle vaut 57
+ou 58, la page est dans le header ou le footer et **un lien de plus ne crée
+aucune arête**. **Un chantier éditorial se décide sur l'autre.** Sur ce site,
+les seules pages où une arête reste à gagner sont les **3 pages de quartier**,
+les **30 articles** et les **7 fiches `/annonces/<slug>`**.
+
+📌 **Variante utile, celle qui a désigné le chantier du 20/11** : croiser les
+**mentions dans le texte visible** avec les **liens posés**. Une page nommée 28
+fois et liée 0 fois est un défaut ; une page nommée 2 fois et liée 0 fois n'en
+est pas un.
+
+```bash
+# mentions visibles d'un quartier vs liens vers sa page, article par article
+txt=$(perl -0777 -pe 's{<script\b.*?</script>}{}gs; s{<[^>]+>}{ }g' "$f")
+echo "$txt" | grep -o -i "Charpennes" | wc -l          # mentions
+grep -o 'href="/agence-immobiliere-charpennes"' "$f" | wc -l   # liens
+```
 
 ### 2026-11-19 — Les trois seules formes de balisage que le rendu d'article comprend
 
