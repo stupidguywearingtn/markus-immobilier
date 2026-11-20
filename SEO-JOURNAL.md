@@ -6355,6 +6355,19 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-20 (2e déclenchement, 06h43 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage des pages de quartier, `1b9c583`)
+
+- **Déclenchement en double** : les liens vers `/agence-immobiliere-gratte-ciel`,
+  `-charpennes` et `-cusset` posés ce matin sont servis en production (vérifié sur
+  `/blog/investir-locatif-lyon`, 1 lien vers chacune). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `4f2d92a`, aucun commit tiers.
+  Sitemap en ligne = **58 URL**, inchangé ; toutes les URL hors `/annonces/*` et `/blog/*`
+  ont un dossier de route dans `app/` → **aucune page de l'éditeur**. Dernier `lastmod` =
+  19/11 (article visite, mon run). `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/blog`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-20 (vendredi) — Les trois pages de quartier étaient nommées 3 à 28 fois par les articles sans jamais être liées
 
 **Angle : NON-CONTENU (maillage interne).** Alternance respectée (19/11 contenu).
