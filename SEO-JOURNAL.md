@@ -14,6 +14,171 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-21 (samedi)**
+
+- ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 20/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 85 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`ca97d1f`**, `git ls-remote origin refs/heads/main` = **`ca97d1f`** :
+  identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-p7vvwy`**, pas sur `main`.
+  **Vingtième constat consécutif**, nom différent chaque fois.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-cinquième constat identique** (21/09 → 21/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-huitième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles — identique du
+  07/11 au 21/11.** Aucune page ajoutée ni retirée par le client.
+- 🟢 **CHANTIER DU JOUR : CONTENU** (20/11 non-contenu → **21/11 contenu**).
+  ✅ **Veille du lundi : faite le 16/11, prochaine due le 23/11** — pas ce jour.
+- 🔴 **LE *CORE UPDATE* DE NOVEMBRE TOURNE TOUJOURS, J+11, TOUJOURS SANS DURÉE.**
+  Recontrôlé sur la **source primaire** (tableau de bord d'état de Google
+  Search) : « November 2026 core update », démarrée le **10/11/2026**, colonne
+  « Duration » = **« Information »** — **la seule entrée de tout le tableau sans
+  durée**. Mars **12 j 4 h**, mai **11 j 21 h**. 📌 **S'il dure autant, il se
+  termine vers le 22/11, soit demain.** **Relever oui, conclure non.**
+- 🟢 🆕 **ET C'EST LA MESURE DU RUN : POUR LA PREMIÈRE FOIS DEPUIS QUE CE JOURNAL
+  MESURE, LE SITE APPARAÎT SUR UNE REQUÊTE COMMERCIALE.** Remesure due ce jour de
+  « combien coûte une agence immobilière à Villeurbanne honoraires » (point zéro
+  le **20/11** : 15 résultats, **site absent**, **11 des 15 en `orpi.com`**).
+  Ce jour : **9 résultats, et `www.markusimmobilier.fr/agence-immobiliere-villeurbanne`
+  y figure** — la page même qui s'était donné ce vide pour cible (parti pris du
+  12/09). **`orpi.com` a entièrement disparu du relevé.**
+  ⛔ **NE PAS EN CONCLURE UN GAIN, ET LA RAISON EST DOUBLE** : (1) la composition
+  du relevé est **entièrement différente** de celle du 20/11 (9 résultats contre
+  15, aucun acteur commun dominant), ce qui interdit de traiter les deux comme
+  deux points d'une même série ; (2) **mesuré à J+11 d'un core update**, donc
+  non interprétable, exactement comme les relevés précédents. **Remesure : 05/12,
+  après la fin du core update.** 📌 **C'est le premier relevé positif du journal :
+  il mérite d'être confirmé, pas célébré.**
+- 🟡 🆕 **SERP DE SUJET NEUVE, MESURÉE AVANT D'ÉCRIRE — SITE ABSENT, ET LA SERP
+  EST À 100 % NATIONALE.** Requête « étapes pour acheter un appartement à
+  Villeurbanne délais compromis acte notaire » : **10 résultats, aucun acteur
+  local, aucune agence lyonnaise** — `vousfinancer`, `foncia`, `credit-agricole`,
+  `reassurez-moi`, `cafpi`, `seloger` (×2), `laurore-immo`, `valuo`. **Aucun des
+  dix ne contient de donnée locale.** 🆕 📌 **ET LE MOTEUR DÉSIGNE LUI-MÊME LE
+  CRÉNEAU VIDE** : « il serait utile de consulter un notaire local […] pour les
+  particularités du secteur (**droit de préemption de la commune**, par
+  exemple) ». **C'est la justification mesurée du chantier du jour, et elle a
+  dicté son angle.** **Premier relevé. Remesure : 05/12.**
+- 🟢 **CHANTIER : `achat-immobilier-lyon-checklist` RÉÉCRIT DE FOND EN COMBLE.**
+  C'était, après le LMNP (16/11) et la visite (19/11), **le contenu le plus
+  faible du site** : **291 mots en production, header et pied de page compris**,
+  soit une quarantaine de mots de corps — trois listes à puces sans une seule
+  donnée, sans une seule source, et **sans une seule réponse**. La page servie
+  compte désormais **3 744 mots**.
+- ✅ **L'ANGLE EST CELUI QUE LA SERP A DÉSIGNÉ, PAS CELUI DU TITRE D'ORIGINE.**
+  Les dix concurrents expliquent tous les mêmes délais nationaux ; **aucun ne les
+  rattache à une commune.** La page ne refait donc pas le cours de droit : elle
+  publie **le calendrier et le budget d'un achat villeurbannais**, et renvoie
+  pour le détail national aux pages qui le portent déjà. **Titre changé** :
+  « Achat immobilier à Lyon : la check-list de l'acquéreur » → « Acheter à
+  Villeurbanne : le calendrier et le budget réels d'un achat, étape par étape ».
+- ✅ **LE PARTAGE DES RÔLES DU 20/11 EST RESPECTÉ À LA LETTRE** : la visite reste
+  à `questions-a-poser-visite` (lien, pas de reprise), l'offre à
+  `faire-offre-achat`, les délais de rétractation à `compromis-de-vente-delais`,
+  le calcul des frais à `frais-de-notaire-lyon-2026`, la préemption à
+  `vendre-logement-loue-droit-preemption-villeurbanne`. **La page neuve est la
+  colonne vertébrale, pas une redite.**
+- ✅ **CE QUE LA PAGE APPORTE ET QU'AUCUN DES DIX CONCURRENTS N'A** : (1) le
+  **tableau des trois délais incompressibles** avec, pour chacun, son point de
+  départ et **qui le tient** ; (2) le fait que le droit de préemption
+  villeurbannais est tenu par la **Métropole de Lyon** et non par la Ville, avec
+  les actes qui le fondent ; (3) **le budget à provisionner quartier par
+  quartier** ; (4) **un calendrier remonté à l'envers** (« pour un acte le
+  15 septembre, quelle date d'offre ? »), annoncé comme une **addition des délais
+  publiés** et non comme une statistique.
+- ✅ **AUCUN CHIFFRE NEUF, AUCUN RECALCUL : TOUT EST REPRIS DES SOURCES DÉJÀ
+  PUBLIÉES, ET CHACUNE A ÉTÉ RELUE AVANT D'ÊTRE CITÉE.** 14 712 € au prix médian
+  de 195 000 €, les sept lignes du tableau 62 m² (12 871 € à 18 230 €), les
+  bornes 7,49 %–7,72 %, la part fiscale 6,32 % / 5,81 %, le gain primo-accédant
+  869 €–1 245 €, les médianes S1 2026 (2 491 à 3 966 €/m², commune 3 500 €/m²,
+  940 ventes). **Rien n'a été recopié de mémoire.**
+- ✅ **SOURCES DE DROIT, CHACUNE NOMMÉE AVEC SA VERSION** : `L271-1` CCH
+  (rétractation), `L313-41` du code de la consommation (en vigueur depuis le
+  01/07/2016), `L125-5` du code de l'environnement (depuis le 01/01/2025),
+  `L721-2` CCH (depuis le 01/01/2024), délibération Métropole **n° 2019-3507 du
+  13/05/2019**, arrêté **n° 2022-08-01-R-0631 du 01/08/2022**, BOFiP
+  **BOI-ENR-DMTOI-10-20 § 107** (17/06/2026), fiche **F2965**.
+- ✅ **LA RÉSERVE DE DROIT DU 19/11 EST REPRISE, PAS TUE** : la page écrit que la
+  remise de l'état des risques en première visite **n'est pas assortie d'une
+  sanction expresse** (le V de `L125-5` ne vise pas le 2ᵉ alinéa du I bis).
+  📌 **Et elle ne reproduit donc PAS la phrase douteuse de `vendre-sans-agence`**,
+  qui reste non corrigée et toujours en « Hypothèses à vérifier ».
+- ✅ **DEUX LIMITES ÉCRITES PLUTÔT QU'ÉLUDÉES**, dans une section « Ce que cette
+  page ne peut pas vous dire » : **aucun délai de commercialisation local n'est
+  publiable** (DVF enregistre la signature, jamais la mise en vente) — le
+  calendrier démarre donc à l'offre acceptée — et une médiane de quartier ne
+  tient compte ni de l'étage, ni de l'ascenseur, ni du balcon, ni de l'état.
+- ✅ **BALISAGE : LA PAGE N'ÉMETTAIT QUE `BlogPosting` + `BreadcrumbList`, ELLE
+  ÉMET DÉSORMAIS AUSSI `HowTo` (7 étapes) ET `FAQPage` (7 questions).** Parité
+  **prouvée sur le rendu** (leçon du 18/09, jamais sur la source) : **7/7 noms et
+  7/7 textes** d'étapes et **7/7 questions et 7/7 réponses** présents mot pour mot
+  dans le visible, après retrait des `<script>` **avant** les balises,
+  normalisation NFC et `U+202F`/`U+00A0`. **0 astérisque, 0 `](/` ** dans le
+  visible.
+- 🆕 📌 **UN DÉFAUT DE BALISAGE TROUVÉ EN LE VÉRIFIANT, ET IL EST ANCIEN :
+  `HowTo.name` N'EST RENDU VISIBLE NULLE PART.** Le renderer lit `steps.name`
+  pour le JSON-LD mais ne l'affiche jamais — **contrôlé sur
+  `questions-a-poser-visite` (19/11), qui a exactement le même écart**. Ce n'est
+  donc pas une régression du jour. ✅ **Réparé pour la seule page du jour, par du
+  texte visible** (« Les sept étapes d'un achat immobilier à Villeurbanne tiennent
+  dans la liste ci-dessous »), **sans toucher au renderer** — règle du doute.
+  ⚠️ **Les autres articles à bloc `steps` gardent l'écart. Voir « Chantiers en
+  attente ».**
+- 🔴 🆕 **SECOND CHANTIER, NON PRÉVU MAIS DÛ : L'ÉCHÉANCE DE L'ENCADREMENT DES
+  LOYERS ÉTAIT À DEUX JOURS, ET NOS PAGES DISAIENT UNE CHOSE DEVENUE FAUSSE.**
+  Le corpus écrivait, à **8 endroits dans 3 fichiers**, que la prolongation de
+  deux ans « a été adoptée par le Sénat en première lecture le 21 octobre 2026,
+  **texte non définitif qui doit retourner devant l'Assemblée nationale** ».
+  ✅ **VÉRIFIÉ SUR LA SOURCE PRIMAIRE (dossier législatif de l'Assemblée) : le
+  texte a été adopté DÉFINITIVEMENT, en deuxième lecture et sans modification,
+  le 19 novembre 2026** (scrutin public **n° 10062**), précisément pour éviter
+  que le dispositif ne tombe. **La prolongation court jusqu'en novembre 2028.**
+  ⚠️ **Au 21/11, la promulgation et la publication au JO ne sont PAS
+  intervenues** — aucune source ne les atteste, et les pages le disent ainsi.
+- ✅ **POURQUOI CORRIGÉ LE JOUR MÊME PLUTÔT QUE REPORTÉ AU 24/11** : la consigne
+  du journal était « vérifier au plus tard le 24/11, **ne rien réécrire avant de
+  l'avoir vérifié** » — la vérification étant faite sur la source primaire, la
+  condition est levée. Et **le 24/11 les pages auraient affirmé une règle
+  périmée**, alors que `/gestion-locative` **promettait au lecteur** « cette page
+  sera corrigée quand le texte le sera ». **Laisser en ligne une phrase qu'on
+  sait fausse pesait plus lourd que le risque d'une retouche de 6 chaînes.**
+- ✅ **6 CORRECTIONS, 3 FICHIERS, ET LES 3 `dateModified` AVANCÉS — contrairement
+  au 20/11, parce que cette fois le contenu change vraiment** :
+  `preavis-depot-garantie-location-villeurbanne` (29/10 → 21/11),
+  `rentabilite-locative-lyon` (24/10 → 21/11), `/gestion-locative`
+  (`lastmod` 02/11 → 21/11), plus `llms.txt` qui en dérive automatiquement.
+  **Contrôlé sur le rendu : 0 occurrence restante de « non définitif », « doit
+  retourner » ou « doit encore passer » sur les 4 pages.**
+- ✅ **`llms.txt` : RIEN À ÉDITER À LA MAIN POUR L'ARTICLE DU JOUR.** Ses lignes
+  d'articles dérivent de `title` + `excerpt` (`articleLine`), donc le nouveau
+  titre et le nouvel extrait y passent seuls. **Seule la ligne
+  `/gestion-locative`, écrite en dur, a dû être corrigée** — et elle l'a été.
+- ✅ **BUILD EN 0 AUX TROIS TENTATIVES**, `tsc --noEmit` propre à chaque fois.
+- 🟡 **DEUX ERREURS `eslint` PRÉEXISTANTES TOUJOURS LÀ SUR `/mentions-legales`,
+  NON CORRIGÉES.** **35 problèmes / 24 erreurs**, chiffre identique du 02/11 au
+  21/11, reconfirmé après tous les changements du jour. **Aucune erreur neuve.**
+- ✅ **CRAWL LOCAL COMPLET APRÈS CHANGEMENT : 55 URL, 55 en 200.** (55 en local
+  contre 58 en production : les 3 manquantes sont les `/annonces/<slug>` de la
+  base, absente du conteneur — écart connu et constant.)
+- ✅ **CAPTURE MOBILE (iPhone 13, 390 px) ET DESKTOP (1440 px) SUR LA PAGE NEUVE
+  ET SUR `/gestion-locative` : débordement horizontal de page = 0 partout.**
+  📌 **Les tableaux larges défilent dans leur conteneur, et c'est le motif établi
+  du site** — vérifié sur `frais-de-notaire-lyon-2026`, **non touché ce jour**,
+  qui se comporte à l'identique. **Pas une régression.**
+- ✅ **EFFET MESURÉ SUR LE MAILLAGE, et il prolonge le chantier du 20/11 sans le
+  refaire** : les trois pages de quartier passent de **11 à 12** liens entrants
+  hors header et pied de page, parce que la page neuve les nomme et les lie.
+  **18 liens internes de contenu sortants** au total.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-TROISIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
+  règle des 90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE** (`discord.gg/fSyn28G5U`). **État
+  inchangé, NON renotifié.**
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+
 **Au 2026-11-20 (vendredi)**
 
 - ✅ **LE RUN A EU LIEU, ET IL SUIT IMMÉDIATEMENT CELUI DU 19/11.** Aucun manque
@@ -6355,6 +6520,58 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-21 (samedi) — `achat-immobilier-lyon-checklist` réécrit (291 → 3 744 mots servis), et l'échéance de l'encadrement des loyers désamorcée à deux jours du terme
+
+- **Mesures de l'étape 2.** Sitemap de production **58 URL / 7 annonces /
+  30 articles**, inchangé depuis le 07/11. Core update de novembre **toujours en
+  cours à J+11**, seule entrée du tableau d'état de Google sans durée.
+  **SERP « combien coûte une agence immobilière à Villeurbanne honoraires » :
+  le site APPARAÎT (9 résultats)**, absent des 15 du 20/11 — mais composition
+  entièrement différente et core update en cours, **donc non concluant,
+  remesure le 05/12**. **SERP neuve « étapes pour acheter un appartement à
+  Villeurbanne… » : 10 résultats, site absent, 100 % nationale**, et le moteur
+  désigne lui-même le créneau vide (« droit de préemption de la commune »).
+- **Chantier retenu (CONTENU) et pourquoi.** `achat-immobilier-lyon-checklist`
+  était le contenu le plus faible restant : **291 mots servis header et pied de
+  page compris**, trois listes à puces, **aucune donnée, aucune source, aucune
+  réponse**. La SERP mesurée a dicté l'angle : ne pas refaire le cours de droit
+  national que dix concurrents font déjà, mais publier **le calendrier et le
+  budget d'un achat villeurbannais**.
+- **Fait.** Tableau des **trois délais incompressibles** (rétractation `L271-1`,
+  condition de prêt `L313-41`, préemption de la **Métropole de Lyon**) ; la
+  préemption villeurbannaise avec ses actes (délibération **2019-3507**, arrêté
+  **2022-08-01-R-0631** qui l'a portée à quatre mois) ; **budget à provisionner
+  par quartier** (12 871 € à 18 230 € pour 62 m²) ; le taux primo-accédant et sa
+  date de fin ; les documents dus et **quand** ; un `steps` de 7 étapes ; un
+  **calendrier remonté à l'envers** ; une section « ce que cette page ne peut pas
+  vous dire ». **`HowTo` et `FAQPage` ajoutés**, parité **7/7 et 7/7** prouvée
+  sur le rendu. **Aucun chiffre neuf : tout relu sur sa source avant citation.**
+- **Second chantier, non prévu mais dû.** La prolongation de l'encadrement des
+  loyers a été **adoptée définitivement le 19/11/2026** (AN, 2ᵉ lecture sans
+  modification, scrutin **n° 10062**). Le corpus affirmait encore, à **8 endroits
+  dans 3 fichiers**, un « texte non définitif qui doit retourner devant
+  l'Assemblée ». **6 corrections**, **3 `dateModified` avancés**
+  (`preavis-depot-garantie…`, `rentabilite-locative-lyon`, `/gestion-locative`).
+  Traité le jour même parce que la vérification primaire levait la condition du
+  journal, et que `/gestion-locative` **promettait au lecteur** d'être corrigée.
+- **Décidé de NE PAS faire.** (1) **Ne pas réécrire
+  `capacite-emprunt-immobilier`** : ses 35 % / 25 ans ne sont toujours pas lus
+  sur un texte primaire (403 confirmé sur `economie.gouv.fr` **et**
+  `legifrance.gouv.fr`, `WebFetch` comme `curl`). (2) **Ne pas toucher au
+  renderer** pour le défaut `HowTo.name`, réparé par du texte visible sur la
+  seule page du jour. (3) **Ne pas corriger la phrase douteuse de
+  `vendre-sans-agence`** sur la sanction de l'état des risques — pas le chantier,
+  reste en hypothèses. (4) **Ne pas changer la date du 23/11** malgré le 24/11
+  des débats : un jour d'écart, sans effet, à trancher sur le JO.
+- **Contrôles.** `tsc` propre, **build en 0 aux trois tentatives**, `eslint`
+  **35 / 24 inchangé**, **55 URL locales en 200**, captures **390 px et 1440 px**
+  sans débordement de page, maillage des quartiers **11 → 12**.
+- **Erreur du jour, attrapée et consignée** : un crawl que je croyais local
+  interrogeait **la production** (le sitemap écrit les URL avec `www.`, mon
+  remplacement ne remplaçait rien). Chiffres plausibles et faux ; relevée par un
+  `KeyError`, pas par le soupçon. Corrigée, assertion d'hôte ajoutée.
+
+
 ### 2026-11-20 (2e déclenchement, 06h43 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage des pages de quartier, `1b9c583`)
 
 - **Déclenchement en double** : les liens vers `/agence-immobiliere-gratte-ciel`,
@@ -12347,75 +12564,83 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
-**Angle du dernier run : NON-CONTENU — les trois pages de quartier, nommées 3 à
-28 fois par les articles et liées par un seul** (20/11 : graphe entrant
-reconstruit sur le **HTML rendu des 58 pages**, header et footer retirés.
-`/agence-immobiliere-gratte-ciel` **8**, `charpennes` **8**, `cusset` **7**, et
-elles sont **hors header ET hors footer** — contrairement à
-`/agence-immobiliere-villeurbanne` (**57 / 4**) et `/contact` (**57 / 48**) que
-j'allais traiter à tort. Corrigé par **4 insertions / 0 suppression** : une
-phrase écrite dans `investir-locatif-lyon`, `rentabilite-locative-lyon` et
-`estimation-en-ligne-ou-agence`, plus la phrase « Voir aussi » **que Charpennes
-seule n'avait pas**. **Effet mesuré en rendu local : 8 → 11, 8 → 11, 7 → 11.**
-`dateModified` **non avancé**, `ld+json` prouvé identique à l'octet près.)
+**Angle du dernier run : CONTENU — `achat-immobilier-lyon-checklist` réécrit de
+fond en comble** (21/11 : 291 mots servis → 3 744 ; trois listes à puces sans une
+donnée ni une réponse → calendrier et budget d'un achat villeurbannais, avec le
+tableau des trois délais incompressibles, la préemption tenue par la **Métropole
+de Lyon**, le budget à provisionner par quartier et un calendrier remonté à
+l'envers. `HowTo` 7/7 et `FAQPage` 7/7 ajoutés, parité prouvée sur le rendu.
+Titre changé. Effet maillage : quartiers **11 → 12**.)
+**Second chantier du 21/11, non prévu mais dû : l'encadrement des loyers.**
+Prolongation **adoptée définitivement le 19/11/2026** (AN, 2ᵉ lecture sans
+modification, scrutin n° 10062) → **6 corrections dans 3 fichiers**, 3
+`dateModified` avancés. **Promulgation et publication au JO non intervenues au
+21/11.**
 
-→ 🔴 **L'ANGLE DU PROCHAIN RUN (21/11, samedi) DOIT ÊTRE DU CONTENU**
-(alternance : 18/11 absent → 19/11 contenu → **20/11 non-contenu**).
-✅ **La veille du lundi a été faite le 16/11 — prochaine due le 23/11.**
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (22/11, dimanche) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 19/11 contenu → 20/11 non-contenu → **21/11 contenu**).
+✅ **La veille du lundi a été faite le 16/11 — prochaine due le 23/11 (lundi).**
 
 🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE *CORE UPDATE* DU 10/11
-TOURNAIT ENCORE LE 20/11 (J+10, toujours « Information » dans la colonne
-Duration).** Mars a duré **12 j 4 h**, mai **11 j 21 h** : **s'il dure autant, il
-se termine vers le 22/11**. Les remesures des **21 et 22/11 tombent encore
-dedans**, celles des 23 et 24/11 juste après. **Relever, ne pas conclure.**
-⚠️ **Vérifier à chaque run si l'entrée a reçu une durée.**
+TOURNAIT ENCORE LE 21/11 (J+11, toujours « Information »).** Mars **12 j 4 h**,
+mai **11 j 21 h** : **s'il dure autant, il se termine vers le 22/11**.
+⚠️ **Vérifier à chaque run si l'entrée a reçu une durée — et c'est le signal qui
+rouvre les remesures interprétables.**
 
-🔴 **CANDIDATS CONTENU POUR LE 21/11, par ordre d'impact :**
-  1. 🟡 **LE BLOG FAIBLE — CINQ ARTICLES RESTANTS** (comptages du 16/11 sur les
-     seuls champs de texte) : `vendre-appartement-lyon-etapes` **34**,
-     `achat-immobilier-lyon-checklist` **40**, `vendre-vite-lyon` **43**,
+🟢 **ET UNE REMESURE À NE PAS MANQUER : LE PREMIER RELEVÉ POSITIF DU JOURNAL.**
+Le 21/11, sur « combien coûte une agence immobilière à Villeurbanne honoraires »,
+`/agence-immobiliere-villeurbanne` **apparaît** (9 résultats), là où le 20/11 le
+site était absent de 15 résultats dont 11 `orpi.com`. ⛔ **Composition
+entièrement différente + J+11 d'un core update = non concluant.**
+📌 **Remesure due le 05/12**, avec la même requête, mot pour mot.
+
+🔴 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (23/11), par ordre d'impact :**
+  1. 🟡 **LE BLOG FAIBLE — QUATRE ARTICLES RESTANTS** (comptages du 16/11) :
+     `vendre-appartement-lyon-etapes` **34**, `vendre-vite-lyon` **43**,
      `faire-offre-achat` **113**, `capacite-emprunt-immobilier` **170**.
-     📌 **LE FAVORI RESTE `achat-immobilier-lyon-checklist`** : le plus court des
-     restants **côté acheteur**, la famille où le site est absent, et la page du
-     19/11 lui envoie deux liens. ⚠️ **Partage des rôles** : la visite appartient
-     à `questions-a-poser-visite`, la check-list doit couvrir **le parcours**
-     (budget, offre, compromis, acte), pas la visite.
-     **Pour `capacite-emprunt-immobilier`, le sourçage est à moitié fait** :
-     HCSF, décision **D-HCSF-2021-7 du 29/09/2021**, taux d'effort **35 %**,
-     maturité **25 ans**, flexibilité **20 %**. ⚠️ **Le texte n'a PAS été lu**
-     (`economie.gouv.fr/hcsf` rend **403** en WebFetch). **Trouver un accès
-     primaire avant de publier.**
-  2. 🆕 🟡 **ET LA SERP DU 20/11 DÉSIGNE UN SUJET NEUF, MESURÉ, OÙ LE MOTEUR
-     DÉCLARE LUI-MÊME SON MANQUE.** Sur « combien coûte une agence immobilière à
-     Villeurbanne honoraires » : **15 résultats, site absent, 11 sur 15 sont des
-     pages `orpi.com`**, et le moteur écrit « **je n'ai pas trouvé de grille
-     complète pour Villeurbanne** » et « **il faut le lire dans le PDF du
-     barème** ». 📌 **Le contenu existe déjà chez nous** (page
-     `/agence-immobiliere-villeurbanne`, FAQ « Combien coûte une agence
-     immobilière pour vendre à Villeurbanne ? », et `/honoraires` en HTML **et**
-     en PDF) : **le manque est de la visibilité, pas du texte.** ⚠️ **Donc PAS
-     un chantier d'écriture — ne pas réécrire ce qui est déjà écrit.**
-  3. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     📌 **LE FAVORI EST DÉSORMAIS `faire-offre-achat`** : la page du 21/11 lui
+     envoie un lien éditorial et lui confie explicitement l'étape « offre », donc
+     elle est attendue au tournant. ⚠️ **Partage des rôles** : l'offre et la
+     négociation lui appartiennent ; **le calendrier et les frais appartiennent
+     désormais à `achat-immobilier-lyon-checklist`**, ne pas les redire.
+     ⛔ **`capacite-emprunt-immobilier` RESTE BLOQUÉ** : ses 35 % / 25 ans ne
+     sont **toujours pas lus** sur un texte primaire, et le 21/11 a établi que
+     `economie.gouv.fr` **et** `legifrance.gouv.fr` rendent **403 à `WebFetch`
+     comme à `curl` avec `User-Agent`**. **Ne pas le réécrire tant que la source
+     n'est pas lue.**
+  2. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
      Pistes **non mesurées** : « bail mobilité », « colocation meublée
      Villeurbanne », « louer à un étudiant Villeurbanne ». ⚠️ **Triple contrôle
      du 03/11 obligatoire.**
-  4. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+  3. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
      `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
      difficulté`. ⚠️ **Triple contrôle du 03/11.**
-  5. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — **PAS AVANT LE 27/11.**
-  6. ⛔ **NE PAS RÉÉCRIRE** : `questions-a-poser-visite` (19/11) → **03/12** ·
+  4. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — **PAS AVANT LE 27/11.**
+  5. ⛔ **NE PAS RÉÉCRIRE** : `achat-immobilier-lyon-checklist` (21/11) →
+     **05/12** · `questions-a-poser-visite` (19/11) → **03/12** ·
      `lmnp-location-meublee` (16/11) → **30/11** ·
      `home-staging-vendre-plus-cher` (14/11) → **28/11** ·
      `cout-gestion-locative` (13/11) → **27/11** ·
      `compromis-de-vente-delais` (12/11) → **26/11** ·
      `taxe-fonciere-vente-qui-paie` (10/11) → **24/11** ·
-     `mandat-simple-ou-exclusif` (08/11) → **22/11** ·
-     `prix-immobilier-villeurbanne-2026` → **03/12**.
-  7. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** (voir le 2 ci-dessus). **Remesurer
-     le 21/11.**
+     `prix-immobilier-villeurbanne-2026` → **03/12** ·
+     `preavis-depot-garantie-location-villeurbanne` et
+     `rentabilite-locative-lyon` (retouchés le 21/11) → **05/12**.
+  6. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** : le contenu existe déjà
+     (`/agence-immobiliere-villeurbanne`, `/honoraires` en HTML et en PDF), **le
+     manque était de la visibilité** — et le relevé du 21/11 suggère qu'il se
+     comble. **Remesurer le 05/12, ne pas réécrire.**
 
 🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (22/11), par ordre d'impact :**
-  1. 🔴 🆕 **FINIR LE CHANTIER DU 20/11 : CINQ ARTICLES NOMMENT ENCORE LES
+  0. 🆕 🟡 **`HowTo.name` N'EST RENDU VISIBLE SUR AUCUNE PAGE À BLOC `steps`,
+     SAUF CELLE DU 21/11.** Le renderer lit `steps.name` pour le JSON-LD et ne
+     l'affiche jamais. Corrigé ce jour **pour la seule page du jour**, par une
+     phrase visible — **pas par une retouche du renderer**. ⚠️ **Recenser les
+     autres articles à bloc `steps` et leur appliquer la même phrase**, un par
+     un, chacun avec sa propre vérification de rendu. ⛔ **Ne pas « régler le
+     problème à la racine » dans le renderer sans mesurer ce que cela déplace
+     sur toutes les pages concernées.**
+  1. 🔴 **FINIR LE CHANTIER DU 20/11 : CINQ ARTICLES NOMMENT ENCORE LES
      QUARTIERS SANS LES LIER.** `plus-value-immobiliere-calcul` **9 mentions /
      0 lien**, `frais-de-notaire-lyon-2026` **6 / 0** (⚠️ a déjà reçu un ajout le
      17/11), `vendre-sans-agence` **4 / 0**, `loi-carrez-surface` **3 / 0**,
@@ -12461,14 +12686,21 @@ dedans**, celles des 23 et 24/11 juste après. **Relever, ne pas conclure.**
      **58 pages sur 58** (vérifié le 20/11). **Piste fermée.**
 
 🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
-- 🔴 **ÉCHÉANCE À TROIS JOURS : L'ENCADREMENT DES LOYERS EST DONNÉ PAR NOS PAGES
-  COMME ARRIVANT À TERME LE 23/11/2026.** Le corpus l'écrit (expérimentation de
-  la loi ELAN art. 140, portée de 5 à 8 ans par la loi 3DS) et précise qu'une
-  prolongation de deux ans a été **adoptée par le Sénat en première lecture le
-  21/10/2026, texte non définitif**. 📌 **Ce n'est pas un chantier, c'est une
-  date à ne pas manquer : le 24/11, plusieurs pages affirmeront soit une règle
-  périmée, soit une échéance dépassée.** ⚠️ **À vérifier au plus tard le
-  24/11**, et **ne rien réécrire avant de l'avoir vérifié**.
+- ✅ **ÉCHÉANCE DE L'ENCADREMENT DES LOYERS : TRAITÉE LE 21/11, PLUS UNE
+  ÉCHÉANCE.** La prolongation de deux ans a été **adoptée définitivement par
+  l'Assemblée nationale le 19/11/2026**, en deuxième lecture et sans
+  modification (scrutin public **n° 10062**), après le vote du Sénat du
+  21/10/2026 ; elle court **jusqu'en novembre 2028**. Les **8 passages** du
+  corpus qui annonçaient un « texte non définitif » ont été corrigés le 21/11.
+  🟡 **CE QUI RESTE À SURVEILLER, ET C'EST LÉGER** : au 21/11 la
+  **promulgation et la publication au JO n'étaient pas intervenues**, et nos
+  pages le disent ainsi. **Vérifier Légifrance au prochain run** et, une fois la
+  loi publiée, remplacer « sa promulgation n'est pas encore intervenue » par la
+  référence de la loi. ⚠️ **Ne rien réécrire d'autre : le fond est juste.**
+  🟡 **ET UNE INCOHÉRENCE MINEURE À TRANCHER UN JOUR** : nos pages datent le
+  terme au **23/11/2026**, quand les débats de l'Assemblée parlent du **24/11**.
+  **Un jour d'écart, sans effet maintenant que le texte est adopté** — à vérifier
+  si le sujet est rouvert. Voir « Hypothèses à vérifier ».
 - 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT, ET LE 20/11
   AJOUTE UNE TROISIÈME SERP À L'APPUI.** 15/11 « agence immobilière
   Villeurbanne » : 20 résultats, site absent, page 1 tenue autant par des
@@ -17394,6 +17626,26 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+**2026-11-21 — NOS PAGES DATENT LE TERME DE L'EXPÉRIMENTATION AU 23/11/2026, LES
+DÉBATS DE L'ASSEMBLÉE PARLENT DU 24/11.** Notre date vient d'un calcul assumé
+(loi ELAN du 23/11/2018, art. 140, durée portée de 5 à 8 ans par la loi 3DS) ;
+le compte rendu de séance du 19/11/2026 évoque un dispositif qui tomberait « le
+24 novembre ». **Un jour d'écart.** ⚠️ **Sans effet pratique depuis l'adoption
+définitive**, donc **non corrigé** : la règle du doute s'applique, et ce n'était
+pas le chantier. 📌 **À trancher sur le texte de la loi publiée au JO**, qui
+donnera la date de fin prolongée — et qui tranchera l'ancienne par ricochet.
+
+**2026-11-21 — LE PREMIER RELEVÉ POSITIF DU JOURNAL EST-IL UN GAIN OU UN ARTEFACT
+DE CORE UPDATE ?** `/agence-immobiliere-villeurbanne` apparaît le 21/11 sur
+« combien coûte une agence immobilière à Villeurbanne honoraires », absente le
+20/11. **Mais la SERP a changé de composition du tout au tout** (9 résultats
+contre 15, `orpi.com` passé de 11 occurrences à 0) **et le core update tournait
+encore**. 📌 **Deux lectures tiennent : la page gagne du terrain, ou le core
+update rebat les cartes et nous rend visibles transitoirement.** **Seule la
+remesure du 05/12, core update terminé, peut trancher — même requête, mot pour
+mot.**
+
+
 - 🔴 🆕 **(20/11) LES 7 FICHES `/annonces/<slug>` NE SE LIENT PAS ENTRE ELLES, ET
   JE N'AI PAS PU VÉRIFIER S'IL EXISTE DÉJÀ UN BLOC « BIENS SIMILAIRES » DÉSACTIVÉ
   OU VIDE.** Mesure certaine : en production, chaque fiche reçoit **2 liens
@@ -19296,6 +19548,42 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+**2026-11-21 — J'AI CRU CRAWLER LE SITE LOCAL ET J'AI MESURÉ LA PRODUCTION.**
+Pour contrôler l'effet du chantier sur le maillage, j'ai lu le `sitemap.xml`
+**local** puis remplacé `https://markusimmobilier.fr` par `http://localhost:3000`
+dans chaque `<loc>`. **Le sitemap écrit les URL avec `www.`** — le remplacement
+n'a donc rien remplacé, et les 55 pages « locales » que je croyais lire étaient
+les pages **de production**. Les chiffres obtenus (11 entrants par page de
+quartier) étaient exactement ceux du 20/11 : **vraisemblables, et faux pour ce
+que je mesurais.** Ce qui a levé l'alerte n'est pas le soupçon mais un
+`KeyError` : la page du jour était absente du dictionnaire, puisque sa clé
+portait `www.`.
+✅ **Corrigé en remplaçant par une expression régulière qui accepte les deux
+formes (`^https://(www\.)?markusimmobilier\.fr`), ET en ajoutant une assertion
+qui refuse de continuer si une seule URL ne commence pas par `localhost`.**
+Remesure correcte : **11 → 12**.
+📌 **La leçon n'est pas « attention au www » : c'est qu'un contrôle d'effet qui
+rend un résultat plausible ne prouve rien tant qu'il n'a pas prouvé qu'il
+interrogeait la bonne machine.** C'est le piège du 19/11 sous une autre forme —
+là un serveur périmé, ici le mauvais serveur. **Toute boucle de crawl local doit
+désormais porter une assertion sur l'hôte avant de lire quoi que ce soit.**
+
+**2026-11-21 — J'AI FAILLI PUBLIER UN CONTRESENS SUR `L313-41`, ATTRAPÉ AVANT
+INSERTION.** Mon brouillon présentait le mois de l'article L313-41 du code de la
+consommation comme **la durée minimale de validité de l'offre de prêt** (« l'offre
+reste valable au moins trente jours à compter de sa réception »). **C'est faux,
+et c'est un autre article.** L313-41 impose une durée minimale à la **condition
+suspensive d'obtention du prêt** : elle ne peut être ouverte **moins d'un mois à
+compter de la signature de l'acte**.
+✅ **Attrapé en relisant la formulation du corpus avant d'écrire** (règle : ne
+jamais reformuler une référence de droit déjà posée ailleurs sans relire ce
+qu'elle dit), **corrigé aux 7 endroits du brouillon avant toute insertion dans
+`lib/blog.ts`** — donc jamais en ligne.
+📌 **Ce que cela apprend : le risque n'est pas d'inventer une source, c'est de
+reformuler une source exacte en changeant ce qu'elle dit.** Un numéro d'article
+juste n'a jamais validé la phrase qui l'accompagne.
+
 
 ### 2026-11-20 — « Hors header/footer » est le bon cadre pour juger un signal éditorial, et le mauvais pour conclure qu'une page est mal liée
 
@@ -22130,6 +22418,38 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+**2026-11-21 — `economie.gouv.fr` ET `legifrance.gouv.fr` RENDENT 403 AUX DEUX
+OUTILS, PAS SEULEMENT À `WebFetch`.** Le texte du HCSF (décision D-HCSF-2021-7,
+taux d'effort 35 %, maturité 25 ans) reste non lu, et le sourçage de
+`capacite-emprunt-immobilier` reste donc à moitié fait. **Nouveau ce jour :
+l'échec n'est pas propre à `WebFetch`** — `curl -sL` avec un `User-Agent` de
+navigateur rend lui aussi **403** sur le PDF de la FAQ HCSF, et `WebFetch` rend
+**403** sur la page Légifrance du JO.
+📌 **Donc : ne plus dépenser de temps à varier l'outil ou l'en-tête sur ces deux
+hôtes.** Il faut une autre voie (document repris par une source tierce fiable qui
+le cite verbatim, ou accès primaire différent). ⛔ **Et surtout : ne pas publier
+les 35 % / 25 ans en les présentant comme lus** — à ce jour ils ne le sont pas.
+
+**2026-11-21 — LA PARITÉ JSON-LD NE SE VÉRIFIE PAS QU'AU NIVEAU DES ÉLÉMENTS :
+`HowTo.name` EST UN CHAMP VISIBLE À PART ENTIÈRE, ET LE RENDERER NE L'AFFICHE
+PAS.** Le commentaire de `lib/blog.ts` dit la parité du bloc `steps` « garantie
+par construction », et elle l'est **pour les étapes** — mais `steps.name` sert de
+`HowTo.name` **sans être rendu nulle part**. Vérifié identique sur
+`questions-a-poser-visite` (19/11). 📌 **Contrôle à ajouter désormais à toute
+page portant un `HowTo` : tester `HowTo.name` dans le texte visible, pas
+seulement les `step[].name` et `step[].text`.** La réparation la moins risquée
+est une phrase visible qui reprend le nom, pas une retouche du renderer.
+
+**2026-11-21 — UNE SERP QUI DÉCLARE SON PROPRE MANQUE DICTE L'ANGLE, PAS
+SEULEMENT LE SUJET.** Sur la requête d'achat mesurée ce jour, le moteur a écrit
+de lui-même qu'il fallait consulter un notaire local « pour les particularités du
+secteur (**droit de préemption de la commune**, par exemple) ». **Le sujet
+« étapes d'un achat » était archi-couvert ; le créneau nommé par le moteur,
+lui, était vide.** 📌 **Prolonge la leçon du 19/11 (où la SERP avait changé le
+TITRE) : lire la SERP avant d'écrire ne sert pas à choisir entre des sujets, cela
+sert à trouver, dans un sujet saturé, la seule entrée qui reste libre.**
+
 
 ### 2026-11-20 — Reconstruire le graphe de liens internes en six lignes, et les deux colonnes qu'il faut lire ensemble
 

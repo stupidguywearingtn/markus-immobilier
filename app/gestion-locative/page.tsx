@@ -76,10 +76,13 @@ import { lastmodOf } from "@/lib/seo/lastmod";
  *    (service-public.gouv.fr), vérifiée le 1ᵉʳ août 2026, onglet
  *    « Lyon, Villeurbanne ». Terme de l'expérimentation (23 novembre 2026,
  *    loi ELAN art. 140 portée de 5 à 8 ans par la loi 3DS du 21 février 2022)
- *    et prolongation de deux ans adoptée par le Sénat en première lecture le
- *    21 octobre 2026 (scrutin public n° 25, texte non définitif) → dossier
- *    législatif du Sénat, PPL « pour retrouver la confiance et l'équilibre
- *    dans les rapports locatifs ».
+ *    et prolongation de deux ans ADOPTÉE DÉFINITIVEMENT : Sénat le
+ *    21 octobre 2026 (scrutin public n° 25), puis Assemblée nationale en
+ *    deuxième lecture, sans modification, le 19 novembre 2026 (scrutin public
+ *    n° 10062) → dossiers législatifs du Sénat et de l'Assemblée, PPL « pour
+ *    retrouver la confiance et l'équilibre dans les rapports locatifs ».
+ *    ⚠️ Au 21 novembre 2026, promulgation et publication au JO non encore
+ *    intervenues — vérifier Légifrance avant toute nouvelle réécriture.
  *    ⚠️ La GRILLE de loyers de référence n'est volontairement PAS reproduite :
  *    révisée chaque année, une valeur périmée nuirait plus qu'une absence.
  *  Aucune durée de gestion « en heures par an » n'est avancée : personne ne
@@ -597,16 +600,18 @@ export default function GestionLocativePage() {
                   une <strong>expérimentation</strong>, ouverte par
                   l&apos;article 140 de la loi ELAN du 23 novembre 2018 et portée
                   de cinq à huit ans par la loi 3DS du 21 février 2022. Elle{" "}
-                  <strong>arrive à son terme le 23 novembre 2026</strong>. Le
-                  Sénat a adopté le <strong>21 octobre 2026</strong>, en première
-                  lecture, une prolongation de deux ans à périmètre constant —
-                  aucune nouvelle commune ne pourrait rejoindre le dispositif, et
-                  les collectivités engagées pourraient en sortir ; le texte
-                  n&apos;est pas définitif et doit retourner devant
-                  l&apos;Assemblée nationale. Ce que deviendraient les baux en
-                  cours si rien n&apos;était adopté avant cette date n&apos;est
-                  réglé par aucun texte publié à ce jour : nous ne le supposons
-                  pas, et cette page sera corrigée quand le texte le sera. Le
+                  <strong>arrivait à son terme le 23 novembre 2026</strong>, et
+                  elle a été{" "}
+                  <strong>prolongée de deux ans, jusqu&apos;en novembre 2028</strong>,
+                  à périmètre constant — aucune nouvelle commune ne rejoint le
+                  dispositif, et les collectivités engagées peuvent en sortir.
+                  Après le vote du Sénat du 21 octobre 2026, l&apos;Assemblée
+                  nationale a adopté le texte{" "}
+                  <strong>définitivement, sans modification, le 19 novembre 2026</strong>{" "}
+                  (scrutin public n° 10062). Au 21 novembre 2026, sa promulgation
+                  et sa publication au Journal officiel ne sont pas encore
+                  intervenues : nous ne supposons pas leur contenu, et cette page
+                  sera corrigée si le texte publié devait s&apos;en écarter. Le
                   rendement qu&apos;un loyer plafonné laisse espérer est chiffré
                   quartier par quartier dans notre{" "}
                   <Link href="/blog/rentabilite-locative-lyon" className={A}>

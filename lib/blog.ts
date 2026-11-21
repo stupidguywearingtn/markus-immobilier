@@ -1672,36 +1672,159 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "achat-immobilier-lyon-checklist",
-    title: "Achat immobilier à Lyon : la check-list de l'acquéreur",
+    title: "Acheter à Villeurbanne : le calendrier et le budget réels, étape par étape",
     metaDescription:
-      "Acheter à Lyon en 2026 : la check-list complète de l'acquéreur, du financement à la signature, pour acheter sereinement.",
-    h1: "Achat immobilier à Lyon : la check-list de l'acquéreur",
+      "Trois délais ne se négocient pas dans un achat villeurbannais : 10 jours de rétractation, un mois de condition de prêt, deux mois de préemption tenue par la Métropole. Le calendrier et les frais à provisionner, quartier par quartier.",
+    h1: "Acheter à Villeurbanne : le calendrier et le budget réels d'un achat, étape par étape",
     excerpt:
-      "Acheter est un parcours en plusieurs étapes. Cette check-list vous évite les mauvaises surprises.",
+      "De l'offre acceptée aux clés, comptez le plus souvent deux à trois mois — et trois délais, eux, ne se raccourcissent pas : les 10 jours de rétractation, le mois minimum de la condition suspensive de prêt, et les deux mois du droit de préemption urbain, qui à Villeurbanne est tenu par la Métropole de Lyon et non par la Ville. Avec les frais à provisionner en plus du prix, calculés quartier par quartier.",
     date: "2026-06-23",
+    updated: "2026-11-21",
     internalHref: "/acheter",
     internalLabel: "Voir nos biens et être accompagné",
     blocks: [
-      { type: "p", text: "Acheter est un parcours en plusieurs étapes. Cette check-list vous évite les mauvaises surprises." },
-      { type: "h2", text: "Avant de chercher" },
-      { type: "ul", items: [
-        "**Définir son budget** : [capacité d'emprunt](/blog/capacite-emprunt-immobilier), apport, et [frais de notaire](/blog/frais-de-notaire-lyon-2026) (≈ 7-8 % dans l'ancien).",
-        "**Lister ses critères** : secteur, surface, étage, extérieur, transports.",
-      ] },
-      { type: "h2", text: "Pendant les visites" },
-      { type: "ul", items: [
-        "Vérifier l'**état réel** (humidité, isolation, luminosité).",
-        "Demander le **DPE**, le montant des **[charges](/blog/charges-copropriete)** et les **travaux votés** en copropriété.",
-        "Se renseigner sur le **quartier** (nuisances, projets urbains).",
-      ] },
-      { type: "h2", text: "Au moment d'acheter" },
-      { type: "ul", items: [
-        "Faire une **[offre](/blog/faire-offre-achat)** au juste prix.",
-        "Signer le **[compromis](/blog/compromis-de-vente-delais)** (délai de rétractation de 10 jours).",
-        "Obtenir son **prêt**, puis signer l'**acte authentique** chez le notaire.",
-      ] },
-      { type: "h2", text: "Acheter accompagné" },
-      { type: "p", text: "Un conseiller local vous aide à repérer les bonnes opportunités et à sécuriser chaque étape." },
+      { type: "p", text: "**Entre une offre acceptée et la remise des clés, comptez le plus souvent deux à trois mois à Villeurbanne — et aucun texte n'impose cette durée : ce sont les parties qui la fixent.** Ce qui ne se négocie pas, en revanche, ce sont trois délais incompressibles qui expliquent presque à eux seuls le calendrier d'un achat : les **10 jours** de rétractation de l'acquéreur, le **mois minimum** de la condition suspensive de prêt, et les **deux mois** du droit de préemption urbain à compter de la déclaration d'intention d'aliéner." },
+      { type: "p", text: "Ce troisième délai est la particularité villeurbannaise que les pages nationales ignorent : à Villeurbanne, le droit de préemption urbain n'est pas tenu par la Ville mais par la **Métropole de Lyon**, et une simple demande de pièces complémentaires peut le suspendre — il a atteint **quatre mois** sur un dossier villeurbannais de 2022 dont l'arrêté est public." },
+      { type: "p", text: "Cette page donne l'ordre des étapes, le délai attaché à chacune, les documents que le vendeur doit vous avoir remis et à quelle date au plus tard, et la somme à provisionner en plus du prix — calculée sur les prix réellement signés dans les sept quartiers de la commune. Elle ne traite pas la visite elle-même, qui a sa propre page : [les 15 questions à poser lors d'une visite](/blog/questions-a-poser-visite)." },
+
+      { type: "h2", text: "Combien de temps faut-il pour acheter un appartement à Villeurbanne, de l'offre aux clés ?" },
+      { type: "p", text: "**Le plus souvent deux à trois mois entre la signature du compromis et celle de l'acte authentique, auxquels s'ajoutent les quelques jours à quelques semaines qui séparent votre offre du compromis.** Aucune durée légale ne s'impose dans le Rhône : la fiche service-public.gouv.fr F2965 indique que « les parties fixent librement ce délai ». Seule l'Alsace-Moselle connaît un plafond légal, de six mois." },
+      { type: "p", text: "Cette fourchette n'est donc pas une règle mais une pratique, et elle s'explique par l'addition de trois contraintes qui se déroulent en partie en parallèle : l'instruction de votre prêt, les vérifications du notaire, et la purge du droit de préemption. Le détail de ce qui se passe pendant cette période, délai par délai, est sur [compromis de vente : les délais réels](/blog/compromis-de-vente-delais)." },
+
+      { type: "h2", text: "Quels sont les trois délais qu'on ne peut pas raccourcir ?" },
+      { type: "p", text: "**Les 10 jours de rétractation de l'acquéreur, le mois minimum de la condition suspensive de prêt, et les deux mois du droit de préemption urbain.** Les deux premiers vous protègent, le troisième ne dépend ni de vous ni du vendeur. Tout le reste du calendrier — la date de l'offre, celle du compromis, celle de l'acte — se négocie." },
+      {
+        type: "table",
+        caption: "Les trois délais incompressibles d'un achat villeurbannais",
+        source:
+          "Rétractation : article L271-1 du code de la construction et de l'habitation. Condition suspensive de prêt : article L313-41 du code de la consommation, en vigueur depuis le 1er juillet 2016 — la condition ne peut pas être ouverte moins d'un mois à compter de la signature de l'acte. Droit de préemption urbain : délibération du Conseil de la Métropole de Lyon n° 2019-3507 du 13 mai 2019 instituant le droit de préemption urbain sur les zones urbaines et à urbaniser du PLU-H, opposable aux tiers depuis le 18 juin 2019 ; durée portée à quatre mois dans l'arrêté n° 2022-08-01-R-0631 du 1er août 2022 de la Métropole de Lyon, recueil des actes administratifs.",
+        headers: ["Délai", "Durée", "Point de départ", "Qui le tient"],
+        rows: [
+          ["Rétractation de l'acquéreur", "10 jours", "Lendemain de la notification du compromis", "Vous, seul"],
+          ["Condition suspensive de prêt", "1 mois au minimum", "Signature du compromis", "La loi, quoi que prévoie le compromis"],
+          ["Droit de préemption urbain", "2 mois, suspendables", "Réception de la déclaration d'intention d'aliéner", "La Métropole de Lyon"],
+        ],
+      },
+      { type: "p", text: "Le deuxième mérite une précision qui surprend souvent : le mois en question n'est pas un délai d'instruction bancaire, c'est un **plancher imposé au compromis lui-même**. Dès que le compromis indique que le prix est payé, même partiellement, à l'aide d'un prêt, la vente est conclue sous condition suspensive de son obtention — et l'article L313-41 du code de la consommation interdit d'ouvrir cette condition moins d'un mois à compter de la signature de l'acte. Un compromis qui vous laisserait trois semaines pour obtenir votre prêt serait donc irrégulier sur ce point." },
+      { type: "p", text: "Le troisième, lui, est le seul des trois qu'aucune des pages nationales sur le sujet ne rattache à votre commune. C'est l'objet du paragraphe suivant." },
+
+      { type: "h2", text: "Pourquoi le droit de préemption de Villeurbanne est-il tenu par la Métropole de Lyon et pas par la mairie ?" },
+      { type: "p", text: "**Parce que le droit de préemption urbain a été institué non par la Ville de Villeurbanne mais par le Conseil de la Métropole de Lyon, par sa délibération n° 2019-3507 du 13 mai 2019 — celle qui approuve la révision du plan local d'urbanisme et de l'habitat.** Le PLU-H est opposable aux tiers depuis le 18 juin 2019, et il couvre les zones urbaines ou à urbaniser de la commune : en pratique, presque toutes les ventes villeurbannaises y sont soumises." },
+      { type: "p", text: "La confusion est d'autant plus facile que la **déclaration d'intention d'aliéner se dépose bien à la mairie de Villeurbanne**, sur le formulaire Cerfa n° 10072*04. Mais le titulaire qui l'examine et qui décide de préempter est la Métropole, par arrêté de son Président. Quand un bien intéresse la Ville, elle demande à la Métropole d'exercer le droit de préemption et s'engage à le lui racheter." },
+      { type: "p", text: "Ce n'est pas une mécanique théorique. L'arrêté n° 2022-08-01-R-0631 du 1er août 2022, publié au recueil des actes administratifs de la Métropole, préempte un logement de 48 m² dans une copropriété villeurbannaise : la Ville avait demandé à la Métropole d'exercer le droit par un courrier du 26 juillet 2022, et le bien était inscrit en emplacement réservé au PLU-H, près d'un groupe scolaire dont l'extension était programmée. **Un bien inscrit dans un emplacement réservé, ou voisin d'acquisitions publiques récentes, n'est pas un bien ordinaire au regard de la préemption** — et cela se vérifie parcelle par parcelle sur le PLU-H, avant de faire une offre. Le détail de la procédure, côté vendeur comme côté calendrier, est sur [les deux droits de préemption d'une vente villeurbannaise](/blog/vendre-logement-loue-droit-preemption-villeurbanne)." },
+      { type: "p", text: "⚠️ **Et c'est le seul délai des trois qui peut doubler sans que personne ne soit en faute** : une demande de pièces complémentaires suspend les deux mois, ce qui les a portés à quatre sur le dossier de 2022. Si votre compromis prévoit une date d'acte à deux mois et que la DIA est suspendue, c'est la date d'acte qui bouge." },
+
+      { type: "h2", text: "Combien faut-il provisionner en plus du prix, quartier par quartier ?" },
+      { type: "p", text: "**Entre 7,49 % et 7,72 % du prix aux niveaux villeurbannais pour les deux postes qui se calculent à l'euro près, taxes et émoluments du notaire — soit 14 712 € sur le prix médian d'un appartement villeurbannais de 2025, 195 000 €.** Ces sommes ne sont pas finançables par le prêt dans la plupart des montages : elles se provisionnent en plus de l'apport." },
+      { type: "p", text: "La part fiscale est plus lourde à Villeurbanne qu'ailleurs, parce que la Métropole de Lyon a voté le demi-point de majoration ouvert par la loi de finances pour 2025 : le droit de mutation y est de **5,00 %**, contre 4,50 % pour un primo-accédant. Taxe communale et prélèvement de l'État compris, la part fiscale atteint **6,32 % du prix** pour un acheteur ordinaire et **5,81 %** pour un primo-accédant." },
+      {
+        type: "table",
+        caption: "Taxes et émoluments à provisionner, pour 62 m² au prix médian du quartier",
+        source:
+          "Reprise du calcul détaillé dans notre article sur les frais de notaire : prix = médianes DVF 2025 des ventes d'appartements à Villeurbanne (data.gouv.fr / Etalab), surface médiane communale de 62 m². Taxes : taux DGFiP au 1er juin 2026, ligne « 69 Métropole de Lyon ». Émoluments : barème réglementé, tableau 5 n° 54 de l'article A. 444-91 du code de commerce, TVA 20 % comprise. Débours et contribution de sécurité immobilière non compris.",
+        headers: ["Quartier", "Prix pour 62 m²", "À provisionner"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "243 226 €", "18 230 €"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "238 452 €", "17 883 €"],
+          ["Charpennes – Tonkin", "218 488 €", "16 426 €"],
+          ["Perralière – Grandclément", "209 250 €", "15 751 €"],
+          ["Buers – Croix-Luizet", "202 802 €", "15 281 €"],
+          ["Cusset – Bonnevay", "196 602 €", "14 829 €"],
+          ["Cyprian – Les Brosses", "169 756 €", "12 871 €"],
+        ],
+      },
+      { type: "p", text: "Deux postes manquent volontairement à ce tableau, parce qu'ils dépendent du dossier et non d'un taux public : les **débours** avancés par le notaire pour votre compte, et la **contribution de sécurité immobilière** perçue à la publication de l'acte. Ensemble, ils représentent en général quelques centaines d'euros. Le calcul complet, tranche par tranche, est sur [frais de notaire à Villeurbanne : le calcul exact](/blog/frais-de-notaire-lyon-2026)." },
+      { type: "p", text: "Et un poste ne vous concerne pas, contrairement à une idée répandue : dans un achat chez nous, [les honoraires d'agence](/honoraires) sont à la charge du vendeur." },
+
+      { type: "h2", text: "Suis-je primo-accédant au sens du taux réduit de 4,50 % ?" },
+      { type: "p", text: "**Il suffit de n'avoir pas été propriétaire de sa résidence principale au cours des deux années qui précèdent l'acquisition, et de destiner le bien acheté à sa résidence principale. Il n'y a ni condition de ressources, ni obligation de souscrire un prêt à taux zéro.** L'administration l'écrit explicitement : la non-application de la hausse « n'est pas conditionnée à un niveau de ressources ou à un moyen de financement de l'acquisition » (BOFiP, BOI-ENR-DMTOI-10-20 § 107, mis à jour le 17 juin 2026)." },
+      { type: "p", text: "L'écart n'est pas symbolique : à surface et quartier donnés, il va de **869 € à Cyprian – Les Brosses à 1 245 € à Ferrandière – Maisons-Neuves** sur les 62 m² du tableau ci-dessus. C'est un demi-point de droit de mutation, prélèvement de 2,37 % inclus, et c'est la seule ligne de vos frais d'acquisition sur laquelle votre situation personnelle joue." },
+      { type: "p", text: "⚠️ **Ce demi-point a une date de fin inscrite dans la loi : il ne s'applique qu'aux actes passés et conventions conclues jusqu'au 31 mars 2028.** La faculté de majoration a été ouverte par la loi de finances pour 2025 et réécrite par l'article 121 de la loi n° 2026-103 du 19 février 2026 — réécriture qui n'a pas déplacé cette date de fin." },
+
+      { type: "h2", text: "Quels documents le vendeur doit-il m'avoir remis, et à quelle date au plus tard ?" },
+      { type: "p", text: "**Un seul document vous est dû dès la première visite : l'état des risques. Tous les autres documents de copropriété sont dus au plus tard à la signature de la promesse de vente.** Ce sont les deux seules échéances que la loi attache à un moment précis du parcours ; le reste se demande, mais ne s'impose pas à une date donnée." },
+      { type: "p", text: "L'article L125-5 du code de l'environnement, dans sa version en vigueur depuis le 1er janvier 2025, prévoit que l'état des risques « est remis au potentiel acquéreur par le vendeur **lors de la première visite** de l'immeuble, si une telle visite a lieu ». Il doit avoir été établi depuis moins de six mois. C'est la seule obligation d'information dont le calendrier est accroché à la visite elle-même." },
+      { type: "p", text: "⚠️ **Une réserve de droit, que nous préférons écrire plutôt que taire : cette remise en première visite n'est pas assortie d'une sanction expresse.** Le V de l'article L125-5, qui ouvre la résolution du contrat ou la diminution du prix, vise le I, les troisième à cinquième alinéas du I bis, le dernier alinéa du II et le IV — il ne vise pas le deuxième alinéa du I bis, celui de la première visite. L'obligation existe ; le texte n'y attache pas cette sanction-là." },
+      { type: "p", text: "Pour un lot de copropriété, l'article L721-2 du code de la construction et de l'habitation, en vigueur depuis le 1er janvier 2024, liste **sept blocs de documents et d'informations** à remettre au plus tard à la date de signature de la promesse — dont deux que les acquéreurs oublient le plus souvent de réclamer : la part du **fonds de travaux** rattachée au lot (2° d) et le **plan pluriannuel de travaux** (6° et 7°)." },
+      { type: "p", text: "Ce qu'il faut en faire pendant la visite, question par question, est détaillé sur [les 15 questions à poser lors d'une visite](/blog/questions-a-poser-visite) ; la lecture des [charges de copropriété](/blog/charges-copropriete) a sa propre page." },
+
+      { type: "h2", text: "Dans quel ordre faut-il s'y prendre ?" },
+      { type: "p", text: "**Dans cet ordre, et en traitant le financement avant la recherche — pas après.** Les sept étapes d'un achat immobilier à Villeurbanne tiennent dans la liste ci-dessous. Un dossier de financement cadré avant les visites est ce qui vous permet de faire une offre dans la journée sur un bien qui part vite, et de ne pas découvrir votre budget réel après avoir choisi le bien." },
+      {
+        type: "steps",
+        name: "Les sept étapes d'un achat immobilier à Villeurbanne",
+        items: [
+          {
+            name: "Cadrer son budget total, frais compris",
+            text: "Additionnez le prix visé, les taxes et émoluments du tableau ci-dessus, et les débours. Vérifiez que les frais d'acquisition sont couverts par votre apport : ils ne sont pas finançables par le prêt dans la plupart des montages. Votre capacité d'emprunt se calcule sur la page dédiée à la capacité d'emprunt.",
+          },
+          {
+            name: "Traduire son budget en surface, quartier par quartier",
+            text: "Un même budget n'achète pas la même surface d'un bout à l'autre de la commune : la médiane du premier semestre 2026 va de 2 491 €/m² à Cyprian – Les Brosses à 3 966 €/m² à Ferrandière – Maisons-Neuves. Convertissez avant de chercher, pas après.",
+          },
+          {
+            name: "Visiter, et repartir avec l'état des risques",
+            text: "L'état des risques vous est dû dès la première visite, établi depuis moins de six mois. Relevez l'état réel du bien, le DPE, le montant des charges et les travaux votés en assemblée générale.",
+          },
+          {
+            name: "Vérifier la parcelle au PLU-H avant d'offrir",
+            text: "Un bien inscrit en emplacement réservé, ou voisin d'acquisitions publiques récentes, est plus exposé à la préemption de la Métropole. Cela se vérifie parcelle par parcelle auprès du service urbanisme, et c'est gratuit.",
+          },
+          {
+            name: "Faire une offre écrite au juste prix",
+            text: "Comparez le prix demandé à la médiane des ventes réellement signées dans le quartier, pas aux prix affichés en ligne. Une offre écrite acceptée engage les deux parties : n'en signez pas une sans avoir arrêté le montant.",
+          },
+          {
+            name: "Signer le compromis, puis purger les délais",
+            text: "Vos 10 jours de rétractation courent à partir du lendemain de la notification. Dans le même temps, le notaire dépose la déclaration d'intention d'aliéner en mairie et la Métropole dispose de deux mois, suspendables. Les sept blocs de documents de copropriété doivent vous avoir été remis au plus tard à cette signature.",
+          },
+          {
+            name: "Obtenir le prêt, puis signer l'acte authentique",
+            text: "La condition suspensive de prêt ne peut pas être ouverte moins d'un mois à compter de la signature du compromis. Une fois la préemption purgée et le financement acquis, l'acte se signe chez le notaire et les clés vous sont remises le jour même, sauf accord contraire.",
+          },
+        ],
+      },
+      { type: "p", text: "Les deux étapes qui portent le plus de risque d'erreur ont chacune leur page : [faire une offre d'achat](/blog/faire-offre-achat) pour la cinquième, et [compromis de vente : les délais réels](/blog/compromis-de-vente-delais) pour la sixième." },
+
+      { type: "h2", text: "Si je veux emménager en septembre, quand dois-je faire mon offre ?" },
+      { type: "p", text: "**En remontant depuis la date d'acte souhaitée, et en comptant deux mois de préemption qui peuvent en faire quatre, visez une offre acceptée au plus tard début mai pour un acte en septembre.** Ce calcul n'est pas une statistique : c'est l'addition des délais publiés ci-dessus, et il vaut ce que vaut l'hypothèse que la préemption ne soit pas suspendue." },
+      { type: "p", text: "Le compte, étape par étape, sur une date d'acte au 15 septembre : deux à trois mois de compromis à acte font remonter le compromis à mi-juin ou mi-juillet ; les quelques jours à quelques semaines entre l'offre et le compromis font remonter l'offre à début ou mi-juin. **Si la déclaration d'intention d'aliéner est suspendue et que les deux mois deviennent quatre, il faut un mois de plus** : l'offre remonte alors à début mai." },
+      { type: "p", text: "C'est la raison pratique de garder cette marge : une date d'acte calée au plus juste ne laisse aucune place à une demande de pièces complémentaires, et c'est précisément l'événement le plus probable du parcours." },
+
+      { type: "h2", text: "Ce que cette page ne peut pas vous dire" },
+      { type: "p", text: "**Combien de temps il vous faudra pour trouver le bien.** C'est la question la plus posée, et nous n'avons pas de chiffre publiable à y opposer : la base DVF enregistre la date de signature, jamais la date de mise en vente, et aucune source publique ne donne de délai de commercialisation à la maille communale. Le calendrier de cette page démarre donc à l'offre acceptée, pas au début des recherches." },
+      { type: "p", text: "**Ni ce que vaut précisément le bien que vous visitez.** Les médianes par quartier détectent un prix hors marché ; elles ne tiennent compte ni de l'étage, ni de l'ascenseur, ni du balcon, ni de l'état, et DVF n'enregistre ni l'état ni le DPE. Pour situer un bien précis, voyez [les prix signés par quartier](/estimation-immobiliere-villeurbanne)." },
+      { type: "p", text: "Les écarts de surface accessible d'un quartier à l'autre, à budget égal, sont détaillés sur [où acheter à Villeurbanne](/blog/ou-acheter-villeurbanne-quartiers) — et chacun des trois quartiers les plus demandés a sa page de marché : [Gratte-Ciel](/agence-immobiliere-gratte-ciel), [Charpennes](/agence-immobiliere-charpennes) et [Cusset](/agence-immobiliere-cusset)." },
+    ],
+    faq: [
+      {
+        q: "Combien de temps faut-il entre le compromis et l'acte de vente à Villeurbanne ?",
+        a: "Le plus souvent deux à trois mois. Aucune durée légale ne s'impose dans le Rhône : la fiche service-public.gouv.fr F2965 indique que « les parties fixent librement ce délai ». Seule l'Alsace-Moselle connaît un plafond légal, de six mois. Trois délais, en revanche, ne se négocient pas : les 10 jours de rétractation de l'acquéreur, le mois minimum de la condition suspensive de prêt (article L313-41 du code de la consommation) et les deux mois du droit de préemption urbain à compter de la déclaration d'intention d'aliéner.",
+      },
+      {
+        q: "Qui exerce le droit de préemption sur une vente à Villeurbanne, la Ville ou la Métropole ?",
+        a: "La Métropole de Lyon. Le droit de préemption urbain a été institué sur les zones urbaines et à urbaniser du PLU-H par la délibération du Conseil de la Métropole de Lyon n° 2019-3507 du 13 mai 2019, et le PLU-H est opposable aux tiers depuis le 18 juin 2019. La déclaration d'intention d'aliéner se dépose bien à la mairie de Villeurbanne, sur le formulaire Cerfa n° 10072*04, mais c'est la Métropole qui l'examine et qui préempte, par arrêté de son Président.",
+      },
+      {
+        q: "Le délai de deux mois de la préemption peut-il être plus long ?",
+        a: "Oui. Une simple demande de pièces complémentaires le suspend. Il a atteint quatre mois sur un dossier villeurbannais dont l'arrêté est public : l'arrêté n° 2022-08-01-R-0631 du 1er août 2022 de la Métropole de Lyon, qui préempte un logement de 48 m² dans une copropriété de la commune. Si votre compromis prévoit une date d'acte à deux mois et que la déclaration est suspendue, c'est la date d'acte qui bouge.",
+      },
+      {
+        q: "Combien faut-il provisionner en plus du prix pour acheter à Villeurbanne ?",
+        a: "Entre 7,49 % et 7,72 % du prix aux niveaux villeurbannais pour les deux postes qui se calculent à l'euro près, taxes et émoluments du notaire, soit 14 712 € sur le prix médian d'un appartement villeurbannais de 2025 (195 000 €). Pour 62 m² au prix médian du quartier, cela va de 12 871 € à Cyprian – Les Brosses à 18 230 € à Ferrandière – Maisons-Neuves. S'y ajoutent les débours avancés par le notaire et la contribution de sécurité immobilière, en général quelques centaines d'euros, que seul le notaire peut arrêter précisément.",
+      },
+      {
+        q: "Faut-il un prêt à taux zéro pour bénéficier du taux de 4,50 % au lieu de 5,00 % ?",
+        a: "Non. Il suffit de n'avoir pas été propriétaire de sa résidence principale au cours des deux années précédant l'acquisition et de destiner le bien acheté à sa résidence principale. Il n'y a ni condition de ressources, ni obligation de souscrire un prêt à taux zéro : l'administration précise que la non-application de la hausse « n'est pas conditionnée à un niveau de ressources ou à un moyen de financement de l'acquisition » (BOFiP, BOI-ENR-DMTOI-10-20 § 107, mis à jour le 17 juin 2026). L'écart va de 869 € à 1 245 € selon le quartier, sur 62 m².",
+      },
+      {
+        q: "Quels documents le vendeur doit-il remettre à l'acheteur, et quand ?",
+        a: "L'état des risques est dû dès la première visite, établi depuis moins de six mois : l'article L125-5 du code de l'environnement, en vigueur depuis le 1er janvier 2025, prévoit qu'il « est remis au potentiel acquéreur par le vendeur lors de la première visite de l'immeuble, si une telle visite a lieu ». Pour un lot de copropriété, l'article L721-2 du code de la construction et de l'habitation, en vigueur depuis le 1er janvier 2024, liste sept blocs de documents à remettre au plus tard à la date de signature de la promesse de vente, dont la part du fonds de travaux rattachée au lot et le plan pluriannuel de travaux.",
+      },
+      {
+        q: "Combien de temps faut-il pour trouver un bien à Villeurbanne ?",
+        a: "Nous n'avons pas de chiffre publiable à opposer à cette question, et nous préférons l'écrire : la base DVF enregistre la date de signature, jamais la date de mise en vente, et aucune source publique ne donne de délai de commercialisation à la maille communale. Les calendriers de cette page démarrent donc à l'offre acceptée, pas au début des recherches.",
+      },
     ],
   },
   {
@@ -2606,7 +2729,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Villeurbanne figure à l'annexe du décret qui liste les communes en zone tendue — décret n° 2025-1267 du 22 décembre 2025 pour un bail signé, reconduit ou renouvelé depuis le 24 décembre 2025. Le préavis du locataire d'un logement vide y tombe de 3 mois à 1 mois, mais ce n'est PAS automatique : la lettre de congé doit indiquer l'adresse du logement et le fait de bénéficier du préavis réduit, sinon le délai de 3 mois s'applique — soit 1 810 € de loyer en plus au loyer médian villeurbannais (905 €/mois HC pour 62 m²). Côté dépôt de garantie : plafond de 1 mois de loyer hors charges en logement vide, 2 mois en meublé, interdit si le loyer est payable d'avance au trimestre et en bail mobilité, non augmentable en cours de bail ni au renouvellement ; restitution sous 1 mois si les deux états des lieux concordent, 2 mois sinon, provision de charges de copropriété plafonnée à 20 % du dépôt, et retard majoré de 10 % du loyer mensuel hors charges par mois entamé (90,50 € ici). Points que les guides nationaux publient faux : le départ à la retraite, la démission et la fin de droits au chômage donnent 3 mois et non 1 ; seule la perte d'emploi donne 1 mois. Et la fin de l'encadrement des loyers le 23 novembre 2026 ne supprimerait pas le préavis d'un mois, qui repose sur un autre texte.",
     date: "2026-10-28",
-    updated: "2026-10-29",
+    updated: "2026-11-21",
     internalHref: "/gestion-locative",
     internalLabel: "Confier la gestion de mon bien",
     blocks: [
@@ -2693,7 +2816,7 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "La fin de l'encadrement des loyers supprimerait-elle le préavis d'un mois à Villeurbanne ?" },
       { type: "p", text: "**Non, et c'est une confusion fréquente : les deux règles ne reposent pas sur le même texte.** Le préavis réduit à un mois découle de l'article 15 de la loi du 6 juillet 1989 et du décret qui liste les communes en zone tendue — le décret n° 2025-1267 du 22 décembre 2025. L'encadrement des loyers, lui, est une **expérimentation distincte** (article 140 de la loi ELAN du 23 novembre 2018, portée de 5 à 8 ans par la loi 3DS du 21 février 2022)." },
-      { type: "p", text: "Cette expérimentation arrive à son **terme le 23 novembre 2026**. Une prolongation de deux ans à périmètre constant a été adoptée par le Sénat en première lecture le 21 octobre 2026, texte non définitif qui doit encore passer devant l'Assemblée nationale. **Si elle n'était pas adoptée, les plafonds de loyer tomberaient — mais Villeurbanne resterait inscrite à l'annexe du décret zone tendue, et le préavis du locataire resterait donc de un mois.** Les plafonds de loyer applicables aujourd'hui, et l'arrêté préfectoral dont ils dépendent, sont détaillés sur [notre page gestion locative](/gestion-locative)." },
+      { type: "p", text: "Cette expérimentation arrive à son **terme le 23 novembre 2026**. **Elle a été prolongée de deux ans, à périmètre constant : le texte a été adoptée définitivement par l'Assemblée nationale en deuxième lecture, sans modification, le 19 novembre 2026 (scrutin public n° 10062), après le vote du Sénat du 21 octobre 2026.** Au 21 novembre 2026, sa promulgation et sa publication au Journal officiel ne sont pas encore intervenues. 📌 À noter pour la suite : l'encadrement et le préavis réduit reposent sur deux textes distincts — même sans encadrement des loyers, Villeurbanne resterait inscrite à l'annexe du décret zone tendue, et le préavis du locataire resterait donc de un mois. Les plafonds de loyer applicables aujourd'hui, et l'arrêté préfectoral dont ils dépendent, sont détaillés sur [notre page gestion locative](/gestion-locative)." },
 
       { type: "h2", text: "Et le préavis du propriétaire qui veut reprendre son logement ?" },
       { type: "p", text: "**La réduction de la zone tendue ne bénéficie qu'au locataire.** Le propriétaire d'un logement vide doit, lui, faire en sorte que le locataire **reçoive la lettre de congé au moins 6 mois avant la date d'échéance du bail**. Si la lettre parvient en retard au locataire, le congé n'est pas valable — le préavis du bailleur ne se rattrape donc pas, il se planifie." },
@@ -2752,7 +2875,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Si l'encadrement des loyers s'arrête le 23 novembre 2026, le préavis repasse-t-il à 3 mois ?",
-        a: "Non. Les deux règles reposent sur des textes différents. L'encadrement des loyers est une expérimentation issue de la loi ELAN du 23 novembre 2018, prolongée par la loi 3DS du 21 février 2022, qui arrive à terme le 23 novembre 2026 ; une prolongation de deux ans a été adoptée par le Sénat en première lecture le 21 octobre 2026 et doit encore passer devant l'Assemblée nationale. Le préavis d'un mois, lui, découle de l'article 15 de la loi du 6 juillet 1989 et du décret listant les communes en zone tendue. Même sans encadrement des loyers, Villeurbanne resterait en zone tendue et le préavis resterait de un mois.",
+        a: "Non. Les deux règles reposent sur des textes différents. L'encadrement des loyers est une expérimentation issue de la loi ELAN du 23 novembre 2018, prolongée par la loi 3DS du 21 février 2022, qui arrivait à terme le 23 novembre 2026 et a été prolongée de deux ans : le texte a été adoptée définitivement par l'Assemblée nationale en deuxième lecture, sans modification, le 19 novembre 2026 (scrutin public n° 10062), après le vote du Sénat du 21 octobre 2026, sa promulgation n'étant pas encore intervenue au 21 novembre 2026. Le préavis d'un mois, lui, découle de l'article 15 de la loi du 6 juillet 1989 et du décret listant les communes en zone tendue. Même sans encadrement des loyers, Villeurbanne resterait en zone tendue et le préavis resterait de un mois.",
       },
       {
         q: "Quel préavis le propriétaire doit-il respecter pour reprendre son logement ?",
@@ -2803,7 +2926,7 @@ export const ARTICLES: Article[] = [
     excerpt:
       "Le rendement brut calculé sur les prix d'appartements réellement signés à Villeurbanne en 2025 : de 4,47 % à Ferrandière – Maisons-Neuves à 6,40 % à Cyprian – Les Brosses, 4,91 % sur la commune entière. Frais de notaire compris, il faut retirer au moins 0,31 à 0,45 point.",
     date: "2026-02-05",
-    updated: "2026-10-24",
+    updated: "2026-11-21",
     internalHref: "/estimation",
     internalLabel: "Estimer un bien avant d'investir",
     blocks: [
@@ -2876,7 +2999,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Le dispositif a connu une secousse judiciaire qu'un investisseur doit connaître. Le [tribunal administratif de Lyon a annulé, le 14 octobre 2025, l'arrêté préfectoral du 29 septembre 2023](https://lyon.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/encadrement-des-loyers-a-lyon-et-villeurbanne-le-tribunal-annule-l-arrete-prefectoral-prevoyant-sa-mise-en-place) qui instaurait l'encadrement à Lyon et Villeurbanne, en jugeant que la carte annexée ne permettait pas de déterminer les contours exacts des secteurs (requête n° 2309987). L'annulation porte sur un arrêté, pas sur le principe : l'encadrement reste un dispositif légal et [Lyon et Villeurbanne figurent toujours parmi les communes concernées](https://www.service-public.gouv.fr/particuliers/vosdroits/F1314)." },
       { type: "p", text: "En pratique : avant de fixer un loyer ou d'en tirer un rendement, vérifiez le plafond applicable à la date de signature du bail dans [l'arrêté en vigueur publié par la préfecture du Rhône](https://www.rhone.gouv.fr/Actions-de-l-Etat/Amenagement-du-territoire-urbanisme-construction-logement/Logement/Encadrement-des-loyers). Nous ne reproduisons pas ces plafonds ici : ils sont révisés chaque année, et une valeur périmée coûterait plus cher qu'une absence de valeur." },
       { type: "p", text: "**Et deux arrêtés se succèdent à une semaine d'intervalle, ce qui change le calcul selon le jour de signature.** Un bail signé jusqu'au 31 octobre 2026 relève de l'arrêté n° DDT 69-2025-10-23-00004 ; un bail signé à compter du 1ᵉʳ novembre 2026 relève de l'arrêté n° DDT-69-2026-10-23-00004 du 23 octobre 2026. Dans les deux cas, le loyer de référence majoré est supérieur de 20 % au loyer de référence de la catégorie du logement, et le minoré inférieur de 30 % — et c'est une médiane de catégorie (secteur, nombre de pièces, époque de construction, vide ou meublé), jamais la médiane communale." },
-      { type: "p", text: "**Dernier point, et c'est une échéance : l'encadrement des loyers est une expérimentation qui arrive à son terme le 23 novembre 2026.** Ouverte par l'article 140 de la loi ELAN du 23 novembre 2018, portée de cinq à huit ans par la loi 3DS du 21 février 2022, elle a fait l'objet d'une prolongation de deux ans à périmètre constant [adoptée par le Sénat en première lecture le 21 octobre 2026](https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/proposition-de-loi-pour-retrouver-la-confiance-et-lequilibre-dans-les-rapports-locatifs.html) — texte non définitif, qui doit retourner devant l'Assemblée nationale. Un rendement projeté sur dix ans ne peut donc pas tenir le plafond pour acquis sur toute la période. La mécanique complète — mentions obligatoires du bail, complément de loyer, recours du locataire et sanctions du bailleur — est détaillée sur [notre page gestion locative](/gestion-locative)." },
+      { type: "p", text: "**Dernier point, et c'est une échéance : l'encadrement des loyers est une expérimentation qui arrive à son terme le 23 novembre 2026.** Ouverte par l'article 140 de la loi ELAN du 23 novembre 2018, portée de cinq à huit ans par la loi 3DS du 21 février 2022, elle a été prolongée de deux ans à périmètre constant : le texte a été adoptée définitivement par l'Assemblée nationale en deuxième lecture, sans modification, le 19 novembre 2026 (scrutin public n° 10062), après le vote du Sénat du 21 octobre 2026, et sa promulgation n'était pas encore intervenue au 21 novembre 2026. Le plafond est donc reconduit jusqu'en novembre 2028, mais pas au-delà : un rendement projeté sur dix ans ne peut toujours pas le tenir pour acquis sur toute la période. La mécanique complète — mentions obligatoires du bail, complément de loyer, recours du locataire et sanctions du bailleur — est détaillée sur [notre page gestion locative](/gestion-locative)." },
 
       { type: "h2", text: "Quel quartier de Villeurbanne offre le meilleur rendement locatif ?" },
       { type: "p", text: "**Cyprian – Les Brosses, avec 6,40 % brut, devant Cusset – Bonnevay (5,53 %) et Buers – Croix-Luizet (5,36 %).** Ce sont les trois quartiers où le prix au mètre carré est le plus bas, et à loyer constant le rendement brut n'est rien d'autre que l'inverse du prix. Le meilleur rendement n'est donc pas une performance : c'est un prix d'entrée bas." },
