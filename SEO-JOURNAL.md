@@ -176,6 +176,29 @@
   règle des 90 jours). ⚠️ **NON renotifié.**
 - 🔴 **INVITATION DISCORD TOUJOURS MORTE** (`discord.gg/fSyn28G5U`). **État
   inchangé, NON renotifié.**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU UN COMMIT NON POUSSÉ ALORS QUE TOUT
+  EST SUR `main` — DIXIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 21/11).** Message :
+  « There are 1 unpushed commit(s) on branch `claude/dazzling-feynman-p7vvwy` ».
+  **Le compte annoncé (1) correspond exactement au commit du run** (`cdb006e`) —
+  même piège de vraisemblance que les neuf fois précédentes.
+  ✅ **VÉRIFIÉ AVEC LE CONTRÔLE DU 15/11, QUI NE PASSE PAR AUCUN REF DE SUIVI
+  LOCAL** : `ls-remote origin refs/heads/main` = **`cdb006e`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` rend **OUI**, `ls-remote` de la
+  branche du conteneur rend **RIEN** (elle n'existe pas sur `origin`), arbre
+  **propre** (0 entrée).
+  ✅ **ET LA CAUSE NOMMÉE LE 20/11 SE CONFIRME À L'IDENTIQUE** :
+  `git rev-parse --abbrev-ref --symbolic-full-name @{u}` rend **AUCUN**. La
+  branche du conteneur n'a pas d'upstream, le hook compte donc les commits
+  absents d'un suivi local inexistant, et non les commits absents du distant.
+  📌 **Après dix occurrences et une cause vérifiée deux jours de suite, ce
+  n'est plus un incident à instruire : c'est le comportement normal du hook
+  quand on pousse en `git push origin HEAD:main`.** **Aux prochains runs :
+  faire le contrôle (il coûte quatre commandes), le consigner en une ligne, et
+  ne plus y consacrer davantage.**
+  🔴 **NE PAS pousser la branche du conteneur pour faire taire le hook**
+  (consigne client : commit direct sur `main`).
+  ⚠️ **Et cette ligne-ci crée un commit de plus, que le hook pourra signaler à
+  son tour : c'est attendu, ce n'est pas une boucle à résoudre.**
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
   **Les mesures vivent dans ces blocs « État des lieux ».**
 
