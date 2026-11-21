@@ -6543,6 +6543,20 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-21 (2e déclenchement, 06h41 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (check-list acheteur, `cdb006e`)
+
+- **Déclenchement en double** : la réécriture de `/blog/achat-immobilier-lyon-checklist`
+  est servie en production (titre « le calendrier et le budget réels » présent,
+  `dateModified` = 2026-11-21). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `cda6b1f`, aucun commit tiers.
+  Sitemap en ligne = **58 URL** (7 annonces, 30 articles), inchangé ; toutes les URL hors
+  `/annonces/*` et `/blog/*` ont un dossier de route dans `app/` → **aucune page de
+  l'éditeur**. Les 4 `lastmod` au 21/11 (`/gestion-locative` + 3 articles) viennent de mon
+  run du matin. `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/blog`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+
 ### 2026-11-21 (samedi) — `achat-immobilier-lyon-checklist` réécrit (291 → 3 744 mots servis), et l'échéance de l'encadrement des loyers désamorcée à deux jours du terme
 
 - **Mesures de l'étape 2.** Sitemap de production **58 URL / 7 annonces /
