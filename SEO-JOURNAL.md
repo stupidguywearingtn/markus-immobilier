@@ -163,6 +163,17 @@
   règle des 90 jours). ⚠️ **NON renotifié.**
 - 🔴 **INVITATION DISCORD TOUJOURS MORTE** (`discord.gg/fSyn28G5U`). **Non
   recontrôlée ce jour** (le chantier ne la touchait pas). ⚠️ **NON renotifiée.**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU UN COMMIT NON POUSSÉ ALORS QUE TOUT
+  EST SUR `main` — ONZIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 22/11).** Message :
+  « There are 1 unpushed commit(s) on branch `claude/dazzling-feynman-4nkfm7` ».
+  Le compte (1) correspond au commit du run (`31b5889`) — même piège de
+  vraisemblance que les dix fois précédentes. ✅ **Contrôle du 15/11 :**
+  `ls-remote origin refs/heads/main` = **`31b5889`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
   **Les mesures vivent dans ces blocs « État des lieux ».**
 
