@@ -14,6 +14,158 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-22 (dimanche)**
+
+- ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 21/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 86 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`899dc07`**, `git ls-remote origin refs/heads/main` = **`899dc07`** :
+  identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-4nkfm7`**, pas sur `main`.
+  **Vingt et unième constat consécutif**, nom différent chaque fois.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-sixième constat identique** (21/09 → 22/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Trente-neuvième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles — identique du
+  07/11 au 22/11.** Aucune page ajoutée ni retirée par le client.
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU** (21/11 contenu → **22/11 non-contenu**).
+  ✅ **Veille du lundi : faite le 16/11, prochaine due le 23/11** — demain.
+- 🔴 **LE *CORE UPDATE* DE NOVEMBRE TOURNE TOUJOURS, J+12, TOUJOURS SANS DURÉE.**
+  Recontrôlé sur la **source primaire** (tableau de bord d'état de Google
+  Search) : « November 2026 core update », démarrée le **10/11/2026**, colonne
+  « Duration » = **« Information »** — **toujours la seule entrée du tableau
+  sans durée**, sur neuf entrées relevées. Mars **12 j 4 h**, mai **11 j 21 h**.
+  📌 **J+12, c'est la durée de mars ATTEINTE sans signe de fin.** L'hypothèse
+  « il se termine vers le 22/11 », posée les 19, 20 et 21/11, **n'est pas
+  confirmée à son échéance.** **Relever oui, conclure non — toujours pas.**
+- 🟡 **TROIS SERP ÉCHUES CE JOUR, RELEVÉES, SITE ABSENT DES TROIS.**
+  ⚠️ **Mesurées à J+12 d'un core update : non interprétables**, comme toutes
+  celles des douze derniers jours.
+  1. **« agence immobilière Villeurbanne »** (échéance 22/11, relevée aussi en
+     avance le 20/11) : **10 résultats, site absent.** 🆕 **Et la composition
+     n'a RIEN à voir avec celle du 20/11** (20 résultats, annuaires + réseaux) :
+     `laforet`, `orpi` (×2 : Cetrim et Cite Immo), `seloger` (fiche pro ERA),
+     `pagesjaunes`, `guy-hoquet`, `agenceimmobilieredefrance`, `ginet`,
+     `salengro-immo`, `aquila.immo`. **Six entrants, dont quatre agences
+     villeurbannaises indépendantes** (`ginet`, `salengro-immo`, `aquila.immo`,
+     ERA via `seloger`) **qui n'étaient pas là le 20/11**.
+     📌 **Deux compositions totalement différentes à 48 h d'intervalle sur la
+     même requête : c'est la signature d'une SERP en cours de rebrassage, et
+     c'est une raison de plus de ne rien conclure avant la fin du core update.**
+  2. **« mandat simple ou exclusif lequel choisir vendre appartement
+     Villeurbanne »** (point zéro le 08/11) : **10 résultats, site absent.**
+     🆕 🔴 **ET LE VIDE MESURÉ LE 08/11 S'EST REFERMÉ — PAR UN CONCURRENT.** Le
+     08/11, la place était tenue **exclusivement** par des sites nationaux et le
+     moteur écrivait « les résultats ne contiennent aucune information propre à
+     Villeurbanne ». Ce jour, **`salengro-immo.fr` classe avec une page
+     explicitement locale** : « Mandat exclusif à Villeurbanne : pourquoi vous
+     vendrez plus vite avec Salengro Immo ». 📌 **Une agence villeurbannaise a
+     occupé, entre le 08 et le 22/11, exactement le créneau que notre page
+     `mandat-simple-ou-exclusif` vise.** ⚠️ **Et le moteur relaie leur argument
+     commercial (« 3 800 € à 4 500 €/m² ») en le signalant comme tel.**
+  3. **« résilier mandat exclusif vente immobilière durée engagement délai »**
+     (point zéro le 08/11) : **10 résultats, site absent**, toujours **aucun
+     acteur villeurbannais**. 🆕 **Un entrant qui change la nature de la SERP :
+     `kohenavocats.fr`, article daté du 12/11/2026**, qui est le seul résultat
+     à nuancer le délai de rétractation de 14 jours (« pas automatique dans tous
+     les cas, il faut vérifier le lieu de signature »). 🆕 **Et le moteur relève
+     lui-même une contradiction entre ses sources** sur la reconduction tacite
+     (« par tranche d'un mois » chez les uns, « ne se renouvelle pas » chez les
+     autres). 📌 **Aucun des dix ne mentionne le plafond légal de la clause
+     pénale** — l'apport propre de notre page, identifié le 08/11, **tient
+     toujours**. **Remesure des deux : 06/12.**
+- 🟢 🔴 **CHANTIER : LES 7 FICHES `/annonces/<slug>` N'ÉMETTAIENT AUCUN LIEN VERS
+  UNE AUTRE FICHE. C'ÉTAIT LE PLUS GROS TROU DU MAILLAGE, ET IL EST COMBLÉ.**
+  **Mesuré sur le HTML de production des 7 fiches avant d'écrire une ligne** :
+  `href="/annonces/<slug>"` → **0 sur 7**, « biens similaires » → **0 sur 7**.
+  Et le relevé des liens sortants d'une fiche ne rend **que l'en-tête, le pied
+  de page et les deux CTA** : `/estimation` ×3, `/contact` ×3, `/recrutement`,
+  `/blog`, `/annonces`, `/`, `/vendre`, `/signin`, `/mentions-legales`,
+  `/honoraires`, `/gestion-locative`, `/faire-gerer`, les deux pages
+  d'estimation locale, `/espace-client`, `/equipe`, `/cookies`,
+  `/confidentialite`, `/agence-immobiliere-villeurbanne`, `/acheter`.
+  **Zéro lien éditorial, zéro lien de fiche à fiche, zéro lien de quartier.**
+- ✅ 🆕 **ET LA RAISON POUR LAQUELLE CE CHANTIER ÉTAIT « BLOQUÉ » DEPUIS LE 20/11
+  ÉTAIT FAUSSE — VOIR « Erreurs commises et corrigées ».** Le journal écrivait
+  que les 7 fiches « ne se rendent pas en local ». **Elles ne le font pas
+  toutes : 4 des 7 sont STATIQUES** (`lib/listings.ts`) **et se rendent
+  parfaitement**, seules les 3 venues de Supabase rendent 404. Le renderer est
+  **le même pour les sept** : le chantier était donc vérifiable, et il l'a été.
+- ✅ **CE QUI A ÉTÉ FAIT, ET RIEN DE PLUS** : un bloc « Biens similaires » sur la
+  fiche d'un bien réel (`<ListingDetail />`), **absent jusqu'ici** alors que le
+  chemin de démonstration (`PROPERTIES`, en `noindex`, lié par aucune page) en
+  portait un depuis toujours. **Le motif n'est pas inventé : il est repris mot
+  pour mot de ce bloc de démonstration**, avec la carte des biens réels
+  (`<ListingCard />`) déjà en service sur `/annonces`.
+- ✅ **SÉLECTION DÉTERMINISTE, ÉCRITE DANS `getSimilarListings()`** : même
+  transaction **+4**, même type de bien **+2**, même quartier **+1**, tri
+  décroissant, `sort` stable (ES2019) donc à score égal l'ordre de
+  `getAllAvailableListings()` tient (mises en avant, puis plus récentes), **3
+  cartes au plus**. ✅ **Et le texte visible annonce exactement ce que le code
+  fait** : « même type de transaction d'abord, puis même type de bien ».
+- ✅ **ORDRE VÉRIFIÉ SUR LE RENDU, PAS DÉDUIT**, sur les 4 fiches locales : la
+  fiche T3 Grand Clément met le studio Tolstoï (vente + appartement = 6) devant
+  le garage à vendre (vente = 4), lui-même devant le garage à louer (0) ; la
+  fiche garage à louer met le garage à vendre (même type) en tête. **Conforme
+  au barème sur 4 fiches sur 4.**
+- ✅ **EFFET MESURÉ EN LOCAL : chaque fiche passe de 2 à 5 liens entrants**
+  (l'accueil + `/annonces`, plus les 3 fiches sœurs), et **émet 3 liens** là où
+  elle n'en émettait aucun. **Crawl complet après changement : 55 URL, 55 en
+  200** — l'écart local 55 / production 58 reste les 3 fiches de la base.
+- 🟡 **PROJECTION DE PRODUCTION, ANNONCÉE COMME TELLE ET NON COMME UNE MESURE.**
+  En lisant la transaction et le type des 7 fiches **dans le JSON-LD servi en
+  production** (4 appartements à vendre, 1 garage à vendre, 2 garages à louer)
+  et en appliquant le barème à la main : **21 arêtes neuves** (7 × 3), **et
+  aucune fiche à 0 entrant** — le minimum est 1 (les deux garages à louer), le
+  maximum 4 ou 5 (les appartements). ⚠️ **À vérifier sur la production au
+  prochain run, c'est une addition, pas un relevé.**
+- ✅ **BALISAGE : AUCUN CHANGEMENT, PROUVÉ À L'OCTET PRÈS.** Les blocs `ld+json`
+  des 4 fiches locales sont **identiques** à ceux servis en production (3 blocs
+  chacune, `diff` vide), **avant et après la correction de lint**. 📌 **Aucun
+  `ItemList` n'a été ajouté** : décision assumée, un bloc de navigation interne
+  n'avait pas besoin d'un cinquième schéma à maintenir sur chaque fiche.
+- ✅ **AUCUN `dateModified` NI `lastmod` AVANCÉ** — prolongement assumé des 17/11
+  et 20/11 : **un lien de navigation ajouté ne change pas ce que la page dit du
+  bien.** Le prix, la surface, le DPE et le descriptif sont intacts.
+- 🔴 🆕 **UNE ERREUR `eslint` INTRODUITE PAR MOI, DÉTECTÉE ET CORRIGÉE AVANT LE
+  COMMIT — VOIR « Erreurs commises et corrigées ».** Une apostrophe droite en
+  texte JSX nu (`d'abord`) déclenche `react/no-unescaped-entities`. Le total est
+  passé à **36 / 25**, puis est **revenu à 35 / 24** après correction en
+  `&apos;` — **la convention du fichier lui-même**, qui écrit déjà
+  `L&apos;agencement`. **Chiffre identique du 02/11 au 22/11. Aucune erreur
+  neuve au commit.**
+- ✅ **BUILD EN 0 AUX DEUX TENTATIVES** (avant et après la correction de lint),
+  `tsc --noEmit` propre à chaque fois, 92 pages générées.
+- ✅ **LE PIÈGE DU 19/11 DÉSAMORCÉ DANS LES DEUX SENS** : serveur tué sur
+  `next-server` (**0 restant confirmé** aux deux redémarrages), log de démarrage
+  lu (« Ready »), et contrôle visant une chaîne qui **n'existe QUE après le
+  changement** (« Nos autres biens »). **1 occurrence sur chacune des 4 fiches.**
+  **0 `&apos;` littéral, 0 astérisque, 0 `](` ** dans le texte visible des 4.
+- ✅ **CAPTURE MOBILE (iPhone 13, 390 px) ET DESKTOP (1440 px) SUR DEUX FICHES :
+  débordement horizontal de page = 0 partout.** Eyebrow sauge MAJ espacé, H2 à
+  dégradé partiel, fond `--gris` (alternance blanc → gris → anthracite du CTA),
+  3 cartes en grille qui s'empilent proprement à 390 px.
+- ✅ **ENCADREMENT DES LOYERS : VÉRIFIÉ CE JOUR, RIEN À CORRIGER.** La consigne du
+  21/11 était « vérifier Légifrance au prochain run ». **Aucune source n'atteste
+  la promulgation ni la publication au JO au 22/11** — la recherche ne rend que
+  des reprises du vote du 19/11, dont une qui rappelle que le président dispose
+  de quinze jours. `legifrance.gouv.fr/jorf/jo` rend **403** (confirmation de la
+  leçon du 21/11), `journal-officiel.gouv.fr` rend **200** mais sa page
+  d'accueil **ne porte aucun sommaire daté**. 📌 **Nos pages écrivent « au
+  21 novembre 2026, sa promulgation et sa publication au JO ne sont pas encore
+  intervenues » : c'est une phrase DATÉE et elle reste exacte. Rien réécrit.**
+  🆕 **Et une source de plus donne le terme au 24/11** (« devait s'achever le
+  24 novembre »), là où nos pages écrivent 23/11 : **l'écart d'un jour signalé
+  le 21/11 se confirme, et reste sans effet maintenant que le texte est adopté.**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-QUATRIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
+  règle des 90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE** (`discord.gg/fSyn28G5U`). **Non
+  recontrôlée ce jour** (le chantier ne la touchait pas). ⚠️ **NON renotifiée.**
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+
 **Au 2026-11-21 (samedi)**
 
 - ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 20/11.** Aucun manque
@@ -6543,6 +6695,65 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-22 (dimanche) — Les 7 fiches d'annonce n'émettaient aucun lien vers une autre fiche : bloc « Biens similaires » sur la fiche d'un bien réel
+
+**Mesure d'abord, sur le HTML de production des 7 fiches** : `href="/annonces/<slug>"`
+= **0 sur 7**, « biens similaires » = **0 sur 7**. Les seuls liens sortants d'une
+fiche étaient l'en-tête, le pied de page et les deux CTA — **aucun lien
+éditorial, aucune fiche sœur, aucune page de quartier**. C'était le trou pointé
+le 20/11 comme « le plus gros du graphe », et la classe de page qui tient la
+SERP du 17/11 (`guy-hoquet`, 8 positions en `/biens/print/<id>`).
+
+**Pourquoi ce chantier plutôt qu'un autre** : l'angle du jour devait être du
+non-contenu (alternance 20/11 non-contenu → 21/11 contenu → 22/11 non-contenu),
+et c'était le premier candidat de la liste à condition que les fiches se
+rendent en local. **Elles se rendent — 4 sur 7.** Le blocage noté le 20/11
+reposait sur une généralisation fausse (voir « Erreurs commises et corrigées »).
+
+**Ce qui a été écrit, et rien de plus :**
+- `lib/listings-all.ts` : `getSimilarListings(current, limit = 3)`. Barème
+  **même transaction +4, même type +2, même quartier +1**, tri décroissant,
+  `sort` stable donc à score égal l'ordre de `getAllAvailableListings()` tient.
+  Ne lit que les annonces **disponibles**, exclut la fiche courante.
+- `components/property/listing-detail.tsx` : prop `similar` (par défaut `[]`,
+  donc **liste vide = section non rendue**), et une section `bg-gris` entre le
+  corps de fiche et le CTA anthracite. **Motif repris mot pour mot du bloc
+  « BIENS SIMILAIRES » qui existait déjà dans le chemin de démonstration**
+  (`PROPERTIES`, `noindex`, lié par aucune page), avec `<ListingCard />`, la
+  carte des biens réels déjà en service sur `/annonces`.
+- `app/annonces/[id]/page.tsx` : la lecture (asynchrone, Supabase) reste dans la
+  page serveur ; `<ListingDetail />` demeure synchrone.
+
+**Le texte visible dit exactement ce que le code fait** — « même type de
+transaction d'abord, puis même type de bien » — et accorde le nombre
+(« L'annonce ci-dessous » / « Les deux » / « Les trois »).
+
+**Vérifications :**
+- **Ordre contrôlé sur le rendu** des 4 fiches locales, conforme au barème 4/4.
+- **Effet local : 2 → 5 liens entrants par fiche**, 3 liens sortants là où il
+  n'y en avait aucun. **Crawl complet : 55 URL, 55 en 200.**
+- **`ld+json` identique à l'octet près** à la production sur les 4 fiches
+  (3 blocs chacune). **Aucun `dateModified` ni `lastmod` avancé** — un lien de
+  navigation ne change pas ce que la page dit du bien.
+- **Build en 0 aux deux tentatives**, `tsc` propre, **`eslint` 35 / 24**, le
+  chiffre inchangé depuis le 02/11 (une erreur introduite puis corrigée, voir
+  « Erreurs »).
+- **Mobile 390 px et desktop 1440 px : débordement horizontal = 0.**
+
+**Ce que je n'ai PAS fait, et pourquoi :**
+- **Pas de lien vers la page de quartier depuis la fiche.** Le quartier est
+  affiché en gras dans le bloc « Localisation » : en faire un lien violerait la
+  règle du 16/09 (écrire une phrase, jamais poser une ancre sur du texte
+  existant). Et une phrase conditionnelle ne se serait rendue sur **aucune**
+  fiche locale — les 4 statiques sont à Grand Clément, Laurent Bonnevay et
+  Tolstoï, qui n'ont pas de page. **Invérifiable = piège du 19/11.**
+- **Pas d'`ItemList` JSON-LD** sur le bloc. Il aurait correspondu au visible,
+  mais un bloc de navigation interne ne justifie pas un cinquième schéma à
+  maintenir sur chaque fiche.
+- **Pas touché au renderer du chemin de démonstration** ni aux fiches `noindex`.
+
+**Commit du jour.**
+
 ### 2026-11-21 (2e déclenchement, 06h41 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (check-list acheteur, `cdb006e`)
 
 - **Déclenchement en double** : la réécriture de `/blog/achat-immobilier-lyon-checklist`
@@ -12600,6 +12811,211 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
+
+**Angle du dernier run : NON-CONTENU — bloc « Biens similaires » sur la fiche
+d'annonce** (22/11 : les 7 fiches `/annonces/<slug>` émettaient **0 lien** vers
+une autre fiche, mesuré sur la production ; `getSimilarListings()` + une section
+dans `<ListingDetail />`. Effet local **2 → 5 entrants par fiche**, 3 sortants.
+`ld+json` identique à l'octet près, aucun `dateModified` avancé.)
+**Et le blocage inscrit le 20/11 était faux : 4 des 7 fiches se rendent en
+local.** Voir « Erreurs commises et corrigées ».
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (23/11, lundi) DOIT ÊTRE DU CONTENU**
+(alternance : 20/11 non-contenu → 21/11 contenu → **22/11 non-contenu**).
+🔴 **ET LA VEILLE DU LUNDI EST DUE LE 23/11** (dernière : 16/11) — **à faire
+AVANT de choisir le chantier**, consigne de l'étape 5.
+
+🟡 **PREMIÈRE CHOSE À FAIRE LE 23/11, ET ELLE COÛTE UNE MINUTE : VÉRIFIER EN
+PRODUCTION QUE LE BLOC DU 22/11 EST BIEN SERVI SUR LES 7 FICHES.** La projection
+du 22/11 (**21 arêtes neuves**, minimum 1 entrant par fiche, maximum 4–5 pour
+les appartements) est **une addition faite à la main**, pas un relevé : les 3
+fiches Supabase n'ont jamais été rendues ici. **Commande : `curl -sL` sur les 7
+URL, compter `href="/annonces/"` et « Nos autres biens ».** ⚠️ **Si une fiche
+Supabase n'affiche rien, le défaut est côté données (quartier/type/transaction),
+pas côté renderer.**
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE *CORE UPDATE* DU 10/11
+TOURNAIT ENCORE LE 22/11 — J+12, SANS DURÉE.** 📌 **L'hypothèse « il se termine
+vers le 22/11 », tenue les 19, 20 et 21/11, N'EST PAS CONFIRMÉE À SON
+ÉCHÉANCE** : J+12 dépasse déjà mars (12 j 4 h) et mai (11 j 21 h).
+⚠️ **Ne plus prédire de date de fin. Vérifier à chaque run si l'entrée a reçu
+une durée — c'est le seul signal qui rouvre les remesures interprétables.**
+
+🟢 **CANDIDATS CONTENU POUR LE 23/11, par ordre d'impact :**
+  1. 🟡 **LE BLOG FAIBLE — QUATRE ARTICLES RESTANTS** (comptages du 16/11) :
+     `vendre-appartement-lyon-etapes` **34**, `vendre-vite-lyon` **43**,
+     `faire-offre-achat` **113**, `capacite-emprunt-immobilier` **170**.
+     📌 **LE FAVORI RESTE `faire-offre-achat`** : la page du 21/11 lui envoie un
+     lien éditorial et lui confie explicitement l'étape « offre ».
+     ⚠️ **Partage des rôles** : l'offre et la négociation lui appartiennent ;
+     **le calendrier et les frais appartiennent à `achat-immobilier-lyon-checklist`**.
+     ⛔ **`capacite-emprunt-immobilier` RESTE BLOQUÉ** (35 % / 25 ans non lus sur
+     un texte primaire ; `economie.gouv.fr` et `legifrance.gouv.fr` rendent 403
+     aux deux outils — reconfirmé le 22/11 sur `legifrance.gouv.fr/jorf/jo`).
+  2. 🆕 🔴 **`mandat-simple-ou-exclusif` MÉRITE D'ÊTRE ROUVERT, ET C'EST LA SERP
+     DU 22/11 QUI LE DIT.** Le créneau local que le 08/11 décrivait comme vide
+     (« aucune information propre à Villeurbanne ») **a été occupé entre-temps
+     par `salengro-immo.fr`**, agence villeurbannaise, avec une page « Mandat
+     exclusif à Villeurbanne ». 📌 **Notre apport propre identifié le 08/11 —
+     le plafond légal de la clause pénale, absent des 10 résultats — tient
+     toujours.** ⚠️ **Lire la page de Salengro avant d'écrire**, et vérifier
+     d'abord la date du dernier passage sur notre page (gel de 14 jours).
+  3. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     Pistes **non mesurées** : « bail mobilité », « colocation meublée
+     Villeurbanne », « louer à un étudiant Villeurbanne ». ⚠️ **Triple contrôle
+     du 03/11 obligatoire.**
+  4. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+     `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
+     difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  5. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — **PAS AVANT LE 27/11.**
+  6. ⛔ **NE PAS RÉÉCRIRE** : `achat-immobilier-lyon-checklist` (21/11) →
+     **05/12** · `questions-a-poser-visite` (19/11) → **03/12** ·
+     `lmnp-location-meublee` (16/11) → **30/11** ·
+     `home-staging-vendre-plus-cher` (14/11) → **28/11** ·
+     `cout-gestion-locative` (13/11) → **27/11** ·
+     `compromis-de-vente-delais` (12/11) → **26/11** ·
+     `taxe-fonciere-vente-qui-paie` (10/11) → **24/11** ·
+     `prix-immobilier-villeurbanne-2026` → **03/12** ·
+     `preavis-depot-garantie-location-villeurbanne` et
+     `rentabilite-locative-lyon` (21/11) → **05/12**.
+  7. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** : le contenu existe, le manque était
+     de la visibilité. **Remesurer le 05/12, ne pas réécrire.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (24/11), par ordre d'impact :**
+  1. 🔴 **FINIR LE CHANTIER DU 20/11 : CINQ ARTICLES NOMMENT ENCORE LES
+     QUARTIERS SANS LES LIER.** `plus-value-immobiliere-calcul` **9 mentions /
+     0 lien**, `frais-de-notaire-lyon-2026` **6 / 0** (⚠️ a déjà reçu un ajout le
+     17/11), `vendre-sans-agence` **4 / 0**, `loi-carrez-surface` **3 / 0**,
+     `vendre-en-viager-villeurbanne` **2 / 0**. **Même recette : une phrase
+     écrite, jamais une ancre sur du texte existant, chiffres relus sur la page
+     cible.** 📌 **C'est désormais le premier de la liste**, les fiches étant
+     traitées.
+  2. 🟡 **`HowTo.name` N'EST RENDU VISIBLE SUR AUCUNE PAGE À BLOC `steps`, SAUF
+     CELLE DU 21/11.** Le renderer lit `steps.name` pour le JSON-LD et ne
+     l'affiche jamais. ⚠️ **Recenser les articles à bloc `steps` et leur
+     appliquer la même phrase visible**, un par un, chacun avec sa propre
+     vérification de rendu. ⛔ **Ne pas « régler le problème à la racine » dans
+     le renderer sans mesurer ce que cela déplace sur toutes les pages.**
+  3. 🆕 🟡 **DONNER AUX FICHES D'ANNONCE UN LIEN VERS LEUR PAGE DE QUARTIER.**
+     Écarté le 22/11 pour deux raisons tenaces : le quartier est déjà en gras
+     dans « Localisation » (poser une ancre dessus = règle du 16/09), et
+     **aucune des 4 fiches locales n'est dans un quartier qui a une page**
+     (Grand Clément, Laurent Bonnevay, Tolstoï) — une phrase conditionnelle
+     serait donc **invérifiable en local**. 📌 **Ne l'ouvrir que le jour où les
+     fiches Supabase se rendent ici, ou en écrivant une phrase inconditionnelle
+     qui ne dépende pas d'une table de correspondance.**
+  4. 🟡 **DEUX À TROIS LIENS ENTRANTS ÉDITORIAUX VERS `lmnp-location-meublee` ET
+     `home-staging-vendre-plus-cher`** — **3 entrants chacun au 20/11**, tous
+     automatiques (index `/blog` + algorithme d'articles liés), **aucun
+     éditorial**. ⛔ **Gels levés le 30/11 et le 28/11.**
+  5. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     La phrase est **EXACTE** : levée d'ambiguïté, pas correction d'erreur.
+  6. 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite). **Une
+     lecture du V de `L125-5` alinéa par alinéa suffit.** ⚠️ **Si l'on corrige,
+     c'est une phrase, et `updated` bouge.** 📌 **Occasion d'y poser aussi le
+     lien de quartier manquant (point 1).**
+  7. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** ⛔ **Attendre le 24/11.**
+  8. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11).
+  9. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **vingt et un
+     runs** sans recontrôle). **Contrôle à deux temps obligatoire.**
+ 10. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **vingt-cinquième
+     report**). **`blog.qoridor.fr/article/home-staging` en priorité.**
+ 11. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 12. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 13. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 22/11. **Jour creux.**
+ 14. ⛔ **NE PLUS CHERCHER DE TROU DANS LE BALISAGE D'ÉTABLISSEMENT.**
+     `RealEstateAgent` **et** `openingHoursSpecification` sur **58 / 58**
+     (vérifié le 20/11). **Piste fermée.**
+ 15. ⛔ **LE MAILLAGE DES FICHES EST FAIT (22/11). NE PAS LE REFAIRE** — seule
+     reste la vérification de production ci-dessus.
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🟡 **ENCADREMENT DES LOYERS : VÉRIFIÉ LE 22/11, TOUJOURS PAS PROMULGUÉ.**
+  Adoption définitive le **19/11/2026** (AN, 2ᵉ lecture sans modification,
+  scrutin **n° 10062**), prolongation jusqu'en **novembre 2028**. **Aucune
+  source n'atteste la promulgation ni la publication au JO au 22/11** ; le
+  président dispose de quinze jours. `legifrance.gouv.fr` rend 403,
+  `journal-officiel.gouv.fr` répond mais sans sommaire daté sur sa page
+  d'accueil. 📌 **Nos pages écrivent une phrase DATÉE au 21/11 : elle reste
+  exacte, rien n'a été réécrit.** **Revérifier vers le 04/12** et, une fois la
+  loi publiée, remplacer la phrase par la référence de la loi.
+  🟡 **Écart de date confirmé, sans effet** : une source de plus donne le terme
+  au **24/11**, nos pages écrivent **23/11**.
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT, ET LE 22/11
+  AJOUTE UNE QUATRIÈME SERP À L'APPUI.** 🆕 **22/11 « agence immobilière
+  Villeurbanne » : 10 résultats, site absent, et SIX ENTRANTS en 48 h** dont
+  `pagesjaunes`, `agenceimmobilieredefrance`, et **quatre agences
+  villeurbannaises indépendantes** (`ginet`, `salengro-immo`, `aquila.immo`,
+  ERA via une fiche `seloger`). 📌 **Des indépendants de taille comparable à
+  Markus classent sur cette requête. Aucune ligne de code ne nous y mettra.**
+  **Question à Tony : l'agence est-elle inscrite sur ces annuaires et portails,
+  et veut-elle qu'on s'en occupe ?** **Ne rien faire avant sa réponse.**
+- 🆕 🟠 **UN CONCURRENT VILLEURBANNAIS PUBLIE DU CONTENU LOCAL ET ÇA CLASSE.**
+  `salengro-immo.fr` est apparu sur **deux** de nos SERP suivies en 48 h (la
+  requête mandat et la requête agence), avec une page « Mandat exclusif à
+  Villeurbanne ». 📌 **C'est la confirmation que la stratégie du site — du
+  contenu local, pas du contenu national — est la bonne, et qu'elle n'est plus
+  la nôtre seulement.** ⚠️ **Information, pas action.**
+- 🟠 **LE BARÈME D'ORPI EST INDEXÉ EN PDF ET LE NÔTRE NE L'EST PAS.**
+  **Question à Tony : veut-on vérifier que le PDF de `/honoraires` est
+  indexable et le faire remonter ?**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** **Question à Tony : les délais entre mandat et compromis sont-ils
+  exploitables quelque part ?**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE.**
+  **Question à Tony : l'agence a-t-elle des loyers de meublés observés ?**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  **Orpi CETRIM 8 % TTC ancien / 7 % neuf** (barème du **10/04/2025**) et
+  **Foncia Villeurbanne 5,99 % + 3,48 % de GLI = 9,47 % TTC**. ⚠️ **Publicité
+  comparative : décision commerciale, pas décision d'agent.**
+- 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS `/annonces`
+  PLUTÔT QUE VERS `/acheter` ?** CTA unique par article (`internalHref`) :
+  `/vendre` 12, `/acheter` 8, `/estimation` 6, `/gestion-locative` 4,
+  `/annonces` 0. C'est un **remplacement, pas un ajout**. 📌 **Pas à trancher
+  seul.** 🆕 📌 **Moins urgent depuis le 22/11** : les fiches reçoivent
+  désormais des liens entre elles.
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — VINGT-QUATRIÈME JOUR.**
+  **Non corrigé : page de Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON
+  renotifié** (8 notifications).
+- 🔴 **INVITATION DISCORD MORTE** (`code 10006` au 20/11), à **deux**
+  emplacements (`components/layout/site-footer.tsx`, `components/home/social.tsx`).
+  **Non recontrôlée le 22/11.** ⚠️ **NON renotifiée.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ **Tout ce qui a été relevé depuis le 10/11 l'a été pendant le core update, et
+celui-ci tournait encore à J+12 le 22/11. Relever, ne pas conclure.**
+- **« estimation immobilière Villeurbanne »** → **23/11**.
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**.
+- **« appartement à vendre Villeurbanne agence »** → **01/12**. 📌 **Requête
+  témoin de `/annonces`** — et désormais du bloc « Biens similaires ».
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** → **03/12**.
+- **« questions à poser lors de la visite d'un appartement avant d'acheter »** →
+  **03/12**.
+- **« vendre appartement Villeurbanne »**, **« prix m2 Villeurbanne »** et
+  **« honoraires agence immobilière Villeurbanne … »** → **05/12**.
+- **« combien coûte une agence immobilière à Villeurbanne honoraires »** →
+  **05/12**. 🟢 **LE PREMIER RELEVÉ POSITIF DU JOURNAL** (21/11 : la page
+  `/agence-immobiliere-villeurbanne` apparaît). ⛔ **Composition entièrement
+  différente du 20/11 + J+11 d'un core update = non concluant. À confirmer,
+  pas à célébrer.**
+- 🆕 **« agence immobilière Villeurbanne »** → **06/12** (relevée le 22/11 :
+  10 résultats, site absent, six entrants).
+- 🆕 **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … »** → **06/12** (relevées le 22/11 : 10 résultats chacune, site
+  absent des deux).
+- ⚠️ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+
+---
 
 **Angle du dernier run : CONTENU — `achat-immobilier-lyon-checklist` réécrit de
 fond en comble** (21/11 : 291 mots servis → 3 744 ; trois listes à puces sans une
@@ -19585,6 +20001,38 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 ---
 
 ## Erreurs commises et corrigées
+
+**2026-11-22 — J'AI RELAYÉ UN BLOCAGE SANS LE VÉRIFIER, ET IL ÉTAIT FAUX.**
+Le journal portait depuis le 20/11, en gras et en rouge, que le chantier des
+fiches d'annonce était « **BLOQUÉ TANT QUE LA BASE N'EST PAS JOIGNABLE** : ces
+pages ne se rendent pas dans le conteneur ». **C'est une généralisation à partir
+d'un vrai chiffre** : le crawl local rend 55 URL contre 58 en production, donc
+3 fiches manquent — **et j'en avais conclu que les 7 manquaient**.
+✅ **Vérifié ce jour en trente secondes** : `lib/listings.ts` contient **4
+annonces statiques**, dont les slugs sont exactement 4 des 7 du sitemap de
+production. Les 4 se rendent en local, **les 3 autres (Supabase) rendent 404**.
+**Et le renderer est le même pour les sept** (`<ListingDetail />`) : ce qui est
+vérifié sur une fiche statique l'est pour les sept.
+📌 **La leçon n'est pas « 4 ≠ 7 ». C'est qu'un blocage inscrit au journal se
+re-vérifie comme une mesure, pas se recopie comme un fait** — celui-ci a coûté
+**deux jours** au chantier le plus rentable de la liste, et il aurait suffi de
+regarder quels slugs manquaient au lieu de compter combien.
+
+**2026-11-22 — J'AI INTRODUIT UNE ERREUR `eslint`, ET C'EST LE TOTAL FIGÉ QUI
+L'A RÉVÉLÉE.** Le bloc écrit ce jour contenait `d'abord` en **texte JSX nu** :
+`react/no-unescaped-entities`. Le total est passé de **35 / 24 à 36 / 25**.
+📌 **Ce qui a levé l'alerte n'est pas la lecture du diff, c'est que le journal
+tient ce total depuis le 02/11** — sans ce repère chiffré, une erreur de plus
+dans un fichier qui en comptait déjà vingt-quatre serait passée inaperçue.
+✅ **Corrigé en `&apos;`, qui est la convention du fichier lui-même** (il écrit
+déjà `L&apos;agencement du bien` à la ligne 278) — **pas une règle désactivée,
+pas un `--fix` lancé à l'aveugle sur tout le dépôt.** Total revenu à **35 / 24**,
+et **rendu recontrôlé après la correction** : 0 `&apos;` littéral dans le texte
+visible des 4 fiches, et `ld+json` toujours identique à la production.
+📌 **Et la vraie leçon de méthode : la correction de lint est arrivée APRÈS la
+première vérification de rendu, donc celle-ci ne valait plus rien.** Tout a été
+revérifié sur le rendu d'après. **Un contrôle de rendu ne survit pas à l'édition
+qui le suit, même d'un seul caractère.**
 
 **2026-11-21 — J'AI CRU CRAWLER LE SITE LOCAL ET J'AI MESURÉ LA PRODUCTION.**
 Pour contrôler l'effet du chantier sur le maillage, j'ai lu le `sitemap.xml`

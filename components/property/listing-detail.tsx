@@ -3,6 +3,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button, ArrowRight } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { ListingGallery } from "@/components/property/listing-gallery";
+import { ListingCard } from "@/components/property/listing-card";
 import { BeforeAfterSection } from "@/components/property/before-after";
 import { JsonLd, breadcrumbLd, BASE } from "@/components/seo/json-ld";
 import {
@@ -25,8 +26,21 @@ const ACCOMMODATION_TYPE: Record<Listing["type"], string> = {
   terrain: "Accommodation",
 };
 
-/** Fiche complète d'un bien réel : galerie, infos, JSON-LD RealEstateListing, CTA. */
-export function ListingDetail({ listing: l }: { listing: Listing }) {
+/**
+ * Fiche complète d'un bien réel : galerie, infos, JSON-LD RealEstateListing, CTA.
+ *
+ * `similar` = les autres annonces disponibles les plus proches (voir
+ * `getSimilarListings()`). La fiche est un composant synchrone : la lecture des
+ * annonces, qui passe par Supabase, reste dans la page serveur qui l'appelle.
+ * Liste vide ou absente -> la section « Biens similaires » n'est pas rendue.
+ */
+export function ListingDetail({
+  listing: l,
+  similar = [],
+}: {
+  listing: Listing;
+  similar?: Listing[];
+}) {
   const dispo = l.statut === "disponible";
   const adresseComplete = `${l.adresse}, ${l.codePostal} ${l.ville}`;
 
@@ -359,6 +373,40 @@ export function ListingDetail({ listing: l }: { listing: Listing }) {
           </Reveal>
         </div>
       </section>
+
+      {/* BIENS SIMILAIRES — seules les autres annonces disponibles. */}
+      {similar.length > 0 && (
+        <section className="bg-gris py-[100px] max-md:py-[72px]">
+          <div className="max-w-content mx-auto px-8 max-md:px-5">
+            <Reveal className="mb-8">
+              <Eyebrow className="mb-3">À découvrir aussi</Eyebrow>
+              <h2 className="font-bold text-[clamp(30px,4vw,46px)] tracking-[-0.01em] mb-4">
+                Nos autres biens <span className="grad">disponibles.</span>
+              </h2>
+              <p className="text-[16px] text-[#3d4347] leading-relaxed max-w-[620px]">
+                {similar.length === 1
+                  ? "L'annonce ci-dessous est celle qui ressemble le plus à ce bien"
+                  : `Les ${similar.length === 2 ? "deux" : "trois"} annonces ci-dessous sont celles qui ressemblent le plus à ce bien`}{" "}
+                — même type de transaction d&apos;abord, puis même type de bien.{" "}
+                <Link
+                  href="/annonces"
+                  className="text-anthracite font-semibold underline decoration-sauge decoration-2 underline-offset-4 hover:text-sauge transition"
+                >
+                  Toutes nos annonces disponibles
+                </Link>{" "}
+                sont réunies sur une seule page.
+              </p>
+            </Reveal>
+            <div className="grid gap-[26px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {similar.map((s, i) => (
+                <Reveal key={s.slug} delay={i * 100}>
+                  <ListingCard listing={s} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA bas de page */}
       <section className="bg-anthracite text-blanc py-[80px] max-md:py-[60px]">

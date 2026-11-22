@@ -11,7 +11,11 @@ import { MapPinIllust } from "@/components/illustrations/map-pin";
 import { FloorPlanIllust } from "@/components/illustrations/floor-plan";
 import { DrawOnScroll } from "@/components/illustrations/draw-on-scroll";
 import { PROPERTIES } from "@/lib/mock-properties";
-import { getListingBySlug, getAllListingSlugs } from "@/lib/listings-all";
+import {
+  getListingBySlug,
+  getAllListingSlugs,
+  getSimilarListings,
+} from "@/lib/listings-all";
 import { ListingDetail } from "@/components/property/listing-detail";
 
 type Params = Promise<{ id: string }>;
@@ -77,7 +81,12 @@ export default async function PropertyDetailPage({
 
   // Les biens réels ont la priorité sur les placeholders de démo.
   const listing = await getListingBySlug(id);
-  if (listing) return <ListingDetail listing={listing} />;
+  if (listing) {
+    // Les fiches n'émettaient aucun lien vers une autre fiche (mesuré sur la
+    // production le 22/11/2026) : le bloc « Biens similaires » les relie.
+    const similar = await getSimilarListings(listing);
+    return <ListingDetail listing={listing} similar={similar} />;
+  }
 
   const property = PROPERTIES.find((p) => p.id === id);
   if (!property) notFound();

@@ -156,3 +156,33 @@ export async function getAllListingSlugs(): Promise<string[]> {
   const all = await getAllListings();
   return all.map((l) => l.slug);
 }
+
+/**
+ * Biens les plus proches d'une annonce donnée, pour le bloc « Biens similaires »
+ * de la fiche (`<ListingDetail />`).
+ *
+ * Pourquoi ce bloc existe : mesuré le 22/11/2026 sur le HTML de production, les
+ * 7 fiches `/annonces/<slug>` n'émettaient AUCUN lien vers une autre fiche —
+ * leurs seuls liens sortants étaient l'en-tête, le pied de page et les deux CTA.
+ * C'était le plus gros trou du maillage interne du site.
+ *
+ * Tri par proximité décroissante : même transaction (vente/location) d'abord,
+ * puis même type de bien, puis même quartier. À score égal, l'ordre de
+ * `getAllAvailableListings()` est conservé (mises en avant, puis plus récentes).
+ */
+export async function getSimilarListings(
+  current: Listing,
+  limit = 3,
+): Promise<Listing[]> {
+  const autres = (await getAllAvailableListings()).filter(
+    (l) => l.slug !== current.slug,
+  );
+
+  const score = (l: Listing) =>
+    (l.transaction === current.transaction ? 4 : 0) +
+    (l.type === current.type ? 2 : 0) +
+    (l.quartier === current.quartier ? 1 : 0);
+
+  // `sort` est stable depuis ES2019 : à score égal, l'ordre d'entrée tient.
+  return [...autres].sort((a, b) => score(b) - score(a)).slice(0, limit);
+}
