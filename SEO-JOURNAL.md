@@ -6706,6 +6706,24 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-22 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (bloc « Biens similaires », `31b5889`)
+
+- **Déclenchement en double** : le bloc des fiches sœurs est servi en production
+  (`/annonces/studio-a-vendre-villeurbanne-tolstoi` → 3 `href="/annonces/<slug>"` et la
+  phrase « annonces ci-dessous sont celles qui ressemblent le plus à ce bien »). Un
+  chantier par jour → **rien publié**. ⚠️ Un `grep -i "biens similaires"` sur le HTML
+  servi renvoie 0 sur 7 : le titre est découpé par le balisage, **ce n'est pas un
+  signe d'absence** — contrôler sur les liens ou sur la phrase.
+- **Changements du client (étape 0)** : `origin/main` = `9c8c071`, aucun commit tiers.
+  Sitemap en ligne = **58 URL** (7 annonces, 30 articles), inchangé ; toutes les URL hors
+  `/annonces/*` et `/blog/*` ont un dossier de route dans `app/` → **aucune page de
+  l'éditeur**. `lastmod` le plus récent = 21/11 (mon run de la veille). `<title>` de la
+  home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/annonces`, `/blog`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/agence-immobiliere-villeurbanne`, `/llms.txt`,
+  `/robots.txt` → 200.
+- **Non fait** : archivage du journal (28 164 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-22 (dimanche) — Les 7 fiches d'annonce n'émettaient aucun lien vers une autre fiche : bloc « Biens similaires » sur la fiche d'un bien réel
 
 **Mesure d'abord, sur le HTML de production des 7 fiches** : `href="/annonces/<slug>"`
