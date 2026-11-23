@@ -363,6 +363,31 @@
  * ⚠️ TITRE CHANGÉ le 19/11/2026 : l'ancien (« Visite d'un bien : les 15
  * questions à poser ») était un quasi-doublon du titre de qualitel.org, qui
  * occupe la SERP. Surveiller l'effet du changement de title indexé.
+ *
+ * Depuis le 23/11/2026, « faire-offre-achat » est passé de ~110 à ~2 100 mots et
+ * REPUBLIE les 7 médianes de quartier du PREMIER SEMESTRE 2026 — les mêmes que
+ * le troisième tableau de « investir-locatif-lyon », pas celles de l'année 2025
+ * close. Il en dérive une colonne « Pour 59 m² » (médiane AFFICHÉE × 59, la
+ * surface médiane du semestre) et trois écarts cités dans le texte et la FAQ
+ * (3 898 €/m² pour 230 000 € sur 59 m², −1,7 % vs Ferrandière, +56,5 % vs
+ * Cyprian – Les Brosses). Si les médianes du semestre sont un jour recalculées,
+ * son tableau, ces trois chiffres et deux réponses de sa FAQ doivent être
+ * RECALCULÉS en même temps que « investir-locatif-lyon », jamais patchés.
+ * ⚠️ Convention d'arrondi : les euros se calculent sur les médianes AFFICHÉES
+ * (3 966 × 59 = 233 994), pour qu'un lecteur qui refait le calcul retrouve le
+ * montant publié.
+ * ⚠️ AUCUNE MARGE DE NÉGOCIATION N'EST PUBLIÉE, et la page écrit noir sur blanc
+ * pourquoi : DVF enregistre le prix signé, jamais le prix demandé. Ne pas y
+ * ajouter un pourcentage de négociation, même national, même sourcé ailleurs.
+ * ⚠️ Ses points de droit viennent du code civil (art. 1113 à 1118 et 1583),
+ * texte relu le 23/11/2026 sur la republication des codes officiels de
+ * droit.org (payload XML « Code civil », lastup 2026-07-29) — legifrance.gouv.fr
+ * rend 403 à nos deux outils. Chaque article est cité avec sa source de
+ * rédaction (ordonnance n° 2016-131 du 10/02/2016 art. 2 ; loi n° 2018-287 du
+ * 20/04/2018 art. 4 pour le 1117). Ne jamais reformuler ces articles sans les
+ * relire : c'est l'erreur du 21/11 sur L313-41.
+ * ⚠️ TITRE CHANGÉ le 23/11/2026 (« Faire une offre d'achat : montant, lettre et
+ * négociation » → titre local). Surveiller l'effet du changement de title indexé.
  */
 
 export type Block =
@@ -2524,23 +2549,124 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "faire-offre-achat",
-    title: "Faire une offre d'achat : montant, lettre et négociation",
+    title:
+      "Offre d'achat : ce qui vous engage, et à quel prix elle est crédible à Villeurbanne",
     metaDescription:
-      "Comment faire une offre d'achat immobilière : la formuler par écrit, fixer le montant, sa valeur d'engagement et bien négocier.",
-    h1: "Faire une offre d'achat : le bon réflexe",
+      "Ce qu'une offre d'achat engage vraiment (articles 1113 à 1118 du code civil), combien de temps elle reste valable, et comment juger un prix demandé sur les ventes réellement signées à Villeurbanne.",
+    h1: "Offre d'achat : ce qui vous engage, et à quel prix elle est crédible à Villeurbanne",
     excerpt:
-      "Formuler une offre par écrit avec prix, durée et conditions. Sa valeur d'engagement et comment bien négocier.",
+      "Une offre écrite vous lie dès qu'elle parvient au vendeur et jusqu'à la date que vous y avez inscrite : aucun texte ne fixe cette durée. Et un prix ne se juge pas contre le prix demandé, mais contre les ventes signées du quartier — 230 000 € pour 59 m² sont 1,7 % sous la médiane à Ferrandière et 56,5 % au-dessus à Cyprian – Les Brosses.",
     date: "2026-04-02",
+    updated: "2026-11-23",
     internalHref: "/acheter",
     internalLabel: "Trouver le bon bien avec notre équipe",
     blocks: [
-      { type: "p", text: "**Une offre d'achat se formule de préférence par écrit, avec un prix, une durée de validité et les conditions (notamment le financement).** Bien faite, elle vous positionne sérieusement sans vous piéger." },
-      { type: "h2", text: "Le montant" },
-      { type: "p", text: "Vous pouvez proposer au prix ou en dessous. Une offre trop basse peut vexer ; une offre au prix sécurise le bien si d'autres acheteurs sont intéressés." },
-      { type: "h2", text: "Sa valeur d'engagement" },
-      { type: "p", text: "Une offre **acceptée au prix** engage les deux parties. Mentionnez vos conditions ([obtention de prêt](/blog/capacite-emprunt-immobilier)) pour vous protéger." },
-      { type: "h2", text: "Bien négocier" },
-      { type: "p", text: "Appuyez-vous sur des éléments concrets : travaux à prévoir, DPE, durée de mise en vente, [prix du secteur](/blog/prix-immobilier-villeurbanne-2026). Une négociation argumentée passe mieux qu'un simple « c'est trop cher »." },
+      { type: "p", text: "**Une offre d'achat écrite vous lie dès qu'elle est parvenue au vendeur et jusqu'à la date limite que vous y avez inscrite : la retirer pendant cette fenêtre n'empêche pas seulement la vente de se former, cela engage votre responsabilité.** Aucun texte ne fixe cette durée de validité — c'est vous qui l'écrivez, et c'est la seule chose qui la fixe. Les 10 jours de rétractation dont tout le monde parle ne concernent pas l'offre : ils courent à partir de la notification du compromis." },
+      { type: "p", text: "Le reste de cette page répond aux questions qui se posent dans l'ordre où elles arrivent — ce que l'offre engage, combien de temps, qui peut encore reculer — puis à celle que personne ne traite localement : **à quel prix une offre est crédible à Villeurbanne**, quartier par quartier, sur les ventes réellement signées. Les règles de droit citées ici sont celles du code civil dans leur rédaction en vigueur ; chaque article est nommé pour que vous puissiez le lire vous-même." },
+
+      { type: "h2", text: "Une offre d'achat écrite m'engage-t-elle ?" },
+      { type: "p", text: "**Oui, et plus tôt qu'on ne le croit : dès que votre offre est parvenue au vendeur, vous ne pouvez plus la rétracter librement.** Avant qu'elle ne lui parvienne, vous le pouvez sans aucune justification. Après, et jusqu'à l'expiration du délai que vous y avez fixé, le retrait est interdit — et s'il a lieu quand même, il empêche la vente de se former mais engage votre responsabilité." },
+      { type: "p", text: "Trois articles du code civil se succèdent et disent exactement cela. L'**article 1115** : l'offre « peut être librement rétractée tant qu'elle n'est pas parvenue à son destinataire ». L'**article 1116** : elle « ne peut être rétractée avant l'expiration du délai fixé par son auteur ou, à défaut, l'issue d'un délai raisonnable », et la rétractation faite en violation de cette interdiction « empêche la conclusion du contrat » tout en engageant « la responsabilité extracontractuelle de son auteur ». Le même article en fixe aussi la limite, et elle joue en votre faveur : cette responsabilité n'oblige pas « à compenser la perte des avantages attendus du contrat » — autrement dit, le vendeur ne peut pas vous réclamer le bénéfice de la vente qui n'a pas eu lieu." },
+      { type: "p", text: "C'est la raison pour laquelle une offre se rédige avec ses conditions, pas seulement avec un prix. Une offre qui mentionne votre condition d'obtention de prêt n'est pas une offre affaiblie : c'est une offre dont le périmètre est écrit. Votre enveloppe de financement se calcule avant, sur [la page consacrée à la capacité d'emprunt](/blog/capacite-emprunt-immobilier)." },
+
+      { type: "h2", text: "Combien de temps une offre d'achat reste-t-elle valable ?" },
+      { type: "p", text: "**Le temps que vous avez écrit dans l'offre, et rien d'autre : aucun texte ne fixe 5, 7 ou 10 jours.** Si vous n'inscrivez aucune durée, l'offre reste valable pendant un « délai raisonnable », notion que la loi ne chiffre pas. Passée cette échéance, elle est caduque : une acceptation qui arrive après ne forme pas la vente." },
+      { type: "p", text: "L'**article 1117** du code civil énonce les trois cas de caducité, dans ses propres termes : l'offre « est caduque à l'expiration du délai fixé par son auteur ou, à défaut, à l'issue d'un délai raisonnable » ; elle l'est « également en cas d'incapacité ou de décès de son auteur, ou de décès de son destinataire »." },
+      { type: "p", text: "Les durées de 5 à 10 jours que l'on lit partout sont donc un usage de marché, pas une règle. ⚠️ **La conséquence pratique est à l'inverse de l'intuition** : une offre sans date n'est pas une offre plus souple, c'est une offre dont la fin de validité devra être discutée, voire tranchée, au lieu d'être lue. Écrire une date est ce qui vous protège le plus simplement." },
+
+      { type: "h2", text: "Le vendeur peut-il se rétracter après avoir accepté mon offre ?" },
+      { type: "p", text: "**Non, s'il a accepté votre offre telle qu'elle était, sans réserve ni modification : la vente est alors formée, et il ne dispose d'aucun délai de rétractation.** Le vendeur n'a jamais, à aucun stade, l'équivalent des 10 jours de l'acquéreur. Une meilleure offre reçue après son acceptation ne lui rend pas sa liberté." },
+      { type: "p", text: "Deux textes se combinent. L'**article 1113** : « le contrat est formé par la rencontre d'une offre et d'une acceptation par lesquelles les parties manifestent leur volonté de s'engager ». Et l'**article 1583**, propre à la vente : elle « est parfaite entre les parties, et la propriété est acquise de droit à l'acheteur à l'égard du vendeur, dès qu'on est convenu de la chose et du prix, quoique la chose n'ait pas encore été livrée ni le prix payé »." },
+      { type: "p", text: "Encore faut-il que l'acceptation en soit une. L'**article 1118** précise que « l'acceptation non conforme à l'offre est dépourvue d'effet, sauf à constituer une offre nouvelle » : un vendeur qui accepte en changeant le prix, la durée ou une condition n'accepte pas — il vous adresse une offre, que vous êtes libre de refuser." },
+      { type: "p", text: "Les 10 jours, eux, sont ailleurs : l'article L271-1 du code de la construction et de l'habitation les fait courir à compter du lendemain de la première présentation de la lettre notifiant le compromis ou la promesse, et ils ne bénéficient qu'à l'acquéreur non professionnel d'un logement. Leur décompte exact, les documents qui le décalent et ceux qui ne le décalent pas sont détaillés sur [compromis de vente : les délais réels](/blog/compromis-de-vente-delais)." },
+
+      { type: "h2", text: "Le vendeur est-il obligé d'accepter une offre au prix demandé ?" },
+      { type: "p", text: "**Cela dépend de ce qu'est l'annonce au regard du droit : une véritable offre de vente, ou une simple invitation à négocier.** La loi donne le critère, et il ne dépend ni du site ni de l'agence, mais du contenu de l'annonce elle-même. Tant que ce critère n'est pas rempli, une offre au prix reste une offre : elle peut être refusée." },
+      { type: "p", text: "L'**article 1114** du code civil pose la ligne de partage : « l'offre, faite à personne déterminée ou indéterminée, comprend les éléments essentiels du contrat envisagé et exprime la volonté de son auteur d'être lié en cas d'acceptation. A défaut, il y a seulement invitation à entrer en négociation. » Une annonce adressée au public peut donc relever de la première catégorie — le texte vise expressément la personne « indéterminée » — mais seulement si elle contient les éléments essentiels et exprime cette volonté d'être lié." },
+      { type: "p", text: "📌 **Ce que cela change pour vous, concrètement : ne construisez pas votre stratégie sur l'idée qu'une offre au prix s'impose au vendeur.** Elle sécurise votre place dans l'ordre d'arrivée et elle est difficile à écarter sans raison, ce qui est déjà beaucoup quand plusieurs acheteurs se présentent. Ce n'est pas la même chose qu'un droit à acheter." },
+
+      { type: "h2", text: "Puis-je proposer moins que le prix demandé ?" },
+      { type: "p", text: "**Oui, sans aucun risque juridique : une offre sous le prix demandé est une offre comme une autre, que le vendeur peut accepter, refuser, ou laisser passer sans répondre.** Aucun texte ne lui impose de répondre, et aucune pénalité ne frappe une offre jugée trop basse. Le seul risque est commercial : perdre le bien au profit d'un acheteur mieux placé." },
+      { type: "p", text: "Si le vendeur revient vers vous avec un autre prix, lisez bien ce qui vient de se passer : par l'effet de l'article 1118, sa contre-proposition est **une offre nouvelle qui lui est opposable et qui éteint la vôtre**. Vous reprenez la main, et c'est désormais lui qui est tenu par le délai qu'il y inscrit. Une négociation immobilière n'est pas une discussion autour d'un prix unique : c'est une suite d'offres, dont chacune a son auteur, sa durée et son propre effet." },
+      { type: "p", text: "Et une offre argumentée se défend mieux qu'une offre ronde. Les arguments qui tiennent sont ceux qu'on peut montrer : travaux votés en assemblée générale, DPE, montant réel des charges, et le prix au mètre carré des ventes signées du quartier — pas le prix affiché par les comparateurs en ligne. Ce que relève une visite, question par question, est sur [les 15 questions à poser lors d'une visite](/blog/questions-a-poser-visite)." },
+
+      { type: "h2", text: "À quel prix une offre est-elle crédible à Villeurbanne ?" },
+      { type: "p", text: "**Un prix n'est pas cher ou bon marché à Villeurbanne : il l'est dans un quartier.** Le même prix de 230 000 € pour 59 m², soit 3 898 €/m², se situe **1,7 % sous la médiane des ventes signées à Ferrandière – Maisons-Neuves** et **56,5 % au-dessus à Cyprian – Les Brosses**. C'est le premier calcul à faire avant de chiffrer une offre, et il prend une minute : divisez le prix demandé par la surface, puis comparez à la ligne du quartier." },
+      { type: "p", text: "Les médianes ci-dessous sont celles des appartements réellement vendus à Villeurbanne au premier semestre 2026 — 940 ventes — avec, en regard, le prix que cette médiane donne pour la surface médiane de la commune, 59 m². La colonne de droite est une **multiplication des deux chiffres publiés**, pas une statistique de plus : elle sert à passer d'un prix au mètre carré à un ordre de grandeur en euros." },
+      {
+        type: "table",
+        caption:
+          "Médiane des ventes d'appartements signées au premier semestre 2026, et prix correspondant pour 59 m²",
+        headers: ["Quartier (contour officiel)", "Médiane signée S1 2026", "Pour 59 m²", "Ventes S1 2026"],
+        rows: [
+          ["Ferrandière – Maisons-Neuves", "3 966 €/m²", "233 994 €", "102"],
+          ["Gratte-Ciel – Dedieu – Charmettes", "3 805 €/m²", "224 495 €", "320"],
+          ["Charpennes – Tonkin", "3 440 €/m²", "202 960 €", "104"],
+          ["Perralière – Grandclément", "3 312 €/m²", "195 408 €", "149"],
+          ["Cusset – Bonnevay", "3 136 €/m²", "185 024 €", "89"],
+          ["Buers – Croix-Luizet", "3 041 €/m²", "179 419 €", "144"],
+          ["Cyprian – Les Brosses", "2 491 €/m²", "146 969 €", "19"],
+          ["**Villeurbanne, commune entière**", "**3 500 €/m²**", "**206 500 €**", "**940**"],
+        ],
+        source:
+          "Médianes : ventes d'appartements du premier semestre 2026, fichier brut « Valeurs foncières 2026 - Premier semestre » de la DGFiP (data.gouv.fr, mis en ligne le 12 octobre 2026), commune 69266, rattachement au quartier par la parcelle cadastrale et les contours officiels de la Métropole de Lyon ; calcul Markus Immobilier, extraction du 4 novembre 2026. Colonne « Pour 59 m² » = médiane affichée × 59, la surface médiane des ventes du semestre. Quartier Saint-Jean non publié : 10 ventes sur le semestre, échantillon trop mince.",
+      },
+      { type: "p", text: "Deux précautions, et elles valent pour chaque ligne. **Un semestre n'est pas une tendance** : les médianes de référence de ce site restent celles de l'année 2025 close, publiées sur [les prix au m² par quartier](/blog/prix-immobilier-villeurbanne-2026). Et **une médiane détecte un prix hors marché, elle ne vaut pas estimation** : elle ignore l'étage, l'ascenseur, le balcon, l'état du bien et le DPE, que la base DVF n'enregistre pas. Les trois quartiers les plus demandés ont chacun leur page de marché — [Gratte-Ciel](/agence-immobiliere-gratte-ciel), [Charpennes](/agence-immobiliere-charpennes) et [Cusset](/agence-immobiliere-cusset)." },
+      { type: "p", text: "⚠️ **Et surtout : ne comparez pas votre prix demandé aux prix affichés par les sites de comparaison.** Nous avons mis en regard, quartier par quartier, ce qu'un de ces sites publie et ce qui se signe réellement : l'écart va de **+17,3 % à +48,8 %** selon le quartier. Prendre ces prix pour référence conduit mécaniquement à offrir trop. Le détail de ce relevé est sur [prix affichés contre prix signés](/blog/investir-locatif-lyon)." },
+
+      { type: "h2", text: "De combien peut-on négocier un appartement à Villeurbanne ?" },
+      { type: "p", text: "**Aucun chiffre publiable ne répond à cette question, et nous préférons l'écrire que d'en inventer un.** Une marge de négociation est l'écart entre le prix demandé et le prix signé. Or la base DVF, qui est la seule source publique de prix réels, enregistre **le prix signé chez le notaire et lui seul** : le prix initialement demandé n'y figure nulle part. Aucune source publique ne permet donc de calculer une marge de négociation à l'échelle de Villeurbanne." },
+      { type: "p", text: "Les pourcentages de négociation que l'on trouve en ligne sont presque toujours nationaux, et construits sur des bases d'annonces dont le périmètre n'est pas celui d'une commune. Ils peuvent donner une intuition ; ils ne disent rien de votre quartier." },
+      { type: "p", text: "✅ **Ce qui est mesurable, en revanche, est plus utile que ce pourcentage.** Le prix signé médian du quartier vous dit si le prix demandé est déjà dans le marché ou au-dessus — et c'est précisément cet écart-là, et non une marge théorique, qui détermine ce qu'il reste à négocier. Le tableau de la section précédente suffit à faire ce calcul sur le bien que vous visitez." },
+
+      { type: "h2", text: "Que doit contenir une offre d'achat écrite ?" },
+      { type: "p", text: "**Cinq éléments, et le quatrième est celui qu'on oublie.** Une offre courte et complète vaut mieux qu'une lettre longue : tout ce qui n'y est pas écrit se discutera plus tard, au moment où vous aurez le moins de marge." },
+      { type: "ul", items: [
+        "**Le bien, identifié sans ambiguïté** : adresse, étage, numéro de lot si c'est une copropriété, surface annoncée.",
+        "**Le prix que vous proposez**, en chiffres et en lettres, et s'il inclut ou non le mobilier.",
+        "**La date limite de validité de votre offre.** C'est elle qui fixe la fenêtre de l'article 1116 : sans elle, vous dépendez du « délai raisonnable » de l'article 1117.",
+        "**Vos conditions**, à commencer par l'obtention du prêt : montant emprunté, durée, taux maximal. Une condition suspensive de prêt ne peut pas être ouverte moins d'un mois à compter de la signature du compromis.",
+        "**À qui l'offre est adressée** : au vendeur. L'acceptation qui forme la vente est la sienne, pas celle d'un intermédiaire — l'article 1118 le dit, l'acceptation est « la manifestation de volonté de son auteur d'être lié dans les termes de l'offre ».",
+      ] },
+      { type: "p", text: "Un dernier point, souvent mal compris : **aucune somme ne doit vous être réclamée au stade de l'offre.** Le dépôt de garantie n'est pas obligatoire, et il ne peut pas être exigé avant la fin du délai de rétractation, sauf s'il est manié par un professionnel disposant d'une garantie financière affectée — le compte séquestre d'un notaire, par exemple. Le détail de cette règle et de son amende est sur [compromis de vente : les délais réels](/blog/compromis-de-vente-delais)." },
+      { type: "p", text: "Si vous préparez l'ensemble du parcours et pas seulement l'offre, l'enchaînement complet — budget, surface accessible, visite, offre, compromis, acte — est détaillé sur [le calendrier et le budget réels d'un achat villeurbannais](/blog/achat-immobilier-lyon-checklist), et la traduction d'un budget en surface quartier par quartier sur [où acheter à Villeurbanne](/blog/ou-acheter-villeurbanne-quartiers)." },
+
+      { type: "h2", text: "Nos sources" },
+      { type: "p", text: "**Droit de l'offre et de l'acceptation** : code civil, articles **1113, 1114, 1115, 1116, 1117, 1118** et **1583**, dans leur rédaction en vigueur, relus le 23 novembre 2026. Les articles 1113 à 1116 et 1118 sont issus de l'ordonnance n° 2016-131 du 10 février 2016, article 2 ; l'article 1117 a été modifié par la loi n° 2018-287 du 20 avril 2018, article 4 ; l'article 1583 est de rédaction originelle (loi du 6 mars 1804). **Délai de rétractation de l'acquéreur** : article L271-1 du code de la construction et de l'habitation. **Prix** : fichier brut des valeurs foncières de la DGFiP, ressource « Valeurs foncières 2026 - Premier semestre » publiée le 12 octobre 2026 sur data.gouv.fr ; calcul Markus Immobilier, extraction du 4 novembre 2026." },
+    ],
+    faq: [
+      {
+        q: "Combien de temps mon offre d'achat reste-t-elle valable si je n'ai pas mis de date ?",
+        a: "Pendant un « délai raisonnable », que la loi ne chiffre pas. L'article 1117 du code civil rend l'offre caduque « à l'expiration du délai fixé par son auteur ou, à défaut, à l'issue d'un délai raisonnable ». Aucun texte ne fixe 5, 7 ni 10 jours : ces durées sont un usage de marché. Inscrire une date limite dans l'offre est donc la seule façon de rendre sa fin de validité lisible plutôt que discutable.",
+      },
+      {
+        q: "Puis-je retirer mon offre d'achat avant que le vendeur ne réponde ?",
+        a: "Librement tant qu'elle ne lui est pas parvenue (article 1115 du code civil), plus librement ensuite. L'article 1116 interdit la rétractation avant l'expiration du délai que vous avez fixé : si vous la retirez quand même, la vente ne se forme pas, mais votre responsabilité extracontractuelle est engagée. Le même article en limite la portée : le vendeur ne peut pas vous réclamer la compensation des avantages qu'il attendait de la vente.",
+      },
+      {
+        q: "Le vendeur peut-il accepter une autre offre après avoir accepté la mienne ?",
+        a: "Non, s'il a accepté la vôtre sans réserve ni modification. La vente est alors formée : l'article 1113 du code civil la forme par la rencontre de l'offre et de l'acceptation, et l'article 1583 la rend parfaite dès l'accord sur la chose et sur le prix. Le vendeur ne dispose d'aucun délai de rétractation. En revanche, s'il a « accepté » en changeant le prix ou une condition, il n'y a pas eu acceptation mais une offre nouvelle (article 1118).",
+      },
+      {
+        q: "Les 10 jours de rétractation commencent-ils à mon offre d'achat ?",
+        a: "Non. Les 10 jours de l'article L271-1 du code de la construction et de l'habitation courent à compter du lendemain de la première présentation de la lettre qui vous notifie le compromis ou la promesse de vente, et ils ne bénéficient qu'à l'acquéreur non professionnel d'un logement. Au stade de l'offre, ce délai n'existe pas encore.",
+      },
+      {
+        q: "Le vendeur est-il obligé d'accepter une offre au prix de l'annonce ?",
+        a: "Pas automatiquement. L'article 1114 du code civil distingue l'offre véritable — celle qui « comprend les éléments essentiels du contrat envisagé et exprime la volonté de son auteur d'être lié en cas d'acceptation », même adressée à une personne indéterminée — de la simple « invitation à entrer en négociation ». Tant qu'une annonce relève de la seconde catégorie, une offre au prix reste une offre, et elle peut être refusée. Elle sécurise votre place dans l'ordre d'arrivée, elle ne crée pas un droit à acheter.",
+      },
+      {
+        q: "De combien peut-on négocier le prix d'un appartement à Villeurbanne ?",
+        a: "Aucun chiffre publiable ne répond à cette question, et nous n'en inventons pas. Une marge de négociation suppose de connaître le prix demandé et le prix signé ; or la base DVF, seule source publique de prix réels, n'enregistre que le prix signé chez le notaire. Ce qui est mesurable est plus utile : au premier semestre 2026, la médiane des appartements vendus va de 2 491 €/m² à Cyprian – Les Brosses à 3 966 €/m² à Ferrandière – Maisons-Neuves, sur 940 ventes. Comparer le prix demandé à la médiane de son quartier dit ce qu'il reste à négocier mieux qu'un pourcentage national.",
+      },
+      {
+        q: "Un prix de 230 000 € pour 59 m² est-il élevé à Villeurbanne ?",
+        a: "Cela dépend entièrement du quartier : 230 000 € pour 59 m² font 3 898 €/m², soit 1,7 % sous la médiane des ventes signées de Ferrandière – Maisons-Neuves (3 966 €/m²) et 56,5 % au-dessus de celle de Cyprian – Les Brosses (2 491 €/m²). Sur la commune entière, la médiane du premier semestre 2026 est de 3 500 €/m², soit 206 500 € pour 59 m². Source : fichier brut des valeurs foncières de la DGFiP du 12 octobre 2026, calcul Markus Immobilier.",
+      },
+      {
+        q: "Dois-je verser un acompte au moment de l'offre d'achat ?",
+        a: "Non. Aucune somme ne doit vous être réclamée au stade de l'offre : le dépôt de garantie n'est pas obligatoire et il ne peut pas être exigé avant la fin du délai de rétractation, sauf s'il est manié par un professionnel disposant d'une garantie financière affectée, comme le compte séquestre d'un notaire.",
+      },
     ],
   },
   {
