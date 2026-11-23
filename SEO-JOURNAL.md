@@ -171,6 +171,18 @@
   `discord.gg/fSyn28G5U` → **`{"message": "Unknown Invite", "code": 10006}`**.
   **Trente et unième jour au moins.** ⚠️ **NON renotifiée** (8 notifications déjà
   envoyées, aucune action possible de notre côté).
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — DOUZIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 23/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-bkab3w` ». Le compte (2) correspond aux deux commits
+  du run (`118c423` et `e04ce64`) — même piège de vraisemblance que les onze fois
+  précédentes. ✅ **Contrôle refait à l'identique :**
+  `ls-remote origin refs/heads/main` = **`e04ce64`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
   **Les mesures vivent dans ces blocs « État des lieux ».**
 - ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 28 182 lignes au démarrage, ~1,9 Mo.
