@@ -6956,6 +6956,18 @@ applicable ici, et deux pratiques déjà en place sont confirmées sur la source
 primaire plutôt que sur des blogs.** Détail et sources dans « Techniques
 apprises ».
 
+### 2026-11-23 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (`faire-offre-achat`, `118c423`)
+
+- **Déclenchement en double** : `/blog/faire-offre-achat` servi en production (200, texte
+  réécrit présent, `lastmod` 23/11 dans le sitemap). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `29d9280`, aucun commit tiers.
+  Sitemap = **58 URL**, inchangé ; toutes les URL hors `/annonces/*` et `/blog/*` ont un
+  dossier de route dans `app/` → **aucune page de l'éditeur**. `<title>` de la home =
+  `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/blog/faire-offre-achat`, `/agence-immobiliere-villeurbanne`,
+  `/estimation`, `/robots.txt`, `/llms.txt` → 200.
+- **Non fait** : archivage du journal (28 779 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-22 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (bloc « Biens similaires », `31b5889`)
 
 - **Déclenchement en double** : le bloc des fiches sœurs est servi en production
