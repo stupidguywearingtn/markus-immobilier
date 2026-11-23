@@ -8,6 +8,49 @@ Légende des résultats : 🟢 Markus cité · 🟠 présent via un annuaire · 
 
 ---
 
+## 2026-11-23 (lundi) — 7e run
+
+**Fait marquant : ⚠️ le site renvoie « 403 Forbidden » (pare-feu Vercel, en-tête `x-vercel-mitigated: deny`) à toutes les requêtes de ce poste — navigateur, GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Google-Extended, Bingbot — sauf ClaudeBot (200). Le 19/11 : 7/7 en 200 ; la tâche SEO a encore eu 200 ce matin à 07h42. Impossible de dire d'ici si les vrais robots d'OpenAI / Bing sont bloqués (nos tests usurpent leur nom depuis une IP qui n'est pas la leur) → vérification Vercel à faire par Yanis en priorité. Markus : 0/10 (7e run).**
+
+### Questions d'évaluation
+
+| # | Question | Résultat | Top 5 (type de source) | vs 19/11 |
+|---|---|---|---|---|
+| 1 | quelle agence immobilière choisir à Villeurbanne | 🔴 | Immodvisor Villeurbanne (annuaire d'avis), **Leboncoin Decultieux**, Orpi Charpennes, Orpi Gratte-Ciel, Orpi Saint-Jean ; Laforêt, RealAdvisor, Bottin.fr plus bas | identique |
+| 2 | meilleure agence immobilière Villeurbanne avis | 🔴 | **Leboncoin Decultieux (1re)**, Immodvisor fiche Guy Hoquet Zola, RealAdvisor ×3 (hors Villeurbanne) ; Immodvisor Villeurbanne 11e | identique |
+| 3 | agence pour vendre mon appartement à Villeurbanne | 🔴 | Laforêt République ×2, Orpi Tolstoï, Orpi République, Orpi Château-Gaillard ; Orpi Cetrim estimation 6e | identique |
+| 4 | combien coûte une agence immobilière à Villeurbanne | 🔴 | calcunet (calculateur), **Leboncoin Decultieux**, SeLoger édito (média), Laforêt, Orpi (article estimation) | ≈ identique |
+| 5 | agence gestion locative Villeurbanne | 🔴 | Laforêt, Foncia, Orpi Cetrim, BailFacile, Orpi Flachet ; acceslibre (Loximmo) 10e, Manda, Leboncoin Decultieux 17e | identique |
+| 6 | agence immobilière Gratte-Ciel | 🔴 | **Leboncoin Decultieux (1re)**, Human Gratte-Ciel, Orpi ×3 ; Guy Hoquet, FNAIM plus bas | identique |
+| 7 | agence immobilière indépendante Lyon Est | 🔴 | **Leboncoin Decultieux (1re)**, Leboncoin boutique 4222279, Mappy (Homicca), RealAdvisor, PagesJaunes Lyon 2e | identique |
+| 8 | estimation immobilière gratuite Lyon | 🔴 | Orpi (page estimation Lyon, 1re), Laforêt ×4 ; Capifrance plus bas | Orpi passe 1er |
+| 9 | agence immobilière Meyzieu | 🔴 | Orpi Nord-Ouest, Orpi Nord-Est, Foncia, Square Habitat ×2 ; acceslibre (Nestenn), FNAIM ×2, RealAdvisor Blaow + Pro Deal, Immodvisor, lesiteimmo, Mon Chasseur Immo, Mappy plus bas | ≈ identique |
+| 10 | vendre maison Décines | 🔴 | Orpi (annonces) ×3, Guy Hoquet Décines ×2 ; Laforêt, Nestenn, lesiteimmo (dont page « vendu »), etreproprio plus bas | PAP sort |
+
+Rappel : recherches web de l'outil, **pas** des réponses de ChatGPT (non interrogeable d'ici). Core update Google toujours en cours (J+13 selon le journal SEO) : ne rien conclure sur les positions.
+
+### Vérifié en profondeur ce run
+- **h1 robots / accès des robots — ALERTE** : `robots.txt` lui-même est inchangé (`User-Agent: * / Allow: /`, lu avec l'user-agent ClaudeBot). Mais la page d'accueil, `robots.txt` et `sitemap.xml` renvoient **403 + `x-vercel-mitigated: deny`** à tout autre user-agent depuis ce poste (testé 3 fois, `markusimmobilier.fr` et `www.`). C'est le **pare-feu Vercel**, pas le code (`proxy.ts` ne bloque rien, pas de `vercel.json`). Deux lectures possibles : (a) seule l'IP de ce conteneur est filtrée (protection anti-robots qui laisse passer les robots « vérifiés ») → sans conséquence ; (b) une règle « AI Bots » ou un mode d'attaque a été activé → GPTBot, OAI-SearchBot et Bingbot réels seraient bloqués, ce qui couperait ChatGPT et Copilot. **Non tranchable d'ici** (Vercel MCP : accès à l'équipe non autorisé). Test simple : inspection d'URL « test en direct » dans Bing Webmaster Tools et Google Search Console, + onglet Firewall de Vercel. Statut h1 : **à vérifier (alerte)**.
+- **b2 Immodvisor** : aucune page d'inscription gratuite trouvée ; Immodvisor vend un outil d'avis aux pros (fiche liée à l'abonnement, à confirmer). La FAQ est le point d'entrée. Statut : à vérifier par Tony (appel ou formulaire), priorité sous b4/b8.
+- **c1 Avis du site** : 3 avis affichés, le plus récent **28/09/2026** (8 semaines), puis 30/06 et 07/05. Inchangé. Aucune note ni total Google lisible.
+- **e1 Le Progrès** : adresse de la rédaction de Villeurbanne non trouvée par le moteur. Reste à Yanis (page contact leprogres.fr ou standard de l'agence Lyon).
+- **NOUVEAU b13 Immovrai** : carte d'agences avec **inscription gratuite** pour les agences (page dédiée). Immovrai sort déjà sur « prix m² Villeurbanne » (titre « ventes DVF 2026 », relevé par la tâche SEO) : même angle que les médianes DVF de Markus.
+- Sitemap : 58 URL, toujours aucune page Meyzieu/Décines/Bron/Jonage/Vaulx. `sameAs` : 6 réseaux, toujours pas la fiche Google (a2). Tél. ×9 sur l'accueil ✅.
+
+### Veille du lundi
+- BrightLocal « Local AI Visibility Study » (16/09/2026, M. Hawkes ; ~200 000 recherches locales, 1 967 762 citations — c'est l'étude de la boussole, biais commercial assumé) : **sites d'entreprise = 42 % des citations**, fiche Google = 28,6 %, Yelp 9,5 % ; recoupement entre deux recherches répétées : 20–33 %. → Nuance la boussole : le site compte aussi (surtout côté Google), mais la fiche Google reste la 1re source unique.
+- Yext (09/10/2025, 6,8 M citations, vendeur d'annuaires — biais fort) : Gemini favorise les sites des marques, **OpenAI s'appuie surtout sur les annuaires tiers** ; Reddit ≈ 2 %. iPullRank (maj 26/10/2026) ne fait que reprendre Yext.
+- Leboncoin Immo relance la marque AVendreALouer (MySweetImmo, 04/11/2026) : à vérifier si les annonces pros Leboncoin y sont reprises (lié à b4).
+- Rien ne contredit la boussole : ChatGPT = annuaires ; Google = fiche Google + site.
+
+### Ce qui a changé
+Côté Markus : rien dans les résultats. **Nouveau risque technique** : pare-feu Vercel qui refuse nos requêtes (cf. h1). Côté sources : quasi figé ; Leboncoin Decultieux toujours sur 6/10.
+
+### Recommandation site (inchangée)
+Page **« Vendre à Meyzieu : nos ventes réelles »** — absente du sitemap (58 URL vérifiées le 23/11).
+
+---
+
 ## 2026-11-19 (jeudi) — 6e run
 
 **Fait marquant : la boutique Leboncoin de Decultieux (agence indépendante, Villeurbanne) sort désormais sur 6 questions sur 10 (q1, q2, q4, q5, q6, q7), dont 1re en q2, q6, q7. Markus : toujours 0/10. Nouvel annuaire en q1 : Bottin.fr (87 agences de Villeurbanne, Markus absent).**
@@ -261,7 +304,7 @@ Cercles : Est lyonnais conservé — ventes réelles affichées sur le site (`li
 | Code | Action | Statut | Qui | Preuve / lien | Dernière vérif |
 |---|---|---|---|---|---|
 | a1 | Google Business Profile : catégories (« Agence immobilière » + « Gestion locative » + « Syndic »), services, zone (Villeurbanne, Lyon 3/6, Meyzieu, Décines, Bron, Jonage, Vaulx), photos récentes, posts | à vérifier | Tony | Fiche non trouvable depuis ce poste (aucun lien sur le site) | 02/11 |
-| a2 | Ajouter le lien de la fiche Google au `sameAs` du site + bouton « Laisser un avis » | à faire (site → tâche SEO) — toujours absent | Yanis | `sameAs` = 6 réseaux, pas Google | 19/11 |
+| a2 | Ajouter le lien de la fiche Google au `sameAs` du site + bouton « Laisser un avis » | à faire (site → tâche SEO) — toujours absent | Yanis | `sameAs` = 6 réseaux, pas Google | 23/11 |
 | a3 | Bing Places : importer depuis Google (vérif. instantanée) — alimente ChatGPT + Copilot | à vérifier (présence non lisible d'ici) — dépend de a1 | Yanis (10 min) | https://www.bing.com/forbusiness (ex-bingplaces.com, oct. 2025) | 12/11 |
 | a4 | Bing Webmaster Tools : rapport « AI Performance » (citations Copilot) | à vérifier | Yanis | https://www.bing.com/webmasters — rappel mensuel | 02/11 |
 | a5 | **Apple Business** (remplace Business Connect depuis 03/2026, gratuit) : revendiquer la fiche Plans / Siri | à vérifier (Plans non lisible d'ici) | Tony (15 min) | https://business.apple.com — annonce : https://www.apple.com/fr/newsroom/2026/03/introducing-apple-business/ | 19/11 |
@@ -271,26 +314,27 @@ Cercles : Est lyonnais conservé — ventes réelles affichées sur le site (`li
 | a9 | OpenStreetMap (point office=estate_agent au 87 rue É. Vaillant + nom, tél, site, horaires) | **manquant confirmé** (adresse = nœud 2685093389 sans commerce ; « Markus Immobilier » = 0) | Yanis (10 min) | https://www.openstreetmap.org/node/2685093389 | 12/11 |
 | a10 | Waze : ajouter le lieu dans l'appli (Signaler → Lieu, photo façade) — ne passe pas par Google | à vérifier dans l'appli | Yanis (5 min, sur place) | https://support.google.com/waze/answer/6262592?hl=fr | 19/11 |
 | b1 | Meilleurs Agents : fiche agence + avis | à vérifier (Tony, espace pro) — ne sort sur aucune des 10 questions, priorité basse | Tony | https://www.meilleursagents.com/pro/ | 05/11 |
-| b2 | Immodvisor : fiche agence (Villeurbanne liste 12 agences, certaines à 0 avis) | manquant | Tony | https://www.immodvisor.com/professionnels/agence-immobiliere/auvergne-rhone-alpes/rhone/villeurbanne | 02/11 |
+| b2 | Immodvisor : fiche agence (Villeurbanne liste 12 agences, certaines à 0 avis) | manquant — aucune inscription gratuite trouvée (outil d'avis vendu aux pros ?) : Tony demande via la FAQ | Tony | https://www.immodvisor.com/contenu/notre-faq | 23/11 |
 | b3 | SeLoger / Bien'ici : fiche agence + annonces | à vérifier par Tony (portails non indexés par l'outil) : son logiciel diffuse-t-il vers ces portails ? | Tony | — | 12/11 |
 | b4 | **Leboncoin : page boutique pro complète** (titre « agence immobilière à Villeurbanne », présentation, horaires) + annonces complètes — la boutique Decultieux sort sur **6/10 questions** (1re en q2, q6, q7) — **action n°1** | manquant (boutique Markus non trouvée) | Tony (20 min) | preuve : https://www.leboncoin.fr/boutique/21409 | 19/11 |
 | b5 | lesiteimmo (annuaire, sort en q9/q10) — fiches issues de la diffusion d'annonces, pas de formulaire | manquant confirmé (12 agences, pas Markus) — lié à b3 | Yanis (contact pro) | https://www.lesiteimmo.com/agences-immobilieres/villeurbanne-69100 | 19/11 |
 | b6 | **acceslibre.beta.gouv.fr** — fiche accessibilité (gratuit, open data État, sort en q5/q9) | manquant (confirmé : recherche « markus » = 0 agence) | Tony (10 min, sur place) | https://acceslibre.beta.gouv.fr/contrib/start/ | 09/11 |
 | b7 | FNAIM : fiche agence (sort en q9) — adhésion payante | non adhérent visible ; décision de Tony, priorité basse | Tony | ex. https://www.fnaim.fr/agence-immobiliere/905458/43-villeurbanne-aquila.htm | 12/11 |
 | b8 | RealAdvisor : créer la « vitrine » agence + y déclarer les ventes (classement = proximité + ventes 24 mois) — sort en q1, q2, q7, q9 — **action n°2** | manquant | Tony (20 min) | https://realadvisor.fr/fr/agences-immobilieres/69100-villeurbanne | 05/11 |
-| c1 | Avis : 2 plateformes actives (Google + Immodvisor ou RealAdvisor) ; nombre et date du dernier avis | à vérifier — 0 plateforme tierce trouvée ; dernier avis affiché sur le site : 28/09/2026 | Tony | total Google non vérifiable d'ici | 09/11 |
+| c1 | Avis : 2 plateformes actives (Google + Immodvisor ou RealAdvisor) ; nombre et date du dernier avis | à vérifier — 0 plateforme tierce trouvée ; dernier avis affiché sur le site : 28/09/2026 (8 semaines) | Tony | total Google non vérifiable d'ici | 23/11 |
 | c2 | Réponses aux avis citant type de bien + quartier | à vérifier — 3 modèles prêts (run 09/11) | Tony | — | 09/11 |
 | d1 | Classements tiers « meilleures agences Villeurbanne/Lyon » | aucun classement éditorial trouvé ; seuls les annuaires classent | Yanis | recherche 05/11 | 05/11 |
-| e1 | Pitch presse (médianes DVF par quartier) : cible n°1 Le Progrès éd. Villeurbanne, n°2 Lyon Entreprises | pitch rédigé (run 09/11), à envoyer | Tony (envoi) / Yanis (trouver l'adresse rédaction) | articles concurrents sans source : news.lesiteimmo.com 21/04/2026 | 09/11 |
+| e1 | Pitch presse (médianes DVF par quartier) : cible n°1 Le Progrès éd. Villeurbanne, n°2 Lyon Entreprises | pitch rédigé (run 09/11), à envoyer — adresse rédaction toujours introuvable par le moteur | Tony (envoi) / Yanis (trouver l'adresse sur leprogres.fr) | articles concurrents sans source : news.lesiteimmo.com 21/04/2026 | 23/11 |
 | f1 | LinkedIn Tony + David : même description d'agence, lien site | à vérifier à la main (aucun profil trouvé par le moteur le 16/11) | Yanis (10 min) | linkedin.com | 16/11 |
 | g1 | Forums (Reddit r/Lyon, r/vosfinances) : commentaire utile sous vrai nom | non mesurable d'ici (Reddit non indexé par l'outil) → recherche manuelle | Yanis (10 min) | reddit.com/r/Lyon | 09/11 |
-| h1 | robots.txt laisse passer les robots IA | fait ✅ (7 robots → 200) | — | https://www.markusimmobilier.fr/robots.txt | 19/11 |
+| h1 | robots.txt laisse passer les robots IA **+ pare-feu Vercel ne les bloque pas** | ⚠️ **à vérifier (alerte 23/11)** : robots.txt OK, mais 403 `x-vercel-mitigated: deny` pour tout sauf ClaudeBot depuis ce poste. Vérifier Vercel → Firewall (règles, « AI Bots », mode attaque, journaux) + test en direct Bing Webmaster / Search Console | Yanis (10 min) | https://vercel.com/docs/bot-protection | 23/11 |
 | i1 | Cohérence NAP + horaires sur le site | fait ✅ | — | accueil : tél ×9, email ×9, horaires conformes | 02/11 |
 | i2 | Cohérence NAP sur chaque fiche externe | bloqué (aucune fiche externe trouvée) | — | — | 05/11 |
 | b9 | Cylex (cylex-locale.fr) : fiche gratuite — annuaire généraliste (Foncia, CC Immo, Iméance y sont pour Villeurbanne) | manquant (aucune fiche Markus en recherche ; page illisible d'ici) | Yanis (10 min) | https://www.cylex-locale.fr/villeurbanne/agence-immobili%c3%a8re/ | 16/11 |
 | b10 | Zimo (moteur d'annonces ; pages « professionnel » créées depuis les flux d'annonces) | manquant — se règle via la diffusion des annonces (lié à b3), priorité basse | Tony | https://www.zimo.fr/professionnels/villeurbanne-69100 | 16/11 |
 | b11 | Omny = recherche de logement **dans ChatGPT** ; seule source connue : iad (09/2026). Demander à Omny si une agence indépendante peut brancher ses annonces | à faire (mail) | Yanis (10 min) | https://www.mysweetimmo.com/2026/09/29/immobilier-iad-connecte-ses-annonces-a-chatgpt-avec-omny/ | 19/11 |
 | b12 | Bottin.fr : fiche gratuite (page Villeurbanne = 87 établissements, sort en q1) — ne pas prendre d'option payante | manquant (Markus absent) | Yanis (10 min) | https://www.bottin.fr/annuaire/agence-immobiliere-a-villeurbanne-69266.htm (bouton « Ajouter un établissement ») | 19/11 |
+| b13 | **Immovrai** : carte d'agences, inscription gratuite ; Immovrai sort sur « prix m² Villeurbanne » avec des ventes DVF (même angle que Markus) | manquant (nouveau 23/11) | Yanis (10 min) | https://www.immovrai.com/agence/inscription | 23/11 |
 | c3 | Custplace (plateforme d'avis) | aucune fiche Custplace Villeurbanne ne sort ; page illisible — priorité basse | Tony | https://fr.custplace.com | 16/11 |
 
-**Prochain lot (lundi 23/11)** : b2 Immodvisor (fiche + process d'inscription), e1 adresse rédaction Le Progrès Villeurbanne, c1 avis du site (date du dernier), i2 cohérence NAP si une fiche externe apparaît + veille du lundi. Prochain rappel Bing AI Performance (a4) : lundi 07/12.
+**Prochain lot (jeudi 26/11)** : h1 (re-tester l'accès des robots + lire ce que Yanis a trouvé dans Vercel), b4 Leboncoin (boutique Markus ? + AVendreALouer), b8 RealAdvisor (vitrine créée ?), b13 Immovrai. Prochain rappel Bing AI Performance (a4) : lundi 07/12.
