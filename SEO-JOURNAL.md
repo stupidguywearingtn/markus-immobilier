@@ -14,6 +14,168 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-23 (lundi)**
+
+- ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 22/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 87 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`3b4ddb5`**, `git ls-remote origin refs/heads/main` = **`3b4ddb5`** :
+  identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-bkab3w`**, pas sur `main`.
+  **Vingt-deuxième constat consécutif**, nom différent chaque fois.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-septième constat identique** (21/09 → 23/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Quarantième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles — identique du
+  07/11 au 23/11.** Aucune page ajoutée ni retirée par le client. `lastmod` le
+  plus récent = **21/11** (le chantier du 22/11 n'avait volontairement avancé
+  aucune date). `<title>` de la home inchangé. Les 8 URL de santé → **200**.
+- 🟢 **CHANTIER DU JOUR : CONTENU** (22/11 non-contenu → **23/11 contenu**).
+  ✅ **Veille du lundi : FAITE CE JOUR**, avant le choix du chantier. Prochaine
+  due le **30/11**.
+- ✅ 🟢 **LE CHANTIER DU 22/11 EST BIEN SERVI SUR LES 7 FICHES, Y COMPRIS LES 3
+  FICHES SUPABASE — ET LA PROJECTION EST DÉSORMAIS UN RELEVÉ.** Contrôle fait en
+  premier, comme la consigne le demandait : **7 fiches sur 7** portent la phrase
+  « Nos autres biens » (2 occurrences chacune) et **3 liens `href="/annonces/<slug>"`
+  distincts**, l'auto-lien exclu. **21 arêtes, exactement le chiffre projeté**
+  (7 × 3). ⚠️ **Une seule borne de la projection était fausse, et elle l'était
+  par défaut** : le maximum annoncé était 4–5 entrants, le relevé en donne **6**
+  (`appartement-t3-bis-86m-grand-balcon`, cité par les six autres). Le minimum
+  est bien **1** (`garage-a-louer…` et `garage-ferme-en-sous-sol-cusset`), et
+  **aucune fiche n'est à 0**. 📌 **Le chantier du 22/11 est clos : ne pas le
+  rouvrir.**
+- 🔴 **LE *CORE UPDATE* DE NOVEMBRE TOURNE TOUJOURS, J+13, TOUJOURS SANS DURÉE.**
+  Recontrôlé sur la **source primaire** (historique « Ranking » du tableau de
+  bord d'état de Google Search). 🆕 **Le tableau a été lu EN ENTIER cette fois :
+  41 entrées**, de décembre 2021 à ce jour. « November 2026 core update »,
+  démarrée le **10/11/2026**, colonne « Duration » = **« Information »** — et
+  c'est bien **la seule des 41 sans durée**.
+  🆕 🔴 **ET LA LECTURE DES 41 LIGNES DÉFAIT L'HYPOTHÈSE TENUE DU 19 AU 22/11 —
+  VOIR « Erreurs commises et corrigées ».** Comparer à mars (12 j 4 h) et mai
+  (11 j 21 h) revenait à comparer aux **deux entrées les plus courtes** de la
+  série des *core updates*. Sur l'historique complet : décembre 2025 **18 j 2 h**,
+  juin 2025 **16 j 18 h**, novembre 2024 **23 j 13 h**, août 2024 **19 j 4 h**,
+  novembre 2023 **25 j 21 h**, mars 2024 **45 j**. **J+13 n'a donc rien
+  d'exceptionnel, et n'autorise toujours aucune conclusion.**
+  ⛔ **Ne plus prédire de date de fin — cette fois pour une raison mesurée, pas
+  par prudence.** Le seul signal exploitable reste l'apparition d'une durée.
+- 🟡 **SERP ÉCHUE CE JOUR, RELEVÉE, SITE ABSENT.** **« estimation immobilière
+  Villeurbanne »** (échéance 23/11), l'une des six requêtes du brief :
+  **9 résultats, site absent.** Composition : `nestenn` **×3** (deux agences de
+  secteur + la page communale du réseau), `orpi` (Cetrim), `liberkeys`,
+  `bien-estimer-safti`, `novea-immobilier`, `netvendeur`, `pap`.
+  📌 **Observation utile pour le choix d'un futur chantier : huit des neuf
+  résultats sont des OUTILS d'estimation ou des pages de prix au m², pas des
+  pages d'agence.** Et les chiffres qu'ils affichent divergent entre eux
+  (3 641 €/m² chez `pap` au 01/11/2026, 3 849 chez `bien-estimer-safti` en août,
+  4 017 chez `netvendeur`, « environ 3 800 » chez `nestenn`) — **le créneau de
+  l'écart affiché/signé que le site documente déjà est donc toujours ouvert sur
+  cette requête.** ⚠️ **Mesurée à J+13 d'un core update : non interprétable.**
+  **Remesure : 07/12.**
+- 🟡 🆕 **SERP DE SUJET NEUVE, MESURÉE AVANT D'ÉCRIRE — SITE ABSENT, ET LA SERP
+  EST À 100 % NATIONALE.** « offre d'achat acceptée le vendeur peut-il se
+  rétracter délai validité » : **10 résultats, aucun acteur local, aucune agence
+  lyonnaise** — `blog.iadfrance`, `pretto`, `alex.qualitel`, `kohenavocats`,
+  `pap`, `edito.seloger`, `financeconseil`, `astero-immobilier`, `groupe-rdimmo`,
+  `peyronnet-avocat`. 🆕 📌 **ET LE MOTEUR DÉSIGNE LUI-MÊME LE DÉFAUT DE SES
+  SOURCES** : il relève que la durée de validité « est en principe indiquée dans
+  l'offre, souvent entre 5 et 10 jours » **selon un seul site**, et termine par
+  « je n'ai pas consulté les textes officiels ». **Aucun des dix ne cite
+  l'article qui régit la question.** **C'est la justification mesurée du chantier
+  du jour, et elle en a dicté l'angle.** **Premier relevé. Remesure : 07/12.**
+- ⚠️ 🆕 **UNE REQUÊTE MESURÉE PUIS ÉCARTÉE, ET LA LEÇON VAUT D'ÊTRE GARDÉE.**
+  « faire une offre d'achat appartement Villeurbanne de combien négocier le
+  prix » ne rend **que des portails d'annonces** (`orpi`, `hosman`, `foncia` ×2,
+  `guy-hoquet`, `human-immobilier`, `etreproprio`, `pap`, `immoneuf`) : **c'est
+  une SERP transactionnelle, pas informationnelle.** Y mesurer l'absence du site
+  n'apprend rien sur un article de blog. **Voir « Techniques apprises ».**
+- 🟢 🔴 **CHANTIER : `faire-offre-achat` RÉÉCRIT DE FOND EN COMBLE.** C'était,
+  après le LMNP (16/11), la visite (19/11) et la check-list (21/11), **le
+  contenu le plus faible du site parmi ceux qui ont une requête réelle** :
+  **113 mots de blocs `text:` en source**, trois H2 d'une phrase, **zéro article
+  de loi, zéro chiffre, zéro source.** La page sert désormais **2 150 mots de
+  blocs `text:`**, soit **3 406 mots rendus** (3 325 hors en-tête et pied de
+  page) contre **281** (200) avant.
+- ✅ **L'ANGLE EST CELUI QUE LA SERP A DÉSIGNÉ.** Les dix concurrents expliquent
+  tous la même chose et **aucun ne cite le texte**. La page prend donc les deux
+  créneaux laissés vides : **le droit nommé et relu**, et **le prix local**.
+- ✅ **LE DROIT, RELU ARTICLE PAR ARTICLE AVANT D'ÊTRE REFORMULÉ.** Articles
+  **1113, 1114, 1115, 1116, 1117, 1118 et 1583** du code civil, cités dans leur
+  rédaction en vigueur, **chacun avec sa source de rédaction** (ordonnance
+  n° 2016-131 du 10/02/2016 art. 2 ; **loi n° 2018-287 du 20/04/2018 art. 4**
+  pour le 1117 ; loi du 6 mars 1804 pour le 1583). **Texte lu sur une
+  republication officielle, pas de mémoire** — voir « Techniques apprises » pour
+  la voie d'accès, Légifrance rendant toujours 403.
+- ✅ **TROIS POINTS QU'AUCUN DES DIX RÉSULTATS NE POSE** : (1) **aucun texte ne
+  fixe 5, 7 ni 10 jours** de validité — l'article 1117 ne connaît que « le délai
+  fixé par son auteur ou, à défaut, un délai raisonnable » ; (2) la
+  responsabilité encourue par l'auteur qui rétracte (art. 1116) **n'oblige pas
+  « à compenser la perte des avantages attendus du contrat »**, ce qui joue en
+  faveur de l'acheteur et que personne n'écrit ; (3) une contre-proposition du
+  vendeur est **une offre nouvelle** (art. 1118), donc c'est lui qui devient tenu
+  par son propre délai.
+- ✅ **LE PARTAGE DES RÔLES EST RESPECTÉ À LA LETTRE** : les 10 jours de
+  `L271-1` restent à `compromis-de-vente-delais` (lien, 4 lignes, pas de
+  reprise), le calendrier et le budget à `achat-immobilier-lyon-checklist`, la
+  visite à `questions-a-poser-visite`, la capacité d'emprunt à sa page, l'écart
+  affiché/signé à `investir-locatif-lyon`, les médianes 2025 à
+  `prix-immobilier-villeurbanne-2026`.
+- ✅ **LE PRIX LOCAL : AUCUN CHIFFRE NEUF, QUE DE L'ARITHMÉTIQUE SUR DU PUBLIÉ.**
+  Les **7 médianes signées du S1 2026** (940 ventes, fichier brut DGFiP du
+  12/10/2026) reprises **à l'identique** du troisième tableau de
+  `investir-locatif-lyon`, plus une colonne « Pour 59 m² » qui est la
+  **multiplication des deux chiffres affichés** (3 966 × 59 = 233 994), annoncée
+  comme telle dans le texte **et** dans la légende. **Convention d'arrondi du
+  13/10 respectée** : on multiplie les valeurs AFFICHÉES, pour qu'un lecteur qui
+  refait le calcul retrouve le montant publié.
+- ✅ **LA PHRASE QUI PORTE LE CHANTIER, ET ELLE EST VÉRIFIABLE À LA MAIN** :
+  230 000 € pour 59 m² = **3 898 €/m²**, soit **−1,7 % sous la médiane de
+  Ferrandière – Maisons-Neuves** et **+56,5 % au-dessus de celle de Cyprian –
+  Les Brosses**. **Un prix n'est pas cher à Villeurbanne, il l'est dans un
+  quartier.**
+- ✅ 🔴 **ET CE QUI N'EST PAS PUBLIÉ EST ÉCRIT NOIR SUR BLANC : AUCUNE MARGE DE
+  NÉGOCIATION.** La requête appelle un pourcentage ; **DVF enregistre le prix
+  signé, jamais le prix demandé**, donc aucune source publique ne permet de le
+  calculer à la maille communale. La page consacre **un H2 entier** à le dire et
+  **une réponse de FAQ**, au lieu de recopier un pourcentage national.
+  📌 **Même parti pris que « aucun délai de vente publié » (19/11) : le refus
+  argumenté est lui-même un contenu que les dix concurrents n'ont pas.**
+- ✅ **3 LIENS NEUFS VERS LES PAGES DE QUARTIER** (Gratte-Ciel, Charpennes,
+  Cusset), **chacun sur une phrase écrite pour lui** — jamais une ancre posée sur
+  du texte existant (règle du 16/09). **C'est un acompte sur le chantier
+  non-contenu n° 1**, qui reste ouvert pour les 5 articles restants.
+- ✅ **AUCUN BLOC `steps` AJOUTÉ** : le piège `HowTo.name` invisible (19 et
+  21/11) est évité par construction, pas corrigé après coup. **Et la veille du
+  jour confirme que ce balisage ne vise plus aucun affichage Google** — voir
+  « Techniques apprises ».
+- ✅ **PARITÉ FAQ VISIBLE ↔ `FAQPage` : 8/8**, question et réponse retrouvées
+  mot pour mot dans le texte rendu. **4 blocs `ld+json`** : `RealEstateAgent`,
+  `BlogPosting` (`dateModified` = **2026-11-23**), `FAQPage` (8), `BreadcrumbList`.
+- ✅ **`updated` AVANCÉ, ET CETTE FOIS C'EST JUSTIFIÉ** : la page a été réécrite
+  à 95 %. Rien à voir avec les 17, 20 et 22/11, où l'ajout d'un lien ne changeait
+  rien à ce que la page disait.
+- ✅ **CONTRÔLES** : `eslint` **35 / 24**, chiffre inchangé depuis le 02/11,
+  **aucune erreur neuve** ; `tsc --noEmit` propre ; **build en 0, 92 pages** ;
+  serveur tué avant redémarrage (**0 `next-server` restant**) ; contrôle de rendu
+  visant des chaînes **absentes avant et présentes après** (« À quel prix une
+  offre est-elle crédible à Villeurbanne », « 146 969 », « 3 898 €/m² ») ;
+  **0 `**`, 0 `](`, 0 `&apos;`** dans le texte visible ; **débordement horizontal
+  de page = 0** en 390 px (iPhone 13) et 1440 px ; **crawl local 55 URL, 55 en
+  200**. `/llms.txt` reprend le nouveau titre et le nouvel `excerpt`
+  **automatiquement** (il dérive de `ARTICLES`) — rien à y maintenir à la main.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-CINQUIÈME JOUR.** Recontrôlé ce jour : **0 occurrence**. **Non corrigé,
+  et c'est volontaire** (page de Tony, règle des 90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE**, recontrôlée ce jour sur l'API :
+  `discord.gg/fSyn28G5U` → **`{"message": "Unknown Invite", "code": 10006}`**.
+  **Trente et unième jour au moins.** ⚠️ **NON renotifiée** (8 notifications déjà
+  envoyées, aucune action possible de notre côté).
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+- ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 28 182 lignes au démarrage, ~1,9 Mo.
+  **Toujours en attente**, et le coût de lecture augmente à chaque run.
+
 **Au 2026-11-22 (dimanche)**
 
 - ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 21/11.** Aucun manque
@@ -6706,6 +6868,82 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-23 (lundi) — `faire-offre-achat` ne citait aucun texte et aucun prix : l'article passe de 113 à 2 150 mots, et prend les deux créneaux que la SERP laisse vides
+
+**Mesure d'abord, sur la production.** `faire-offre-achat` servait **281 mots
+rendus** (200 hors en-tête et pied de page), soit **113 mots de blocs `text:` en
+source** : trois H2 d'une phrase (« Le montant », « Sa valeur d'engagement »,
+« Bien négocier »), **zéro article de loi, zéro chiffre, zéro source**. C'était
+le favori inscrit au journal depuis le 21/11, parce que la check-list réécrite ce
+jour-là lui confie explicitement l'étape « offre » et lui envoie un lien
+éditorial.
+
+**La SERP, relevée AVANT d'écrire** (« offre d'achat acceptée le vendeur peut-il
+se rétracter délai validité ») : **10 résultats, site absent, aucun acteur
+local** — `blog.iadfrance`, `pretto`, `alex.qualitel`, `kohenavocats`, `pap`,
+`edito.seloger`, `financeconseil`, `astero-immobilier`, `groupe-rdimmo`,
+`peyronnet-avocat`. **Et le moteur signale lui-même le défaut de ses sources** :
+la durée de validité « souvent entre 5 et 10 jours » n'est attribuée qu'à un seul
+site, et la synthèse se termine par « je n'ai pas consulté les textes
+officiels ». **Aucun des dix ne cite l'article qui régit la question.**
+
+**Ce qui a été écrit, et rien de plus.**
+
+1. **Le droit, nommé et relu.** Articles **1113, 1114, 1115, 1116, 1117, 1118**
+   et **1583** du code civil, dans leur rédaction en vigueur, chacun avec sa
+   source de rédaction. Trois apports qu'aucun des dix n'a : *(a)* **aucun texte
+   ne fixe 5, 7 ni 10 jours** — l'art. 1117 ne connaît que « le délai fixé par
+   son auteur ou, à défaut, un délai raisonnable » ; *(b)* la responsabilité de
+   l'art. 1116 **n'oblige pas « à compenser la perte des avantages attendus du
+   contrat »** ; *(c)* la contre-proposition du vendeur est **une offre
+   nouvelle** (art. 1118), ce qui retourne la charge du délai.
+2. **Le prix, quartier par quartier.** Les **7 médianes signées du S1 2026**
+   (940 ventes, fichier brut DGFiP du 12/10/2026) reprises à l'identique de
+   `investir-locatif-lyon`, plus une colonne « Pour 59 m² » qui est la
+   **multiplication des chiffres affichés**, annoncée comme telle. La phrase qui
+   porte le chantier : **230 000 € pour 59 m² = 3 898 €/m², soit −1,7 % sous la
+   médiane de Ferrandière – Maisons-Neuves et +56,5 % au-dessus de celle de
+   Cyprian – Les Brosses.**
+3. **Ce qui n'est PAS publié, et pourquoi.** Un H2 entier et une réponse de FAQ
+   disent qu'**aucune marge de négociation villeurbannaise n'est calculable** :
+   DVF enregistre le prix signé, jamais le prix demandé. **Aucun pourcentage
+   national n'a été recopié à la place.**
+4. **Trois liens neufs vers les pages de quartier** (Gratte-Ciel, Charpennes,
+   Cusset), chacun sur une phrase écrite pour lui.
+
+**Décidé de NE PAS faire, et pourquoi.**
+- **Aucun bloc `steps`**, donc aucun `HowTo` : le piège du `HowTo.name` invisible
+  (19 et 21/11) est évité par construction. La liste « que doit contenir une
+  offre » est un simple `ul`.
+- **Aucune reprise du régime des 10 jours de `L271-1`** : quatre lignes et un
+  lien vers `compromis-de-vente-delais`, qui le détaille déjà.
+- **Aucune affirmation sur le mandat de l'agence** (« l'agence qui accepte sans
+  mandat n'engage pas le vendeur », avancé par l'un des dix résultats) :
+  **non vérifié sur un texte, donc non publié.** La page dit seulement que
+  l'acceptation qui forme la vente est celle du vendeur, ce que l'art. 1118
+  suffit à fonder.
+- **Aucun chiffre de délai de vente, aucune statistique de négociation.**
+
+**Contrôles** : parité FAQ visible ↔ `FAQPage` **8/8** ; 4 blocs `ld+json`
+(`RealEstateAgent`, `BlogPosting` `dateModified` 2026-11-23, `FAQPage`,
+`BreadcrumbList`) ; `eslint` **35 / 24** inchangé ; `tsc` propre ; **build en 0,
+92 pages** ; rendu contrôlé sur des chaînes **absentes avant, présentes après** ;
+**0 `**`, 0 `](`, 0 `&apos;`** visibles ; **débordement horizontal 0** en 390 px
+et 1440 px ; **crawl local 55/55 en 200**. `/llms.txt` se met à jour tout seul
+(il dérive de `ARTICLES`).
+
+**Note de maintenance ajoutée en tête de `lib/blog.ts`** : l'article republie des
+médianes DVF, il entre donc dans la liste des pages à recalculer si elles
+bougent, avec sa convention d'arrondi et l'interdiction d'y ajouter une marge de
+négociation.
+
+### 2026-11-23 (lundi, étape 5) — Veille : deux confirmations sur source primaire, rien de neuf à appliquer
+
+Veille due ce jour (dernière : 16/11). **Résultat honnête : rien de nouveau n'est
+applicable ici, et deux pratiques déjà en place sont confirmées sur la source
+primaire plutôt que sur des blogs.** Détail et sources dans « Techniques
+apprises ».
+
 ### 2026-11-22 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (bloc « Biens similaires », `31b5889`)
 
 - **Déclenchement en double** : le bloc des fiches sœurs est servi en production
@@ -12840,6 +13078,211 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
+
+**Angle du dernier run : CONTENU — `faire-offre-achat` réécrit de fond en comble**
+(23/11 : 113 mots de blocs `text:` → **2 150** ; 281 mots rendus → **3 406** ;
+SERP à 100 % nationale et aucun des 10 résultats ne cite le texte qui régit la
+question ; articles 1113 à 1118 et 1583 du code civil relus un par un, 7 médianes
+de quartier du S1 2026 + colonne « Pour 59 m² », et un H2 entier pour expliquer
+pourquoi **aucune marge de négociation n'est publiable**).
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (24/11, mardi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 21/11 contenu → 22/11 non-contenu → **23/11 contenu**).
+✅ **Veille du lundi faite le 23/11, prochaine due le 30/11** — pas demain.
+
+✅ **RIEN À VÉRIFIER EN PRODUCTION AU DÉMARRAGE DU 24/11, pour la première fois
+depuis plusieurs runs** : le contrôle que le 22/11 avait laissé en suspens a été
+fait ce jour et **confirme la projection** (21 arêtes, 7 fiches sur 7, aucune à
+0 entrant). ⚠️ **Contrôle d'usage toujours dû, en revanche** : que la page
+`/blog/faire-offre-achat` soit bien servie avec son nouveau titre et son tableau
+(chercher « 146 969 » ou « À quel prix une offre est-elle crédible », chaînes qui
+n'existaient pas avant ce run).
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE *CORE UPDATE* DU 10/11
+TOURNAIT ENCORE LE 23/11 — J+13, SANS DURÉE.** 🆕 **Et la comparaison qui servait
+à en prédire la fin était biaisée** : mars (12 j 4 h) et mai (11 j 21 h) sont les
+**deux plus courts** de la série. L'historique complet des 41 entrées donne aussi
+décembre 2025 **18 j**, juin 2025 **16 j**, novembre 2024 **23 j**, novembre 2023
+**25 j**, mars 2024 **45 j**. ⛔ **Ne plus prédire de date de fin. Le seul signal
+qui rouvre les remesures interprétables est l'apparition d'une durée dans la
+colonne « Duration ».**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE 24/11, par ordre d'impact :**
+  1. 🔴 **FINIR LE CHANTIER DU 20/11 : CINQ ARTICLES NOMMENT ENCORE LES
+     QUARTIERS SANS LES LIER.** `plus-value-immobiliere-calcul` **9 mentions /
+     0 lien**, `frais-de-notaire-lyon-2026` **6 / 0** (⚠️ a déjà reçu un ajout le
+     17/11), `vendre-sans-agence` **4 / 0**, `loi-carrez-surface` **3 / 0**,
+     `vendre-en-viager-villeurbanne` **2 / 0**. **Même recette : une phrase
+     écrite, jamais une ancre sur du texte existant, chiffres relus sur la page
+     cible.** 📌 **Toujours le premier de la liste.** 🆕 **`faire-offre-achat` a
+     reçu ses 3 liens le 23/11 : il sort de la liste.**
+  2. 🟡 **`HowTo.name` N'EST RENDU VISIBLE SUR AUCUNE PAGE À BLOC `steps`, SAUF
+     CELLE DU 21/11.** ⚠️ **Recenser les articles à bloc `steps` et leur
+     appliquer la même phrase visible**, un par un. ⛔ **Ne pas toucher au
+     renderer.** 🆕 **Priorité à revoir à la baisse** : la veille du 23/11
+     confirme sur source primaire que `HowTo` **et** `FAQPage` ne produisent plus
+     aucun rich result Google. Ce balisage ne sert plus que la lecture machine —
+     la parité reste obligatoire, mais le gain attendu est GEO, pas SERP.
+  3. 🟡 **DONNER AUX FICHES D'ANNONCE UN LIEN VERS LEUR PAGE DE QUARTIER.**
+     Écarté le 22/11 (le quartier est déjà en gras dans « Localisation », et
+     aucune des 4 fiches locales n'est dans un quartier qui a une page).
+     📌 **Ne l'ouvrir qu'en écrivant une phrase inconditionnelle.**
+  4. 🟡 **DEUX À TROIS LIENS ENTRANTS ÉDITORIAUX VERS `lmnp-location-meublee` ET
+     `home-staging-vendre-plus-cher`**. ⛔ **Gels levés le 30/11 et le 28/11.**
+  5. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     Levée d'ambiguïté, pas correction d'erreur.
+  6. 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite). **Une
+     lecture du V de `L125-5` alinéa par alinéa suffit.** 🆕 **Et la voie d'accès
+     au texte existe désormais** : la republication des codes de `droit.org`
+     (voir « Techniques apprises » du 23/11) rend les codes lisibles là où
+     Légifrance répond 403. 📌 **Occasion d'y poser aussi le lien de quartier
+     manquant (point 1).**
+  7. 🟡 **`charges-copropriete` ET `taxe-fonciere-vente-qui-paie` TRAITENT LE
+     MÊME SUJET SANS SE CONNAÎTRE.** ✅ **Gel levé le 24/11 — ouvrable demain.**
+  8. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11).
+  9. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **vingt-deux
+     runs** sans recontrôle). **Contrôle à deux temps obligatoire.**
+ 10. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **vingt-sixième
+     report**). **`blog.qoridor.fr/article/home-staging` en priorité.**
+ 11. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 12. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 13. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 23/11. **Jour creux.**
+ 14. 🟡 🆕 **ARCHIVER LE JOURNAL.** **28 182 lignes, ~1,9 Mo au démarrage du
+     23/11.** Le lire coûte désormais une part notable de chaque run, et les
+     sections anciennes ne servent plus. ⚠️ **Ne jamais archiver « État des
+     lieux » ni « Chantiers en attente »** : ce sont les deux seules sections que
+     le run du lendemain doit lire en entier.
+ 15. ⛔ **NE PLUS CHERCHER DE TROU DANS LE BALISAGE D'ÉTABLISSEMENT.** Piste
+     fermée (20/11).
+ 16. ⛔ **LE MAILLAGE DES FICHES EST FAIT (22/11) ET VÉRIFIÉ EN PRODUCTION
+     (23/11). NE PAS LE ROUVRIR.**
+
+🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (25/11), par ordre d'impact :**
+  1. 🟡 **LE BLOG FAIBLE — TROIS ARTICLES RESTANTS** (mots de blocs `text:`,
+     recomptés le 23/11) : `vendre-appartement-lyon-etapes` **34**,
+     `vendre-vite-lyon` **43**, `capacite-emprunt-immobilier` **170**.
+     📌 **LE FAVORI EST `vendre-appartement-lyon-etapes`** : c'est désormais le
+     plus faible du site, et il porte une requête vendeur, côté « argent ».
+     ⚠️ **Partage des rôles à tenir** : le prix appartient à
+     `prix-immobilier-villeurbanne-2026`, les honoraires à `vendre-sans-agence`
+     et `/honoraires`, le mandat à `mandat-simple-ou-exclusif`, les diagnostics
+     à `diagnostics-obligatoires-vente`, la préemption à
+     `vendre-logement-loue-droit-preemption-villeurbanne`. **Mesurer la SERP
+     avant d'écrire, comme les 19, 21 et 23/11.**
+     ⛔ **`capacite-emprunt-immobilier` RESTE BLOQUÉ** (35 % / 25 ans non lus sur
+     un texte primaire ; `economie.gouv.fr` et `legifrance.gouv.fr` rendent 403).
+     🆕 📌 **Mais une voie neuve est ouverte** : `droit.org` republie les codes
+     officiels. **À tester pour le code de la consommation et, si la décision
+     HCSF n'y est pas, chercher un autre accès primaire** — elle n'est pas dans
+     un code.
+  2. 🆕 🔴 **`mandat-simple-ou-exclusif` MÉRITE D'ÊTRE ROUVERT, ET C'EST LA SERP
+     DU 22/11 QUI LE DIT.** `salengro-immo.fr` a occupé le créneau local.
+     **État mesuré le 23/11 : 2 315 mots rendus, 1 415 mots de blocs `text:`** —
+     ce n'est donc **pas** un article faible, c'est un article **concurrencé**.
+     ⚠️ **Lire la page de Salengro avant d'écrire.** 📌 **Notre apport propre du
+     08/11 — le plafond légal de la clause pénale — tient toujours.**
+  3. 🟡 🆕 **LA SERP « estimation immobilière Villeurbanne » DÉSIGNE UN CRÉNEAU,
+     ET CE N'EST PAS CELUI QU'ON CROIT.** Relevée le 23/11 : **8 des 9 résultats
+     sont des outils d'estimation ou des pages de prix au m²**, et **leurs
+     chiffres divergent** (3 641 / 3 849 / 4 017 / « environ 3 800 » €/m²).
+     📌 **Le site documente déjà l'écart affiché/signé** (`investir-locatif-lyon`) :
+     la question à trancher est s'il faut une page qui mette en regard **les
+     estimateurs en ligne eux-mêmes**, pas les sites de prix. ⚠️ **À mesurer
+     avant d'écrire, et ⛔ sans jamais toucher à l'outil d'estimation.**
+  4. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     « bail mobilité », « colocation meublée Villeurbanne », « louer à un
+     étudiant Villeurbanne ». ⚠️ **Triple contrôle du 03/11 obligatoire.**
+  5. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+     `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
+     difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  6. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — gel levé le **27/11**.
+  7. ⛔ **NE PAS RÉÉCRIRE** : `faire-offre-achat` (23/11) → **07/12** ·
+     `achat-immobilier-lyon-checklist` (21/11) → **05/12** ·
+     `questions-a-poser-visite` (19/11) → **03/12** ·
+     `lmnp-location-meublee` (16/11) → **30/11** ·
+     `home-staging-vendre-plus-cher` (14/11) → **28/11** ·
+     `cout-gestion-locative` (13/11) → **27/11** ·
+     `compromis-de-vente-delais` (12/11) → **26/11** ·
+     `taxe-fonciere-vente-qui-paie` (10/11) → **24/11** ·
+     `prix-immobilier-villeurbanne-2026` → **03/12** ·
+     `preavis-depot-garantie-location-villeurbanne` et
+     `rentabilite-locative-lyon` (21/11) → **05/12**.
+  8. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** : le contenu existe, le manque était
+     de la visibilité. **Remesurer le 05/12.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🟡 **ENCADREMENT DES LOYERS : VÉRIFIÉ LE 22/11, TOUJOURS PAS PROMULGUÉ.**
+  Adoption définitive le **19/11/2026**. **Nos pages portent une phrase DATÉE au
+  21/11, qui reste exacte.** **Revérifier vers le 04/12** et, une fois la loi
+  publiée, remplacer la phrase par la référence de la loi. 🆕 **Voie d'accès
+  possible pour le texte : `droit.org` republie les codes, mais PAS le JO — le
+  contrôle de promulgation reste à faire autrement.**
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT.** 🆕 **La SERP
+  « estimation immobilière Villeurbanne » du 23/11 l'appuie une cinquième fois** :
+  9 résultats, site absent, dont `pap`, `netvendeur`, `bien-estimer-safti` et
+  trois pages `nestenn`. **Des réseaux et des comparateurs, pas des agences
+  indépendantes.** **Question à Tony : l'agence est-elle inscrite sur ces
+  portails, et veut-elle qu'on s'en occupe ?** **Ne rien faire avant sa réponse.**
+- 🟠 **UN CONCURRENT VILLEURBANNAIS PUBLIE DU CONTENU LOCAL ET ÇA CLASSE**
+  (`salengro-immo.fr`, deux SERP suivies le 22/11). ⚠️ **Information, pas action.**
+- 🟠 **LE BARÈME D'ORPI EST INDEXÉ EN PDF ET LE NÔTRE NE L'EST PAS.**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE.** 🆕 **Et depuis le 23/11, la même question se pose pour la MARGE DE
+  NÉGOCIATION** : `faire-offre-achat` écrit qu'aucune source publique ne permet
+  de la calculer. **Question à Tony : l'agence connaît-elle l'écart entre prix
+  affiché et prix signé sur ses propres mandats ? Si oui, c'est une donnée que
+  personne d'autre ne peut publier.** 📌 **La plus prometteuse des questions
+  ouvertes, parce qu'elle répond à une requête mesurée et sans réponse locale.**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  ⚠️ **Publicité comparative : décision commerciale.**
+- 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS `/annonces`
+  PLUTÔT QUE VERS `/acheter` ?** `/vendre` 12, `/acheter` 8, `/estimation` 6,
+  `/gestion-locative` 4, `/annonces` 0. **Pas à trancher seul.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — VINGT-CINQUIÈME JOUR**
+  (recontrôlé le 23/11 : 0 occurrence). **Non corrigé : page de Tony.**
+  ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié** (8 notifications).
+- 🔴 **INVITATION DISCORD MORTE** (`code 10006`, recontrôlé le **23/11**), à
+  **deux** emplacements (`components/layout/site-footer.tsx`,
+  `components/home/social.tsx`). ⚠️ **NON renotifiée.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ **Tout ce qui a été relevé depuis le 10/11 l'a été pendant le core update, et
+celui-ci tournait encore à J+13 le 23/11. Relever, ne pas conclure.**
+- **DEUX SERP DE SUJET DU 10/11** (taxe foncière / prorata) → **24/11**.
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**.
+- **« appartement à vendre Villeurbanne agence »** → **01/12**. 📌 **Requête
+  témoin de `/annonces` et du bloc « Biens similaires ».**
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** → **03/12**.
+- **« questions à poser lors de la visite d'un appartement avant d'acheter »** →
+  **03/12**.
+- **« vendre appartement Villeurbanne »**, **« prix m2 Villeurbanne »** et
+  **« honoraires agence immobilière Villeurbanne … »** → **05/12**.
+- **« combien coûte une agence immobilière à Villeurbanne honoraires »** →
+  **05/12**. 🟢 **LE PREMIER RELEVÉ POSITIF DU JOURNAL** (21/11). ⛔ **À
+  confirmer, pas à célébrer.**
+- **« agence immobilière Villeurbanne »** → **06/12**.
+- **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … »** → **06/12**.
+- 🆕 **« estimation immobilière Villeurbanne »** → **07/12** (relevée le 23/11 :
+  9 résultats, site absent).
+- 🆕 **« offre d'achat acceptée le vendeur peut-il se rétracter délai
+  validité »** → **07/12** (relevée le 23/11 : 10 résultats, site absent,
+  **requête témoin du chantier du jour**).
+- ⛔ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ⛔ 🆕 **« faire une offre d'achat appartement Villeurbanne de combien négocier
+  le prix » NE DOIT PAS ÊTRE SUIVIE** : SERP transactionnelle (portails
+  d'annonces), elle ne mesure rien sur un article de blog.
+
+---
 
 **Angle du dernier run : NON-CONTENU — bloc « Biens similaires » sur la fiche
 d'annonce** (22/11 : les 7 fiches `/annonces/<slug>` émettaient **0 lien** vers
@@ -20031,6 +20474,49 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+**2026-11-23 — J'AI PRÉDIT TROIS FOIS LA FIN DU *CORE UPDATE* SUR UN ÉCHANTILLON
+DE DEUX LIGNES, ET C'ÉTAIT LES DEUX PLUS COURTES.** Les entrées des 19, 20 et
+21/11 écrivent, en gras, « mars **12 j 4 h**, mai **11 j 21 h** » puis « s'il
+dure autant, il se termine vers le 22/11 ». Le 22/11 constate que l'échéance
+n'est pas tenue et conclut « ne plus prédire » — **par prudence, sans jamais
+vérifier d'où venait la prédiction.**
+✅ **Vérifié ce jour en lisant l'historique « Ranking » EN ENTIER : 41 entrées,
+pas deux.** Les *core updates* qui y figurent durent **6 j 4 h** (décembre 2024),
+**12 j 4 h** (mars 2026), **13 j 21 h** (mars 2025), **16 j 18 h** (juin 2025),
+**18 j 2 h** (décembre 2025), **19 j 4 h** (août 2024), **23 j 13 h** (novembre
+2024), **25 j 21 h** (novembre 2023), **45 j** (mars 2024). **Mars 2026 et mai
+2026 sont les deux plus courts de la série.** Prédire la fin à partir d'eux
+revenait à prendre la borne basse pour la norme.
+📌 **La leçon n'est pas « le core update dure plus longtemps que prévu ».
+C'est qu'un journal qui reconduit un chiffre de run en run finit par le traiter
+comme un fait : « mars 12 j, mai 11 j » a été recopié quatre jours de suite sans
+que personne — moi — n'ouvre la ligne suivante du tableau.** Un échantillon qu'on
+n'a pas choisi n'est pas un échantillon.
+✅ **Corrigé dans « Chantiers en attente » et dans l'« État des lieux » du jour**,
+avec la série complète. ⛔ **Et la règle tient toujours, désormais pour une raison
+mesurée : aucune date de fin n'est prédictible ; le seul signal est l'apparition
+d'une durée dans la colonne « Duration ».**
+
+**2026-11-23 — MA PREMIÈRE EXTRACTION DU CODE CIVIL DONNAIT SIX PHRASES À UN
+ARTICLE QUI N'EN A QU'UNE, ET ELLE AVAIT L'AIR JUSTE.** Pour lire les articles
+1113 à 1118, j'ai d'abord capturé `num="1114"` **puis les 3 000 caractères
+suivants** du fichier XML. Le résultat se lisait parfaitement : du français
+juridique, cohérent, sur le bon sujet. **Il était faux** : chaque extraction
+débordait sur les articles suivants, de sorte que l'article 1114 paraissait
+contenir le texte de 1115, 1116, 1117 et 1118.
+🔴 **Si je l'avais publié tel quel, j'aurais attribué à l'article 1114 — qui
+définit l'offre — le régime de la rétractation et celui de la caducité. C'est
+exactement l'erreur du 21/11 sur `L313-41`, sous une autre forme :** non pas un
+numéro faux, mais **un texte juste rattaché au mauvais numéro.**
+✅ **Attrapé avant toute insertion**, en réécrivant l'extraction pour capturer
+l'**élément** (`<article …>(.*?)</article>`) et en contrôlant une évidence :
+**l'article 1115 ne fait qu'une phrase.** Les sept articles publiés le sont
+depuis cette seconde extraction.
+📌 **Le contrôle qui vaut d'être gardé : avant de citer un texte extrait
+automatiquement, prendre l'article dont on connaît la BRIÈVETÉ et vérifier qu'il
+est bref.** Une extraction qui déborde s'y voit immédiatement, alors qu'elle est
+indétectable sur un article long.
+
 **2026-11-22 — J'AI RELAYÉ UN BLOCAGE SANS LE VÉRIFIER, ET IL ÉTAIT FAUX.**
 Le journal portait depuis le 20/11, en gras et en rouge, que le chantier des
 fiches d'annonce était « **BLOQUÉ TANT QUE LA BASE N'EST PAS JOIGNABLE** : ces
@@ -22932,6 +23418,105 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+**2026-11-23 (veille du lundi) — `FAQPage` ET `HowTo` NE PRODUISENT PLUS AUCUN
+RICH RESULT GOOGLE, ET C'EST VÉRIFIÉ SUR LA SOURCE PRIMAIRE.** La galerie
+officielle des résultats enrichis
+(`developers.google.com/search/docs/appearance/structured-data/search-gallery`)
+liste **25 types**, lus un par un le 23/11/2026 : Article, Breadcrumb, Carousel,
+Course list, Dataset, Discussion forum, Education Q&A, Employer aggregate rating,
+Event, Image metadata, Job posting, Local business, Math solver, Movie,
+Organization, Product, Profile page, Q&A, Recipe, Review snippet, Software app,
+Speakable, Subscription and paywalled content, Vacation rental, Video.
+**Ni FAQ, ni HowTo.** Et le journal des mises à jour de la documentation porte,
+au **15 juin 2026**, l'entrée « **Removing documentation for the FAQ rich result
+feature** ».
+📌 **Ce que cela change ici : RIEN dans le code, et c'est le point.** Le
+commentaire de `app/blog/[slug]/page.tsx` dit déjà, depuis plus tôt, que ce
+balisage « ne vise pas un affichage Google » mais « la lecture machine (moteurs
+de réponse) » — **la veille confirme cette note au lieu de la contredire.**
+📌 **Ce que cela change dans les priorités, en revanche :** le chantier
+« rendre `HowTo.name` visible » (inscrit les 19 et 21/11) ne rapportera **aucun
+affichage Google**. Il garde sa valeur de parité et de lecture machine, pas plus.
+⚠️ **La parité visible ↔ JSON-LD reste obligatoire** : un `FAQPage` qui ne
+correspond pas au visible reste sanctionnable même sans rich result.
+
+**2026-11-23 (veille du lundi) — `llms.txt` N'A AUCUN EFFET MESURÉ, GOOGLE DIT
+NE PAS LE LIRE, ET LE NÔTRE NE COÛTE RIEN PARCE QU'IL EST GÉNÉRÉ.** Le journal
+des mises à jour de la documentation Google porte, au **15 juin 2026**, l'entrée
+« **Clarifying guidance on llms.txt files** », dont la teneur est que Google
+Search n'en a pas besoin. Côté mesures tierces (donc à prendre avec les pincettes
+d'usage, ce sont des éditeurs d'outils) : une analyse de 137 000 domaines donne
+**97 % de fichiers `llms.txt` n'ayant reçu aucune requête** sur un mois, et aucune
+corrélation établie avec les citations par ChatGPT, Claude ou Perplexity.
+📌 **Décision pour ce site : on garde `app/llms.txt/route.ts`, et on n'y investit
+pas une minute de plus.** Il est **dérivé de `ARTICLES` et de `LISTINGS`**, donc
+il ne dérive jamais : vérifié ce jour, le nouveau titre et le nouvel `excerpt` de
+`faire-offre-achat` y figuraient sans aucune intervention. ⛔ **Ne pas en faire
+un chantier, ne pas l'enrichir à la main.**
+
+**2026-11-23 — UNE VOIE D'ACCÈS AUX CODES OFFICIELS QUI FONCTIONNE QUAND
+LÉGIFRANCE REND 403.** `legifrance.gouv.fr` reste **403** aux deux outils
+(reconfirmé ce jour sur `/codes/article_lc/…`). **`codes.droit.org` republie les
+codes officiels et répond 200**, en trois formats dont un **XML complet par
+code** :
+
+```bash
+curl -sL -o codecivil.xml "https://codes.droit.org/payloads/Code%20civil.xml"
+# racine : <code nom="Code civil" id="LEGITEXT000006070721" lastup="2026-07-29">
+# chaque article : <article num="1114" etat="VIGUEUR" modTitle="Ordonnance n°…"
+#                           modId="JORFTEXT…" date="2016-02-11">texte</article>
+```
+
+⚠️ **Le piège, et il a faussé les SEPT extractions de ma première tentative** :
+une regex qui capture `num="1114"` puis « les 3 000 caractères suivants »
+**déborde sur les articles qui suivent** — le texte de 1114 paraissait contenir celui de 1115 à
+1118. **Il faut capturer l'ÉLÉMENT** (`<article …>(.*?)</article>`), pas une
+fenêtre de caractères. Le contrôle qui le prouve : l'article 1115 du code civil
+ne fait **qu'une seule phrase** ; si votre extraction lui en donne six, elle est
+fausse.
+✅ **Bénéfice de l'attribut `modTitle`** : il donne la **source de rédaction** de
+chaque article, qu'on peut publier telle quelle (« ordonnance n° 2016-131 du
+10 février 2016, art. 2 » ; « loi n° 2018-287 du 20 avril 2018, art. 4 » pour
+l'art. 1117). **C'est une précision que les dix concurrents de la SERP n'ont
+pas**, et elle ne coûte rien puisqu'elle est dans la donnée.
+⛔ **Ce que cette voie ne donne PAS** : le Journal officiel. Le contrôle de
+promulgation (encadrement des loyers) reste sans solution.
+⚠️ **Et `codes.droit.org` n'est pas Légifrance** : c'est une republication. Le
+`lastup` du fichier (**2026-07-29** pour le code civil) est la seule date de
+fraîcheur disponible — **à lire avant de citer**, et à ne pas utiliser pour un
+texte modifié récemment.
+
+**2026-11-23 — TOUTE SERP N'EST PAS UNE MESURE : UNE REQUÊTE TRANSACTIONNELLE NE
+DIT RIEN D'UN ARTICLE.** Première requête essayée pour le chantier du jour :
+« faire une offre d'achat appartement Villeurbanne de combien négocier le prix ».
+Elle rend **neuf portails d'annonces** (`orpi`, `hosman`, `foncia` ×2,
+`guy-hoquet`, `human-immobilier`, `etreproprio`, `pap`, `immoneuf`) et **pas un
+seul article**. L'ajout du nom de la commune à une requête de conseil **bascule
+l'intention vers l'achat**, et le moteur sert des stocks de biens.
+📌 **La leçon : avant de noter « site absent », vérifier que la SERP relevée est
+bien de la même NATURE que la page qu'on travaille.** « Site absent » d'une SERP
+transactionnelle avec un article de blog n'est pas un constat, c'est une erreur
+de cible. **La requête qui a servi au chantier — « offre d'achat acceptée le
+vendeur peut-il se rétracter délai validité » — rend dix articles, dont quatre
+cabinets d'avocats : c'est la bonne SERP.**
+📌 **Prolonge les leçons des 19 et 21/11** (la SERP dicte le titre, puis
+l'angle) : **elle dicte d'abord si la requête mérite d'être suivie.**
+
+**2026-11-23 — PUBLIER LE REFUS DE PUBLIER EST UN CONTENU, ET C'EST LE SEUL QUE
+LES CONCURRENTS NE COPIERONT PAS.** `faire-offre-achat` consacre un H2 entier et
+une réponse de FAQ à expliquer qu'**aucune marge de négociation villeurbannaise
+n'est calculable** : une marge suppose le prix demandé **et** le prix signé, or
+DVF n'enregistre que le second. La page le dit, puis redirige vers ce qui est
+mesurable (l'écart entre le prix demandé et la médiane du quartier).
+📌 **C'est le troisième contenu de ce type sur le site** — après « aucun délai de
+vente publié » (`achat-immobilier-lyon-checklist`, 21/11) et « ce que cette page
+ne peut pas vous dire ». **Les trois répondent à une question très tapée par une
+non-réponse argumentée**, ce qui est exactement ce qu'un moteur de réponse peut
+citer, et ce qu'un concurrent qui invente un pourcentage ne peut pas écrire.
+⚠️ **La condition pour que ça marche : dire POURQUOI, avec la limite de la
+source nommée.** « Nous ne savons pas » ne vaut rien ; « DVF enregistre le prix
+signé, jamais le prix demandé » vaut une citation.
 
 **2026-11-21 — `economie.gouv.fr` ET `legifrance.gouv.fr` RENDENT 403 AUX DEUX
 OUTILS, PAS SEULEMENT À `WebFetch`.** Le texte du HCSF (décision D-HCSF-2021-7,
