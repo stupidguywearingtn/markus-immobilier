@@ -7018,6 +7018,21 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-24 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage quartiers + prorata, `93a7a80`)
+
+- **Déclenchement en double** : le chantier du jour est servi en production
+  (`/blog/frais-de-notaire-lyon-2026` et `/blog/loi-carrez-surface` émettent les liens
+  vers Gratte-Ciel / Cusset, `/blog/taxe-fonciere-vente-qui-paie` cite les charges de
+  copropriété). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `5546c7c`, aucun commit tiers.
+  Sitemap = **58 URL**, inchangé, `lastmod` max = 23/11 ; toutes les URL hors
+  `/annonces/*` et `/blog/*` ont un dossier de route dans `app/` → **aucune page de
+  l'éditeur**. `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/blog/taxe-fonciere-vente-qui-paie`,
+  `/agence-immobiliere-villeurbanne`, `/estimation`, `/estimation-immobiliere-villeurbanne`,
+  `/robots.txt`, `/llms.txt` → 200.
+- **Non fait** : archivage du journal (29 239 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-23 (lundi) — `faire-offre-achat` ne citait aucun texte et aucun prix : l'article passe de 113 à 2 150 mots, et prend les deux créneaux que la SERP laisse vides
 
 **Mesure d'abord, sur la production.** `faire-offre-achat` servait **281 mots
