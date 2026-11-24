@@ -123,6 +123,19 @@
   après insertion alors que le paragraphe était bien rendu : le rendu écrit les
   apostrophes `&#x27;` et mon dé-balisage ne décode pas les entités.
   📌 **Regardé en contexte avant de conclure, comme le 03/11 l'exige.**
+
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — TREIZIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 24/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-u4rawc` ». Le compte (2) correspond aux deux commits
+  du run (`93a7a80` et `1595537`) — même piège de vraisemblance que les douze
+  fois précédentes. ✅ **Contrôle refait à l'identique :**
+  `ls-remote origin refs/heads/main` = **`1595537`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
   VINGT-SIXIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
   règle des 90 jours). ⚠️ **NON renotifié.**
