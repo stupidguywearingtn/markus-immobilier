@@ -14,6 +14,131 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-24 (mardi)**
+
+- ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 23/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 88 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`1e943ff`**, `git ls-remote origin refs/heads/main` = **`1e943ff`** :
+  identiques. **Aucun commit tiers.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-u4rawc`**, pas sur `main`.
+  **Vingt-troisième constat consécutif**, nom différent chaque fois.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-huitième constat identique** (21/09 → 24/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Quarante et unième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles — identique du
+  07/11 au 24/11.** Aucune page ajoutée ni retirée par le client. `lastmod` le
+  plus récent = **23/11** (le chantier de la veille).
+- ✅ **LE CHANTIER DU 23/11 EST CONFIRMÉ EN PRODUCTION**, contrôle d'usage fait
+  en premier comme le journal le demandait : `/blog/faire-offre-achat` sert bien
+  « 146 969 », « À quel prix une offre est-elle crédible », « 3 898 » et
+  « 1117 », et son `<title>` est le nouveau. **Rien à rouvrir.**
+- 🟢 **CHANTIER DU JOUR : NON-CONTENU** (23/11 contenu → **24/11 non-contenu**),
+  conformément à l'alternance inscrite la veille.
+  ✅ **Veille du lundi faite le 23/11, prochaine due le 30/11** — pas ce jour.
+- 🟡 **DEUX SERP DE SUJET REMESURÉES À ÉCHÉANCE (point zéro le 10/11), SITE
+  ABSENT DES DEUX, ET TOUJOURS AUCUN ACTEUR LOCAL.**
+  1. **« taxe foncière vente appartement qui paie vendeur ou acheteur prorata
+     compromis Villeurbanne »** : site absent. Composition : `impots.gouv.fr`
+     (×2), `edito.seloger` (×5 pages de tag ou d'article), `bailfacile`,
+     `laforet`, `mysweetimmo`, `droit-finances.commentcamarche` (×2, du forum),
+     `assemblee-nationale` (×3, questions écrites en PDF), `reassurez-moi`.
+     🆕 📌 **ET LE MOTEUR DÉCLARE LUI-MÊME LE MANQUE** : « Je n'ai trouvé aucune
+     information propre à Villeurbanne dans ces résultats. Les règles ci-dessous
+     sont nationales. » **Le créneau local est donc toujours vide à J+14.**
+  2. **« qui paie la taxe foncière l'année de la vente prorata temporis
+     obligation »** : site absent. 🆕 **Deux entrants qui changent la nature de
+     la SERP** : `anil.org` (une analyse de jurisprudence sur la clause de
+     répartition) et `investissement-locatif.com` daté de 2026. 🆕 **Et le
+     moteur cite l'article 1415 du CGI** — c'est-à-dire exactement le texte que
+     notre page `taxe-fonciere-vente-qui-paie` cite déjà. **Nous disons la bonne
+     chose et nous ne classons pas.**
+  ⚠️ **Mesurées à J+14 d'un core update : non interprétables.** **Remesure : 08/12.**
+- 🟢 🔴 **CHANTIER : LE MAILLAGE ÉDITORIAL, DEUX VOLETS, 7 ARÊTES NEUVES.**
+  **Tout mesuré sur le HTML de production avant d'écrire une ligne.**
+- ✅ **VOLET 1 — LE CHANTIER DU 20/11 EST CLOS.** Les 5 derniers articles qui
+  nommaient un quartier sans lier sa page ont reçu leur lien. **Relevé de départ
+  reconfirmé à l'identique** (les chiffres du journal étaient la SOMME sur les
+  trois quartiers, ce qui explique l'écart apparent avec un relevé par quartier) :
+  `plus-value-immobiliere-calcul` **9 mentions / 0 lien**,
+  `frais-de-notaire-lyon-2026` **6 / 0**, `vendre-sans-agence` **4 / 0**,
+  `loi-carrez-surface` **3 / 0**, `vendre-en-viager-villeurbanne` **2 / 0**.
+- ✅ **UNE PHRASE ÉCRITE POUR CHAQUE LIEN, JAMAIS UNE ANCRE SUR DU TEXTE
+  EXISTANT** (règle du 16/09), **et aucun chiffre qui ne soit déjà publié sur la
+  page cible** : Charpennes est le **seul des sept quartiers encore en baisse sur
+  la dernière année** (−1,3 %) ; Gratte-Ciel concentre **~35 % des appartements
+  vendus** de la commune (655 sur 1 875), donc **17 883 €** est le budget de
+  frais de notaire le plus fréquent et non les 14 712 € communaux ; « prévisible »
+  n'est pas « pas cher à rater », Gratte-Ciel étant **+7,8 % au-dessus de la
+  médiane** ; les 3,1 m² tolérés par la loi Carrez valent **11 923 € à
+  Gratte-Ciel contre 9 830 € à Cusset**, soit **2 093 € d'écart pour une erreur
+  identique** ; et pour un viager c'est **Cusset qui a le mieux tenu après
+  Ferrandière** (−5,8 % depuis 2022 contre −10,4 % pour la commune).
+- ✅ 🆕 **VOLET 2 — `charges-copropriete` ET `taxe-fonciere-vente-qui-paie`
+  PORTENT LE MÊME H2 ET NE SE CITAIENT PAS.** Gel levé ce jour (point 7 de la
+  liste). **Mesuré : 0 occurrence du sujet de l'autre de part et d'autre** —
+  « taxe foncière » 0 fois dans `charges-copropriete`, « charges de copropriété »
+  0 fois dans `taxe-fonciere-vente-qui-paie` — donc **aucune ancre n'était
+  posable, il fallait écrire**. ✅ **Et le choix de la cible est mesuré** :
+  `taxe-fonciere-vente-qui-paie` n'avait que **4 liens entrants éditoriaux**
+  contre 11 pour l'autre, **et c'est la page des deux SERP échues du jour.**
+- ✅ **L'APPORT DU LIEN RÉCIPROQUE N'EST PAS UN RENVOI, C'EST UNE COMPARAISON
+  QUE NI L'UNE NI L'AUTRE NE FAISAIT** : les deux sommes se proratisent par
+  accord et non par la loi, mais **le déclencheur diffère** — propriété au
+  1er janvier (art. 1415 du CGI) pour la taxe, **exigibilité ou date d'appel**
+  (décret n° 67-223, art. 6-2 et 6-3) pour les charges — **et dans les deux cas
+  l'accord n'est opposable ni au fisc ni au syndic.**
+- ✅ **EFFET MESURÉ, PAS PROJETÉ — 7 ARÊTES ÉDITORIALES NEUVES** :
+  Gratte-Ciel **13 → 15**, Cusset **13 → 15**, Charpennes **13 → 14**,
+  `charges-copropriete` **11 → 12**, `taxe-fonciere-vente-qui-paie` **4 → 5**.
+  ✅ **Et la validité de la comparaison prod (58) / local (55) a été vérifiée,
+  pas supposée** : **aucune des 3 fiches Supabase absentes en local ne liait
+  l'une des 5 cibles** (0 sur 5), donc le +7 n'est pas un artefact de corpus.
+- ✅ **AUCUN `dateModified` AVANCÉ, ET C'EST LA DÉCISION, PAS UN OUBLI.** Les 7
+  dates sont **identiques à la production**, vérifié une par une. **Ajouter une
+  phrase ne change pas ce que la page dit** — c'est la correction des 17, 20 et
+  22/11, appliquée cette fois d'emblée.
+- ✅ **AUCUN BLOC `steps` AJOUTÉ** : le piège `HowTo.name` invisible est évité
+  par construction. **Et aucun `FAQPage` touché** : blocs `ld+json` et comptes
+  `Question` **identiques à la production sur les 7 pages** (11, 9, 6, 8, 12, 6,
+  7 questions). **Parité conservée sans avoir à la reconstruire.**
+- ✅ **7 INSERTIONS, 0 SUPPRESSION, 0 MODIFICATION DE TEXTE EXISTANT** (`diff` :
+  7 lignes `>`, 0 ligne `<`). **Le risque de casser ce qui marchait est donc
+  structurellement nul**, et c'est ce qui a permis de mener les deux volets.
+- ✅ **CONTRÔLES** : `tsc --noEmit` propre ; `eslint` **35 / 24**, chiffre
+  inchangé depuis le 02/11, **aucune erreur neuve** ; **build en 0, 92 pages** ;
+  serveur tué avant redémarrage (**0 `next-server` restant**) et **log de
+  démarrage lu** ; contrôle de rendu visant des chaînes **absentes avant
+  (production) et présentes après (local)** — **7 sur 7** ; **0 `**`, 0 `](/`**
+  dans le texte visible des 7 pages ; **débordement horizontal = 0** en 390 px
+  et 1440 px sur les 7 ; **crawl local 55 URL, 55 en 200** ; `/llms.txt` **200**,
+  69 lignes, **rien à y maintenir** (aucune page ajoutée, il dérive de `ARTICLES`).
+- ✅ **PROSE CONTRÔLÉE AVANT INSERTION, PAS APRÈS** (règle du 03/11, la prose ne
+  passe jamais par un heredoc) : **616 mots, 90 accents = 0,146 par mot**
+  (0,14–0,15 = normal), **0 apostrophe courbe, 0 insécable U+00A0 ni U+202F,
+  0 mot collé.**
+- ⚠️ 🆕 **UN FAUX NÉGATIF DE MON PROPRE CONTRÔLE, LE SIXIÈME CAS D'INSTRUMENT
+  FAUTIF — VOIR « Techniques apprises ».** Une des 7 chaînes est ressortie à 0
+  après insertion alors que le paragraphe était bien rendu : le rendu écrit les
+  apostrophes `&#x27;` et mon dé-balisage ne décode pas les entités.
+  📌 **Regardé en contexte avant de conclure, comme le 03/11 l'exige.**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-SIXIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
+  règle des 90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE**, recontrôlée ce jour sur l'API :
+  `discord.gg/fSyn28G5U` → **`{"message": "Unknown Invite", "code": 10006}`**.
+  **Trente-deuxième jour au moins.** ⚠️ **NON renotifiée** (8 notifications déjà
+  envoyées, aucune action possible de notre côté).
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+- ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 28 791 lignes au démarrage, ~1,98 Mo.
+  **Toujours en attente**, et le coût de lecture augmente à chaque run. 📌 **Ce
+  run ne l'a pas lu en entier** : il a lu « État des lieux », « Chantiers en
+  attente » et les techniques utiles par `grep` ciblé. **C'est tenable, mais
+  c'est exactement le symptôme que le point 14 décrit.**
+
+
 **Au 2026-11-23 (lundi)**
 
 - ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 22/11.** Aucun manque
@@ -13103,6 +13228,199 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+
+**Angle du dernier run : NON-CONTENU — maillage éditorial, deux volets, 7 arêtes
+neuves** (24/11 : les 5 derniers articles qui nommaient un quartier sans lier sa
+page ont reçu leur lien, ce qui **clôt le chantier du 20/11** ; et
+`charges-copropriete` ↔ `taxe-fonciere-vente-qui-paie`, qui portent le même H2 et
+ne se citaient pas, sont désormais liées réciproquement. Gratte-Ciel 13 → 15,
+Cusset 13 → 15, Charpennes 13 → 14, `charges-copropriete` 11 → 12,
+`taxe-fonciere-vente-qui-paie` 4 → 5. **7 insertions, 0 suppression, aucun
+`dateModified` avancé, aucun `ld+json` touché.**)
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (25/11, mercredi) DOIT ÊTRE DU CONTENU**
+(alternance : 22/11 non-contenu → 23/11 contenu → **24/11 non-contenu**).
+✅ **Veille du lundi faite le 23/11, prochaine due le 30/11** — pas demain.
+
+🟡 **CONTRÔLE D'USAGE DÛ AU DÉMARRAGE DU 25/11, ET IL COÛTE UNE MINUTE** :
+vérifier que les 7 liens du jour sont bien servis en production. **Chaînes qui
+n'existaient pas avant ce run** : « seul des sept quartiers encore en baisse »
+(`plus-value-immobiliere-calcul`), « 2 093 € de différence » (`loi-carrez-surface`),
+« ni au syndic » (`taxe-fonciere-vente-qui-paie`), « 47,9 % en médiane »
+(`charges-copropriete`). ⚠️ **Et compter `href="/agence-immobiliere-gratte-ciel"`
+sur `frais-de-notaire-lyon-2026` et `vendre-sans-agence`** : le relevé des arêtes
+ci-dessus est un **relevé local**, la production reste à confirmer.
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE *CORE UPDATE* DU 10/11
+TOURNAIT ENCORE LE 23/11 — J+13, SANS DURÉE**, et ce run ne l'a pas recontrôlé
+(chantier non-contenu, aucune position interprétable à en tirer). ⛔ **Ne plus
+prédire de date de fin** : l'historique complet des 41 entrées donne de 11 j 21 h
+à 45 j. **Le seul signal qui rouvre les remesures interprétables est l'apparition
+d'une durée dans la colonne « Duration ».** 📌 **À recontrôler le 25/11.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (26/11), par ordre d'impact :**
+  1. 🟡 **`HowTo.name` N'EST RENDU VISIBLE SUR AUCUNE PAGE À BLOC `steps`, SAUF
+     CELLE DU 21/11.** ⚠️ **Recenser les articles à bloc `steps` et leur
+     appliquer la même phrase visible**, un par un. ⛔ **Ne pas toucher au
+     renderer.** 📌 **Devient le premier de la liste** maintenant que le maillage
+     des quartiers est clos — mais **le gain attendu est GEO, pas SERP** (la
+     veille du 23/11 confirme que `HowTo` et `FAQPage` ne produisent plus aucun
+     rich result Google).
+  2. 🟡 **DEUX À TROIS LIENS ENTRANTS ÉDITORIAUX VERS `lmnp-location-meublee` ET
+     `home-staging-vendre-plus-cher`**. ⛔ **Gels levés le 30/11 et le 28/11.**
+  3. 🟡 🆕 **CHERCHER D'AUTRES PAIRES DE PAGES QUI TRAITENT LE MÊME MOMENT SANS
+     SE CITER.** Le volet 2 du jour a marché parce que les deux pages portaient
+     **le même H2**. 📌 **La recette est généralisable et elle est écrite dans
+     « Techniques apprises » du 24/11** : grouper les H2 des 30 articles par
+     formule, pas par sujet. ⚠️ **Ne poser un lien que si le relevé donne 0
+     occurrence croisée**, sinon une ancre suffisait et le chantier est faux.
+  4. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     Levée d'ambiguïté, pas correction d'erreur.
+  5. 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite). **Une
+     lecture du V de `L125-5` alinéa par alinéa suffit**, et la voie d'accès
+     existe (`droit.org`). 🆕 📌 **Le lien de quartier y est désormais posé : ce
+     chantier n'a plus de volet maillage, il est purement juridique.**
+  6. 🟡 **DONNER AUX FICHES D'ANNONCE UN LIEN VERS LEUR PAGE DE QUARTIER.**
+     Écarté le 22/11. 📌 **Ne l'ouvrir qu'en écrivant une phrase inconditionnelle.**
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11).
+  8. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **vingt-trois
+     runs** sans recontrôle). **Contrôle à deux temps obligatoire.**
+  9. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **vingt-septième
+     report**). **`blog.qoridor.fr/article/home-staging` en priorité.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 24/11. **Jour creux.**
+ 13. 🟡 **ARCHIVER LE JOURNAL.** **28 791 lignes, ~1,98 Mo au démarrage du 24/11.**
+     ⚠️ **Ne jamais archiver « État des lieux » ni « Chantiers en attente ».**
+ 14. ⛔ **NE PLUS CHERCHER DE TROU DANS LE BALISAGE D'ÉTABLISSEMENT.** Fermée (20/11).
+ 15. ⛔ **LE MAILLAGE DES FICHES EST FAIT (22/11) ET VÉRIFIÉ (23/11).**
+ 16. ⛔ 🆕 **LE MAILLAGE DES QUARTIERS DEPUIS LES ARTICLES EST CLOS (24/11) :
+     LES 8 ARTICLES QUI NOMMAIENT UN QUARTIER LE LIENT TOUS. NE PAS LE ROUVRIR.**
+
+🟢 **CANDIDATS CONTENU POUR LE 25/11 — INCHANGÉS, et le favori ne bouge pas :**
+  1. 🟡 **LE BLOG FAIBLE — TROIS ARTICLES RESTANTS** (mots de blocs `text:`) :
+     `vendre-appartement-lyon-etapes` **34**, `vendre-vite-lyon` **43**,
+     `capacite-emprunt-immobilier` **170**.
+     📌 **LE FAVORI RESTE `vendre-appartement-lyon-etapes`** : le plus faible du
+     site, sur une requête vendeur. 🆕 ✅ **Et l'audit de balisage du 24/11 le
+     confirme par un second chemin** : ces 3 articles sont, avec
+     `cout-gestion-locative`, **les 4 seuls des 30 sans `FAQPage`** — la faiblesse
+     se lit donc aussi dans le balisage, pas seulement au comptage de mots.
+     ⚠️ **Partage des rôles à tenir** : le prix à `prix-immobilier-villeurbanne-2026`,
+     les honoraires à `vendre-sans-agence` et `/honoraires`, le mandat à
+     `mandat-simple-ou-exclusif`, les diagnostics à `diagnostics-obligatoires-vente`,
+     la préemption à `vendre-logement-loue-droit-preemption-villeurbanne`.
+     **Mesurer la SERP avant d'écrire.**
+     ⛔ **`capacite-emprunt-immobilier` RESTE BLOQUÉ** (35 % / 25 ans non lus sur
+     un texte primaire). 📌 **Tester `droit.org` pour le code de la consommation.**
+  2. 🔴 **`mandat-simple-ou-exclusif` MÉRITE D'ÊTRE ROUVERT** : `salengro-immo.fr`
+     a occupé le créneau local (SERP du 22/11). **2 315 mots rendus, 1 415 mots
+     de blocs `text:`** — pas un article faible, un article **concurrencé**.
+     ⚠️ **Lire la page de Salengro avant d'écrire.**
+  3. 🟡 **LA SERP « estimation immobilière Villeurbanne » DÉSIGNE UN CRÉNEAU** :
+     8 des 9 résultats sont des outils ou des pages de prix, **et leurs chiffres
+     divergent** (3 641 / 3 849 / 4 017 / « environ 3 800 » €/m²). ⚠️ **À mesurer
+     avant d'écrire, et ⛔ sans jamais toucher à l'outil d'estimation.**
+  4. 🟡 🆕 **LE SUJET DU PRORATA EST MESURÉ DEUX FOIS SANS RÉPONSE LOCALE, ET LA
+     PAGE EXISTE DÉJÀ.** Les deux SERP du 24/11 donnent le site absent, aucun
+     acteur local, et le moteur écrit lui-même qu'il n'a « aucune information
+     propre à Villeurbanne ». **`taxe-fonciere-vente-qui-paie` dit pourtant la
+     bonne chose et cite le bon article (1415 du CGI).** ⚠️ **Gel de réécriture
+     jusqu'au 24/11 — levé.** 📌 **Mais avant de réécrire, se demander si le
+     manque est éditorial ou de notoriété** : la page n'avait que 4 liens
+     entrants, et ce run en a posé un cinquième. **Remesurer le 08/12 AVANT de
+     décider**, c'est le test le plus propre que le site ait à disposition sur
+     l'effet d'une arête.
+  5. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     « bail mobilité », « colocation meublée Villeurbanne », « louer à un
+     étudiant Villeurbanne ». ⚠️ **Triple contrôle du 03/11 obligatoire.**
+  6. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+     `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
+     difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  7. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — gel levé le **27/11**.
+  8. ⛔ **NE PAS RÉÉCRIRE** : `faire-offre-achat` (23/11) → **07/12** ·
+     `achat-immobilier-lyon-checklist` (21/11) → **05/12** ·
+     `questions-a-poser-visite` (19/11) → **03/12** ·
+     `lmnp-location-meublee` (16/11) → **30/11** ·
+     `home-staging-vendre-plus-cher` (14/11) → **28/11** ·
+     `cout-gestion-locative` (13/11) → **27/11** ·
+     `compromis-de-vente-delais` (12/11) → **26/11** ·
+     `prix-immobilier-villeurbanne-2026` → **03/12** ·
+     `preavis-depot-garantie-location-villeurbanne` et
+     `rentabilite-locative-lyon` (21/11) → **05/12**.
+     📌 **Les 7 pages touchées ce jour NE SONT PAS gelées** : un paragraphe ajouté
+     n'est pas une réécriture, et aucune de leurs dates n'a bougé.
+  9. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** : le contenu existe, le manque était
+     de la visibilité. **Remesurer le 05/12.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🟡 **ENCADREMENT DES LOYERS : VÉRIFIÉ LE 22/11, TOUJOURS PAS PROMULGUÉ.**
+  Adoption définitive le **19/11/2026**. **Nos pages portent une phrase DATÉE au
+  21/11, qui reste exacte.** **Revérifier vers le 04/12.**
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT.** 🆕 **Les deux
+  SERP du 24/11 l'appuient une sixième fois** : `impots.gouv.fr`, `seloger`,
+  `bailfacile`, `laforet`, `mysweetimmo`, `reassurez-moi`, `anil.org` — **des
+  portails, des réseaux et des institutions, pas une seule agence indépendante
+  locale.** **Question à Tony : l'agence est-elle inscrite sur ces portails, et
+  veut-elle qu'on s'en occupe ?** **Ne rien faire avant sa réponse.**
+- 🟠 **UN CONCURRENT VILLEURBANNAIS PUBLIE DU CONTENU LOCAL ET ÇA CLASSE**
+  (`salengro-immo.fr`, deux SERP suivies le 22/11). ⚠️ **Information, pas action.**
+- 🟠 **LE BARÈME D'ORPI EST INDEXÉ EN PDF ET LE NÔTRE NE L'EST PAS.**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE**, et depuis le 23/11 **la même question se pose pour la MARGE DE
+  NÉGOCIATION**. **Question à Tony : l'agence connaît-elle l'écart entre prix
+  affiché et prix signé sur ses propres mandats ?** 📌 **La plus prometteuse des
+  questions ouvertes.**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  ⚠️ **Publicité comparative : décision commerciale.**
+- 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS `/annonces`
+  PLUTÔT QUE VERS `/acheter` ?** **Pas à trancher seul.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — VINGT-SIXIÈME JOUR.**
+  **Non corrigé : page de Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD MORTE** (`code 10006`, recontrôlé le **24/11**), à
+  **deux** emplacements (`components/layout/site-footer.tsx`,
+  `components/home/social.tsx`). ⚠️ **NON renotifiée.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ **Tout ce qui a été relevé depuis le 10/11 l'a été pendant le core update.
+Relever, ne pas conclure.**
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**.
+- **« appartement à vendre Villeurbanne agence »** → **01/12**. 📌 **Requête
+  témoin de `/annonces` et du bloc « Biens similaires ».**
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** → **03/12**.
+- **« questions à poser lors de la visite d'un appartement avant d'acheter »** →
+  **03/12**.
+- **« vendre appartement Villeurbanne »**, **« prix m2 Villeurbanne »** et
+  **« honoraires agence immobilière Villeurbanne … »** → **05/12**.
+- **« combien coûte une agence immobilière à Villeurbanne honoraires »** →
+  **05/12**. 🟢 **LE PREMIER RELEVÉ POSITIF DU JOURNAL** (21/11). ⛔ **À
+  confirmer, pas à célébrer.**
+- **« agence immobilière Villeurbanne »** → **06/12**.
+- **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … »** → **06/12**.
+- **« estimation immobilière Villeurbanne »** → **07/12**.
+- **« offre d'achat acceptée le vendeur peut-il se rétracter délai validité »** →
+  **07/12** (requête témoin du chantier du 23/11).
+- 🆕 **LES DEUX SERP DU PRORATA DE TAXE FONCIÈRE** → **08/12** (relevées le
+  24/11 : site absent des deux, aucun acteur local). 📌 **Et c'est désormais
+  aussi la requête témoin de la cinquième arête posée vers
+  `taxe-fonciere-vente-qui-paie`.**
+- ⛔ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ⛔ **« faire une offre d'achat appartement Villeurbanne de combien négocier le
+  prix » NE DOIT PAS ÊTRE SUIVIE** : SERP transactionnelle.
+
+---
+
+
 **Angle du dernier run : CONTENU — `faire-offre-achat` réécrit de fond en comble**
 (23/11 : 113 mots de blocs `text:` → **2 150** ; 281 mots rendus → **3 406** ;
 SERP à 100 % nationale et aucun des 10 résultats ne cite le texte qui régit la
@@ -23442,6 +23760,123 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+
+### 2026-11-24 — Trouver les paires de pages qui traitent le même moment sans se citer : grouper les H2 par FORMULE, pas par sujet
+
+Le volet 2 du chantier du jour (`charges-copropriete` ↔
+`taxe-fonciere-vente-qui-paie`) a été trouvé par une bêtise qui marche : **lister
+les H2 des deux pages côte à côte.**
+
+```
+charges-copropriete        : « Qui paie les charges de copropriété l'année de la vente ? »
+taxe-fonciere-vente-qui-paie : « Qui paie la taxe foncière l'année de la vente, le vendeur ou l'acheteur ? »
+```
+
+📌 **Même formule, même moment du parcours, deux lignes différentes du décompte
+de vente — et aucune des deux pages ne nommait l'autre.** Mesuré avant d'écrire :
+« taxe foncière » apparaît **0 fois** dans `charges-copropriete`, « charges de
+copropriété » **0 fois** dans l'autre.
+
+⚠️ **Et ce zéro est la condition du chantier, pas un détail.** S'il y avait eu
+des occurrences, **une ancre sur du texte existant aurait suffi** et écrire un
+paragraphe aurait été du remplissage. **Le relevé décide de la forme du
+chantier** : 0 occurrence → écrire une phrase ; n occurrences → poser une ancre.
+
+```bash
+# la recette, sur le corpus de production deja telecharge
+for f in prod/_blog_*.html; do
+  echo "== $(basename "$f" .html | sed 's/_blog_//')"
+  perl -0777 -pe 's{<script\b.*?</script>}{}gs' "$f" \
+    | grep -o '<h2[^>]*>[^<]*</h2>' | sed 's/<[^>]*>//g;s/^/   /'
+done
+# puis on cherche les FORMULES qui reviennent : « Qui paie ... », « Combien coute ... »,
+# « Quand ... », « Faut-il ... ». Deux pages qui partagent une formule ET un moment
+# du parcours sont candidates ; on ne verifie le croisement qu'ensuite.
+```
+
+✅ **Pourquoi c'est un meilleur détecteur que le sujet.** Chercher « les pages qui
+parlent de la vente » rend 25 articles sur 30 : inexploitable. Chercher **la même
+question posée sur deux objets différents** rend une poignée de paires, et chacune
+est un lien que le lecteur attendait. **La proximité qui compte n'est pas
+thématique, elle est temporelle** : les deux sommes se règlent le même jour, chez
+le même notaire.
+
+📌 **Et le lien gagne à porter la DIFFÉRENCE, pas la ressemblance.** Les deux
+pages se proratisent par accord et non par la loi, mais le déclencheur diffère —
+propriété au 1er janvier (art. 1415 du CGI) contre exigibilité ou date d'appel
+(décret n° 67-223, art. 6-2 et 6-3). **Un renvoi « voir aussi » n'aurait rien
+apporté ; la comparaison des deux régimes est un passage autonome**, donc
+extractible, donc citable.
+
+### 2026-11-24 — Le sixième instrument fautif : un contrôle de rendu qui cherche une apostrophe ne trouve rien, parce que le HTML écrit `&#x27;`
+
+🔴 **LE FAIT.** Le contrôle « la chaîne neuve est-elle rendue ? » est ressorti à
+**0 sur l'une des 7 pages** (`taxe-fonciere-vente-qui-paie`), alors que le lien,
+lui, était bien compté à 1. La chaîne cherchée était
+`opposable ni à l'administration fiscale`.
+
+⚠️ **LA CAUSE.** Le rendu écrit les apostrophes **`&#x27;`**, et mon dé-balisage
+(`s{<[^>]+>}{ }g`) retire les **balises** mais **ne décode pas les entités**. Le
+texte visible contient donc `l&#x27;administration`, que `grep "l'administration"`
+ne trouve jamais.
+
+```bash
+# FAUX — un faux negatif garanti des que la chaine contient une apostrophe
+grep -c "opposable ni à l'administration fiscale" rendu.html
+# -> 0, alors que le paragraphe est bien la
+
+# JUSTE — choisir une chaine temoin SANS apostrophe ni accent compose
+grep -c "ni au syndic" rendu.html
+# -> avant 0, apres 1 : le controle tranche
+```
+
+📌 **LA RÈGLE OPÉRATOIRE : une chaîne témoin de contrôle de rendu se choisit
+sans apostrophe.** C'est gratuit — dans un paragraphe de trois phrases il y a
+toujours un fragment de 3-4 mots qui n'en contient aucune — et cela supprime la
+classe d'erreur au lieu de demander de la vigilance.
+
+⚠️ **ET LA LEÇON DE SECOND ORDRE, QUI EST LA PLUS IMPORTANTE.** Mon réflexe
+initial a été de me demander si le paragraphe avait été inséré au mauvais
+endroit. **C'était le sixième cas d'instrument fautif** (après ceux des 30/10,
+02/11, 03/11, 20/11 et 23/11), et la discipline du 03/11 — **regarder
+l'occurrence en contexte avant de conclure** — a tranché en une commande :
+
+```bash
+perl -0777 -pe 's{<script\b.*?</script>}{}gs; s{<[^>]+>}{ }g; s{\s+}{ }g' rendu.html \
+  | grep -o ".\{180\}opposable.\{120\}"
+```
+
+📌 **Un contrôle qui rend 0 pose deux questions, pas une** : « le changement
+est-il absent ? » **et** « mon détecteur sait-il le voir ? ». **Six fois sur six,
+c'était la seconde.**
+
+### 2026-11-24 — Comparer un corpus de production à un corpus local de taille différente : la vérification qui rend le delta honnête
+
+Le site sert **58 URL** en production et **55** en local (les 3 fiches venues de
+Supabase ne se rendent pas ici, constat du 22/11). Mesurer un gain d'arêtes en
+comparant `prod/*.html` (58) à `local/*.html` (55) est donc **structurellement
+biaisé** : une arête présente en production et portée par l'une des 3 fiches
+manquantes se compterait comme une arête **perdue**.
+
+✅ **LA VÉRIFICATION QUI COÛTE UNE COMMANDE ET REND LE CHIFFRE PUBLIABLE** :
+demander si les fichiers absents portaient l'arête mesurée.
+
+```bash
+for t in agence-immobiliere-gratte-ciel blog/charges-copropriete; do
+  echo "$t -> $(grep -l "href=\"/$t\"" body/_annonces_*.html 2>/dev/null | wc -l)"
+done
+# -> 0 partout : les 3 fiches manquantes ne liaient aucune cible,
+#    donc le delta +7 est un vrai delta et pas un artefact de corpus.
+```
+
+📌 **La règle générale : un delta entre deux corpus de tailles différentes n'est
+lisible que si l'on a montré que la différence de taille ne touche pas la
+mesure.** Ici c'était vrai et vérifié ; si l'une des 3 fiches avait porté une
+arête, il aurait fallu **restreindre les deux corpus aux 55 URL communes** avant
+de soustraire. ⚠️ **Et le relevé reste un relevé LOCAL** : la production se
+confirme au run suivant, comme pour le chantier du 22/11.
+
 
 **2026-11-23 (veille du lundi) — `FAQPage` ET `HowTo` NE PRODUISENT PLUS AUCUN
 RICH RESULT GOOGLE, ET C'EST VÉRIFIÉ SUR LA SOURCE PRIMAIRE.** La galerie
