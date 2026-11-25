@@ -197,6 +197,18 @@
   elle n'est pas liée depuis ici.** 📌 **À poser au prochain chantier de maillage
   (gel levé le 28/11), pas aujourd'hui** : ce serait un lien non mesuré ajouté
   dans un run de contenu.
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — QUATORZIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 25/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-8vhmrt` ». Le compte (2) correspond aux deux commits
+  du run (`e001ac4` et `e4533e0`) — même piège de vraisemblance que les treize
+  fois précédentes. ✅ **Contrôle refait à l'identique :**
+  `ls-remote origin refs/heads/main` = **`e4533e0`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
   VINGT-SEPTIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
   règle des 90 jours). ⚠️ **NON renotifié.**
