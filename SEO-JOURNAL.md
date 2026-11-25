@@ -14,6 +14,204 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-25 (mercredi)**
+
+- ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 24/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 89 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`28f5ebe`**, `git ls-remote origin refs/heads/main` = **`28f5ebe`** :
+  identiques. **Aucun commit tiers.** Recontrôlé identique avant le commit.
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-8vhmrt`**, pas sur `main`.
+  **Vingt-quatrième constat consécutif**, nom différent chaque fois.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Cinquante-neuvième constat identique** (21/09 → 25/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Quarante-deuxième confirmation.**
+- ✅ **SITEMAP DE PRODUCTION : 58 URL, 7 annonces, 30 articles — identique du
+  07/11 au 25/11.** Aucune page ajoutée ni retirée par le client. `lastmod` le
+  plus récent = **23/11**, cohérent avec un 24/11 qui n'avait volontairement
+  avancé aucune date.
+- ✅ **LE CHANTIER DU 24/11 EST CONFIRMÉ EN PRODUCTION, 7 LIENS SUR 7**, contrôle
+  d'usage fait en premier comme le journal le demandait. Les 4 chaînes neuves
+  sont servies (« seul des sept quartiers encore en baisse », « 2 093 »,
+  « ni au syndic », « 47,9 »), et les ancres de quartier sont bien là, une par
+  article : `frais-de-notaire-lyon-2026` et `vendre-sans-agence` →
+  `/agence-immobiliere-gratte-ciel`, `loi-carrez-surface` et
+  `vendre-en-viager-villeurbanne` → `/agence-immobiliere-cusset`,
+  `plus-value-immobiliere-calcul` → `/agence-immobiliere-charpennes`.
+  ✅ **Et le lien réciproque du volet 2 est servi dans les deux sens**
+  (`charges-copropriete` ↔ `taxe-fonciere-vente-qui-paie`, 1 occurrence chacun).
+  📌 **Le chantier du 24/11 est clos : ne pas le rouvrir.**
+
+- 🔴 🆕 **LE FAIT DU JOUR, ET IL CHANGE LE CALENDRIER DES REMESURES : LE *CORE
+  UPDATE* DE NOVEMBRE EST TERMINÉ, ET UN AUTRE A DÉMARRÉ LE JOUR MÊME.** Lu sur
+  la **source primaire** (historique « Ranking » du tableau de bord d'état de
+  Google Search), puis **recontrôlé sur le HTML brut** parce que le premier
+  relevé passait par un résumé automatique — et le résumé disait vrai.
+  1. **« November 2026 core update »**, démarrée le 10/11/2026, colonne
+     « Duration » = **« 13 days, 20 hours »**. Elle est donc **close depuis le
+     24/11 dans la journée**. La durée est apparue, c'est-à-dire **exactement le
+     signal que le journal attendait depuis le 19/11** pour rouvrir des mesures
+     interprétables.
+  2. 🔴 **« December 2026 core update », démarrée le 24 novembre 2026, colonne
+     « Duration » = « Information ».** Elle **tourne en ce moment**, et nous
+     sommes à **J+1**.
+  ⛔ **Conséquence immédiate : la fenêtre d'interprétation ne s'est jamais
+  ouverte.** Les relevés restent à faire à leur échéance, mais **aucune position
+  mesurée entre le 10/11 et la fin de la mise à jour de décembre n'est
+  interprétable**, et toutes les échéances inscrites (26/11, 27/11, 28/11, 30/11,
+  01/12, 03/12, 05/12, 06/12, 07/12, 08/12) tombent désormais dans un second
+  *core update*.
+  ⛔ **Ne toujours pas prédire de date de fin** : sur les 41 entrées du tableau,
+  les *core updates* vont de 11 j 21 h à 45 j. **Le seul signal reste
+  l'apparition d'une durée** — et il vient d'être vu fonctionner, ce qui vaut
+  confirmation de la méthode.
+  📌 **Deux *core updates* consécutifs à 14 jours d'intervalle est inhabituel au
+  regard de l'historique lu le 23/11. À recontrôler chaque jour, c'est une ligne
+  de `curl`.**
+
+- 🟡 **SERP DE SUJET DU CHANTIER, MESURÉE AVANT D'ÉCRIRE — SITE ABSENT, ET AUCUN
+  ACTEUR LOCAL.** « quelles sont les étapes pour vendre son appartement à Lyon
+  ordre chronologique délais » : **9 résultats**, composition `meilleursbiens`,
+  `medicis-patrimoine` (article de **2018**), `edito.seloger`, `lyftvnews`
+  (forum), `success-group-immo` (agence lyonnaise), `aqueducsimmobilier` (agence
+  lyonnaise), `kadran`, `matera`, `immobilier-annonces`. **Aucune agence
+  villeurbannaise, aucune page ne cite un article de loi.**
+  🆕 📌 **ET LE MOTEUR DÉSIGNE LUI-MÊME LE DÉFAUT DE SES SOURCES, pour la
+  troisième fois en trois jours** : il publie côte à côte **33 jours** (SeLoger),
+  **48 jours** (décembre 2020) et **environ 66 jours** pour la même question, puis
+  écrit que « les chiffres de durée datent parfois de 2018 à 2021 ».
+  **Premier relevé. Remesure : 09/12.** ⚠️ **Mesurée à J+1 d'un core update.**
+
+- 🟢 🔴 **CHANTIER : `vendre-appartement-lyon-etapes` RÉÉCRIT DE FOND EN COMBLE.**
+  C'était **le contenu le plus faible du site** : **113 mots de blocs `text:`**,
+  une liste de 7 puces sans aucune réponse, deux H2 d'une phrase, zéro article de
+  loi, zéro chiffre, zéro source. La page sert désormais **~2 100 mots de blocs
+  `text:`**, soit **3 003 mots rendus** contre **230** avant.
+  📌 **C'était le favori inscrit au backlog depuis plusieurs runs, et il y était
+  pour deux raisons indépendantes** : le comptage de mots, et l'audit de balisage
+  du 24/11 (c'était l'un des 4 articles sur 30 sans `FAQPage`). Il en a une
+  maintenant, à 8 questions.
+- ✅ **L'APPORT PROPRE N'EST PAS LA LISTE DES ÉTAPES, C'EST CE QUE LE SITE NE
+  PUBLIAIT NULLE PART : LES OBLIGATIONS DE L'ANNONCE.** Vérifié par `grep` avant
+  d'écrire — **0 occurrence de `L126-33`, de `R126-` et de « consommation
+  énergétique excessive » dans tout `lib/blog.ts`**. Une seule phrase de
+  `diagnostics-obligatoires-vente` affirmait que « son étiquette doit figurer
+  dans l'annonce », **sans citer de texte**.
+- ✅ **LE DROIT, RELU ARTICLE PAR ARTICLE AVANT D'ÊTRE REFORMULÉ**, sur la
+  republication des codes de `droit.org` (payload XML du **code de la
+  construction et de l'habitation**, `lastup` **2026-10-09**), Légifrance rendant
+  toujours 403 :
+  • **L126-28** — le propriétaire tient le DPE à la disposition de tout candidat
+    acquéreur **dès que le bien est offert à la vente**. C'est ce texte, et non
+    un conseil d'agence, qui fixe la place du DPE dans le calendrier.
+  • **L126-33 I** — classes énergétique et climatique + indication des dépenses
+    théoriques, **dans les annonces, y compris sur une plateforme numérique**.
+  • **L126-33 II et III** — amende administrative **jusqu'à 3 000 € (personne
+    physique) et 15 000 € (personne morale) pour un professionnel**, et
+    **jusqu'à 3 000 € pour un NON-professionnel**, après mise en demeure restée
+    sans effet.
+  • **R126-21 à R126-24** — la forme exacte : majuscules et taille minimale en
+    presse écrite, « de façon lisible et en couleur » en ligne et en vitrine,
+    libellé exact « Montant estimé des dépenses annuelles d'énergie pour un usage
+    standard : » avec l'année de référence des prix, et la mention « Logement à
+    consommation énergétique excessive : ».
+- ✅ 🔴 **LA NUANCE QUE PERSONNE N'ÉCRIT, ET ELLE EST DANS LE TEXTE : le III de
+  l'article L173-2 fait mentionner, depuis le 01/01/2022, L'OBLIGATION elle-même
+  (niveau A à E exigé à compter du 01/01/2028) — et c'est seulement À COMPTER du
+  01/01/2028 que la mention portera sur son NON-RESPECT.** Les guides écrasent la
+  distinction en « il faut signaler que le logement est une passoire ». La page
+  écrit la bascule et sa date. ⚠️ **À revoir avant le 01/01/2028**, c'est inscrit
+  dans l'en-tête de `lib/blog.ts`.
+- ✅ **AUCUN CHIFFRE NEUF, ET C'EST VOLONTAIRE** (règle du 02/10 : ne jamais
+  republier un chiffre en le recalculant). Les quatre données locales sont
+  **reprises telles quelles** de pages existantes, qui restent leur propriétaire :
+  **4,9 % et 2 454/49 717** (`dpe-2026-ce-qui-change`), **+25,1 % et 39 600 € sur
+  un T2 de 45 m²** (`investir-locatif-lyon`), **2 491 à 3 966 €/m²** et
+  **3 500 €/m² sur 940 ventes du S1 2026**.
+- ✅ **AUCUN DÉLAI DE VENTE PUBLIÉ, ET LA PAGE ÉCRIT POURQUOI** — même parti pris
+  que le 19/11 et le 23/11, et il est ici **directement opposable à la SERP**, qui
+  affiche trois durées contradictoires pour la même question. **Ce que la page
+  chiffre à la place, c'est la seconde moitié du calendrier** (10 jours, un mois,
+  deux mois), avec renvoi à `achat-immobilier-lyon-checklist` qui la possède.
+- ✅ **PARTAGE DES RÔLES TENU À LA LETTRE — LA PAGE LIE, ELLE NE REPUBLIE PAS** :
+  diagnostics et durées de validité à `diagnostics-obligatoires-vente`, étiquettes
+  F/G à `dpe-2026-ce-qui-change`, mandat à `mandat-simple-ou-exclusif`, effet des
+  1° et 2° de `L721-2` à `compromis-de-vente-delais`, calendrier offre→clés à
+  `achat-immobilier-lyon-checklist`, économie d'une vente entre particuliers à
+  `vendre-sans-agence`, écart affiché/signé à `investir-locatif-lyon`, prix de
+  quartier à `prix-immobilier-villeurbanne-2026`.
+- ✅ 🆕 **LES DEUX TABLEAUX ÉCRITS EN PREMIER ONT ÉTÉ CONVERTIS EN LISTES APRÈS
+  CAPTURE À 390 px — VOIR « Erreurs commises et corrigées ».** Ils reproduisaient
+  exactement le défaut relevé le 19/11, et je ne l'ai vu qu'en regardant l'image.
+- ✅ **`HowTo` BALISÉ, ET SON `name` EST RENDU VISIBLE PAR CONSTRUCTION** : la
+  phrase « Les sept étapes d'une vente d'appartement à Villeurbanne, telles que
+  nous les menons : » précède le bloc et reprend `steps.name` **mot pour mot**,
+  comme le 21/11. **Le piège du `HowTo.name` invisible est donc évité, pas
+  corrigé après coup.**
+- ✅ **`updated` AVANCÉ AU 25/11, ET C'EST JUSTIFIÉ** : la page est réécrite à
+  plus de 95 %. Rien à voir avec les 17, 20, 22 et 24/11, où l'ajout d'un lien ne
+  changeait rien à ce que la page disait.
+- ✅ **TITRE CHANGÉ** (« Vendre son appartement à Lyon : les 7 étapes clés
+  (2026) » → « Vendre son appartement à Villeurbanne ou à Lyon : les 7 étapes dans
+  l'ordre »). L'ancien était un quasi-doublon du titre de `matera.eu`, présent
+  dans la SERP. ⚠️ **Surveiller l'effet du changement de title indexé**, comme
+  pour les 19 et 23/11.
+- ✅ 🆕 **CINQ FORMULATIONS RETIRÉES À LA RELECTURE DU RENDU, AVANT COMMIT** :
+  « la première cause d'une vente qui s'installe » (classement non mesuré),
+  « peuvent tenir en deux semaines » (durée non sourcée **sur une page qui refuse
+  justement de publier des durées non sourcées**), « presque aucune page sur le
+  sujet ne le mentionne » (affirmation sur 9 concurrents que je n'avais pas
+  vérifiée un par un), « le prix affiché le plus repris » (le relevé publié donne
+  4 chiffres affichés, aucun n'est « le plus repris »), et deux phrases qui
+  rattachaient l'amende à la mauvaise obligation. 📌 **Les quatre premières
+  étaient invisibles au contrôle de forme : elles ne se voient qu'en relisant.**
+- ✅ **CONTRÔLES** : `tsc --noEmit` propre ; `eslint` **35 / 24**, chiffre
+  inchangé depuis le 02/11, **aucune erreur neuve** ; **build en 0, 92 pages** ;
+  serveur tué avant chaque redémarrage (**0 `next-server` restant**, log de
+  démarrage lu) ; **parité FAQ visible ↔ `FAQPage` : 8 questions, 16 chaînes sur
+  16 retrouvées mot pour mot dans le texte rendu** (entités HTML décodées avant
+  comparaison — le faux négatif du 24/11 est évité) ; **7 étapes balisées = 7
+  étapes visibles** ; **5 blocs `ld+json`** (`RealEstateAgent`, `BlogPosting`
+  `dateModified` = 2026-11-25, `HowTo`, `FAQPage`, `BreadcrumbList`) ;
+  **0 `**`, 0 `](`, 0 `&apos;`** dans le texte visible ; **débordement horizontal
+  de page = 0** en 390 px et 1440 px, **et plus aucun élément à défilement** hors
+  le lien d'évitement et le bouton de CTA ; **38 liens internes de la page en
+  200** ; **crawl local 55 URL, 55 en 200** ; `/llms.txt` **200**, 69 lignes,
+  **le nouveau titre et le nouvel `excerpt` y figurent sans intervention** (il
+  dérive de `ARTICLES`).
+- ✅ **PROSE CONTRÔLÉE AVANT INSERTION, PAS APRÈS** (règle du 03/11, la prose ne
+  passe jamais par un heredoc) : **2 823 mots, 396 accents = 0,140 par mot**
+  (0,14–0,15 = normal), **0 apostrophe courbe, 0 insécable U+00A0 ni U+202F,
+  0 mot collé, 0 double espace.**
+- ✅ **`diff` : 170 insertions, 15 suppressions, un seul fichier (`lib/blog.ts`).
+  Les 15 lignes supprimées sont TOUTES l'ancien article** — vérifié ligne par
+  ligne. **Aucune autre page n'est touchée**, donc le risque de casser ce qui
+  marchait est circonscrit à une page qui ne disait presque rien.
+
+- ⚠️ 🆕 **UNE ÉTAPE DE L'ANCIENNE LISTE A DISPARU, ET C'EST UN CHOIX À
+  SURVEILLER** : « Préparer le bien » (désencombrer, réparer, soigner la lumière)
+  ne figure plus parmi les sept, parce que les sept nouvelles sont ordonnées par
+  **ce que la loi impose et quand**, et que la préparation n'a pas de date
+  opposable. **Le sujet a sa page** (`home-staging-vendre-plus-cher`), **mais
+  elle n'est pas liée depuis ici.** 📌 **À poser au prochain chantier de maillage
+  (gel levé le 28/11), pas aujourd'hui** : ce serait un lien non mesuré ajouté
+  dans un run de contenu.
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  VINGT-SEPTIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
+  règle des 90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE**, recontrôlée ce jour sur l'API :
+  `discord.gg/fSyn28G5U` → **`{"message": "Unknown Invite", "code": 10006}`**.
+  **Trente-troisième jour au moins.** ⚠️ **NON renotifiée** (8 notifications déjà
+  envoyées, aucune action possible de notre côté).
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+- ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 29 254 lignes au démarrage, ~2,01 Mo.
+  **Toujours en attente.** 📌 **Ce run ne l'a pas lu en entier** : « État des
+  lieux », « Chantiers en attente » et deux techniques retrouvées par `grep`
+  ciblé. **Le fichier a passé les 2 Mo.**
+
+
 **Au 2026-11-24 (mardi)**
 
 - ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 23/11.** Aucun manque
@@ -13257,6 +13455,211 @@ Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jour
 de suite un chantier « contenu blog ».
 
 
+**Angle du dernier run : CONTENU — `vendre-appartement-lyon-etapes` réécrit de
+fond en comble** (25/11 : 113 mots de blocs `text:` → **~2 100** ; 230 mots
+rendus → **3 003** ; SERP à 100 % non locale et aucun des 9 résultats ne cite un
+article de loi ; articles **L126-28, L126-33, R126-21 à R126-24, L173-2** du code
+de la construction et de l'habitation relus un par un, et la bascule du
+01/01/2028 écrite noir sur blanc ; aucun chiffre neuf, les 4 données locales sont
+reprises telles quelles de leurs pages propriétaires).
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (26/11, jeudi) DOIT ÊTRE DU NON-CONTENU**
+(alternance : 23/11 contenu → 24/11 non-contenu → **25/11 contenu**).
+✅ **Veille du lundi faite le 23/11, prochaine due le 30/11** — pas demain.
+
+🟡 **CONTRÔLE D'USAGE DÛ AU DÉMARRAGE DU 26/11, ET IL COÛTE UNE MINUTE** :
+vérifier que `/blog/vendre-appartement-lyon-etapes` est bien servi réécrit en
+production. **Chaînes qui n'existaient pas avant ce run** : « Logement à
+consommation énergétique excessive », « R126-23 », « 2 454 appartements sur les
+49 717 ». Et le `<title>` doit être le nouveau (« … les 7 étapes dans l'ordre »).
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION — ET LA SITUATION A CHANGÉ LE
+25/11 : LE *CORE UPDATE* DE NOVEMBRE EST CLOS (13 j 20 h, donc terminé le 24/11),
+MAIS UN « DECEMBER 2026 CORE UPDATE » A DÉMARRÉ LE 24/11 ET TOURNE.** Relevé sur
+le tableau de bord d'état de Google Search, **recontrôlé sur le HTML brut**.
+⛔ **La fenêtre d'interprétation ne s'est donc jamais ouverte** : toutes les
+échéances inscrites ci-dessous (26/11 → 09/12) tombent dans ce second *core
+update*. **Relever à l'échéance, ne pas conclure.** ⛔ **Ne pas prédire de date
+de fin** (11 j 21 h à 45 j sur les 41 entrées du tableau). 📌 **Le seul signal
+reste l'apparition d'une durée, et il vient d'être vu fonctionner — la méthode
+est validée.** 📌 **À recontrôler chaque jour, c'est une ligne de `curl`.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE 26/11, par ordre d'impact :**
+  1. 🟡 **`HowTo.name` N'EST RENDU VISIBLE SUR AUCUNE PAGE À BLOC `steps`, SAUF
+     CELLES DU 21/11 ET DU 25/11.** ⚠️ **Recenser les articles à bloc `steps` et
+     leur appliquer la même phrase visible**, un par un. ⛔ **Ne pas toucher au
+     renderer.** 📌 **Premier de la liste**, mais **le gain attendu est GEO, pas
+     SERP** (la veille du 23/11 confirme que `HowTo` et `FAQPage` ne produisent
+     plus aucun rich result Google). 🆕 **Le 25/11 donne un second exemple de la
+     recette** : la phrase visible précède le bloc et reprend `steps.name` mot
+     pour mot.
+  2. 🟡 **DEUX À TROIS LIENS ENTRANTS ÉDITORIAUX VERS `lmnp-location-meublee` ET
+     `home-staging-vendre-plus-cher`**. ⛔ **Gels levés le 30/11 et le 28/11.**
+     🆕 📌 **ET UNE ARÊTE ÉVIDENTE EST DÉSORMAIS IDENTIFIÉE** : la réécriture du
+     25/11 a retiré l'étape « Préparer le bien » des sept étapes (elle n'a pas de
+     date opposable), **et `vendre-appartement-lyon-etapes` ne lie pas
+     `home-staging-vendre-plus-cher`**. C'est le meilleur candidat du point 2,
+     à poser **après le 28/11**, avec une phrase écrite pour lui.
+  3. 🟡 **CHERCHER D'AUTRES PAIRES DE PAGES QUI TRAITENT LE MÊME MOMENT SANS SE
+     CITER.** Recette dans « Techniques apprises » du 24/11 : grouper les H2 des
+     30 articles par formule, pas par sujet. ⚠️ **Ne poser un lien que si le
+     relevé donne 0 occurrence croisée.**
+  4. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     Levée d'ambiguïté, pas correction d'erreur.
+  5. 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite). **Une
+     lecture du V de `L125-5` alinéa par alinéa suffit**, et la voie d'accès
+     existe (`droit.org`). 🆕 📌 **Et elle vient d'être éprouvée une seconde fois
+     le 25/11 sur le CCH : le payload XML par code marche, il suffit de capturer
+     l'ÉLÉMENT `<article>` et de ne pas supposer que `num` est le premier
+     attribut.** 🆕 ⚠️ **Ce chantier gagne en urgence** : la page du 25/11 cite
+     elle aussi l'état des risques en première visite **sans sanction**, comme
+     `questions-a-poser-visite`. **Deux pages dépendent donc de cette lecture.**
+  6. 🟡 **DONNER AUX FICHES D'ANNONCE UN LIEN VERS LEUR PAGE DE QUARTIER.**
+     Écarté le 22/11. 📌 **Ne l'ouvrir qu'en écrivant une phrase inconditionnelle.**
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11).
+  8. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **vingt-quatre
+     runs** sans recontrôle). **Contrôle à deux temps obligatoire.**
+  9. 🟡 **LIRE UNE PAGE DE `blog.qoridor.fr`** (inscrit le 19/10, **vingt-huitième
+     report**). **`blog.qoridor.fr/article/home-staging` en priorité.**
+ 10. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 11. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 12. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 25/11. **Jour creux.**
+ 13. 🟡 **ARCHIVER LE JOURNAL.** **29 254 lignes, ~2,01 Mo au démarrage du 25/11 —
+     le fichier a passé les 2 Mo.** ⚠️ **Ne jamais archiver « État des lieux » ni
+     « Chantiers en attente ».**
+ 14. ⛔ **NE PLUS CHERCHER DE TROU DANS LE BALISAGE D'ÉTABLISSEMENT.** Fermée (20/11).
+ 15. ⛔ **LE MAILLAGE DES FICHES EST FAIT (22/11) ET VÉRIFIÉ (23/11).**
+ 16. ⛔ **LE MAILLAGE DES QUARTIERS DEPUIS LES ARTICLES EST CLOS (24/11), VÉRIFIÉ
+     EN PRODUCTION LE 25/11 (7 LIENS SUR 7). NE PAS LE ROUVRIR.**
+
+🟢 **CANDIDATS CONTENU POUR LE RUN D'APRÈS (27/11) :**
+  1. 🟡 **LE BLOG FAIBLE — DEUX ARTICLES RESTANTS** (mots de blocs `text:`) :
+     `vendre-vite-lyon` **43**, `capacite-emprunt-immobilier` **170**.
+     🆕 ✅ **`vendre-appartement-lyon-etapes` (34) SORT DE LA LISTE : réécrit le
+     25/11.** 📌 **LE FAVORI DEVIENT `vendre-vite-lyon`** : 43 mots, deux H2
+     d'une phrase (« Les leviers d'une vente rapide », « L'erreur classique »),
+     **et c'est l'un des 3 articles encore sans `FAQPage`** avec
+     `capacite-emprunt-immobilier` et `cout-gestion-locative`.
+     ⚠️ **MAIS ATTENTION AU DOUBLON QUE LE 25/11 VIENT DE CRÉER** : `vendre-vite-lyon`
+     renvoie déjà vers `vendre-appartement-lyon-etapes` pour « les étapes de la
+     vente elle-même », et cette page-là couvre désormais le calendrier, le prix
+     de départ et les documents. **Il faut donc lui trouver un angle qui ne soit
+     ni le calendrier ni la liste des étapes** — et **la SERP du 25/11 en désigne
+     un** : la question « combien de temps » est massivement posée et
+     massivement mal répondue (33 / 48 / 66 jours, sources de 2018 à 2021).
+     ⛔ **Sans inventer de délai** : l'angle serait **pourquoi ces chiffres
+     divergent et ce qu'un vendeur peut réellement contrôler**.
+     ⛔ **`capacite-emprunt-immobilier` RESTE BLOQUÉ** (35 % / 25 ans non lus sur
+     un texte primaire). 📌 **Tester `droit.org` pour le code de la consommation —
+     la voie est désormais éprouvée deux fois.**
+  2. 🔴 **`mandat-simple-ou-exclusif` MÉRITE D'ÊTRE ROUVERT** : `salengro-immo.fr`
+     a occupé le créneau local (SERP du 22/11). **2 315 mots rendus** — pas un
+     article faible, un article **concurrencé**. ⚠️ **Lire la page de Salengro
+     avant d'écrire.**
+  3. 🟡 **LA SERP « estimation immobilière Villeurbanne » DÉSIGNE UN CRÉNEAU** :
+     8 des 9 résultats sont des outils ou des pages de prix, **et leurs chiffres
+     divergent** (3 641 / 3 849 / 4 017 / « environ 3 800 » €/m²). ⚠️ **À mesurer
+     avant d'écrire, et ⛔ sans jamais toucher à l'outil d'estimation.**
+  4. 🟡 **LE SUJET DU PRORATA EST MESURÉ DEUX FOIS SANS RÉPONSE LOCALE, ET LA
+     PAGE EXISTE DÉJÀ** (`taxe-fonciere-vente-qui-paie`, qui cite le bon article).
+     📌 **Avant de réécrire, se demander si le manque est éditorial ou de
+     notoriété** : la page n'avait que 4 liens entrants, le 24/11 en a posé un
+     cinquième. **Remesurer le 08/12 AVANT de décider.**
+  5. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     « bail mobilité », « colocation meublée Villeurbanne », « louer à un
+     étudiant Villeurbanne ». ⚠️ **Triple contrôle du 03/11 obligatoire.**
+  6. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+     `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
+     difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  7. 🟡 **DONNER UNE FAQ À `cout-gestion-locative`** — gel levé le **27/11**.
+  8. ⛔ **NE PAS RÉÉCRIRE** : `vendre-appartement-lyon-etapes` (25/11) → **09/12** ·
+     `faire-offre-achat` (23/11) → **07/12** ·
+     `achat-immobilier-lyon-checklist` (21/11) → **05/12** ·
+     `questions-a-poser-visite` (19/11) → **03/12** ·
+     `lmnp-location-meublee` (16/11) → **30/11** ·
+     `home-staging-vendre-plus-cher` (14/11) → **28/11** ·
+     `cout-gestion-locative` (13/11) → **27/11** ·
+     `compromis-de-vente-delais` (12/11) → **26/11** ·
+     `prix-immobilier-villeurbanne-2026` → **03/12** ·
+     `preavis-depot-garantie-location-villeurbanne` et
+     `rentabilite-locative-lyon` (21/11) → **05/12**.
+  9. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** : le contenu existe, le manque était
+     de la visibilité. **Remesurer le 05/12.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🟡 **ENCADREMENT DES LOYERS : VÉRIFIÉ LE 22/11, TOUJOURS PAS PROMULGUÉ.**
+  Adoption définitive le **19/11/2026**. **Nos pages portent une phrase DATÉE au
+  21/11, qui reste exacte.** **Revérifier vers le 04/12.**
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT.** 🆕 **La SERP
+  du 25/11 l'appuie une septième fois** : sur 9 résultats, **deux agences
+  lyonnaises** (`aqueducsimmobilier`, `success-group-immo`) et sept portails ou
+  éditeurs nationaux. **Question à Tony : l'agence est-elle inscrite sur ces
+  portails, et veut-elle qu'on s'en occupe ?** **Ne rien faire avant sa réponse.**
+- 🟠 **UN CONCURRENT VILLEURBANNAIS PUBLIE DU CONTENU LOCAL ET ÇA CLASSE**
+  (`salengro-immo.fr`, deux SERP suivies le 22/11). ⚠️ **Information, pas action.**
+- 🟠 **LE BARÈME D'ORPI EST INDEXÉ EN PDF ET LE NÔTRE NE L'EST PAS.**
+- 🟠 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE**, et la même question se pose depuis le 23/11 pour la MARGE DE
+  NÉGOCIATION. 🆕 **La SERP du 25/11 en fait la question la plus rentable du
+  dossier** : « combien de temps pour vendre » domine la requête « étapes », et
+  les trois chiffres servis par le moteur (33, 48, 66 jours) datent de 2018 à
+  2021 et se contredisent. **Un délai médian mesuré sur les mandats de l'agence
+  serait la donnée la plus citable que le site puisse publier.**
+  **Question à Tony : l'agence connaît-elle, sur ses propres mandats, le délai
+  entre la mise en vente et le compromis, et l'écart entre prix affiché et prix
+  signé ?** 📌 **La plus prometteuse des questions ouvertes, et elle en est
+  maintenant à sa troisième justification mesurée.**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  ⚠️ **Publicité comparative : décision commerciale.**
+- 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS `/annonces`
+  PLUTÔT QUE VERS `/acheter` ?** **Pas à trancher seul.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — VINGT-SEPTIÈME JOUR.**
+  **Non corrigé : page de Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD MORTE** (`code 10006`, recontrôlé le **25/11**), à
+  **deux** emplacements (`components/layout/site-footer.tsx`,
+  `components/home/social.tsx`). ⚠️ **NON renotifiée.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ 🔴 **TOUT CE QUI SERA RELEVÉ JUSQU'À LA FIN DU « DECEMBER 2026 CORE UPDATE »
+(démarré le 24/11) L'EST PENDANT UNE MISE À JOUR. Relever, ne pas conclure.**
+- **SERP de sujet du 12/11 (compromis)** → **26/11**.
+- **SERP de sujet du 13/11 (gestion locative, négociabilité)** → **27/11**.
+- **SERP de sujet du 14/11 (home staging)** → **28/11**.
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**.
+- **« appartement à vendre Villeurbanne agence »** → **01/12**. 📌 **Requête
+  témoin de `/annonces` et du bloc « Biens similaires ».**
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** → **03/12**.
+- **« questions à poser lors de la visite d'un appartement avant d'acheter »** →
+  **03/12**.
+- **« vendre appartement Villeurbanne »**, **« prix m2 Villeurbanne »** et
+  **« honoraires agence immobilière Villeurbanne … »** → **05/12**.
+- **« combien coûte une agence immobilière à Villeurbanne honoraires »** →
+  **05/12**. 🟢 **LE PREMIER RELEVÉ POSITIF DU JOURNAL** (21/11). ⛔ **À
+  confirmer, pas à célébrer.**
+- **« agence immobilière Villeurbanne »** → **06/12**.
+- **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … »** → **06/12**.
+- **« estimation immobilière Villeurbanne »** → **07/12**.
+- **« offre d'achat acceptée le vendeur peut-il se rétracter délai validité »** →
+  **07/12** (requête témoin du chantier du 23/11).
+- **LES DEUX SERP DU PRORATA DE TAXE FONCIÈRE** → **08/12** (relevées le 24/11 :
+  site absent des deux, aucun acteur local).
+- 🆕 **« quelles sont les étapes pour vendre son appartement à Lyon ordre
+  chronologique délais »** → **09/12**. 📌 **Requête témoin du chantier du 25/11.**
+  **Point zéro : site absent, 9 résultats, aucun acteur villeurbannais, aucune
+  page citant un article de loi.**
+- ⛔ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ⛔ **« faire une offre d'achat appartement Villeurbanne de combien négocier le
+  prix » NE DOIT PAS ÊTRE SUIVIE** : SERP transactionnelle.
+
+---
+
 **Angle du dernier run : NON-CONTENU — maillage éditorial, deux volets, 7 arêtes
 neuves** (24/11 : les 5 derniers articles qui nommaient un quartier sans lier sa
 page ont reçu leur lien, ce qui **clôt le chantier du 20/11** ; et
@@ -20844,6 +21247,100 @@ apparaissent recrawlées — ce qui, là encore, **demanderait Search Console**.
 
 ## Erreurs commises et corrigées
 
+### 2026-11-25 — J'ai réécrit la leçon du 19/11 au lieu de l'appliquer : deux tableaux de prose, et je ne l'ai vu que sur la capture
+
+Le chantier du jour comportait deux blocs `table` : les mentions obligatoires
+d'une annonce (3 colonnes, dont une de prose longue) et le calendrier des
+documents (3 colonnes courtes). Les deux ont passé `tsc`, `eslint`, le build, le
+contrôle de parité JSON-LD et le contrôle de débordement **de page** — qui est
+resté à **0**, parce que le gabarit enveloppe chaque tableau dans un
+`div.overflow-x-auto`. **Aucun contrôle automatique n'a rien signalé.**
+
+C'est la capture à 390 px qui a montré le problème :
+
+```
+table 0  {"clientW":348,"scrollW":480}
+table 1  {"clientW":348,"scrollW":480}
+```
+
+Soit **132 px de contenu hors écran sur les deux**, et sur le tableau 1 la
+colonne hors écran était **« Texte »** — c'est-à-dire la colonne qui portait
+toute la valeur de la page. Un lecteur mobile voyait « Dès la première visite |
+L'état des risques, établi depuis moins de six mois » et **jamais** l'article qui
+le fonde.
+
+⚠️ **Or cette leçon est déjà dans ce journal, datée du 19/11** : « à 390 px, 15
+lignes de prose dans un tableau à défilement horizontal se lisent mal, et de la
+prose longue en cellule s'extrait mal. Ne pas reconvertir ce bloc en tableau. »
+**Je l'ai relue le jour même** — elle est dans le commentaire d'en-tête de
+`lib/blog.ts`, que j'ai lu pour écrire la note de maintenance. **Je l'ai lue
+comme une consigne attachée à `questions-a-poser-visite`, pas comme une règle de
+gabarit.** C'est l'erreur : la leçon ne portait pas sur une page, elle portait
+sur le composant.
+
+✅ **Correction appliquée avant le commit** : les deux tableaux sont devenus des
+blocs `ul` à amorce en gras (« **La classe énergie et la classe climat, dans une
+annonce de presse écrite.** Les deux lettres s'écrivent… (article R126-21). »).
+Après conversion, **plus aucun élément à défilement horizontal** sur la page en
+dehors du lien d'évitement et du bouton de CTA.
+
+📌 **Et le bénéfice n'est pas que mobile : une puce autonome s'extrait mieux
+qu'une ligne de tableau.** Un moteur de réponse qui cite « Le montant estimé des
+dépenses annuelles d'énergie. Il doit être précédé de la mention exacte … et
+préciser l'année de référence des prix de l'énergie retenus (article R126-23). »
+cite une phrase complète. La même information en trois cellules ne se cite pas :
+il faut reconstruire la phrase, et la source est dans une colonne séparée.
+
+📌 **LA RÈGLE, ET ELLE EST OPÉRATOIRE** : **un bloc `table` ne se justifie que si
+toutes ses cellules sont COURTES** — un chiffre, une date, un libellé de deux ou
+trois mots, comme les tableaux de médianes par quartier, qui eux fonctionnent.
+**Dès qu'une cellule porte une phrase, c'est une liste à amorce en gras.**
+⚠️ **Et le contrôle qui l'attrape n'est pas le débordement de page, qui reste à 0 :
+c'est `scrollWidth` vs `clientWidth` SUR LE `div.overflow-x-auto` lui-même, ou la
+capture.** Le contrôle de débordement de page ne voit rien, par construction.
+
+---
+
+### 2026-11-25 — Cinq phrases que tous les contrôles de forme laissaient passer, et qui affirmaient plus que ce que je pouvais prouver
+
+Relecture du rendu avant commit, après que `tsc`, `eslint`, le build, la parité
+FAQ 8/8, les 38 liens en 200 et le crawl 55/55 soient tous verts. **Cinq
+formulations retirées, aucune n'était détectable autrement qu'en lisant :**
+
+1. « Un prix calé sur l'affichage voisin est **la première cause** d'une vente
+   qui s'installe. » — **un classement, sans mesure.** Remplacé par « recopie cet
+   écart au lieu de le corriger », qui ne dit que ce que le chiffre publié dit.
+2. « Les trois premières étapes ne dépendent que de vous et **peuvent tenir en
+   deux semaines**. » — **une durée non sourcée, sur une page dont un H2 entier
+   explique qu'aucune durée n'est publiable.** La page se contredisait
+   elle-même, à six paragraphes d'intervalle. Clause supprimée.
+3. « …et **presque aucune page sur le sujet** ne le mentionne. » — **une
+   affirmation sur neuf concurrents que je n'avais pas ouverts un par un.** J'ai
+   mesuré que les neuf ne citent aucun article de loi ; je n'ai pas mesuré ce
+   qu'ils disent de l'amende. Remplacée par un fait vérifiable sur le texte :
+   « La sanction vise donc le vendeur lui-même, et pas seulement le professionnel
+   qui diffuse l'annonce pour lui. »
+4. « **le prix affiché le plus repris** pour Villeurbanne, 4 380 €/m² » — le
+   relevé publié sur `investir-locatif-lyon` donne **quatre** prix affichés
+   (4 380 / 3 548 / 3 548 / 3 520) : 4 380 n'est pas « le plus repris », c'est
+   celui d'une source. Remplacé par « un prix affiché relevé à 4 380 €/m² ».
+5. Deux phrases rattachaient l'amende de 3 000 € **au fait de ne pas avoir le DPE
+   avant l'annonce**, alors que le III de `L126-33` la rattache **au défaut des
+   mentions dans l'annonce**. Nuance juridique, mais c'est la phrase d'ouverture
+   de la page et l'`excerpt` repris par `/llms.txt`.
+
+📌 **CE QUE CES CINQ CAS ONT EN COMMUN : aucune n'est fausse par inattention, les
+cinq sont des montées en généralité.** Un chiffre juste (25,1 %) devient « la
+première cause » ; un ordre d'idées devient « deux semaines » ; un constat sur
+neuf pages devient « presque aucune page ». **Le réflexe à surveiller n'est pas
+l'erreur de saisie, c'est l'envie de rendre la phrase plus forte qu'elle ne peut
+l'être.**
+📌 **Et la seule parade reste la relecture du RENDU, pas du source** : les cinq
+sont passées sous les yeux au moment de l'écriture sans déclencher quoi que ce
+soit. **Prolonge la discipline du 30/10 et la règle du 03/11.**
+
+---
+
 **2026-11-23 — J'AI PRÉDIT TROIS FOIS LA FIN DU *CORE UPDATE* SUR UN ÉCHANTILLON
 DE DEUX LIGNES, ET C'ÉTAIT LES DEUX PLUS COURTES.** Les entrées des 19, 20 et
 21/11 écrivent, en gras, « mars **12 j 4 h**, mai **11 j 21 h** » puis « s'il
@@ -23788,6 +24285,132 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+**2026-11-25 — DEUX *CORE UPDATES* CONSÉCUTIFS, ET LA LEÇON PORTE SUR
+L'INSTRUMENT AUTANT QUE SUR LE RÉSULTAT.** Le tableau de bord d'état de Google
+Search donne ce jour, en tête de la section « Ranking » :
+
+| Nom | Début | Duration |
+|---|---|---|
+| December 2026 core update | 24 Nov 2026 | **Information** |
+| November 2026 core update | 10 Nov 2026 | **13 days, 20 hours** |
+
+✅ **La mise à jour de novembre est donc close, et la durée est apparue — c'est
+exactement le signal que le journal attendait depuis le 19/11.** La méthode
+inscrite alors (« ne plus prédire de date de fin, attendre l'apparition d'une
+durée ») **a fonctionné**, et 13 j 20 h tombe bien dans la fourchette des
+41 entrées (11 j 21 h à 45 j) sans qu'aucune prédiction n'ait été nécessaire.
+🔴 **Mais une seconde a démarré le jour même**, ce qui annule le bénéfice : la
+fenêtre d'interprétation ne s'est jamais ouverte, et les dix échéances de
+remesure inscrites au backlog tombent toutes dedans.
+
+⚠️ **LE POINT DE MÉTHODE, ET IL EST NOUVEAU** : le premier relevé est passé par
+un outil qui **résume** la page avec un modèle. Le résumé annonçait une ligne
+« December 2026 core update » **démarrant en novembre** — une incohérence
+apparente de nommage, exactement le genre de détail qu'un résumé automatique
+invente. **J'ai retéléchargé le HTML brut et dé-balisé moi-même avant d'écrire
+quoi que ce soit** : la ligne existe, telle quelle. 📌 **Un fait qui a l'air
+bizarre n'est pas forcément faux, mais il ne s'inscrit au journal qu'après
+contrôle sur la source brute** — et ici le contrôle coûtait une ligne de `curl`
+et six lignes de `python`. **Prolonge la leçon du 23/11 sur les chiffres que le
+résumé d'un moteur attribue aux pages.**
+
+```bash
+curl -sL --cacert /root/.ccr/ca-bundle.crt \
+  "https://status.search.google.com/products/rGHU1u87FJnkP6W2GwMi/history"
+# puis dé-baliser et chercher « core update » : le tableau est en HTML simple
+```
+
+---
+
+**2026-11-25 — LE CODE DE LA CONSTRUCTION ET DE L'HABITATION SE LIT SUR
+`codes.droit.org`, ET LE PIÈGE N'EST PAS CELUI DU 23/11.** Deuxième usage de la
+voie ouverte le 23/11, cette fois sur un autre code. Elle marche à l'identique :
+
+```bash
+curl -sL --cacert /root/.ccr/ca-bundle.crt -o cch.xml \
+  "https://codes.droit.org/payloads/Code%20de%20la%20construction%20et%20de%20l%27habitation.xml"
+# 8,7 Mo ; racine : <code nom="…" id="LEGITEXT000006074096" lastup="2026-10-09">
+```
+
+⚠️ **LE PIÈGE DU JOUR, ET IL A FAIT ÉCHOUER MES QUATRE PREMIÈRES EXTRACTIONS EN
+SILENCE** : la regex du 23/11 (`<article num="L126-33"`) **ne trouve rien ici**,
+et elle ne rend pas une erreur — elle rend « ABSENT ». Dans ce code, `num` n'est
+**pas le premier attribut** :
+
+```
+<article id="LEGIARTI000043976954" cid="…" num="L111-1" etat="VIGUEUR" …>
+```
+
+La bonne forme est `<article [^>]*num="L126-33"[^>]*>(.*?)</article>`.
+📌 **Le contrôle qui l'attrape en une seconde** : lister d'abord tous les `num`
+d'une famille (`grep -o 'num="L126-[0-9]*"'`) **avant** d'extraire. Si la liste
+est pleine et que l'extraction rend « ABSENT », c'est la regex qui est fausse, pas
+le code qui est incomplet. **Sans ce réflexe, j'aurais conclu que le CCH publié
+par droit.org ne contient pas les articles du DPE — et renoncé au chantier.**
+✅ **La règle du 23/11 reste valable et s'ajoute à celle-ci** : capturer
+l'ÉLÉMENT `<article>…</article>`, jamais une fenêtre de caractères.
+✅ **`modTitle` donne toujours la source de rédaction**, publiable telle quelle :
+loi n° 2021-1104 du 22 août 2021 art. 153 (L126-33) et art. 158 (L173-2, L126-28),
+décret n° 2021-872 du 30 juin 2021 (R126-21, R126-22, R126-24), décret
+n° 2020-1609 du 17 décembre 2020 art. 1 (R126-23).
+⚠️ **`lastup` = 2026-10-09 pour ce code** : à lire avant de citer, et à ne pas
+utiliser pour un texte modifié dans les six dernières semaines.
+
+---
+
+**2026-11-25 — UN RENVOI EN CASCADE SE LIT DANS LE TEXTE, PAS DANS LE RÉSUMÉ
+QU'ON EN FAIT.** L'article `R126-24` impose une mention dans l'annonce pour les
+logements « qui ne respectent pas l'obligation du premier alinéa de l'article
+L. 173-2 ». Résumé vite, cela donne « il faut signaler que le logement est une
+passoire » — c'est ce qu'écrivent les guides. **En allant lire `L173-2`, la
+situation est tout autre :**
+
+- Le **I** fixe l'obligation : niveau A à E **à compter du 1er janvier 2028**.
+- Le **III** distingue deux régimes successifs : **depuis le 1er janvier 2022**,
+  c'est **l'obligation elle-même** qui se mentionne dans les publicités **et dans
+  les actes de vente** ; **à compter du 1er janvier 2028**, c'est **son
+  non-respect**.
+
+📌 **Donc en 2026, une annonce de logement F ou G ne « déclare » pas une
+infraction : elle annonce une obligation future.** La distinction est invisible
+si l'on s'arrête à `R126-24`, et elle est **la seule chose que la page du 25/11
+dit et que les neuf résultats de sa SERP ne disent pas.**
+📌 **LA TECHNIQUE GÉNÉRALISABLE : quand un article réglementaire renvoie à un
+article législatif, l'article renvoyé contient presque toujours le calendrier, et
+le calendrier est l'angle.** Un décret dit *quoi afficher* ; la loi dit *depuis
+quand et jusqu'à quand*. **C'est la seconde moitié qui n'est jamais reprise.**
+⚠️ **Et c'est aussi une dette** : la page devra être relue **avant le
+01/01/2028**, échéance inscrite dans l'en-tête de `lib/blog.ts`.
+
+---
+
+**2026-11-25 — UNE SERP QUI SE CONTREDIT ELLE-MÊME EST UN CRÉNEAU, MAIS PAS
+TOUJOURS CELUI QU'ON CROIT.** La SERP du chantier (« étapes pour vendre son
+appartement à Lyon ») sert **trois durées différentes pour la même question** —
+33 jours, 48 jours (décembre 2020), environ 66 jours — et le moteur ajoute
+lui-même que « les chiffres de durée datent parfois de 2018 à 2021 ». **C'est la
+troisième fois en trois jours qu'un résumé de moteur avoue le défaut de ses
+propres sources** (24/11 : « aucune information propre à Villeurbanne » ; 23/11 :
+« je n'ai pas consulté les textes officiels »).
+
+⚠️ **Mais la tentation était de combler ce créneau-là, et il n'est pas
+comblable** : nous n'avons aucun délai de vente publiable, pour la raison écrite
+depuis le 19/11 (DVF enregistre la signature, jamais la mise en vente).
+✅ **Le créneau réellement pris est donc l'autre** : la requête dit « étapes et
+délais », les neuf concurrents répondent avec des durées qu'ils ne savent pas
+sourcer, **et aucun ne cite un seul article de loi** — alors que la moitié des
+étapes d'une vente sont des obligations datées. **La page répond avec le droit là
+où les autres répondent avec des statistiques périmées.**
+📌 **LA LEÇON : quand une SERP se contredit sur un chiffre, vérifier d'abord si
+l'on peut produire ce chiffre. Si on ne peut pas, le créneau n'est pas le chiffre
+— c'est tout ce que la question contient d'autre et que personne ne traite.**
+📌 **Et noter que la contradiction mesurée vaut, elle, comme justification d'une
+question à Tony** : le délai médian de ses propres mandats serait la donnée la
+plus citable que le site puisse publier. **Troisième justification mesurée de
+cette question.**
+
+---
 
 
 ### 2026-11-24 — Trouver les paires de pages qui traitent le même moment sans se citer : grouper les H2 par FORMULE, pas par sujet
