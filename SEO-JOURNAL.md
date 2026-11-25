@@ -7228,6 +7228,19 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-25 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (`vendre-appartement-lyon-etapes`, `e001ac4`)
+
+- **Déclenchement en double** : le chantier du jour est servi en production (`<title>`
+  « … les 7 étapes dans l'ordre » sur `/blog/vendre-appartement-lyon-etapes`, `lastmod`
+  25/11 dans le sitemap). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `41a4435`, aucun commit tiers.
+  Sitemap = **58 URL**, inchangé ; seule URL au `lastmod` 25/11 = l'article du jour (mon
+  commit). Toutes les URL hors `/annonces/*` et `/blog/*` ont un dossier de route →
+  **aucune page de l'éditeur**. `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, l'article du jour, `/agence-immobiliere-villeurbanne`,
+  `/estimation`, `/estimation-immobiliere-villeurbanne`, `/robots.txt`, `/llms.txt` → 200.
+- **Non fait** : archivage du journal (~29 900 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-24 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage quartiers + prorata, `93a7a80`)
 
 - **Déclenchement en double** : le chantier du jour est servi en production
