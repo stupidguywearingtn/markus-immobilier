@@ -388,6 +388,53 @@
  * relire : c'est l'erreur du 21/11 sur L313-41.
  * ⚠️ TITRE CHANGÉ le 23/11/2026 (« Faire une offre d'achat : montant, lettre et
  * négociation » → titre local). Surveiller l'effet du changement de title indexé.
+ *
+ * Depuis le 25/11/2026, « vendre-appartement-lyon-etapes » est passé de 113 à
+ * ~2 100 mots de blocs `text:`. C'était le contenu le plus faible du site (une
+ * liste de 7 puces sans aucune réponse). Son apport propre est la CHRONOLOGIE
+ * OBLIGATOIRE d'une vente, et surtout les MENTIONS DE L'ANNONCE, que le site
+ * ne publiait nulle part : art. L126-28 (DPE tenu à disposition dès la mise en
+ * vente), L126-33 I (classes énergie et climat + dépenses théoriques dans
+ * l'annonce), L126-33 II et III (amende administrative : 3 000 € personne
+ * physique / 15 000 € personne morale pour un professionnel, 3 000 € pour un
+ * NON-professionnel après mise en demeure), R126-21 à R126-24 (forme : majus-
+ * cules et taille en presse écrite, « lisible et en couleur » en ligne et en
+ * vitrine, libellé exact des dépenses annuelles, mention « Logement à consom-
+ * mation énergétique excessive : »). Textes relus le 25/11/2026 sur la
+ * republication des codes de droit.org (payload XML du CCH, lastup 2026-10-09)
+ * — legifrance.gouv.fr rend toujours 403 à nos deux outils.
+ * ⚠️ LE POINT LE PLUS FRAGILE, À NE PAS « SIMPLIFIER » : jusqu'au 31/12/2027,
+ * le III de l'art. L173-2 fait mentionner dans l'annonce L'OBLIGATION elle-même
+ * (niveau A à E exigé à compter du 01/01/2028), et c'est seulement À COMPTER du
+ * 01/01/2028 que la mention porte sur son NON-RESPECT. La page écrit cette
+ * bascule ; ne pas la réduire à « il faut mentionner que le logement est une
+ * passoire ». À REVOIR AVANT LE 01/01/2028.
+ * ⚠️ PARTAGE DES RÔLES À RESPECTER — cette page LIE, elle ne republie pas : la
+ * liste et les durées de validité des diagnostics restent la propriété de
+ * « diagnostics-obligatoires-vente », les étiquettes F/G et les échéances DPE
+ * celle de « dpe-2026-ce-qui-change », le mandat celle de
+ * « mandat-simple-ou-exclusif », l'effet des 1° et 2° de L721-2 sur le délai de
+ * rétractation celle de « compromis-de-vente-delais », le calendrier de l'offre
+ * aux clés celle de « achat-immobilier-lyon-checklist », l'économie réelle d'une
+ * vente entre particuliers celle de « vendre-sans-agence », et l'écart
+ * affiché/signé celle de « investir-locatif-lyon ».
+ * ⚠️ AUCUN CHIFFRE NEUF : les quatre chiffres locaux sont REPRIS TELS QUELS de
+ * pages existantes (4,9 % et 2 454/49 717 de « dpe-2026-ce-qui-change » ;
+ * +25,1 % et 39 600 € sur un T2 de 45 m² de « investir-locatif-lyon » ; 2 491 à
+ * 3 966 €/m² et 3 500 €/m² sur 940 ventes du S1 2026). Si ces valeurs sont un
+ * jour recalculées, cette page doit l'être EN MÊME TEMPS que ses pages sources,
+ * jamais patchée seule.
+ * ⚠️ AUCUN DÉLAI DE VENTE N'EST PUBLIÉ, et la page écrit pourquoi (DVF
+ * enregistre la signature, pas la mise en vente) — même parti pris que
+ * « questions-a-poser-visite ». Ne pas y ajouter un délai « observé » sans
+ * donnée sourcée de l'agence.
+ * ⚠️ L'ÉTAT DES RISQUES EN PREMIÈRE VISITE EST CITÉ SANS SANCTION, comme sur
+ * « questions-a-poser-visite » : le V de l'art. L125-5 du code de l'environ-
+ * nement ne vise pas expressément l'alinéa qui impose cette remise. Ne pas
+ * « compléter » ce passage.
+ * ⚠️ TITRE CHANGÉ le 25/11/2026 (« Vendre son appartement à Lyon : les 7 étapes
+ * clés (2026) » → titre local). Surveiller l'effet du changement de title
+ * indexé.
  */
 
 export type Block =
@@ -703,28 +750,136 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "vendre-appartement-lyon-etapes",
-    title: "Vendre son appartement à Lyon : les 7 étapes clés (2026)",
+    title: "Vendre son appartement à Villeurbanne ou à Lyon : les 7 étapes dans l'ordre",
     metaDescription:
-      "Le guide complet pour vendre votre appartement à Lyon : estimation, diagnostics, annonce, visites, négociation et signature. Étape par étape.",
-    h1: "Vendre son appartement à Lyon : les 7 étapes clés",
+      "Les sept étapes d'une vente dans l'ordre, et ce que chacune impose : le DPE avant l'annonce, les quatre mentions obligatoires de l'annonce, les documents dus à la promesse.",
+    h1: "Vendre son appartement à Villeurbanne ou à Lyon : les 7 étapes dans l'ordre",
     excerpt:
-      "Vendre vite et au bon prix ne s'improvise pas. Le parcours d'une vente réussie à Lyon, étape par étape.",
+      "Une seule étape d'une vente a sa place fixée par la loi : le DPE doit exister avant l'annonce, parce que l'annonce doit en afficher les classements. Publier sans ces mentions expose un vendeur particulier à une amende administrative pouvant atteindre 3 000 €.",
     date: "2026-04-21",
+    updated: "2026-11-25",
     internalHref: "/vendre",
     internalLabel: "Confier la vente de mon bien",
     blocks: [
-      { type: "p", text: "Vendre vite et au bon prix ne s'improvise pas. Voici le parcours d'une vente réussie à Lyon." },
-      { type: "ol", items: [
-        "**Faire estimer son bien justement.** C'est le point de départ : un prix juste attire les acheteurs dès le premier jour. À Villeurbanne, partez [des prix réellement signés par quartier](/blog/prix-immobilier-villeurbanne-2026), pas des prix affichés.",
-        "**Réunir les diagnostics obligatoires.** DPE, amiante, plomb, électricité… mieux vaut les anticiper.",
-        "**Préparer le bien.** Désencombrer, réparer les petits défauts, soigner la lumière : un bien « prêt à vivre » se vend mieux.",
-        "**Créer une annonce qui sort du lot.** Photos professionnelles, texte clair, mise en avant des atouts.",
-        "**Gérer les visites.** Disponibilité, écoute, réponses aux objections.",
-        "**Négocier.** Connaître la valeur réelle du bien permet de défendre le prix sans braquer l'acheteur.",
-        "**Signer.** Compromis de vente, délai de rétractation, puis acte authentique chez le notaire.",
+      { type: "p", text: "**Les sept étapes d'une vente se suivent dans cet ordre : estimer le bien, choisir son mandat, faire établir le DPE, publier l'annonce, faire visiter, accepter une offre, signer. Et une seule de ces places est imposée par la loi, celle du DPE : il doit exister avant l'annonce, parce que l'annonce doit en afficher les deux classements.** Les six autres relèvent du bon sens et peuvent se chevaucher. Celle-là est une obligation, et publier une annonce sans les mentions que le DPE commande expose un vendeur particulier à une amende administrative pouvant atteindre 3 000 €." },
+      { type: "p", text: "Cette page est le fil chronologique d'une vente villeurbannaise : à chaque étape, ce que vous devez avoir en main, qui le produit, et quel texte le rend obligatoire. Les points qui méritent une page entière — le prix, le mandat, les diagnostics, les délais du compromis — ont la leur, et nous y renvoyons plutôt que de les résumer mal." },
+
+      { type: "h2", text: "Quelles sont les étapes pour vendre un appartement, dans l'ordre ?" },
+      { type: "p", text: "**Dans l'ordre ci-dessous, en retenant que le prix se décide avant tout le reste et que le DPE se commande avant la publication de l'annonce.** Les trois premières étapes ne dépendent que de vous ; les quatre suivantes dépendent du marché, puis d'un acquéreur, puis d'un notaire, et leur durée ne vous appartient plus." },
+      { type: "p", text: "Les sept étapes d'une vente d'appartement à Villeurbanne, telles que nous les menons :" },
+      {
+        type: "steps",
+        name: "Les sept étapes d'une vente d'appartement à Villeurbanne",
+        items: [
+          {
+            name: "Fixer un prix de départ sur les ventes signées",
+            text: "Partez de la médiane des ventes réellement enregistrées dans votre quartier, pas des prix affichés dans les annonces du secteur : l'écart entre les deux atteint 25,1 % sur la commune. Un prix calé sur l'affichage voisin recopie cet écart au lieu de le corriger.",
+          },
+          {
+            name: "Choisir son mandat et le signer par écrit",
+            text: "Le type de mandat décide de qui peut présenter votre bien, de la durée pendant laquelle vous êtes engagé et des conditions pour en sortir. Il n'a aucun effet sur le montant des honoraires, contrairement à une idée répandue.",
+          },
+          {
+            name: "Faire établir le DPE, avant tout le reste du dossier",
+            text: "Le DPE est le seul diagnostic dont la place dans le calendrier est imposée : dès que le bien est offert à la vente, vous devez le tenir à la disposition de tout candidat acquéreur, et ses deux classements doivent figurer dans l'annonce. Les autres diagnostics peuvent suivre, tant qu'ils sont là pour la promesse.",
+          },
+          {
+            name: "Publier une annonce qui porte ses quatre mentions obligatoires",
+            text: "Classe énergie, classe climat, montant estimé des dépenses annuelles d'énergie, et pour un logement classé F ou G la mention de l'obligation de performance. Ces mentions ne sont pas une formalité d'agence : leur absence est passible d'une amende administrative.",
+          },
+          {
+            name: "Faire visiter avec l'état des risques en main",
+            text: "L'état des risques est dû à l'acquéreur dès la première visite, établi depuis moins de six mois. C'est la seule pièce du dossier qui s'impose aussi tôt, et elle se télécharge gratuitement.",
+          },
+          {
+            name: "Recevoir une offre écrite et l'accepter en connaissance",
+            text: "Une offre écrite acceptée forme la vente sur le prix et la chose. Avant de signer votre acceptation, vérifiez le montant, la date limite de validité que l'acquéreur y a inscrite et les conditions qu'il annonce.",
+          },
+          {
+            name: "Signer la promesse, purger les délais, signer l'acte",
+            text: "Les sept blocs de documents de copropriété doivent être remis au plus tard à la signature de la promesse. S'ouvrent ensuite les 10 jours de rétractation de l'acquéreur, le mois minimum de la condition de prêt et les deux mois du droit de préemption urbain, avant l'acte authentique.",
+          },
+        ],
+      },
+      { type: "p", text: "Chaque étape qui porte un risque d'erreur a sa page : le prix sur [les prix réellement signés à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026), le mandat sur [mandat simple ou exclusif](/blog/mandat-simple-ou-exclusif), la liste complète et les durées de validité sur [les diagnostics obligatoires](/blog/diagnostics-obligatoires-vente), et les délais de la fin de parcours sur [compromis de vente : les délais réels](/blog/compromis-de-vente-delais)." },
+
+      { type: "h2", text: "Faut-il faire les diagnostics avant ou après avoir publié l'annonce ?" },
+      { type: "p", text: "**Le DPE avant, obligatoirement ; les autres diagnostics peuvent attendre, à condition d'être au dossier pour la promesse.** Deux articles du code de la construction et de l'habitation imposent cet ordre, et c'est la seule contrainte de calendrier que la loi fasse peser sur un vendeur avant qu'un acquéreur n'existe." },
+      { type: "p", text: "Le premier est l'article **L126-28** : « Lorsque l'immeuble est offert à la vente ou à la location, le propriétaire tient le diagnostic de performance énergétique à la disposition de tout candidat acquéreur ou locataire. » L'obligation naît donc le jour de la mise en vente, pas celui de la promesse. Le second est l'article **L126-33**, qui exige que les classements énergétique et climatique figurent dans l'annonce elle-même : une annonce publiée sans DPE ne peut pas être conforme, puisque les lettres à y inscrire n'existent pas encore." },
+      { type: "p", text: "Pour les autres pièces, l'ordre est libre et il y a un intérêt à ne pas s'y précipiter : chaque diagnostic a une durée de validité propre, et celui qui expire avant la signature doit être refait à vos frais. Nous les détaillons une par une, avec leur durée, sur [les diagnostics obligatoires avant de vendre](/blog/diagnostics-obligatoires-vente). Un appartement vendu seul en copropriété échappe en revanche à l'audit énergétique, même classé F ou G : cette obligation ne vise que les maisons et les immeubles en monopropriété." },
+
+      { type: "h2", text: "Qu'est-ce que mon annonce de vente doit obligatoirement afficher ?" },
+      { type: "p", text: "**Quatre mentions, dont trois concernent toutes les ventes de logement et une seulement les logements classés F ou G.** Elles sont fixées par l'article L126-33 du code de la construction et de l'habitation pour le principe, et par les articles R126-21 à R126-24 du même code pour la forme — jusqu'à la taille des caractères et la couleur." },
+      { type: "ul", items: [
+        "**La classe énergie et la classe climat, dans une annonce de presse écrite.** Les deux lettres s'écrivent en majuscules, précédées des mots « classe énergie » et « classe climat », en caractères au moins aussi grands que le texte de l'annonce (article R126-21).",
+        "**Les mêmes deux classements, dans une annonce en ligne ou affichée en vitrine.** Le texte exige qu'ils apparaissent « de façon lisible et en couleur » (article R126-22).",
+        "**Le montant estimé des dépenses annuelles d'énergie.** Il doit être précédé de la mention exacte « Montant estimé des dépenses annuelles d'énergie pour un usage standard : » et préciser l'année de référence des prix de l'énergie retenus (article R126-23).",
+        "**Pour un logement classé F ou G seulement, la mention « Logement à consommation énergétique excessive : ».** Ses termes sont fixés par arrêté et elle doit être en caractères au moins aussi grands que le texte de l'annonce (articles R126-24 et L173-2).",
       ] },
-      { type: "h2", text: "Gagnez du temps (et de l'argent)" },
-      { type: "p", text: "Un accompagnement professionnel sécurise chaque étape et évite les erreurs coûteuses." },
+      { type: "p", text: "**Et ces mentions sont sanctionnées, y compris pour un particulier qui vend seul.** Le II de l'article L126-33 prévoit, pour un professionnel, une amende administrative pouvant atteindre 3 000 € s'il s'agit d'une personne physique et 15 000 € s'il s'agit d'une personne morale. Le III en prévoit une de 3 000 € au plus pour un non-professionnel, après une mise en demeure restée sans effet. La sanction vise donc le vendeur lui-même, et pas seulement le professionnel qui diffuse l'annonce pour lui." },
+      { type: "p", text: "La quatrième mention mérite une précision que les textes rendent lisible et que les guides écrasent. Jusqu'au 31 décembre 2027, c'est **l'obligation elle-même** qui se mentionne dans l'annonce d'un logement classé F ou G, et non son non-respect : le III de l'article L173-2 impose depuis le 1er janvier 2022 d'indiquer, dans les publicités comme dans l'acte de vente, qu'à compter du 1er janvier 2028 le niveau de performance d'un logement devra être compris entre les classes A et E. À partir de cette date de 2028, le même texte fera basculer la mention vers le constat du non-respect. À Villeurbanne, cela concerne **2 454 appartements sur les 49 717 qui disposent d'un DPE, soit 4,9 %** — une proportion plus faible qu'en France, et qui se concentre sur le parc d'avant 1975, comme le détaille notre page sur [les passoires énergétiques et le DPE à Villeurbanne](/blog/dpe-2026-ce-qui-change)." },
+
+      { type: "h2", text: "À quel prix mettre son appartement en vente à Villeurbanne ?" },
+      { type: "p", text: "**Au niveau des ventes réellement signées dans votre quartier, et non des prix affichés autour de vous : l'écart entre les deux atteint 25,1 % sur la commune.** Un prix d'annonce se cale presque toujours sur d'autres prix d'annonce, ce qui revient à copier une erreur. Les prix signés, eux, sont publics : ils sont enregistrés par les notaires et publiés par l'État." },
+      { type: "p", text: "Le chiffre a été mesuré sur le premier semestre 2026 : un prix affiché relevé à 4 380 €/m² pour l'ensemble de la commune se compare à une médiane signée de 3 500 €/m² sur 940 ventes d'appartements, soit **39 600 € d'écart sur un T2 de 45 m²**. Le détail quartier par quartier, et la méthode, sont sur [investir dans le locatif à Lyon et à Villeurbanne](/blog/investir-locatif-lyon)." },
+      { type: "p", text: "La deuxième chose à savoir avant de fixer un prix est que la commune n'a pas un prix mais sept. Sur le même semestre, la médiane va de **2 491 €/m² à Cyprian – Les Brosses à 3 966 €/m² à Ferrandière – Maisons-Neuves**. Un appartement n'est donc jamais « au prix du marché villeurbannais » : il est au prix de son quartier, et nos [prix de l'immobilier à Villeurbanne](/blog/prix-immobilier-villeurbanne-2026) donnent les sept. Si vous voulez un ordre de grandeur en deux minutes, notre [outil d'estimation](/estimation) part de ces mêmes données." },
+
+      { type: "h2", text: "Combien de temps faut-il pour vendre un appartement à Villeurbanne ?" },
+      { type: "p", text: "**Markus Immobilier ne publie pas de délai de vente moyen, parce qu'aucune source publique ne permet de le calculer à la maille communale : la base DVF enregistre la date de signature, jamais la date de mise en vente.** Les durées que l'on trouve en ligne pour Lyon proviennent d'études d'ancienneté variable et ne concordent pas entre elles. Nous préférons l'écrire que publier un chiffre que nous ne pourrions pas sourcer." },
+      { type: "p", text: "Ce qui est chiffrable, en revanche, c'est la seconde moitié du calendrier — celle qui commence à l'offre acceptée. Trois délais y sont fixés et ne se négocient pas : les **10 jours** de rétractation de l'acquéreur, qui courent à compter du lendemain de la première présentation de la lettre de notification (article L271-1 du code de la construction et de l'habitation) ; le **mois minimum** de la condition suspensive de prêt (article L313-41 du code de la consommation) ; et les **deux mois** du droit de préemption urbain, qui à Villeurbanne est tenu par la Métropole de Lyon et peut être suspendu par une simple demande de pièces. Le calcul complet, de l'offre à la remise des clés, est posé sur [la check-list d'un achat à Villeurbanne](/blog/achat-immobilier-lyon-checklist)." },
+      { type: "p", text: "Pour un vendeur, la conséquence pratique est simple : la part du calendrier sur laquelle vous pouvez agir est presque entièrement en amont de l'offre. Un prix juste au premier jour et un dossier complet avant la promesse sont les deux seuls leviers réels sur la durée totale." },
+
+      { type: "h2", text: "Quels documents faut-il remettre, et à quel moment exactement ?" },
+      { type: "p", text: "**Les pièces d'une vente ne sont pas dues toutes en même temps : cinq moments distincts les commandent, de la mise en vente à la veille de l'acte.** C'est la confusion la plus coûteuse d'une vente, parce qu'un document attendu trop tard décale la signature, et qu'un document manquant à la promesse peut repousser le point de départ du délai de rétractation." },
+      { type: "ul", items: [
+        "**Dès la mise en vente : le DPE**, tenu à la disposition de tout candidat acquéreur (article L126-28 du code de la construction et de l'habitation).",
+        "**Dans l'annonce : les deux classements du DPE et le montant estimé des dépenses annuelles d'énergie** (article L126-33 du même code).",
+        "**Dès la première visite : l'état des risques**, établi depuis moins de six mois (article L125-5 du code de l'environnement, dans sa rédaction en vigueur depuis le 1er janvier 2025).",
+        "**Au plus tard à la signature de la promesse : les sept blocs de documents et d'informations de copropriété** (article L721-2 du code de la construction et de l'habitation, dans sa rédaction en vigueur depuis le 1er janvier 2024).",
+        "**Avant l'acte, à la demande du notaire : l'état daté**, établi par le syndic et plafonné à 380 € TTC (décret n° 2020-153 du 21 février 2020).",
+      ] },
+      { type: "p", text: "Un piège mérite d'être connu du vendeur plutôt que subi : tous les documents de copropriété ne reportent pas le délai de rétractation de l'acquéreur. **Seuls ceux des 1° et 2° du II de l'article L721-2 ont cet effet** — l'organisation de l'immeuble et les informations financières. Les blocs suivants, du carnet d'entretien au plan pluriannuel de travaux, sont obligatoires, mais leur absence ne remet pas l'horloge à zéro. La distinction, la jurisprudence qui la fixe et ce qu'elle change pour une vente villeurbannaise sont détaillés sur [compromis de vente : les délais réels](/blog/compromis-de-vente-delais)." },
+
+      { type: "h2", text: "Peut-on vendre son appartement seul, sans agence ?" },
+      { type: "p", text: "**Oui, rien ne l'interdit — mais les obligations du vendeur ne s'allègent pas, et l'amende de 3 000 € de l'article L126-33 vise expressément le non-professionnel.** Les mentions de l'annonce, le DPE tenu à disposition, l'état des risques en première visite et les documents de copropriété à la promesse restent intégralement à votre charge." },
+      { type: "p", text: "Ce que l'on économise et ce que l'on risque sont chiffrés sur [vendre sans agence à Villeurbanne](/blog/vendre-sans-agence), et nos [honoraires](/honoraires) sont publiés. Nous accompagnons la vente de bout en bout depuis notre agence du 87 rue Édouard Vaillant, à Villeurbanne." },
+
+      { type: "h2", text: "Nos sources" },
+      { type: "p", text: "**Obligations liées au DPE et à l'annonce** : code de la construction et de l'habitation, articles **L126-28**, **L126-33**, **L173-2** et **R126-21 à R126-24**, dans leur rédaction en vigueur, relus le 25 novembre 2026 sur la republication des codes officiels de droit.org (payload XML du code, dernière mise à jour du 9 octobre 2026). Les articles L126-33 et L173-2 sont issus de la loi n° 2021-1104 du 22 août 2021, articles 153 et 158 ; les articles R126-21, R126-22 et R126-24 du décret n° 2021-872 du 30 juin 2021 ; l'article R126-23 du décret n° 2020-1609 du 17 décembre 2020. **Documents de copropriété** : article **L721-2** du même code, en vigueur depuis le 1er janvier 2024. **Délai de rétractation** : article **L271-1**. **Condition de prêt** : article **L313-41** du code de la consommation. **Prix** : fichier brut des valeurs foncières de la DGFiP, ressource « Valeurs foncières 2026 - Premier semestre » publiée le 12 octobre 2026 sur data.gouv.fr, calcul Markus Immobilier. **Étiquettes DPE villeurbannaises** : base des diagnostics de performance énergétique de l'ADEME, relevé du 11 octobre 2026." },
+    ],
+    faq: [
+      {
+        q: "Dans quel ordre faut-il s'y prendre pour vendre un appartement ?",
+        a: "Estimer le bien, choisir son mandat, faire établir le DPE, publier l'annonce, faire visiter, accepter une offre, signer. Une seule de ces places est imposée par la loi, celle du DPE : il doit exister avant l'annonce, parce que l'annonce doit en afficher les deux classements. Les six autres relèvent du bon sens et peuvent se chevaucher.",
+      },
+      {
+        q: "Faut-il faire les diagnostics avant de publier l'annonce ?",
+        a: "Le DPE oui, obligatoirement ; les autres peuvent attendre, à condition d'être au dossier pour la promesse. L'article L126-28 du code de la construction et de l'habitation impose au propriétaire de tenir le DPE à la disposition de tout candidat acquéreur dès que le bien est offert à la vente, et l'article L126-33 exige que ses classements figurent dans l'annonce.",
+      },
+      {
+        q: "Qu'est-ce qu'une annonce de vente doit obligatoirement afficher ?",
+        a: "La classe énergie, la classe climat, le montant estimé des dépenses annuelles d'énergie pour un usage standard avec l'année de référence des prix retenus, et pour un logement classé F ou G la mention « Logement à consommation énergétique excessive : ». La forme est fixée par les articles R126-21 à R126-24 du code de la construction et de l'habitation, jusqu'à la taille des caractères et la couleur.",
+      },
+      {
+        q: "Que risque un vendeur qui publie une annonce sans les classements du DPE ?",
+        a: "Une amende administrative. Le II de l'article L126-33 du code de la construction et de l'habitation la plafonne à 3 000 € pour un professionnel personne physique et à 15 000 € pour une personne morale ; le III la plafonne à 3 000 € pour un non-professionnel, après une mise en demeure restée sans effet.",
+      },
+      {
+        q: "Combien de temps faut-il pour vendre un appartement à Villeurbanne ?",
+        a: "Markus Immobilier ne publie pas de délai de vente moyen, faute de donnée publiable : la base DVF enregistre la date de signature, jamais la date de mise en vente. Ce qui est fixé, c'est la seconde moitié du calendrier, à partir de l'offre acceptée : 10 jours de rétractation de l'acquéreur, un mois minimum de condition suspensive de prêt, et deux mois de droit de préemption urbain, suspendables.",
+      },
+      {
+        q: "À quel prix mettre son appartement en vente à Villeurbanne ?",
+        a: "Au niveau des ventes réellement signées dans son quartier, et non des prix affichés alentour : l'écart atteint 25,1 % sur la commune, soit 39 600 € sur un T2 de 45 m². Et la commune n'a pas un prix mais sept : sur le premier semestre 2026, la médiane va de 2 491 €/m² à Cyprian – Les Brosses à 3 966 €/m² à Ferrandière – Maisons-Neuves.",
+      },
+      {
+        q: "Tous les documents de copropriété manquants retardent-ils le délai de rétractation ?",
+        a: "Non. Seuls les documents des 1° et 2° du II de l'article L721-2 du code de la construction et de l'habitation ont cet effet : ceux qui concernent l'organisation de l'immeuble et les informations financières. Les blocs suivants, du carnet d'entretien au plan pluriannuel de travaux, sont obligatoires, mais leur absence ne reporte pas le point de départ du délai.",
+      },
+      {
+        q: "Un appartement classé F ou G exige-t-il un audit énergétique pour être vendu ?",
+        a: "Non, pas s'il s'agit d'un lot de copropriété. L'audit énergétique obligatoire en cas de vente ne concerne que les maisons individuelles et les immeubles composés de plusieurs logements dont le vendeur est l'unique propriétaire. Un appartement vendu seul au sein d'une copropriété n'y est pas soumis, quelle que soit son étiquette, mais le DPE reste obligatoire.",
+      },
     ],
   },
   {
