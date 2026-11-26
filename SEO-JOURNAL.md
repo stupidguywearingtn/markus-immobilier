@@ -7417,6 +7417,20 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-26 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (`HowTo.name` visible sur 11 articles, `d5d1826`)
+
+- **Déclenchement en double** : le chantier du jour est servi en production (phrase
+  d'introduction « Résilier un mandat exclusif de vente… » présente sur
+  `/blog/mandat-simple-ou-exclusif`). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `07501e6`, aucun commit tiers.
+  Sitemap = **58 URL**, inchangé ; `lastmod` le plus récent = 25/11 (mon article de la
+  veille). Toutes les URL hors `/annonces/*` et `/blog/*` ont un dossier de route →
+  **aucune page de l'éditeur**. `<title>` de la home = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/agence-immobiliere-villeurbanne`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, un article modifié du jour, `/robots.txt`,
+  `/llms.txt`, `/sitemap.xml` → 200.
+- **Non fait** : archivage du journal (~30 400 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-26 — Le `HowTo.name` balisé n'était écrit nulle part sur 11 articles sur 13 : il est désormais visible partout
 
 - **Angle** : NON-CONTENU (alternance 24/11 non-contenu → 25/11 contenu → 26/11
