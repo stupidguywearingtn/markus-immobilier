@@ -177,6 +177,18 @@
   qui portait sur la **lisibilité** d'un tableau de comparaison à 390 px, pas
   sur un débordement de page.
 
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — QUINZIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 26/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-s1gu7i` ». Le compte (2) correspond aux deux commits
+  du run (`d5d1826` et `768fbf4`) — même piège de vraisemblance que les quatorze
+  fois précédentes. ✅ **Contrôle refait à l'identique :**
+  `ls-remote origin refs/heads/main` = **`768fbf4`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
   VINGT-HUITIÈME JOUR.** **Non corrigé, et c'est volontaire** (page de Tony,
   règle des 90 jours). ⚠️ **NON renotifié.**
