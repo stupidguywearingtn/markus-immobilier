@@ -507,6 +507,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Ce qu'une estimation maison ne remplace pas, c'est l'ajustement : la base ne contient ni l'étage, ni l'état du logement, ni la qualité de la copropriété. Elle vous donne un **point de départ chiffré et vérifiable**, pas un prix de mise en vente." },
 
       { type: "h2", text: "La méthode pas à pas pour estimer son appartement" },
+      { type: "p", text: "Estimer son appartement à partir des ventes réellement signées (base DVF) tient en sept étapes, à mener dans cet ordre :" },
       {
         type: "steps",
         name: "Estimer son appartement à partir des ventes réellement signées (base DVF)",
@@ -2074,6 +2075,7 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Comment sécuriser le prorata de taxe foncière avant de signer ?" },
       { type: "p", text: "**En trois gestes : obtenir le dernier avis avant le compromis, faire écrire une clause qui nomme le prorata et sa période, et faire régler la somme chez le notaire le jour de l'acte.** Les cinq étapes ci-dessous sont celles que nous vérifions sur chaque dossier de vente." },
+      { type: "p", text: "Sécuriser le prorata de taxe foncière d'une vente immobilière, dans l'ordre du calendrier de la vente :" },
       {
         type: "steps",
         name: "Sécuriser le prorata de taxe foncière d'une vente immobilière",
@@ -2465,6 +2467,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Quels gestes de home staging comptent sur un appartement à Villeurbanne ?" },
       { type: "p", text: "**Ceux qui portent sur la lumière, le volume perçu, le rangement et les photos — parce qu'ici, l'immense majorité des logements vendus sont des appartements.** Sur les ventes de 2025, [95,7 % des logements vendus à Villeurbanne étaient des appartements](/blog/compromis-de-vente-delais), et la surface médiane vendue est de **62 m²**. Or une bonne moitié des conseils de home staging que l'on trouve en ligne portent sur ce qu'un appartement n'a pas : façade, allée, portail, jardin, boîte aux lettres, numéro de rue." },
       { type: "p", text: "Les huit gestes ci-dessous sont donc triés pour un appartement, et ils sont tous réalisables sans prestataire. Trois d'entre eux s'appuient sur des constats de l'enquête NAR citée plus haut : les pièces à traiter en priorité, la projection de l'acheteur et le poids des photos en ligne." },
+      { type: "p", text: "Préparer un appartement avant les photos et les visites, geste par geste :" },
       {
         type: "steps",
         name: "Préparer un appartement avant les photos et les visites",
@@ -2549,6 +2552,7 @@ export const ARTICLES: Article[] = [
 
       { type: "h2", text: "Comment résilier un mandat exclusif ?" },
       { type: "p", text: "**La résiliation suppose quatre vérifications et un courrier recommandé : la date de signature, les mentions de l'acte, la remise de votre exemplaire, puis la lettre avec avis de réception et quinze jours de préavis.** Aucune autre forme ne fait courir le préavis." },
+      { type: "p", text: "Résilier un mandat exclusif de vente, dans l'ordre : les quatre vérifications, puis la lettre." },
       { type: "steps",
         name: "Résilier un mandat exclusif de vente",
         items: [
@@ -2666,6 +2670,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Si vous vous rétractez après avoir versé un acompte, le professionnel qui le détient doit vous le restituer dans un **délai maximum de 21 jours**, compté à partir du lendemain de la date de la rétractation. Et si c'est une condition suspensive qui ne se réalise pas, la restitution est intégrale, sans retenue ni indemnité (article L313-41 pour la condition de prêt). Source : service-public.gouv.fr, fiche F37190 « Achat d'un logement en copropriété », vérifiée le 19 septembre 2025." },
       { type: "h2", text: "Comment calculer soi-même la date de fin de mon délai de rétractation ?" },
       { type: "p", text: "**Quatre informations suffisent, et une seule est difficile à obtenir : la date de première présentation du pli.** Le reste est mécanique. Voici le décompte, dans l'ordre où il se fait." },
+      { type: "p", text: "Calculer la date de fin de son délai de rétractation après un compromis de vente, en cinq temps :" },
       {
         type: "steps",
         name: "Calculer la date de fin de son délai de rétractation après un compromis de vente",
@@ -3032,6 +3037,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "La fiche officielle répète la même formule pour chacun des motifs de réduction, sans exception : « Si vous ne le faites pas, le délai de préavis est de 3 mois. » Autrement dit, le droit existe mais il ne se déclenche pas tout seul : **il se réclame, par écrit, dans le congé lui-même.** Un congé déjà envoyé sans la mention ne se rattrape pas en téléphonant à l'agence." },
       { type: "p", text: "**Ce que cela coûte, en euros, à Villeurbanne.** Au loyer médian communal de 14,6 €/m² hors charges, un appartement de 62 m² — la surface médiane des ventes villeurbannaises — se loue **905 € par mois hors charges**. Deux mois de préavis supplémentaires représentent donc **1 810 € hors charges**, soit davantage qu'une année complète de gestion locative déléguée sur le même bien." },
 
+      { type: "p", text: "Rédiger un congé qui ouvre réellement le préavis d'un mois à Villeurbanne demande sept précautions, dans cet ordre :" },
       {
         type: "steps",
         name: "Rédiger un congé qui ouvre réellement le préavis d'un mois à Villeurbanne",
@@ -3414,6 +3420,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Markus Immobilier ne publie pas de délai de vente moyen à Villeurbanne**, parce que nous n'avons pas de donnée publiable sur ce point : la base DVF enregistre la date de la signature, jamais la date de mise en vente, et aucune source publique ne donne ce délai à la maille communale. Nous préférons l'écrire que publier un chiffre que nous ne pourrions pas sourcer." },
       { type: "p", text: "Ce que vous pouvez mesurer, en revanche, c'est le mouvement du prix. Demandez si le prix a déjà été révisé et de combien : une baisse déjà consentie indique un vendeur qui a accepté le principe de la négociation, et le marché villeurbannais lui donne un argument — la médiane communale signée est passée de 3 551 €/m² au premier semestre 2025 à 3 500 €/m² au premier semestre 2026, soit **−1,4 %**, pendant que les prix affichés en ligne ne bougeaient pas." },
 
+      { type: "p", text: "Mener une visite utile tient en sept gestes, de la préparation du calcul à la formulation de l'offre :" },
       {
         type: "steps",
         name: "Mener une visite utile",
@@ -3676,6 +3683,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "**Deux différences avec la location vide pèsent davantage sur un bailleur villeurbannais que le régime fiscal : le dépôt de garantie est plafonné à deux mois de loyer hors charges en meublé, contre un seul en logement vide, et l'encadrement des loyers s'applique aux meublés avec ses propres loyers de référence.** Le loyer de référence dépend en effet de la catégorie du logement, qui distingue le vide du meublé." },
       { type: "p", text: "Villeurbanne est classée en zone tendue et soumise à l'encadrement des loyers, dont le plafond applicable est celui de l'arrêté préfectoral en vigueur **à la date de signature du bail**. Le détail de ces règles, du plafond de dépôt de garantie, des délais de restitution et de la pénalité de retard est sourcé dans [préavis et dépôt de garantie en zone tendue à Villeurbanne](/blog/preavis-depot-garantie-location-villeurbanne)." },
 
+      { type: "p", text: "Démarrer une activité de location meublée, formalité par formalité :" },
       {
         type: "steps",
         name: "Démarrer une activité de location meublée",
@@ -3799,6 +3807,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Comment se passe un partage judiciaire, et combien de temps prend-il ?" },
       { type: "p", text: "**Le partage judiciaire se demande au tribunal judiciaire du lieu d'ouverture de la succession, avec un avocat obligatoire jusqu'à la fin de la procédure.** Le tribunal peut désigner un notaire commis pour réaliser les opérations et un juge commis pour les surveiller. Le délai fixé au notaire commis est de **18 mois maximum**." },
       { type: "p", text: "La demande doit comporter un descriptif du patrimoine à partager et préciser les intentions du demandeur sur la répartition des biens. Si l'affaire est en état d'être jugée, le tribunal ordonne le partage ; sinon, il désigne le juge commis et le notaire commis, et le juge commis prend en charge la mise en état. À tout moment, les héritiers peuvent abandonner la procédure judiciaire et reprendre un partage amiable si les conditions sont réunies." },
+      { type: "p", text: "Sortir d'une indivision successorale quand un héritier bloque la vente se joue en huit étapes, de l'état des quote-parts au partage lui-même :" },
       {
         type: "steps",
         name: "Sortir d'une indivision successorale quand un héritier bloque la vente",
@@ -3940,6 +3949,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "Deux précisions de calendrier que presque personne n'écrit. D'abord, le congé ne peut prendre effet qu'à la date d'échéance du bail : il ne permet pas de récupérer le logement en cours de bail. Ensuite, un congé envoyé trop tôt n'est pas nul : s'il est donné bien avant le délai de six mois, il reste valable mais prend effet à la date à laquelle il aurait dû être donné. L'erreur fatale est inverse : une lettre reçue en retard, ne serait-ce que d'un jour, rend le congé invalide et renvoie la vente libre à l'échéance suivante du bail." },
       { type: "p", text: "Le délai se compte en mois, week-ends et jours fériés inclus. Et s'il se termine un dimanche, il se termine ce dimanche-là — ni le vendredi précédent, ni le lundi suivant. Pour une échéance de bail au 20 septembre, le locataire doit avoir eu connaissance du congé au plus tard le 20 mars." },
       { type: "p", text: "⚠️ **Le congé doit être adressé à tous les signataires du bail, et parfois au-delà.** Si un seul des époux a signé mais que vous avez été informé du mariage, la lettre doit être adressée aux deux. Même règle pour deux partenaires de PACS qui ont demandé conjointement que leurs deux noms figurent au bail. Un congé adressé à un seul des deux conjoints est contestable — c'est l'un des motifs d'annulation que la fiche officielle énumère." },
+      { type: "p", text: "Donner un congé pour vendre valable à Villeurbanne, de la date d'échéance du bail à la déclaration d'intention d'aliéner :" },
       {
         type: "steps",
         name: "Donner un congé pour vendre valable à Villeurbanne",
@@ -4252,6 +4262,7 @@ export const ARTICLES: Article[] = [
       { type: "p", text: "À Villeurbanne, le volume de ventes d'appartements n'est pas uniforme d'un quartier à l'autre, et c'est cette donnée, plus que la médiane, qui compte pour un viager. Gratte-Ciel – Dedieu – Charmettes a enregistré **655 ventes exploitables en 2025** à une médiane de **3 846 €/m²**, Charpennes – Tonkin **200** à **3 524 €/m²**, et Cyprian – Les Brosses **53** seulement à **2 738 €/m²**. Un viager se monte plus facilement là où le marché est profond : un acheteur qui s'engage sur vingt ans veut un bien qui se revendra sans décote de liquidité." },
       { type: "p", text: "📌 **Et la profondeur du marché n'est pas le seul critère : la tenue de la valeur compte autant, parce qu'un viager se juge sur vingt ans et non sur l'année en cours.** Sur ce terrain, c'est **Cusset – Bonnevay qui a le mieux résisté après Ferrandière** : **−5,8 % depuis 2022**, contre −10,4 % pour la commune entière, avec 213 ventes en 2025, soit un peu plus que Charpennes – Tonkin. Le détail du secteur est sur notre page [agence immobilière à Cusset](/agence-immobiliere-cusset)." },
       { type: "p", text: "⚠️ **Et un viager n'est pas la seule façon de mobiliser la valeur d'un logement que l'on habite.** Si votre objectif est de transmettre à vos enfants plutôt que d'encaisser, c'est le démembrement qui est l'outil, pas la vente — le sujet est traité sous l'angle de la succession dans [notre page sur la vente d'un bien en indivision](/blog/vendre-bien-indivision-succession-villeurbanne). Si votre objectif est un capital immédiat, une vente classique le donne en une fois, et [notre barème d'honoraires](/honoraires) vous dit exactement ce qu'il en reste." },
+      { type: "p", text: "Préparer une vente en viager à Villeurbanne, point par point, avant de rencontrer le moindre acheteur :" },
       {
         type: "steps",
         name: "Préparer une vente en viager à Villeurbanne",
