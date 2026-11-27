@@ -7613,6 +7613,20 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-27 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (audit des délais publiés, `1c6dea4`)
+
+- **Déclenchement en double** : le chantier du jour est servi en production (titre « ce que
+  les délais publiés mesurent » et fourchette « de 26 à 202 jours » présents sur
+  `/blog/vendre-vite-lyon`, `lastmod` 27/11). Un chantier par jour → **rien publié**.
+- **Changements du client (étape 0)** : `origin/main` = `2eb382b`, aucun commit tiers.
+  Sitemap = **58 URL**, inchangé ; toutes les URL hors `/annonces/*` et `/blog/*` ont un
+  dossier de route → **aucune page de l'éditeur**. `<title>` de la home = `DEFAULT_TITLE`.
+  **Pas d'email.**
+- **Santé production** : `/`, `/agence-immobiliere-villeurbanne`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/blog/vendre-vite-lyon`, `/robots.txt`,
+  `/llms.txt`, `/sitemap.xml` → 200.
+- **Non fait** : archivage du journal (~31 000 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-27 — La page la plus faible du site devient l'audit des délais de vente publiés, source par source
 
 - **Angle** : CONTENU (alternance 25/11 contenu → 26/11 non-contenu → **27/11
