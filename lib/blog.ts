@@ -1829,27 +1829,136 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "vendre-vite-lyon",
-    title: "Vendre vite son bien à Lyon sans brader le prix",
+    title: "Vendre vite à Lyon et Villeurbanne : ce que les délais publiés mesurent",
     metaDescription:
-      "Comment vendre rapidement votre bien à Lyon sans le brader : les leviers concrets pour une vente rapide au juste prix.",
-    h1: "Vendre vite son bien à Lyon sans brader le prix",
+      "Les délais de vente publiés pour Lyon vont de 26 à 202 jours. Ce que chaque chiffre mesure, à quelle date, et les cinq leviers qu'un vendeur contrôle vraiment.",
+    h1: "Vendre vite à Lyon et à Villeurbanne : ce que les délais de vente publiés mesurent vraiment",
     excerpt:
-      "Vendre rapidement ne veut pas dire vendre moins cher. Tout se joue sur la préparation.",
+      "Les délais de vente publiés pour Lyon vont de 26 à 202 jours selon la source, et cet écart ne décrit pas le marché : il vient de ce que ces chiffres ne comptent pas la même chose. L'un mesure la durée de vie d'une annonce sur un portail, un autre ne dit pas ce qu'il mesure. Source par source et date par date, ce que chacun vaut — puis les cinq leviers qu'un vendeur contrôle réellement.",
     date: "2026-06-16",
+    updated: "2026-11-27",
     internalHref: "/vendre",
     internalLabel: "Vendre efficacement avec Markus Immobilier",
     blocks: [
-      { type: "p", text: "Vendre rapidement ne veut pas dire vendre moins cher. Tout se joue sur la préparation." },
-      { type: "h2", text: "Les leviers d'une vente rapide" },
-      { type: "ul", items: [
-        "**Le bon prix dès le départ.** Les deux premières semaines génèrent le plus de visites : un prix juste capte cette vague d'attention. À Villeurbanne, calez-le sur [les prix réellement signés dans votre quartier](/estimation-immobiliere-villeurbanne).",
-        "**Une présentation impeccable.** Bien rangé, lumineux, neutre : l'acheteur doit pouvoir se projeter.",
-        "**Des photos professionnelles.** La majorité des acheteurs trient sur la photo principale.",
-        "**De la réactivité.** Répondre vite aux demandes et proposer des créneaux de visite flexibles.",
-        "**Le bon canal de diffusion** et un accompagnement qui filtre les acheteurs sérieux.",
-      ] },
-      { type: "h2", text: "L'erreur classique" },
-      { type: "p", text: "Surévaluer « pour avoir de la marge » : le bien stagne, puis se vend finalement moins cher après plusieurs baisses." },
+      { type: "p", text: "**Les délais de vente publiés pour Lyon vont de 26 à 202 jours selon la source consultée, et cet écart ne décrit pas un marché instable : il vient de ce que ces chiffres ne comptent pas la même chose.** L'un mesure le temps écoulé entre la mise en ligne d'une annonce et son retrait par le propriétaire. L'autre ne dit pas ce qu'il mesure. Aucun des deux ne compte le temps qui sépare une décision de vendre de la signature chez le notaire." },
+      { type: "p", text: "Cette page fait l'inventaire de ces chiffres, source par source et date par date, dit ce que chacun mesure, puis sépare ce qu'un vendeur contrôle réellement de ce qui est fixé par la loi et ne se raccourcit pas. **Markus Immobilier ne publie pas de délai de vente moyen**, et la raison est donnée plus bas : aucune source publique ne permet de le calculer à l'échelle d'une commune." },
+
+      { type: "h2", text: "Combien de temps faut-il pour vendre un appartement à Lyon ou à Villeurbanne ?" },
+      { type: "p", text: "**Aucun chiffre public fiable ne répond à cette question à l'échelle de Lyon ou de Villeurbanne, et il faut le dire avant de citer le moindre délai.** Les durées que l'on trouve en ligne viennent de deux familles de sources : les portails d'annonces, qui mesurent la durée de vie d'une annonce sur leur propre site, et des articles qui publient un « délai de vente moyen » sans indiquer ce qu'ils comptent. Ni l'une ni l'autre ne mesure la durée réelle d'une vente." },
+      { type: "p", text: "La base publique qui recense les ventes, DVF, enregistre la **date de signature chez le notaire** et rien d'autre : ni la date de mise en vente, ni celle du mandat, ni celle du compromis. Un délai de vente ne peut donc pas en être tiré, quelle que soit la finesse du découpage géographique retenu. C'est pour cette raison que nous ne publions pas de délai moyen villeurbannais, alors que nous calculons les prix au m² quartier par quartier à partir de cette même base." },
+
+      { type: "h2", text: "Pourquoi les délais de vente publiés pour Lyon vont-ils de 26 à 202 jours ?" },
+      { type: "p", text: "**Parce qu'ils ne mesurent pas le même événement et qu'ils n'ont pas le même âge.** Trois sources en circulation suffisent à produire l'écart : un relevé de portail d'annonces portant sur l'année 2020, un tableau de septembre 2026 publié sans méthode, et une note de presse de 2014. Les voici avec leur date et ce que chacune compte." },
+      {
+        type: "table",
+        caption: "Les délais de vente publiés pour Lyon : ce que chaque source mesure",
+        source: "Pages relevées le 27 novembre 2026. Chiffres cités tels que leurs auteurs les publient, sans recalcul de notre part.",
+        headers: ["Source et date", "Chiffres publiés pour Lyon", "Ce que le chiffre mesure"],
+        rows: [
+          [
+            "**SeLoger**, 23 février 2021 (données 2020 comparées à 2019)",
+            "Studio 26 jours, T2 30, T3 33, T4 35, T5 et plus 44 — et 33 jours donnés comme la moyenne lyonnaise",
+            "La durée d'affichage d'une annonce sur ses propres sites, du dépôt au retrait par le propriétaire",
+          ],
+          [
+            "**Ymanci**, publié le 29 septembre 2026, mis à jour le 21 octobre 2026",
+            "Appartements, septembre 2026 : studio 65 jours, 2 pièces 63, 3 pièces 70, 4 pièces 65, 5 pièces 80, 6 pièces 91, 7 pièces et plus 202",
+            "Non précisé : ni les événements comptés, ni l'échantillon",
+          ],
+          [
+            "**FNAIM**, note de revue de presse du 15 avril 2014",
+            "127 jours pour une vente classique",
+            "Non précisé : ni méthode, ni taille d'échantillon",
+          ],
+        ],
+      },
+      { type: "p", text: "Un quatrième chiffre circule dans la même famille, et il vient de la première de ces sources : le même article de SeLoger conclut qu'« il faut en moyenne 64 jours pour vendre un bien immobilier en France », soit presque le double de son propre chiffre lyonnais, sans que la différence de méthode entre les deux soit expliquée." },
+
+      { type: "h2", text: "Que mesure exactement le « délai de vente » d'un portail d'annonces ?" },
+      { type: "p", text: "**La durée de vie d'une annonce sur ce portail, et rien de plus.** SeLoger l'écrit lui-même : le délai qu'il publie est celui qui s'écoule « entre le moment où une annonce immobilière est publiée sur nos sites, et celui où le propriétaire du bien proposé à la vente la retire ». C'est une mesure honnête de ce qu'elle mesure — mais ce n'est pas la durée d'une vente." },
+      { type: "p", text: "Trois décalages séparent les deux, et aucun n'est un reproche fait à la donnée. Le compteur s'arrête le jour où le propriétaire retire son annonce, c'est-à-dire le plus souvent à l'acceptation d'une offre, soit deux à trois mois avant la signature de l'acte. Il s'arrête aussi quand le propriétaire renonce, change d'agence ou met finalement son bien en location : ces cas sortent du calcul par le même geste qu'une vente réussie. Et il ne démarre qu'à la mise en ligne, donc après l'estimation, le mandat, les diagnostics et les photos." },
+      { type: "p", text: "Autrement dit, « 33 jours à Lyon » décrit la durée moyenne d'affichage d'une annonce sur un site, en 2020. Le chiffre n'est pas faux : c'est son étiquette qui l'est." },
+
+      { type: "h2", text: "Peut-on se fier à un délai de vente publié sans méthode ?" },
+      { type: "p", text: "**Non, et il existe un contrôle qui prend trente secondes : regarder si les chiffres d'un même tableau sont cohérents entre eux.** Quand une série de délais saute dans tous les sens d'une catégorie à la suivante, c'est que chaque case repose sur trop peu de ventes pour vouloir dire quelque chose." },
+      { type: "p", text: "Le tableau de septembre 2026 cité plus haut en donne l'exemple dans sa partie maisons : 180 jours pour un 2 pièces, puis 29 jours pour un 3 pièces, 94 pour un 4 pièces et 72 pour un 7 pièces et plus. Du côté des appartements, le 7 pièces et plus ressort à 202 jours. Des biens de ce type se comptent en quelques ventes par mois sur une ville : une seule vente lente déplace alors la moyenne de plusieurs semaines. La série ne décrit pas un marché, elle décrit son échantillon." },
+      { type: "p", text: "Le même test disqualifie les chiffres anciens. La note FNAIM du 15 avril 2014 qui avance « 127 jours » pour une vente classique ne publie ni méthode ni échantillon, et elle a aujourd'hui douze ans : nous la citons sur notre page consacrée au [home staging](/blog/home-staging-vendre-plus-cher), précisément pour expliquer pourquoi elle ne peut pas servir de référence. Ce qui est mieux établi sur ce point, c'est un sens d'effet et non une durée : le rapport 2025 de la National Association of Realtors indique que 49 % des agents de vendeurs constatent une réduction du délai de vente après mise en scène du logement." },
+
+      { type: "h2", text: "Qu'est-ce qu'un vendeur contrôle réellement sur la durée de sa vente ?" },
+      { type: "p", text: "**Les cinq leviers qu'un vendeur contrôle sur la durée de sa vente** se jouent presque tous avant la première visite, et ils se présentent dans cet ordre :" },
+      {
+        type: "steps",
+        name: "Les cinq leviers qu'un vendeur contrôle sur la durée de sa vente",
+        items: [
+          {
+            name: "Fixer le prix sur les ventes signées du quartier, pas sur une moyenne de ville",
+            text: "C'est le levier dont l'effet est le plus direct et le seul que nous puissions mesurer sur nos propres données. Un prix calé sur la médiane communale est hors marché dans la plupart des quartiers villeurbannais, parce que l'écart entre quartiers dépasse celui que la plupart des vendeurs imaginent. Le point de départ chiffré est [publié quartier par quartier](/estimation-immobiliere-villeurbanne).",
+          },
+          {
+            name: "Faire établir le diagnostic de performance énergétique avant la mise en ligne",
+            text: "C'est le seul document dont la loi fixe la date : il doit être tenu à la disposition de tout candidat acquéreur dès que le bien est offert à la vente. Un bien mis en ligne sans DPE disponible n'est donc pas seulement mal préparé, et son étiquette doit de surcroît figurer dans l'annonce elle-même.",
+          },
+          {
+            name: "Demander les documents de copropriété au syndic dès la signature du mandat",
+            text: "Ils sont attendus au plus tard à la signature de la promesse, et plusieurs dépendent du syndic et de ses propres délais. Les réclamer après avoir accepté une offre est l'une des causes les plus ordinaires de report de signature.",
+          },
+          {
+            name: "Soigner la première photographie et la présentation du logement",
+            text: "La première photographie est ce qui décide si une annonce est ouverte, et elle est donc le seul élément vu par tous les acheteurs. Un logement rangé, éclairé et neutre laisse l'acheteur se projeter, ce qui est précisément l'effet documenté de la mise en scène sur le délai, à défaut de l'être sur le prix.",
+          },
+          {
+            name: "Rester joignable et ouvrir des créneaux de visite larges",
+            text: "Les acheteurs sérieux d'un secteur tendu visitent plusieurs biens dans la même semaine, et un créneau refusé est rarement redemandé. Une disponibilité de visite étroite allonge la durée d'affichage sans jamais apparaître comme une cause dans les statistiques publiées.",
+          },
+        ],
+      },
+
+      { type: "h2", text: "Le prix est-il vraiment le premier levier ?" },
+      { type: "p", text: "**Oui, et c'est le seul dont nous ayons mesuré l'effet sur nos propres données.** Appliquer le prix médian d'un quartier à la surface d'un bien tombe à moins de 10 % du prix réellement payé dans **36 % des cas seulement**, avec une erreur médiane de **15,5 %** : mesuré sur les **1 875 ventes d'appartements** enregistrées à Villeurbanne en 2025. Un prix posé « au m² du quartier » se trompe donc près de deux fois sur trois, dans un sens comme dans l'autre." },
+      { type: "p", text: "La dispersion géographique pousse dans le même sens. La médiane communale est de **3 567 €/m²**, mais elle va de **2 738 €/m²** à Cyprian – Les Brosses à **3 923 €/m²** à Ferrandière – Maisons-Neuves : un prix calé sur la moyenne de la ville est donc faux presque partout. Le détail est publié [quartier par quartier](/blog/prix-immobilier-villeurbanne-2026), et la mesure de l'écart dans [estimation en ligne ou en agence](/blog/estimation-en-ligne-ou-agence)." },
+      { type: "p", text: "L'erreur inverse est la plus coûteuse en temps : surévaluer « pour avoir de la marge ». Le bien reste affiché, perd l'attention des acheteurs déjà inscrits en alerte sur son secteur, puis se vend après plusieurs baisses successives — souvent plus bas qu'un prix juste dès le départ. Aucune source publique ne chiffre ce mécanisme à Lyon, et nous ne le chiffrerons pas davantage : il se constate sur un mandat, pas dans une statistique." },
+
+      { type: "h2", text: "Quels documents faut-il réunir avant la mise en vente pour ne pas perdre de temps ?" },
+      { type: "p", text: "**Le diagnostic de performance énergétique est le seul dont la loi fixe la date d'exigibilité : il doit être tenu à la disposition de tout candidat acquéreur dès que le bien est offert à la vente**, selon l'article L126-28 du code de la construction et de l'habitation. Ce n'est donc pas une formalité à régler pendant la commercialisation, mais une condition de la mise en vente elle-même." },
+      { type: "p", text: "Les documents et informations de copropriété, eux, sont attendus au plus tard à la signature de la promesse : les sept blocs de l'article L721-2 du même code. Les réunir après avoir accepté une offre est l'une des causes les plus fréquentes de report de signature, parce que plusieurs d'entre eux dépendent du syndic. La liste complète et l'effet de deux de ces blocs sur le délai de rétractation sont détaillés dans [compromis de vente : les délais réels](/blog/compromis-de-vente-delais), et l'ordre complet de la vente dans [les 7 étapes pour vendre un appartement](/blog/vendre-appartement-lyon-etapes)." },
+
+      { type: "h2", text: "Une fois l'offre acceptée, peut-on encore accélérer la vente ?" },
+      { type: "p", text: "**Très peu, parce que la seconde moitié du calendrier est faite de délais qui ne se négocient pas.** Trois d'entre eux expliquent presque à eux seuls les deux à trois mois qui séparent le compromis de l'acte authentique : les **10 jours** de rétractation de l'acquéreur, le **mois minimum** de la condition suspensive de prêt, et les **deux mois** du droit de préemption urbain — à Villeurbanne tenu par la Métropole de Lyon et non par la Ville." },
+      { type: "p", text: "Ces trois délais, leur point de départ exact et les frais à provisionner sont détaillés dans [le calendrier et le budget réels d'un achat](/blog/achat-immobilier-lyon-checklist). Ils ont une conséquence directe sur la question de cette page : même une vente « rapide » au sens des portails d'annonces se signe rarement avant trois mois, parce que le compteur de l'annonce s'arrête là où celui du notaire démarre." },
+
+      { type: "h2", text: "Que faut-il demander à une agence au sujet des délais ?" },
+      { type: "p", text: "**Trois questions, et elles portent sur ses propres mandats, pas sur des moyennes de marché.** Combien de temps s'est écoulé, sur ses dernières ventes du quartier, entre la signature du mandat et le compromis ? Quel écart entre le prix affiché au départ et le prix finalement signé ? Et combien de biens a-t-elle retirés de la vente sans les vendre ?" },
+      { type: "p", text: "Une agence qui suit ses mandats sait répondre à ces trois questions ; aucune moyenne nationale ne les remplace. C'est aussi pourquoi cette page ne vous sert pas de chiffre : nous préférons vous dire ce qui est mesurable plutôt qu'un délai que personne ne sait calculer. Pour un bien villeurbannais, [faisons le point ensemble](/vendre)." },
+    ],
+    faq: [
+      {
+        q: "Combien de temps faut-il pour vendre un appartement à Lyon ?",
+        a: "Aucune source publique ne permet de le dire à l'échelle de Lyon ou de Villeurbanne. Les délais que l'on trouve en ligne mesurent autre chose : soit la durée de vie d'une annonce sur un portail, soit un « délai de vente moyen » publié sans méthode. La base DVF, qui recense les ventes, n'enregistre que la date de signature chez le notaire, jamais la date de mise en vente.",
+      },
+      {
+        q: "Que signifie le chiffre de 33 jours pour vendre à Lyon ?",
+        a: "C'est un chiffre de SeLoger, publié le 23 février 2021 sur des données 2020, et il mesure le temps écoulé « entre le moment où une annonce immobilière est publiée sur nos sites, et celui où le propriétaire du bien proposé à la vente la retire ». Il s'arrête donc à l'acceptation d'une offre, soit deux à trois mois avant la signature de l'acte, et il compte de la même façon les annonces retirées sans vente.",
+      },
+      {
+        q: "Pourquoi les délais de vente publiés pour Lyon vont-ils de 26 à 202 jours ?",
+        a: "Parce qu'ils ne comptent pas le même événement et n'ont pas le même âge. SeLoger publie 26 à 44 jours selon la typologie sur des données 2020, en mesurant la durée d'affichage d'une annonce. Un tableau publié le 29 septembre 2026 et mis à jour le 21 octobre 2026 donne 63 à 202 jours pour les appartements lyonnais, sans préciser ni ce qu'il compte ni son échantillon. Une note FNAIM du 15 avril 2014 avance 127 jours, également sans méthode.",
+      },
+      {
+        q: "Un délai de vente publié sans méthode est-il utilisable ?",
+        a: "Non, et un contrôle rapide suffit à le voir : si les chiffres d'un même tableau sautent dans tous les sens d'une catégorie à la suivante, chaque case repose sur trop peu de ventes. Le tableau de septembre 2026 cité sur cette page donne 180 jours pour une maison de 2 pièces et 29 jours pour une maison de 3 pièces : une seule vente lente déplace une telle moyenne de plusieurs semaines.",
+      },
+      {
+        q: "Quel est le premier levier pour vendre plus vite ?",
+        a: "Le prix, et c'est le seul dont nous ayons mesuré l'effet sur nos propres données. Appliquer le prix médian du quartier à la surface d'un bien tombe à moins de 10 % du prix réellement payé dans 36 % des cas seulement, avec une erreur médiane de 15,5 %, mesuré sur les 1 875 ventes d'appartements enregistrées à Villeurbanne en 2025.",
+      },
+      {
+        q: "Quels documents faut-il avoir avant de mettre son annonce en ligne ?",
+        a: "Le diagnostic de performance énergétique au minimum : l'article L126-28 du code de la construction et de l'habitation impose de le tenir à la disposition de tout candidat acquéreur dès que le bien est offert à la vente, et son étiquette doit figurer dans l'annonce. Les documents de copropriété de l'article L721-2 sont attendus plus tard, au plus tard à la signature de la promesse, mais plusieurs dépendent du syndic : il vaut mieux les demander dès la signature du mandat.",
+      },
+      {
+        q: "Peut-on raccourcir le délai entre le compromis et la signature chez le notaire ?",
+        a: "Très peu. Trois délais ne se négocient pas et expliquent presque à eux seuls les deux à trois mois habituels : les 10 jours de rétractation de l'acquéreur, le mois minimum de la condition suspensive de prêt, et les deux mois du droit de préemption urbain, qui à Villeurbanne est tenu par la Métropole de Lyon et non par la Ville.",
+      },
     ],
   },
   {
@@ -2422,6 +2531,7 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Qu'a réellement publié la FNAIM sur le home staging ?" },
       { type: "p", text: "**Trois éléments, dans une note de revue de presse datée du 15 avril 2014 : un propriétaire qui recourt au home staging « vend son bien en moins d'un mois, contre 127 jours dans le cadre d'une vente classique », « le coût du home staging varie entre 1 % et 4 % du prix de vente », et ce coût reste selon elle « moins onéreux qu'une négociation ».** La note ne donne ni taille d'échantillon, ni méthode, ni période d'observation." },
       { type: "p", text: "Deux précautions s'imposent avant de s'en servir. D'abord, ces chiffres ont **douze ans** : le délai de vente moyen a varié plusieurs fois entre 2014 et 2026, et un ordre de grandeur de délai vieillit vite. Ensuite — et c'est l'erreur de lecture la plus répandue — le « 1 % à 4 % » est un **coût**, pas un gain. Plusieurs pages le présentent comme une hausse de prix, ce qui inverse le sens de la phrase." },
+      { type: "p", text: "C'est ce délai, et non le prix, que les sources publiées mesurent le plus mal : les durées de vente que l'on trouve pour Lyon vont de 26 à 202 jours selon la source consultée, et nous avons repris chacune pour dire ce qu'elle compte réellement dans [ce que les délais de vente publiés mesurent vraiment](/blog/vendre-vite-lyon)." },
       { type: "p", text: "Paradoxalement, c'est pourtant le seul des trois chiffres qui serve directement à décider, parce qu'il donne le ticket d'entrée. C'est celui que nous reprenons dans le calcul ci-dessous, en le datant." },
 
       { type: "h2", text: "Que dit la seule enquête sur le sujet dont la méthode est publiée ?" },
