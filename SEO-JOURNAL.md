@@ -193,6 +193,18 @@
   (8 notifications déjà envoyées, aucune action possible de notre côté).
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
   **Les mesures vivent dans ces blocs « État des lieux ».**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — SEIZIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 27/11).**
+  Message : « There are 2 unpushed commit(s) on branch
+  `claude/dazzling-feynman-5ks884` ». Le compte (2) correspond aux deux commits
+  du run (`1c6dea4` et `7d35c07`) — même piège de vraisemblance que les quinze
+  fois précédentes. ✅ **Contrôle refait à l'identique :**
+  `ls-remote origin refs/heads/main` = **`7d35c07`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 30 394 lignes au démarrage, ~2,09 Mo.
   **Toujours en attente.** 📌 **Ce run ne l'a pas lu en entier** : « État des
   lieux », « Chantiers en attente », et trois passages retrouvés par `grep`
