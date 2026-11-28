@@ -182,6 +182,13 @@
   (8 notifications déjà envoyées, aucune action possible de notre côté).
 - ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
   **Les mesures vivent dans ces blocs « État des lieux ».**
+- 🆕 ✅ **UNE NOTIFICATION ENVOYÉE CE JOUR, LA PREMIÈRE DEPUIS LE 20/11, ET ELLE
+  PORTE DEUX CHOSES** : le constat de l'orphelin et de l'îlot (fait, aucune action
+  attendue de Tony) et **la question des délais de vente et de la marge de
+  négociation sur ses propres mandats**, justifiée une cinquième fois par le relevé
+  du jour. ⛔ **NE PAS LA RENOTIFIER** tant que Tony n'a pas répondu : elle est
+  désormais posée, et la règle du journal est de ne pas répéter une question sans
+  fait neuf. **Neuvième notification du chantier au total.**
 - ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 31 016 lignes au démarrage, ~2,13 Mo.
   **Toujours en attente.** 📌 **Ce run ne l'a pas lu en entier** : « État des
   lieux », « Chantiers en attente », et trois passages retrouvés par `grep`
