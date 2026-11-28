@@ -189,6 +189,18 @@
   du jour. ⛔ **NE PAS LA RENOTIFIER** tant que Tony n'a pas répondu : elle est
   désormais posée, et la règle du journal est de ne pas répéter une question sans
   fait neuf. **Neuvième notification du chantier au total.**
+- 🔴 ⚠️ **LE *STOP HOOK* ANNONCE DE NOUVEAU DES COMMITS NON POUSSÉS ALORS QUE
+  TOUT EST SUR `main` — DIX-SEPTIÈME OCCURRENCE CONSÉCUTIVE (11/11 → 28/11).**
+  Message : « There are 3 unpushed commit(s) on branch
+  `claude/dazzling-feynman-u6g3mh` ». Le compte (3) correspond aux trois commits
+  du run (`08c43c2`, `4e9d43e`, `f534ab1`) — même piège de vraisemblance que les
+  seize fois précédentes. ✅ **Contrôle refait à l'identique :**
+  `ls-remote origin refs/heads/main` = **`f534ab1`** = `HEAD`,
+  `merge-base --is-ancestor HEAD FETCH_HEAD` = **OUI**, `ls-remote` de la branche
+  du conteneur = **0 ref**, arbre **propre**, `@{u}` = **AUCUN**.
+  📌 **Comportement normal du hook quand on pousse en `git push origin HEAD:main`.
+  Consigné en une ligne, rien de plus — et cette ligne-ci crée un commit que le
+  hook signalera à son tour : c'est attendu.**
 - ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 31 016 lignes au démarrage, ~2,13 Mo.
   **Toujours en attente.** 📌 **Ce run ne l'a pas lu en entier** : « État des
   lieux », « Chantiers en attente », et trois passages retrouvés par `grep`
