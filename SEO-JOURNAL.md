@@ -14,6 +14,180 @@
 
 *(mis à jour à chaque run, à partir de mesures réelles — pas de recopie de notes)*
 
+**Au 2026-11-28 (samedi)**
+
+- ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 27/11.** Aucun manque
+  depuis le 18/11. **Deux manques en 92 jours** (05/11 et 18/11).
+- ✅ **AUCUN ÉCART DE `main`, CONTRÔLE FAIT AVANT TOUT `fetch`.** `HEAD` de
+  départ = **`bf9f524`**, `git ls-remote origin refs/heads/main` = **`bf9f524`** :
+  identiques. **Aucun commit tiers.** Recontrôlé identique avant le commit.
+  ⚠️ **Et le piège du jour est le ref de suivi local** : `origin/main` pointait
+  encore sur `1e943ff` (23/11), donc `git rev-list --count origin/main...HEAD`
+  annonçait **17 commits d'avance** sur un dépôt pourtant parfaitement à jour.
+  📌 **Seul `ls-remote` dit la vérité ; le ref de suivi local ne vaut rien sans
+  `fetch`.**
+- ⚠️ **Conteneur démarré sur `claude/dazzling-feynman-u6g3mh`**, pas sur `main`.
+  **Vingt-septième constat consécutif**, nom différent chaque fois.
+- ⚠️ **`node_modules` absent au démarrage** — `npm ci` avant tout contrôle.
+  **Soixante-deuxième constat identique** (21/09 → 28/11).
+- ⚠️ **Auteur Git du conteneur = `Claude <noreply@anthropic.com>` au démarrage.**
+  Reconfiguré en `Yanis Ouammou` avant le commit. **Quarante-cinquième confirmation.**
+- ✅ **LE CHANTIER DU 27/11 EST CONFIRMÉ EN PRODUCTION, 3 CHAÎNES SUR 3 ET LE
+  `<title>` AVEC**, contrôle d'usage fait en premier comme le backlog le
+  demandait : « Les cinq leviers qu'un vendeur contrôle sur la durée de sa
+  vente », « entre le moment où une annonce immobilière est publiée sur nos
+  sites » et « Pages relevées le 27 novembre 2026 » sont servies sur
+  `/blog/vendre-vite-lyon`, et le `<title>` est bien « Vendre vite à Lyon et
+  Villeurbanne : ce que les délais publiés mesurent ». **Le lien entrant écrit
+  depuis `home-staging` est servi lui aussi.** 📌 **Le chantier du 27/11 est
+  clos : ne pas le rouvrir.**
+
+- 🔴 **LE *CORE UPDATE* DE DÉCEMBRE TOURNE TOUJOURS — J+4.** Relevé comme les
+  trois veilles sur la **source primaire** (historique « Ranking » du tableau de
+  bord d'état de Google Search), **dé-balisé depuis le HTML brut** :
+  « December 2026 core update », **24 Nov 2026**, colonne « Duration » =
+  **« Information »** ; « November 2026 core update », 10 Nov 2026,
+  **« 13 days, 20 hours »** (close le 24/11).
+  ⛔ **Donc rien de ce qui est mesuré aujourd'hui n'est interprétable**, et
+  ⛔ **toujours aucune prédiction de date de fin** : le seul signal reste
+  l'apparition d'une durée. **Le contrôle a coûté une ligne de `curl`.**
+
+- 🟡 **LA SERP DE SUJET DU 14/11 (HOME STAGING) REMESURÉE À ÉCHÉANCE (J+14) :
+  SITE ABSENT, MÊME COMPTE, ROTATION D'UN TIERS.**
+  « home staging vendre plus cher chiffres étude combien ça rapporte vraiment » :
+  **9 résultats**, site absent — `maisonetvous`, `estimersonbien`, `capaxis`,
+  `groupe4aimmobilier`, `roomagen`, `oti34-immobilier`, `kontakts`,
+  `finances-immobilier`, **`blog.qoridor.fr`**. **Même compte qu'au 14/11 (9)**,
+  **3 sortants** (`tagusproperty`, `az-et-mut`, `episode-serie`) et **3 entrants**
+  (`estimersonbien`, `oti34-immobilier`, `finances-immobilier`).
+  📌 **`blog.qoridor.fr` ressort une QUATRIÈME fois** (19/10, 12/11, 14/11,
+  28/11) et reste **le seul acteur local de cette SERP**, mais il n'y tient plus
+  qu'**une** page (`/article/home-staging-prix-conseils`) au lieu de deux.
+  🆕 ✅ **ET LE RÉSUMÉ DU MOTEUR APPUIE L'ANGLE DE NOTRE PAGE, MOT POUR MOT** :
+  il annonce une étude FNAIM « sur 1 820 transactions » donnant « +7 % »,
+  **puis écrit lui-même « je n'ai pas pu retrouver le document original, donc
+  les dates et les chiffres restent à vérifier »**, et relève qu'un autre site
+  date la même étude de janvier 2026 avec « 8 à 12 % ».
+  **C'est exactement ce que `home-staging-vendre-plus-cher` démontre depuis le
+  14/11 : le chiffre le plus republié du sujet n'a pas de source retrouvable.**
+  ⚠️ **Mesurée à J+4 d'un core update : non interprétable. Remesure : 12/12.**
+
+- 🟢 🔴 **CHANTIER DU JOUR — NON-CONTENU, conformément à l'alternance (26/11
+  non-contenu → 27/11 contenu → 28/11 non-contenu) : L'AUDIT DES ARTICLES
+  ORPHELINS, QUI ÉTAIT LE CANDIDAT N°2 DU BACKLOG, ET IL A TROUVÉ PLUS QUE CE
+  QU'IL CHERCHAIT.**
+- ✅ **LE RELEVÉ, FAIT PAR PROGRAMME SUR LES 30 ARTICLES** : nombre
+  d'occurrences de `/blog/<slug>` dans tout le dépôt, **hors la définition de
+  l'article lui-même**, et en écartant les préfixes plus longs.
+  **Résultat : 1 orphelin vrai et 2 articles à un seul lien entrant.**
+  • **`lmnp-location-meublee` : 0 LIEN ENTRANT.** Et c'est **la seule page du
+    site sur la location meublée** — le seul article à écrire « LMNP » (11 fois)
+    et « micro-BIC » (19 fois). **Une page de 2 000 mots, sourcée au BOFiP et au
+    CGI, que rien ne liait.**
+  • **`home-staging-vendre-plus-cher` : 1 lien entrant**, et il venait de
+    `vendre-vite-lyon`, **qui n'en avait lui aussi qu'un, venant de
+    `home-staging`.** 📌 **Les deux pages ne se citaient qu'entre elles.**
+- 🆕 ✅ **ET LE SECOND RELEVÉ, CELUI QUI N'ÉTAIT PAS DEMANDÉ, A TROUVÉ L'ÎLOT :
+  COMPTER LES LIENS ENTRANTS NE SUFFIT PAS, IL FAUT REGARDER LE DEGRÉ ENTRANT DE
+  CHAQUE SOURCE.** `vendre-appartement-lyon-etapes` — **la page réécrite le
+  25/11, la chronologie d'une vente, une page stratégique** — affichait 2 liens
+  entrants et semblait donc saine. **Ses deux sources étaient `vendre-vite-lyon`
+  (2 liens) et `home-staging` (2 liens), et aucune page de site ne la liait.**
+  **Trois articles en îlot fermé, dont la page de référence du parcours
+  vendeur.** ⚠️ **Un chantier qui n'aurait posé que les liens demandés aurait
+  resserré l'îlot au lieu de l'ouvrir** : le premier lien écrit allait de
+  `etapes` vers `vendre-vite-lyon`, c'est-à-dire **à l'intérieur** de l'îlot.
+- ✅ **CINQ PHRASES ÉCRITES POUR CES PAGES, DEPUIS DES HÔTES À FORT DEGRÉ
+  ENTRANT, ET JAMAIS UNE ANCRE POSÉE SUR DU TEXTE EXISTANT** (recette des 21,
+  25, 26 et 27/11) :
+  1. `vendre-appartement-lyon-etapes` → **`vendre-vite-lyon`**, dans la section
+     « Combien de temps faut-il pour vendre un appartement à Villeurbanne ? »,
+     juste après le paragraphe qui dit que les durées publiées « ne concordent
+     pas entre elles ».
+  2. `estimation-en-ligne-ou-agence` (9 liens entrants) →
+     **`home-staging-vendre-plus-cher`**, après la liste des critères que les
+     données publiques ne voient pas : **l'état perçu du logement est le seul de
+     ces critères qu'un vendeur puisse retravailler à budget limité.**
+  3. `rentabilite-locative-lyon` (8) → **`lmnp-location-meublee`** : le tableau
+     qui convertit chaque charge en points de rendement **ne porte pas l'impôt
+     sur les loyers**, parce qu'il ne dépend pas du logement mais du régime —
+     **micro-BIC et 50 % contre micro-foncier et 30 %**, prélèvements sociaux
+     différents.
+  4. `preavis-depot-garantie-location-villeurbanne` (7) →
+     **`lmnp-location-meublee`**, après les plafonds de dépôt de garantie :
+     **entre vide et meublé la différence ne s'arrête pas au dépôt et au
+     préavis.**
+  5. `compromis-de-vente-delais` (15) → **`vendre-appartement-lyon-etapes`** :
+     **le compromis est la dernière des sept étapes d'une vente, et ce sont les
+     six précédentes qui décident de la date à laquelle on y arrive.**
+- ✅ **APRÈS : 0 ORPHELIN, 0 ÎLOT**, relevé refait par programme.
+  `lmnp-location-meublee` passe de **0 à 2**, `home-staging` de 1 à 2 avec une
+  source à 9, `vendre-vite-lyon` de 1 à 2, `vendre-appartement-lyon-etapes` de
+  2 à 3 avec une source à 15.
+- ✅ **AUCUN CHIFFRE NEUF, ET C'EST VOLONTAIRE** (règle du 02/10) : « de 26 à
+  202 jours » vient de `vendre-vite-lyon`, les abattements de 50 % et 30 % de
+  `lmnp-location-meublee` (CGI art. 50-0 et art. 32), les sept étapes du bloc
+  `steps` de `vendre-appartement-lyon-etapes` — **comptées sur le bloc, pas
+  estimées**, et le compromis y est bien la **septième**.
+- ✅ **AUCUN `dateModified` AVANCÉ, ET C'EST LA DÉCISION, PAS UN OUBLI** —
+  règle des 17, 20, 22, 24, 26 et 27/11 : **une phrase de renvoi ne change pas
+  ce que la page dit.** Vérifié contre la production page par page : les cinq
+  couples `datePublished` / `dateModified` servis en local sont **identiques à
+  ceux de la production**. **Aucun `ld+json` modifié.**
+- 🆕 ✅ **LE GARDE-FOU ÉCRIT APRÈS LES TROIS ERREURS DU 27/11 A SERVI DÈS LA
+  PREMIÈRE INSERTION.** Le script refuse d'écrire si l'ancre n'est pas trouvée
+  **exactement une fois**, si elle sort des bornes de l'article visé, si elle
+  tombe **après `faq:`** dans l'article, ou si l'hôte lie déjà la cible.
+  **Il a bloqué l'insertion n°1** : l'ancre « Nous préférons l'écrire que
+  publier un chiffre que nous ne pourrions pas sourcer. » existe **deux fois**
+  dans `lib/blog.ts` — dans `vendre-appartement-lyon-etapes` **et dans
+  `questions-a-poser-visite`**. **Exactement le piège du 27/11, attrapé avant
+  l'écriture et non après.** Ancre élargie à la phrase précédente, unique.
+- 🆕 ⚠️ **ET CE BLOCAGE A RÉVÉLÉ UN PASSAGE QUASI DUPLIQUÉ ENTRE DEUX ARTICLES** :
+  `vendre-appartement-lyon-etapes` et `questions-a-poser-visite` portent le même
+  paragraphe « Markus Immobilier ne publie pas de délai de vente moyen […] Nous
+  préférons l'écrire que publier un chiffre que nous ne pourrions pas sourcer. »,
+  à quelques mots près. **Non corrigé : ce n'était pas le chantier, et la phrase
+  est vraie des deux côtés.** 📌 **Noté en « Hypothèses à vérifier ».**
+- ✅ **CONTRÔLES** : `tsc --noEmit` propre ; **build 92 pages** ; `eslint`
+  **35 / 24**, chiffre inchangé depuis le 02/11, **aucune erreur neuve** ;
+  **5 phrases sur 5 visibles sur le rendu**, avec le texte d'ancre **dans un
+  vrai `<a href="/blog/…">`** et non en markdown ; **5 cibles sur 5 en 200** ;
+  **parité `FAQPage` 36/36 questions et 36/36 réponses** sur les cinq pages
+  touchées ; **0 `**`, 0 `](` dans le texte visible**, 0 `&apos;`, 0 `&quot;` ;
+  **débordement horizontal de page = 0** sur les cinq pages en 390 px **et** en
+  1440 px ; `/llms.txt` **200** en local et en production, **à jour par
+  construction** (il dérive de `ARTICLES` : aucune page ajoutée, aucun titre
+  changé) ; sitemap local **55 URL**.
+- 🆕 ⚠️ **UN DÉFILEMENT INTERNE DE 190 px RELEVÉ SUR
+  `estimation-en-ligne-ou-agence` EN 390 px, ET IL EST ANTÉRIEUR À CE RUN** :
+  mesuré **identique sur la production**, sur un conteneur
+  `overflow-x-auto` de tableau. **Au-dessus du plancher de 132 px du gabarit,
+  en dessous des 215 px qui avaient signalé un vrai défaut le 27/11.**
+  **Non touché** (une phrase de paragraphe ne peut pas créer de défilement de
+  tableau). 📌 **Noté en « Hypothèses à vérifier » : reste à voir si la colonne
+  de valeur de ce tableau sort de l'écran.**
+- ✅ **PROSE CONTRÔLÉE AVANT INSERTION, PAS APRÈS** (règle du 03/11, la prose ne
+  passe jamais par un heredoc : les cinq phrases ont été écrites dans un fichier
+  avec l'outil d'écriture, puis insérées par programme) : **ratio d'accents
+  0,145 à 0,203 par mot** (repère 0,14–0,15 pour la prose longue, plus haut sur
+  les passages courts — note du 27/11), **0 apostrophe courbe, 0 insécable
+  U+00A0 ni U+202F, 0 double espace, 0 mot collé.**
+- 🔴 **L'ACCUEIL EST TOUJOURS SERVI SANS LA SECTION « QUI SOMMES-NOUS » —
+  TRENTIÈME JOUR.** **Non recontrôlé en ligne ce jour** (le chantier ne touche
+  pas l'accueil). **Non corrigé, et c'est volontaire** (page de Tony, règle des
+  90 jours). ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD TOUJOURS MORTE**, non recontrôlée ce jour (contrôle du
+  26/11 : `code 10006`). **Trente-sixième jour au moins.** ⚠️ **NON renotifiée**
+  (8 notifications déjà envoyées, aucune action possible de notre côté).
+- ⚠️ **LE GRAND TABLEAU « Positions mesurées » EST TOUJOURS FIGÉ AU 04/10.**
+  **Les mesures vivent dans ces blocs « État des lieux ».**
+- ⚠️ **ARCHIVAGE DU JOURNAL NON FAIT** : 31 016 lignes au démarrage, ~2,13 Mo.
+  **Toujours en attente.** 📌 **Ce run ne l'a pas lu en entier** : « État des
+  lieux », « Chantiers en attente », et trois passages retrouvés par `grep`
+  ciblé (la requête de la SERP du 14/11, la définition du ratio d'accents, les
+  bornes des sections).
+
 **Au 2026-11-27 (vendredi)**
 
 - ✅ **LE RUN A EU LIEU, IMMÉDIATEMENT APRÈS CELUI DU 26/11.** Aucun manque
@@ -7613,6 +7787,72 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-28 — Un article à 0 lien entrant, et un îlot de trois pages que le simple comptage ne voyait pas (`08c43c2`)
+
+- **Étape 0, changements du client** : `git ls-remote origin refs/heads/main` =
+  `bf9f524` = `HEAD` de départ, **aucun commit tiers**. ⚠️ **Le ref de suivi
+  local `origin/main` pointait encore sur `1e943ff` (23/11)** et faisait croire
+  à **17 commits d'avance** : seul `ls-remote` tranche. **Pas d'email.**
+- **Contrôle d'usage du chantier de la veille, fait en premier** : les trois
+  chaînes du 27/11 et le nouveau `<title>` sont servis sur
+  `/blog/vendre-vite-lyon`, et le lien entrant écrit depuis
+  `/blog/home-staging-vendre-plus-cher` l'est aussi. **3/3 + titre.**
+- **Core update** : « December 2026 core update », 24 Nov 2026, durée
+  « Information » → **tourne toujours, J+4**. Rien d'interprétable.
+- **SERP de sujet du 14/11 remesurée à échéance** (home staging, J+14) :
+  **9 résultats, site absent**, même compte qu'au point zéro, rotation de 3 sur
+  9, `blog.qoridor.fr` pour la quatrième fois et seul acteur local.
+  📌 **Le résumé du moteur écrit lui-même ne pas retrouver l'étude FNAIM à
+  « +7 % » : c'est l'angle de notre page depuis le 14/11.**
+
+**Le chantier, et ce qu'il a trouvé.** Relevé par programme sur les 30
+articles : occurrences de `/blog/<slug>` dans tout le dépôt, hors la définition
+de l'article lui-même, préfixes plus longs écartés.
+
+- **`lmnp-location-meublee` : 0 lien entrant.** Seule page du site sur la
+  location meublée — seul article à écrire « LMNP » (11 fois) et « micro-BIC »
+  (19 fois). Page de ~2 000 mots sourcée au BOFiP et au CGI, que **rien** ne
+  liait.
+- **`home-staging-vendre-plus-cher` et `vendre-vite-lyon` : 1 lien entrant
+  chacun, et ils venaient l'un de l'autre.**
+- **Second relevé, non demandé, sur le degré entrant de chaque source :
+  `vendre-appartement-lyon-etapes` affichait 2 liens entrants — donc sain en
+  apparence — mais ses deux sources étaient à 2 liens entrants et aucune page de
+  site ne la liait. Îlot fermé de trois pages, dont la chronologie d'une vente.**
+
+**Cinq phrases écrites pour ces pages, hôtes choisis sur leur degré entrant,
+jamais une ancre posée sur du texte existant :**
+
+| Hôte (liens entrants) | Cible | Ce que la phrase apporte |
+|---|---|---|
+| `vendre-appartement-lyon-etapes` | `vendre-vite-lyon` | les durées publiées, de 26 à 202 jours, reprises une par une |
+| `estimation-en-ligne-ou-agence` (9) | `home-staging-vendre-plus-cher` | l'état perçu est le seul critère de prix retravaillable à budget limité |
+| `rentabilite-locative-lyon` (8) | `lmnp-location-meublee` | le tableau du rendement net ne porte pas l'impôt : 50 % contre 30 % |
+| `preavis-depot-garantie-location-villeurbanne` (7) | `lmnp-location-meublee` | vide ou meublé, la différence dépasse le dépôt et le préavis |
+| `compromis-de-vente-delais` (15) | `vendre-appartement-lyon-etapes` | le compromis est la 7ᵉ étape, les six autres font la date |
+
+- **Après : 0 orphelin, 0 îlot**, relevé refait par programme.
+- **Aucun chiffre neuf** : tout est repris des pages qui le sourcent déjà, et
+  les sept étapes sont **comptées sur le bloc `steps`**, pas estimées.
+- **Aucun `dateModified` avancé, aucun `ld+json` touché** — vérifié contre la
+  production, les cinq couples de dates sont identiques.
+- **Le garde-fou d'insertion a bloqué la première tentative** : l'ancre existait
+  **deux fois** dans `lib/blog.ts` (`vendre-appartement-lyon-etapes` et
+  `questions-a-poser-visite`). **Le piège du 27/11, attrapé avant l'écriture.**
+- **Contrôles** : `tsc` propre · build **92 pages** · `eslint` **35 / 24**
+  inchangé · **5/5 phrases visibles sur le rendu**, ancre dans un vrai `<a>` ·
+  **5/5 cibles en 200** · **FAQPage 36/36 questions et 36/36 réponses** ·
+  **0 débordement de page** en 390 px et 1440 px · 0 `](`, 0 astérisque,
+  0 entité non décodée · `/llms.txt` 200, à jour par construction.
+- **Ce que ce run a décidé de NE PAS faire** : (1) **ne pas faire lier
+  `vendre-appartement-lyon-etapes` par `app/vendre/page.tsx`** — c'est le lien
+  le plus utile qui reste, mais il demande de retoucher de la prose en JSX :
+  **inscrit en tête des candidats du 30/11** ; (2) **ne pas corriger le
+  paragraphe dupliqué** entre `vendre-appartement-lyon-etapes` et
+  `questions-a-poser-visite` ; (3) **ne pas toucher au tableau à 190 px de
+  défilement interne** de `estimation-en-ligne-ou-agence`, antérieur à ce run.
+  **Les trois sont en « Hypothèses à vérifier » ou dans le backlog.**
+
 ### 2026-11-27 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (audit des délais publiés, `1c6dea4`)
 
 - **Déclenchement en double** : le chantier du jour est servi en production (titre « ce que
@@ -13981,6 +14221,247 @@ local sur 2022. Contrôle de routine, pas de temps de chantier (règle du 28/09)
 Par ordre d'impact estimé. **Alterner les angles** — ne pas refaire deux jours
 de suite un chantier « contenu blog ».
 
+**Angle du dernier run : NON-CONTENU — l'audit des articles orphelins, et l'îlot
+de trois pages qu'il a révélé en plus** (28/11 : relevé par programme sur les
+30 articles, **1 orphelin vrai** — `lmnp-location-meublee`, 0 lien entrant,
+seule page du site sur la location meublée — et **2 articles à un seul lien
+entrant qui ne se citaient qu'entre eux** ; second relevé, non demandé, sur le
+**degré entrant de chaque source** : `vendre-appartement-lyon-etapes`,
+`vendre-vite-lyon` et `home-staging` formaient un **îlot fermé** ;
+**5 phrases écrites** depuis des hôtes à 7, 8, 9 et 15 liens entrants ;
+**après : 0 orphelin, 0 îlot** ; 5 insertions, 0 suppression, aucun
+`dateModified` avancé, aucun `ld+json` touché).
+
+→ 🔴 **L'ANGLE DU PROCHAIN RUN (29/11, dimanche) DOIT ÊTRE DU CONTENU**
+(alternance : 26/11 non-contenu → 27/11 contenu → **28/11 non-contenu**).
+🔴 **Veille du lundi DUE LE 30/11** (lundi) — pas demain, mais surlendemain.
+
+🟡 **CONTRÔLE D'USAGE DÛ AU DÉMARRAGE DU 29/11, ET IL COÛTE UNE MINUTE** :
+vérifier que les cinq phrases du 28/11 sont servies en production.
+⚠️ **Suivre les redirections (`curl -sL`)** : le domaine sans `www` répond 308.
+**Chaînes qui n'existaient pas avant ce run**, sur trois pages au choix :
+« Ces durées, nous les avons reprises une par une plutôt que de les moyenner »
+(`/blog/vendre-appartement-lyon-etapes`), « Ce tableau ne porte pas l'impôt sur
+les loyers » (`/blog/rentabilite-locative-lyon`), « le compromis est la dernière
+des sept étapes » — à chercher sous la forme « la signature du compromis est la
+dernière des sept étapes » (`/blog/compromis-de-vente-delais`).
+📌 **Et le contrôle qui compte vraiment : `/blog/lmnp-location-meublee` doit
+désormais avoir deux liens entrants servis**, depuis
+`/blog/rentabilite-locative-lyon` et
+`/blog/preavis-depot-garantie-location-villeurbanne`.
+
+🔴 **À LIRE AVANT TOUTE CONCLUSION SUR UNE POSITION : LE « DECEMBER 2026 CORE
+UPDATE », DÉMARRÉ LE 24/11, TOURNAIT TOUJOURS LE 28/11 (J+4).** Relevé sur le
+tableau de bord d'état de Google Search, dé-balisé depuis le HTML brut. La mise
+à jour de novembre est close (13 j 20 h). ⛔ **Relever à l'échéance, ne pas
+conclure.** ⛔ **Ne pas prédire de date de fin** (11 j 21 h à 45 j sur les
+41 entrées du tableau) : **le seul signal est l'apparition d'une durée.**
+📌 **À recontrôler chaque jour, c'est une ligne de `curl`.**
+
+🟢 **CANDIDATS CONTENU POUR LE 29/11, par ordre d'impact :**
+  1. 🟡 **DONNER UNE FAQ À `cout-gestion-locative` — GEL LEVÉ, DISPONIBLE, ET
+     C'EST LE FAVORI.** C'est **l'un des 2 derniers articles sans `FAQPage`**
+     avec `capacite-emprunt-immobilier`. 📌 **LES DEUX SERP DU 27/11
+     L'APPUIENT** : la négociabilité **de la gestion** est le créneau que les
+     nationaux laissent vide, site absent des deux SERP à J+14 comme au point
+     zéro. ⚠️ **Ne pas republier le « 6 à 8 % » attribué à l'ANIL** : relevé du
+     13/11, l'ANIL ne publie aucun taux de gestion en pourcentage, la chaîne
+     passe par `immojeune`.
+  2. 🔴 **`mandat-simple-ou-exclusif` MÉRITE D'ÊTRE ROUVERT** : `salengro-immo.fr`
+     a occupé le créneau local (SERP du 22/11). **2 315 mots rendus** — pas un
+     article faible, un article **concurrencé**. ⚠️ **Lire la page de Salengro
+     avant d'écrire.**
+  3. 🟡 **SI `compromis-de-vente-delais` EST ROUVERT, L'APPORT EST DÉJÀ
+     IDENTIFIÉ, ET CE N'EST PAS UN CHIFFRE** : les « 30 jours / un mois
+     minimum », les « 45 à 60 jours » et les « 3 mois » lus le 26/11 **ne
+     portent pas sur le même objet**. **Écrire la distinction, pas une
+     quatrième durée.** ⚠️ **Article réécrit le 12/11, et une phrase y a été
+     ajoutée le 28/11 : vérifier avant.**
+  4. 🟡 **LA SERP « estimation immobilière Villeurbanne » DÉSIGNE UN CRÉNEAU** :
+     8 des 9 résultats sont des outils ou des pages de prix, **et leurs chiffres
+     divergent** (3 641 / 3 849 / 4 017 / « environ 3 800 » €/m²). ⚠️ **À mesurer
+     avant d'écrire, et ⛔ sans jamais toucher à l'outil d'estimation.**
+  5. 🟡 **LE SUJET DU PRORATA EST MESURÉ DEUX FOIS SANS RÉPONSE LOCALE**
+     (`taxe-fonciere-vente-qui-paie`). **Remesurer le 08/12 AVANT de décider.**
+  6. 🟡 **LA FAMILLE DU MEUBLÉ EST OUVERTE, ET ELLE EST VIDE SUR LE SITE.**
+     « bail mobilité », « colocation meublée Villeurbanne », « louer à un
+     étudiant Villeurbanne ». 🆕 📌 **ET L'AUDIT DU 28/11 LUI DONNE UN MOTIF DE
+     PLUS** : `lmnp-location-meublee` est **la seule page du site** à écrire
+     « LMNP » et « micro-BIC ». **Toute la famille du meublé repose sur un seul
+     article, qui était orphelin jusqu'au 28/11.** ⚠️ **Triple contrôle du
+     03/11 obligatoire.**
+  7. 🟡 **LA FAMILLE « ZÉRO OCCURRENCE » À ROUVRIR** : `donation-partage`,
+     `SCI familiale`, `prêt à taux zéro`, `déficit foncier`, `copropriété en
+     difficulté`. ⚠️ **Triple contrôle du 03/11.**
+  8. ⛔ **`capacite-emprunt-immobilier` RESTE BLOQUÉ** (35 % / 25 ans non lus sur
+     un texte primaire). 📌 **Tester `droit.org` pour le code de la
+     consommation — la voie est éprouvée deux fois.**
+  9. ⛔ **NE PAS RÉÉCRIRE** : `vendre-vite-lyon` (27/11) → **11/12** ·
+     `vendre-appartement-lyon-etapes` (25/11) → **09/12** ·
+     `faire-offre-achat` (23/11) → **07/12** ·
+     `achat-immobilier-lyon-checklist` (21/11) → **05/12** ·
+     `questions-a-poser-visite` (19/11) → **03/12** ·
+     `lmnp-location-meublee` (16/11) → **30/11** ·
+     `home-staging-vendre-plus-cher` (14/11) → **LEVÉ** ·
+     `prix-immobilier-villeurbanne-2026` → **03/12** ·
+     `preavis-depot-garantie-location-villeurbanne` et
+     `rentabilite-locative-lyon` (21/11) → **05/12**.
+     📌 **Rappel : un gel interdit la RÉÉCRITURE, pas l'ajout d'une phrase de
+     renvoi — c'est ce qui a été fait le 27/11 sur `home-staging` et le 28/11
+     sur quatre pages gelées.**
+ 10. ⛔ **NE PAS ÉCRIRE SUR LES HONORAIRES** : le contenu existe, le manque était
+     de la visibilité. **Remesurer le 05/12.**
+
+🟢 **CANDIDATS NON-CONTENU POUR LE RUN D'APRÈS (30/11), par ordre d'impact :**
+  1. 🆕 🔴 **FAIRE LIER `vendre-appartement-lyon-etapes` PAR `app/vendre/page.tsx`.**
+     **Relevé du 28/11 : la page de destination du parcours vendeur lie neuf
+     articles de blog et PAS la chronologie d'une vente**, alors que c'est
+     l'article qui porte les sept étapes. L'îlot est ouvert depuis le 28/11
+     (`compromis-de-vente-delais`, 15 liens entrants), **mais aucune page de
+     site ne lie encore cet article.** ⚠️ **C'est une retouche de `.tsx` avec de
+     la prose en JSX** : écrire une phrase, ne pas réancrer de texte existant,
+     et recontrôler le rendu en 390 px.
+  2. 🆕 🟢 **ÉTENDRE L'AUDIT DU 28/11 AUX PAGES HORS BLOG** — `/annonces`,
+     `/equipe`, `/honoraires`, `/faire-gerer`, les quatre pages de quartier.
+     **Le relevé du jour n'a compté les liens entrants que des 30 articles** :
+     une page de site orpheline ou en îlot n'aurait pas été vue.
+     📌 **Le script existe (`iles.py`), il suffit d'élargir la liste des cibles.**
+  3. 🟡 **CHERCHER D'AUTRES PAIRES DE PAGES QUI TRAITENT LE MÊME MOMENT SANS SE
+     CITER.** Recette dans « Techniques apprises » du 24/11 : grouper les H2 des
+     30 articles par formule, pas par sujet. ⚠️ **Ne poser un lien que si le
+     relevé donne 0 occurrence croisée.** 📌 **Quatre de ces paires ont été
+     fermées le 28/11 ; il en reste à chercher.**
+  4. 🟡 **ALIGNER `app/vendre/page.tsx` SUR LA FORMULATION DES 1° ET 2°.**
+     Levée d'ambiguïté, pas correction d'erreur. 📌 **À faire dans le même
+     passage que le n°1, c'est le même fichier.**
+  5. 🟡 **TRANCHER L'HYPOTHÈSE DU 19/11 SUR `vendre-sans-agence`** (sanction
+     attachée à la remise de l'état des risques en première visite). **Une
+     lecture du V de `L125-5` alinéa par alinéa suffit**, et la voie d'accès
+     existe (`droit.org`, payload XML par code, éprouvée deux fois).
+     ⚠️ **Trois pages dépendent de cette lecture** (`vendre-sans-agence`,
+     `questions-a-poser-visite`, `vendre-appartement-lyon-etapes`).
+  6. 🟡 **DONNER AUX FICHES D'ANNONCE UN LIEN VERS LEUR PAGE DE QUARTIER.**
+     Écarté le 22/11. 📌 **Ne l'ouvrir qu'en écrivant une phrase inconditionnelle.**
+  7. 🟢 **AUDITER LES AUTRES TEXTES PORTÉS PAR DU CODE ET RENDUS PAR UN BLOC DE
+     L'ÉDITEUR** (leçon du 11/11).
+  8. 🟡 **RELANCER `justice.fr`** (maintenance les 31/10 et 02/11, **vingt-sept
+     runs** sans recontrôle). **Contrôle à deux temps obligatoire.**
+  9. 🟢 **VÉRIFIER QUE L'INSTITUTION DU DPU N'A PAS BOUGÉ DEPUIS LE 13/05/2019.**
+ 10. 🟢 **CORRIGER `lib/page-builder/definitions.tsx`** (« une vente plus
+     rapide ») — **0 occurrence en production**, donc **jour creux uniquement.**
+ 11. 🟢 **CORRIGER LES DEUX `<a>` INTERNES DE `/mentions-legales`.** **2 des 24
+     erreurs `eslint`**, total reconfirmé **35 / 24** le 28/11. **Jour creux.**
+ 12. 🟡 **ARCHIVER LE JOURNAL.** **31 016 lignes, ~2,13 Mo au démarrage du 28/11.**
+     ⚠️ **Ne jamais archiver « État des lieux » ni « Chantiers en attente ».**
+ 13. ⛔ **L'AUDIT DES ORPHELINS ET DES ÎLOTS DU BLOG EST FAIT (28/11) :
+     0 ORPHELIN, 0 ÎLOT. NE PAS LE ROUVRIR SUR LES 30 ARTICLES.**
+     📌 **La règle reste pour l'avenir : tout article neuf doit recevoir un lien
+     entrant depuis une page à fort degré entrant le jour même, et le contrôle
+     ne porte pas sur le NOMBRE de liens entrants mais sur le degré entrant de
+     chaque source.**
+ 14. ⛔ **LE `HowTo.name` EST FAIT (26/11) SUR LES 13 ARTICLES À BLOC `steps`.
+     NE PAS LE ROUVRIR.**
+ 15. ⛔ **LES TABLEAUX QUI DÉFILENT À 390 px NE SONT PAS UN DÉFAUT** tant que le
+     défilement interne vaut **130-132 px**, qui est le plancher `min-w-[480px]`
+     du gabarit. ⚠️ **AU-DELÀ, SI** : 215 px le 27/11 = colonne de valeur hors
+     écran. 🆕 **190 px relevé le 28/11 sur `estimation-en-ligne-ou-agence`, et
+     il est ANTÉRIEUR (identique en production)** — voir « Hypothèses ».
+ 16. ⛔ **NE PLUS CHERCHER DE TROU DANS LE BALISAGE D'ÉTABLISSEMENT.** Fermée (20/11).
+ 17. ⛔ **LE MAILLAGE DES FICHES (22/11) ET CELUI DES QUARTIERS (24/11) SONT CLOS.**
+
+🔴 **À REMONTER / EN ATTENTE DE TONY — ne pas re-trancher seul :**
+- 🟡 **ENCADREMENT DES LOYERS : VÉRIFIÉ LE 22/11, TOUJOURS PAS PROMULGUÉ.**
+  Adoption définitive le **19/11/2026**. **Nos pages portent une phrase DATÉE au
+  21/11, qui reste exacte.** **Revérifier vers le 04/12.**
+  ⛔ **ET NE PAS CONFONDRE AVEC LE JUGEMENT DU TRIBUNAL ADMINISTRATIF DE
+  LYON** : il est du **14 octobre 2025**, pas 2026, et il annule **le seul
+  arrêté du 29 septembre 2023** (secteurs fixés pour un an à compter du
+  01/11/2023), pour imprécision de la carte annexée. **Les arrêtés postérieurs
+  ne sont pas visés, et la formulation de nos pages — le plafond est celui de
+  l'arrêté en vigueur à la date de signature du bail — n'est pas mise en
+  défaut.** 📌 **Vérifié et écarté le 27/11.**
+- 🟠 **LA PRÉSENCE DANS LES ANNUAIRES EST UN CHANTIER HORS DÉPÔT.** **La SERP
+  « agence immobilière Villeurbanne » du 26/11 l'appuie une huitième fois** :
+  **8 des 20 places** tenues par des annuaires ou des agrégateurs, **et aucune
+  agence indépendante villeurbannaise.** **Question à Tony : l'agence est-elle
+  inscrite sur ces portails, et veut-elle qu'on s'en occupe ?**
+- 🟠 **UN CONCURRENT VILLEURBANNAIS PUBLIE DU CONTENU LOCAL ET ÇA CLASSE**
+  (`salengro-immo.fr`, deux SERP suivies le 22/11). ⚠️ **Information, pas action.**
+  🆕 📌 **ET `blog.qoridor.fr` TIENT LA SERP HOME STAGING POUR LA QUATRIÈME FOIS**
+  (19/10, 12/11, 14/11, 28/11), seul acteur local de cette page de résultats.
+- 🟠 **LE BARÈME D'ORPI EST INDEXÉ EN PDF ET LE NÔTRE NE L'EST PAS.**
+- 🔴 **AUCUN DÉLAI DE VENTE OBSERVÉ PAR L'AGENCE N'EST PUBLIABLE, FAUTE DE
+  DONNÉE**, et la même question se pose depuis le 23/11 pour la MARGE DE
+  NÉGOCIATION. **Question à Tony : l'agence connaît-elle, sur ses propres
+  mandats, le délai entre la mise en vente et le compromis, et l'écart entre
+  prix affiché et prix signé ?** 📌 **QUATRIÈME JUSTIFICATION MESURÉE, ET LA
+  PLUS FORTE : le chantier du 27/11 a dû démontrer sur 2 799 mots qu'aucune
+  source publique ne sait répondre à « combien de temps pour vendre à Lyon ».
+  Un délai médian tiré des mandats de l'agence serait LA donnée que personne
+  d'autre ne peut publier**, et la page qui l'accueillerait existe désormais,
+  est écrite pour elle, **et depuis le 28/11 elle est liée depuis la chronologie
+  de vente.** **C'est la question ouverte la plus rentable du journal.**
+  🆕 📌 **ET LA MÊME CHOSE VAUT POUR LE HOME STAGING** : le résumé de moteur du
+  28/11 écrit lui-même ne pas retrouver l'étude FNAIM à « +7 % ». **Si l'agence
+  a mis en scène des biens et connaît l'écart de délai ou de négociation
+  observé, c'est une donnée que personne d'autre ne publie.**
+- 🟠 **AUCUN ÉCART DE LOYER MEUBLÉ / VIDE VILLEURBANNAIS N'EST PUBLIABLE.**
+- 🟠 **PUBLIER OU NON LES BARÈMES DE GESTION DES CONCURRENTS VILLEURBANNAIS.**
+  ⚠️ **Publicité comparative : décision commerciale.**
+- 🟠 **FAUT-IL FAIRE POINTER LE CTA DES ARTICLES ACHETEUR VERS `/annonces`
+  PLUTÔT QUE VERS `/acheter` ?** **Pas à trancher seul.**
+- 🔴 **ACCUEIL SANS LA SECTION « QUI SOMMES-NOUS » — TRENTIÈME JOUR.**
+  **Non corrigé : page de Tony.** ⚠️ **Règle des 90 jours.** ⚠️ **NON renotifié.**
+- 🔴 **INVITATION DISCORD MORTE** (`code 10006`, recontrôlé le **26/11**), à
+  **deux** emplacements (`components/layout/site-footer.tsx`,
+  `components/home/social.tsx`). ⚠️ **NON renotifiée.**
+
+📅 **ÉCHÉANCES DE REMESURE DES SERP SUIVIES**
+⚠️ 🔴 **TOUT CE QUI SERA RELEVÉ JUSQU'À LA FIN DU « DECEMBER 2026 CORE UPDATE »
+(démarré le 24/11) L'EST PENDANT UNE MISE À JOUR. Relever, ne pas conclure.**
+- **SERP de sujet du 16/11 (micro-BIC / LMNP)** → **30/11**. 🆕 📌 **Requête
+  témoin de la page qui était orpheline jusqu'au 28/11 : son relevé dira si deux
+  liens entrants suffisent à la faire apparaître. Point de comparaison propre.**
+- **« appartement à vendre Villeurbanne agence »** → **01/12**. 📌 **Requête
+  témoin de `/annonces` et du bloc « Biens similaires ».**
+- **LE BILAN DU SEMESTRE (`prix-immobilier-villeurbanne-2026`)** → **03/12**.
+- **« questions à poser lors de la visite d'un appartement avant d'acheter »** →
+  **03/12**.
+- **« vendre appartement Villeurbanne »**, **« prix m2 Villeurbanne »** et
+  **« honoraires agence immobilière Villeurbanne … »** → **05/12**.
+- **« combien coûte une agence immobilière à Villeurbanne honoraires »** →
+  **05/12**. 🟢 **LE PREMIER RELEVÉ POSITIF DU JOURNAL** (21/11). ⛔ **À
+  confirmer, pas à célébrer.**
+- **« agence immobilière Villeurbanne »** → **06/12**. 📌 **Relevée en avance le
+  26/11 : site absent, 20 résultats, 8 annuaires, aucune agence indépendante.**
+- **« mandat simple ou exclusif … Villeurbanne »** et **« résilier mandat
+  exclusif … »** → **06/12**.
+- **« estimation immobilière Villeurbanne »** → **07/12**.
+- **« offre d'achat acceptée le vendeur peut-il se rétracter délai validité »** →
+  **07/12** (requête témoin du chantier du 23/11).
+- **LES DEUX SERP DU PRORATA DE TAXE FONCIÈRE** → **08/12**.
+- **« quelles sont les étapes pour vendre son appartement à Lyon ordre
+  chronologique délais »** → **09/12** (requête témoin du chantier du 25/11).
+  🆕 📌 **La page a reçu le 28/11 son premier lien entrant depuis une page forte
+  (`compromis-de-vente-delais`, 15 liens entrants).**
+- **LES DEUX SERP DU COMPROMIS** (rétractation ; délai compromis → acte) →
+  **10/12**.
+- **LES DEUX SERP DE LA GESTION LOCATIVE** (tarif ; négociabilité du barème) →
+  **11/12**. **Remesurées le 27/11 à échéance : site absent des deux, comptes
+  identiques au 13/11 (13 et 16), créneau « gestion » toujours vide.**
+- **« combien de temps pour vendre un appartement à Lyon délai moyen de
+  vente »** → **11/12** (requête témoin du chantier du 27/11). **Point zéro du
+  27/11 : site absent.**
+- 🆕 **SERP DE SUJET DU HOME STAGING** → **12/12**. **Remesurée le 28/11 à
+  échéance (J+14) : site absent, 9 résultats, même compte qu'au 14/11,
+  rotation de 3 sur 9, `blog.qoridor.fr` pour la quatrième fois.**
+- ⛔ **Les requêtes de quartier du brief restent écartées** : « Charpennes » et
+  « Gratte-Ciel » sont des **requêtes de marque de concurrents**.
+- ⛔ **« faire une offre d'achat appartement Villeurbanne de combien négocier le
+  prix » NE DOIT PAS ÊTRE SUIVIE** : SERP transactionnelle.
+
+---
+
 
 **Angle du dernier run : CONTENU — `vendre-vite-lyon` réécrit de fond en comble**
 (27/11 : 43 mots de blocs `text:` → **1 919** ; 188 mots rendus → **2 799** ;
@@ -20271,6 +20752,34 @@ fonctionne ».
 
 ## Hypothèses à vérifier
 
+**2026-11-28 — DEUX ARTICLES PORTENT LE MÊME PARAGRAPHE SUR L'ABSENCE DE DÉLAI
+DE VENTE PUBLIABLE, À QUELQUES MOTS PRÈS.** Découvert parce que le garde-fou
+d'insertion a refusé une ancre trouvée deux fois :
+`vendre-appartement-lyon-etapes` et `questions-a-poser-visite` écrivent tous
+deux « Markus Immobilier ne publie pas de délai de vente moyen […] la base DVF
+enregistre la date de signature, jamais la date de mise en vente […] Nous
+préférons l'écrire que publier un chiffre que nous ne pourrions pas sourcer. »
+**La phrase est vraie des deux côtés, et le paragraphe est à sa place dans les
+deux articles.** ⚠️ **Non corrigé : ce n'était pas le chantier, et toucher à
+l'un des deux textes sans savoir lequel des deux doit porter l'affirmation
+serait un choix éditorial, pas une correction.** 📌 **À trancher un jour creux,
+et une seule question suffit : lequel des deux articles un moteur de réponse
+citerait-il sur cette question ?** Le troisième article du site qui traite le
+sujet, `vendre-vite-lyon`, le fait désormais en 2 799 mots : **c'est peut-être
+lui qui doit porter l'affirmation, et les deux autres y renvoyer.**
+
+**2026-11-28 — UN DÉFILEMENT INTERNE DE 190 px SUR
+`estimation-en-ligne-ou-agence` EN 390 px, ANTÉRIEUR À CE RUN.** Mesuré sur un
+conteneur `overflow-x-auto` de tableau, **et identique sur la production**, donc
+sans rapport avec la phrase ajoutée le 28/11. **190 px est au-dessus du plancher
+de 132 px du gabarit `min-w-[480px]` et en dessous des 215 px qui avaient
+signalé un vrai défaut le 27/11** (colonne de valeur hors écran).
+⚠️ **Non touché, et c'est la règle du doute** : aucun contrôle automatique ne
+dit si la colonne qui porte la valeur de ce tableau sort de l'écran.
+📌 **Le seul contrôle qui trancherait est une capture à 390 px**, à faire un
+jour creux. **Et le seuil à retenir n'est pas la présence d'un défilement mais
+son chiffre** : 132 = plancher normal, 190 = à regarder, 215 = défaut constaté.
+
 **2026-11-21 — NOS PAGES DATENT LE TERME DE L'EXPÉRIMENTATION AU 23/11/2026, LES
 DÉBATS DE L'ASSEMBLÉE PARLENT DU 24/11.** Notre date vient d'un calcul assumé
 (loi ELAN du 23/11/2018, art. 140, durée portée de 5 à 8 ans par la loi 3DS) ;
@@ -25319,6 +25828,76 @@ reste du diff n'est que de l'ajout.
 ---
 
 ## Techniques apprises
+
+### 2026-11-28 — Compter les liens entrants ne détecte pas un îlot : c'est le degré entrant de chaque SOURCE qu'il faut regarder
+
+**Le relevé d'orphelins est trivial et il manque l'essentiel.** Compter les
+occurrences de `/blog/<slug>` dans le dépôt, hors la définition de l'article
+lui-même, donne les pages à 0 lien entrant. Le 28/11 il en a donné **une** :
+`lmnp-location-meublee`. **Mais trois autres pages étaient dans un état presque
+aussi mauvais sans que le compte le dise** : `vendre-appartement-lyon-etapes`
+affichait 2 liens entrants, ce qui semble sain, **et ses deux sources étaient
+elles-mêmes à 2 liens entrants, sans aucune page de site pour les lier.**
+Un îlot fermé de trois pages, dont la chronologie d'une vente.
+
+**Le second relevé, celui qui tranche** : pour chaque cible, lister ses sources
+**avec leur propre degré entrant**, et marquer la cible comme en îlot si
+**aucune** de ses sources n'est une page de site et si **toutes** ont un degré
+entrant ≤ 2.
+
+```python
+# lire lib/blog.ts, borner chaque article sur sa ligne `slug: "..."`,
+# puis pour chaque occurrence de /blog/<cible> dans le depot :
+#   - si le fichier est lib/blog.ts, attribuer l'occurrence a l'ARTICLE
+#     dans les bornes duquel elle tombe  (c'est la ligne qui manquait)
+#   - sinon, c'est une page de site : poids fort
+# ILOT  = aucune source "page de site" ET max(degre entrant des sources) <= 2
+```
+
+⚠️ **Et la conséquence pratique, qui a failli coûter le chantier** : la première
+phrase écrite le 28/11 allait de `vendre-appartement-lyon-etapes` vers
+`vendre-vite-lyon`, **c'est-à-dire d'un membre de l'îlot vers un autre.** Elle
+est juste et elle est restée, mais **elle n'ouvre rien à elle seule.** Ce qui
+ouvre un îlot, c'est **un lien venant d'une source à fort degré entrant** :
+`compromis-de-vente-delais` (15), `estimation-en-ligne-ou-agence` (9),
+`rentabilite-locative-lyon` (8), `preavis-depot-garantie` (7).
+📌 **Donc : choisir l'hôte sur son degré entrant, pas seulement sur la
+pertinence du sujet.** Les deux ensemble, et dans cet ordre de contrainte.
+
+**Le garde-fou d'insertion, écrit après les trois erreurs du 27/11, a servi dès
+la première phrase.** Avant d'écrire, le script exige quatre choses, et il
+refuse d'écrire si une seule manque :
+
+```python
+# 1) l'ancre est trouvee EXACTEMENT une fois dans tout le fichier
+# 2) sa position tombe dans les bornes de l'article HOTE
+# 3) elle n'est pas apres `faq:` dans cet article  (piege du 27/11)
+# 4) l'hote ne lie pas DEJA la cible
+# et l'insertion se fait de la fin du fichier vers le debut,
+# pour que les offsets des insertions suivantes restent valides
+```
+
+**Le point 1 a bloqué l'insertion n°1**, et il avait raison : la phrase
+« Nous préférons l'écrire que publier un chiffre que nous ne pourrions pas
+sourcer. » existe dans **deux** articles, `vendre-appartement-lyon-etapes` et
+`questions-a-poser-visite`. **Sans ce contrôle, l'insertion partait dans le
+mauvais article, exactement comme le 27/11** — sauf que cette fois rien n'a été
+écrit, donc rien n'a eu à être défait.
+
+**Et un contrôle de rendu à corriger** : comparer la phrase insérée au texte
+visible **échoue toujours** si l'on compare espace pour espace, parce que le
+dé-balisage insère une espace de part et d'autre du `<a>`. Le 28/11 les cinq
+phrases ont été données pour « ABSENTES » alors qu'elles étaient toutes servies.
+📌 **Comparer en retirant TOUTES les espaces des deux côtés**, et vérifier
+séparément que le texte d'ancre est bien le contenu d'un
+`<a href="/blog/<cible>">`.
+
+```python
+ns = lambda s: re.sub(r"\s+", "", s)
+assert ns(phrase_sans_markdown) in ns(texte_visible)
+m = re.search(r'<a[^>]+href="/blog/CIBLE"[^>]*>(.*?)</a>', html, re.S)
+assert ns(texte_de(m.group(1))) == ns(texte_d_ancre)
+```
 
 **2026-11-27 — QUAND ON NE PEUT PAS PRODUIRE LE CHIFFRE QUE LA REQUÊTE DEMANDE,
 LE CRÉNEAU EST DE DIRE CE QUE MESURENT CEUX DES AUTRES.** Le 25/11 avait posé la
