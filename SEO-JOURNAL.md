@@ -7806,6 +7806,18 @@ Deux enseignements de SERP, utiles pour choisir les prochains chantiers :
 
 ## Chantiers faits
 
+### 2026-11-28 (2e déclenchement, 06h42 UTC) — Aucun changement du client, aucun chantier : le run du jour avait déjà eu lieu (maillage des orphelins, `08c43c2`)
+
+- **Déclenchement en double** : `ls-remote` = `e98e2d3` = `HEAD` après `checkout -B main origin/main`,
+  aucun commit tiers. Le chantier du jour est servi (« aucune ne compte la même chose » présent sur
+  `/blog/vendre-appartement-lyon-etapes`). Un chantier par jour → **rien publié**.
+- **Étape 0** : sitemap **58 URL**, dernier `lastmod` 27/11 (avant le run du jour) ; toutes les URL hors
+  `/annonces/*` et `/blog/*` ont un dossier de route → **aucune page de l'éditeur**. `<title>` de la home
+  = `DEFAULT_TITLE`. **Pas d'email.**
+- **Santé production** : `/`, `/agence-immobiliere-villeurbanne`, `/estimation`,
+  `/estimation-immobiliere-villeurbanne`, `/blog/vendre-vite-lyon`, `/robots.txt`, `/llms.txt` → 200.
+- **Non fait** : archivage du journal (~31 600 lignes) — pas dans un déclenchement en double.
+
 ### 2026-11-28 — Un article à 0 lien entrant, et un îlot de trois pages que le simple comptage ne voyait pas (`08c43c2`)
 
 - **Étape 0, changements du client** : `git ls-remote origin refs/heads/main` =
